@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Find quality stocks with confidence. The Compass Score rates 5,000+ stocks based on 30 years of research." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <nav class="bg-white border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold text-emerald-600">Compass Score</a>
+        <div class="flex items-center gap-6">
+          <a href="/how-it-works" class="text-slate-600 hover:text-slate-900">How It Works</a>
+          <a href="/tool" class="text-slate-600 hover:text-slate-900">Score Lookup</a>
+          <a href="/blog" class="text-slate-600 hover:text-slate-900">Learn</a>
+          <a href="/about" class="text-slate-600 hover:text-slate-900">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-20">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-white font-semibold mb-4">Compass Score</h3>
+            <p class="text-sm">A research-backed stock scoring system that helps new investors find quality companies.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-4">Resources</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/how-it-works" class="hover:text-white">How It Works</a></li>
+              <li><a href="/blog" class="hover:text-white">Learn</a></li>
+              <li><a href="/tool" class="hover:text-white">Score Lookup</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-4">Disclaimer</h3>
+            <p class="text-sm">Not financial advice. Past performance does not guarantee future results. Always do your own research.</p>
+          </div>
+        </div>
+        <div class="border-t border-slate-800 mt-8 pt-8 text-sm text-center">
+          &copy; {new Date().getFullYear()} Compass Score. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

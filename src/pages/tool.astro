@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// TODO: Replace with your actual Streamlit URL when deployed to Railway
+const STREAMLIT_URL = "https://your-app.streamlit.app";
+---
+
+<Layout title="Stock Score Lookup | Compass Score">
+  <section class="py-8 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold mb-2">Compass Score Lookup</h1>
+        <p class="text-slate-600">
+          Search any stock to see its Compass Score and quality grade.
+        </p>
+      </div>
+
+      <!-- Streamlit Embed -->
+      <div class="bg-slate-100 rounded-2xl overflow-hidden shadow-lg" style="min-height: 800px;">
+        <iframe
+          src={STREAMLIT_URL}
+          class="w-full border-0"
+          style="height: 800px;"
+          title="Compass Score Tool"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <!-- Fallback for when iframe isn't working -->
+      <noscript>
+        <div class="bg-slate-100 rounded-2xl p-8 text-center">
+          <p class="text-slate-600 mb-4">
+            JavaScript is required to use the interactive tool.
+          </p>
+          <a href={STREAMLIT_URL} class="text-emerald-600 hover:underline" target="_blank">
+            Open the tool in a new tab →
+          </a>
+        </div>
+      </noscript>
+
+      <!-- Quick Guide -->
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="bg-emerald-50 rounded-xl p-6 border border-emerald-200">
+          <h3 class="font-semibold text-emerald-800 mb-2">Grade A (85-100)</h3>
+          <p class="text-sm text-emerald-700">
+            High quality companies with strong fundamentals and low risk. Think Apple, Microsoft, Costco.
+          </p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-6 border border-blue-200">
+          <h3 class="font-semibold text-blue-800 mb-2">Grade B (60-84)</h3>
+          <p class="text-sm text-blue-700">
+            Above average quality. Solid companies worth considering. Many large banks and industrials fall here.
+          </p>
+        </div>
+        <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+          <h3 class="font-semibold text-amber-800 mb-2">Grades C-F (0-59)</h3>
+          <p class="text-sm text-amber-700">
+            Proceed with caution. These stocks have weaker fundamentals or higher volatility. Not necessarily bad, but higher risk.
+          </p>
+        </div>
+      </div>
+
+      <!-- Affiliate CTA -->
+      <div class="mt-12 bg-slate-900 rounded-2xl p-8 text-white text-center">
+        <h2 class="text-2xl font-bold mb-4">Ready to Invest?</h2>
+        <p class="text-slate-300 mb-6 max-w-xl mx-auto">
+          Found a stock you like? Open a brokerage account and start building your portfolio.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#" class="bg-emerald-500 hover:bg-emerald-400 px-6 py-3 rounded-lg font-semibold transition">
+            Open Robinhood Account →
+          </a>
+          <a href="#" class="bg-blue-500 hover:bg-blue-400 px-6 py-3 rounded-lg font-semibold transition">
+            Open Fidelity Account →
+          </a>
+        </div>
+        <p class="text-xs text-slate-500 mt-4">
+          Affiliate links. We may earn a commission at no cost to you.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

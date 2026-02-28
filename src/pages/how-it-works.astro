@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="How the Compass Score Works | Research-Backed Stock Scoring">
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-center mb-4">How the Compass Score Works</h1>
+      <p class="text-xl text-slate-600 text-center mb-12 max-w-2xl mx-auto">
+        A simple score backed by decades of academic research. Here's exactly what goes into it.
+      </p>
+
+      <!-- The Formula -->
+      <div class="bg-slate-50 rounded-2xl p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-6">The Six Factors We Measure</h2>
+        <p class="text-slate-600 mb-6">
+          The Compass Score combines six key metrics that academic research has shown to predict stock performance.
+          Each factor is standardized and weighted based on its predictive power.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl p-6 border border-slate-200">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">💰</span>
+              <h3 class="font-semibold">Return on Assets (ROA)</h3>
+            </div>
+            <p class="text-slate-600 text-sm">
+              How efficiently does the company turn its assets into profit? Higher is better.
+            </p>
+            <div class="mt-3 text-emerald-600 font-semibold">Weight: 20%</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-slate-200">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">🏭</span>
+              <h3 class="font-semibold">Gross Profitability</h3>
+            </div>
+            <p class="text-slate-600 text-sm">
+              Revenue minus cost of goods, relative to assets. Measures core business strength.
+            </p>
+            <div class="mt-3 text-emerald-600 font-semibold">Weight: 20%</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-slate-200">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">💵</span>
+              <h3 class="font-semibold">Operating Cash Flow</h3>
+            </div>
+            <p class="text-slate-600 text-sm">
+              Cash generated from operations relative to assets. Real cash, not accounting profits.
+            </p>
+            <div class="mt-3 text-emerald-600 font-semibold">Weight: 15%</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-slate-200">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">🆓</span>
+              <h3 class="font-semibold">Free Cash Flow</h3>
+            </div>
+            <p class="text-slate-600 text-sm">
+              Cash available after capital expenditures. What's left for shareholders.
+            </p>
+            <div class="mt-3 text-emerald-600 font-semibold">Weight: 15%</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-slate-200">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">📉</span>
+              <h3 class="font-semibold">Volatility</h3>
+            </div>
+            <p class="text-slate-600 text-sm">
+              60-day price volatility. Lower volatility stocks tend to outperform. (Inverted: lower is better)
+            </p>
+            <div class="mt-3 text-emerald-600 font-semibold">Weight: 15%</div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-slate-200">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">📊</span>
+              <h3 class="font-semibold">Asset Growth</h3>
+            </div>
+            <p class="text-slate-600 text-sm">
+              Year-over-year asset growth. Slower, steady growth beats aggressive expansion. (Inverted)
+            </p>
+            <div class="mt-3 text-emerald-600 font-semibold">Weight: 15%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why These Factors -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Why These Specific Factors?</h2>
+        <div class="prose prose-slate max-w-none">
+          <p>
+            These aren't arbitrary choices. Each factor is grounded in academic finance research:
+          </p>
+          <ul class="space-y-3 mt-4">
+            <li>
+              <strong>Profitability (ROA, Gross Profit):</strong> Companies that generate more profit per dollar of assets
+              consistently outperform. This is the "Quality" factor documented by Asness, Frazzini & Pedersen (2019).
+            </li>
+            <li>
+              <strong>Cash Flow:</strong> Earnings can be manipulated. Cash is real. Companies with strong cash generation
+              are less likely to disappoint investors.
+            </li>
+            <li>
+              <strong>Low Volatility:</strong> The "low-vol anomaly" - less risky stocks have historically delivered
+              better risk-adjusted returns than theory predicts.
+            </li>
+            <li>
+              <strong>Conservative Investment:</strong> Companies that grow assets slowly and steadily tend to outperform
+              those that expand aggressively. This is the "Investment" factor from Fama & French (2015).
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- What We Exclude -->
+      <div class="bg-amber-50 rounded-2xl p-8 mb-12 border border-amber-200">
+        <h2 class="text-2xl font-bold mb-4">What We Deliberately Exclude</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold mb-2">❌ Momentum</h3>
+            <p class="text-slate-600 text-sm">
+              Recent price performance. While momentum works short-term, it adds volatility and reversal risk.
+              Once you account for quality, momentum becomes redundant.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">❌ Price Targets</h3>
+            <p class="text-slate-600 text-sm">
+              Analyst predictions are notoriously unreliable. We focus on actual company fundamentals,
+              not what someone thinks the stock "should" be worth.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">❌ Social Sentiment</h3>
+            <p class="text-slate-600 text-sm">
+              Reddit hype and Twitter buzz are noise. The Compass Score measures company quality,
+              not how many people are talking about it.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">❌ Sector Biases</h3>
+            <p class="text-slate-600 text-sm">
+              We don't favor tech over utilities or vice versa. Quality companies exist in every sector,
+              and we measure them on a level playing field.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How It's Calculated -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">How the Score is Calculated</h2>
+        <ol class="space-y-6">
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">1</span>
+            <div>
+              <h3 class="font-semibold">Gather Latest Financials</h3>
+              <p class="text-slate-600">We pull the most recent quarterly data for each company from SEC filings.</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">2</span>
+            <div>
+              <h3 class="font-semibold">Standardize Each Factor</h3>
+              <p class="text-slate-600">Each metric is converted to a z-score using historical averages from our research period (1995-2019).</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">3</span>
+            <div>
+              <h3 class="font-semibold">Weight and Combine</h3>
+              <p class="text-slate-600">The weighted z-scores are combined into a single raw score.</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">4</span>
+            <div>
+              <h3 class="font-semibold">Convert to Percentile</h3>
+              <p class="text-slate-600">The raw score is ranked against all 5,000+ stocks to produce a 0-100 percentile score.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <a href="/tool" class="inline-block bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-700 transition">
+          Try the Compass Score Tool
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

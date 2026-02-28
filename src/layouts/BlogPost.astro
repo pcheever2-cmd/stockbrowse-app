@@ -1,0 +1,39 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  author: string;
+}
+
+const { title, description, pubDate, author } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout title={`${title} | Compass Score Blog`} description={description}>
+  <article class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+      <header class="mb-8 text-center">
+        <p class="text-emerald-600 text-sm font-semibold mb-2">{formattedDate}</p>
+        <h1 class="text-4xl font-bold mb-4">{title}</h1>
+        <p class="text-xl text-slate-600">{description}</p>
+        <p class="text-slate-500 mt-4">By {author}</p>
+      </header>
+
+      <div class="prose prose-slate prose-lg max-w-none">
+        <slot />
+      </div>
+
+      <footer class="mt-12 pt-8 border-t border-slate-200">
+        <a href="/blog" class="text-emerald-600 hover:underline">← Back to all articles</a>
+      </footer>
+    </div>
+  </article>
+</Layout>
