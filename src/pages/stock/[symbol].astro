@@ -69,19 +69,6 @@ function formatRsi(rsi: number | null): { value: string; label: string; color: s
   return { value: rsi.toFixed(0), label: 'Neutral', color: 'text-slate-300' };
 }
 
-function getTrendInfo(signal: string | null, price: number, sma50: number | null, sma200: number | null): { label: string; color: string } {
-  if (signal) {
-    if (signal.toLowerCase().includes('bull')) return { label: 'Bullish', color: 'text-emerald-400' };
-    if (signal.toLowerCase().includes('bear')) return { label: 'Bearish', color: 'text-red-400' };
-  }
-  if (sma50 && sma200) {
-    if (price > sma50 && sma50 > sma200) return { label: 'Bullish', color: 'text-emerald-400' };
-    if (price < sma50 && sma50 < sma200) return { label: 'Bearish', color: 'text-red-400' };
-  }
-  return { label: 'Neutral', color: 'text-slate-300' };
-}
-
-const trendInfo = getTrendInfo(stock.trendSignal, stock.price, stock.sma50, stock.sma200);
 const rsiInfo = formatRsi(stock.rsi);
 const piotroskiInfo = formatPiotroski(stock.piotroskiScore);
 const altmanInfo = formatAltmanZ(stock.altmanZ);
@@ -191,7 +178,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
       <!-- FREE SECTION: Technical Overview (Yahoo Finance available) -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold mb-4 text-slate-100">Technical Overview</h2>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-3 gap-4">
           <div class="bg-[#080A0F] rounded-lg p-4 text-center">
             <div class="text-sm text-[#64748B] mb-1">RSI (14)</div>
             <div class={`text-2xl font-bold ${rsiInfo.color}`}>{rsiInfo.value}</div>
@@ -201,6 +188,12 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
             <div class="text-sm text-[#64748B] mb-1">vs 50-Day SMA</div>
             <div class={`text-2xl font-bold ${stock.sma50 && stock.price > stock.sma50 ? 'text-emerald-400' : 'text-red-400'}`}>
               {stock.sma50 ? (stock.price > stock.sma50 ? 'Above' : 'Below') : 'N/A'}
+            </div>
+          </div>
+          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+            <div class="text-sm text-[#64748B] mb-1">vs 200-Day SMA</div>
+            <div class={`text-2xl font-bold ${stock.sma200 && stock.price > stock.sma200 ? 'text-emerald-400' : 'text-red-400'}`}>
+              {stock.sma200 ? (stock.price > stock.sma200 ? 'Above' : 'Below') : 'N/A'}
             </div>
           </div>
         </div>
@@ -312,38 +305,6 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
             Unlock Health Metrics
-          </button>
-        </div>
-      </div>
-
-      <!-- PREMIUM SECTION: Advanced Signals (Our proprietary analysis) -->
-      <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-bold text-slate-100">Advanced Signals</h2>
-          <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
-        </div>
-
-        <div class="premium-content blur-sm pointer-events-none select-none">
-          <div class="grid grid-cols-3 gap-4">
-            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Trend Signal</div>
-              <div class={`text-xl font-bold ${trendInfo.color}`}>{trendInfo.label}</div>
-            </div>
-            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Value Score</div>
-              <div class="text-xl font-bold text-slate-100">{stock.valueScore ?? 'N/A'}</div>
-            </div>
-            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Long-Term Score</div>
-              <div class="text-xl font-bold text-slate-100">{stock.longTermScore?.toFixed(0) ?? 'N/A'}</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
-          <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            Unlock Advanced Signals
           </button>
         </div>
       </div>
