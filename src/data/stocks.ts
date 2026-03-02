@@ -7,20 +7,41 @@ export interface Stock {
   price: number;
   compassScore: number;
   grade: 'A' | 'B' | 'C' | 'D' | 'F';
-  moonshotScore: number | null;
-  moonshotGrade: 'A' | 'B' | 'C' | 'D' | 'F' | null;
-  momentumScore: number | null;
-  momentumGrade: 'A' | 'B' | 'C' | 'D' | 'F' | null;
   industry: string;
   sector: string;
   marketCap: number; // in billions
   description: string; // company profile
-  // Analyst data
-  avgPriceTarget: number | null;
-  upside: number | null;
+
+  // Analyst data (consensus free, details premium)
   numAnalysts: number | null;
   consensus: string | null;
+  // Premium analyst details
+  avgPriceTarget: number | null;
+  upside: number | null;
   recentRatings: string;
+
+  // Premium: Valuation metrics
+  evEbitda: number | null;
+  forwardPe: number | null;
+  pegRatio: number | null;
+
+  // Premium: Growth metrics
+  epsGrowth: number | null;
+  revenueGrowth: number | null;
+
+  // Premium: Financial health
+  piotroskiScore: number | null;  // 0-9 scale
+  altmanZ: number | null;
+
+  // Premium: Technical indicators
+  rsi: number | null;
+  sma50: number | null;
+  sma200: number | null;
+  trendSignal: string | null;
+
+  // Premium: Additional scores
+  valueScore: number | null;
+  longTermScore: number | null;
 }
 
 export const stocks: Stock[] = stocksData as Stock[];
@@ -374,16 +395,10 @@ export interface ScoreBreakdown {
 
 // Generate score breakdown based on overall score
 // This provides approximate indicators based on the composite score
+// Note: This is an approximation until actual factor values are exported
 export function getScoreBreakdown(stock: Stock): ScoreBreakdown {
   const score = stock.compassScore;
   const grade = stock.grade;
-
-  // Base ratings on overall score with some variation
-  const getBaseRating = (threshold1: number, threshold2: number): FactorRating => {
-    if (score >= threshold1) return 'strong';
-    if (score >= threshold2) return 'average';
-    return 'weak';
-  };
 
   // A-grade stocks: mostly strong, maybe 1-2 average
   // B-grade stocks: mix of strong and average
@@ -441,15 +456,15 @@ export function getScoreBreakdown(stock: Stock): ScoreBreakdown {
 
 export function getFactorRatingColor(rating: FactorRating): { bg: string; text: string; label: string } {
   switch (rating) {
-    case 'strong': return { bg: 'bg-emerald-100', text: 'text-emerald-700', label: 'Strong' };
-    case 'average': return { bg: 'bg-slate-100', text: 'text-slate-700', label: 'Average' };
-    case 'weak': return { bg: 'bg-red-100', text: 'text-red-700', label: 'Weak' };
+    case 'strong': return { bg: 'bg-emerald-900/40', text: 'text-emerald-400', label: 'Strong' };
+    case 'average': return { bg: 'bg-slate-700/40', text: 'text-slate-300', label: 'Average' };
+    case 'weak': return { bg: 'bg-red-900/40', text: 'text-red-400', label: 'Weak' };
   }
 }
 
 // Analyst consensus helpers - calculates from actual analyst ratings
-export function getConsensusInfo(consensus: string | null, recentRatings: string = ''): { label: string; color: string; bgColor: string } {
-  // If we have recent ratings, calculate consensus from them instead of using the grade
+export function getConsensusInfo(_consensus: string | null, recentRatings: string = ''): { label: string; color: string; bgColor: string } {
+  // Calculate consensus from recent ratings (consensus param reserved for future use)
   if (recentRatings) {
     const ratings = parseRecentRatings(recentRatings);
     if (ratings.length > 0) {
@@ -475,20 +490,20 @@ export function getConsensusInfo(consensus: string | null, recentRatings: string
       const sellPct = sellCount / total;
 
       if (buyPct >= 0.6) {
-        return { label: 'Strong Buy', color: 'text-emerald-700', bgColor: 'bg-emerald-100' };
+        return { label: 'Strong Buy', color: 'text-emerald-400', bgColor: 'bg-emerald-900/40' };
       } else if (buyPct >= 0.4) {
-        return { label: 'Buy', color: 'text-blue-700', bgColor: 'bg-blue-100' };
+        return { label: 'Buy', color: 'text-blue-400', bgColor: 'bg-blue-900/40' };
       } else if (sellPct >= 0.6) {
-        return { label: 'Strong Sell', color: 'text-red-700', bgColor: 'bg-red-100' };
+        return { label: 'Strong Sell', color: 'text-red-400', bgColor: 'bg-red-900/40' };
       } else if (sellPct >= 0.4) {
-        return { label: 'Sell', color: 'text-amber-700', bgColor: 'bg-amber-100' };
+        return { label: 'Sell', color: 'text-amber-400', bgColor: 'bg-amber-900/40' };
       } else {
-        return { label: 'Hold', color: 'text-slate-700', bgColor: 'bg-slate-100' };
+        return { label: 'Hold', color: 'text-slate-300', bgColor: 'bg-slate-700/40' };
       }
     }
   }
 
-  return { label: 'N/A', color: 'text-slate-500', bgColor: 'bg-slate-50' };
+  return { label: 'N/A', color: 'text-slate-400', bgColor: 'bg-slate-800/40' };
 }
 
 // Parse recent ratings into structured format

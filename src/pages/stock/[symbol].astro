@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import UpgradeModal from '../../components/UpgradeModal.astro';
 import {
   stocks,
   getStockBySymbol,
@@ -45,23 +46,62 @@ const factors = [
   { key: 'volatility', name: 'Low Volatility', description: 'Stock price stability (lower is better)' },
   { key: 'assetGrowth', name: 'Conservative Growth', description: 'Measured asset expansion (slower is often better)' },
 ];
+
+// Helper functions for premium data display
+function formatPiotroski(score: number | null): { value: string; label: string; color: string } {
+  if (score === null) return { value: 'N/A', label: 'Unknown', color: 'text-slate-400' };
+  if (score >= 7) return { value: `${score}/9`, label: 'Strong', color: 'text-emerald-400' };
+  if (score >= 4) return { value: `${score}/9`, label: 'Average', color: 'text-slate-300' };
+  return { value: `${score}/9`, label: 'Weak', color: 'text-red-400' };
+}
+
+function formatAltmanZ(z: number | null): { value: string; label: string; color: string } {
+  if (z === null) return { value: 'N/A', label: 'Unknown', color: 'text-slate-400' };
+  if (z >= 2.99) return { value: z.toFixed(2), label: 'Safe Zone', color: 'text-emerald-400' };
+  if (z >= 1.81) return { value: z.toFixed(2), label: 'Grey Zone', color: 'text-amber-400' };
+  return { value: z.toFixed(2), label: 'Distress Zone', color: 'text-red-400' };
+}
+
+function formatRsi(rsi: number | null): { value: string; label: string; color: string } {
+  if (rsi === null) return { value: 'N/A', label: 'Unknown', color: 'text-slate-400' };
+  if (rsi >= 70) return { value: rsi.toFixed(0), label: 'Overbought', color: 'text-red-400' };
+  if (rsi <= 30) return { value: rsi.toFixed(0), label: 'Oversold', color: 'text-emerald-400' };
+  return { value: rsi.toFixed(0), label: 'Neutral', color: 'text-slate-300' };
+}
+
+function getTrendInfo(signal: string | null, price: number, sma50: number | null, sma200: number | null): { label: string; color: string } {
+  if (signal) {
+    if (signal.toLowerCase().includes('bull')) return { label: 'Bullish', color: 'text-emerald-400' };
+    if (signal.toLowerCase().includes('bear')) return { label: 'Bearish', color: 'text-red-400' };
+  }
+  if (sma50 && sma200) {
+    if (price > sma50 && sma50 > sma200) return { label: 'Bullish', color: 'text-emerald-400' };
+    if (price < sma50 && sma50 < sma200) return { label: 'Bearish', color: 'text-red-400' };
+  }
+  return { label: 'Neutral', color: 'text-slate-300' };
+}
+
+const trendInfo = getTrendInfo(stock.trendSignal, stock.price, stock.sma50, stock.sma200);
+const rsiInfo = formatRsi(stock.rsi);
+const piotroskiInfo = formatPiotroski(stock.piotroskiScore);
+const altmanInfo = formatAltmanZ(stock.altmanZ);
 ---
 
-<Layout title={`${stock.name} (${stock.symbol}) Compass Score | Compass Score`}>
-  <section class="py-12 bg-[#161B24] min-h-screen">
+<Layout title={`${stock.name} (${stock.symbol}) Compass Score | Stockbrowse`}>
+  <section class="py-12 bg-[#0C0F14] min-h-screen">
     <div class="max-w-4xl mx-auto px-4">
       <!-- Back Link -->
-      <a href="/browse" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">← Back to Browse</a>
+      <a href="/browse/all" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">&larr; Back to Browse</a>
 
-      <!-- Header -->
-      <div class={`rounded-2xl p-8 ${colors.bg} mb-8`}>
+      <!-- Header with Score -->
+      <div class={`rounded-2xl p-8 ${colors.bg} border ${colors.border} mb-8`}>
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <h1 class="text-3xl md:text-4xl font-bold text-slate-100">{stock.name}</h1>
-            <p class="text-lg text-[#CBD5E1] mt-1">{stock.symbol} • {industry}</p>
+            <p class="text-lg text-[#CBD5E1] mt-1">{stock.symbol} &bull; {industry}</p>
           </div>
           <div class="text-center">
-            <div class={`w-32 h-32 rounded-full bg-[#161B24] border-4 ${colors.border} flex items-center justify-center mx-auto shadow-lg`}>
+            <div class={`w-32 h-32 rounded-full bg-[#0C0F14] border-4 ${colors.border} flex items-center justify-center mx-auto shadow-lg`}>
               <div>
                 <div class={`text-4xl font-bold ${colors.text}`}>{stock.compassScore}</div>
                 <div class={`text-sm font-semibold ${colors.text}`}>Grade {stock.grade}</div>
@@ -71,35 +111,35 @@ const factors = [
         </div>
       </div>
 
-      <!-- Price & Market Cap -->
+      <!-- Price & Market Cap (Free) -->
       <div class="grid md:grid-cols-2 gap-4 mb-8">
-        <div class="bg-[#080A0F] rounded-xl p-5">
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5">
           <div class="text-sm text-[#64748B] mb-1">Current Price</div>
-          <div class="text-3xl font-bold">{formatPrice(stock.price)}</div>
+          <div class="text-3xl font-bold text-slate-100">{formatPrice(stock.price)}</div>
         </div>
-        <div class="bg-[#080A0F] rounded-xl p-5">
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5">
           <div class="text-sm text-[#64748B] mb-1">Market Cap</div>
-          <div class="text-3xl font-bold">{formatMarketCap(stock.marketCap)}</div>
+          <div class="text-3xl font-bold text-slate-100">{formatMarketCap(stock.marketCap)}</div>
         </div>
       </div>
 
-      <!-- Company Profile -->
+      <!-- Company Profile (Free) -->
       {companyProfile && (
         <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
-          <h2 class="text-xl font-bold mb-3">About {stock.name}</h2>
+          <h2 class="text-xl font-bold mb-3 text-slate-100">About {stock.name}</h2>
           <p class="text-[#CBD5E1] leading-relaxed">{companyProfile}</p>
         </div>
       )}
 
-      <!-- Quality Assessment -->
+      <!-- Quality Assessment (Free) -->
       <div class={`${colors.bg} border ${colors.border} rounded-xl p-6 mb-8`}>
-        <h2 class="text-xl font-bold mb-3">Quality Assessment</h2>
+        <h2 class="text-xl font-bold mb-3 text-slate-100">Quality Assessment</h2>
         <p class={`${colors.text} leading-relaxed text-lg`}>{summary}</p>
       </div>
 
-      <!-- Score Breakdown -->
+      <!-- Score Breakdown (Free: labels only, Premium: actual values) -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
-        <h2 class="text-xl font-bold mb-4">Score Breakdown</h2>
+        <h2 class="text-xl font-bold mb-4 text-slate-100">Score Breakdown</h2>
         <p class="text-[#64748B] text-sm mb-6">
           The Compass Score is based on 6 quality factors identified by academic research.
         </p>
@@ -108,103 +148,235 @@ const factors = [
             const rating = breakdown[factor.key as keyof typeof breakdown];
             const ratingColors = getFactorRatingColor(rating);
             return (
-              <div class="flex items-center justify-between p-4 bg-[#080A0F] rounded-lg">
+              <button
+                data-factor={factor.key}
+                data-factor-name={factor.name}
+                class="factor-card flex items-center justify-between p-4 bg-[#080A0F] rounded-lg hover:bg-[#0F1419] cursor-pointer transition group text-left w-full border border-transparent hover:border-[#22D3EE33]"
+              >
                 <div>
-                  <div class="font-semibold text-slate-100">{factor.name}</div>
+                  <div class="font-semibold text-slate-100 group-hover:text-[#22D3EE] transition">{factor.name}</div>
                   <div class="text-xs text-[#64748B]">{factor.description}</div>
                 </div>
                 <span class={`px-3 py-1 rounded-full text-sm font-semibold ${ratingColors.bg} ${ratingColors.text}`}>
                   {ratingColors.label}
                 </span>
-              </div>
+              </button>
             );
           })}
         </div>
+        <div class="mt-4 text-center">
+          <p class="text-xs text-[#64748B]">Click any factor to see detailed metrics (Premium)</p>
+        </div>
       </div>
 
-      <!-- Analyst View -->
-      {hasAnalystData && (
-        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
-          <h2 class="text-xl font-bold mb-4">Wall Street View</h2>
-          <p class="text-[#64748B] text-sm mb-6">
-            What professional analysts think about {stock.symbol}.
-          </p>
+      <!-- PREMIUM SECTION: Valuation Metrics -->
+      <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-bold text-slate-100">Valuation Metrics</h2>
+          <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
+        </div>
 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <!-- Blurred content for free users -->
+        <div class="premium-content blur-sm pointer-events-none select-none">
+          <div class="grid grid-cols-3 gap-4">
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Price Target</div>
-              <div class="text-2xl font-bold">${stock.avgPriceTarget}</div>
+              <div class="text-sm text-[#64748B] mb-1">EV/EBITDA</div>
+              <div class="text-2xl font-bold text-slate-100">{stock.evEbitda?.toFixed(1) || 'N/A'}</div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Upside</div>
-              <div class={`text-2xl font-bold ${stock.upside && stock.upside > 0 ? 'text-[#22D3EE]' : 'text-red-600'}`}>
-                {stock.upside && stock.upside > 0 ? '+' : ''}{stock.upside}%
+              <div class="text-sm text-[#64748B] mb-1">Forward P/E</div>
+              <div class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || 'N/A'}</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">PEG Ratio</div>
+              <div class="text-2xl font-bold text-slate-100">{stock.pegRatio?.toFixed(2) || 'N/A'}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unlock overlay -->
+        <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
+          <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            Unlock Valuation Data
+          </button>
+        </div>
+      </div>
+
+      <!-- PREMIUM SECTION: Growth Outlook -->
+      <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-bold text-slate-100">Growth Outlook</h2>
+          <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
+        </div>
+
+        <div class="premium-content blur-sm pointer-events-none select-none">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Projected EPS Growth</div>
+              <div class={`text-2xl font-bold ${stock.epsGrowth && stock.epsGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {stock.epsGrowth ? `${stock.epsGrowth > 0 ? '+' : ''}${stock.epsGrowth.toFixed(1)}%` : 'N/A'}
               </div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Analysts</div>
-              <div class="text-2xl font-bold">{stock.numAnalysts}</div>
+              <div class="text-sm text-[#64748B] mb-1">Projected Revenue Growth</div>
+              <div class={`text-2xl font-bold ${stock.revenueGrowth && stock.revenueGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {stock.revenueGrowth ? `${stock.revenueGrowth > 0 ? '+' : ''}${stock.revenueGrowth.toFixed(1)}%` : 'N/A'}
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
+          <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            Unlock Growth Data
+          </button>
+        </div>
+      </div>
+
+      <!-- PREMIUM SECTION: Financial Health -->
+      <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-bold text-slate-100">Financial Health</h2>
+          <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
+        </div>
+
+        <div class="premium-content blur-sm pointer-events-none select-none">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Piotroski F-Score</div>
+              <div class={`text-2xl font-bold ${piotroskiInfo.color}`}>{piotroskiInfo.value}</div>
+              <div class={`text-xs ${piotroskiInfo.color}`}>{piotroskiInfo.label}</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Altman Z-Score</div>
+              <div class={`text-2xl font-bold ${altmanInfo.color}`}>{altmanInfo.value}</div>
+              <div class={`text-xs ${altmanInfo.color}`}>{altmanInfo.label}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
+          <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            Unlock Health Metrics
+          </button>
+        </div>
+      </div>
+
+      <!-- PREMIUM SECTION: Technical Signals -->
+      <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-bold text-slate-100">Technical Signals</h2>
+          <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
+        </div>
+
+        <div class="premium-content blur-sm pointer-events-none select-none">
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Trend</div>
+              <div class={`text-xl font-bold ${trendInfo.color}`}>{trendInfo.label}</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">RSI (14)</div>
+              <div class={`text-xl font-bold ${rsiInfo.color}`}>{rsiInfo.value}</div>
+              <div class={`text-xs ${rsiInfo.color}`}>{rsiInfo.label}</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">vs 50-Day SMA</div>
+              <div class={`text-xl font-bold ${stock.sma50 && stock.price > stock.sma50 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {stock.sma50 ? (stock.price > stock.sma50 ? 'Above' : 'Below') : 'N/A'}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
+          <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            Unlock Technical Data
+          </button>
+        </div>
+      </div>
+
+      <!-- Wall Street View (Partial: consensus free, details premium) -->
+      {hasAnalystData && (
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+          <h2 class="text-xl font-bold mb-4 text-slate-100">Wall Street View</h2>
+
+          <!-- Free: Consensus and analyst count -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
             <div class={`${consensusInfo.bgColor} rounded-lg p-4 text-center`}>
-              <div class="text-sm text-[#64748B] mb-1">Consensus</div>
-              <div class={`text-xl font-bold ${consensusInfo.color}`}>{consensusInfo.label}</div>
+              <div class="text-sm text-[#64748B] mb-1">Analyst Consensus</div>
+              <div class={`text-2xl font-bold ${consensusInfo.color}`}>{consensusInfo.label}</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Analysts Covering</div>
+              <div class="text-2xl font-bold text-slate-100">{stock.numAnalysts}</div>
             </div>
           </div>
 
-          {recentRatings.length > 0 && (
-            <div>
-              <h3 class="font-semibold text-sm text-slate-700 mb-3">Recent Analyst Actions</h3>
-              <div class="space-y-2">
-                {recentRatings.map(r => (
-                  <div class="flex items-center justify-between text-sm bg-[#080A0F] rounded-lg px-4 py-2">
-                    <div class="flex items-center gap-2">
-                      <span>{r.icon}</span>
-                      <span class="font-medium">{r.firm}</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <span class="text-[#22D3EE] font-semibold">{r.rating}</span>
-                      <span class="text-slate-400 text-xs">{r.date}</span>
-                    </div>
+          <!-- Premium: Price target and recent ratings -->
+          <div class="premium-section relative overflow-hidden rounded-lg">
+            <div class="premium-content blur-sm pointer-events-none select-none">
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+                  <div class="text-sm text-[#64748B] mb-1">Price Target</div>
+                  <div class="text-2xl font-bold text-slate-100">${stock.avgPriceTarget}</div>
+                </div>
+                <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+                  <div class="text-sm text-[#64748B] mb-1">Upside</div>
+                  <div class={`text-2xl font-bold ${stock.upside && stock.upside > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                    {stock.upside && stock.upside > 0 ? '+' : ''}{stock.upside}%
                   </div>
-                ))}
+                </div>
               </div>
+
+              {recentRatings.length > 0 && (
+                <div>
+                  <h3 class="font-semibold text-sm text-slate-300 mb-3">Recent Analyst Actions</h3>
+                  <div class="space-y-2">
+                    {recentRatings.slice(0, 3).map(r => (
+                      <div class="flex items-center justify-between text-sm bg-[#080A0F] rounded-lg px-4 py-2">
+                        <div class="flex items-center gap-2">
+                          <span>{r.icon}</span>
+                          <span class="font-medium text-slate-200">{r.firm}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <span class="text-[#22D3EE] font-semibold">{r.rating}</span>
+                          <span class="text-slate-500 text-xs">{r.date}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+
+            <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
+              <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                Unlock Analyst Details
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
-      <!-- CTA Box -->
-      <div class="bg-slate-900 rounded-2xl p-8 mb-8">
-        <div class="text-center">
-          <h2 class="text-2xl font-bold text-white mb-2">Ready to Invest in {stock.symbol}?</h2>
-          <p class="text-slate-400 mb-6">Open a brokerage account and start building your portfolio.</p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-4 rounded-xl font-bold text-lg transition inline-block">
-              Buy on Robinhood
-            </a>
-            <a href="#" class="bg-blue-500 hover:bg-blue-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition inline-block">
-              Buy on Fidelity
-            </a>
-          </div>
-          <p class="text-xs text-[#64748B] mt-4">
-            We may earn a commission from these links. This doesn't affect our ratings.
-          </p>
-        </div>
-      </div>
-
-      <!-- Related Stocks -->
+      <!-- Related Stocks (Free) -->
       {relatedStocks.length > 0 && (
         <div class="mb-8">
-          <h2 class="text-xl font-bold mb-4">Similar High-Quality Stocks</h2>
+          <h2 class="text-xl font-bold mb-4 text-slate-100">Similar High-Quality Stocks</h2>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {relatedStocks.map(related => {
               const relatedColors = getGradeColor(related.grade);
               return (
                 <a href={`/stock/${related.symbol.toLowerCase()}`}
-                   class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 hover:shadow-lg hover:border-emerald-300 transition">
+                   class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 hover:border-[#22D3EE33] transition">
                   <div class="flex justify-between items-start mb-2">
                     <div>
-                      <h3 class="font-bold">{related.symbol}</h3>
+                      <h3 class="font-bold text-slate-100">{related.symbol}</h3>
                       <p class="text-[#64748B] text-sm truncate max-w-[150px]">{related.name}</p>
                     </div>
                     <div class={`px-2 py-1 rounded-full ${relatedColors.bg} ${relatedColors.text} text-sm font-bold`}>
@@ -212,7 +384,7 @@ const factors = [
                     </div>
                   </div>
                   <div class="flex justify-between items-end">
-                    <div class="text-lg font-semibold">{formatPrice(related.price)}</div>
+                    <div class="text-lg font-semibold text-slate-100">{formatPrice(related.price)}</div>
                     <div class={`text-sm font-semibold ${relatedColors.text}`}>Grade {related.grade}</div>
                   </div>
                 </a>
@@ -223,9 +395,9 @@ const factors = [
       )}
 
       <!-- Disclaimer -->
-      <div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
-        <h3 class="font-semibold text-amber-800 mb-2">Important Disclaimer</h3>
-        <p class="text-sm text-amber-700">
+      <div class="bg-amber-900/20 border border-amber-700/30 rounded-xl p-6">
+        <h3 class="font-semibold text-amber-400 mb-2">Important Disclaimer</h3>
+        <p class="text-sm text-amber-200/80">
           The Compass Score is for educational purposes only and does not constitute financial advice.
           Past performance does not guarantee future results. Always do your own research and consider
           consulting a financial advisor before making investment decisions.
@@ -233,4 +405,54 @@ const factors = [
       </div>
     </div>
   </section>
+
+  <!-- Upgrade Modal -->
+  <UpgradeModal />
+
+  <script>
+    import { hasFeature } from '../../lib/subscription';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check subscription status and show/hide premium content
+      const isPremium = hasFeature('score_breakdown');
+
+      if (isPremium) {
+        // Remove blur and overlays for premium users
+        document.querySelectorAll('.premium-section').forEach(section => {
+          const content = section.querySelector('.premium-content');
+          const overlay = section.querySelector('.premium-overlay');
+          const badge = section.querySelector('.premium-badge');
+
+          if (content) {
+            content.classList.remove('blur-sm', 'pointer-events-none', 'select-none');
+          }
+          if (overlay) {
+            overlay.remove();
+          }
+          if (badge) {
+            badge.remove();
+          }
+        });
+      }
+
+      // Handle factor card clicks
+      const factorCards = document.querySelectorAll('.factor-card');
+      factorCards.forEach(card => {
+        card.addEventListener('click', () => {
+          if (!hasFeature('score_breakdown')) {
+            (window as any).showUpgradeModal();
+          }
+        });
+      });
+
+      // Handle unlock button clicks
+      const unlockButtons = document.querySelectorAll('.unlock-btn');
+      unlockButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          (window as any).showUpgradeModal();
+        });
+      });
+    });
+  </script>
 </Layout>

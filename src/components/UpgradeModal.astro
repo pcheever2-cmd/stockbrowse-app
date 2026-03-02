@@ -1,0 +1,79 @@
+<!-- Premium Upgrade Modal -->
+<div id="upgrade-modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-2xl p-8 max-w-md w-full shadow-2xl transform transition-all">
+    <div class="text-center mb-6">
+      <div class="text-5xl mb-4">🔒</div>
+      <h2 class="text-2xl font-bold text-slate-100 mb-2">Unlock Detailed Metrics</h2>
+      <p class="text-[#CBD5E1]">
+        Upgrade to Basic to see the actual financial values behind each quality factor.
+      </p>
+    </div>
+
+    <ul class="space-y-3 mb-6">
+      <li class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-[#22D3EE] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <span class="text-sm text-slate-200">See exact ROA, cash flow ratios, and more</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-[#22D3EE] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <span class="text-sm text-slate-200">Unlimited stock lookups</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-[#22D3EE] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <span class="text-sm text-slate-200">Export data to CSV</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-[#22D3EE] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <span class="text-sm text-slate-200">7-day free trial included</span>
+      </li>
+    </ul>
+
+    <div class="bg-[#080A0F] rounded-xl p-4 mb-6 border border-[rgba(255,255,255,0.06)]">
+      <div class="flex items-baseline justify-center gap-1 mb-1">
+        <span class="text-3xl font-bold text-slate-100">$9</span>
+        <span class="text-[#64748B]">/month</span>
+      </div>
+      <p class="text-xs text-center text-[#64748B]">Cancel anytime • 30-day money-back guarantee</p>
+    </div>
+
+    <div class="flex gap-3">
+      <button id="close-upgrade-modal" class="flex-1 py-3 bg-[#0C0F14] hover:bg-slate-700 text-slate-100 rounded-xl font-semibold transition">
+        Maybe Later
+      </button>
+      <a href="/pricing" class="flex-1 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-white rounded-xl font-semibold text-center transition">
+        Upgrade Now
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Close modal when clicking backdrop or close button
+  const modal = document.getElementById('upgrade-modal');
+  const closeButton = document.getElementById('close-upgrade-modal');
+
+  if (modal && closeButton) {
+    closeButton.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+  }
+
+  // Export function to show modal (will be called from parent page)
+  (window as any).showUpgradeModal = () => {
+    modal?.classList.remove('hidden');
+  };
+</script>
