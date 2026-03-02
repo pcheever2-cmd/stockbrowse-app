@@ -1,83 +1,444 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { stocks, getGradeColor, generateSummary, formatPrice, formatMarketCap, getNormalizedIndustry } from '../data/stocks';
 
-// TODO: Replace with your actual Streamlit URL when deployed to Railway
-const STREAMLIT_URL = "https://your-app.streamlit.app";
+// Pass stocks to client-side as JSON (include all fields for full display)
+const stocksJson = JSON.stringify(stocks.map(s => ({
+  symbol: s.symbol,
+  name: s.name,
+  price: s.price,
+  compassScore: s.compassScore,
+  grade: s.grade,
+  industry: getNormalizedIndustry(s.industry),
+  marketCap: s.marketCap,
+  description: s.description,
+  avgPriceTarget: s.avgPriceTarget,
+  upside: s.upside,
+  numAnalysts: s.numAnalysts,
+  consensus: s.consensus,
+  recentRatings: s.recentRatings,
+})));
 ---
 
 <Layout title="Stock Score Lookup | Compass Score">
-  <section class="py-8 bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold mb-2">Compass Score Lookup</h1>
-        <p class="text-slate-600">
-          Search any stock to see its Compass Score and quality grade.
+  <section class="py-12 bg-[#161B24] min-h-screen">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold mb-3">Stock Score Lookup</h1>
+        <p class="text-xl text-[#CBD5E1]">
+          Search any of 5,000+ stocks to see their Compass Score.
         </p>
       </div>
 
-      <!-- Streamlit Embed -->
-      <div class="bg-slate-100 rounded-2xl overflow-hidden shadow-lg" style="min-height: 800px;">
-        <iframe
-          src={STREAMLIT_URL}
-          class="w-full border-0"
-          style="height: 800px;"
-          title="Compass Score Tool"
-          loading="lazy"
-        ></iframe>
+      <!-- Search Box -->
+      <div class="relative max-w-2xl mx-auto mb-8">
+        <div class="relative">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search by company name or ticker (e.g., Apple or AAPL)"
+            class="w-full px-6 py-4 text-lg border-2 border-[rgba(255,255,255,0.06)] rounded-xl focus:border-[#22D3EE] focus:outline-none transition"
+            autocomplete="off"
+          />
+          <div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Autocomplete Dropdown -->
+        <div id="autocomplete" class="absolute z-10 w-full mt-2 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-lg hidden max-h-80 overflow-y-auto">
+        </div>
       </div>
 
-      <!-- Fallback for when iframe isn't working -->
-      <noscript>
-        <div class="bg-slate-100 rounded-2xl p-8 text-center">
-          <p class="text-slate-600 mb-4">
-            JavaScript is required to use the interactive tool.
-          </p>
-          <a href={STREAMLIT_URL} class="text-emerald-600 hover:underline" target="_blank">
-            Open the tool in a new tab →
-          </a>
+      <!-- Result Display -->
+      <div id="result" class="hidden">
+        <!-- Stock result will be inserted here -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="text-center py-16">
+        <div class="text-6xl mb-4">🔍</div>
+        <h2 class="text-2xl font-semibold text-slate-700 mb-2">Search for any stock</h2>
+        <p class="text-[#64748B] mb-8">Enter a company name or ticker symbol above</p>
+
+        <div class="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <button class="example-search px-4 py-3 bg-[#0C0F14] hover:bg-slate-200 rounded-lg text-sm font-medium transition" data-symbol="AAPL">
+            Try: Apple (AAPL)
+          </button>
+          <button class="example-search px-4 py-3 bg-[#0C0F14] hover:bg-slate-200 rounded-lg text-sm font-medium transition" data-symbol="TSLA">
+            Try: Tesla (TSLA)
+          </button>
+          <button class="example-search px-4 py-3 bg-[#0C0F14] hover:bg-slate-200 rounded-lg text-sm font-medium transition" data-symbol="MSFT">
+            Try: Microsoft (MSFT)
+          </button>
         </div>
-      </noscript>
+      </div>
 
       <!-- Quick Guide -->
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <div class="mt-16 grid md:grid-cols-3 gap-6">
         <div class="bg-emerald-50 rounded-xl p-6 border border-emerald-200">
           <h3 class="font-semibold text-emerald-800 mb-2">Grade A (85-100)</h3>
           <p class="text-sm text-emerald-700">
-            High quality companies with strong fundamentals and low risk. Think Apple, Microsoft, Costco.
+            High quality companies with strong fundamentals and low risk.
           </p>
         </div>
         <div class="bg-blue-50 rounded-xl p-6 border border-blue-200">
           <h3 class="font-semibold text-blue-800 mb-2">Grade B (60-84)</h3>
           <p class="text-sm text-blue-700">
-            Above average quality. Solid companies worth considering. Many large banks and industrials fall here.
+            Above average quality. Solid companies worth considering.
           </p>
         </div>
         <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
           <h3 class="font-semibold text-amber-800 mb-2">Grades C-F (0-59)</h3>
           <p class="text-sm text-amber-700">
-            Proceed with caution. These stocks have weaker fundamentals or higher volatility. Not necessarily bad, but higher risk.
+            Proceed with caution. Weaker fundamentals or higher volatility.
           </p>
         </div>
       </div>
-
-      <!-- Affiliate CTA -->
-      <div class="mt-12 bg-slate-900 rounded-2xl p-8 text-white text-center">
-        <h2 class="text-2xl font-bold mb-4">Ready to Invest?</h2>
-        <p class="text-slate-300 mb-6 max-w-xl mx-auto">
-          Found a stock you like? Open a brokerage account and start building your portfolio.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#" class="bg-emerald-500 hover:bg-emerald-400 px-6 py-3 rounded-lg font-semibold transition">
-            Open Robinhood Account →
-          </a>
-          <a href="#" class="bg-blue-500 hover:bg-blue-400 px-6 py-3 rounded-lg font-semibold transition">
-            Open Fidelity Account →
-          </a>
-        </div>
-        <p class="text-xs text-slate-500 mt-4">
-          Affiliate links. We may earn a commission at no cost to you.
-        </p>
-      </div>
     </div>
   </section>
+
+  <script define:vars={{ stocksJson }}>
+    const stocks = JSON.parse(stocksJson);
+
+    const searchInput = document.getElementById('search-input');
+    const autocomplete = document.getElementById('autocomplete');
+    const resultDiv = document.getElementById('result');
+    const emptyState = document.getElementById('empty-state');
+
+    function getGradeColors(grade) {
+      const colors = {
+        'A': { bg: 'bg-emerald-100', text: 'text-emerald-700', border: 'border-emerald-200', ring: 'ring-[#22D3EE]' },
+        'B': { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-200', ring: 'ring-blue-500' },
+        'C': { bg: 'bg-[#0C0F14]', text: 'text-slate-700', border: 'border-[rgba(255,255,255,0.06)]', ring: 'ring-slate-400' },
+        'D': { bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-amber-200', ring: 'ring-amber-500' },
+        'F': { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200', ring: 'ring-red-500' },
+      };
+      return colors[grade] || colors['C'];
+    }
+
+    function formatPrice(price) {
+      if (!price || price <= 0) return 'N/A';
+      return `$${price.toFixed(2)}`;
+    }
+
+    function formatMarketCap(cap) {
+      if (!cap || cap <= 0) return 'N/A';
+      if (cap >= 1000) return `$${(cap / 1000).toFixed(1)}T`;
+      if (cap >= 1) return `$${cap.toFixed(1)}B`;
+      return `$${(cap * 1000).toFixed(0)}M`;
+    }
+
+    function getConsensusInfo(consensus, recentRatings = '') {
+      // Calculate consensus from actual analyst ratings
+      if (recentRatings) {
+        const ratings = parseRecentRatings(recentRatings);
+        if (ratings.length > 0) {
+          let buyCount = 0, holdCount = 0, sellCount = 0;
+
+          ratings.forEach(r => {
+            const rating = r.rating.toLowerCase();
+            if (rating.includes('buy') || rating.includes('outperform') || rating.includes('overweight')) {
+              buyCount++;
+            } else if (rating.includes('sell') || rating.includes('underperform') || rating.includes('underweight')) {
+              sellCount++;
+            } else {
+              holdCount++;
+            }
+          });
+
+          const total = buyCount + holdCount + sellCount;
+          const buyPct = buyCount / total;
+          const sellPct = sellCount / total;
+
+          if (buyPct >= 0.6) return { label: 'Strong Buy', color: 'text-emerald-700', bgColor: 'bg-emerald-100' };
+          if (buyPct >= 0.4) return { label: 'Buy', color: 'text-blue-700', bgColor: 'bg-blue-100' };
+          if (sellPct >= 0.6) return { label: 'Strong Sell', color: 'text-red-700', bgColor: 'bg-red-100' };
+          if (sellPct >= 0.4) return { label: 'Sell', color: 'text-amber-700', bgColor: 'bg-amber-100' };
+          return { label: 'Hold', color: 'text-slate-700', bgColor: 'bg-[#0C0F14]' };
+        }
+      }
+      return { label: 'N/A', color: 'text-[#64748B]', bgColor: 'bg-[#080A0F]' };
+    }
+
+    function parseRecentRatings(ratingsStr) {
+      if (!ratingsStr) return [];
+      const lines = ratingsStr.split('\n').filter(l => l.trim());
+      return lines.slice(0, 5).map(line => {
+        const icon = line.charAt(0);
+        const rest = line.slice(2).trim();
+        const dateMatch = rest.match(/^(\d{4}-\d{2}-\d{2}):\s*/);
+        if (!dateMatch) return { date: '', firm: '', rating: rest, icon };
+        const date = dateMatch[1];
+        const afterDate = rest.slice(dateMatch[0].length);
+        const parts = afterDate.split('→').map(s => s.trim());
+        return { date, firm: parts[0] || '', rating: parts[1] || '', icon };
+      });
+    }
+
+    function generateSummary(stock) {
+      const quality = stock.grade === 'A' ? 'high-quality' :
+                      stock.grade === 'B' ? 'above-average quality' :
+                      stock.grade === 'C' ? 'average quality' :
+                      stock.grade === 'D' ? 'below-average quality' : 'high-risk';
+
+      let summary = `${stock.name} is a ${quality} ${stock.industry.toLowerCase()} company with a Compass Score of ${stock.compassScore}. `;
+
+      if (stock.grade === 'A') {
+        summary += 'This stock demonstrates strong fundamentals across profitability, cash flow, and stability metrics. Suitable for long-term investors seeking quality.';
+      } else if (stock.grade === 'B') {
+        summary += 'This stock shows solid fundamentals with room for improvement in some areas. Worth considering for a diversified portfolio.';
+      } else if (stock.grade === 'C') {
+        summary += 'This stock has mixed fundamentals. Consider carefully and ensure it fits your investment strategy before buying.';
+      } else if (stock.grade === 'D') {
+        summary += 'This stock shows weak fundamentals or high volatility. May be suitable for speculative positions only.';
+      } else {
+        summary += 'This stock has poor quality metrics and high risk. Not recommended for conservative investors.';
+      }
+
+      return summary;
+    }
+
+    function searchStocks(query) {
+      const q = query.toLowerCase().trim();
+      if (q.length < 1) return [];
+      return stocks.filter(s =>
+        s.symbol.toLowerCase().includes(q) ||
+        s.name.toLowerCase().includes(q)
+      ).slice(0, 10);
+    }
+
+    function showAutocomplete(results) {
+      if (results.length === 0) {
+        autocomplete.classList.add('hidden');
+        return;
+      }
+
+      autocomplete.innerHTML = results.map(stock => {
+        const colors = getGradeColors(stock.grade);
+        return `
+          <button class="w-full px-4 py-3 flex items-center justify-between hover:bg-[#080A0F] border-b border-slate-100 last:border-0 text-left" data-symbol="${stock.symbol}">
+            <div>
+              <span class="font-semibold">${stock.symbol}</span>
+              <span class="text-[#64748B] ml-2">${stock.name}</span>
+            </div>
+            <span class="px-2 py-1 rounded ${colors.bg} ${colors.text} text-sm font-semibold">${stock.compassScore}</span>
+          </button>
+        `;
+      }).join('');
+
+      autocomplete.classList.remove('hidden');
+
+      // Add click handlers
+      autocomplete.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const symbol = btn.dataset.symbol;
+          selectStock(symbol);
+        });
+      });
+    }
+
+    function selectStock(symbol) {
+      const stock = stocks.find(s => s.symbol === symbol);
+      if (!stock) return;
+
+      searchInput.value = `${stock.symbol} - ${stock.name}`;
+      autocomplete.classList.add('hidden');
+      emptyState.classList.add('hidden');
+      showResult(stock);
+    }
+
+    function showResult(stock) {
+      const colors = getGradeColors(stock.grade);
+      const summary = generateSummary(stock);
+      const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
+      const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings);
+      const recentRatings = parseRecentRatings(stock.recentRatings);
+
+      // Truncate description
+      let profile = '';
+      if (stock.description && stock.description.length >= 20) {
+        if (stock.description.length <= 400) {
+          profile = stock.description;
+        } else {
+          const cutoff = stock.description.slice(0, 450).lastIndexOf('. ');
+          profile = cutoff > 200 ? stock.description.slice(0, cutoff + 1) : stock.description.slice(0, 400) + '...';
+        }
+      }
+
+      // Wall Street View HTML
+      let analystHtml = '';
+      if (hasAnalystData) {
+        const upsideColor = stock.upside > 0 ? 'text-[#22D3EE]' : 'text-red-600';
+        const upsideSign = stock.upside > 0 ? '+' : '';
+
+        let ratingsHtml = '';
+        if (recentRatings.length > 0) {
+          ratingsHtml = `
+            <div class="mt-6">
+              <h4 class="font-semibold text-sm text-slate-700 mb-3">Recent Analyst Actions</h4>
+              <div class="space-y-2">
+                ${recentRatings.map(r => `
+                  <div class="flex items-center justify-between text-sm bg-[#080A0F] rounded-lg px-4 py-2">
+                    <div class="flex items-center gap-2">
+                      <span>${r.icon}</span>
+                      <span class="font-medium">${r.firm}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="text-[#22D3EE] font-semibold">${r.rating}</span>
+                      <span class="text-slate-400 text-xs">${r.date}</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        analystHtml = `
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
+            <h3 class="text-lg font-bold mb-4">Wall Street View</h3>
+            <p class="text-[#64748B] text-sm mb-4">What professional analysts think about ${stock.symbol}.</p>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+                <div class="text-sm text-[#64748B] mb-1">Price Target</div>
+                <div class="text-xl font-bold">$${stock.avgPriceTarget}</div>
+              </div>
+              <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+                <div class="text-sm text-[#64748B] mb-1">Upside</div>
+                <div class="text-xl font-bold ${upsideColor}">${upsideSign}${stock.upside}%</div>
+              </div>
+              <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+                <div class="text-sm text-[#64748B] mb-1">Analysts</div>
+                <div class="text-xl font-bold">${stock.numAnalysts}</div>
+              </div>
+              <div class="${consensusInfo.bgColor} rounded-lg p-4 text-center">
+                <div class="text-sm text-[#64748B] mb-1">Consensus</div>
+                <div class="text-lg font-bold ${consensusInfo.color}">${consensusInfo.label}</div>
+              </div>
+            </div>
+            ${ratingsHtml}
+          </div>
+        `;
+      }
+
+      // Company profile HTML
+      let profileHtml = '';
+      if (profile) {
+        profileHtml = `
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
+            <h3 class="text-lg font-bold mb-3">About ${stock.name}</h3>
+            <p class="text-[#CBD5E1] leading-relaxed">${profile}</p>
+          </div>
+        `;
+      }
+
+      resultDiv.innerHTML = `
+        <div class="bg-[#161B24] border-2 ${colors.border} rounded-2xl overflow-hidden shadow-lg">
+          <!-- Header -->
+          <div class="p-8 ${colors.bg}">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <h2 class="text-3xl font-bold ${colors.text}">${stock.name}</h2>
+                <p class="text-lg text-[#CBD5E1] mt-1">${stock.symbol} • ${stock.industry}</p>
+              </div>
+              <div class="text-center">
+                <div class="w-28 h-28 rounded-full ${colors.bg} border-4 ${colors.border} flex items-center justify-center mx-auto ring-4 ${colors.ring} ring-opacity-30">
+                  <div>
+                    <div class="text-4xl font-bold ${colors.text}">${stock.compassScore}</div>
+                    <div class="text-sm font-semibold ${colors.text}">Grade ${stock.grade}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class="p-8">
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-[#080A0F] rounded-xl p-4">
+                <div class="text-sm text-[#64748B] mb-1">Current Price</div>
+                <div class="text-2xl font-bold">${formatPrice(stock.price)}</div>
+              </div>
+              <div class="bg-[#080A0F] rounded-xl p-4">
+                <div class="text-sm text-[#64748B] mb-1">Market Cap</div>
+                <div class="text-2xl font-bold">${formatMarketCap(stock.marketCap)}</div>
+              </div>
+            </div>
+
+            <!-- Company Profile -->
+            ${profileHtml}
+
+            <!-- Quality Assessment -->
+            <div class="${colors.bg} border ${colors.border} rounded-xl p-6 mb-6">
+              <h3 class="text-lg font-bold mb-3">Quality Assessment</h3>
+              <p class="${colors.text} leading-relaxed">${summary}</p>
+            </div>
+
+            <!-- Wall Street View -->
+            ${analystHtml}
+
+            <!-- CTA -->
+            <div class="bg-slate-900 rounded-xl p-6 text-center">
+              <h3 class="text-white text-xl font-semibold mb-2">Ready to Invest in ${stock.symbol}?</h3>
+              <p class="text-slate-400 text-sm mb-4">Open a brokerage account and start building your portfolio.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="#" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-6 py-3 rounded-lg font-semibold transition">
+                  Buy on Robinhood
+                </a>
+                <a href="#" class="bg-blue-500 hover:bg-blue-400 text-white px-6 py-3 rounded-lg font-semibold transition">
+                  Buy on Fidelity
+                </a>
+              </div>
+              <p class="text-xs text-[#64748B] mt-3">We may earn a commission. This doesn't affect our ratings.</p>
+            </div>
+          </div>
+
+          <!-- View Full Details -->
+          <div class="border-t border-slate-100 p-6 bg-[#080A0F]">
+            <p class="text-center text-[#CBD5E1]">
+              <a href="/stock/${stock.symbol.toLowerCase()}" class="text-[#22D3EE] hover:underline font-medium">View full ${stock.symbol} analysis →</a>
+              <span class="mx-3 text-slate-300">|</span>
+              <a href="/browse" class="text-[#22D3EE] hover:underline font-medium">Browse more stocks</a>
+            </p>
+          </div>
+        </div>
+      `;
+
+      resultDiv.classList.remove('hidden');
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value;
+      if (query.length < 1) {
+        autocomplete.classList.add('hidden');
+        return;
+      }
+      const results = searchStocks(query);
+      showAutocomplete(results);
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        autocomplete.classList.add('hidden');
+      }
+    });
+
+    // Close autocomplete when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchInput.contains(e.target) && !autocomplete.contains(e.target)) {
+        autocomplete.classList.add('hidden');
+      }
+    });
+
+    // Example search buttons
+    document.querySelectorAll('.example-search').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectStock(btn.dataset.symbol);
+      });
+    });
+  </script>
 </Layout>

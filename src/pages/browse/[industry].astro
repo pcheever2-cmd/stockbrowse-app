@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { displayIndustries, getStocksByIndustry, getGradeColor, formatPrice, formatMarketCap } from '../../data/stocks';
+
+export function getStaticPaths() {
+  return displayIndustries.map(ind => ({
+    params: { industry: ind.name.toLowerCase().replace(/ /g, '-') },
+    props: { industryName: ind.name, icon: ind.icon },
+  }));
+}
+
+const { industry } = Astro.params;
+const { industryName, icon } = Astro.props;
+
+const stocks = getStocksByIndustry(industryName).sort((a, b) => b.compassScore - a.compassScore);
+const aCount = stocks.filter(s => s.grade === 'A').length;
+const bCount = stocks.filter(s => s.grade === 'B').length;
+---
+
+<Layout title={`${industryName} Stocks | Compass Score`}>
+  <section class="py-12 bg-[#161B24] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Header -->
+      <div class="mb-8">
+        <a href="/browse" class="text-[#22D3EE] hover:underline text-sm mb-4 inline-block">← Back to Browse</a>
+        <div class="flex items-center gap-4">
+          <span class="text-5xl">{icon}</span>
+          <div>
+            <h1 class="text-4xl font-bold">{industryName} Stocks</h1>
+            <p class="text-[#CBD5E1] mt-1">{stocks.length} stocks • {aCount} A-rated • {bCount} B-rated</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-3 mb-6">
+        <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-[#22D3EE] text-white" data-grade="all">
+          All ({stocks.length})
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-[#0C0F14] text-slate-700 hover:bg-slate-200" data-grade="A">
+          Grade A ({aCount})
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-[#0C0F14] text-slate-700 hover:bg-slate-200" data-grade="B">
+          Grade B ({bCount})
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-[#0C0F14] text-slate-700 hover:bg-slate-200" data-grade="AB">
+          A + B Only
+        </button>
+      </div>
+
+      <!-- Sort -->
+      <div class="flex justify-between items-center mb-6">
+        <div class="text-sm text-[#64748B]">
+          Showing <span id="showing-count">{stocks.length}</span> stocks
+        </div>
+        <select id="sort-select" class="border border-[rgba(255,255,255,0.06)] rounded-lg px-3 py-2 text-sm">
+          <option value="score-desc">Score (High to Low)</option>
+          <option value="score-asc">Score (Low to High)</option>
+          <option value="price-asc">Price (Low to High)</option>
+          <option value="price-desc">Price (High to Low)</option>
+          <option value="name-asc">Name (A-Z)</option>
+        </select>
+      </div>
+
+      <!-- Stock Grid -->
+      <div id="stock-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {stocks.map(stock => {
+          const colors = getGradeColor(stock.grade);
+          return (
+            <a href={`/stock/${stock.symbol.toLowerCase()}`}
+               class="stock-card bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5 hover:shadow-lg hover:border-emerald-300 transition"
+               data-grade={stock.grade}
+               data-score={stock.compassScore}
+               data-price={stock.price}
+               data-name={stock.name}>
+              <div class="flex justify-between items-start mb-3">
+                <div>
+                  <h3 class="font-bold text-lg">{stock.name}</h3>
+                  <p class="text-[#64748B] text-sm">{stock.symbol}</p>
+                </div>
+                <div class={`px-3 py-1 rounded-full ${colors.bg} ${colors.text} font-bold`}>
+                  {stock.compassScore}
+                </div>
+              </div>
+              <div class="flex justify-between items-end">
+                <div>
+                  <div class="text-2xl font-bold">{formatPrice(stock.price)}</div>
+                  <div class="text-sm text-[#64748B]">{formatMarketCap(stock.marketCap)} cap</div>
+                </div>
+                <div class={`text-sm font-semibold ${colors.text}`}>
+                  Grade {stock.grade}
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Empty state for filtered results -->
+      <div id="empty-filter" class="hidden text-center py-12">
+        <p class="text-[#64748B]">No stocks match your filter criteria.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const stockCards = document.querySelectorAll('.stock-card');
+    const sortSelect = document.getElementById('sort-select');
+    const showingCount = document.getElementById('showing-count');
+    const emptyFilter = document.getElementById('empty-filter');
+    const stockGrid = document.getElementById('stock-grid');
+
+    let currentFilter = 'all';
+
+    function updateDisplay() {
+      let visibleCount = 0;
+
+      stockCards.forEach(card => {
+        const grade = card.dataset.grade;
+        let show = false;
+
+        if (currentFilter === 'all') show = true;
+        else if (currentFilter === 'AB') show = grade === 'A' || grade === 'B';
+        else show = grade === currentFilter;
+
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      showingCount.textContent = visibleCount;
+      emptyFilter.classList.toggle('hidden', visibleCount > 0);
+      stockGrid.classList.toggle('hidden', visibleCount === 0);
+    }
+
+    function sortCards() {
+      const sort = sortSelect.value;
+      const cards = Array.from(stockCards);
+
+      cards.sort((a, b) => {
+        switch (sort) {
+          case 'score-desc': return b.dataset.score - a.dataset.score;
+          case 'score-asc': return a.dataset.score - b.dataset.score;
+          case 'price-asc': return a.dataset.price - b.dataset.price;
+          case 'price-desc': return b.dataset.price - a.dataset.price;
+          case 'name-asc': return a.dataset.name.localeCompare(b.dataset.name);
+          default: return 0;
+        }
+      });
+
+      cards.forEach(card => stockGrid.appendChild(card));
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-[#22D3EE]', 'text-white');
+          b.classList.add('bg-[#0C0F14]', 'text-slate-700');
+        });
+        btn.classList.add('active', 'bg-[#22D3EE]', 'text-white');
+        btn.classList.remove('bg-[#0C0F14]', 'text-slate-700');
+        currentFilter = btn.dataset.grade;
+        updateDisplay();
+      });
+    });
+
+    sortSelect.addEventListener('change', sortCards);
+  </script>
+</Layout>

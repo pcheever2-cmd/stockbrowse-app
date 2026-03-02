@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tiers = [
+  {
+    name: 'Free',
+    price: '$0',
+    period: 'forever',
+    description: 'Get started with basic stock lookups',
+    features: [
+      '10 stock lookups per day',
+      'Basic Compass Score',
+      'Grade (A-F) rating',
+      'Browse by industry',
+    ],
+    limitations: [
+      'No score breakdown',
+      'No watchlists',
+      'No alerts',
+    ],
+    cta: 'Get Started',
+    ctaLink: '/tool',
+    highlighted: false,
+    color: 'slate',
+  },
+  {
+    name: 'Basic',
+    price: '$9',
+    period: '/month',
+    description: 'Unlimited access for casual investors',
+    features: [
+      'Unlimited stock lookups',
+      'Full Compass Score breakdown',
+      'All 6 quality factors',
+      'Browse all categories',
+      'Export to CSV',
+    ],
+    limitations: [
+      'No watchlists',
+      'No alerts',
+    ],
+    cta: 'Start Free Trial',
+    ctaLink: '#',
+    highlighted: false,
+    color: 'blue',
+  },
+  {
+    name: 'Plus',
+    price: '$19',
+    period: '/month',
+    description: 'For active investors who want an edge',
+    features: [
+      'Everything in Basic',
+      'Personal watchlists (up to 5)',
+      'Score change alerts',
+      'Sector analysis reports',
+      'Similar stocks finder',
+      'Priority email support',
+    ],
+    limitations: [],
+    cta: 'Start Free Trial',
+    ctaLink: '#',
+    highlighted: true,
+    color: 'emerald',
+  },
+  {
+    name: 'Pro',
+    price: '$39',
+    period: '/month',
+    description: 'Full power for serious investors',
+    features: [
+      'Everything in Plus',
+      'API access (10K requests/mo)',
+      'Bulk data exports',
+      'Historical score data',
+      'Custom screening tools',
+      'Dedicated support',
+    ],
+    limitations: [],
+    cta: 'Contact Us',
+    ctaLink: '#',
+    highlighted: false,
+    color: 'purple',
+  },
+];
+---
+
+<Layout title="Pricing | Compass Score">
+  <section class="py-16 bg-gradient-to-b from-slate-50 to-white min-h-screen">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h1>
+        <p class="text-xl text-[#CBD5E1] max-w-2xl mx-auto">
+          Choose the plan that fits your investment style. All plans include a 7-day free trial.
+        </p>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {tiers.map(tier => (
+          <div class={`relative bg-[#161B24] rounded-2xl border-2 ${tier.highlighted ? 'border-[#22D3EE] shadow-xl scale-105' : 'border-[rgba(255,255,255,0.06)]'} p-6 flex flex-col`}>
+            {tier.highlighted && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#22D3EE] text-white px-4 py-1 rounded-full text-sm font-semibold">
+                Most Popular
+              </div>
+            )}
+
+            <div class="mb-6">
+              <h3 class="text-xl font-bold mb-2">{tier.name}</h3>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-bold">{tier.price}</span>
+                <span class="text-[#64748B]">{tier.period}</span>
+              </div>
+              <p class="text-[#CBD5E1] text-sm mt-2">{tier.description}</p>
+            </div>
+
+            <ul class="space-y-3 mb-6 flex-grow">
+              {tier.features.map(feature => (
+                <li class="flex items-start gap-2">
+                  <svg class="w-5 h-5 text-[#22D3EE] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">{feature}</span>
+                </li>
+              ))}
+              {tier.limitations.map(limitation => (
+                <li class="flex items-start gap-2 text-slate-400">
+                  <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                  <span class="text-sm">{limitation}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href={tier.ctaLink}
+               class={`block text-center py-3 px-6 rounded-xl font-semibold transition ${
+                 tier.highlighted
+                   ? 'bg-[#22D3EE] hover:bg-[#06B6D4] text-white'
+                   : 'bg-[#0C0F14] hover:bg-slate-200 text-slate-100'
+               }`}>
+              {tier.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+
+        <div class="space-y-4">
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+            <h3 class="font-semibold mb-2">How does the free trial work?</h3>
+            <p class="text-[#CBD5E1] text-sm">
+              All paid plans include a 7-day free trial. You can cancel anytime during the trial
+              and you won't be charged. No credit card required to start.
+            </p>
+          </div>
+
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+            <h3 class="font-semibold mb-2">Can I change plans later?</h3>
+            <p class="text-[#CBD5E1] text-sm">
+              Yes! You can upgrade or downgrade your plan at any time. If you upgrade,
+              you'll be charged the prorated difference. If you downgrade, you'll receive
+              credit toward future billing.
+            </p>
+          </div>
+
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+            <h3 class="font-semibold mb-2">What payment methods do you accept?</h3>
+            <p class="text-[#CBD5E1] text-sm">
+              We accept all major credit cards (Visa, MasterCard, American Express) and PayPal.
+              Enterprise customers can pay by invoice.
+            </p>
+          </div>
+
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+            <h3 class="font-semibold mb-2">Is there a refund policy?</h3>
+            <p class="text-[#CBD5E1] text-sm">
+              Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your
+              subscription, contact us within 30 days for a full refund.
+            </p>
+          </div>
+
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+            <h3 class="font-semibold mb-2">How is the Compass Score calculated?</h3>
+            <p class="text-[#CBD5E1] text-sm">
+              The Compass Score is based on peer-reviewed academic research on stock quality factors.
+              It combines 6 metrics: Return on Assets, Gross Profitability, Operating Cash Flow,
+              Free Cash Flow, Volatility, and Asset Growth. <a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn more →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Money Back Guarantee -->
+      <div class="mt-16 text-center bg-emerald-50 border border-emerald-200 rounded-2xl p-8 max-w-2xl mx-auto">
+        <div class="text-4xl mb-4">🛡️</div>
+        <h3 class="text-xl font-bold text-emerald-800 mb-2">30-Day Money-Back Guarantee</h3>
+        <p class="text-emerald-700">
+          Not satisfied? Get a full refund within 30 days. No questions asked.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

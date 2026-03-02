@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry } from '../data/stocks';
+
+// Pre-process all stocks for client-side lookup
+const stocksData = stocks.map(s => ({
+  ...s,
+  normalizedIndustry: getNormalizedIndustry(s.industry)
+}));
+---
+
+<Layout title="My Watchlist | Compass Score">
+  <section class="py-12 bg-[#080A0F] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h1 class="text-3xl font-bold mb-2">My Watchlist</h1>
+          <p class="text-[#CBD5E1]">Track your favorite stocks and build your portfolio</p>
+        </div>
+        <button id="exportWatchlist" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-6 py-2 rounded-lg font-semibold transition hidden">
+          Export to CSV
+        </button>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="bg-[#161B24] rounded-xl p-12 text-center hidden">
+        <div class="text-6xl mb-4">❤️</div>
+        <h2 class="text-2xl font-bold mb-2">Your watchlist is empty</h2>
+        <p class="text-[#CBD5E1] mb-6">Start adding stocks you're interested in to track them here</p>
+        <a href="/browse/all" class="inline-block bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-3 rounded-lg font-semibold transition">
+          Browse Stocks
+        </a>
+      </div>
+
+      <!-- Watchlist Content -->
+      <div id="watchlistContent" class="hidden">
+        <!-- Portfolio Summary -->
+        <div class="grid md:grid-cols-4 gap-4 mb-6">
+          <div class="bg-[#161B24] rounded-xl p-6">
+            <div class="text-sm text-[#64748B] mb-1">Stocks Tracked</div>
+            <div id="stockCount" class="text-3xl font-bold">0</div>
+          </div>
+          <div class="bg-[#161B24] rounded-xl p-6">
+            <div class="text-sm text-[#64748B] mb-1">Average Score</div>
+            <div id="avgScore" class="text-3xl font-bold">-</div>
+          </div>
+          <div class="bg-[#161B24] rounded-xl p-6">
+            <div class="text-sm text-[#64748B] mb-1">Total Value (1 share each)</div>
+            <div id="totalValue" class="text-3xl font-bold">$0</div>
+          </div>
+          <div class="bg-[#161B24] rounded-xl p-6">
+            <div class="text-sm text-[#64748B] mb-1">A-Rated Stocks</div>
+            <div id="aGradeCount" class="text-3xl font-bold text-[#22D3EE]">0</div>
+          </div>
+        </div>
+
+        <!-- Stock List -->
+        <div class="bg-[#161B24] rounded-xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-[#080A0F] border-b border-[rgba(255,255,255,0.06)]">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Stock</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Industry</th>
+                  <th class="px-6 py-3 text-right text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Price</th>
+                  <th class="px-6 py-3 text-right text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Market Cap</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Score</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Grade</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="watchlistTable" class="divide-y divide-slate-200">
+                <!-- Populated by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Investment Guide -->
+        <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">Ready to invest?</h3>
+          <p class="text-slate-700 mb-4">
+            These stocks are on your watchlist. Open a brokerage account to start building your portfolio.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-6 py-2 rounded-lg font-semibold transition">
+              Open Robinhood Account
+            </a>
+            <a href="#" class="border-2 border-[#22D3EE] text-emerald-700 hover:bg-emerald-50 px-6 py-2 rounded-lg font-semibold transition">
+              Open Fidelity Account
+            </a>
+          </div>
+          <p class="text-xs text-[#64748B] mt-3">
+            Affiliate links. We may earn a commission if you open an account.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ stocksData }}>
+    function getWatchlist() {
+      const stored = localStorage.getItem('compassWatchlist');
+      return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveWatchlist(watchlist) {
+      localStorage.setItem('compassWatchlist', JSON.stringify(watchlist));
+    }
+
+    function removeFromWatchlist(symbol) {
+      let watchlist = getWatchlist();
+      watchlist = watchlist.filter(s => s !== symbol);
+      saveWatchlist(watchlist);
+      renderWatchlist();
+    }
+
+    function clearWatchlist() {
+      if (confirm('Are you sure you want to clear your entire watchlist?')) {
+        saveWatchlist([]);
+        renderWatchlist();
+      }
+    }
+
+    function exportToCSV() {
+      const watchlist = getWatchlist();
+      const watchedStocks = stocksData.filter(s => watchlist.includes(s.symbol));
+
+      const headers = ['Symbol', 'Name', 'Industry', 'Price', 'Market Cap (B)', 'Compass Score', 'Grade'];
+      const rows = watchedStocks.map(s => [
+        s.symbol,
+        s.name,
+        s.normalizedIndustry,
+        s.price,
+        s.marketCap,
+        s.compassScore,
+        s.grade
+      ]);
+
+      const csv = [
+        headers.join(','),
+        ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+      ].join('\n');
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `compass-watchlist-${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function renderWatchlist() {
+      const watchlist = getWatchlist();
+      const emptyState = document.getElementById('emptyState');
+      const content = document.getElementById('watchlistContent');
+      const exportBtn = document.getElementById('exportWatchlist');
+
+      if (watchlist.length === 0) {
+        emptyState.classList.remove('hidden');
+        content.classList.add('hidden');
+        exportBtn.classList.add('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      content.classList.remove('hidden');
+      exportBtn.classList.remove('hidden');
+
+      // Get stocks in watchlist
+      const watchedStocks = stocksData.filter(s => watchlist.includes(s.symbol));
+
+      // Update summary stats
+      document.getElementById('stockCount').textContent = watchedStocks.length;
+
+      const avgScore = watchedStocks.reduce((sum, s) => sum + s.compassScore, 0) / watchedStocks.length;
+      document.getElementById('avgScore').textContent = Math.round(avgScore);
+
+      const totalValue = watchedStocks.reduce((sum, s) => sum + s.price, 0);
+      document.getElementById('totalValue').textContent = `$${totalValue.toFixed(2)}`;
+
+      const aGradeCount = watchedStocks.filter(s => s.grade === 'A').length;
+      document.getElementById('aGradeCount').textContent = aGradeCount;
+
+      // Render table
+      const table = document.getElementById('watchlistTable');
+      table.innerHTML = watchedStocks.map(stock => {
+        const gradeColors = {
+          'A': 'bg-emerald-100 text-emerald-700',
+          'B': 'bg-blue-100 text-blue-700',
+          'C': 'bg-[#0C0F14] text-slate-700',
+          'D': 'bg-amber-100 text-amber-700',
+          'F': 'bg-red-100 text-red-700'
+        };
+
+        return `
+          <tr class="hover:bg-[#080A0F]">
+            <td class="px-6 py-4">
+              <a href="/stock/${stock.symbol.toLowerCase()}" class="font-semibold hover:text-[#22D3EE]">
+                ${stock.symbol}
+              </a>
+              <div class="text-sm text-[#64748B]">${stock.name}</div>
+            </td>
+            <td class="px-6 py-4 text-sm text-[#CBD5E1]">${stock.normalizedIndustry}</td>
+            <td class="px-6 py-4 text-right font-semibold">$${stock.price.toFixed(2)}</td>
+            <td class="px-6 py-4 text-right text-sm text-[#CBD5E1]">${formatMarketCap(stock.marketCap)}</td>
+            <td class="px-6 py-4 text-center font-bold">${stock.compassScore}</td>
+            <td class="px-6 py-4 text-center">
+              <span class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-semibold">
+                ${stock.grade}
+              </span>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <button onclick="removeFromWatchlist('${stock.symbol}')"
+                      class="text-red-600 hover:text-red-700 p-2 hover:bg-red-50 rounded transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function formatMarketCap(marketCap) {
+      if (!marketCap || marketCap <= 0) return 'N/A';
+      if (marketCap >= 1000) return `$${(marketCap / 1000).toFixed(1)}T`;
+      if (marketCap >= 1) return `$${marketCap.toFixed(1)}B`;
+      return `$${(marketCap * 1000).toFixed(0)}M`;
+    }
+
+    // Make functions global
+    window.removeFromWatchlist = removeFromWatchlist;
+    window.clearWatchlist = clearWatchlist;
+    window.formatMarketCap = formatMarketCap;
+
+    // Event listeners
+    document.getElementById('exportWatchlist').addEventListener('click', exportToCSV);
+
+    // Initial render
+    renderWatchlist();
+  </script>
+</Layout>

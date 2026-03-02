@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Find quality stocks with confidence. The Compass Score rates 5,000+ stocks based on 30 years of research." } = Astro.props;
+const { title, description = "Browse stocks like products. Invest with clarity. Every stock rated 0-100 on Stockbrowse." } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,15 +25,79 @@ const { title, description = "Find quality stocks with confidence. The Compass S
 
     <title>{title}</title>
   </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
-    <nav class="bg-white border-b border-slate-200">
+  <body class="bg-[#080A0F] text-slate-100 antialiased" style="font-family: 'DM Sans', sans-serif;">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <nav class="bg-[#0C0F14cc] backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)] relative z-50">
       <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="text-xl font-bold text-emerald-600">Compass Score</a>
-        <div class="flex items-center gap-6">
-          <a href="/how-it-works" class="text-slate-600 hover:text-slate-900">How It Works</a>
-          <a href="/tool" class="text-slate-600 hover:text-slate-900">Score Lookup</a>
-          <a href="/blog" class="text-slate-600 hover:text-slate-900">Learn</a>
-          <a href="/about" class="text-slate-600 hover:text-slate-900">About</a>
+        <a href="/" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#22D3EE] to-[#06B6D4] flex items-center justify-center text-[#0C0F14] font-black text-sm">S</div>
+          <span class="text-lg font-bold" style="font-family: 'JetBrains Mono', monospace; letter-spacing: -0.5px;">
+            <span class="text-slate-100">Stock</span><span class="text-[#22D3EE]">browse</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-6">
+          <!-- Browse Dropdown -->
+          <div class="relative group">
+            <button class="text-[#64748B] hover:text-slate-100 flex items-center gap-1 text-sm transition">
+              Browse
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 top-full pt-2 hidden group-hover:block">
+              <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-xl py-2 w-56">
+                <a href="/browse/all" class="block px-4 py-2 hover:bg-[#1C222E] text-sm font-semibold text-[#22D3EE]">Browse All Stocks</a>
+                <div class="border-t border-[rgba(255,255,255,0.06)] my-2"></div>
+                <div class="px-3 py-1 text-xs font-semibold text-[#64748B] uppercase tracking-wider">By Industry</div>
+                <a href="/browse" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">All Industries</a>
+                <a href="/browse/technology" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Technology</a>
+                <a href="/browse/healthcare" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Healthcare</a>
+                <a href="/browse/finance" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Finance</a>
+                <div class="border-t border-[rgba(255,255,255,0.06)] my-2"></div>
+                <div class="px-3 py-1 text-xs font-semibold text-[#64748B] uppercase tracking-wider">By Goal</div>
+                <a href="/browse/growth" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Growth Stocks</a>
+                <a href="/browse/dividends" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Dividend Stocks</a>
+                <a href="/browse/low-risk" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Low-Risk Stocks</a>
+                <a href="/browse/under-50" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Under $50</a>
+                <a href="/browse/under-100" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Under $100</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/tool" class="text-[#64748B] hover:text-slate-100 text-sm transition">Score Lookup</a>
+          <a href="/watchlist" class="text-[#64748B] hover:text-slate-100 text-sm transition relative">
+            Watchlist
+            <span id="navWatchlistBadge" class="absolute -top-2 -right-2 bg-[#22D3EE] text-[#0C0F14] text-xs rounded-full w-4 h-4 flex items-center justify-center hidden text-[10px] font-bold"></span>
+          </a>
+          <a href="/how-it-works" class="text-[#64748B] hover:text-slate-100 text-sm transition">How It Works</a>
+          <a href="/blog" class="text-[#64748B] hover:text-slate-100 text-sm transition">Learn</a>
+          <a href="/pricing" class="text-[#64748B] hover:text-slate-100 text-sm transition">Pricing</a>
+          <a href="/insights" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-4 py-2 rounded-lg font-bold text-sm transition">
+            Subscribe
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-[rgba(255,255,255,0.06)] bg-[#161B24]">
+        <div class="px-4 py-4 space-y-3">
+          <a href="/browse" class="block py-2 text-[#CBD5E1] hover:text-slate-100 font-medium">Browse Stocks</a>
+          <a href="/tool" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Score Lookup</a>
+          <a href="/how-it-works" class="block py-2 text-[#CBD5E1] hover:text-slate-100">How It Works</a>
+          <a href="/blog" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Learn</a>
+          <a href="/pricing" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Pricing</a>
+          <a href="/insights" class="block py-2 text-[#22D3EE] font-semibold">Subscribe to Newsletter</a>
         </div>
       </div>
     </nav>
@@ -42,30 +106,137 @@ const { title, description = "Find quality stocks with confidence. The Compass S
       <slot />
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-12 mt-20">
+    <footer class="bg-[#0C0F14] text-[#64748B] py-16 mt-20 border-t border-[rgba(255,255,255,0.06)]">
       <div class="max-w-6xl mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
+        <!-- Newsletter Signup -->
+        <div class="bg-[#161B24] rounded-2xl p-8 mb-12 text-center border border-[rgba(255,255,255,0.06)]">
+          <h3 class="text-slate-100 text-2xl font-bold mb-2">Get Weekly Stock Insights</h3>
+          <p class="text-[#64748B] mb-6">Join The Stockbrowse Weekly newsletter. Quality stock picks delivered every Sunday.</p>
+          <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="flex-grow px-4 py-3 rounded-lg bg-[#0C0F14] border border-[rgba(255,255,255,0.06)] text-slate-100 placeholder-[#64748B] focus:ring-2 focus:ring-[#22D3EE] focus:border-transparent"
+              required
+            />
+            <button
+              type="submit"
+              class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-6 py-3 rounded-lg font-bold transition"
+            >
+              Subscribe
+            </button>
+          </form>
+          <p class="text-xs text-[#64748B] mt-3">$5/month after 7-day free trial. Cancel anytime.</p>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 class="text-white font-semibold mb-4">Compass Score</h3>
-            <p class="text-sm">A research-backed stock scoring system that helps new investors find quality companies.</p>
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-6 h-6 rounded-md bg-gradient-to-br from-[#22D3EE] to-[#06B6D4] flex items-center justify-center text-[#0C0F14] font-black text-xs">S</div>
+              <h3 class="text-slate-100 font-bold" style="font-family: 'JetBrains Mono', monospace;">
+                <span>Stock</span><span class="text-[#22D3EE]">browse</span>
+              </h3>
+            </div>
+            <p class="text-sm">Browse stocks like products. Research-backed quality scores for 5,000+ companies.</p>
           </div>
           <div>
-            <h3 class="text-white font-semibold mb-4">Resources</h3>
+            <h3 class="text-slate-100 font-semibold mb-4">Browse</h3>
             <ul class="space-y-2 text-sm">
-              <li><a href="/how-it-works" class="hover:text-white">How It Works</a></li>
-              <li><a href="/blog" class="hover:text-white">Learn</a></li>
-              <li><a href="/tool" class="hover:text-white">Score Lookup</a></li>
+              <li><a href="/browse" class="hover:text-[#22D3EE] transition">All Industries</a></li>
+              <li><a href="/browse/growth" class="hover:text-[#22D3EE] transition">Growth Stocks</a></li>
+              <li><a href="/browse/dividends" class="hover:text-[#22D3EE] transition">Dividend Stocks</a></li>
+              <li><a href="/browse/low-risk" class="hover:text-[#22D3EE] transition">Low-Risk Stocks</a></li>
             </ul>
           </div>
           <div>
-            <h3 class="text-white font-semibold mb-4">Disclaimer</h3>
-            <p class="text-sm">Not financial advice. Past performance does not guarantee future results. Always do your own research.</p>
+            <h3 class="text-slate-100 font-semibold mb-4">Resources</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/how-it-works" class="hover:text-[#22D3EE] transition">How It Works</a></li>
+              <li><a href="/tool" class="hover:text-[#22D3EE] transition">Score Lookup</a></li>
+              <li><a href="/blog" class="hover:text-[#22D3EE] transition">Learn to Invest</a></li>
+              <li><a href="/pricing" class="hover:text-[#22D3EE] transition">Pricing</a></li>
+              <li><a href="/insights" class="hover:text-[#22D3EE] transition">Newsletter</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-slate-100 font-semibold mb-4">Company</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/about" class="hover:text-[#22D3EE] transition">About Us</a></li>
+              <li><a href="#" class="hover:text-[#22D3EE] transition">Contact</a></li>
+              <li><a href="#" class="hover:text-[#22D3EE] transition">Privacy Policy</a></li>
+              <li><a href="#" class="hover:text-[#22D3EE] transition">Terms of Service</a></li>
+            </ul>
           </div>
         </div>
-        <div class="border-t border-slate-800 mt-8 pt-8 text-sm text-center">
-          &copy; {new Date().getFullYear()} Compass Score. All rights reserved.
+
+        <!-- Disclaimer & Affiliate Disclosure -->
+        <div class="border-t border-[rgba(255,255,255,0.06)] pt-8 space-y-4">
+          <div class="bg-[#161B24] rounded-lg p-4 border border-[rgba(255,255,255,0.06)]">
+            <h4 class="text-slate-100 text-sm font-semibold mb-2">Investment Disclaimer</h4>
+            <p class="text-xs mb-3">
+              <strong>Quality scores identify structural characteristics, not future performance.</strong>
+              Past performance does not guarantee future results. Scores do not constitute investment advice.
+            </p>
+            <p class="text-xs">
+              Stockbrowse is for educational and informational purposes only. It does not constitute financial advice,
+              investment recommendations, or an offer to buy or sell securities.
+              Always conduct your own research and consult with a qualified financial advisor before making investment decisions.
+              <a href="/disclaimer" class="text-[#22D3EE] hover:underline ml-1">See our full disclaimer →</a>
+            </p>
+          </div>
+          <div class="bg-[#161B24] rounded-lg p-4 border border-[rgba(255,255,255,0.06)]">
+            <h4 class="text-slate-100 text-sm font-semibold mb-2">Affiliate Disclosure</h4>
+            <p class="text-xs">
+              Some links on this site are affiliate links. We may earn a commission when you open an account or make a purchase
+              through our links. This does not affect our editorial ratings or recommendations. We only recommend products and
+              services we believe provide value to our users.
+            </p>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-[rgba(255,255,255,0.06)] mt-8 pt-8 text-sm text-center flex items-center justify-between">
+          <span>&copy; {new Date().getFullYear()} Stockbrowse. All rights reserved.</span>
+          <span class="text-xs">Powered by the Compass Score · Not financial advice · Past performance ≠ future results</span>
         </div>
       </div>
     </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+
+      // Update watchlist badge in navigation
+      function updateNavWatchlistBadge() {
+        const stored = localStorage.getItem('compassWatchlist');
+        const watchlist = stored ? JSON.parse(stored) : [];
+        const badge = document.getElementById('navWatchlistBadge');
+
+        if (badge) {
+          if (watchlist.length > 0) {
+            badge.textContent = watchlist.length > 9 ? '9+' : watchlist.length;
+            badge.classList.remove('hidden');
+          } else {
+            badge.classList.add('hidden');
+          }
+        }
+      }
+
+      // Update badge on page load
+      updateNavWatchlistBadge();
+
+      // Update badge when storage changes (from other tabs)
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'compassWatchlist') {
+          updateNavWatchlistBadge();
+        }
+      });
+    </script>
   </body>
 </html>

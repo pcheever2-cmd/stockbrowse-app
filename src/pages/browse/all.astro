@@ -1,0 +1,768 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry, displayIndustries } from '../../data/stocks';
+
+// Pre-process all stocks for the page
+const allStocks = stocks.map(s => ({
+  ...s,
+  normalizedIndustry: getNormalizedIndustry(s.industry)
+}));
+
+// Extract unique values for filters
+const grades = ['A', 'B', 'C', 'D', 'F'];
+const industries = displayIndustries.map(i => i.name);
+const priceRanges = [
+  { label: 'Under $10', min: 0, max: 10 },
+  { label: '$10 - $50', min: 10, max: 50 },
+  { label: '$50 - $100', min: 50, max: 100 },
+  { label: '$100 - $500', min: 100, max: 500 },
+  { label: '$500+', min: 500, max: 999999 }
+];
+const marketCapRanges = [
+  { label: 'Small Cap (<$2B)', min: 0, max: 2 },
+  { label: 'Mid Cap ($2B-$10B)', min: 2, max: 10 },
+  { label: 'Large Cap ($10B-$200B)', min: 10, max: 200 },
+  { label: 'Mega Cap ($200B+)', min: 200, max: 999999 }
+];
+---
+
+<Layout title="Browse All Stocks | Compass Score">
+  <section class="py-8 bg-[#080A0F] min-h-screen">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Header -->
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold mb-2">Browse All Stocks</h1>
+        <p class="text-[#CBD5E1]">Filter and explore 4,560+ stocks with quality scores</p>
+      </div>
+
+      <div class="flex gap-6">
+        <!-- Left Sidebar - Filters -->
+        <aside class="w-64 flex-shrink-0 hidden lg:block">
+          <div class="bg-[#161B24] rounded-xl p-6 sticky top-6 space-y-6">
+            <div>
+              <h3 class="font-semibold text-sm uppercase text-[#64748B] mb-3">Filters</h3>
+              <button id="clearFilters" class="text-sm text-[#22D3EE] hover:underline">Clear all</button>
+            </div>
+
+            <!-- Grade Filter -->
+            <div>
+              <h4 class="font-semibold mb-3">Quality Grade</h4>
+              <div class="space-y-2">
+                {grades.map(grade => {
+                  const colors = getGradeColor(grade);
+                  return (
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name="grade" value={grade} class="rounded text-[#22D3EE] filter-checkbox" />
+                      <span class={`px-2 py-0.5 rounded text-sm font-semibold ${colors.bg} ${colors.text}`}>
+                        Grade {grade}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+
+            <!-- Industry Filter -->
+            <div>
+              <h4 class="font-semibold mb-3">Industry</h4>
+              <div class="space-y-2 max-h-64 overflow-y-auto">
+                {industries.map(industry => (
+                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="checkbox" name="industry" value={industry} class="rounded text-[#22D3EE] filter-checkbox" />
+                    <span>{industry}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div>
+              <h4 class="font-semibold mb-3">Price Range</h4>
+              <div class="space-y-2">
+                {priceRanges.map(range => (
+                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="checkbox" name="price" value={`${range.min}-${range.max}`} class="rounded text-[#22D3EE] filter-checkbox" />
+                    <span>{range.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Market Cap Filter -->
+            <div>
+              <h4 class="font-semibold mb-3">Market Cap</h4>
+              <div class="space-y-2">
+                {marketCapRanges.map(range => (
+                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                    <input type="checkbox" name="marketcap" value={`${range.min}-${range.max}`} class="rounded text-[#22D3EE] filter-checkbox" />
+                    <span class="text-sm">{range.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1">
+          <!-- Top Bar -->
+          <div class="bg-[#161B24] rounded-xl p-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+              <!-- Search -->
+              <div class="flex-1 max-w-md relative">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder='Try "stocks like Amazon" or "cheap tech stocks"...'
+                  class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#22D3EE] focus:border-transparent"
+                />
+                <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Sort & View Options -->
+              <div class="flex gap-3 items-center">
+                <select id="sortSelect" class="px-4 py-2 border border-slate-300 rounded-lg">
+                  <option value="score-desc">Highest Score</option>
+                  <option value="score-asc">Lowest Score</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="marketcap-desc">Market Cap: Largest</option>
+                  <option value="marketcap-asc">Market Cap: Smallest</option>
+                  <option value="name-asc">Name: A-Z</option>
+                </select>
+
+                <a href="/watchlist" class="relative p-2 hover:bg-[#0C0F14] rounded-lg transition">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                  </svg>
+                  <span id="watchlistBadge" class="absolute -top-1 -right-1 bg-[#22D3EE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Smart Search Hint -->
+            <div id="smartSearchHint" class="mt-3 text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 hidden">
+              <span class="font-semibold">Smart search active:</span> <span id="smartSearchText"></span>
+            </div>
+
+            <!-- Active Filters -->
+            <div id="activeFilters" class="mt-3 flex flex-wrap gap-2 hidden"></div>
+
+            <!-- Results Count -->
+            <div class="mt-3 text-sm text-[#CBD5E1]">
+              <span id="resultsCount">0</span> stocks found
+            </div>
+          </div>
+
+          <!-- Stock Grid -->
+          <div id="stockGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <!-- No Results -->
+          <div id="noResults" class="hidden bg-[#161B24] rounded-xl p-12 text-center">
+            <div class="text-5xl mb-4">🔍</div>
+            <h3 class="text-xl font-bold mb-2">No stocks found</h3>
+            <p class="text-[#CBD5E1] mb-4">Try adjusting your filters or search term</p>
+            <button id="clearFiltersBtn" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-6 py-2 rounded-lg font-semibold transition">
+              Clear All Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ allStocks }}>
+    // State
+    let filteredStocks = [...allStocks];
+    let filters = {
+      search: '',
+      grades: [],
+      industries: [],
+      priceRanges: [],
+      marketCapRanges: [],
+      sort: 'score-desc'
+    };
+
+    // Watchlist (stored in localStorage)
+    function getWatchlist() {
+      const stored = localStorage.getItem('compassWatchlist');
+      return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveWatchlist(watchlist) {
+      localStorage.setItem('compassWatchlist', JSON.stringify(watchlist));
+      updateWatchlistBadge();
+    }
+
+    function toggleWatchlist(symbol) {
+      let watchlist = getWatchlist();
+      if (watchlist.includes(symbol)) {
+        watchlist = watchlist.filter(s => s !== symbol);
+      } else {
+        watchlist.push(symbol);
+      }
+      saveWatchlist(watchlist);
+      renderStocks(); // Re-render to update heart icons
+    }
+
+    function updateWatchlistBadge() {
+      const watchlist = getWatchlist();
+      const badge = document.getElementById('watchlistBadge');
+      if (watchlist.length > 0) {
+        badge.textContent = watchlist.length;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    // Intelligent search parser
+    function parseSmartSearch(query) {
+      const q = query.toLowerCase().trim();
+      const parsedFilters = {
+        grades: [],
+        industries: [],
+        priceRanges: [],
+        marketCapRanges: [],
+        similarTo: null,
+        keywords: []
+      };
+
+      // Pattern: "stocks like [company]" or "similar to [company]"
+      const likePattern = /(?:stocks?\s+like|similar\s+to|like)\s+([a-z0-9\s]+?)(?:\s|$)/i;
+      const likeMatch = q.match(likePattern);
+      if (likeMatch) {
+        const companyQuery = likeMatch[1].trim();
+        const referenceStock = allStocks.find(s =>
+          s.symbol.toLowerCase() === companyQuery.toLowerCase() ||
+          s.name.toLowerCase().includes(companyQuery.toLowerCase())
+        );
+        if (referenceStock) {
+          parsedFilters.similarTo = referenceStock;
+          // Auto-filter by same industry
+          parsedFilters.industries.push(referenceStock.normalizedIndustry);
+
+          // Also filter by similar market cap tier
+          const mc = referenceStock.marketCap;
+          if (mc >= 200) {
+            parsedFilters.marketCapRanges.push('200-999999'); // Mega cap
+          } else if (mc >= 10) {
+            parsedFilters.marketCapRanges.push('10-200'); // Large cap
+          } else if (mc >= 2) {
+            parsedFilters.marketCapRanges.push('2-10'); // Mid cap
+          } else {
+            parsedFilters.marketCapRanges.push('0-2'); // Small cap
+          }
+
+          // Prefer high quality similar stocks
+          if (referenceStock.grade === 'A' || referenceStock.grade === 'B') {
+            parsedFilters.grades.push('A', 'B');
+          }
+        }
+      }
+
+      // Industry keywords
+      const industryMap = {
+        'tech': 'Technology', 'technology': 'Technology', 'software': 'Technology',
+        'healthcare': 'Healthcare', 'health': 'Healthcare', 'biotech': 'Healthcare', 'pharma': 'Healthcare',
+        'finance': 'Finance', 'financial': 'Finance', 'bank': 'Finance', 'banking': 'Finance',
+        'consumer': 'Consumer', 'retail': 'Consumer', 'restaurant': 'Consumer',
+        'energy': 'Energy', 'oil': 'Energy', 'gas': 'Energy',
+        'industrial': 'Industrials', 'manufacturing': 'Industrials',
+        'real estate': 'Real Estate', 'realestate': 'Real Estate', 'reit': 'Real Estate',
+        'utilities': 'Utilities', 'utility': 'Utilities',
+        'materials': 'Materials', 'mining': 'Materials',
+        'communication': 'Communication Services', 'telecom': 'Communication Services', 'media': 'Communication Services'
+      };
+      for (const [keyword, industry] of Object.entries(industryMap)) {
+        if (q.includes(keyword) && !parsedFilters.industries.includes(industry)) {
+          parsedFilters.industries.push(industry);
+        }
+      }
+
+      // Quality/Grade keywords
+      if (q.match(/\b(best|top|high quality|highest rated|excellent|premium|grade a)\b/)) {
+        parsedFilters.grades.push('A');
+      }
+      if (q.match(/\b(good|solid|quality|above average|grade b)\b/) && !parsedFilters.grades.includes('A')) {
+        parsedFilters.grades.push('A', 'B');
+      }
+      if (q.match(/\b(safe|low risk|stable|conservative|defensive)\b/)) {
+        parsedFilters.grades.push('A', 'B');
+      }
+      if (q.match(/\b(risky|speculative|high risk|volatile)\b/)) {
+        parsedFilters.grades.push('D', 'F');
+      }
+
+      // Price keywords
+      if (q.match(/\b(cheap|affordable|budget|inexpensive|penny)\b/)) {
+        parsedFilters.priceRanges.push('0-10', '10-50');
+      }
+      if (q.match(/\bunder\s*\$?\s*(\d+)\b/)) {
+        const priceMatch = q.match(/\bunder\s*\$?\s*(\d+)\b/);
+        const price = parseInt(priceMatch[1]);
+        if (price <= 10) parsedFilters.priceRanges.push('0-10');
+        else if (price <= 50) parsedFilters.priceRanges.push('0-10', '10-50');
+        else if (price <= 100) parsedFilters.priceRanges.push('0-10', '10-50', '50-100');
+        else parsedFilters.priceRanges.push('0-10', '10-50', '50-100', '100-500');
+      }
+      if (q.match(/\bover\s*\$?\s*(\d+)\b/)) {
+        const priceMatch = q.match(/\bover\s*\$?\s*(\d+)\b/);
+        const price = parseInt(priceMatch[1]);
+        if (price >= 500) parsedFilters.priceRanges.push('500-999999');
+        else if (price >= 100) parsedFilters.priceRanges.push('100-500', '500-999999');
+        else if (price >= 50) parsedFilters.priceRanges.push('50-100', '100-500', '500-999999');
+      }
+
+      // Market cap keywords
+      if (q.match(/\b(large cap|mega cap|big companies|giants)\b/)) {
+        parsedFilters.marketCapRanges.push('10-200', '200-999999');
+      }
+      if (q.match(/\b(small cap|microcap|micro cap|small companies)\b/)) {
+        parsedFilters.marketCapRanges.push('0-2');
+      }
+      if (q.match(/\b(mid cap|medium sized|midsize)\b/)) {
+        parsedFilters.marketCapRanges.push('2-10');
+      }
+
+      // Goal keywords
+      if (q.match(/\b(dividend|income|yield)\b/)) {
+        parsedFilters.industries.push('Utilities', 'Real Estate', 'Finance', 'Consumer');
+        if (!parsedFilters.grades.includes('A')) {
+          parsedFilters.grades.push('A', 'B');
+        }
+      }
+      if (q.match(/\b(growth|growing|expansion)\b/)) {
+        parsedFilters.industries.push('Technology', 'Healthcare', 'Communication Services');
+        if (!parsedFilters.grades.includes('A')) {
+          parsedFilters.grades.push('A', 'B');
+        }
+      }
+      if (q.match(/\b(value|undervalued|bargain)\b/)) {
+        parsedFilters.grades.push('B', 'C');
+      }
+
+      return parsedFilters;
+    }
+
+    function applySmartFilters(smartFilters) {
+      // Apply parsed filters
+      if (smartFilters.grades.length > 0) {
+        filters.grades = [...new Set([...filters.grades, ...smartFilters.grades])];
+      }
+      if (smartFilters.industries.length > 0) {
+        filters.industries = [...new Set([...filters.industries, ...smartFilters.industries])];
+      }
+      if (smartFilters.priceRanges.length > 0) {
+        filters.priceRanges = [...new Set([...filters.priceRanges, ...smartFilters.priceRanges])];
+      }
+      if (smartFilters.marketCapRanges.length > 0) {
+        filters.marketCapRanges = [...new Set([...filters.marketCapRanges, ...smartFilters.marketCapRanges])];
+      }
+    }
+
+    // Filter functions
+    function applyFilters() {
+      filteredStocks = allStocks.filter(stock => {
+        // Search filter - now supports both literal and smart search
+        if (filters.search) {
+          const query = filters.search.toLowerCase();
+
+          // Check for literal ticker/name match first
+          const literalMatch = stock.symbol.toLowerCase().includes(query) ||
+                               stock.name.toLowerCase().includes(query);
+
+          // If no literal match, filters will be applied by smart search
+          if (!literalMatch && !query.match(/\b(stocks?|like|similar|best|top|cheap|under|over|tech|healthcare|finance|dividend|growth)\b/)) {
+            return false;
+          }
+        }
+
+        // Grade filter
+        if (filters.grades.length > 0 && !filters.grades.includes(stock.grade)) {
+          return false;
+        }
+
+        // Industry filter
+        if (filters.industries.length > 0 && !filters.industries.includes(stock.normalizedIndustry)) {
+          return false;
+        }
+
+        // Price range filter
+        if (filters.priceRanges.length > 0) {
+          const inRange = filters.priceRanges.some(range => {
+            const [min, max] = range.split('-').map(Number);
+            return stock.price >= min && stock.price <= max;
+          });
+          if (!inRange) return false;
+        }
+
+        // Market cap filter
+        if (filters.marketCapRanges.length > 0) {
+          const inRange = filters.marketCapRanges.some(range => {
+            const [min, max] = range.split('-').map(Number);
+            return stock.marketCap >= min && stock.marketCap <= max;
+          });
+          if (!inRange) return false;
+        }
+
+        return true;
+      });
+
+      // Apply sorting
+      sortStocks();
+      renderStocks();
+      updateActiveFilters();
+    }
+
+    function sortStocks() {
+      const [field, direction] = filters.sort.split('-');
+
+      filteredStocks.sort((a, b) => {
+        let aVal, bVal;
+
+        if (field === 'score') {
+          aVal = a.compassScore;
+          bVal = b.compassScore;
+        } else if (field === 'price') {
+          aVal = a.price;
+          bVal = b.price;
+        } else if (field === 'marketcap') {
+          aVal = a.marketCap;
+          bVal = b.marketCap;
+        } else if (field === 'name') {
+          aVal = a.name.toLowerCase();
+          bVal = b.name.toLowerCase();
+        }
+
+        if (direction === 'asc') {
+          return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+        } else {
+          return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
+        }
+      });
+    }
+
+    function renderStocks() {
+      const grid = document.getElementById('stockGrid');
+      const noResults = document.getElementById('noResults');
+      const resultsCount = document.getElementById('resultsCount');
+      const watchlist = getWatchlist();
+
+      resultsCount.textContent = filteredStocks.length.toLocaleString();
+
+      if (filteredStocks.length === 0) {
+        grid.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      noResults.classList.add('hidden');
+
+      grid.innerHTML = filteredStocks.map(stock => {
+        const gradeColors = {
+          'A': 'bg-emerald-100 text-emerald-700',
+          'B': 'bg-blue-100 text-blue-700',
+          'C': 'bg-[#0C0F14] text-slate-700',
+          'D': 'bg-amber-100 text-amber-700',
+          'F': 'bg-red-100 text-red-700'
+        };
+        const isInWatchlist = watchlist.includes(stock.symbol);
+        const heartIcon = isInWatchlist
+          ? '<svg class="w-5 h-5 fill-current text-red-500" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
+          : '<svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>';
+
+        return `
+          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 hover:shadow-lg hover:border-emerald-300 transition">
+            <div class="flex justify-between items-start mb-3">
+              <a href="/stock/${stock.symbol.toLowerCase()}" class="flex-1">
+                <h3 class="font-bold text-lg">${stock.symbol}</h3>
+                <p class="text-[#64748B] text-sm truncate">${stock.name}</p>
+              </a>
+              <button onclick="toggleWatchlist('${stock.symbol}')" class="p-2 hover:bg-[#0C0F14] rounded-lg transition">
+                ${heartIcon}
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-2xl font-bold">$${stock.price.toFixed(2)}</div>
+              <div class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-bold">
+                ${stock.compassScore}
+              </div>
+            </div>
+
+            <div class="space-y-1 text-xs text-[#CBD5E1] mb-3">
+              <div>${stock.normalizedIndustry}</div>
+              <div>Market Cap: ${formatMarketCap(stock.marketCap)}</div>
+            </div>
+
+            <a href="/stock/${stock.symbol.toLowerCase()}"
+               class="block w-full bg-[#22D3EE] hover:bg-[#06B6D4] text-white text-center py-2 rounded-lg font-semibold transition">
+              View Details
+            </a>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateActiveFilters() {
+      const container = document.getElementById('activeFilters');
+      const chips = [];
+
+      if (filters.search) chips.push({ type: 'search', value: filters.search, label: `"${filters.search}"` });
+      filters.grades.forEach(g => chips.push({ type: 'grades', value: g, label: `Grade ${g}` }));
+      filters.industries.forEach(i => chips.push({ type: 'industries', value: i, label: i }));
+      filters.priceRanges.forEach(r => {
+        const [min, max] = r.split('-').map(Number);
+        const label = max > 500 ? `$${min}+` : `$${min}-$${max}`;
+        chips.push({ type: 'priceRanges', value: r, label });
+      });
+      filters.marketCapRanges.forEach(r => {
+        const [min, max] = r.split('-').map(Number);
+        let label = '';
+        if (max > 200) label = 'Mega Cap';
+        else if (min >= 10) label = 'Large Cap';
+        else if (min >= 2) label = 'Mid Cap';
+        else label = 'Small Cap';
+        chips.push({ type: 'marketCapRanges', value: r, label });
+      });
+
+      if (chips.length === 0) {
+        container.classList.add('hidden');
+        return;
+      }
+
+      container.classList.remove('hidden');
+      container.innerHTML = chips.map(chip => `
+        <button class="flex items-center gap-1 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm"
+                onclick="removeFilter('${chip.type}', '${chip.value}')">
+          ${chip.label}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      `).join('');
+    }
+
+    function removeFilter(type, value) {
+      if (type === 'search') {
+        filters.search = '';
+        document.getElementById('searchInput').value = '';
+      } else {
+        filters[type] = filters[type].filter(v => v !== value);
+        // Uncheck the corresponding checkbox
+        const checkbox = document.querySelector(`input[name="${type.replace(/Ranges$/, '').replace(/s$/, '')}"][value="${value}"]`);
+        if (checkbox) checkbox.checked = false;
+      }
+      applyFilters();
+    }
+
+    function clearAllFilters() {
+      filters = {
+        search: '',
+        grades: [],
+        industries: [],
+        priceRanges: [],
+        marketCapRanges: [],
+        sort: filters.sort
+      };
+      document.getElementById('searchInput').value = '';
+      document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
+      applyFilters();
+    }
+
+    // Make functions global for onclick handlers
+    window.toggleWatchlist = toggleWatchlist;
+    window.removeFilter = removeFilter;
+    window.formatMarketCap = (marketCap) => {
+      if (!marketCap || marketCap <= 0) return 'N/A';
+      if (marketCap >= 1000) return `$${(marketCap / 1000).toFixed(1)}T`;
+      if (marketCap >= 1) return `$${marketCap.toFixed(1)}B`;
+      return `$${(marketCap * 1000).toFixed(0)}M`;
+    };
+
+    // Search suggestions
+    const searchExamples = [
+      { query: 'stocks like Amazon', description: 'Find similar companies by industry & size' },
+      { query: 'best tech stocks', description: 'Top-rated technology companies' },
+      { query: 'cheap dividend stocks', description: 'Affordable income-generating stocks' },
+      { query: 'under $50', description: 'Stocks priced below $50' },
+      { query: 'high quality healthcare', description: 'A-rated healthcare stocks' },
+      { query: 'safe large cap', description: 'Low-risk established companies' },
+      { query: 'growth stocks', description: 'Technology & healthcare growth plays' }
+    ];
+
+    function showSearchSuggestions(query) {
+      const suggestions = document.getElementById('searchSuggestions');
+
+      if (!query || query.length < 2) {
+        suggestions.classList.add('hidden');
+        return;
+      }
+
+      // Show relevant examples
+      const matches = searchExamples.filter(ex =>
+        ex.query.toLowerCase().includes(query.toLowerCase()) ||
+        ex.description.toLowerCase().includes(query.toLowerCase())
+      );
+
+      if (matches.length === 0) {
+        suggestions.classList.add('hidden');
+        return;
+      }
+
+      suggestions.innerHTML = matches.map(ex => `
+        <button class="w-full text-left px-4 py-3 hover:bg-[#080A0F] border-b border-slate-100 last:border-b-0"
+                onclick="document.getElementById('searchInput').value = '${ex.query}'; document.getElementById('searchInput').dispatchEvent(new Event('input')); document.getElementById('searchSuggestions').classList.add('hidden');">
+          <div class="font-semibold text-sm">${ex.query}</div>
+          <div class="text-xs text-[#64748B]">${ex.description}</div>
+        </button>
+      `).join('');
+
+      suggestions.classList.remove('hidden');
+    }
+
+    // Event listeners
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const query = e.target.value;
+      filters.search = query;
+
+      // Show suggestions
+      showSearchSuggestions(query);
+
+      // Clear previous timeout
+      clearTimeout(searchTimeout);
+
+      // Debounce for smart search parsing
+      searchTimeout = setTimeout(() => {
+        const hintEl = document.getElementById('smartSearchHint');
+        const hintText = document.getElementById('smartSearchText');
+
+        if (query.trim().length > 0) {
+          // Check if this looks like a smart query (contains keywords)
+          if (query.match(/\b(stocks?|like|similar|best|top|cheap|under|over|tech|healthcare|finance|dividend|growth|value|safe|risky)\b/i)) {
+            // Parse and apply smart filters
+            const smartFilters = parseSmartSearch(query);
+
+            // Clear existing auto-applied filters (but keep manual ones)
+            // This is a simplified approach - in production you'd track which filters were auto-applied
+            filters.grades = [];
+            filters.industries = [];
+            filters.priceRanges = [];
+            filters.marketCapRanges = [];
+
+            applySmartFilters(smartFilters);
+
+            // Show a hint about what was detected
+            let hintMessage = [];
+            if (smartFilters.similarTo) {
+              hintMessage.push(`Finding stocks similar to ${smartFilters.similarTo.name}`);
+            }
+            if (smartFilters.industries.length > 0) {
+              hintMessage.push(`${smartFilters.industries.join(', ')} industry`);
+            }
+            if (smartFilters.grades.length > 0) {
+              hintMessage.push(`Grade ${smartFilters.grades.join(', ')}`);
+            }
+            if (smartFilters.priceRanges.length > 0) {
+              const priceHints = [];
+              if (smartFilters.priceRanges.includes('0-10')) priceHints.push('under $10');
+              if (smartFilters.priceRanges.includes('10-50')) priceHints.push('$10-$50');
+              if (smartFilters.priceRanges.includes('50-100')) priceHints.push('$50-$100');
+              if (priceHints.length > 0) hintMessage.push(priceHints.join(', '));
+            }
+
+            if (hintMessage.length > 0) {
+              hintText.textContent = hintMessage.join(' • ');
+              hintEl.classList.remove('hidden');
+            } else {
+              hintEl.classList.add('hidden');
+            }
+          } else {
+            hintEl.classList.add('hidden');
+          }
+        } else {
+          hintEl.classList.add('hidden');
+        }
+
+        applyFilters();
+
+        // Hide suggestions after applying
+        setTimeout(() => {
+          document.getElementById('searchSuggestions')?.classList.add('hidden');
+        }, 100);
+      }, 300); // Wait 300ms after user stops typing
+    });
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', (e) => {
+      const searchInput = document.getElementById('searchInput');
+      const suggestions = document.getElementById('searchSuggestions');
+      if (e.target !== searchInput && !suggestions?.contains(e.target)) {
+        suggestions?.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      filters.sort = e.target.value;
+      applyFilters();
+    });
+
+    document.querySelectorAll('input[name="grade"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.grades.push(e.target.value);
+        } else {
+          filters.grades = filters.grades.filter(g => g !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('input[name="industry"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.industries.push(e.target.value);
+        } else {
+          filters.industries = filters.industries.filter(i => i !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('input[name="price"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.priceRanges.push(e.target.value);
+        } else {
+          filters.priceRanges = filters.priceRanges.filter(p => p !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('input[name="marketcap"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.marketCapRanges.push(e.target.value);
+        } else {
+          filters.marketCapRanges = filters.marketCapRanges.filter(m => m !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+    document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
+
+    // Initial render
+    updateWatchlistBadge();
+    applyFilters();
+  </script>
+</Layout>

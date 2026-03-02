@@ -1,0 +1,236 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {
+  stocks,
+  getStockBySymbol,
+  getGradeColor,
+  generateSummary,
+  getCompanyProfile,
+  formatPrice,
+  formatMarketCap,
+  getNormalizedIndustry,
+  getRelatedStocks,
+  getScoreBreakdown,
+  getFactorRatingColor,
+  getConsensusInfo,
+  parseRecentRatings
+} from '../../data/stocks';
+
+export function getStaticPaths() {
+  return stocks.map(stock => ({
+    params: { symbol: stock.symbol.toLowerCase() },
+    props: { stock }
+  }));
+}
+
+const { stock } = Astro.props;
+const colors = getGradeColor(stock.grade);
+const summary = generateSummary(stock);
+const companyProfile = getCompanyProfile(stock);
+const industry = getNormalizedIndustry(stock.industry);
+const relatedStocks = getRelatedStocks(stock, 6);
+const breakdown = getScoreBreakdown(stock);
+
+// Analyst data
+const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
+const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings);
+const recentRatings = parseRecentRatings(stock.recentRatings);
+
+// Factor definitions
+const factors = [
+  { key: 'roa', name: 'Return on Assets', description: 'How efficiently the company uses its assets to generate profit' },
+  { key: 'grossProfit', name: 'Gross Profitability', description: 'Revenue minus cost of goods sold, relative to assets' },
+  { key: 'operatingCashFlow', name: 'Operating Cash Flow', description: 'Cash generated from normal business operations' },
+  { key: 'freeCashFlow', name: 'Free Cash Flow', description: 'Cash available after capital expenditures' },
+  { key: 'volatility', name: 'Low Volatility', description: 'Stock price stability (lower is better)' },
+  { key: 'assetGrowth', name: 'Conservative Growth', description: 'Measured asset expansion (slower is often better)' },
+];
+---
+
+<Layout title={`${stock.name} (${stock.symbol}) Compass Score | Compass Score`}>
+  <section class="py-12 bg-[#161B24] min-h-screen">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- Back Link -->
+      <a href="/browse" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">← Back to Browse</a>
+
+      <!-- Header -->
+      <div class={`rounded-2xl p-8 ${colors.bg} mb-8`}>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-100">{stock.name}</h1>
+            <p class="text-lg text-[#CBD5E1] mt-1">{stock.symbol} • {industry}</p>
+          </div>
+          <div class="text-center">
+            <div class={`w-32 h-32 rounded-full bg-[#161B24] border-4 ${colors.border} flex items-center justify-center mx-auto shadow-lg`}>
+              <div>
+                <div class={`text-4xl font-bold ${colors.text}`}>{stock.compassScore}</div>
+                <div class={`text-sm font-semibold ${colors.text}`}>Grade {stock.grade}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price & Market Cap -->
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        <div class="bg-[#080A0F] rounded-xl p-5">
+          <div class="text-sm text-[#64748B] mb-1">Current Price</div>
+          <div class="text-3xl font-bold">{formatPrice(stock.price)}</div>
+        </div>
+        <div class="bg-[#080A0F] rounded-xl p-5">
+          <div class="text-sm text-[#64748B] mb-1">Market Cap</div>
+          <div class="text-3xl font-bold">{formatMarketCap(stock.marketCap)}</div>
+        </div>
+      </div>
+
+      <!-- Company Profile -->
+      {companyProfile && (
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+          <h2 class="text-xl font-bold mb-3">About {stock.name}</h2>
+          <p class="text-[#CBD5E1] leading-relaxed">{companyProfile}</p>
+        </div>
+      )}
+
+      <!-- Quality Assessment -->
+      <div class={`${colors.bg} border ${colors.border} rounded-xl p-6 mb-8`}>
+        <h2 class="text-xl font-bold mb-3">Quality Assessment</h2>
+        <p class={`${colors.text} leading-relaxed text-lg`}>{summary}</p>
+      </div>
+
+      <!-- Score Breakdown -->
+      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4">Score Breakdown</h2>
+        <p class="text-[#64748B] text-sm mb-6">
+          The Compass Score is based on 6 quality factors identified by academic research.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {factors.map(factor => {
+            const rating = breakdown[factor.key as keyof typeof breakdown];
+            const ratingColors = getFactorRatingColor(rating);
+            return (
+              <div class="flex items-center justify-between p-4 bg-[#080A0F] rounded-lg">
+                <div>
+                  <div class="font-semibold text-slate-100">{factor.name}</div>
+                  <div class="text-xs text-[#64748B]">{factor.description}</div>
+                </div>
+                <span class={`px-3 py-1 rounded-full text-sm font-semibold ${ratingColors.bg} ${ratingColors.text}`}>
+                  {ratingColors.label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Analyst View -->
+      {hasAnalystData && (
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+          <h2 class="text-xl font-bold mb-4">Wall Street View</h2>
+          <p class="text-[#64748B] text-sm mb-6">
+            What professional analysts think about {stock.symbol}.
+          </p>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Price Target</div>
+              <div class="text-2xl font-bold">${stock.avgPriceTarget}</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Upside</div>
+              <div class={`text-2xl font-bold ${stock.upside && stock.upside > 0 ? 'text-[#22D3EE]' : 'text-red-600'}`}>
+                {stock.upside && stock.upside > 0 ? '+' : ''}{stock.upside}%
+              </div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Analysts</div>
+              <div class="text-2xl font-bold">{stock.numAnalysts}</div>
+            </div>
+            <div class={`${consensusInfo.bgColor} rounded-lg p-4 text-center`}>
+              <div class="text-sm text-[#64748B] mb-1">Consensus</div>
+              <div class={`text-xl font-bold ${consensusInfo.color}`}>{consensusInfo.label}</div>
+            </div>
+          </div>
+
+          {recentRatings.length > 0 && (
+            <div>
+              <h3 class="font-semibold text-sm text-slate-700 mb-3">Recent Analyst Actions</h3>
+              <div class="space-y-2">
+                {recentRatings.map(r => (
+                  <div class="flex items-center justify-between text-sm bg-[#080A0F] rounded-lg px-4 py-2">
+                    <div class="flex items-center gap-2">
+                      <span>{r.icon}</span>
+                      <span class="font-medium">{r.firm}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="text-[#22D3EE] font-semibold">{r.rating}</span>
+                      <span class="text-slate-400 text-xs">{r.date}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      <!-- CTA Box -->
+      <div class="bg-slate-900 rounded-2xl p-8 mb-8">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-white mb-2">Ready to Invest in {stock.symbol}?</h2>
+          <p class="text-slate-400 mb-6">Open a brokerage account and start building your portfolio.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-4 rounded-xl font-bold text-lg transition inline-block">
+              Buy on Robinhood
+            </a>
+            <a href="#" class="bg-blue-500 hover:bg-blue-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition inline-block">
+              Buy on Fidelity
+            </a>
+          </div>
+          <p class="text-xs text-[#64748B] mt-4">
+            We may earn a commission from these links. This doesn't affect our ratings.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Stocks -->
+      {relatedStocks.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-xl font-bold mb-4">Similar High-Quality Stocks</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedStocks.map(related => {
+              const relatedColors = getGradeColor(related.grade);
+              return (
+                <a href={`/stock/${related.symbol.toLowerCase()}`}
+                   class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 hover:shadow-lg hover:border-emerald-300 transition">
+                  <div class="flex justify-between items-start mb-2">
+                    <div>
+                      <h3 class="font-bold">{related.symbol}</h3>
+                      <p class="text-[#64748B] text-sm truncate max-w-[150px]">{related.name}</p>
+                    </div>
+                    <div class={`px-2 py-1 rounded-full ${relatedColors.bg} ${relatedColors.text} text-sm font-bold`}>
+                      {related.compassScore}
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <div class="text-lg font-semibold">{formatPrice(related.price)}</div>
+                    <div class={`text-sm font-semibold ${relatedColors.text}`}>Grade {related.grade}</div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <!-- Disclaimer -->
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
+        <h3 class="font-semibold text-amber-800 mb-2">Important Disclaimer</h3>
+        <p class="text-sm text-amber-700">
+          The Compass Score is for educational purposes only and does not constitute financial advice.
+          Past performance does not guarantee future results. Always do your own research and consider
+          consulting a financial advisor before making investment decisions.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
