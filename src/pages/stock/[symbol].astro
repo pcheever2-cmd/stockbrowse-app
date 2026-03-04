@@ -237,7 +237,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
                         <span>{r.icon}</span>
                         <span class="font-medium text-slate-200">{r.firm}</span>
                         {analystAccuracy && (
-                          <span class={`text-xs px-1.5 py-0.5 rounded ${analystAccuracy.hitRate >= 55 ? 'bg-emerald-900/50 text-emerald-400' : analystAccuracy.hitRate >= 50 ? 'bg-amber-900/50 text-amber-400' : 'bg-red-900/50 text-red-400'}`}>
+                          <span class={`text-xs px-1.5 py-0.5 rounded ${analystAccuracy.percentile >= 75 ? 'bg-emerald-900/50 text-emerald-400' : analystAccuracy.percentile >= 25 ? 'bg-amber-900/50 text-amber-400' : 'bg-red-900/50 text-red-400'}`}>
                             {analystAccuracy.hitRate}%
                           </span>
                         )}
@@ -344,10 +344,10 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
                     <div class="flex items-center justify-between bg-[#080A0F] rounded-lg px-4 py-3">
                       <span class="text-slate-200 font-medium">{analyst.firm}</span>
                       <div class="flex items-center gap-4">
-                        <span class={`font-bold ${analyst.hitRate >= 55 ? 'text-emerald-400' : analyst.hitRate >= 50 ? 'text-amber-400' : 'text-red-400'}`}>
+                        <span class={`font-bold ${analyst.percentile >= 75 ? 'text-emerald-400' : analyst.percentile >= 25 ? 'text-amber-400' : 'text-red-400'}`}>
                           {analyst.hitRate}%
                         </span>
-                        <span class="text-[#64748B] text-sm">{analyst.totalCalls.toLocaleString()} calls</span>
+                        <span class="text-[#64748B] text-sm">Top {100 - analyst.percentile}%</span>
                       </div>
                     </div>
                   ))}

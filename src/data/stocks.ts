@@ -48,6 +48,7 @@ export interface Stock {
   coveringAnalysts: Array<{
     firm: string;
     hitRate: number;
+    percentile: number;  // Rank vs all 174 analysts (0-100)
     totalCalls: number;
   }> | null;
 }
