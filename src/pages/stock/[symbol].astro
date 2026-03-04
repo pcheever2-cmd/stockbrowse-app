@@ -309,6 +309,57 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
         </div>
       </div>
 
+      <!-- PREMIUM SECTION: Analyst Track Record -->
+      {(stock.sectorAnalystAccuracy || (stock.coveringAnalysts && stock.coveringAnalysts.length > 0)) && (
+        <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-slate-100">Analyst Track Record</h2>
+            <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
+          </div>
+
+          <div class="premium-content blur-sm pointer-events-none select-none">
+            {stock.sectorAnalystAccuracy && (
+              <div class="mb-4 p-4 bg-[#080A0F] rounded-lg">
+                <div class="text-sm text-[#64748B] mb-1">{stock.sector} Sector Accuracy</div>
+                <div class={`text-2xl font-bold ${stock.sectorAnalystAccuracy >= 55 ? 'text-emerald-400' : stock.sectorAnalystAccuracy >= 50 ? 'text-amber-400' : 'text-red-400'}`}>
+                  {stock.sectorAnalystAccuracy}%
+                </div>
+                <div class="text-xs text-[#64748B] mt-1">Average accuracy across all analysts in this sector</div>
+              </div>
+            )}
+
+            {stock.coveringAnalysts && stock.coveringAnalysts.length > 0 && (
+              <div>
+                <div class="text-sm text-[#64748B] mb-3">Analysts Covering {stock.symbol}</div>
+                <div class="space-y-2">
+                  {stock.coveringAnalysts.map(analyst => (
+                    <div class="flex items-center justify-between bg-[#080A0F] rounded-lg px-4 py-3">
+                      <span class="text-slate-200 font-medium">{analyst.firm}</span>
+                      <div class="flex items-center gap-4">
+                        <span class={`font-bold ${analyst.hitRate >= 55 ? 'text-emerald-400' : analyst.hitRate >= 50 ? 'text-amber-400' : 'text-red-400'}`}>
+                          {analyst.hitRate}%
+                        </span>
+                        <span class="text-[#64748B] text-sm">{analyst.totalCalls.toLocaleString()} calls</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div class="mt-3 text-xs text-[#64748B]">
+                  Accuracy = % of price targets achieved within 12 months
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
+            <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+              Unlock Analyst Insights
+            </button>
+          </div>
+        </div>
+      )}
+
       <!-- Related Stocks (Free) -->
       {relatedStocks.length > 0 && (
         <div class="mb-8">

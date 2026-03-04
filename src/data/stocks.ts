@@ -42,6 +42,14 @@ export interface Stock {
   // Premium: Additional scores
   valueScore: number | null;
   longTermScore: number | null;
+
+  // Premium: Analyst accuracy
+  sectorAnalystAccuracy: number | null;
+  coveringAnalysts: Array<{
+    firm: string;
+    hitRate: number;
+    totalCalls: number;
+  }> | null;
 }
 
 export const stocks: Stock[] = stocksData as Stock[];
