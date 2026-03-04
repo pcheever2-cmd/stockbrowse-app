@@ -229,18 +229,26 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
             <div>
               <h3 class="font-semibold text-sm text-slate-300 mb-3">Recent Analyst Actions</h3>
               <div class="space-y-2">
-                {recentRatings.slice(0, 5).map(r => (
-                  <div class="flex items-center justify-between text-sm bg-[#080A0F] rounded-lg px-4 py-2">
-                    <div class="flex items-center gap-2">
-                      <span>{r.icon}</span>
-                      <span class="font-medium text-slate-200">{r.firm}</span>
+                {recentRatings.slice(0, 5).map(r => {
+                  const analystAccuracy = stock.coveringAnalysts?.find(a => a.firm === r.firm);
+                  return (
+                    <div class="flex items-center justify-between text-sm bg-[#080A0F] rounded-lg px-4 py-2">
+                      <div class="flex items-center gap-2">
+                        <span>{r.icon}</span>
+                        <span class="font-medium text-slate-200">{r.firm}</span>
+                        {analystAccuracy && (
+                          <span class={`text-xs px-1.5 py-0.5 rounded ${analystAccuracy.hitRate >= 55 ? 'bg-emerald-900/50 text-emerald-400' : analystAccuracy.hitRate >= 50 ? 'bg-amber-900/50 text-amber-400' : 'bg-red-900/50 text-red-400'}`}>
+                            {analystAccuracy.hitRate}%
+                          </span>
+                        )}
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <span class="text-[#22D3EE] font-semibold">{r.rating}</span>
+                        <span class="text-slate-500 text-xs">{r.date}</span>
+                      </div>
                     </div>
-                    <div class="flex items-center gap-3">
-                      <span class="text-[#22D3EE] font-semibold">{r.rating}</span>
-                      <span class="text-slate-500 text-xs">{r.date}</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
