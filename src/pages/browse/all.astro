@@ -237,10 +237,40 @@ const marketCapRanges = [
       const likeMatch = q.match(likePattern);
       if (likeMatch) {
         const companyQuery = likeMatch[1].trim();
-        const referenceStock = allStocks.find(s =>
-          s.symbol.toLowerCase() === companyQuery.toLowerCase() ||
-          s.name.toLowerCase().includes(companyQuery.toLowerCase())
-        );
+        // Common company name aliases (what people type → actual symbol)
+        const companyAliases: Record<string, string> = {
+          'nvidia': 'NVDA', 'tesla': 'TSLA', 'apple': 'AAPL',
+          'amazon': 'AMZN', 'microsoft': 'MSFT', 'google': 'GOOGL',
+          'alphabet': 'GOOGL', 'meta': 'META', 'facebook': 'META',
+          'costco': 'COST', 'walmart': 'WMT', 'netflix': 'NFLX',
+          'disney': 'DIS', 'coca-cola': 'KO', 'coke': 'KO',
+          'pepsi': 'PEP', 'palantir': 'PLTR', 'amd': 'AMD',
+          'intel': 'INTC', 'qualcomm': 'QCOM', 'broadcom': 'AVGO',
+          'rivian': 'RIVN', 'lucid': 'LCID', 'ford': 'F',
+          'gm': 'GM', 'general motors': 'GM', 'alibaba': 'BABA',
+          'shopify': 'SHOP', 'ebay': 'EBAY', 'target': 'TGT',
+          'salesforce': 'CRM', 'oracle': 'ORCL', 'snowflake': 'SNOW',
+          'spotify': 'SPOT', 'uber': 'UBER', 'airbnb': 'ABNB',
+          'paypal': 'PYPL', 'visa': 'V', 'mastercard': 'MA',
+          'nike': 'NKE', 'starbucks': 'SBUX', 'mcdonalds': 'MCD',
+          'boeing': 'BA', 'lockheed': 'LMT', 'raytheon': 'RTX',
+          'chevron': 'CVX', 'exxon': 'XOM', 'shell': 'SHEL',
+          'jpmorgan': 'JPM', 'goldman': 'GS', 'morgan stanley': 'MS',
+          'berkshire': 'BRK-B', 'buffett': 'BRK-B'
+        };
+
+        // Check alias first, then fall back to symbol/name match
+        const aliasSymbol = companyAliases[companyQuery.toLowerCase()];
+        let referenceStock;
+        if (aliasSymbol) {
+          referenceStock = allStocks.find(s => s.symbol === aliasSymbol);
+        }
+        if (!referenceStock) {
+          referenceStock = allStocks.find(s =>
+            s.symbol.toLowerCase() === companyQuery.toLowerCase() ||
+            s.name.toLowerCase().includes(companyQuery.toLowerCase())
+          );
+        }
         if (referenceStock) {
           parsedFilters.similarTo = referenceStock;
           // Auto-filter by same industry

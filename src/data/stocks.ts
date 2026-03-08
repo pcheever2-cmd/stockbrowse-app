@@ -51,6 +51,16 @@ export interface Stock {
     percentile: number;  // Rank vs all 174 analysts (0-100)
     totalCalls: number;
   }> | null;
+
+  // Factor values for Score Breakdown (displayed as percentages)
+  factorValues: {
+    roa: number | null;           // Return on Assets %
+    grossProfit: number | null;   // Gross Profit / Assets %
+    operatingCashFlow: number | null;  // OCF / Assets %
+    freeCashFlow: number | null;  // FCF / Assets %
+    volatility: number | null;    // 60-day annualized volatility %
+    assetGrowth: number | null;   // YoY asset growth %
+  } | null;
 }
 
 export const stocks: Stock[] = stocksData as Stock[];
@@ -402,18 +412,54 @@ export interface ScoreBreakdown {
   assetGrowth: FactorRating;
 }
 
-// Generate score breakdown based on overall score
-// This provides approximate indicators based on the composite score
-// Note: This is an approximation until actual factor values are exported
+// Universe averages for factor rating thresholds (from research)
+const FACTOR_THRESHOLDS = {
+  roa: { strong: 5, weak: -2 },           // ROA > 5% is strong, < -2% is weak
+  grossProfit: { strong: 35, weak: 15 },  // GP/Assets > 35% is strong
+  operatingCashFlow: { strong: 10, weak: 0 },  // OCF/Assets > 10% is strong
+  freeCashFlow: { strong: 8, weak: -2 },  // FCF/Assets > 8% is strong
+  volatility: { strong: 35, weak: 60 },   // Vol < 35% is strong (inverted)
+  assetGrowth: { strong: 5, weak: 25 },   // Growth 0-5% is strong (inverted)
+};
+
+// Rate a single factor value
+function rateFactorValue(value: number | null, factor: keyof typeof FACTOR_THRESHOLDS): FactorRating {
+  if (value === null) return 'average';
+
+  const thresholds = FACTOR_THRESHOLDS[factor];
+
+  // Volatility and assetGrowth are inverted (lower is better)
+  if (factor === 'volatility' || factor === 'assetGrowth') {
+    if (value <= thresholds.strong) return 'strong';
+    if (value >= thresholds.weak) return 'weak';
+    return 'average';
+  }
+
+  // Normal factors (higher is better)
+  if (value >= thresholds.strong) return 'strong';
+  if (value <= thresholds.weak) return 'weak';
+  return 'average';
+}
+
+// Generate score breakdown using actual factor values when available
 export function getScoreBreakdown(stock: Stock): ScoreBreakdown {
+  const fv = stock.factorValues;
+
+  // If we have actual factor values, use them
+  if (fv) {
+    return {
+      roa: rateFactorValue(fv.roa, 'roa'),
+      grossProfit: rateFactorValue(fv.grossProfit, 'grossProfit'),
+      operatingCashFlow: rateFactorValue(fv.operatingCashFlow, 'operatingCashFlow'),
+      freeCashFlow: rateFactorValue(fv.freeCashFlow, 'freeCashFlow'),
+      volatility: rateFactorValue(fv.volatility, 'volatility'),
+      assetGrowth: rateFactorValue(fv.assetGrowth, 'assetGrowth'),
+    };
+  }
+
+  // Fallback: estimate from grade (legacy behavior)
   const score = stock.compassScore;
   const grade = stock.grade;
-
-  // A-grade stocks: mostly strong, maybe 1-2 average
-  // B-grade stocks: mix of strong and average
-  // C-grade stocks: mostly average
-  // D-grade stocks: mix of average and weak
-  // F-grade stocks: mostly weak
 
   if (grade === 'A') {
     return {

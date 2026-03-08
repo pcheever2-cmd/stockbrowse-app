@@ -37,15 +37,69 @@ const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
 const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings);
 const recentRatings = parseRecentRatings(stock.recentRatings);
 
-// Factor definitions
+// Factor definitions with universe averages and details
 const factors = [
-  { key: 'roa', name: 'Return on Assets', description: 'How efficiently the company uses its assets to generate profit' },
-  { key: 'grossProfit', name: 'Gross Profitability', description: 'Revenue minus cost of goods sold, relative to assets' },
-  { key: 'operatingCashFlow', name: 'Operating Cash Flow', description: 'Cash generated from normal business operations' },
-  { key: 'freeCashFlow', name: 'Free Cash Flow', description: 'Cash available after capital expenditures' },
-  { key: 'volatility', name: 'Low Volatility', description: 'Stock price stability (lower is better)' },
-  { key: 'assetGrowth', name: 'Conservative Growth', description: 'Measured asset expansion (slower is often better)' },
+  {
+    key: 'roa',
+    name: 'Return on Assets',
+    description: 'How efficiently the company uses its assets to generate profit',
+    average: 2,
+    unit: '%',
+    detail: 'Measures net income divided by total assets. Higher ROA indicates better efficiency at converting assets into profit.',
+    inverted: false
+  },
+  {
+    key: 'grossProfit',
+    name: 'Gross Profitability',
+    description: 'Revenue minus cost of goods sold, relative to assets',
+    average: 25,
+    unit: '%',
+    detail: 'Gross profit divided by total assets. Companies with higher gross profitability tend to outperform.',
+    inverted: false
+  },
+  {
+    key: 'operatingCashFlow',
+    name: 'Operating Cash Flow',
+    description: 'Cash generated from normal business operations',
+    average: 5,
+    unit: '%',
+    detail: 'Operating cash flow divided by total assets. Real cash generation, not accounting earnings.',
+    inverted: false
+  },
+  {
+    key: 'freeCashFlow',
+    name: 'Free Cash Flow',
+    description: 'Cash available after capital expenditures',
+    average: 3,
+    unit: '%',
+    detail: 'Free cash flow divided by total assets. Money available to return to shareholders.',
+    inverted: false
+  },
+  {
+    key: 'volatility',
+    name: 'Low Volatility',
+    description: 'Stock price stability (lower is better)',
+    average: 45,
+    unit: '%',
+    detail: '60-day annualized volatility. Lower volatility stocks historically deliver better risk-adjusted returns.',
+    inverted: true
+  },
+  {
+    key: 'assetGrowth',
+    name: 'Conservative Growth',
+    description: 'Measured asset expansion (slower is often better)',
+    average: 10,
+    unit: '%',
+    detail: 'Year-over-year asset growth. Companies that grow conservatively tend to outperform aggressive expanders.',
+    inverted: true
+  },
 ];
+
+// Get factor value for display
+function getFactorValue(key: string): number | null {
+  if (!stock.factorValues) return null;
+  return stock.factorValues[key as keyof typeof stock.factorValues];
+}
 
 // Helper functions for data display
 function formatPiotroski(score: number | null): { value: string; label: string; color: string } {
@@ -134,20 +188,43 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           {factors.map(factor => {
             const rating = breakdown[factor.key as keyof typeof breakdown];
             const ratingColors = getFactorRatingColor(rating);
+            const factorValue = getFactorValue(factor.key);
+            const displayValue = factorValue !== null ? `${factorValue.toFixed(1)}${factor.unit}` : 'N/A';
             return (
-              <button
-                data-factor={factor.key}
-                data-factor-name={factor.name}
-                class="factor-card flex items-center justify-between p-4 bg-[#080A0F] rounded-lg hover:bg-[#0F1419] cursor-pointer transition group text-left w-full border border-transparent hover:border-[#22D3EE33]"
-              >
-                <div>
-                  <div class="font-semibold text-slate-100 group-hover:text-[#22D3EE] transition">{factor.name}</div>
-                  <div class="text-xs text-[#64748B]">{factor.description}</div>
+              <div class="factor-wrapper">
+                <button
+                  data-factor={factor.key}
+                  data-factor-name={factor.name}
+                  data-factor-value={displayValue}
+                  data-factor-average={factor.average}
+                  data-factor-detail={factor.detail}
+                  data-factor-inverted={factor.inverted}
+                  class="factor-card flex items-center justify-between p-4 bg-[#080A0F] rounded-lg hover:bg-[#0F1419] cursor-pointer transition group text-left w-full border border-transparent hover:border-[#22D3EE33]"
+                >
+                  <div>
+                    <div class="font-semibold text-slate-100 group-hover:text-[#22D3EE] transition">{factor.name}</div>
+                    <div class="text-xs text-[#64748B]">{factor.description}</div>
+                  </div>
+                  <span class={`px-3 py-1 rounded-full text-sm font-semibold ${ratingColors.bg} ${ratingColors.text}`}>
+                    {ratingColors.label}
+                  </span>
+                </button>
+                <!-- Expandable detail panel (hidden by default) -->
+                <div class="factor-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm text-[#64748B]">{stock.name}'s Value:</span>
+                    <span class={`text-xl font-bold ${ratingColors.text}`}>{displayValue}</span>
+                  </div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm text-[#64748B]">Universe Average:</span>
+                    <span class="text-sm text-slate-400">{factor.average}{factor.unit}</span>
+                  </div>
+                  <p class="text-xs text-[#CBD5E1] leading-relaxed">{factor.detail}</p>
+                  {factor.inverted && (
+                    <p class="text-xs text-[#22D3EE] mt-2 italic">Note: For this factor, lower values are better.</p>
+                  )}
                 </div>
-                <span class={`px-3 py-1 rounded-full text-sm font-semibold ${ratingColors.bg} ${ratingColors.text}`}>
-                  {ratingColors.label}
-                </span>
-              </button>
+              </div>
             );
           })}
         </div>
@@ -420,15 +497,22 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
         });
       }
 
-      // Factor card clicks - disabled for beta testing
-      // const factorCards = document.querySelectorAll('.factor-card');
-      // factorCards.forEach(card => {
-      //   card.addEventListener('click', () => {
-      //     if (!isPremium) {
-      //       (window as any).showUpgradeModal();
-      //     }
-      //   });
-      // });
+      // Factor card clicks - toggle detail panel
+      const factorCards = document.querySelectorAll('.factor-card');
+      factorCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const wrapper = card.closest('.factor-wrapper');
+          const detail = wrapper?.querySelector('.factor-detail');
+          if (detail) {
+            // Close all other open details
+            document.querySelectorAll('.factor-detail').forEach(d => {
+              if (d !== detail) d.classList.add('hidden');
+            });
+            // Toggle this detail
+            detail.classList.toggle('hidden');
+          }
+        });
+      });
 
       // Handle unlock button clicks
       const unlockButtons = document.querySelectorAll('.unlock-btn');
