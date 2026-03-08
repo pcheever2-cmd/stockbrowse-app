@@ -100,6 +100,21 @@ const marketCapRanges = [
                 ))}
               </div>
             </div>
+
+            <!-- Moonshot Filter -->
+            <div>
+              <h4 class="font-semibold mb-3">Moonshot Score</h4>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <input type="checkbox" id="moonshotFilter" class="rounded text-[#A855F7] filter-checkbox" />
+                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-purple-500/20 text-purple-400">Has Moonshot Score</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <input type="checkbox" id="goldenFilter" class="rounded text-[#F59E0B] filter-checkbox" />
+                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-amber-500/20 text-amber-400">⭐ Golden Stocks Only</span>
+                </label>
+              </div>
+            </div>
           </div>
         </aside>
 
@@ -184,6 +199,8 @@ const marketCapRanges = [
       industries: [],
       priceRanges: [],
       marketCapRanges: [],
+      hasMoonshot: false,
+      goldenOnly: false,
       sort: 'score-desc'
     };
 
@@ -476,6 +493,19 @@ const marketCapRanges = [
           if (!inRange) return false;
         }
 
+        // Moonshot filter
+        if (filters.hasMoonshot && !stock.moonshotScore) {
+          return false;
+        }
+
+        // Golden filter (A or B in both Compass and Moonshot)
+        if (filters.goldenOnly) {
+          const isGolden = stock.moonshotScore &&
+            (stock.grade === 'A' || stock.grade === 'B') &&
+            (stock.moonshotGrade === 'A' || stock.moonshotGrade === 'B');
+          if (!isGolden) return false;
+        }
+
         return true;
       });
 
@@ -543,8 +573,22 @@ const marketCapRanges = [
           ? '<svg class="w-5 h-5 fill-current text-red-500" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
           : '<svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>';
 
+        // Check if this is a Golden stock (A or B in both Compass and Moonshot)
+        const isGolden = stock.moonshotScore &&
+          (stock.grade === 'A' || stock.grade === 'B') &&
+          (stock.moonshotGrade === 'A' || stock.moonshotGrade === 'B');
+
+        const cardBorder = isGolden
+          ? 'border-2 border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.3)]'
+          : 'border border-[rgba(255,255,255,0.06)]';
+
+        const goldenBadge = isGolden
+          ? '<div class="absolute -top-2 -right-2 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs font-bold px-2 py-0.5 rounded-full shadow-lg">⭐ GOLDEN</div>'
+          : '';
+
         return `
-          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 hover:shadow-lg hover:border-emerald-300 transition">
+          <div class="relative bg-[#161B24] ${cardBorder} rounded-xl p-4 hover:shadow-lg transition">
+            ${goldenBadge}
             <div class="flex justify-between items-start mb-3">
               <a href="/stock/${stock.symbol.toLowerCase()}" class="flex-1">
                 <h3 class="font-bold text-lg">${stock.symbol}</h3>
@@ -561,7 +605,7 @@ const marketCapRanges = [
                 <div class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-bold" title="Compass Score">
                   ${stock.compassScore}
                 </div>
-                ${stock.moonshotScore ? `<div class="${gradeColors[stock.moonshotGrade]} px-2 py-1 rounded-full text-xs font-bold" title="Moonshot Score">${stock.moonshotScore}M</div>` : ''}
+                ${stock.moonshotScore ? `<div class="bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full text-xs font-bold" title="Moonshot Score">${stock.moonshotScore}M</div>` : ''}
               </div>
             </div>
 
@@ -600,6 +644,8 @@ const marketCapRanges = [
         else label = 'Small Cap';
         chips.push({ type: 'marketCapRanges', value: r, label });
       });
+      if (filters.hasMoonshot) chips.push({ type: 'hasMoonshot', value: 'true', label: 'Has Moonshot' });
+      if (filters.goldenOnly) chips.push({ type: 'goldenOnly', value: 'true', label: '⭐ Golden Only' });
 
       if (chips.length === 0) {
         container.classList.add('hidden');
@@ -622,6 +668,12 @@ const marketCapRanges = [
       if (type === 'search') {
         filters.search = '';
         document.getElementById('searchInput').value = '';
+      } else if (type === 'hasMoonshot') {
+        filters.hasMoonshot = false;
+        document.getElementById('moonshotFilter').checked = false;
+      } else if (type === 'goldenOnly') {
+        filters.goldenOnly = false;
+        document.getElementById('goldenFilter').checked = false;
       } else {
         filters[type] = filters[type].filter(v => v !== value);
         // Uncheck the corresponding checkbox
@@ -638,6 +690,8 @@ const marketCapRanges = [
         industries: [],
         priceRanges: [],
         marketCapRanges: [],
+        hasMoonshot: false,
+        goldenOnly: false,
         sort: filters.sort
       };
       document.getElementById('searchInput').value = '';
@@ -825,6 +879,16 @@ const marketCapRanges = [
         }
         applyFilters();
       });
+    });
+
+    document.getElementById('moonshotFilter').addEventListener('change', (e) => {
+      filters.hasMoonshot = e.target.checked;
+      applyFilters();
+    });
+
+    document.getElementById('goldenFilter').addEventListener('change', (e) => {
+      filters.goldenOnly = e.target.checked;
+      applyFilters();
     });
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
