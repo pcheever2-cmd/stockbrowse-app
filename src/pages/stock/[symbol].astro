@@ -126,6 +126,10 @@ function formatRsi(rsi: number | null): { value: string; label: string; color: s
 const rsiInfo = formatRsi(stock.rsi);
 const piotroskiInfo = formatPiotroski(stock.piotroskiScore);
 const altmanInfo = formatAltmanZ(stock.altmanZ);
+
+// Moonshot score display
+const hasMoonshot = stock.moonshotScore !== null && stock.moonshotGrade !== null;
+const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
 ---
 
 <Layout title={`${stock.name} (${stock.symbol}) Compass Score | Stockbrowse`}>
@@ -141,13 +145,40 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
             <h1 class="text-3xl md:text-4xl font-bold text-slate-100">{stock.name}</h1>
             <p class="text-lg text-[#CBD5E1] mt-1">{stock.symbol} &bull; {industry}</p>
           </div>
-          <div class="text-center">
-            <div class={`w-32 h-32 rounded-full bg-[#0C0F14] border-4 ${colors.border} flex items-center justify-center mx-auto shadow-lg`}>
-              <div>
-                <div class={`text-4xl font-bold ${colors.text}`}>{stock.compassScore}</div>
-                <div class={`text-sm font-semibold ${colors.text}`}>Grade {stock.grade}</div>
+          <div class="flex items-center gap-4">
+            <!-- Compass Score -->
+            <div class="text-center">
+              <div class={`w-28 h-28 rounded-full bg-[#0C0F14] border-4 ${colors.border} flex items-center justify-center mx-auto shadow-lg`}>
+                <div>
+                  <div class={`text-3xl font-bold ${colors.text}`}>{stock.compassScore}</div>
+                  <div class={`text-xs font-semibold ${colors.text}`}>Grade {stock.grade}</div>
+                </div>
               </div>
+              <div class="text-xs text-[#64748B] mt-2">Compass</div>
             </div>
+
+            <!-- Moonshot Score (if available) -->
+            {hasMoonshot && moonshotColors && (
+              <div class="text-center">
+                <div class={`w-28 h-28 rounded-full bg-[#0C0F14] border-4 ${moonshotColors.border} flex items-center justify-center mx-auto shadow-lg`}>
+                  <div>
+                    <div class={`text-3xl font-bold ${moonshotColors.text}`}>{stock.moonshotScore}</div>
+                    <div class={`text-xs font-semibold ${moonshotColors.text}`}>Grade {stock.moonshotGrade}</div>
+                  </div>
+                </div>
+                <div class="text-xs text-[#64748B] mt-2">Moonshot</div>
+              </div>
+            )}
+
+            <!-- Golden Badge -->
+            {stock.isGolden && (
+              <div class="text-center">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center mx-auto shadow-lg">
+                  <span class="text-2xl">⭐</span>
+                </div>
+                <div class="text-xs text-amber-400 mt-2 font-semibold">Golden</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
