@@ -17,22 +17,22 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 });
 ---
 
-<Layout title={`${title} | Compass Score Blog`} description={description}>
-  <article class="py-16 bg-white">
+<Layout title={`${title} | Stockbrowse Blog`} description={description}>
+  <article class="py-16 bg-[#080A0F]">
     <div class="max-w-3xl mx-auto px-4">
       <header class="mb-8 text-center">
-        <p class="text-emerald-600 text-sm font-semibold mb-2">{formattedDate}</p>
-        <h1 class="text-4xl font-bold mb-4">{title}</h1>
-        <p class="text-xl text-slate-600">{description}</p>
-        <p class="text-slate-500 mt-4">By {author}</p>
+        <p class="text-[#22D3EE] text-sm font-semibold mb-2">{formattedDate}</p>
+        <h1 class="text-4xl font-bold mb-4 text-white">{title}</h1>
+        <p class="text-xl text-[#CBD5E1]">{description}</p>
+        <p class="text-[#64748B] mt-4">By {author}</p>
       </header>
 
-      <div class="prose prose-slate prose-lg max-w-none">
+      <div class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-p:text-[#CBD5E1] prose-strong:text-white prose-a:text-[#22D3EE] prose-li:text-[#CBD5E1] prose-hr:border-[rgba(255,255,255,0.1)]">
         <slot />
       </div>
 
-      <footer class="mt-12 pt-8 border-t border-slate-200">
-        <a href="/blog" class="text-emerald-600 hover:underline">← Back to all articles</a>
+      <footer class="mt-12 pt-8 border-t border-[rgba(255,255,255,0.1)]">
+        <a href="/learn" class="text-[#22D3EE] hover:underline">← Back to all articles</a>
       </footer>
     </div>
   </article>
