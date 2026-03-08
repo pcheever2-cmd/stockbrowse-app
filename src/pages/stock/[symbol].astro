@@ -152,7 +152,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           })}
         </div>
         <div class="mt-4 text-center">
-          <p class="text-xs text-[#64748B]">Click any factor to see detailed metrics (Premium)</p>
+          <p class="text-xs text-[#64748B]">Click any factor to see detailed metrics</p>
         </div>
       </div>
 
@@ -420,15 +420,15 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
         });
       }
 
-      // Handle factor card clicks
-      const factorCards = document.querySelectorAll('.factor-card');
-      factorCards.forEach(card => {
-        card.addEventListener('click', () => {
-          if (!isPremium) {
-            (window as any).showUpgradeModal();
-          }
-        });
-      });
+      // Factor card clicks - disabled for beta testing
+      // const factorCards = document.querySelectorAll('.factor-card');
+      // factorCards.forEach(card => {
+      //   card.addEventListener('click', () => {
+      //     if (!isPremium) {
+      //       (window as any).showUpgradeModal();
+      //     }
+      //   });
+      // });
 
       // Handle unlock button clicks
       const unlockButtons = document.querySelectorAll('.unlock-btn');

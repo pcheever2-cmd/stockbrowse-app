@@ -89,59 +89,57 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Why These Factors -->
       <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6">Why These Specific Factors?</h2>
-        <div class="prose prose-slate max-w-none">
-          <p>
-            These aren't arbitrary choices. Each factor is grounded in academic finance research:
-          </p>
-          <ul class="space-y-3 mt-4">
-            <li>
-              <strong>Profitability (ROA, Gross Profit):</strong> Companies that generate more profit per dollar of assets
-              consistently outperform. This is the "Quality" factor documented by Asness, Frazzini & Pedersen (2019).
-            </li>
-            <li>
-              <strong>Cash Flow:</strong> Earnings can be manipulated. Cash is real. Companies with strong cash generation
-              are less likely to disappoint investors.
-            </li>
-            <li>
-              <strong>Low Volatility:</strong> The "low-vol anomaly" - less risky stocks have historically delivered
-              better risk-adjusted returns than theory predicts.
-            </li>
-            <li>
-              <strong>Conservative Investment:</strong> Companies that grow assets slowly and steadily tend to outperform
-              those that expand aggressively. This is the "Investment" factor from Fama & French (2015).
-            </li>
-          </ul>
-        </div>
+        <h2 class="text-2xl font-bold mb-6 text-slate-100">Why These Specific Factors?</h2>
+        <p class="text-[#CBD5E1] mb-4">
+          These aren't arbitrary choices. Each factor is grounded in academic finance research:
+        </p>
+        <ul class="space-y-3 list-disc list-outside ml-6 text-[#CBD5E1]">
+          <li>
+            <strong class="text-[#22D3EE]">Profitability (ROA, Gross Profit):</strong> Companies that generate more profit per dollar of assets
+            consistently outperform. This is the "Quality" factor documented by Asness, Frazzini & Pedersen (2019).
+          </li>
+          <li>
+            <strong class="text-[#22D3EE]">Cash Flow:</strong> Earnings can be manipulated. Cash is real. Companies with strong cash generation
+            are less likely to disappoint investors.
+          </li>
+          <li>
+            <strong class="text-[#22D3EE]">Low Volatility:</strong> The "low-vol anomaly" - less risky stocks have historically delivered
+            better risk-adjusted returns than theory predicts.
+          </li>
+          <li>
+            <strong class="text-[#22D3EE]">Conservative Investment:</strong> Companies that grow assets slowly and steadily tend to outperform
+            those that expand aggressively. This is the "Investment" factor from Fama & French (2015).
+          </li>
+        </ul>
       </div>
 
       <!-- What We Exclude -->
-      <div class="bg-amber-50 rounded-2xl p-8 mb-12 border border-amber-200">
-        <h2 class="text-2xl font-bold mb-4">What We Deliberately Exclude</h2>
+      <div class="bg-[#161B24] rounded-2xl p-8 mb-12 border border-[rgba(255,255,255,0.1)]">
+        <h2 class="text-2xl font-bold mb-4 text-red-400">What We Deliberately Exclude</h2>
         <div class="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 class="font-semibold mb-2">❌ Momentum</h3>
+            <h3 class="font-semibold mb-2 text-slate-100">❌ Momentum</h3>
             <p class="text-[#CBD5E1] text-sm">
               Recent price performance. While momentum works short-term, it adds volatility and reversal risk.
               Once you account for quality, momentum becomes redundant.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">❌ Price Targets</h3>
+            <h3 class="font-semibold mb-2 text-slate-100">❌ Price Targets</h3>
             <p class="text-[#CBD5E1] text-sm">
               Analyst predictions are notoriously unreliable. We focus on actual company fundamentals,
               not what someone thinks the stock "should" be worth.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">❌ Social Sentiment</h3>
+            <h3 class="font-semibold mb-2 text-slate-100">❌ Social Sentiment</h3>
             <p class="text-[#CBD5E1] text-sm">
               Reddit hype and Twitter buzz are noise. The Compass Score measures company quality,
               not how many people are talking about it.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">❌ Sector Biases</h3>
+            <h3 class="font-semibold mb-2 text-slate-100">❌ Sector Biases</h3>
             <p class="text-[#CBD5E1] text-sm">
               We don't favor tech over utilities or vice versa. Quality companies exist in every sector,
               and we measure them on a level playing field.

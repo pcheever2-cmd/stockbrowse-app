@@ -267,16 +267,52 @@ const marketCapRanges = [
 
       // Industry keywords
       const industryMap = {
+        // Technology
         'tech': 'Technology', 'technology': 'Technology', 'software': 'Technology',
+        'ai': 'Technology', 'artificial intelligence': 'Technology', 'cloud': 'Technology',
+        'cybersecurity': 'Technology', 'semiconductor': 'Technology', 'chips': 'Technology',
+        'saas': 'Technology', 'fintech': 'Technology',
+
+        // Healthcare
         'healthcare': 'Healthcare', 'health': 'Healthcare', 'biotech': 'Healthcare', 'pharma': 'Healthcare',
+        'medical': 'Healthcare', 'drug': 'Healthcare', 'hospital': 'Healthcare',
+
+        // Finance
         'finance': 'Finance', 'financial': 'Finance', 'bank': 'Finance', 'banking': 'Finance',
+        'insurance': 'Finance', 'mortgage': 'Finance', 'credit': 'Finance', 'investment': 'Finance',
+
+        // Consumer
         'consumer': 'Consumer', 'retail': 'Consumer', 'restaurant': 'Consumer',
+        'sports': 'Consumer', 'soccer': 'Consumer', 'racing': 'Consumer', 'entertainment': 'Consumer',
+        'gaming': 'Consumer', 'casino': 'Consumer', 'hotels': 'Consumer', 'travel': 'Consumer',
+        'automotive': 'Consumer', 'auto': 'Consumer', 'cars': 'Consumer', 'ev': 'Consumer',
+        'electric vehicle': 'Consumer', 'food': 'Consumer', 'beverage': 'Consumer',
+        'apparel': 'Consumer', 'fashion': 'Consumer', 'luxury': 'Consumer',
+
+        // Energy
         'energy': 'Energy', 'oil': 'Energy', 'gas': 'Energy',
+        'petroleum': 'Energy', 'solar': 'Energy', 'renewable': 'Energy', 'drilling': 'Energy',
+        'natural gas': 'Energy', 'pipeline': 'Energy', 'refinery': 'Energy',
+
+        // Industrials
         'industrial': 'Industrials', 'manufacturing': 'Industrials',
+        'aerospace': 'Industrials', 'defense': 'Industrials', 'airlines': 'Industrials',
+        'logistics': 'Industrials', 'shipping': 'Industrials', 'construction': 'Industrials',
+
+        // Real Estate
         'real estate': 'Real Estate', 'realestate': 'Real Estate', 'reit': 'Real Estate',
-        'utilities': 'Utilities', 'utility': 'Utilities',
-        'materials': 'Materials', 'mining': 'Materials',
-        'communication': 'Communication Services', 'telecom': 'Communication Services', 'media': 'Communication Services'
+        'property': 'Real Estate', 'housing': 'Real Estate',
+
+        // Utilities
+        'utilities': 'Utilities', 'utility': 'Utilities', 'electric': 'Utilities', 'water': 'Utilities',
+
+        // Materials
+        'materials': 'Materials', 'mining': 'Materials', 'steel': 'Materials', 'chemicals': 'Materials',
+        'gold': 'Materials', 'copper': 'Materials',
+
+        // Communication
+        'communication': 'Communication Services', 'telecom': 'Communication Services', 'media': 'Communication Services',
+        'streaming': 'Communication Services', 'social media': 'Communication Services', 'advertising': 'Communication Services'
       };
       for (const [keyword, industry] of Object.entries(industryMap)) {
         if (q.includes(keyword) && !parsedFilters.industries.includes(industry)) {
