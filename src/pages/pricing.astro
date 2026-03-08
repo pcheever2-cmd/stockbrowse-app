@@ -86,7 +86,7 @@ const tiers = [
 ---
 
 <Layout title="Pricing | Compass Score">
-  <section class="py-16 bg-gradient-to-b from-slate-50 to-white min-h-screen">
+  <section class="py-16 bg-[#080A0F] min-h-screen">
     <div class="max-w-6xl mx-auto px-4">
       <!-- Header -->
       <div class="text-center mb-12">
@@ -138,7 +138,7 @@ const tiers = [
                class={`block text-center py-3 px-6 rounded-xl font-semibold transition ${
                  tier.highlighted
                    ? 'bg-[#22D3EE] hover:bg-[#06B6D4] text-white'
-                   : 'bg-[#0C0F14] hover:bg-slate-200 text-slate-100'
+                   : 'bg-[#0C0F14] hover:bg-[#1C222E] text-slate-100 border border-[rgba(255,255,255,0.1)]'
                }`}>
               {tier.cta}
             </a>
@@ -179,8 +179,8 @@ const tiers = [
           <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
             <h3 class="font-semibold mb-2">Is there a refund policy?</h3>
             <p class="text-[#CBD5E1] text-sm">
-              Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your
-              subscription, contact us within 30 days for a full refund.
+              Yes, you can cancel your subscription at any time. If you cancel during your free trial,
+              you won't be charged. For paid subscriptions, contact us and we'll work with you.
             </p>
           </div>
 
@@ -195,14 +195,6 @@ const tiers = [
         </div>
       </div>
 
-      <!-- Money Back Guarantee -->
-      <div class="mt-16 text-center bg-emerald-50 border border-emerald-200 rounded-2xl p-8 max-w-2xl mx-auto">
-        <div class="text-4xl mb-4">🛡️</div>
-        <h3 class="text-xl font-bold text-emerald-800 mb-2">30-Day Money-Back Guarantee</h3>
-        <p class="text-emerald-700">
-          Not satisfied? Get a full refund within 30 days. No questions asked.
-        </p>
-      </div>
     </div>
   </section>
 </Layout>

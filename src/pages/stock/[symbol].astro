@@ -255,14 +255,11 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
         </div>
       )}
 
-      <!-- PREMIUM SECTION: Growth Projections (Our proprietary analysis) -->
-      <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-bold text-slate-100">Growth Projections</h2>
-          <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
-        </div>
+      <!-- Growth Projections -->
+      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4 text-slate-100">Growth Projections</h2>
 
-        <div class="premium-content blur-sm pointer-events-none select-none">
+        <div class="premium-content">
           <div class="grid grid-cols-2 gap-4">
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Projected EPS Growth</div>
@@ -278,23 +275,13 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
             </div>
           </div>
         </div>
-
-        <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
-          <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            Unlock Growth Data
-          </button>
-        </div>
       </div>
 
-      <!-- PREMIUM SECTION: Financial Health (Our proprietary scores) -->
-      <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-bold text-slate-100">Financial Health</h2>
-          <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
-        </div>
+      <!-- Financial Health -->
+      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4 text-slate-100">Financial Health</h2>
 
-        <div class="premium-content blur-sm pointer-events-none select-none">
+        <div class="premium-content">
           <div class="grid grid-cols-2 gap-4">
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Piotroski F-Score</div>
@@ -308,24 +295,14 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
             </div>
           </div>
         </div>
-
-        <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
-          <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            Unlock Health Metrics
-          </button>
-        </div>
       </div>
 
-      <!-- PREMIUM SECTION: Analyst Track Record -->
+      <!-- Analyst Track Record -->
       {(stock.sectorAnalystAccuracy || (stock.coveringAnalysts && stock.coveringAnalysts.length > 0)) && (
-        <div class="premium-section bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 relative overflow-hidden">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-slate-100">Analyst Track Record</h2>
-            <span class="premium-badge px-2 py-1 bg-[#22D3EE20] text-[#22D3EE] text-xs font-semibold rounded">PREMIUM</span>
-          </div>
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+          <h2 class="text-xl font-bold mb-4 text-slate-100">Analyst Track Record</h2>
 
-          <div class="premium-content blur-sm pointer-events-none select-none">
+          <div class="premium-content">
             {stock.sectorAnalystAccuracy && (
               <div class="mb-4 p-4 bg-[#080A0F] rounded-lg">
                 <div class="text-sm text-[#64748B] mb-1">{stock.sector} Sector Accuracy</div>
@@ -357,13 +334,6 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
                 </div>
               </div>
             )}
-          </div>
-
-          <div class="premium-overlay absolute inset-0 flex items-center justify-center bg-[#161B24]/60">
-            <button class="unlock-btn px-6 py-3 bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] rounded-xl font-bold transition flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-              Unlock Analyst Insights
-            </button>
           </div>
         </div>
       )}
@@ -419,14 +389,17 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
     document.addEventListener('DOMContentLoaded', () => {
       // Beta testing: Check for ?beta=true parameter
       const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('beta') === 'true') {
+      const isBeta = urlParams.get('beta') === 'true';
+
+      if (isBeta) {
         localStorage.setItem('subscriptionTier', 'pro');
         // Clean URL
         window.history.replaceState({}, '', window.location.pathname);
       }
 
       // Check subscription status and show/hide premium content
-      const isPremium = hasFeature('score_breakdown');
+      // Use beta flag OR hasFeature check (in case user already has pro from previous beta visit)
+      const isPremium = isBeta || hasFeature('score_breakdown');
 
       if (isPremium) {
         // Remove blur and overlays for premium users
@@ -451,7 +424,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
       const factorCards = document.querySelectorAll('.factor-card');
       factorCards.forEach(card => {
         card.addEventListener('click', () => {
-          if (!hasFeature('score_breakdown')) {
+          if (!isPremium) {
             (window as any).showUpgradeModal();
           }
         });
