@@ -395,7 +395,9 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
                         <span class={`font-bold ${analyst.percentile >= 75 ? 'text-emerald-400' : analyst.percentile >= 25 ? 'text-amber-400' : 'text-red-400'}`}>
                           {analyst.hitRate}%
                         </span>
-                        <span class="text-[#64748B] text-sm">Top {100 - analyst.percentile}%</span>
+                        <span class="text-[#64748B] text-sm">
+                          {analyst.percentile >= 50 ? `Top ${100 - analyst.percentile}%` : `Bottom ${analyst.percentile}%`}
+                        </span>
                       </div>
                     </div>
                   ))}
