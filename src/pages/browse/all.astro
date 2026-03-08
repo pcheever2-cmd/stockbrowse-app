@@ -238,7 +238,7 @@ const marketCapRanges = [
       if (likeMatch) {
         const companyQuery = likeMatch[1].trim();
         // Common company name aliases (what people type → actual symbol)
-        const companyAliases: Record<string, string> = {
+        const companyAliases = {
           'nvidia': 'NVDA', 'tesla': 'TSLA', 'apple': 'AAPL',
           'amazon': 'AMZN', 'microsoft': 'MSFT', 'google': 'GOOGL',
           'alphabet': 'GOOGL', 'meta': 'META', 'facebook': 'META',
