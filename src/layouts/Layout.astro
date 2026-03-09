@@ -73,7 +73,27 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
             Watchlist
             <span id="navWatchlistBadge" class="absolute -top-2 -right-2 bg-[#22D3EE] text-[#0C0F14] text-xs rounded-full w-4 h-4 flex items-center justify-center hidden text-[10px] font-bold"></span>
           </a>
-          <a href="/how-it-works" class="text-[#64748B] hover:text-slate-100 text-sm transition">How It Works</a>
+          <!-- How It Works Dropdown -->
+          <div class="relative group">
+            <button class="text-[#64748B] hover:text-slate-100 flex items-center gap-1 text-sm transition">
+              How It Works
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 top-full pt-2 hidden group-hover:block">
+              <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-xl py-2 w-56">
+                <a href="/how-it-works" class="block px-4 py-3 hover:bg-[#1C222E]">
+                  <div class="text-sm font-semibold text-[#22D3EE]">Compass Score</div>
+                  <div class="text-xs text-[#64748B] mt-0.5">Quality-focused fundamentals</div>
+                </a>
+                <a href="/moonshot-methodology" class="block px-4 py-3 hover:bg-[#1C222E]">
+                  <div class="text-sm font-semibold text-[#A855F7]">Moonshot Score</div>
+                  <div class="text-xs text-[#64748B] mt-0.5">Momentum + growth signals</div>
+                </a>
+              </div>
+            </div>
+          </div>
           <a href="/blog" class="text-[#64748B] hover:text-slate-100 text-sm transition">Learn</a>
           <a href="/pricing" class="text-[#64748B] hover:text-slate-100 text-sm transition">Pricing</a>
           <a href="/insights" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-4 py-2 rounded-lg font-bold text-sm transition">
@@ -94,7 +114,9 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
         <div class="px-4 py-4 space-y-3">
           <a href="/browse" class="block py-2 text-[#CBD5E1] hover:text-slate-100 font-medium">Browse Stocks</a>
           <a href="/tool" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Score Lookup</a>
-          <a href="/how-it-works" class="block py-2 text-[#CBD5E1] hover:text-slate-100">How It Works</a>
+          <div class="py-2 text-[#64748B] text-sm font-semibold">How It Works</div>
+          <a href="/how-it-works" class="block py-2 pl-4 text-[#CBD5E1] hover:text-slate-100">Compass Score</a>
+          <a href="/moonshot-methodology" class="block py-2 pl-4 text-[#CBD5E1] hover:text-slate-100">Moonshot Score</a>
           <a href="/blog" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Learn</a>
           <a href="/pricing" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Pricing</a>
           <a href="/insights" class="block py-2 text-[#22D3EE] font-semibold">Subscribe to Newsletter</a>
