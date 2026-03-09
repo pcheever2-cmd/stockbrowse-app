@@ -40,30 +40,64 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-6">
-          <!-- Browse Dropdown -->
+          <!-- Browse Mega-Menu -->
           <div class="relative group">
             <button class="text-[#64748B] hover:text-slate-100 flex items-center gap-1 text-sm transition">
               Browse
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div class="absolute left-0 top-full pt-2 hidden group-hover:block">
-              <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-xl py-2 w-56">
-                <a href="/browse/all" class="block px-4 py-2 hover:bg-[#1C222E] text-sm font-semibold text-[#22D3EE]">Browse All Stocks</a>
-                <div class="border-t border-[rgba(255,255,255,0.06)] my-2"></div>
-                <div class="px-3 py-1 text-xs font-semibold text-[#64748B] uppercase tracking-wider">By Industry</div>
-                <a href="/browse" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">All Industries</a>
-                <a href="/browse/technology" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Technology</a>
-                <a href="/browse/healthcare" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Healthcare</a>
-                <a href="/browse/finance" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Finance</a>
-                <div class="border-t border-[rgba(255,255,255,0.06)] my-2"></div>
-                <div class="px-3 py-1 text-xs font-semibold text-[#64748B] uppercase tracking-wider">By Goal</div>
-                <a href="/browse/growth" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Growth Stocks</a>
-                <a href="/browse/dividends" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Dividend Stocks</a>
-                <a href="/browse/low-risk" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Low-Risk Stocks</a>
-                <a href="/browse/under-50" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Under $50</a>
-                <a href="/browse/under-100" class="block px-4 py-2 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Under $100</a>
+            <div class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -translate-y-2 group-hover:translate-y-0">
+              <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-6 w-[700px]">
+                <!-- Browse All Banner -->
+                <a href="/browse/all" class="block mb-5 p-4 bg-gradient-to-r from-[#22D3EE]/10 to-[#06B6D4]/5 border border-[#22D3EE]/20 rounded-lg hover:border-[#22D3EE]/40 transition group/banner">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-[#22D3EE] font-semibold">Browse All Stocks</div>
+                      <div class="text-xs text-[#64748B] mt-0.5">View all 2,500+ rated stocks</div>
+                    </div>
+                    <svg class="w-5 h-5 text-[#22D3EE] group-hover/banner:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </div>
+                </a>
+
+                <!-- 3-Column Grid -->
+                <div class="grid grid-cols-3 gap-6">
+                  <!-- Column 1: By Industry -->
+                  <div>
+                    <div class="text-xs font-semibold text-[#64748B] uppercase tracking-wider mb-3 pb-2 border-b border-[rgba(255,255,255,0.06)]">By Industry</div>
+                    <div class="space-y-1">
+                      <a href="/browse" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">All Industries</a>
+                      <a href="/browse/technology" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Technology</a>
+                      <a href="/browse/healthcare" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Healthcare</a>
+                      <a href="/browse/finance" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Finance</a>
+                      <a href="/browse/energy" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Energy</a>
+                      <a href="/browse/consumer" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Consumer</a>
+                    </div>
+                  </div>
+
+                  <!-- Column 2: By Goal -->
+                  <div>
+                    <div class="text-xs font-semibold text-[#64748B] uppercase tracking-wider mb-3 pb-2 border-b border-[rgba(255,255,255,0.06)]">By Goal</div>
+                    <div class="space-y-1">
+                      <a href="/browse/growth" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Growth Stocks</a>
+                      <a href="/browse/dividends" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Dividend Stocks</a>
+                      <a href="/browse/low-risk" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Low-Risk Stocks</a>
+                    </div>
+                  </div>
+
+                  <!-- Column 3: By Price -->
+                  <div>
+                    <div class="text-xs font-semibold text-[#64748B] uppercase tracking-wider mb-3 pb-2 border-b border-[rgba(255,255,255,0.06)]">By Price</div>
+                    <div class="space-y-1">
+                      <a href="/browse/under-50" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Under $50</a>
+                      <a href="/browse/under-100" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Under $100</a>
+                      <a href="/browse/under-500" class="block py-1.5 text-sm text-[#CBD5E1] hover:text-[#22D3EE] hover:pl-1 transition-all">Under $500</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
