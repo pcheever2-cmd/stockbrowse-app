@@ -37,6 +37,27 @@ const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
 const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings, stock.upside);
 const recentRatings = parseRecentRatings(stock.recentRatings);
 
+// Create a map of firm -> most recent rating for cross-referencing
+const firmRatingsMap = new Map<string, { rating: string; icon: string }>();
+recentRatings.forEach(r => {
+  // Only keep the first (most recent) rating for each firm
+  if (!firmRatingsMap.has(r.firm)) {
+    firmRatingsMap.set(r.firm, { rating: r.rating, icon: r.icon });
+  }
+});
+
+// Helper to get rating badge color
+function getRatingColor(rating: string): { bg: string; text: string } {
+  const r = rating.toLowerCase();
+  if (r.includes('buy') || r.includes('outperform') || r.includes('overweight')) {
+    return { bg: 'bg-emerald-500/20', text: 'text-emerald-400' };
+  }
+  if (r.includes('sell') || r.includes('underperform') || r.includes('underweight')) {
+    return { bg: 'bg-red-500/20', text: 'text-red-400' };
+  }
+  return { bg: 'bg-amber-500/20', text: 'text-amber-400' }; // Neutral/Hold
+}
+
 // Factor definitions with universe averages and details
 const factors = [
   {
@@ -388,19 +409,30 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
               <div>
                 <div class="text-sm text-[#64748B] mb-3">Analysts Covering {stock.symbol}</div>
                 <div class="space-y-2">
-                  {stock.coveringAnalysts.map(analyst => (
-                    <div class="flex items-center justify-between bg-[#080A0F] rounded-lg px-4 py-3">
-                      <span class="text-slate-200 font-medium">{analyst.firm}</span>
-                      <div class="flex items-center gap-4">
-                        <span class={`font-bold ${analyst.percentile >= 75 ? 'text-emerald-400' : analyst.percentile >= 25 ? 'text-amber-400' : 'text-red-400'}`}>
-                          {analyst.hitRate}%
-                        </span>
-                        <span class="text-[#64748B] text-sm">
-                          {analyst.percentile >= 50 ? `Top ${100 - analyst.percentile}%` : `Bottom ${analyst.percentile}%`}
-                        </span>
+                  {stock.coveringAnalysts.map(analyst => {
+                    const firmRating = firmRatingsMap.get(analyst.firm);
+                    const ratingColors = firmRating ? getRatingColor(firmRating.rating) : null;
+                    return (
+                      <div class="flex items-center justify-between bg-[#080A0F] rounded-lg px-4 py-3">
+                        <div class="flex items-center gap-3">
+                          <span class="text-slate-200 font-medium">{analyst.firm}</span>
+                          {firmRating && (
+                            <span class={`px-2 py-0.5 rounded text-xs font-medium ${ratingColors.bg} ${ratingColors.text}`}>
+                              {firmRating.rating}
+                            </span>
+                          )}
+                        </div>
+                        <div class="flex items-center gap-4">
+                          <span class={`font-bold ${analyst.percentile >= 75 ? 'text-emerald-400' : analyst.percentile >= 25 ? 'text-amber-400' : 'text-red-400'}`}>
+                            {analyst.hitRate}%
+                          </span>
+                          <span class="text-[#64748B] text-sm">
+                            {analyst.percentile >= 50 ? `Top ${100 - analyst.percentile}%` : `Bottom ${analyst.percentile}%`}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
                 <div class="mt-3 text-xs text-[#64748B]">
                   Hit rate = % of calls where the stock moved in the predicted direction
