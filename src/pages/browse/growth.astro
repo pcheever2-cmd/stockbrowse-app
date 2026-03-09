@@ -19,10 +19,23 @@ const stocks = getGrowthStocks();
         </div>
       </div>
 
-      <p class="text-[#CBD5E1] mb-8 max-w-3xl">
+      <p class="text-[#CBD5E1] mb-6 max-w-3xl">
         These are quality stocks (B grade or higher) in traditionally growth-oriented sectors.
         Growth stocks typically reinvest profits rather than paying dividends, focusing on expanding their business.
       </p>
+
+      <div class="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-4 mb-8 border border-purple-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🚀</span>
+          <p class="text-sm text-[#CBD5E1]">
+            Looking for quality growth stocks? Check out stocks with high <strong class="text-purple-300">Moonshot Scores</strong> -
+            our selective score that only ~10% of stocks qualify for.
+          </p>
+        </div>
+        <a href="/moonshot-methodology" class="flex-shrink-0 text-purple-400 hover:text-purple-300 text-sm font-semibold">
+          How Moonshot Works →
+        </a>
+      </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {stocks.map(stock => {
