@@ -204,6 +204,72 @@ const marketCapRanges = [
       sort: 'score-desc'
     };
 
+    // URL State Management - persist filters in URL for back button support
+    function saveFiltersToURL() {
+      const params = new URLSearchParams();
+
+      if (filters.search) params.set('q', filters.search);
+      if (filters.grades.length) params.set('grades', filters.grades.join(','));
+      if (filters.industries.length) params.set('industries', filters.industries.join(','));
+      if (filters.priceRanges.length) params.set('price', filters.priceRanges.join(','));
+      if (filters.marketCapRanges.length) params.set('cap', filters.marketCapRanges.join(','));
+      if (filters.hasMoonshot) params.set('moonshot', '1');
+      if (filters.goldenOnly) params.set('golden', '1');
+      if (filters.sort !== 'score-desc') params.set('sort', filters.sort);
+
+      const newURL = params.toString() ? `${window.location.pathname}?${params}` : window.location.pathname;
+      history.replaceState(null, '', newURL);
+    }
+
+    function restoreFiltersFromURL() {
+      const params = new URLSearchParams(window.location.search);
+
+      if (params.get('q')) {
+        filters.search = params.get('q');
+        document.getElementById('searchInput').value = filters.search;
+      }
+      if (params.get('grades')) {
+        filters.grades = params.get('grades').split(',');
+        filters.grades.forEach(g => {
+          const cb = document.querySelector(`input[data-grade="${g}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('industries')) {
+        filters.industries = params.get('industries').split(',');
+        filters.industries.forEach(i => {
+          const cb = document.querySelector(`input[data-industry="${i}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('price')) {
+        filters.priceRanges = params.get('price').split(',');
+        filters.priceRanges.forEach(r => {
+          const cb = document.querySelector(`input[data-price-range="${r}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('cap')) {
+        filters.marketCapRanges = params.get('cap').split(',');
+        filters.marketCapRanges.forEach(r => {
+          const cb = document.querySelector(`input[data-cap-range="${r}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('moonshot') === '1') {
+        filters.hasMoonshot = true;
+        document.getElementById('moonshotFilter').checked = true;
+      }
+      if (params.get('golden') === '1') {
+        filters.goldenOnly = true;
+        document.getElementById('goldenFilter').checked = true;
+      }
+      if (params.get('sort')) {
+        filters.sort = params.get('sort');
+        document.getElementById('sortSelect').value = filters.sort;
+      }
+    }
+
     // Watchlist (stored in localStorage)
     function getWatchlist() {
       const stored = localStorage.getItem('compassWatchlist');
@@ -513,6 +579,7 @@ const marketCapRanges = [
       sortStocks();
       renderStocks();
       updateActiveFilters();
+      saveFiltersToURL();
     }
 
     function sortStocks() {
@@ -894,8 +961,9 @@ const marketCapRanges = [
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
 
-    // Initial render
+    // Initial render - restore filters from URL first (for back button support)
     updateWatchlistBadge();
+    restoreFiltersFromURL();
     applyFilters();
   </script>
 </Layout>
