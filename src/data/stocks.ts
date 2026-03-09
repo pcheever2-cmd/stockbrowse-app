@@ -19,6 +19,7 @@ export interface Stock {
   avgPriceTarget: number | null;
   upside: number | null;
   recentRatings: string;
+  analystPriceTargets: string;
 
   // Premium: Valuation metrics
   evEbitda: number | null;
@@ -599,4 +600,29 @@ export function parseRecentRatings(ratingsStr: string): Array<{ date: string; fi
 
     return { date, firm: firm || '', rating: rating || '', icon };
   });
+}
+
+// Parse analyst price targets into structured format
+export function parseAnalystPriceTargets(targetsStr: string): Array<{ date: string; firm: string; priceTarget: number; priceWhenPosted: number | null }> {
+  if (!targetsStr) return [];
+
+  const lines = targetsStr.split('\n').filter(l => l.trim());
+  return lines.map(line => {
+    // Format: "2026-01-15|Goldman Sachs|200|185" (date|firm|target|priceWhenPosted)
+    const parts = line.split('|');
+    if (parts.length < 3) return null;
+
+    const [date, firm, targetStr, priceWhenPostedStr] = parts;
+    const priceTarget = parseFloat(targetStr);
+    const priceWhenPosted = priceWhenPostedStr ? parseFloat(priceWhenPostedStr) : null;
+
+    if (isNaN(priceTarget)) return null;
+
+    return {
+      date: date || '',
+      firm: firm || '',
+      priceTarget,
+      priceWhenPosted: priceWhenPosted && !isNaN(priceWhenPosted) ? priceWhenPosted : null
+    };
+  }).filter((item): item is NonNullable<typeof item> => item !== null);
 }

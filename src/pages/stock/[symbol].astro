@@ -14,7 +14,8 @@ import {
   getScoreBreakdown,
   getFactorRatingColor,
   getConsensusInfo,
-  parseRecentRatings
+  parseRecentRatings,
+  parseAnalystPriceTargets
 } from '../../data/stocks';
 
 export function getStaticPaths() {
@@ -46,13 +47,26 @@ recentRatings.forEach(r => {
   }
 });
 
-// Enhance covering analysts with rating dates and sort by accuracy + recency
+// Parse individual analyst price targets and create a map
+const analystPriceTargets = parseAnalystPriceTargets(stock.analystPriceTargets || '');
+const firmPriceTargetMap = new Map<string, { priceTarget: number; priceWhenPosted: number | null; date: string }>();
+analystPriceTargets.forEach(pt => {
+  // Only keep the first (most recent) price target for each firm
+  if (!firmPriceTargetMap.has(pt.firm)) {
+    firmPriceTargetMap.set(pt.firm, { priceTarget: pt.priceTarget, priceWhenPosted: pt.priceWhenPosted, date: pt.date });
+  }
+});
+
+// Enhance covering analysts with rating dates, price targets, and sort by accuracy + recency
 const enhancedAnalysts = stock.coveringAnalysts ? stock.coveringAnalysts.map(analyst => {
   const firmRating = firmRatingsMap.get(analyst.firm);
+  const firmPriceTarget = firmPriceTargetMap.get(analyst.firm);
   return {
     ...analyst,
     rating: firmRating?.rating || null,
-    ratingDate: firmRating?.date || null
+    ratingDate: firmRating?.date || null,
+    priceTarget: firmPriceTarget?.priceTarget || null,
+    priceTargetDate: firmPriceTarget?.date || null
   };
 }).sort((a, b) => {
   // Primary sort: highest hit rate first
@@ -445,6 +459,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
                         data-hitrate={analyst.hitRate}
                         data-date={analyst.ratingDate || ''}
                         data-percentile={analyst.percentile}
+                        data-pricetarget={analyst.priceTarget || ''}
                       >
                         <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
                           <span class="text-slate-200 font-medium">{analyst.firm}</span>
@@ -462,6 +477,16 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
                           </div>
                         </div>
                         <div class="flex items-center gap-4">
+                          {analyst.priceTarget && (
+                            <div class="text-right">
+                              <span class="text-slate-200 font-semibold">${analyst.priceTarget.toFixed(0)}</span>
+                              {stock.price && (
+                                <span class={`ml-1 text-xs ${analyst.priceTarget > stock.price ? 'text-emerald-400' : 'text-red-400'}`}>
+                                  ({analyst.priceTarget > stock.price ? '+' : ''}{(((analyst.priceTarget - stock.price) / stock.price) * 100).toFixed(0)}%)
+                                </span>
+                              )}
+                            </div>
+                          )}
                           <span class={`font-bold ${analyst.percentile >= 75 ? 'text-emerald-400' : analyst.percentile >= 25 ? 'text-amber-400' : 'text-red-400'}`}>
                             {analyst.hitRate}%
                           </span>
