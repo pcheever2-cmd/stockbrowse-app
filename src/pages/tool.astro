@@ -131,7 +131,7 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
       return `$${(cap * 1000).toFixed(0)}M`;
     }
 
-    function getConsensusInfo(consensus, recentRatings = '') {
+    function getConsensusInfo(consensus, recentRatings = '', upside = null) {
       // Calculate consensus from actual analyst ratings
       if (recentRatings) {
         const ratings = parseRecentRatings(recentRatings);
@@ -153,11 +153,28 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
           const buyPct = buyCount / total;
           const sellPct = sellCount / total;
 
-          if (buyPct >= 0.6) return { label: 'Strong Buy', color: 'text-emerald-700', bgColor: 'bg-emerald-100' };
-          if (buyPct >= 0.4) return { label: 'Buy', color: 'text-blue-700', bgColor: 'bg-blue-100' };
-          if (sellPct >= 0.6) return { label: 'Strong Sell', color: 'text-red-700', bgColor: 'bg-red-100' };
-          if (sellPct >= 0.4) return { label: 'Sell', color: 'text-amber-700', bgColor: 'bg-amber-100' };
-          return { label: 'Hold', color: 'text-slate-700', bgColor: 'bg-[#0C0F14]' };
+          let consensus;
+          if (buyPct >= 0.6) consensus = { label: 'Strong Buy', color: 'text-emerald-700', bgColor: 'bg-emerald-100' };
+          else if (buyPct >= 0.4) consensus = { label: 'Buy', color: 'text-blue-700', bgColor: 'bg-blue-100' };
+          else if (sellPct >= 0.6) consensus = { label: 'Strong Sell', color: 'text-red-700', bgColor: 'bg-red-100' };
+          else if (sellPct >= 0.4) consensus = { label: 'Sell', color: 'text-amber-700', bgColor: 'bg-amber-100' };
+          else consensus = { label: 'Hold', color: 'text-slate-700', bgColor: 'bg-[#0C0F14]' };
+
+          // Override if price target conflicts with rating
+          // If stock is >15% above target, don't show "Buy" - show "Above Target"
+          if (upside !== null && upside < -15) {
+            if (consensus.label === 'Strong Buy' || consensus.label === 'Buy') {
+              return { label: 'Above Target', color: 'text-amber-700', bgColor: 'bg-amber-100' };
+            }
+          }
+          // If stock is >30% below target but analysts say sell, show "Below Target"
+          if (upside !== null && upside > 30) {
+            if (consensus.label === 'Strong Sell' || consensus.label === 'Sell') {
+              return { label: 'Below Target', color: 'text-blue-700', bgColor: 'bg-blue-100' };
+            }
+          }
+
+          return consensus;
         }
       }
       return { label: 'N/A', color: 'text-[#64748B]', bgColor: 'bg-[#080A0F]' };
@@ -254,7 +271,7 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
       const colors = getGradeColors(stock.grade);
       const summary = generateSummary(stock);
       const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
-      const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings);
+      const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings, stock.upside);
       const recentRatings = parseRecentRatings(stock.recentRatings);
 
       // Truncate description

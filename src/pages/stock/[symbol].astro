@@ -34,7 +34,7 @@ const breakdown = getScoreBreakdown(stock);
 
 // Analyst data
 const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
-const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings);
+const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings, stock.upside);
 const recentRatings = parseRecentRatings(stock.recentRatings);
 
 // Factor definitions with universe averages and details

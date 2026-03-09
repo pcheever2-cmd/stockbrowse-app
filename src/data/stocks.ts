@@ -518,7 +518,8 @@ export function getFactorRatingColor(rating: FactorRating): { bg: string; text: 
 }
 
 // Analyst consensus helpers - calculates from actual analyst ratings
-export function getConsensusInfo(_consensus: string | null, recentRatings: string = ''): { label: string; color: string; bgColor: string } {
+// Now considers price target vs current price (upside) to avoid contradictory displays
+export function getConsensusInfo(_consensus: string | null, recentRatings: string = '', upside: number | null = null): { label: string; color: string; bgColor: string } {
   // Calculate consensus from recent ratings (consensus param reserved for future use)
   if (recentRatings) {
     const ratings = parseRecentRatings(recentRatings);
@@ -544,17 +545,36 @@ export function getConsensusInfo(_consensus: string | null, recentRatings: strin
       const buyPct = buyCount / total;
       const sellPct = sellCount / total;
 
+      // Determine base consensus
+      let consensus: { label: string; color: string; bgColor: string };
       if (buyPct >= 0.6) {
-        return { label: 'Strong Buy', color: 'text-emerald-400', bgColor: 'bg-emerald-900/40' };
+        consensus = { label: 'Strong Buy', color: 'text-emerald-400', bgColor: 'bg-emerald-900/40' };
       } else if (buyPct >= 0.4) {
-        return { label: 'Buy', color: 'text-blue-400', bgColor: 'bg-blue-900/40' };
+        consensus = { label: 'Buy', color: 'text-blue-400', bgColor: 'bg-blue-900/40' };
       } else if (sellPct >= 0.6) {
-        return { label: 'Strong Sell', color: 'text-red-400', bgColor: 'bg-red-900/40' };
+        consensus = { label: 'Strong Sell', color: 'text-red-400', bgColor: 'bg-red-900/40' };
       } else if (sellPct >= 0.4) {
-        return { label: 'Sell', color: 'text-amber-400', bgColor: 'bg-amber-900/40' };
+        consensus = { label: 'Sell', color: 'text-amber-400', bgColor: 'bg-amber-900/40' };
       } else {
-        return { label: 'Hold', color: 'text-slate-300', bgColor: 'bg-slate-700/40' };
+        consensus = { label: 'Hold', color: 'text-slate-300', bgColor: 'bg-slate-700/40' };
       }
+
+      // Override if price target conflicts with rating
+      // If upside is significantly negative (stock > 15% above target), downgrade buy ratings
+      if (upside !== null && upside < -15) {
+        if (consensus.label === 'Strong Buy' || consensus.label === 'Buy') {
+          // Stock is well above analyst targets - show "Above Target" instead
+          return { label: 'Above Target', color: 'text-amber-400', bgColor: 'bg-amber-900/40' };
+        }
+      }
+      // If upside is very positive (>30%) but analysts say sell, flag as "Below Target"
+      if (upside !== null && upside > 30) {
+        if (consensus.label === 'Strong Sell' || consensus.label === 'Sell') {
+          return { label: 'Below Target', color: 'text-blue-400', bgColor: 'bg-blue-900/40' };
+        }
+      }
+
+      return consensus;
     }
   }
 
