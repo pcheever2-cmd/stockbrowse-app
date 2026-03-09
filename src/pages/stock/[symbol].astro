@@ -156,8 +156,8 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
 <Layout title={`${stock.name} (${stock.symbol}) Compass Score | Stockbrowse`}>
   <section class="py-12 bg-[#0C0F14] min-h-screen">
     <div class="max-w-4xl mx-auto px-4">
-      <!-- Back Link -->
-      <a href="/browse/all" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">&larr; Back to Browse</a>
+      <!-- Back Link - uses history.back() if coming from browse page to preserve filters -->
+      <a href="/browse/all" onclick="if(document.referrer.includes('/browse/')) { history.back(); return false; }" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">&larr; Back to Browse</a>
 
       <!-- Header with Score -->
       <div class={`rounded-2xl p-8 ${colors.bg} border ${colors.border} mb-8`}>
