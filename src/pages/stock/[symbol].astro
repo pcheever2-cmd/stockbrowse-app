@@ -327,23 +327,57 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       <!-- FREE SECTION: Valuation Metrics (Yahoo Finance available) -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold mb-4 text-slate-100">Valuation Metrics</h2>
+        <p class="text-[#64748B] text-xs mb-4">Click any metric for details</p>
         <div class="grid grid-cols-3 gap-4">
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">EV/EBITDA</div>
-            <div class="text-2xl font-bold text-slate-100">{stock.evEbitda?.toFixed(1) || 'N/A'}</div>
+          <div class="metric-wrapper">
+            <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+              <div class="text-sm text-[#64748B] mb-1">EV/EBITDA</div>
+              <div class="text-2xl font-bold text-slate-100">{stock.evEbitda?.toFixed(1) || 'N/A'}</div>
+            </button>
+            <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+              <h4 class="font-semibold text-slate-100 mb-2">Enterprise Value to EBITDA</h4>
+              <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                Compares a company's total value (including debt) to its operating earnings before interest, taxes, depreciation, and amortization.
+              </p>
+              <p class="text-xs text-[#64748B]">
+                <span class="text-emerald-400">Lower is generally better</span> — suggests the company may be undervalued relative to its earnings power. Typical ranges vary by industry: tech often trades at 15-25x, while utilities may trade at 8-12x.
+              </p>
+            </div>
           </div>
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">Forward P/E</div>
-            <div class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || 'N/A'}</div>
-            {stock.sectorPe && stock.forwardPe && (
-              <div class={`text-xs mt-1 ${stock.forwardPe < stock.sectorPe ? 'text-emerald-400' : stock.forwardPe > stock.sectorPe * 1.2 ? 'text-amber-400' : 'text-[#64748B]'}`}>
-                Sector: {stock.sectorPe.toFixed(1)}
-              </div>
-            )}
+          <div class="metric-wrapper">
+            <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+              <div class="text-sm text-[#64748B] mb-1">Forward P/E</div>
+              <div class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || 'N/A'}</div>
+              {stock.sectorPe && stock.forwardPe && (
+                <div class={`text-xs mt-1 ${stock.forwardPe < stock.sectorPe ? 'text-emerald-400' : stock.forwardPe > stock.sectorPe * 1.2 ? 'text-amber-400' : 'text-[#64748B]'}`}>
+                  Sector: {stock.sectorPe.toFixed(1)}
+                </div>
+              )}
+            </button>
+            <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+              <h4 class="font-semibold text-slate-100 mb-2">Forward Price-to-Earnings</h4>
+              <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                Stock price divided by expected earnings per share over the next 12 months. Uses analyst estimates for future earnings rather than historical data.
+              </p>
+              <p class="text-xs text-[#64748B]">
+                <span class="text-emerald-400">Below the sector average</span> may indicate relative value. <span class="text-red-400">Above sector</span> could mean it's expensive, or investors expect higher growth. Growth stocks typically have higher P/Es.
+              </p>
+            </div>
           </div>
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">PEG Ratio</div>
-            <div class="text-2xl font-bold text-slate-100">{stock.pegRatio?.toFixed(2) || 'N/A'}</div>
+          <div class="metric-wrapper">
+            <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+              <div class="text-sm text-[#64748B] mb-1">PEG Ratio</div>
+              <div class="text-2xl font-bold text-slate-100">{stock.pegRatio?.toFixed(2) || 'N/A'}</div>
+            </button>
+            <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+              <h4 class="font-semibold text-slate-100 mb-2">Price/Earnings-to-Growth Ratio</h4>
+              <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                P/E ratio divided by expected earnings growth rate. Adjusts valuation for growth expectations — a high P/E might be justified if the company is growing fast.
+              </p>
+              <p class="text-xs text-[#64748B]">
+                <span class="text-emerald-400">PEG under 1.0</span> suggests the stock may be undervalued relative to its growth. <span class="text-amber-400">PEG of 1.0-2.0</span> is typical for quality growth stocks. <span class="text-red-400">PEG over 2.0</span> may indicate overvaluation.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -351,22 +385,60 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       <!-- FREE SECTION: Technical Overview (Yahoo Finance available) -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold mb-4 text-slate-100">Technical Overview</h2>
+        <p class="text-[#64748B] text-xs mb-4">Click any metric for details</p>
         <div class="grid grid-cols-3 gap-4">
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">RSI (14)</div>
-            <div class={`text-2xl font-bold ${rsiInfo.color}`}>{rsiInfo.value}</div>
-            <div class={`text-xs ${rsiInfo.color}`}>{rsiInfo.label}</div>
-          </div>
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">vs 50-Day SMA</div>
-            <div class={`text-2xl font-bold ${stock.sma50 && stock.price > stock.sma50 ? 'text-emerald-400' : 'text-red-400'}`}>
-              {stock.sma50 ? (stock.price > stock.sma50 ? 'Above' : 'Below') : 'N/A'}
+          <div class="metric-wrapper">
+            <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+              <div class="text-sm text-[#64748B] mb-1">RSI (14)</div>
+              <div class={`text-2xl font-bold ${rsiInfo.color}`}>{rsiInfo.value}</div>
+              <div class={`text-xs ${rsiInfo.color}`}>{rsiInfo.label}</div>
+            </button>
+            <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+              <h4 class="font-semibold text-slate-100 mb-2">Relative Strength Index (14-day)</h4>
+              <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                Momentum indicator measuring the speed and magnitude of recent price changes on a scale of 0-100.
+              </p>
+              <p class="text-xs text-[#64748B]">
+                <span class="text-red-400">Above 70 (Overbought)</span>: Stock may have risen too quickly and could be due for a pullback.
+                <br/><span class="text-emerald-400">Below 30 (Oversold)</span>: Stock may have fallen too much and could be due for a bounce.
+                <br/><span class="text-slate-300">30-70 (Neutral)</span>: Neither overbought nor oversold.
+              </p>
             </div>
           </div>
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">vs 200-Day SMA</div>
-            <div class={`text-2xl font-bold ${stock.sma200 && stock.price > stock.sma200 ? 'text-emerald-400' : 'text-red-400'}`}>
-              {stock.sma200 ? (stock.price > stock.sma200 ? 'Above' : 'Below') : 'N/A'}
+          <div class="metric-wrapper">
+            <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+              <div class="text-sm text-[#64748B] mb-1">vs 50-Day SMA</div>
+              <div class={`text-2xl font-bold ${stock.sma50 && stock.price > stock.sma50 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {stock.sma50 ? (stock.price > stock.sma50 ? 'Above' : 'Below') : 'N/A'}
+              </div>
+            </button>
+            <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+              <h4 class="font-semibold text-slate-100 mb-2">50-Day Simple Moving Average</h4>
+              <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                The average closing price over the past 50 trading days. Used to identify short-term trends.
+              </p>
+              <p class="text-xs text-[#64748B]">
+                <span class="text-emerald-400">Above the 50-day SMA</span>: Stock is in a short-term uptrend. Often seen as bullish — buyers are in control recently.
+                <br/><span class="text-red-400">Below the 50-day SMA</span>: Stock is in a short-term downtrend. May signal weakness or selling pressure.
+              </p>
+            </div>
+          </div>
+          <div class="metric-wrapper">
+            <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+              <div class="text-sm text-[#64748B] mb-1">vs 200-Day SMA</div>
+              <div class={`text-2xl font-bold ${stock.sma200 && stock.price > stock.sma200 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {stock.sma200 ? (stock.price > stock.sma200 ? 'Above' : 'Below') : 'N/A'}
+              </div>
+            </button>
+            <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+              <h4 class="font-semibold text-slate-100 mb-2">200-Day Simple Moving Average</h4>
+              <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                The average closing price over the past 200 trading days. The most widely followed indicator for long-term trend direction.
+              </p>
+              <p class="text-xs text-[#64748B]">
+                <span class="text-emerald-400">Above the 200-day SMA</span>: Stock is in a long-term uptrend. Generally considered bullish — the stock has sustained momentum.
+                <br/><span class="text-red-400">Below the 200-day SMA</span>: Stock is in a long-term downtrend. Often seen as a warning sign by technical traders.
+              </p>
             </div>
           </div>
         </div>
@@ -425,18 +497,48 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       <!-- Financial Health -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold mb-4 text-slate-100">Financial Health</h2>
+        <p class="text-[#64748B] text-xs mb-4">Click any metric for details</p>
 
         <div class="premium-content">
           <div class="grid grid-cols-2 gap-4">
-            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Piotroski F-Score</div>
-              <div class={`text-2xl font-bold ${piotroskiInfo.color}`}>{piotroskiInfo.value}</div>
-              <div class={`text-xs ${piotroskiInfo.color}`}>{piotroskiInfo.label}</div>
+            <div class="metric-wrapper">
+              <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+                <div class="text-sm text-[#64748B] mb-1">Piotroski F-Score</div>
+                <div class={`text-2xl font-bold ${piotroskiInfo.color}`}>{piotroskiInfo.value}</div>
+                <div class={`text-xs ${piotroskiInfo.color}`}>{piotroskiInfo.label}</div>
+              </button>
+              <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+                <h4 class="font-semibold text-slate-100 mb-2">Piotroski F-Score</h4>
+                <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                  A 9-point scoring system that evaluates a company's financial strength based on profitability, leverage, liquidity, and operating efficiency.
+                </p>
+                <p class="text-xs text-[#64748B]">
+                  <span class="text-emerald-400">7-9 (Strong)</span>: Excellent financial health with improving fundamentals.
+                  <br/><span class="text-slate-300">4-6 (Average)</span>: Mixed financial signals.
+                  <br/><span class="text-red-400">0-3 (Weak)</span>: Potential financial distress or deteriorating fundamentals.
+                </p>
+              </div>
             </div>
-            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Altman Z-Score</div>
-              <div class={`text-2xl font-bold ${altmanInfo.color}`}>{altmanInfo.value}</div>
-              <div class={`text-xs ${altmanInfo.color}`}>{altmanInfo.label}</div>
+            <div class="metric-wrapper">
+              <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
+                <div class="text-sm text-[#64748B] mb-1">Altman Z-Score</div>
+                <div class={`text-2xl font-bold ${altmanInfo.color}`}>{altmanInfo.value}</div>
+                <div class={`text-xs ${altmanInfo.color}`}>{altmanInfo.label}</div>
+              </button>
+              <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
+                <h4 class="font-semibold text-slate-100 mb-2">Altman Z-Score</h4>
+                <p class="text-xs text-[#CBD5E1] leading-relaxed mb-2">
+                  A formula predicting the probability of bankruptcy within 2 years, combining 5 financial ratios including working capital, retained earnings, and sales.
+                </p>
+                <p class="text-xs text-[#64748B]">
+                  <span class="text-emerald-400">Above 2.99 (Safe)</span>: Low bankruptcy risk.
+                  <br/><span class="text-amber-400">1.81-2.99 (Grey Zone)</span>: Moderate risk, warrants monitoring.
+                  <br/><span class="text-red-400">Below 1.81 (Distress)</span>: Elevated bankruptcy risk.
+                </p>
+                <p class="text-xs text-amber-400 mt-2 italic">
+                  Note: The Altman Z-Score was originally designed for manufacturing companies. It may be less reliable for financial firms, utilities, or service-based businesses.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -616,6 +718,23 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           if (detail) {
             // Close all other open details
             document.querySelectorAll('.factor-detail').forEach(d => {
+              if (d !== detail) d.classList.add('hidden');
+            });
+            // Toggle this detail
+            detail.classList.toggle('hidden');
+          }
+        });
+      });
+
+      // Metric card clicks - toggle detail panel (for Valuation, Technical, Financial Health)
+      const metricCards = document.querySelectorAll('.metric-card');
+      metricCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const wrapper = card.closest('.metric-wrapper');
+          const detail = wrapper?.querySelector('.metric-detail');
+          if (detail) {
+            // Close all other open metric details
+            document.querySelectorAll('.metric-detail').forEach(d => {
               if (d !== detail) d.classList.add('hidden');
             });
             // Toggle this detail
