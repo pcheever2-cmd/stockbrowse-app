@@ -35,7 +35,7 @@ That intuition is your starting point. There are roughly 11 major sectors in the
 - **Materials** -- chemicals, metals, mining
 - **Communication Services** -- media, telecom, social platforms
 
-Pick one or two that feel familiar. You've just narrowed 2,500+ publicly traded companies down to a few hundred.
+Pick one or two that feel familiar. You've just narrowed 4,500+ publicly traded companies down to a few hundred.
 
 ---
 
