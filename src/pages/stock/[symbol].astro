@@ -335,9 +335,9 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="bg-[#080A0F] rounded-lg p-4 text-center">
             <div class="text-sm text-[#64748B] mb-1">Forward P/E</div>
             <div class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || 'N/A'}</div>
-            {stock.industryPe && stock.forwardPe && (
-              <div class={`text-xs mt-1 ${stock.forwardPe < stock.industryPe ? 'text-emerald-400' : stock.forwardPe > stock.industryPe * 1.2 ? 'text-amber-400' : 'text-[#64748B]'}`}>
-                Industry: {stock.industryPe.toFixed(1)}
+            {stock.sectorPe && stock.forwardPe && (
+              <div class={`text-xs mt-1 ${stock.forwardPe < stock.sectorPe ? 'text-emerald-400' : stock.forwardPe > stock.sectorPe * 1.2 ? 'text-amber-400' : 'text-[#64748B]'}`}>
+                Sector: {stock.sectorPe.toFixed(1)}
               </div>
             )}
           </div>
