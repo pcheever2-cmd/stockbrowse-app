@@ -24,6 +24,7 @@ export interface Stock {
   // Premium: Valuation metrics
   evEbitda: number | null;
   forwardPe: number | null;
+  industryPe: number | null;  // Median P/E for this industry (for comparison)
   pegRatio: number | null;
 
   // Premium: Growth metrics
