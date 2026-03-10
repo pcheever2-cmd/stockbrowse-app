@@ -62,6 +62,12 @@ export interface Stock {
     volatility: number | null;    // 60-day annualized volatility %
     assetGrowth: number | null;   // YoY asset growth %
   } | null;
+
+  // Special note explaining score context (for holding companies, etc.)
+  scoreNote: {
+    title: string;
+    text: string;
+  } | null;
 }
 
 export const stocks: Stock[] = stocksData as Stock[];

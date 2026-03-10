@@ -256,6 +256,19 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         <p class={`${colors.text} leading-relaxed text-lg`}>{summary}</p>
       </div>
 
+      <!-- Score Context Note (for holding companies, etc.) -->
+      {stock.scoreNote && (
+        <div class="bg-blue-900/20 border border-blue-700/30 rounded-xl p-6 mb-8">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">ℹ️</span>
+            <div>
+              <h3 class="font-semibold text-blue-400 mb-2">{stock.scoreNote.title}</h3>
+              <p class="text-sm text-blue-200/80 leading-relaxed">{stock.scoreNote.text}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <!-- Score Breakdown (Free: labels only, Premium: actual values on click) -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold mb-4 text-slate-100">Score Breakdown</h2>
