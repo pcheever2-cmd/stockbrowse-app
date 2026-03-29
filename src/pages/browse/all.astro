@@ -115,6 +115,25 @@ const marketCapRanges = [
                 </label>
               </div>
             </div>
+
+            <!-- Valuation Filter -->
+            <div>
+              <h4 class="font-semibold mb-3">Technical Valuation</h4>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <input type="checkbox" name="valuation" value="Undervalued" class="rounded text-emerald-500 filter-checkbox" />
+                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-emerald-500/20 text-emerald-400">Undervalued</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <input type="checkbox" name="valuation" value="Fair Value" class="rounded text-amber-500 filter-checkbox" />
+                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-amber-500/20 text-amber-400">Fair Value</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <input type="checkbox" name="valuation" value="Overvalued" class="rounded text-red-500 filter-checkbox" />
+                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-red-500/20 text-red-400">Overvalued</span>
+                </label>
+              </div>
+            </div>
           </div>
         </aside>
 
@@ -201,6 +220,7 @@ const marketCapRanges = [
       marketCapRanges: [],
       hasMoonshot: false,
       goldenOnly: false,
+      valuationRatings: [],
       sort: 'score-desc'
     };
 
@@ -215,6 +235,7 @@ const marketCapRanges = [
       if (filters.marketCapRanges.length) params.set('cap', filters.marketCapRanges.join(','));
       if (filters.hasMoonshot) params.set('moonshot', '1');
       if (filters.goldenOnly) params.set('golden', '1');
+      if (filters.valuationRatings.length) params.set('valuation', filters.valuationRatings.join(','));
       if (filters.sort !== 'score-desc') params.set('sort', filters.sort);
 
       const newURL = params.toString() ? `${window.location.pathname}?${params}` : window.location.pathname;
@@ -263,6 +284,13 @@ const marketCapRanges = [
       if (params.get('golden') === '1') {
         filters.goldenOnly = true;
         document.getElementById('goldenFilter').checked = true;
+      }
+      if (params.get('valuation')) {
+        filters.valuationRatings = params.get('valuation').split(',');
+        filters.valuationRatings.forEach(v => {
+          const cb = document.querySelector(`input[name="valuation"][value="${v}"]`);
+          if (cb) cb.checked = true;
+        });
       }
       if (params.get('sort')) {
         filters.sort = params.get('sort');
@@ -572,6 +600,13 @@ const marketCapRanges = [
           if (!isGolden) return false;
         }
 
+        // Valuation rating filter
+        if (filters.valuationRatings.length > 0) {
+          if (!stock.valuationRating || !filters.valuationRatings.includes(stock.valuationRating)) {
+            return false;
+          }
+        }
+
         return true;
       });
 
@@ -713,6 +748,7 @@ const marketCapRanges = [
       });
       if (filters.hasMoonshot) chips.push({ type: 'hasMoonshot', value: 'true', label: 'Has Moonshot' });
       if (filters.goldenOnly) chips.push({ type: 'goldenOnly', value: 'true', label: '⭐ Golden Only' });
+      filters.valuationRatings.forEach(v => chips.push({ type: 'valuationRatings', value: v, label: v }));
 
       if (chips.length === 0) {
         container.classList.add('hidden');
@@ -741,6 +777,10 @@ const marketCapRanges = [
       } else if (type === 'goldenOnly') {
         filters.goldenOnly = false;
         document.getElementById('goldenFilter').checked = false;
+      } else if (type === 'valuationRatings') {
+        filters.valuationRatings = filters.valuationRatings.filter(v => v !== value);
+        const cb = document.querySelector(`input[name="valuation"][value="${value}"]`);
+        if (cb) cb.checked = false;
       } else {
         filters[type] = filters[type].filter(v => v !== value);
         // Uncheck the corresponding checkbox
@@ -759,6 +799,7 @@ const marketCapRanges = [
         marketCapRanges: [],
         hasMoonshot: false,
         goldenOnly: false,
+        valuationRatings: [],
         sort: filters.sort
       };
       document.getElementById('searchInput').value = '';
@@ -956,6 +997,17 @@ const marketCapRanges = [
     document.getElementById('goldenFilter').addEventListener('change', (e) => {
       filters.goldenOnly = e.target.checked;
       applyFilters();
+    });
+
+    document.querySelectorAll('input[name="valuation"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.valuationRatings.push(e.target.value);
+        } else {
+          filters.valuationRatings = filters.valuationRatings.filter(v => v !== e.target.value);
+        }
+        applyFilters();
+      });
     });
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
