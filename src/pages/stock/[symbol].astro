@@ -382,6 +382,74 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         </div>
       </div>
 
+      <!-- Valuation Score (Technical Valuation) -->
+      {stock.valuationScore != null && (
+      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-bold text-slate-100">Valuation Score</h2>
+          <a href="/valuation-methodology" class="text-xs text-[#64748B] hover:text-[#22D3EE] transition">How it works →</a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+            <div class="text-sm text-[#64748B] mb-1">Score</div>
+            <div class={`text-3xl font-bold ${stock.valuationScore >= 70 ? 'text-emerald-400' : stock.valuationScore >= 40 ? 'text-amber-400' : 'text-red-400'}`}>
+              {stock.valuationScore}
+            </div>
+            <div class={`text-xs mt-1 ${stock.valuationScore >= 70 ? 'text-emerald-400' : stock.valuationScore >= 40 ? 'text-amber-400' : 'text-red-400'}`}>
+              {stock.valuationRating}
+            </div>
+          </div>
+
+          {stock.valuationData && (
+          <>
+          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+            <div class="text-sm text-[#64748B] mb-1">vs SMA200</div>
+            <div class={`text-2xl font-bold ${(stock.valuationData.vsSma200 ?? 0) < 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+              {stock.valuationData.vsSma200 != null ? `${stock.valuationData.vsSma200 > 0 ? '+' : ''}${stock.valuationData.vsSma200}%` : 'N/A'}
+            </div>
+            <div class="text-xs text-[#64748B] mt-1">{(stock.valuationData.vsSma200 ?? 0) < 0 ? 'Below avg' : 'Above avg'}</div>
+          </div>
+
+          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+            <div class="text-sm text-[#64748B] mb-1">vs SMA50</div>
+            <div class={`text-2xl font-bold ${(stock.valuationData.vsSma50 ?? 0) < 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+              {stock.valuationData.vsSma50 != null ? `${stock.valuationData.vsSma50 > 0 ? '+' : ''}${stock.valuationData.vsSma50}%` : 'N/A'}
+            </div>
+            <div class="text-xs text-[#64748B] mt-1">{(stock.valuationData.vsSma50 ?? 0) < 0 ? 'Below avg' : 'Above avg'}</div>
+          </div>
+
+          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+            <div class="text-sm text-[#64748B] mb-1">52W Range</div>
+            <div class="text-2xl font-bold text-slate-100">
+              {stock.valuationData.position52w != null ? `${stock.valuationData.position52w}%` : 'N/A'}
+            </div>
+            <div class="text-xs text-[#64748B] mt-1">
+              {stock.valuationData.low52w != null && stock.valuationData.high52w != null
+                ? `$${stock.valuationData.low52w.toFixed(2)} - $${stock.valuationData.high52w.toFixed(2)}`
+                : ''}
+            </div>
+          </div>
+          </>
+          )}
+        </div>
+
+        <div class="bg-[#080A0F] rounded-lg p-3">
+          <p class="text-xs text-[#64748B]">
+            {stock.valuationScore >= 70
+              ? stock.upside && stock.upside > 10
+                ? '✓ Both technical valuation and analyst targets suggest this stock may be undervalued.'
+                : 'Technically undervalued — trading below moving averages. Check analyst targets for confirmation.'
+              : stock.valuationScore >= 40
+                ? 'Trading near fair value based on moving averages. No strong technical signal.'
+                : stock.upside && stock.upside > 20
+                  ? '⚠ Analysts see upside, but the stock is technically overextended above moving averages.'
+                  : 'Trading above moving averages — technically overvalued. Consider waiting for a pullback.'}
+          </p>
+        </div>
+      </div>
+      )}
+
       <!-- FREE SECTION: Technical Overview (Yahoo Finance available) -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold mb-4 text-slate-100">Technical Overview</h2>
