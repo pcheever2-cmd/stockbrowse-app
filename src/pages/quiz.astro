@@ -1,0 +1,710 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { stocks, getNormalizedIndustry, formatPrice, formatMarketCap, getGradeColor } from '../data/stocks';
+
+// Pre-compute stock pools (trimmed to card fields only)
+function trimStock(s: any) {
+  return {
+    symbol: s.symbol, name: s.name, price: s.price,
+    compassScore: s.compassScore, grade: s.grade,
+    industry: getNormalizedIndustry(s.industry), sector: s.sector,
+    marketCap: s.marketCap, moonshotScore: s.moonshotScore,
+    moonshotGrade: s.moonshotGrade, valuationRating: s.valuationRating,
+    isGolden: s.isGolden, epsGrowth: s.epsGrowth,
+    volatility: s.factorValues?.volatility ?? null,
+  };
+}
+
+const gradeOrder = { A: 5, B: 4, C: 3, D: 2, F: 1 };
+const gradeVal = (g: string | null) => gradeOrder[g as keyof typeof gradeOrder] ?? 0;
+
+// Pool: The Long Game - grade A/B, low volatility, sorted by compass
+const longGamePool = stocks
+  .filter(s => (s.grade === 'A' || s.grade === 'B') && (s.factorValues?.volatility ?? 100) < 35)
+  .sort((a, b) => b.compassScore - a.compassScore)
+  .slice(0, 30).map(trimStock);
+
+// Pool: Income Builder - dividend sectors, grade B+
+const dividendSectors = ['Utilities', 'Real Estate', 'Finance', 'Consumer', 'Energy'];
+const incomePool = stocks
+  .filter(s => dividendSectors.includes(getNormalizedIndustry(s.industry)) && gradeVal(s.grade) >= 4)
+  .sort((a, b) => b.compassScore - a.compassScore)
+  .slice(0, 30).map(trimStock);
+
+// Pool: Growth Explorer - moonshotGrade A/B
+const growthPool = stocks
+  .filter(s => (s.moonshotGrade === 'A' || s.moonshotGrade === 'B') && gradeVal(s.grade) >= 3)
+  .sort((a, b) => (b.moonshotScore ?? 0) - (a.moonshotScore ?? 0))
+  .slice(0, 30).map(trimStock);
+
+// Pool: Bold Investor - moonshotGrade A, high growth, grade C+ floor
+const boldPool = stocks
+  .filter(s => s.moonshotGrade === 'A' && gradeVal(s.grade) >= 3 && (s.epsGrowth ?? 0) > 15)
+  .sort((a, b) => (b.moonshotScore ?? 0) - (a.moonshotScore ?? 0))
+  .slice(0, 30).map(trimStock);
+
+// Pool: Smart Shopper - undervalued, grade C+
+const smartPool = stocks
+  .filter(s => s.valuationRating === 'Undervalued' && gradeVal(s.grade) >= 3)
+  .sort((a, b) => b.compassScore - a.compassScore)
+  .slice(0, 30).map(trimStock);
+
+// Pool: Steady Climber - isGolden preferred, grade B+
+const steadyPool = stocks
+  .filter(s => gradeVal(s.grade) >= 4)
+  .sort((a, b) => {
+    if (a.isGolden && !b.isGolden) return -1;
+    if (!a.isGolden && b.isGolden) return 1;
+    return b.compassScore - a.compassScore;
+  })
+  .slice(0, 30).map(trimStock);
+
+const stockPools = { longGame: longGamePool, income: incomePool, growth: growthPool, bold: boldPool, smart: smartPool, steady: steadyPool };
+---
+
+<Layout title="Investment Profile Quiz | Stockbrowse">
+  <div id="quiz-app" class="min-h-screen bg-[#080A0F]">
+    <!-- Intro Screen -->
+    <div id="intro-screen" class="flex items-center justify-center min-h-[80vh] px-4">
+      <div class="max-w-lg text-center">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#22D3EE] to-[#06B6D4] flex items-center justify-center mx-auto mb-6 text-3xl">
+          <svg class="w-8 h-8 text-[#080A0F]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Discover Your Investing Style</h1>
+        <p class="text-[#CBD5E1] text-lg mb-2">Answer 6 quick questions and we'll match you with stocks that fit your goals.</p>
+        <p class="text-[#64748B] text-sm mb-8">Takes about 1 minute</p>
+        <button id="start-btn" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-8 py-3 rounded-xl font-bold text-lg transition">
+          Let's Go
+        </button>
+        <p class="text-[#64748B] text-xs mt-6 max-w-sm mx-auto">This is a 1-minute quiz to help you explore investing styles - not financial advice. Always do your own research.</p>
+      </div>
+    </div>
+
+    <!-- Quiz Container -->
+    <div id="quiz-container" class="hidden max-w-2xl mx-auto px-4 py-8">
+      <!-- Progress Bar -->
+      <div class="flex items-center gap-3 mb-8">
+        <button id="back-btn" class="text-[#64748B] hover:text-slate-100 transition p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <div class="flex gap-1.5 flex-1">
+          <div class="progress-seg h-1.5 rounded-full flex-1 bg-[#1C222E] transition-colors duration-300" data-step="0"></div>
+          <div class="progress-seg h-1.5 rounded-full flex-1 bg-[#1C222E] transition-colors duration-300" data-step="1"></div>
+          <div class="progress-seg h-1.5 rounded-full flex-1 bg-[#1C222E] transition-colors duration-300" data-step="2"></div>
+          <div class="progress-seg h-1.5 rounded-full flex-1 bg-[#1C222E] transition-colors duration-300" data-step="3"></div>
+          <div class="progress-seg h-1.5 rounded-full flex-1 bg-[#1C222E] transition-colors duration-300" data-step="4"></div>
+          <div class="progress-seg h-1.5 rounded-full flex-1 bg-[#1C222E] transition-colors duration-300" data-step="5"></div>
+        </div>
+      </div>
+
+      <!-- Question Slides -->
+      <div id="slides-wrapper" class="relative overflow-hidden">
+        <div id="slides-track" class="flex transition-transform duration-300 ease-out">
+
+          <!-- Q1: Experience -->
+          <div class="quiz-slide w-full flex-shrink-0" data-q="experience">
+            <h2 class="text-2xl font-bold mb-6">How much investing experience do you have?</h2>
+            <div class="space-y-3">
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="new">
+                <div class="font-semibold">I'm completely new to this</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="passive">
+                <div class="font-semibold">I have a 401k or retirement account but that's about it</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="some">
+                <div class="font-semibold">I've bought some stocks or funds on my own</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="active">
+                <div class="font-semibold">I've been investing actively for a while</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q2: Goal -->
+          <div class="quiz-slide w-full flex-shrink-0" data-q="goal">
+            <h2 class="text-2xl font-bold mb-6">What matters most to you right now?</h2>
+            <div class="space-y-3">
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="grow">
+                <div class="font-semibold">Growing my money steadily over time</div>
+                <div class="text-sm text-[#64748B] mt-1">Buying pieces of companies that get more valuable</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="income">
+                <div class="font-semibold">Earning regular income from my investments</div>
+                <div class="text-sm text-[#64748B] mt-1">Companies that pay you just for owning them - called dividends</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="protect">
+                <div class="font-semibold">Protecting what I have while still beating inflation</div>
+                <div class="text-sm text-[#64748B] mt-1">Solid, stable companies</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="moonshot">
+                <div class="font-semibold">Finding fast-growing companies with big potential</div>
+                <div class="text-sm text-[#64748B] mt-1">Higher risk, higher possible reward</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q3: Risk -->
+          <div class="quiz-slide w-full flex-shrink-0" data-q="risk">
+            <h2 class="text-2xl font-bold mb-2">Imagine you invested $1,000 and it dropped to $800.</h2>
+            <p class="text-[#64748B] mb-6">What would you do?</p>
+            <div id="risk-options" class="space-y-3">
+              <!-- Populated by JS (randomized order) -->
+            </div>
+          </div>
+
+          <!-- Q4: Industries (multi-select) -->
+          <div class="quiz-slide w-full flex-shrink-0" data-q="industries">
+            <h2 class="text-2xl font-bold mb-2">What kinds of companies interest you?</h2>
+            <p class="text-[#64748B] mb-6">Pick up to 5, or skip if you're open to anything.</p>
+            <div id="industry-pills" class="flex flex-wrap gap-2 mb-6">
+              <!-- Populated by JS -->
+            </div>
+            <button id="industry-escape" class="w-full text-left p-3 rounded-xl border border-dashed border-[rgba(255,255,255,0.12)] bg-[#161B24] hover:border-[#22D3EE]/50 transition text-[#CBD5E1] text-sm mb-4">
+              I'm open to anything - surprise me
+            </button>
+            <button id="industry-continue" class="w-full bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] py-3 rounded-xl font-bold transition disabled:opacity-30 disabled:cursor-not-allowed" disabled>
+              Continue
+            </button>
+          </div>
+
+          <!-- Q5: Approach -->
+          <div class="quiz-slide w-full flex-shrink-0" data-q="approach">
+            <h2 class="text-2xl font-bold mb-6">Which approach sounds most like you?</h2>
+            <div class="space-y-3">
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="trusted">
+                <div class="font-semibold">I'd rather invest in companies I know and trust</div>
+                <div class="text-sm text-[#64748B] mt-1">Think: household names</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="underappreciated">
+                <div class="font-semibold">I like the idea of finding underappreciated companies</div>
+                <div class="text-sm text-[#64748B] mt-1">Think: good companies others are overlooking</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="momentum">
+                <div class="font-semibold">I want to invest in companies growing fast right now</div>
+                <div class="text-sm text-[#64748B] mt-1">Think: companies making big moves</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="mixed">
+                <div class="font-semibold">A mix of all the above</div>
+                <div class="text-sm text-[#64748B] mt-1">A balanced approach</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q6: Barrier -->
+          <div class="quiz-slide w-full flex-shrink-0" data-q="barrier">
+            <h2 class="text-2xl font-bold mb-6">What's the biggest thing holding you back from investing?</h2>
+            <div class="space-y-3">
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="start">
+                <div class="font-semibold">I don't know where to start</div>
+                <div class="text-sm text-[#64748B] mt-1">We'll give you a clear starting point</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="losing">
+                <div class="font-semibold">I'm worried about losing money</div>
+                <div class="text-sm text-[#64748B] mt-1">We'll focus on lower-risk, quality companies</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="time">
+                <div class="font-semibold">I don't have time to research</div>
+                <div class="text-sm text-[#64748B] mt-1">We'll keep it simple - just a few picks to explore</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="burned">
+                <div class="font-semibold">I've invested before and it didn't go well</div>
+                <div class="text-sm text-[#64748B] mt-1">We'll focus on proven, stable companies</div>
+              </button>
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="ready">
+                <div class="font-semibold">Nothing - I'm ready to go!</div>
+                <div class="text-sm text-[#64748B] mt-1">Let's find your matches</div>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="hidden max-w-3xl mx-auto px-4 py-12">
+      <!-- Welcome back banner (hidden by default) -->
+      <div id="welcome-back" class="hidden mb-6 p-4 rounded-xl bg-[#161B24] border border-[#22D3EE]/20 text-center">
+        <p class="text-[#CBD5E1] text-sm">Welcome back! Here are your results from last time.</p>
+      </div>
+
+      <!-- Profile Reveal -->
+      <div id="profile-reveal" class="text-center mb-12">
+        <div id="profile-badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4"></div>
+        <h2 id="profile-name" class="text-3xl sm:text-4xl font-bold mb-3"></h2>
+        <p id="profile-desc" class="text-[#CBD5E1] text-lg max-w-xl mx-auto mb-6"></p>
+        <div id="profile-bullets" class="text-left max-w-md mx-auto space-y-2"></div>
+      </div>
+
+      <!-- Stock Matches -->
+      <div class="mb-12">
+        <h3 class="text-xl font-bold mb-1">Stocks that match this investing style</h3>
+        <p class="text-[#64748B] text-sm mb-6">Based on public financial data and quality metrics</p>
+        <div id="stock-cards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+
+      <!-- What To Do Next -->
+      <div id="next-steps" class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)] mb-8">
+        <h3 class="text-lg font-bold mb-4">What to do next</h3>
+        <div id="next-steps-content" class="space-y-3 text-[#CBD5E1] text-sm"></div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
+        <a id="explore-btn" href="/browse/all" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-6 py-3 rounded-xl font-bold transition text-center w-full sm:w-auto">
+          Explore more stocks like these
+        </a>
+        <button id="retake-btn" class="text-[#64748B] hover:text-slate-100 text-sm transition">Retake Quiz</button>
+        <button id="share-btn" class="text-[#64748B] hover:text-[#22D3EE] text-sm transition flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+          Share Results
+        </button>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="bg-[#161B24] rounded-xl p-5 border border-[rgba(255,255,255,0.06)] text-[#64748B] text-xs space-y-2">
+        <p>These stocks match this investing style based on public financial data. This is not financial advice. Always do your own research before making investment decisions.</p>
+        <p>5 questions can't capture your full financial situation - this is a starting point for exploration. Investing involves real risk of loss.</p>
+        <p><a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn how our Compass Score works</a> · <a href="/about" class="text-[#22D3EE] hover:underline">About Stockbrowse</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ stockPools }}>
+    // ── Data & State ──
+    const pools = stockPools;
+    let currentStep = -1; // -1 = intro
+    const answers = { experience: null, goal: null, risk: null, industries: [], approach: null, barrier: null };
+
+    // ── Profile definitions ──
+    const profiles = {
+      longGame: {
+        name: 'The Long Game',
+        gradient: 'from-[#22D3EE] to-[#3B82F6]',
+        badgeBg: 'bg-gradient-to-r from-[#22D3EE]/20 to-[#3B82F6]/20 border border-[#22D3EE]/30 text-[#22D3EE]',
+        desc: 'You value stability and long-term wealth building. You\'d rather sleep well at night than chase the next big thing.',
+        bullets: [
+          'You prefer companies with proven track records and low drama',
+          'Quality and consistency matter more than explosive growth',
+          'You\'re building wealth that compounds over years, not days',
+        ],
+        pool: 'longGame',
+        exploreLink: '/browse/low-risk',
+      },
+      income: {
+        name: 'Income Builder',
+        gradient: 'from-[#34D399] to-[#10B981]',
+        badgeBg: 'bg-gradient-to-r from-[#34D399]/20 to-[#10B981]/20 border border-[#34D399]/30 text-[#34D399]',
+        desc: 'You like the idea of your investments paying you back regularly. Dividends are your thing.',
+        bullets: [
+          'You\'re drawn to companies that share profits with shareholders',
+          'Steady cash flow matters more than stock price swings',
+          'You think of investing as building an income stream',
+        ],
+        pool: 'income',
+        exploreLink: '/browse/dividends',
+      },
+      growth: {
+        name: 'Growth Explorer',
+        gradient: 'from-[#A855F7] to-[#8B5CF6]',
+        badgeBg: 'bg-gradient-to-r from-[#A855F7]/20 to-[#8B5CF6]/20 border border-[#A855F7]/30 text-[#A855F7]',
+        desc: 'You want companies that are growing fast and gaining momentum. You\'re comfortable with some ups and downs.',
+        bullets: [
+          'You\'re excited by companies making big moves in their industry',
+          'You can handle some volatility if the growth story is strong',
+          'You want your portfolio to outpace the market over time',
+        ],
+        pool: 'growth',
+        exploreLink: '/browse/growth',
+      },
+      bold: {
+        name: 'Bold Investor',
+        gradient: 'from-[#F59E0B] to-[#EF4444]',
+        badgeBg: 'bg-gradient-to-r from-[#F59E0B]/20 to-[#EF4444]/20 border border-[#F59E0B]/30 text-[#F59E0B]',
+        desc: 'You\'re not afraid of risk when the potential reward is big enough. You want the stocks others are too cautious to buy.',
+        bullets: [
+          'You see market dips as buying opportunities',
+          'You want high-growth companies even if they\'re volatile',
+          'You\'re willing to accept bigger swings for bigger potential returns',
+        ],
+        pool: 'bold',
+        exploreLink: '/browse/growth',
+      },
+      smart: {
+        name: 'Smart Shopper',
+        gradient: 'from-[#10B981] to-[#14B8A6]',
+        badgeBg: 'bg-gradient-to-r from-[#10B981]/20 to-[#14B8A6]/20 border border-[#10B981]/30 text-[#10B981]',
+        desc: 'You\'re looking for quality companies that the market is underpricing. You trust the numbers more than the hype.',
+        bullets: [
+          'You like finding good companies others are overlooking',
+          'You\'d rather buy quality at a discount than chase trends',
+          'You believe in doing research and being patient',
+        ],
+        pool: 'smart',
+        exploreLink: '/browse/all',
+      },
+      steady: {
+        name: 'Steady Climber',
+        gradient: 'from-[#6366F1] to-[#8B5CF6]',
+        badgeBg: 'bg-gradient-to-r from-[#6366F1]/20 to-[#8B5CF6]/20 border border-[#6366F1]/30 text-[#6366F1]',
+        desc: 'You want a balanced approach - quality companies with solid fundamentals. No extremes, just smart picks.',
+        bullets: [
+          'You prefer a diversified approach over betting on one style',
+          'Quality fundamentals matter, but so does growth potential',
+          'You want stocks you can buy and feel good about holding',
+        ],
+        pool: 'steady',
+        exploreLink: '/browse/all',
+      },
+    };
+
+    // ── Industry pills data ──
+    const industryData = [
+      { id: 'Technology', label: 'Tech', emoji: '💻', examples: 'Apple, Nvidia, Google' },
+      { id: 'Healthcare', label: 'Healthcare', emoji: '🏥', examples: 'Pfizer, UnitedHealth, Eli Lilly' },
+      { id: 'Finance', label: 'Finance', emoji: '🏦', examples: 'JPMorgan, Visa' },
+      { id: 'Consumer', label: 'Consumer', emoji: '🛒', examples: 'Nike, Starbucks, Amazon' },
+      { id: 'Energy', label: 'Energy', emoji: '⚡', examples: 'Exxon, NextEra' },
+      { id: 'Real Estate', label: 'Real Estate', emoji: '🏢', examples: 'Realty Income, Prologis' },
+      { id: 'Industrials', label: 'Industrials', emoji: '🏭', examples: 'Caterpillar, Honeywell' },
+      { id: 'Utilities', label: 'Utilities', emoji: '💡', examples: 'NextEra, Duke Energy' },
+      { id: 'Communication Services', label: 'Communication', emoji: '📡', examples: 'Disney, Google, Netflix' },
+      { id: 'Materials', label: 'Materials', emoji: '🔧', examples: 'Linde, Freeport-McMoRan' },
+    ];
+
+    // ── Risk options (will be shuffled) ──
+    const riskOptions = [
+      { value: 'pull', label: "Honestly? I'd probably pull my money out", sub: 'No judgment - this tells us you need the safest options' },
+      { value: 'stressed', label: "I'd be stressed, but I'd leave it alone and hope it comes back", sub: '' },
+      { value: 'shrug', label: "I'd be a little worried but wouldn't think about it too much", sub: '' },
+      { value: 'buy', label: "I'd see it as a chance to buy more while it's cheaper", sub: '' },
+    ];
+
+    // ── DOM refs ──
+    const introScreen = document.getElementById('intro-screen');
+    const quizContainer = document.getElementById('quiz-container');
+    const resultsScreen = document.getElementById('results-screen');
+    const slidesTrack = document.getElementById('slides-track');
+    const progressSegs = document.querySelectorAll('.progress-seg');
+
+    // ── Check for returning user ──
+    const savedProfile = localStorage.getItem('quizProfile');
+    const urlProfile = new URLSearchParams(window.location.search).get('profile');
+    if (urlProfile && profiles[urlProfile]) {
+      showResults(urlProfile, true);
+    } else if (savedProfile && profiles[savedProfile]) {
+      showResults(savedProfile, true);
+    }
+
+    // ── Init: populate risk (randomized) and industry pills ──
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // Risk options
+    const riskContainer = document.getElementById('risk-options');
+    shuffle([...riskOptions]).forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition';
+      btn.dataset.value = opt.value;
+      btn.innerHTML = `<div class="font-semibold">${opt.label}</div>${opt.sub ? `<div class="text-sm text-[#64748B] mt-1">${opt.sub}</div>` : ''}`;
+      riskContainer.appendChild(btn);
+    });
+
+    // Industry pills
+    const pillsContainer = document.getElementById('industry-pills');
+    industryData.forEach(ind => {
+      const pill = document.createElement('button');
+      pill.className = 'industry-pill px-4 py-2 rounded-full border border-[rgba(255,255,255,0.1)] bg-[#161B24] hover:border-[#22D3EE]/50 transition text-sm flex items-center gap-2';
+      pill.dataset.industry = ind.id;
+      pill.innerHTML = `<span>${ind.emoji}</span><span>${ind.label}</span>`;
+      pill.title = ind.examples;
+      pillsContainer.appendChild(pill);
+    });
+
+    // ── Navigation ──
+    document.getElementById('start-btn').addEventListener('click', () => {
+      introScreen.classList.add('hidden');
+      quizContainer.classList.remove('hidden');
+      goToStep(0);
+    });
+
+    document.getElementById('back-btn').addEventListener('click', () => {
+      if (currentStep > 0) goToStep(currentStep - 1);
+      else { quizContainer.classList.add('hidden'); introScreen.classList.remove('hidden'); currentStep = -1; }
+    });
+
+    function goToStep(step) {
+      currentStep = step;
+      slidesTrack.style.transform = `translateX(-${step * 100}%)`;
+      progressSegs.forEach((seg, i) => {
+        seg.style.backgroundColor = i <= step ? '#22D3EE' : '#1C222E';
+      });
+    }
+
+    // ── Single-select answer cards ──
+    document.querySelectorAll('.quiz-slide').forEach(slide => {
+      const q = slide.dataset.q;
+      if (q === 'industries') return; // handled separately
+      slide.querySelectorAll('.answer-card').forEach(card => {
+        card.addEventListener('click', () => {
+          // Highlight
+          slide.querySelectorAll('.answer-card').forEach(c => {
+            c.classList.remove('border-[#22D3EE]', 'bg-[#22D3EE]/10');
+            c.classList.add('border-[rgba(255,255,255,0.06)]');
+          });
+          card.classList.remove('border-[rgba(255,255,255,0.06)]');
+          card.classList.add('border-[#22D3EE]', 'bg-[#22D3EE]/10');
+          answers[q] = card.dataset.value;
+
+          // Auto-advance after 400ms
+          setTimeout(() => {
+            if (currentStep < 5) goToStep(currentStep + 1);
+            else computeAndShowResults();
+          }, 400);
+        });
+      });
+    });
+
+    // ── Industry multi-select ──
+    const continueBtn = document.getElementById('industry-continue');
+    const escapeBtn = document.getElementById('industry-escape');
+
+    pillsContainer.addEventListener('click', (e) => {
+      const pill = e.target.closest('.industry-pill');
+      if (!pill) return;
+      escapeBtn.classList.remove('border-[#22D3EE]', 'bg-[#22D3EE]/10');
+      escapeBtn.classList.add('border-[rgba(255,255,255,0.12)]');
+
+      const ind = pill.dataset.industry;
+      const idx = answers.industries.indexOf(ind);
+      if (idx > -1) {
+        answers.industries.splice(idx, 1);
+        pill.classList.remove('border-[#22D3EE]', 'bg-[#22D3EE]/10', 'text-[#22D3EE]');
+      } else if (answers.industries.length < 5) {
+        answers.industries.push(ind);
+        pill.classList.add('border-[#22D3EE]', 'bg-[#22D3EE]/10', 'text-[#22D3EE]');
+      }
+      updateContinueBtn();
+    });
+
+    escapeBtn.addEventListener('click', () => {
+      answers.industries = [];
+      pillsContainer.querySelectorAll('.industry-pill').forEach(p => {
+        p.classList.remove('border-[#22D3EE]', 'bg-[#22D3EE]/10', 'text-[#22D3EE]');
+      });
+      escapeBtn.classList.remove('border-[rgba(255,255,255,0.12)]');
+      escapeBtn.classList.add('border-[#22D3EE]', 'bg-[#22D3EE]/10');
+      continueBtn.disabled = false;
+      continueBtn.textContent = 'Continue - open to anything';
+    });
+
+    continueBtn.addEventListener('click', () => {
+      if (!continueBtn.disabled) goToStep(currentStep + 1);
+    });
+
+    function updateContinueBtn() {
+      const n = answers.industries.length;
+      continueBtn.disabled = n === 0;
+      continueBtn.textContent = n > 0 ? `Continue - ${n} selected` : 'Continue';
+    }
+
+    // ── Scoring ──
+    function computeAndShowResults() {
+      const scores = { longGame: 0, income: 0, growth: 0, bold: 0, smart: 0, steady: 0 };
+
+      // Q1: Experience (mostly adjusts next-steps, slight scoring)
+      if (answers.experience === 'new' || answers.experience === 'passive') {
+        scores.longGame += 1; scores.steady += 1;
+      }
+      if (answers.experience === 'active') {
+        scores.bold += 1; scores.smart += 1;
+      }
+
+      // Q2: Goal (primary driver)
+      if (answers.goal === 'grow') { scores.growth += 3; scores.steady += 2; }
+      if (answers.goal === 'income') { scores.income += 4; }
+      if (answers.goal === 'protect') { scores.longGame += 4; scores.steady += 1; }
+      if (answers.goal === 'moonshot') { scores.bold += 3; scores.growth += 2; }
+
+      // Q3: Risk
+      if (answers.risk === 'pull') { scores.longGame += 3; scores.income += 1; }
+      if (answers.risk === 'stressed') { scores.longGame += 1; scores.steady += 2; scores.income += 1; }
+      if (answers.risk === 'shrug') { scores.growth += 1; scores.steady += 1; scores.smart += 1; }
+      if (answers.risk === 'buy') { scores.bold += 3; scores.smart += 1; }
+
+      // Q4: Industries (light influence)
+      // No direct scoring from industries - used for filtering stock results
+
+      // Q5: Approach
+      if (answers.approach === 'trusted') { scores.longGame += 2; scores.steady += 1; }
+      if (answers.approach === 'underappreciated') { scores.smart += 4; }
+      if (answers.approach === 'momentum') { scores.growth += 2; scores.bold += 2; }
+      if (answers.approach === 'mixed') { scores.steady += 3; }
+
+      // Q6: Barrier (slight nudges)
+      if (answers.barrier === 'losing') { scores.longGame += 1; }
+      if (answers.barrier === 'burned') { scores.longGame += 1; scores.steady += 1; }
+
+      // Find winner
+      let best = 'steady';
+      let bestScore = -1;
+      for (const [key, val] of Object.entries(scores)) {
+        if (val > bestScore) { bestScore = val; best = key; }
+      }
+
+      localStorage.setItem('quizProfile', best);
+      showResults(best, false);
+    }
+
+    // ── Render Results ──
+    function showResults(profileKey, isReturning) {
+      introScreen.classList.add('hidden');
+      quizContainer.classList.add('hidden');
+      resultsScreen.classList.remove('hidden');
+
+      if (isReturning) {
+        document.getElementById('welcome-back').classList.remove('hidden');
+      }
+
+      const profile = profiles[profileKey];
+
+      // Badge
+      const badge = document.getElementById('profile-badge');
+      badge.className = `inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold ${profile.badgeBg}`;
+      badge.textContent = `Your profile`;
+
+      // Name & desc
+      document.getElementById('profile-name').textContent = profile.name;
+      document.getElementById('profile-desc').textContent = profile.desc;
+
+      // Bullets
+      const bulletsEl = document.getElementById('profile-bullets');
+      bulletsEl.innerHTML = profile.bullets.map(b =>
+        `<div class="flex items-start gap-2"><span class="text-[#22D3EE] mt-0.5">&#10003;</span><span class="text-[#CBD5E1] text-sm">${b}</span></div>`
+      ).join('');
+
+      // Stock cards
+      const pool = pools[profile.pool] || pools.steady;
+      let filtered = [...pool];
+
+      // Filter by selected industries if any
+      if (answers.industries && answers.industries.length > 0) {
+        const industryFiltered = filtered.filter(s => answers.industries.includes(s.industry));
+        if (industryFiltered.length >= 3) filtered = industryFiltered;
+      }
+
+      // How many cards: "no time" = 3, "ready" = 6, else 4
+      let cardCount = 4;
+      if (answers.barrier === 'time') cardCount = 3;
+      else if (answers.barrier === 'ready') cardCount = 6;
+
+      const picks = filtered.slice(0, cardCount);
+      const cardsEl = document.getElementById('stock-cards');
+      cardsEl.innerHTML = picks.map(s => {
+        const gradeColors = { A: ['bg-[#22D3EE15]','text-[#22D3EE]'], B: ['bg-[#34D39915]','text-[#34D399]'], C: ['bg-[#94A3B815]','text-[#94A3B8]'], D: ['bg-[#FBBF2415]','text-[#FBBF24]'], F: ['bg-[#F8717115]','text-[#F87171]'] };
+        const [gbg, gtxt] = gradeColors[s.grade] || gradeColors.C;
+        const fmtPrice = s.price > 0 ? `$${s.price.toFixed(2)}` : 'N/A';
+        const fmtCap = s.marketCap >= 1000 ? `$${(s.marketCap/1000).toFixed(1)}T` : s.marketCap >= 1 ? `$${s.marketCap.toFixed(1)}B` : `$${(s.marketCap*1000).toFixed(0)}M`;
+        const whyFit = getWhyItFits(s, profileKey);
+        return `<a href="/stock/${s.symbol.toLowerCase()}" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5 hover:border-[#22D3EE]/40 transition block">
+          <div class="flex justify-between items-start mb-3">
+            <div><h4 class="font-bold text-lg">${s.name}</h4><p class="text-[#64748B] text-sm">${s.symbol} · ${s.industry}</p></div>
+            <div class="px-3 py-1 rounded-full ${gbg} ${gtxt} font-bold text-sm">${s.compassScore}</div>
+          </div>
+          <div class="flex justify-between items-end mb-3">
+            <div><div class="text-2xl font-bold">${fmtPrice}</div><div class="text-sm text-[#64748B]">${fmtCap} cap</div></div>
+            <div class="text-sm font-semibold ${gtxt}">Grade ${s.grade}</div>
+          </div>
+          <div class="text-xs text-[#64748B] border-t border-[rgba(255,255,255,0.06)] pt-2 mt-1">${whyFit}</div>
+        </a>`;
+      }).join('');
+
+      // Update explore link
+      document.getElementById('explore-btn').href = profile.exploreLink;
+
+      // Next steps
+      const nextEl = document.getElementById('next-steps-content');
+      const exp = answers.experience || 'new';
+      let steps = [];
+      if (exp === 'new' || exp === 'passive') {
+        steps = [
+          'Start by learning about 1-2 of these companies. Tap a card to read their full profile.',
+          'There\'s no rush. Understanding what you\'re investing in matters more than timing.',
+          '<a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn how we score stocks</a> so you know what the numbers mean.',
+        ];
+      } else if (exp === 'some') {
+        steps = [
+          'Compare these with what you already own. Look for diversification across industries.',
+          'Check the Compass Score breakdowns to see where each company is strong or weak.',
+          '<a href="/browse/all" class="text-[#22D3EE] hover:underline">Browse all stocks</a> with filters to find more matches.',
+        ];
+      } else {
+        steps = [
+          'Explore the full browse page with quality and valuation filters applied.',
+          'Use the Moonshot Score to identify growth momentum alongside quality.',
+          '<a href="/browse/all" class="text-[#22D3EE] hover:underline">Advanced filters</a> · <a href="/moonshot-methodology" class="text-[#22D3EE] hover:underline">Moonshot methodology</a>',
+        ];
+      }
+      nextEl.innerHTML = steps.map(s => `<p>${s}</p>`).join('');
+
+      // Update URL without reload
+      const url = new URL(window.location);
+      url.searchParams.set('profile', profileKey);
+      history.replaceState(null, '', url);
+    }
+
+    function getWhyItFits(stock, profileKey) {
+      switch (profileKey) {
+        case 'longGame': return `High quality score (${stock.compassScore}) with ${stock.volatility && stock.volatility < 35 ? 'low volatility' : 'stable fundamentals'}`;
+        case 'income': return `Strong quality in a dividend-friendly sector (${stock.industry})`;
+        case 'growth': return `Moonshot Grade ${stock.moonshotGrade || 'B'} — strong growth momentum`;
+        case 'bold': return `High growth potential with Moonshot Grade ${stock.moonshotGrade || 'A'}`;
+        case 'smart': return `${stock.valuationRating || 'Undervalued'} with a quality score of ${stock.compassScore}`;
+        case 'steady': return `${stock.isGolden ? 'Golden stock — ' : ''}Well-rounded quality at ${stock.compassScore}`;
+        default: return `Compass Score: ${stock.compassScore}`;
+      }
+    }
+
+    // ── Retake ──
+    document.getElementById('retake-btn').addEventListener('click', () => {
+      localStorage.removeItem('quizProfile');
+      answers.experience = null; answers.goal = null; answers.risk = null;
+      answers.industries = []; answers.approach = null; answers.barrier = null;
+      resultsScreen.classList.add('hidden');
+      document.getElementById('welcome-back').classList.add('hidden');
+      introScreen.classList.remove('hidden');
+      currentStep = -1;
+      // Reset all card highlights
+      document.querySelectorAll('.answer-card').forEach(c => {
+        c.classList.remove('border-[#22D3EE]', 'bg-[#22D3EE]/10');
+        c.classList.add('border-[rgba(255,255,255,0.06)]');
+      });
+      pillsContainer.querySelectorAll('.industry-pill').forEach(p => {
+        p.classList.remove('border-[#22D3EE]', 'bg-[#22D3EE]/10', 'text-[#22D3EE]');
+      });
+      escapeBtn.classList.remove('border-[#22D3EE]', 'bg-[#22D3EE]/10');
+      escapeBtn.classList.add('border-[rgba(255,255,255,0.12)]');
+      continueBtn.disabled = true;
+      continueBtn.textContent = 'Continue';
+      const url = new URL(window.location);
+      url.searchParams.delete('profile');
+      history.replaceState(null, '', url);
+    });
+
+    // ── Share ──
+    document.getElementById('share-btn').addEventListener('click', () => {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.getElementById('share-btn');
+        const orig = btn.innerHTML;
+        btn.textContent = 'Link copied!';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+      });
+    });
+  </script>
+</Layout>

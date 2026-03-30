@@ -342,6 +342,13 @@ export function getStocksUnderPrice(maxPrice: number): Stock[] {
     .slice(0, 100);
 }
 
+export function getUndervaluedStocks(): Stock[] {
+  return stocks
+    .filter(s => s.valuationRating === 'Undervalued' && (s.compassScore ?? 0) >= 50)
+    .sort((a, b) => (b.compassScore ?? 0) - (a.compassScore ?? 0))
+    .slice(0, 100);
+}
+
 export function getTopStocks(limit: number = 20): Stock[] {
   return [...stocks].sort((a, b) => b.compassScore - a.compassScore).slice(0, limit);
 }
