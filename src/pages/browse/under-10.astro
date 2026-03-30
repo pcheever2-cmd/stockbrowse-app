@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getStocksUnderPrice, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry } from '../../data/stocks';
+
+const stocks = getStocksUnderPrice(10);
+---
+
+<Layout title="Quality Stocks Under $10 | Compass Score">
+  <section class="py-12 bg-[#161B24] min-h-screen">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="mb-8">
+        <a href="/browse" class="text-[#22D3EE] hover:underline text-sm mb-4 inline-block">← Back to Browse</a>
+        <div class="flex items-center gap-4">
+          <span class="text-5xl">🏷️</span>
+          <div>
+            <h1 class="text-4xl font-bold">Quality Stocks Under $10</h1>
+            <p class="text-[#CBD5E1] mt-1">Affordable quality stocks with Compass Score 50+</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-[#CBD5E1] mb-8 max-w-3xl">
+        These quality stocks are priced under $10 per share, making them accessible for investors on any budget.
+        All stocks shown have a Compass Score of at least 50.
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {stocks.map(stock => {
+          const colors = getGradeColor(stock.grade);
+          return (
+            <a href={`/stock/${stock.symbol.toLowerCase()}`}
+               class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5 hover:shadow-lg hover:border-emerald-300 transition">
+              <div class="flex justify-between items-start mb-3">
+                <div>
+                  <h3 class="font-bold text-lg">{stock.name}</h3>
+                  <p class="text-[#64748B] text-sm">{stock.symbol} • {getNormalizedIndustry(stock.industry)}</p>
+                </div>
+                <div class={`px-3 py-1 rounded-full ${colors.bg} ${colors.text} font-bold`}>
+                  {stock.compassScore}
+                </div>
+              </div>
+              <div class="flex justify-between items-end">
+                <div>
+                  <div class="text-2xl font-bold">{formatPrice(stock.price)}</div>
+                  <div class="text-sm text-[#64748B]">{formatMarketCap(stock.marketCap)} cap</div>
+                </div>
+                <div class={`text-sm font-semibold ${colors.text}`}>
+                  Grade {stock.grade}
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</Layout>

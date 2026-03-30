@@ -37,11 +37,18 @@ const marketCapRanges = [
 
       <div class="flex gap-6">
         <!-- Left Sidebar - Filters -->
-        <aside class="w-64 flex-shrink-0 hidden lg:block">
+        <aside id="filterSidebar" class="w-64 flex-shrink-0 hidden lg:block">
           <div class="bg-[#161B24] rounded-xl p-6 sticky top-6 space-y-6 max-h-[calc(100vh-3rem)] overflow-y-auto">
-            <div>
-              <h3 class="font-semibold text-sm uppercase text-[#64748B] mb-3">Filters</h3>
-              <button id="clearFilters" class="text-sm text-[#22D3EE] hover:underline">Clear all</button>
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-semibold text-sm uppercase text-[#64748B] mb-3">Filters</h3>
+                <button id="clearFilters" class="text-sm text-[#22D3EE] hover:underline">Clear all</button>
+              </div>
+              <button id="closeFilterSidebar" class="lg:hidden p-2 text-[#CBD5E1] hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
             </div>
 
             <!-- Grade Filter -->
@@ -142,6 +149,15 @@ const marketCapRanges = [
           <!-- Top Bar -->
           <div class="bg-[#161B24] rounded-xl p-4 mb-4">
             <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+              <!-- Mobile Filter Toggle -->
+              <button id="mobileFilterToggle" class="lg:hidden flex items-center gap-2 px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 rounded-lg hover:border-[#22D3EE] transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                </svg>
+                <span>Filters</span>
+                <span id="mobileFilterCount" class="bg-[#22D3EE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+              </button>
+
               <!-- Search -->
               <div class="flex-1 max-w-md relative">
                 <input
@@ -252,28 +268,28 @@ const marketCapRanges = [
       if (params.get('grades')) {
         filters.grades = params.get('grades').split(',');
         filters.grades.forEach(g => {
-          const cb = document.querySelector(`input[data-grade="${g}"]`);
+          const cb = document.querySelector(`input[name="grade"][value="${g}"]`);
           if (cb) cb.checked = true;
         });
       }
       if (params.get('industries')) {
         filters.industries = params.get('industries').split(',');
         filters.industries.forEach(i => {
-          const cb = document.querySelector(`input[data-industry="${i}"]`);
+          const cb = document.querySelector(`input[name="industry"][value="${i}"]`);
           if (cb) cb.checked = true;
         });
       }
       if (params.get('price')) {
         filters.priceRanges = params.get('price').split(',');
         filters.priceRanges.forEach(r => {
-          const cb = document.querySelector(`input[data-price-range="${r}"]`);
+          const cb = document.querySelector(`input[name="price"][value="${r}"]`);
           if (cb) cb.checked = true;
         });
       }
       if (params.get('cap')) {
         filters.marketCapRanges = params.get('cap').split(',');
         filters.marketCapRanges.forEach(r => {
-          const cb = document.querySelector(`input[data-cap-range="${r}"]`);
+          const cb = document.querySelector(`input[name="marketcap"][value="${r}"]`);
           if (cb) cb.checked = true;
         });
       }
@@ -750,6 +766,17 @@ const marketCapRanges = [
       if (filters.goldenOnly) chips.push({ type: 'goldenOnly', value: 'true', label: '⭐ Golden Only' });
       filters.valuationRatings.forEach(v => chips.push({ type: 'valuationRatings', value: v, label: v }));
 
+      // Update mobile filter count badge
+      const mobileCount = document.getElementById('mobileFilterCount');
+      if (mobileCount) {
+        if (chips.length > 0) {
+          mobileCount.textContent = chips.length;
+          mobileCount.classList.remove('hidden');
+        } else {
+          mobileCount.classList.add('hidden');
+        }
+      }
+
       if (chips.length === 0) {
         container.classList.add('hidden');
         return;
@@ -881,12 +908,20 @@ const marketCapRanges = [
             // Parse and apply smart filters
             const smartFilters = parseSmartSearch(query);
 
-            // Clear existing auto-applied filters (but keep manual ones)
-            // This is a simplified approach - in production you'd track which filters were auto-applied
-            filters.grades = [];
-            filters.industries = [];
-            filters.priceRanges = [];
-            filters.marketCapRanges = [];
+            // Only override filter categories that the smart search actually detected
+            // This preserves manually-set filters for categories the search didn't touch
+            if (smartFilters.grades.length > 0) {
+              filters.grades = [];
+            }
+            if (smartFilters.industries.length > 0) {
+              filters.industries = [];
+            }
+            if (smartFilters.priceRanges.length > 0) {
+              filters.priceRanges = [];
+            }
+            if (smartFilters.marketCapRanges && smartFilters.marketCapRanges.length > 0) {
+              filters.marketCapRanges = [];
+            }
 
             applySmartFilters(smartFilters);
 
@@ -1012,6 +1047,25 @@ const marketCapRanges = [
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
+
+    // Mobile filter toggle
+    function closeMobileFilters() {
+      const sidebar = document.getElementById('filterSidebar');
+      sidebar.classList.add('hidden');
+      sidebar.classList.remove('block', 'fixed', 'inset-0', 'z-50', 'w-full', 'bg-[#080A0F]', 'p-4', 'overflow-y-auto');
+    }
+
+    document.getElementById('mobileFilterToggle')?.addEventListener('click', () => {
+      const sidebar = document.getElementById('filterSidebar');
+      if (sidebar.classList.contains('hidden')) {
+        sidebar.classList.remove('hidden');
+        sidebar.classList.add('block', 'fixed', 'inset-0', 'z-50', 'w-full', 'bg-[#080A0F]', 'p-4', 'overflow-y-auto');
+      } else {
+        closeMobileFilters();
+      }
+    });
+
+    document.getElementById('closeFilterSidebar')?.addEventListener('click', closeMobileFilters);
 
     // Initial render - restore filters from URL first (for back button support)
     updateWatchlistBadge();

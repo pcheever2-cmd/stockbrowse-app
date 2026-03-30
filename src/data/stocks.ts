@@ -5,8 +5,8 @@ export interface Stock {
   symbol: string;
   name: string;
   price: number;
-  compassScore: number;
-  grade: 'A' | 'B' | 'C' | 'D' | 'F';
+  compassScore: number | null;
+  grade: 'A' | 'B' | 'C' | 'D' | 'F' | null;
   industry: string;
   sector: string;
   marketCap: number; // in billions
@@ -68,6 +68,22 @@ export interface Stock {
   scoreNote: {
     title: string;
     text: string;
+  } | null;
+
+  // Moonshot Score (Quality Growth)
+  moonshotScore: number | null;
+  moonshotGrade: 'A' | 'B' | 'C' | 'D' | 'F' | null;
+  isGolden: boolean;
+
+  // Valuation Score (Technical Valuation)
+  valuationScore: number | null;
+  valuationRating: 'Undervalued' | 'Fair Value' | 'Overvalued' | null;
+  valuationData: {
+    vsSma200: number | null;
+    vsSma50: number | null;
+    position52w: number | null;
+    high52w: number | null;
+    low52w: number | null;
   } | null;
 }
 
