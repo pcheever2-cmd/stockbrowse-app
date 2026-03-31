@@ -195,7 +195,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       <a href="/browse/all" onclick="if(document.referrer.includes('/browse/')) { history.back(); return false; }" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">&larr; Back to Browse</a>
 
       <!-- Header with Score -->
-      <div class={`rounded-2xl p-8 ${colors.bg} border ${colors.border} mb-8`}>
+      <div class="rounded-2xl p-8 bg-[#161B24] border border-[rgba(255,255,255,0.06)] mb-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <h1 class="text-3xl md:text-4xl font-bold text-slate-100">{stock.name}</h1>
@@ -251,7 +251,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       )}
 
       <!-- Quality Assessment (Free) -->
-      <div class={`${colors.bg} border ${colors.border} rounded-xl p-6 mb-8`}>
+      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <h2 class="text-xl font-bold mb-3 text-slate-100">Quality Assessment</h2>
         <p class={`${colors.text} leading-relaxed text-lg`}>{summary}</p>
       </div>
