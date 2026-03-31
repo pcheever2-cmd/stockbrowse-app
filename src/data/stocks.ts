@@ -394,16 +394,20 @@ export function getCompanyProfile(stock: Stock): string {
   if (!stock.description || stock.description.length < 20) {
     return '';
   }
-  // Return first 2-3 sentences (roughly 400 chars)
+  // Return first 2-3 sentences (roughly 500 chars)
   const desc = stock.description;
-  if (desc.length <= 400) return desc;
+  if (desc.length <= 500) return desc;
 
   // Find a good cutoff point (end of sentence)
-  const cutoff = desc.slice(0, 450).lastIndexOf('. ');
-  if (cutoff > 200) {
-    return desc.slice(0, cutoff + 1);
-  }
-  return desc.slice(0, 400) + '...';
+  const slice = desc.slice(0, 550);
+  const periodCut = slice.lastIndexOf('. ');
+  if (periodCut > 200) return desc.slice(0, periodCut + 1);
+
+  // Try semicolon as sentence boundary (common in SEC filings)
+  const semiCut = slice.lastIndexOf('; ');
+  if (semiCut > 200) return desc.slice(0, semiCut + 1) + '...';
+
+  return desc.slice(0, 500) + '...';
 }
 
 export function formatPrice(price: number): string {
