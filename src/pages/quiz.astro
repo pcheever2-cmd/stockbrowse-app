@@ -1,65 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { stocks, getNormalizedIndustry, formatPrice, formatMarketCap, getGradeColor } from '../data/stocks';
-
-// Pre-compute stock pools (trimmed to card fields only)
-function trimStock(s: any) {
-  return {
-    symbol: s.symbol, name: s.name, price: s.price,
-    compassScore: s.compassScore, grade: s.grade,
-    industry: getNormalizedIndustry(s.industry), sector: s.sector,
-    marketCap: s.marketCap, moonshotScore: s.moonshotScore,
-    moonshotGrade: s.moonshotGrade, valuationRating: s.valuationRating,
-    isGolden: s.isGolden, epsGrowth: s.epsGrowth,
-    volatility: s.factorValues?.volatility ?? null,
-  };
-}
-
-const gradeOrder = { A: 5, B: 4, C: 3, D: 2, F: 1 };
-const gradeVal = (g: string | null) => gradeOrder[g as keyof typeof gradeOrder] ?? 0;
-
-// Pool: The Long Game - grade A/B, low volatility, sorted by compass
-const longGamePool = stocks
-  .filter(s => (s.grade === 'A' || s.grade === 'B') && (s.factorValues?.volatility ?? 100) < 35)
-  .sort((a, b) => b.compassScore - a.compassScore)
-  .slice(0, 30).map(trimStock);
-
-// Pool: Income Builder - dividend sectors, grade B+
-const dividendSectors = ['Utilities', 'Real Estate', 'Finance', 'Consumer', 'Energy'];
-const incomePool = stocks
-  .filter(s => dividendSectors.includes(getNormalizedIndustry(s.industry)) && gradeVal(s.grade) >= 4)
-  .sort((a, b) => b.compassScore - a.compassScore)
-  .slice(0, 30).map(trimStock);
-
-// Pool: Growth Explorer - moonshotGrade A/B
-const growthPool = stocks
-  .filter(s => (s.moonshotGrade === 'A' || s.moonshotGrade === 'B') && gradeVal(s.grade) >= 3)
-  .sort((a, b) => (b.moonshotScore ?? 0) - (a.moonshotScore ?? 0))
-  .slice(0, 30).map(trimStock);
-
-// Pool: Bold Investor - moonshotGrade A, high growth, grade C+ floor
-const boldPool = stocks
-  .filter(s => s.moonshotGrade === 'A' && gradeVal(s.grade) >= 3 && (s.epsGrowth ?? 0) > 15)
-  .sort((a, b) => (b.moonshotScore ?? 0) - (a.moonshotScore ?? 0))
-  .slice(0, 30).map(trimStock);
-
-// Pool: Smart Shopper - undervalued, grade C+
-const smartPool = stocks
-  .filter(s => s.valuationRating === 'Undervalued' && gradeVal(s.grade) >= 3)
-  .sort((a, b) => b.compassScore - a.compassScore)
-  .slice(0, 30).map(trimStock);
-
-// Pool: Steady Climber - isGolden preferred, grade B+
-const steadyPool = stocks
-  .filter(s => gradeVal(s.grade) >= 4)
-  .sort((a, b) => {
-    if (a.isGolden && !b.isGolden) return -1;
-    if (!a.isGolden && b.isGolden) return 1;
-    return b.compassScore - a.compassScore;
-  })
-  .slice(0, 30).map(trimStock);
-
-const stockPools = { longGame: longGamePool, income: incomePool, growth: growthPool, bold: boldPool, smart: smartPool, steady: steadyPool };
 ---
 
 <Layout title="Investment Profile Quiz | Stockbrowse">
@@ -71,7 +11,7 @@ const stockPools = { longGame: longGamePool, income: incomePool, growth: growthP
           <svg class="w-8 h-8 text-[#080A0F]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
         </div>
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Discover Your Investing Style</h1>
-        <p class="text-[#CBD5E1] text-lg mb-2">Answer 6 quick questions and we'll match you with stocks that fit your goals.</p>
+        <p class="text-[#CBD5E1] text-lg mb-2">Answer 6 quick questions and we'll help you figure out what kind of investor you are.</p>
         <p class="text-[#64748B] text-sm mb-8">Takes about 1 minute</p>
         <button id="start-btn" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-8 py-3 rounded-xl font-bold text-lg transition">
           Let's Go
@@ -236,43 +176,42 @@ const stockPools = { longGame: longGamePool, income: incomePool, growth: growthP
         <div id="profile-bullets" class="text-left max-w-md mx-auto space-y-2"></div>
       </div>
 
-      <!-- Stock Matches -->
+      <!-- What to Look For -->
       <div class="mb-12">
-        <h3 class="text-xl font-bold mb-1">Stocks that match this investing style</h3>
-        <p class="text-[#64748B] text-sm mb-6">Based on public financial data and quality metrics</p>
-        <div id="stock-cards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <h3 id="lookfor-heading" class="text-xl font-bold mb-1"></h3>
+        <p class="text-[#64748B] text-sm mb-6">Here's what matters most for your investing style</p>
+        <div id="metric-cards" class="grid sm:grid-cols-2 gap-4"></div>
       </div>
 
-      <!-- What To Do Next -->
-      <div id="next-steps" class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)] mb-8">
-        <h3 class="text-lg font-bold mb-4">What to do next</h3>
-        <div id="next-steps-content" class="space-y-3 text-[#CBD5E1] text-sm"></div>
+      <!-- Explore on Your Own -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold mb-4">Ready to explore?</h3>
+        <div id="explore-links" class="grid sm:grid-cols-2 gap-4"></div>
       </div>
 
       <!-- Actions -->
       <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
         <a id="explore-btn" href="/browse/all" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-6 py-3 rounded-xl font-bold transition text-center w-full sm:w-auto">
-          Explore more stocks like these
+          Start exploring
         </a>
         <button id="retake-btn" class="text-[#64748B] hover:text-slate-100 text-sm transition">Retake Quiz</button>
         <button id="share-btn" class="text-[#64748B] hover:text-[#22D3EE] text-sm transition flex items-center gap-1">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
-          Share Results
+          Share Your Profile
         </button>
       </div>
 
       <!-- Disclaimer -->
       <div class="bg-[#161B24] rounded-xl p-5 border border-[rgba(255,255,255,0.06)] text-[#64748B] text-xs space-y-2">
-        <p>These stocks match this investing style based on public financial data. This is not financial advice. Always do your own research before making investment decisions.</p>
-        <p>5 questions can't capture your full financial situation - this is a starting point for exploration. Investing involves real risk of loss.</p>
-        <p><a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn how our Compass Score works</a> · <a href="/about" class="text-[#22D3EE] hover:underline">About Stockbrowse</a></p>
+        <p>This quiz helps you understand your investing preferences - it is not financial advice. Always do your own research before making investment decisions.</p>
+        <p>6 questions can't capture your full financial situation - this is a starting point for exploration. Investing involves real risk, including the possibility of losing some or all of your money.</p>
+        <p><a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn how our Compass Score works</a> · <a href="/valuation-methodology" class="text-[#22D3EE] hover:underline">Valuation methodology</a> · <a href="/about" class="text-[#22D3EE] hover:underline">About Stockbrowse</a></p>
       </div>
     </div>
   </div>
 
-  <script define:vars={{ stockPools }}>
-    // ── Data & State ──
-    const pools = stockPools;
+  <script>
+    // ── State ──
     let currentStep = -1; // -1 = intro
     const answers = { experience: null, goal: null, risk: null, industries: [], approach: null, barrier: null };
 
@@ -576,7 +515,7 @@ const stockPools = { longGame: longGamePool, income: incomePool, growth: growthP
       // Badge
       const badge = document.getElementById('profile-badge');
       badge.className = `inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold ${profile.badgeBg}`;
-      badge.textContent = `Your profile`;
+      badge.textContent = `Your investing style`;
 
       // Name & desc
       document.getElementById('profile-name').textContent = profile.name;
@@ -588,69 +527,36 @@ const stockPools = { longGame: longGamePool, income: incomePool, growth: growthP
         `<div class="flex items-start gap-2"><span class="text-[#22D3EE] mt-0.5">&#10003;</span><span class="text-[#CBD5E1] text-sm">${b}</span></div>`
       ).join('');
 
-      // Stock cards
-      const pool = pools[profile.pool] || pools.steady;
-      let filtered = [...pool];
+      // What to look for - educational metric cards
+      document.getElementById('lookfor-heading').textContent = `What ${profile.name} investors look for`;
 
-      // Filter by selected industries if any
-      if (answers.industries && answers.industries.length > 0) {
-        const industryFiltered = filtered.filter(s => answers.industries.includes(s.industry));
-        if (industryFiltered.length >= 3) filtered = industryFiltered;
-      }
-
-      // How many cards: "no time" = 3, "ready" = 6, else 4
-      let cardCount = 4;
-      if (answers.barrier === 'time') cardCount = 3;
-      else if (answers.barrier === 'ready') cardCount = 6;
-
-      const picks = filtered.slice(0, cardCount);
-      const cardsEl = document.getElementById('stock-cards');
-      cardsEl.innerHTML = picks.map(s => {
-        const gradeColors = { A: ['bg-[#22D3EE15]','text-[#22D3EE]'], B: ['bg-[#34D39915]','text-[#34D399]'], C: ['bg-[#94A3B815]','text-[#94A3B8]'], D: ['bg-[#FBBF2415]','text-[#FBBF24]'], F: ['bg-[#F8717115]','text-[#F87171]'] };
-        const [gbg, gtxt] = gradeColors[s.grade] || gradeColors.C;
-        const fmtPrice = s.price > 0 ? `$${s.price.toFixed(2)}` : 'N/A';
-        const fmtCap = s.marketCap >= 1000 ? `$${(s.marketCap/1000).toFixed(1)}T` : s.marketCap >= 1 ? `$${s.marketCap.toFixed(1)}B` : `$${(s.marketCap*1000).toFixed(0)}M`;
-        const whyFit = getWhyItFits(s, profileKey);
-        return `<a href="/stock/${s.symbol.toLowerCase()}" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5 hover:border-[#22D3EE]/40 transition block">
-          <div class="flex justify-between items-start mb-3">
-            <div><h4 class="font-bold text-lg">${s.name}</h4><p class="text-[#64748B] text-sm">${s.symbol} · ${s.industry}</p></div>
-            <div class="px-3 py-1 rounded-full ${gbg} ${gtxt} font-bold text-sm">${s.compassScore}</div>
+      const metrics = getProfileMetrics(profileKey);
+      const metricsEl = document.getElementById('metric-cards');
+      metricsEl.innerHTML = metrics.map(m =>
+        `<div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-2xl">${m.icon}</span>
+            <h4 class="font-semibold text-slate-100">${m.title}</h4>
           </div>
-          <div class="flex justify-between items-end mb-3">
-            <div><div class="text-2xl font-bold">${fmtPrice}</div><div class="text-sm text-[#64748B]">${fmtCap} cap</div></div>
-            <div class="text-sm font-semibold ${gtxt}">Grade ${s.grade}</div>
-          </div>
-          <div class="text-xs text-[#64748B] border-t border-[rgba(255,255,255,0.06)] pt-2 mt-1">${whyFit}</div>
-        </a>`;
-      }).join('');
+          <p class="text-[#CBD5E1] text-sm">${m.explanation}</p>
+        </div>`
+      ).join('');
 
-      // Update explore link
+      // Explore links - browse pages matching this profile
+      const links = getProfileLinks(profileKey);
+      const linksEl = document.getElementById('explore-links');
+      linksEl.innerHTML = links.map(l =>
+        `<a href="${l.href}" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5 hover:border-[#22D3EE]/40 transition block">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">${l.icon}</span>
+            <h4 class="font-semibold text-slate-100">${l.title}</h4>
+          </div>
+          <p class="text-[#64748B] text-sm">${l.desc}</p>
+        </a>`
+      ).join('');
+
+      // Update explore button link
       document.getElementById('explore-btn').href = profile.exploreLink;
-
-      // Next steps
-      const nextEl = document.getElementById('next-steps-content');
-      const exp = answers.experience || 'new';
-      let steps = [];
-      if (exp === 'new' || exp === 'passive') {
-        steps = [
-          'Start by learning about 1-2 of these companies. Tap a card to read their full profile.',
-          'There\'s no rush. Understanding what you\'re investing in matters more than timing.',
-          '<a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn how we score stocks</a> so you know what the numbers mean.',
-        ];
-      } else if (exp === 'some') {
-        steps = [
-          'Compare these with what you already own. Look for diversification across industries.',
-          'Check the Compass Score breakdowns to see where each company is strong or weak.',
-          '<a href="/browse/all" class="text-[#22D3EE] hover:underline">Browse all stocks</a> with filters to find more matches.',
-        ];
-      } else {
-        steps = [
-          'Explore the full browse page with quality and valuation filters applied.',
-          'Use the Moonshot Score to identify growth momentum alongside quality.',
-          '<a href="/browse/all" class="text-[#22D3EE] hover:underline">Advanced filters</a> · <a href="/moonshot-methodology" class="text-[#22D3EE] hover:underline">Moonshot methodology</a>',
-        ];
-      }
-      nextEl.innerHTML = steps.map(s => `<p>${s}</p>`).join('');
 
       // Update URL without reload
       const url = new URL(window.location);
@@ -658,16 +564,82 @@ const stockPools = { longGame: longGamePool, income: incomePool, growth: growthP
       history.replaceState(null, '', url);
     }
 
-    function getWhyItFits(stock, profileKey) {
-      switch (profileKey) {
-        case 'longGame': return `High quality score (${stock.compassScore}) with ${stock.volatility && stock.volatility < 35 ? 'low volatility' : 'stable fundamentals'}`;
-        case 'income': return `Strong quality in a dividend-friendly sector (${stock.industry})`;
-        case 'growth': return `Moonshot Grade ${stock.moonshotGrade || 'B'} — strong growth momentum`;
-        case 'bold': return `High growth potential with Moonshot Grade ${stock.moonshotGrade || 'A'}`;
-        case 'smart': return `${stock.valuationRating || 'Undervalued'} with a quality score of ${stock.compassScore}`;
-        case 'steady': return `${stock.isGolden ? 'Golden stock — ' : ''}Well-rounded quality at ${stock.compassScore}`;
-        default: return `Compass Score: ${stock.compassScore}`;
-      }
+    function getProfileMetrics(profileKey) {
+      const metrics = {
+        longGame: [
+          { icon: '🛡️', title: 'High Compass Score (Grade A or B)', explanation: 'Companies with strong profitability, cash flow, and efficiency. These are the ones built to last.' },
+          { icon: '📉', title: 'Low Volatility (under 35%)', explanation: 'Stocks that don\'t swing wildly in price. Less drama, more steady progress.' },
+          { icon: '💵', title: 'Strong Cash Flow', explanation: 'Companies that generate real cash — not just accounting profits. Cash is harder to fake than earnings.' },
+          { icon: '📊', title: 'Conservative Asset Growth', explanation: 'Companies that grow steadily rather than expanding aggressively. Slow and steady tends to win.' },
+        ],
+        income: [
+          { icon: '💰', title: 'Dividend-Paying Sectors', explanation: 'Look in Utilities, Real Estate, Finance, Consumer, and Energy — these sectors have the longest track records of paying dividends.' },
+          { icon: '⭐', title: 'Grade B or Above', explanation: 'Quality matters for dividends too. Higher-quality companies are less likely to cut their dividend payments.' },
+          { icon: '🏭', title: 'Consistent Profitability', explanation: 'Companies with steady Return on Assets (ROA) can sustain dividend payments year after year.' },
+          { icon: '📈', title: 'Low Asset Growth', explanation: 'Companies reinvesting heavily may not have cash left for dividends. Look for those returning cash to shareholders.' },
+        ],
+        growth: [
+          { icon: '🚀', title: 'Moonshot Grade A or B', explanation: 'Our Moonshot Score identifies companies with strong growth metrics AND quality fundamentals. Not just fast growth — quality growth.' },
+          { icon: '📊', title: 'Rising Revenue & Earnings', explanation: 'Look for companies with projected EPS and revenue growth. Growing earnings are the engine of stock returns.' },
+          { icon: '🛡️', title: 'Quality Floor (Grade C+)', explanation: 'Even growth investors need a safety net. We filter out the lowest-quality companies to reduce blowup risk.' },
+          { icon: '🏭', title: 'Tech, Healthcare & Communication', explanation: 'These sectors tend to have the highest concentration of quality growth companies.' },
+        ],
+        bold: [
+          { icon: '⚡', title: 'Moonshot Grade A', explanation: 'The highest growth momentum combined with quality. These companies are growing fast AND have strong fundamentals.' },
+          { icon: '📈', title: 'High Earnings Growth (15%+)', explanation: 'Look for companies with projected earnings growth above 15%. This is where the big moves come from.' },
+          { icon: '🛡️', title: 'Quality Floor (Grade C+)', explanation: 'Bold doesn\'t mean reckless. Even aggressive investors should avoid the lowest-quality companies.' },
+          { icon: '⚠️', title: 'Higher Volatility Expected', explanation: 'Fast-growing companies tend to have bigger price swings. Be prepared for ups AND downs.' },
+        ],
+        smart: [
+          { icon: '🏷️', title: 'Undervalued Rating', explanation: 'Our Valuation Score identifies stocks trading below their 200-day moving average — a signal that they may be priced below fair value.' },
+          { icon: '📊', title: 'Trading Below SMA200', explanation: 'When a stock is below its 200-day average, it\'s historically underperformed recently. Research shows these tend to recover over 12 months.' },
+          { icon: '⭐', title: 'Quality Score 50+', explanation: 'Cheap stocks can be cheap for a reason. Combining undervaluation with quality filters helps avoid value traps.' },
+          { icon: '⏳', title: 'Patience Required', explanation: 'Value investing takes time. These stocks may take months to recover. The 12-month horizon is where this approach works best.' },
+        ],
+        steady: [
+          { icon: '⭐', title: 'Grade B or Above', explanation: 'Start with the well-rounded, quality companies. A solid foundation matters more than chasing any single strategy.' },
+          { icon: '🌟', title: 'Golden Stocks (Bonus)', explanation: 'Stocks rated highly on BOTH quality AND growth are rare — look for these as the best of both worlds.' },
+          { icon: '🌍', title: 'Diversify Across Sectors', explanation: 'Don\'t put all your eggs in one basket. Spread across different industries to reduce risk.' },
+          { icon: '📈', title: 'Balance Growth and Stability', explanation: 'Mix some growth-oriented picks with stable, dividend-paying companies. This gives you upside without too much risk.' },
+        ],
+      };
+      return metrics[profileKey] || metrics.steady;
+    }
+
+    function getProfileLinks(profileKey) {
+      const links = {
+        longGame: [
+          { icon: '🛡️', title: 'Browse Low-Risk Quality Stocks', desc: 'A and B rated stocks sorted by quality', href: '/browse/low-risk' },
+          { icon: '💰', title: 'Browse Dividend Stocks', desc: 'Quality companies in dividend-paying sectors', href: '/browse/dividends' },
+          { icon: '📖', title: 'How the Compass Score Works', desc: 'Understand the 6 quality factors behind the ratings', href: '/how-it-works' },
+        ],
+        income: [
+          { icon: '💰', title: 'Browse Dividend Stocks', desc: 'Quality companies in dividend-paying sectors', href: '/browse/dividends' },
+          { icon: '🛡️', title: 'Browse Low-Risk Quality', desc: 'Stable, high-quality companies', href: '/browse/low-risk' },
+          { icon: '📖', title: 'How the Compass Score Works', desc: 'Learn what makes a quality dividend stock', href: '/how-it-works' },
+        ],
+        growth: [
+          { icon: '🚀', title: 'Browse Growth Stocks', desc: 'Quality growth companies in tech, healthcare, and more', href: '/browse/growth' },
+          { icon: '📖', title: 'Moonshot Score Methodology', desc: 'How we identify quality growth stocks', href: '/moonshot-methodology' },
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Use advanced filters to find your own picks', href: '/browse/all' },
+        ],
+        bold: [
+          { icon: '🚀', title: 'Browse Growth Stocks', desc: 'The highest-quality growth companies', href: '/browse/growth' },
+          { icon: '📖', title: 'Moonshot Score Methodology', desc: 'Understand how we measure growth momentum', href: '/moonshot-methodology' },
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Apply your own filters across 4,500+ stocks', href: '/browse/all' },
+        ],
+        smart: [
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Filter by "Undervalued" in the Technical Valuation filter', href: '/browse/all?valuation=Undervalued' },
+          { icon: '📖', title: 'Valuation Score Methodology', desc: 'How we identify undervalued stocks using SMA200', href: '/valuation-methodology' },
+          { icon: '📊', title: 'How the Compass Score Works', desc: 'Combine valuation with quality for better picks', href: '/how-it-works' },
+        ],
+        steady: [
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Explore 4,500+ stocks with quality and valuation filters', href: '/browse/all' },
+          { icon: '📖', title: 'How the Compass Score Works', desc: 'Understand the quality factors behind the ratings', href: '/how-it-works' },
+          { icon: '🚀', title: 'Browse Growth Stocks', desc: 'See the highest-quality growth companies', href: '/browse/growth' },
+        ],
+      };
+      return links[profileKey] || links.steady;
     }
 
     // ── Retake ──
