@@ -332,7 +332,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">EV/EBITDA</div>
-              <div class="text-2xl font-bold text-slate-100">{stock.evEbitda?.toFixed(1) || 'N/A'}</div>
+              <div data-premium="evEbitda" class="text-2xl font-bold text-slate-100">{stock.evEbitda?.toFixed(1) || 'N/A'}</div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
               <h4 class="font-semibold text-slate-100 mb-2">Enterprise Value to EBITDA</h4>
@@ -347,12 +347,10 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">Forward P/E</div>
-              <div class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || 'N/A'}</div>
-              {stock.sectorPe && stock.forwardPe && (
-                <div class={`text-xs mt-1 ${stock.forwardPe < stock.sectorPe ? 'text-emerald-400' : stock.forwardPe > stock.sectorPe * 1.2 ? 'text-amber-400' : 'text-[#64748B]'}`}>
-                  Sector: {stock.sectorPe.toFixed(1)}
-                </div>
-              )}
+              <div data-premium="forwardPe" class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || 'N/A'}</div>
+              <div data-premium="sectorPe" class={`text-xs mt-1 ${stock.forwardPe && stock.sectorPe && stock.forwardPe < stock.sectorPe ? 'text-emerald-400' : 'text-[#64748B]'}`}>
+                {stock.sectorPe && stock.forwardPe ? `Sector: ${stock.sectorPe.toFixed(1)}` : ''}
+              </div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
               <h4 class="font-semibold text-slate-100 mb-2">Forward Price-to-Earnings</h4>
@@ -367,7 +365,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">PEG Ratio</div>
-              <div class="text-2xl font-bold text-slate-100">{stock.pegRatio?.toFixed(2) || 'N/A'}</div>
+              <div data-premium="pegRatio" class="text-2xl font-bold text-slate-100">{stock.pegRatio?.toFixed(2) || 'N/A'}</div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
               <h4 class="font-semibold text-slate-100 mb-2">Price/Earnings-to-Growth Ratio</h4>
@@ -455,8 +453,8 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">RSI (14)</div>
-              <div class={`text-2xl font-bold ${rsiInfo.color}`}>{rsiInfo.value}</div>
-              <div class={`text-xs ${rsiInfo.color}`}>{rsiInfo.label}</div>
+              <div data-premium="rsi" class={`text-2xl font-bold ${rsiInfo.color}`}>{rsiInfo.value}</div>
+              <div data-premium="rsiLabel" class={`text-xs ${rsiInfo.color}`}>{rsiInfo.label}</div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
               <h4 class="font-semibold text-slate-100 mb-2">Relative Strength Index (14-day)</h4>
@@ -473,7 +471,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">vs 50-Day SMA</div>
-              <div class={`text-2xl font-bold ${stock.sma50 && stock.price > stock.sma50 ? 'text-emerald-400' : 'text-red-400'}`}>
+              <div data-premium="sma50" data-price={stock.price} class={`text-2xl font-bold ${stock.sma50 && stock.price > stock.sma50 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {stock.sma50 ? (stock.price > stock.sma50 ? 'Above' : 'Below') : 'N/A'}
               </div>
             </button>
@@ -491,7 +489,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">vs 200-Day SMA</div>
-              <div class={`text-2xl font-bold ${stock.sma200 && stock.price > stock.sma200 ? 'text-emerald-400' : 'text-red-400'}`}>
+              <div data-premium="sma200" data-price={stock.price} class={`text-2xl font-bold ${stock.sma200 && stock.price > stock.sma200 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {stock.sma200 ? (stock.price > stock.sma200 ? 'Above' : 'Below') : 'N/A'}
               </div>
             </button>
@@ -525,11 +523,11 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Price Target</div>
-              <div class="text-xl font-bold text-slate-100">{stock.avgPriceTarget ? `$${stock.avgPriceTarget.toFixed(0)}` : 'N/A'}</div>
+              <div data-premium="avgPriceTarget" class="text-xl font-bold text-slate-100">{stock.avgPriceTarget ? `$${stock.avgPriceTarget.toFixed(0)}` : 'N/A'}</div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Upside</div>
-              <div class={`text-xl font-bold ${stock.upside && stock.upside > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+              <div data-premium="upside" class={`text-xl font-bold ${stock.upside && stock.upside > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {stock.upside !== null ? `${stock.upside > 0 ? '+' : ''}${stock.upside}%` : 'N/A'}
               </div>
             </div>
@@ -545,13 +543,13 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="grid grid-cols-2 gap-4">
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Projected EPS Growth</div>
-              <div class={`text-2xl font-bold ${stock.epsGrowth && stock.epsGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+              <div data-premium="epsGrowth" class={`text-2xl font-bold ${stock.epsGrowth && stock.epsGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {stock.epsGrowth ? `${stock.epsGrowth > 0 ? '+' : ''}${stock.epsGrowth.toFixed(1)}%` : 'N/A'}
               </div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Projected Revenue Growth</div>
-              <div class={`text-2xl font-bold ${stock.revenueGrowth && stock.revenueGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+              <div data-premium="revenueGrowth" class={`text-2xl font-bold ${stock.revenueGrowth && stock.revenueGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {stock.revenueGrowth ? `${stock.revenueGrowth > 0 ? '+' : ''}${stock.revenueGrowth.toFixed(1)}%` : 'N/A'}
               </div>
             </div>
@@ -569,8 +567,8 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             <div class="metric-wrapper">
               <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
                 <div class="text-sm text-[#64748B] mb-1">Piotroski F-Score</div>
-                <div class={`text-2xl font-bold ${piotroskiInfo.color}`}>{piotroskiInfo.value}</div>
-                <div class={`text-xs ${piotroskiInfo.color}`}>{piotroskiInfo.label}</div>
+                <div data-premium="piotroskiScore" class={`text-2xl font-bold ${piotroskiInfo.color}`}>{piotroskiInfo.value}</div>
+                <div data-premium="piotroskiLabel" class={`text-xs ${piotroskiInfo.color}`}>{piotroskiInfo.label}</div>
               </button>
               <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
                 <h4 class="font-semibold text-slate-100 mb-2">Piotroski F-Score</h4>
@@ -587,8 +585,8 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             <div class="metric-wrapper">
               <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
                 <div class="text-sm text-[#64748B] mb-1">Altman Z-Score</div>
-                <div class={`text-2xl font-bold ${altmanInfo.color}`}>{altmanInfo.value}</div>
-                <div class={`text-xs ${altmanInfo.color}`}>{altmanInfo.label}</div>
+                <div data-premium="altmanZ" class={`text-2xl font-bold ${altmanInfo.color}`}>{altmanInfo.value}</div>
+                <div data-premium="altmanLabel" class={`text-xs ${altmanInfo.color}`}>{altmanInfo.label}</div>
               </button>
               <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
                 <h4 class="font-semibold text-slate-100 mb-2">Altman Z-Score</h4>
@@ -772,18 +770,89 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           try {
             const res = await authFetch(`/api/stocks/premium?symbol=${symbol}`);
             if (res.ok) {
-              const premium = await res.json();
-              // Premium data is now available — hydrate any data-premium-slot elements
-              // This is a placeholder for v1.D.11 where we add per-slot hydration logic.
-              // For now, the SSG-rendered N/A values get replaced by JS as the API comes online.
-              if (premium) {
-                (window as any).__premiumData = premium;
+              const p = await res.json();
+              if (p) {
+                (window as any).__premiumData = p;
+                hydratePremiumFields(p);
               }
             }
           } catch {
             // Silently fail — user sees the SSG version with N/A values
           }
         }
+
+      function hydratePremiumFields(p: any) {
+        const el = (key: string) => document.querySelector(`[data-premium="${key}"]`) as HTMLElement | null;
+        const setVal = (key: string, text: string, colorClass?: string) => {
+          const node = el(key);
+          if (!node) return;
+          node.textContent = text;
+          if (colorClass) {
+            node.classList.remove('text-slate-400', 'text-slate-100', 'text-slate-300', 'text-emerald-400', 'text-red-400', 'text-amber-400');
+            node.classList.add(colorClass);
+          }
+        };
+
+        // Valuation Metrics
+        if (p.evEbitda != null) setVal('evEbitda', p.evEbitda.toFixed(1));
+        if (p.forwardPe != null) setVal('forwardPe', p.forwardPe.toFixed(1));
+        if (p.sectorPe != null && p.forwardPe != null) {
+          const color = p.forwardPe < p.sectorPe ? 'text-emerald-400' : p.forwardPe > p.sectorPe * 1.2 ? 'text-amber-400' : 'text-[#64748B]';
+          setVal('sectorPe', `Sector: ${p.sectorPe.toFixed(1)}`, color);
+        }
+        if (p.pegRatio != null) setVal('pegRatio', p.pegRatio.toFixed(2));
+
+        // Technical Overview
+        if (p.rsi != null) {
+          const rsiVal = p.rsi.toFixed(0);
+          const rsiColor = p.rsi >= 70 ? 'text-red-400' : p.rsi <= 30 ? 'text-emerald-400' : 'text-slate-300';
+          const rsiLabel = p.rsi >= 70 ? 'Overbought' : p.rsi <= 30 ? 'Oversold' : 'Neutral';
+          setVal('rsi', rsiVal, rsiColor);
+          setVal('rsiLabel', rsiLabel, rsiColor);
+        }
+
+        // SMA comparisons
+        const price = parseFloat(el('sma50')?.dataset.price || '0');
+        if (p.sma50 != null && price > 0) {
+          const above = price > p.sma50;
+          setVal('sma50', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
+        }
+        if (p.sma200 != null && price > 0) {
+          const above = price > p.sma200;
+          setVal('sma200', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
+        }
+
+        // Wall Street View
+        if (p.avgPriceTarget != null) setVal('avgPriceTarget', `$${p.avgPriceTarget.toFixed(0)}`);
+        if (p.upside != null) {
+          const sign = p.upside > 0 ? '+' : '';
+          setVal('upside', `${sign}${p.upside}%`, p.upside > 0 ? 'text-emerald-400' : 'text-red-400');
+        }
+
+        // Growth Projections
+        if (p.epsGrowth != null) {
+          const sign = p.epsGrowth > 0 ? '+' : '';
+          setVal('epsGrowth', `${sign}${p.epsGrowth.toFixed(1)}%`, p.epsGrowth > 0 ? 'text-emerald-400' : 'text-red-400');
+        }
+        if (p.revenueGrowth != null) {
+          const sign = p.revenueGrowth > 0 ? '+' : '';
+          setVal('revenueGrowth', `${sign}${p.revenueGrowth.toFixed(1)}%`, p.revenueGrowth > 0 ? 'text-emerald-400' : 'text-red-400');
+        }
+
+        // Financial Health
+        if (p.piotroskiScore != null) {
+          const label = p.piotroskiScore >= 7 ? 'Strong' : p.piotroskiScore >= 4 ? 'Average' : 'Weak';
+          const color = p.piotroskiScore >= 7 ? 'text-emerald-400' : p.piotroskiScore >= 4 ? 'text-slate-300' : 'text-red-400';
+          setVal('piotroskiScore', `${p.piotroskiScore}/9`, color);
+          setVal('piotroskiLabel', label, color);
+        }
+        if (p.altmanZ != null) {
+          const label = p.altmanZ >= 2.99 ? 'Safe Zone' : p.altmanZ >= 1.81 ? 'Grey Zone' : 'Distress Zone';
+          const color = p.altmanZ >= 2.99 ? 'text-emerald-400' : p.altmanZ >= 1.81 ? 'text-amber-400' : 'text-red-400';
+          setVal('altmanZ', p.altmanZ.toFixed(2), color);
+          setVal('altmanLabel', label, color);
+        }
+      }
       }
 
       // Factor card clicks - toggle detail panel
