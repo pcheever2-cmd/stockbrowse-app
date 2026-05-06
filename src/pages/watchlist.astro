@@ -2,10 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry } from '../data/stocks';
 
-// Pre-process all stocks for client-side lookup
+// Pre-process all stocks for client-side lookup.
+// Whitelist only the public fields the watchlist UI actually renders.
+// Premium fields (factorValues, moonshotScore, etc.) never enter the
+// client bundle here — the build canary at scripts/check-leakage.sh enforces this.
 const stocksData = stocks.map(s => ({
-  ...s,
-  normalizedIndustry: getNormalizedIndustry(s.industry)
+  symbol: s.symbol,
+  name: s.name,
+  price: s.price,
+  compassScore: s.compassScore,
+  grade: s.grade,
+  marketCap: s.marketCap,
+  normalizedIndustry: getNormalizedIndustry(s.industry),
 }));
 ---
 

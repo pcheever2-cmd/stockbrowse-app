@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import AuthNav from '../components/AuthNav.astro';
 
 interface Props {
   title: string;
@@ -113,6 +114,7 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
             Watchlist
             <span id="navWatchlistBadge" class="absolute -top-2 -right-2 bg-[#22D3EE] text-[#0C0F14] text-xs rounded-full w-4 h-4 flex items-center justify-center hidden text-[10px] font-bold"></span>
           </a>
+          <AuthNav />
           <!-- How It Works Dropdown -->
           <div class="relative group">
             <button class="text-[#64748B] hover:text-slate-100 flex items-center gap-1 text-sm transition">
@@ -274,6 +276,12 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
         </div>
       </div>
     </footer>
+
+    <!-- Session loader — runs first so window.__compassUser is set before page scripts -->
+    <script>
+      import { loadSession } from '../lib/subscription';
+      loadSession();
+    </script>
 
     <script>
       // Mobile menu toggle

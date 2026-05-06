@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Redirecting... | Compass Score">
+  <section class="py-16 bg-[#080A0F] min-h-screen flex items-center justify-center">
+    <div class="text-center">
+      <div class="text-[#64748B] text-lg">Completing sign-in...</div>
+    </div>
+  </section>
+
+  <script>
+    import { supabase } from '../../lib/supabase';
+
+    // Handle Supabase auth callback (email verification, password reset, OAuth)
+    // Supabase appends #access_token=...&type=... to the URL
+    async function handleCallback() {
+      const hashParams = new URLSearchParams(window.location.hash.slice(1));
+      const type = hashParams.get('type');
+
+      if (type === 'recovery') {
+        // Password reset flow — show a password update form
+        window.location.href = '/account';
+        return;
+      }
+
+      // Email verification or OAuth callback
+      const { error } = await supabase.auth.getSession();
+      if (error) {
+        window.location.href = '/login?error=callback_failed';
+        return;
+      }
+
+      window.location.href = '/account';
+    }
+
+    handleCallback();
+  </script>
+</Layout>

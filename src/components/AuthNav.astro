@@ -1,0 +1,57 @@
+---
+/**
+ * AuthNav — sign in / account dropdown for the navigation bar.
+ * Renders client-side after the session loader runs.
+ * Shows "Sign In" for anonymous users, email + tier badge for authed users.
+ */
+---
+
+<div id="authNav" class="flex items-center gap-3">
+  <!-- Anonymous state (default, shown until JS runs) -->
+  <a id="signInLink" href="/login"
+    class="text-sm font-semibold text-[#22D3EE] hover:text-[#06B6D4] transition">
+    Sign In
+  </a>
+
+  <!-- Authenticated state (hidden until JS populates it) -->
+  <div id="authUser" class="hidden flex items-center gap-2">
+    <a href="/account" class="text-sm text-[#CBD5E1] hover:text-white transition truncate max-w-[160px]" id="authEmail">
+    </a>
+    <a href="/account"
+      class="text-xs font-bold px-2 py-0.5 rounded-full bg-[#22D3EE]/20 text-[#22D3EE]" id="authTierBadge">
+    </a>
+  </div>
+</div>
+
+<script>
+  // This runs after the session loader in Layout.astro sets window.__compassUser
+  function updateAuthNav() {
+    const user = (window as any).__compassUser;
+    const signInLink = document.getElementById('signInLink');
+    const authUser = document.getElementById('authUser');
+    const authEmail = document.getElementById('authEmail');
+    const authTierBadge = document.getElementById('authTierBadge');
+
+    if (!signInLink || !authUser || !authEmail || !authTierBadge) return;
+
+    if (user) {
+      signInLink.classList.add('hidden');
+      authUser.classList.remove('hidden');
+      authEmail.textContent = user.email;
+      const tierLabels: Record<string, string> = {
+        free: 'Free',
+        newsletter: 'Newsletter',
+        plus: 'Plus',
+        pro: 'Pro',
+      };
+      authTierBadge.textContent = tierLabels[user.tier] || 'Free';
+    }
+  }
+
+  // Run after a short delay to let the session loader finish
+  if (document.readyState === 'complete') {
+    setTimeout(updateAuthNav, 100);
+  } else {
+    window.addEventListener('load', () => setTimeout(updateAuthNav, 100));
+  }
+</script>

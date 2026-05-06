@@ -6,81 +6,84 @@ const tiers = [
     name: 'Free',
     price: '$0',
     period: 'forever',
-    description: 'Get started with basic stock lookups',
+    description: 'See Compass Scores for 4,500+ stocks',
     features: [
-      '10 stock lookups per day',
-      'Basic Compass Score',
-      'Grade (A-F) rating',
-      'Browse by industry',
+      'Compass Score + Grade (A-F)',
+      'Browse all stocks by industry',
+      'Stock lookup (unlimited)',
+      '1-year price chart',
+      'Related stocks',
     ],
     limitations: [
       'No score breakdown',
-      'No watchlists',
-      'No alerts',
+      'No analyst targets',
+      'No valuation rating',
     ],
-    cta: 'Get Started',
-    ctaLink: '/tool',
+    cta: 'Start Browsing',
+    ctaLink: '/browse/all',
     highlighted: false,
-    color: 'slate',
+    tier: 'free',
   },
   {
-    name: 'Basic',
-    price: '$9',
+    name: 'Newsletter',
+    price: '$1',
     period: '/month',
-    description: 'Unlimited access for casual investors',
+    description: 'Monthly Compass Report delivered to your inbox',
     features: [
-      'Unlimited stock lookups',
-      'Full Compass Score breakdown',
-      'All 6 quality factors',
-      'Browse all categories',
-      'Export to CSV',
+      'Everything in Free',
+      'Monthly Compass Report',
+      'Top picks + grade changes',
+      'Market commentary',
+      'Newsletter archive',
     ],
     limitations: [
-      'No watchlists',
-      'No alerts',
+      'No score breakdown',
+      'No analyst targets',
     ],
-    cta: 'Start Free Trial',
+    cta: 'Subscribe',
     ctaLink: '#',
     highlighted: false,
-    color: 'blue',
+    tier: 'newsletter',
   },
   {
     name: 'Plus',
-    price: '$19',
+    price: '$10',
     period: '/month',
-    description: 'For active investors who want an edge',
+    annualPrice: '$100/yr',
+    description: 'The full picture on every stock',
     features: [
-      'Everything in Basic',
-      'Personal watchlists (up to 5)',
-      'Score change alerts',
-      'Sector analysis reports',
-      'Similar stocks finder',
-      'Priority email support',
+      'Everything in Newsletter',
+      'Full 6-factor score breakdown',
+      'Moonshot Score + Long-Term Score',
+      'Analyst price targets + consensus',
+      'Analyst accuracy rankings',
+      'Financial health (Altman Z, Piotroski)',
+      '5-year price chart',
+      'Synced watchlist + CSV export',
     ],
     limitations: [],
-    cta: 'Start Free Trial',
+    cta: 'Get Plus',
     ctaLink: '#',
     highlighted: true,
-    color: 'emerald',
+    tier: 'plus',
   },
   {
     name: 'Pro',
-    price: '$39',
+    price: '$15',
     period: '/month',
-    description: 'Full power for serious investors',
+    annualPrice: '$150/yr',
+    description: 'Know when to buy',
     features: [
       'Everything in Plus',
-      'API access (10K requests/mo)',
-      'Bulk data exports',
-      'Historical score data',
-      'Custom screening tools',
-      'Dedicated support',
+      'Valuation Score (Undervalued / Overvalued)',
+      'Up to 5 named watchlists',
+      'SMS alerts for grade changes',
     ],
     limitations: [],
-    cta: 'Contact Us',
+    cta: 'Get Pro',
     ctaLink: '#',
     highlighted: false,
-    color: 'purple',
+    tier: 'pro',
   },
 ];
 ---
@@ -89,11 +92,20 @@ const tiers = [
   <section class="py-16 bg-[#080A0F] min-h-screen">
     <div class="max-w-6xl mx-auto px-4">
       <!-- Header -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-4">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h1>
         <p class="text-xl text-[#CBD5E1] max-w-2xl mx-auto">
-          Choose the plan that fits your investment style. All plans include a 7-day free trial.
+          Choose the plan that fits your investment style.
         </p>
+      </div>
+
+      <!-- Monthly/Annual Toggle -->
+      <div class="flex items-center justify-center gap-3 mb-12">
+        <span id="monthlyLabel" class="text-sm font-semibold text-slate-100">Monthly</span>
+        <button id="billingToggle" class="relative w-14 h-7 bg-[#161B24] border border-[rgba(255,255,255,0.1)] rounded-full transition">
+          <div id="toggleDot" class="absolute top-0.5 left-0.5 w-6 h-6 bg-[#22D3EE] rounded-full transition-transform"></div>
+        </button>
+        <span id="annualLabel" class="text-sm text-[#64748B]">Annual <span class="text-emerald-400">(2 months free)</span></span>
       </div>
 
       <!-- Pricing Cards -->
@@ -109,8 +121,8 @@ const tiers = [
             <div class="mb-6">
               <h3 class="text-xl font-bold mb-2">{tier.name}</h3>
               <div class="flex items-baseline gap-1">
-                <span class="text-4xl font-bold">{tier.price}</span>
-                <span class="text-[#64748B]">{tier.period}</span>
+                <span class="text-4xl font-bold" data-monthly-price={tier.price} data-annual-price={tier.annualPrice || tier.price}>{tier.price}</span>
+                <span class="text-[#64748B]" data-monthly-period={tier.period} data-annual-period={tier.annualPrice ? '/yr' : tier.period}>{tier.period}</span>
               </div>
               <p class="text-[#CBD5E1] text-sm mt-2">{tier.description}</p>
             </div>
@@ -134,14 +146,17 @@ const tiers = [
               ))}
             </ul>
 
-            <a href={tier.ctaLink}
-               class={`block text-center py-3 px-6 rounded-xl font-semibold transition ${
-                 tier.highlighted
-                   ? 'bg-[#22D3EE] hover:bg-[#06B6D4] text-white'
-                   : 'bg-[#0C0F14] hover:bg-[#1C222E] text-slate-100 border border-[rgba(255,255,255,0.1)]'
-               }`}>
+            <button
+              data-tier={tier.tier}
+              class={`pricing-cta block text-center py-3 px-6 rounded-xl font-semibold transition ${
+                tier.highlighted
+                  ? 'bg-[#22D3EE] hover:bg-[#06B6D4] text-white'
+                  : tier.tier === 'free'
+                    ? 'bg-[#0C0F14] hover:bg-[#1C222E] text-slate-100 border border-[rgba(255,255,255,0.1)]'
+                    : 'bg-[#0C0F14] hover:bg-[#1C222E] text-slate-100 border border-[rgba(255,255,255,0.1)]'
+              }`}>
               {tier.cta}
-            </a>
+            </button>
           </div>
         ))}
       </div>
@@ -152,17 +167,18 @@ const tiers = [
 
         <div class="space-y-4">
           <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
-            <h3 class="font-semibold mb-2">How does the free trial work?</h3>
+            <h3 class="font-semibold mb-2">What's the Valuation Score?</h3>
             <p class="text-[#CBD5E1] text-sm">
-              All paid plans include a 7-day free trial. You can cancel anytime during the trial
-              and you won't be charged. No credit card required to start.
+              The Valuation Score tells you if a stock is currently undervalued, fair value, or overvalued
+              based on its price relative to long-term moving averages and 52-week range.
+              It's the "should I buy now?" answer — exclusive to Pro.
             </p>
           </div>
 
           <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
             <h3 class="font-semibold mb-2">Can I change plans later?</h3>
             <p class="text-[#CBD5E1] text-sm">
-              Yes! You can upgrade or downgrade your plan at any time. If you upgrade,
+              Yes! You can upgrade or downgrade at any time. If you upgrade,
               you'll be charged the prorated difference. If you downgrade, you'll receive
               credit toward future billing.
             </p>
@@ -171,16 +187,7 @@ const tiers = [
           <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
             <h3 class="font-semibold mb-2">What payment methods do you accept?</h3>
             <p class="text-[#CBD5E1] text-sm">
-              We accept all major credit cards (Visa, MasterCard, American Express) and PayPal.
-              Enterprise customers can pay by invoice.
-            </p>
-          </div>
-
-          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
-            <h3 class="font-semibold mb-2">Is there a refund policy?</h3>
-            <p class="text-[#CBD5E1] text-sm">
-              Yes, you can cancel your subscription at any time. If you cancel during your free trial,
-              you won't be charged. For paid subscriptions, contact us and we'll work with you.
+              We accept all major credit cards (Visa, MasterCard, American Express) via Stripe.
             </p>
           </div>
 
@@ -189,7 +196,7 @@ const tiers = [
             <p class="text-[#CBD5E1] text-sm">
               The Compass Score is based on peer-reviewed academic research on stock quality factors.
               It combines 6 metrics: Return on Assets, Gross Profitability, Operating Cash Flow,
-              Free Cash Flow, Volatility, and Asset Growth. <a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn more →</a>
+              Free Cash Flow, Volatility, and Asset Growth. <a href="/how-it-works" class="text-[#22D3EE] hover:underline">Learn more</a>
             </p>
           </div>
         </div>
@@ -197,4 +204,82 @@ const tiers = [
 
     </div>
   </section>
+
+  <script>
+    import { supabase } from '../lib/supabase';
+
+    // Monthly/Annual toggle
+    let isAnnual = false;
+    const toggle = document.getElementById('billingToggle')!;
+    const dot = document.getElementById('toggleDot')!;
+    const monthlyLabel = document.getElementById('monthlyLabel')!;
+    const annualLabel = document.getElementById('annualLabel')!;
+
+    toggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      dot.style.transform = isAnnual ? 'translateX(28px)' : 'translateX(0)';
+      monthlyLabel.className = `text-sm ${isAnnual ? 'text-[#64748B]' : 'font-semibold text-slate-100'}`;
+      annualLabel.className = `text-sm ${isAnnual ? 'font-semibold text-slate-100' : 'text-[#64748B]'}`;
+
+      // Update displayed prices
+      document.querySelectorAll('[data-monthly-price]').forEach(el => {
+        const htmlEl = el as HTMLElement;
+        htmlEl.textContent = isAnnual
+          ? htmlEl.dataset.annualPrice || htmlEl.dataset.monthlyPrice || ''
+          : htmlEl.dataset.monthlyPrice || '';
+      });
+      document.querySelectorAll('[data-monthly-period]').forEach(el => {
+        const htmlEl = el as HTMLElement;
+        htmlEl.textContent = isAnnual
+          ? htmlEl.dataset.annualPeriod || htmlEl.dataset.monthlyPeriod || ''
+          : htmlEl.dataset.monthlyPeriod || '';
+      });
+    });
+
+    // CTA buttons — route to checkout or browse
+    document.querySelectorAll('.pricing-cta').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const tier = (btn as HTMLElement).dataset.tier;
+        if (!tier || tier === 'free') {
+          window.location.href = '/browse/all';
+          return;
+        }
+
+        // Check if user is logged in
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          // Redirect to signup with a return to pricing
+          window.location.href = `/signup?redirect=/pricing`;
+          return;
+        }
+
+        // Create checkout session
+        (btn as HTMLButtonElement).disabled = true;
+        (btn as HTMLButtonElement).textContent = 'Redirecting...';
+
+        try {
+          const res = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${session.access_token}`,
+            },
+            body: JSON.stringify({ tier, annual: isAnnual }),
+          });
+
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert(data.error || 'Failed to start checkout');
+            (btn as HTMLButtonElement).disabled = false;
+            (btn as HTMLButtonElement).textContent = 'Try Again';
+          }
+        } catch {
+          alert('Something went wrong. Please try again.');
+          (btn as HTMLButtonElement).disabled = false;
+        }
+      });
+    });
+  </script>
 </Layout>

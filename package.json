@@ -4,14 +4,16 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && bash scripts/check-leakage.sh dist",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.103.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
+    "stripe": "^22.0.1",
     "tailwindcss": "^4.2.1"
   }
 }

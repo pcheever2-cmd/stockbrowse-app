@@ -738,22 +738,15 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
   <UpgradeModal />
 
   <script>
-    import { hasFeature } from '../../lib/subscription';
+    import { loadSession, hasFeature } from '../../lib/subscription';
+    import { authFetch } from '../../lib/authFetch';
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // Beta testing: Check for ?beta=true parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const isBeta = urlParams.get('beta') === 'true';
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Load the user session (populates window.__compassUser)
+      const user = await loadSession();
 
-      if (isBeta) {
-        localStorage.setItem('subscriptionTier', 'pro');
-        // Clean URL
-        window.history.replaceState({}, '', window.location.pathname);
-      }
-
-      // Check subscription status and show/hide premium content
-      // Use beta flag OR hasFeature check (in case user already has pro from previous beta visit)
-      const isPremium = isBeta || hasFeature('score_breakdown');
+      // Check if user has premium access
+      const isPremium = hasFeature('score_breakdown');
 
       if (isPremium) {
         // Remove blur and overlays for premium users
@@ -772,6 +765,25 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             badge.remove();
           }
         });
+
+        // Hydrate premium fields from the API
+        const symbol = window.location.pathname.split('/stock/')[1]?.replace(/\/$/, '').toUpperCase();
+        if (symbol) {
+          try {
+            const res = await authFetch(`/api/stocks/premium?symbol=${symbol}`);
+            if (res.ok) {
+              const premium = await res.json();
+              // Premium data is now available — hydrate any data-premium-slot elements
+              // This is a placeholder for v1.D.11 where we add per-slot hydration logic.
+              // For now, the SSG-rendered N/A values get replaced by JS as the API comes online.
+              if (premium) {
+                (window as any).__premiumData = premium;
+              }
+            }
+          } catch {
+            // Silently fail — user sees the SSG version with N/A values
+          }
+        }
       }
 
       // Factor card clicks - toggle detail panel

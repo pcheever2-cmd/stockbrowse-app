@@ -1,81 +1,68 @@
-// Real stock data from Compass Score database
-import stocksData from './stocks.json';
+// Stock data is split into two files for premium tier gating:
+//   - stocks-public.json: free-tier fields only, baked into static SSG output
+//   - stocks-premium.json: gated fields (NOT imported here — fetched at runtime
+//     via /api/stocks/premium with auth in the v1.D rollout)
+//
+// At build time, every page renders with PublicStock data. Premium fields on
+// the Stock interface exist for type compatibility but are always null in SSG.
+// Client-side hydration in Phase D replaces them with real values for paid users.
+import stocksData from './stocks-public.json';
 
-export interface Stock {
+// Public-tier fields — safe to bake into static HTML
+export interface PublicStock {
   symbol: string;
   name: string;
   price: number;
-  compassScore: number | null;
-  grade: 'A' | 'B' | 'C' | 'D' | 'F' | null;
+  compassScore: number;
+  grade: 'A' | 'B' | 'C' | 'D' | 'F';
   industry: string;
   sector: string;
   marketCap: number; // in billions
-  description: string; // company profile
-
-  // Analyst data (consensus free, details premium)
+  description: string;
   numAnalysts: number | null;
   consensus: string | null;
-  // Premium analyst details
+  moonshotGrade: 'A' | 'B' | 'C' | 'D' | 'F' | null;  // Letter only — score is premium
+  isGolden: boolean;
+  scoreNote: { title: string; text: string } | null;
+}
+
+// Premium-tier fields — fetched at runtime via /api/stocks/premium
+// Kept on the Stock interface so existing pages compile, but always null in SSG.
+export interface PremiumFields {
+  // Analyst details
   avgPriceTarget: number | null;
   upside: number | null;
   recentRatings: string;
   analystPriceTargets: string;
 
-  // Premium: Valuation metrics
+  // Valuation metrics
   evEbitda: number | null;
   forwardPe: number | null;
-  sectorPe: number | null;  // Median P/E for this sector (for comparison)
+  sectorPe: number | null;
   pegRatio: number | null;
 
-  // Premium: Growth metrics
+  // Growth metrics
   epsGrowth: number | null;
   revenueGrowth: number | null;
 
-  // Premium: Financial health
-  piotroskiScore: number | null;  // 0-9 scale
+  // Financial health
+  piotroskiScore: number | null;
   altmanZ: number | null;
 
-  // Premium: Technical indicators
+  // Technical indicators
   rsi: number | null;
   sma50: number | null;
   sma200: number | null;
   trendSignal: string | null;
 
-  // Premium: Additional scores
+  // Additional scores
   valueScore: number | null;
   longTermScore: number | null;
 
-  // Premium: Analyst accuracy
-  sectorAnalystAccuracy: number | null;
-  coveringAnalysts: Array<{
-    firm: string;
-    hitRate: number;
-    percentile: number;  // Rank vs all 174 analysts (0-100)
-    totalCalls: number;
-  }> | null;
-
-  // Factor values for Score Breakdown (displayed as percentages)
-  factorValues: {
-    roa: number | null;           // Return on Assets %
-    grossProfit: number | null;   // Gross Profit / Assets %
-    operatingCashFlow: number | null;  // OCF / Assets %
-    freeCashFlow: number | null;  // FCF / Assets %
-    volatility: number | null;    // 60-day annualized volatility %
-    assetGrowth: number | null;   // YoY asset growth %
-  } | null;
-
-  // Special note explaining score context (for holding companies, etc.)
-  scoreNote: {
-    title: string;
-    text: string;
-  } | null;
-
-  // Moonshot Score (Quality Growth)
+  // Moonshot Score (number — letter is public)
   moonshotScore: number | null;
-  moonshotGrade: 'A' | 'B' | 'C' | 'D' | 'F' | null;
-  isGolden: boolean;
 
-  // Valuation Score (Technical Valuation)
+  // Valuation rating (Undervalued / Fair Value / Overvalued)
   valuationScore: number | null;
   valuationRating: 'Undervalued' | 'Fair Value' | 'Overvalued' | null;
   valuationData: {
@@ -85,9 +72,64 @@ export interface Stock {
     high52w: number | null;
     low52w: number | null;
   } | null;
+
+  // Analyst accuracy
+  sectorAnalystAccuracy: number | null;
+  coveringAnalysts: Array<{
+    firm: string;
+    hitRate: number;
+    percentile: number;
+    totalCalls: number;
+  }> | null;
+
+  // Factor values for Score Breakdown (displayed as percentages)
+  factorValues: {
+    roa: number | null;
+    grossProfit: number | null;
+    operatingCashFlow: number | null;
+    freeCashFlow: number | null;
+    volatility: number | null;
+    assetGrowth: number | null;
+  } | null;
 }
 
-export const stocks: Stock[] = stocksData as Stock[];
+// Combined type — same shape as before so existing pages compile unchanged.
+// At SSG build time, premium fields are always null. Client-side hydration
+// replaces them at runtime for authenticated paid users (Phase D).
+export type Stock = PublicStock & PremiumFields;
+
+const PREMIUM_NULLS: PremiumFields = {
+  avgPriceTarget: null,
+  upside: null,
+  recentRatings: '',
+  analystPriceTargets: '',
+  evEbitda: null,
+  forwardPe: null,
+  sectorPe: null,
+  pegRatio: null,
+  epsGrowth: null,
+  revenueGrowth: null,
+  piotroskiScore: null,
+  altmanZ: null,
+  rsi: null,
+  sma50: null,
+  sma200: null,
+  trendSignal: null,
+  valueScore: null,
+  longTermScore: null,
+  moonshotScore: null,
+  valuationScore: null,
+  valuationRating: null,
+  valuationData: null,
+  sectorAnalystAccuracy: null,
+  coveringAnalysts: null,
+  factorValues: null,
+};
+
+export const stocks: Stock[] = (stocksData as PublicStock[]).map(s => ({
+  ...PREMIUM_NULLS,
+  ...s,
+}));
 
 // Normalized industry mapping (FMP industries -> display categories)
 const industryMapping: Record<string, string> = {
@@ -342,12 +384,9 @@ export function getStocksUnderPrice(maxPrice: number): Stock[] {
     .slice(0, 100);
 }
 
-export function getUndervaluedStocks(): Stock[] {
-  return stocks
-    .filter(s => s.valuationRating === 'Undervalued' && (s.compassScore ?? 0) >= 50)
-    .sort((a, b) => (b.compassScore ?? 0) - (a.compassScore ?? 0))
-    .slice(0, 100);
-}
+// getUndervaluedStocks removed in v1.C — valuationRating is a premium field
+// fetched at runtime, so we cannot filter by it at SSG build time. If a public
+// "undervalued stocks" page is needed, build it from a server-side endpoint.
 
 export function getTopStocks(limit: number = 20): Stock[] {
   return [...stocks].sort((a, b) => b.compassScore - a.compassScore).slice(0, limit);

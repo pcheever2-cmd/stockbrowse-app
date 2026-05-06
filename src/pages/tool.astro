@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { stocks, getGradeColor, generateSummary, formatPrice, formatMarketCap, getNormalizedIndustry } from '../data/stocks';
 
-// Pass stocks to client-side as JSON (include all fields for full display)
+// Pass stocks to client-side as JSON. Public fields only —
+// avgPriceTarget / upside / recentRatings are premium and will be hydrated
+// at runtime in v1.D for paid users via /api/stocks/premium.
 const stocksJson = JSON.stringify(stocks.map(s => ({
   symbol: s.symbol,
   name: s.name,
@@ -12,11 +14,8 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
   industry: getNormalizedIndustry(s.industry),
   marketCap: s.marketCap,
   description: s.description,
-  avgPriceTarget: s.avgPriceTarget,
-  upside: s.upside,
   numAnalysts: s.numAnalysts,
   consensus: s.consensus,
-  recentRatings: s.recentRatings,
 })));
 ---
 
@@ -131,69 +130,9 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
       return `$${(cap * 1000).toFixed(0)}M`;
     }
 
-    function getConsensusInfo(consensus, recentRatings = '', upside = null) {
-      // Calculate consensus from actual analyst ratings
-      if (recentRatings) {
-        const ratings = parseRecentRatings(recentRatings);
-        if (ratings.length > 0) {
-          let buyCount = 0, holdCount = 0, sellCount = 0;
-
-          ratings.forEach(r => {
-            const rating = r.rating.toLowerCase();
-            if (rating.includes('buy') || rating.includes('outperform') || rating.includes('overweight')) {
-              buyCount++;
-            } else if (rating.includes('sell') || rating.includes('underperform') || rating.includes('underweight')) {
-              sellCount++;
-            } else {
-              holdCount++;
-            }
-          });
-
-          const total = buyCount + holdCount + sellCount;
-          const buyPct = buyCount / total;
-          const sellPct = sellCount / total;
-
-          let consensus;
-          if (buyPct >= 0.6) consensus = { label: 'Strong Buy', color: 'text-emerald-700', bgColor: 'bg-emerald-100' };
-          else if (buyPct >= 0.4) consensus = { label: 'Buy', color: 'text-blue-700', bgColor: 'bg-blue-100' };
-          else if (sellPct >= 0.6) consensus = { label: 'Strong Sell', color: 'text-red-700', bgColor: 'bg-red-100' };
-          else if (sellPct >= 0.4) consensus = { label: 'Sell', color: 'text-amber-700', bgColor: 'bg-amber-100' };
-          else consensus = { label: 'Hold', color: 'text-slate-700', bgColor: 'bg-[#0C0F14]' };
-
-          // Override if price target conflicts with rating
-          // If stock is >15% above target, don't show "Buy" - show "Above Target"
-          if (upside !== null && upside < -15) {
-            if (consensus.label === 'Strong Buy' || consensus.label === 'Buy') {
-              return { label: 'Above Target', color: 'text-amber-700', bgColor: 'bg-amber-100' };
-            }
-          }
-          // If stock is >30% below target but analysts say sell, show "Below Target"
-          if (upside !== null && upside > 30) {
-            if (consensus.label === 'Strong Sell' || consensus.label === 'Sell') {
-              return { label: 'Below Target', color: 'text-blue-700', bgColor: 'bg-blue-100' };
-            }
-          }
-
-          return consensus;
-        }
-      }
-      return { label: 'N/A', color: 'text-[#64748B]', bgColor: 'bg-[#080A0F]' };
-    }
-
-    function parseRecentRatings(ratingsStr) {
-      if (!ratingsStr) return [];
-      const lines = ratingsStr.split('\n').filter(l => l.trim());
-      return lines.slice(0, 5).map(line => {
-        const icon = line.charAt(0);
-        const rest = line.slice(2).trim();
-        const dateMatch = rest.match(/^(\d{4}-\d{2}-\d{2}):\s*/);
-        if (!dateMatch) return { date: '', firm: '', rating: rest, icon };
-        const date = dateMatch[1];
-        const afterDate = rest.slice(dateMatch[0].length);
-        const parts = afterDate.split('→').map(s => s.trim());
-        return { date, firm: parts[0] || '', rating: parts[1] || '', icon };
-      });
-    }
+    // getConsensusInfo + parseRecentRatings removed in v1.C — they consumed
+    // premium fields (recent ratings, upside) which are now fetched at runtime
+    // via /api/stocks/premium for paid users in v1.D.
 
     function generateSummary(stock) {
       const quality = stock.grade === 'A' ? 'high-quality' :
@@ -271,8 +210,6 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
       const colors = getGradeColors(stock.grade);
       const summary = generateSummary(stock);
       const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
-      const consensusInfo = getConsensusInfo(stock.consensus, stock.recentRatings, stock.upside);
-      const recentRatings = parseRecentRatings(stock.recentRatings);
 
       // Truncate description
       let profile = '';
@@ -285,58 +222,18 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
         }
       }
 
-      // Wall Street View HTML
+      // Wall Street View — placeholder slot for v1.D hydration.
+      // Premium analyst details (price target, upside, recent ratings) are
+      // fetched at runtime from /api/stocks/premium for paid users.
       let analystHtml = '';
       if (hasAnalystData) {
-        const upsideColor = stock.upside > 0 ? 'text-[#22D3EE]' : 'text-red-600';
-        const upsideSign = stock.upside > 0 ? '+' : '';
-
-        let ratingsHtml = '';
-        if (recentRatings.length > 0) {
-          ratingsHtml = `
-            <div class="mt-6">
-              <h4 class="font-semibold text-sm text-slate-700 mb-3">Recent Analyst Actions</h4>
-              <div class="space-y-2">
-                ${recentRatings.map(r => `
-                  <div class="flex items-center justify-between text-sm bg-[#080A0F] rounded-lg px-4 py-2">
-                    <div class="flex items-center gap-2">
-                      <span>${r.icon}</span>
-                      <span class="font-medium">${r.firm}</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <span class="text-[#22D3EE] font-semibold">${r.rating}</span>
-                      <span class="text-slate-400 text-xs">${r.date}</span>
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        }
-
         analystHtml = `
-          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
-            <h3 class="text-lg font-bold mb-4">Wall Street View</h3>
-            <p class="text-[#64748B] text-sm mb-4">What professional analysts think about ${stock.symbol}.</p>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-                <div class="text-sm text-[#64748B] mb-1">Price Target</div>
-                <div class="text-xl font-bold">$${stock.avgPriceTarget}</div>
-              </div>
-              <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-                <div class="text-sm text-[#64748B] mb-1">Upside</div>
-                <div class="text-xl font-bold ${upsideColor}">${upsideSign}${stock.upside}%</div>
-              </div>
-              <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-                <div class="text-sm text-[#64748B] mb-1">Analysts</div>
-                <div class="text-xl font-bold">${stock.numAnalysts}</div>
-              </div>
-              <div class="${consensusInfo.bgColor} rounded-lg p-4 text-center">
-                <div class="text-sm text-[#64748B] mb-1">Consensus</div>
-                <div class="text-lg font-bold ${consensusInfo.color}">${consensusInfo.label}</div>
-              </div>
-            </div>
-            ${ratingsHtml}
+          <div data-premium-slot="analyst-summary" data-symbol="${stock.symbol}"
+               class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
+            <h3 class="text-lg font-bold mb-2">Wall Street View</h3>
+            <p class="text-[#64748B] text-sm mb-3">${stock.numAnalysts} analyst(s) cover ${stock.symbol}.</p>
+            <p class="text-[#64748B] text-sm">Price targets, upside, and rating history are part of Plus.
+              <a href="/pricing" class="text-[#22D3EE] hover:underline">See plans →</a></p>
           </div>
         `;
       }

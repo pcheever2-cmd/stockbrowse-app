@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Account | Compass Score">
+  <section class="py-16 bg-[#080A0F] min-h-screen">
+    <div class="max-w-2xl mx-auto px-4">
+      <!-- Loading state -->
+      <div id="loading" class="text-center py-20">
+        <div class="text-[#64748B]">Loading your account...</div>
+      </div>
+
+      <!-- Not logged in -->
+      <div id="notLoggedIn" class="hidden text-center py-20">
+        <h1 class="text-3xl font-bold mb-4">Sign in to view your account</h1>
+        <a href="/login" class="inline-block bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-3 rounded-lg font-semibold transition">
+          Sign In
+        </a>
+      </div>
+
+      <!-- Account content -->
+      <div id="accountContent" class="hidden">
+        <h1 class="text-3xl font-bold mb-8">Account</h1>
+
+        <!-- Profile card -->
+        <div class="bg-[#161B24] rounded-2xl border border-[rgba(255,255,255,0.06)] p-8 mb-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-sm text-[#64748B] mb-1">Email</div>
+              <div id="userEmail" class="text-lg font-semibold">-</div>
+            </div>
+            <button id="signOutBtn" class="px-4 py-2 bg-[#0C0F14] hover:bg-slate-700 text-slate-300 rounded-lg text-sm transition">
+              Sign Out
+            </button>
+          </div>
+
+          <div class="bg-[#080A0F] rounded-xl p-6">
+            <div class="text-sm text-[#64748B] mb-1">Current Plan</div>
+            <div id="userTier" class="text-2xl font-bold text-[#22D3EE] capitalize mb-2">Free</div>
+            <div id="tierDescription" class="text-sm text-[#CBD5E1] mb-4">Browse stocks and see basic scores.</div>
+
+            <div class="flex gap-3">
+              <a id="upgradeBtn" href="/pricing" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-6 py-2 rounded-lg font-semibold transition">
+                Upgrade
+              </a>
+              <button id="manageBillingBtn" class="hidden px-6 py-2 bg-[#0C0F14] hover:bg-slate-700 text-slate-300 rounded-lg font-semibold transition">
+                Manage Billing
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkout success message -->
+        <div id="checkoutSuccess" class="hidden bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-lg p-4 mb-6">
+          Your subscription is active. Welcome to premium!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { supabase } from '../lib/supabase';
+    import { loadSession } from '../lib/subscription';
+
+    const loading = document.getElementById('loading')!;
+    const notLoggedIn = document.getElementById('notLoggedIn')!;
+    const content = document.getElementById('accountContent')!;
+
+    async function init() {
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session) {
+        loading.classList.add('hidden');
+        notLoggedIn.classList.remove('hidden');
+        return;
+      }
+
+      const user = await loadSession();
+      loading.classList.add('hidden');
+
+      if (!user) {
+        notLoggedIn.classList.remove('hidden');
+        return;
+      }
+
+      content.classList.remove('hidden');
+      document.getElementById('userEmail')!.textContent = user.email;
+      const tierEl = document.getElementById('userTier')!;
+      const descEl = document.getElementById('tierDescription')!;
+      const upgradeBtn = document.getElementById('upgradeBtn') as HTMLAnchorElement;
+      const billingBtn = document.getElementById('manageBillingBtn')!;
+
+      const descriptions: Record<string, string> = {
+        free: 'Browse stocks and see basic Compass Scores.',
+        newsletter: 'Monthly Compass Report newsletter ($1/mo).',
+        plus: 'Full score breakdowns, analyst data, extended charts, and more.',
+        pro: 'Everything in Plus, plus Valuation Score, multi-watchlists, and SMS alerts.',
+      };
+
+      tierEl.textContent = user.tier === 'free' ? 'Free' : user.tier.charAt(0).toUpperCase() + user.tier.slice(1);
+      descEl.textContent = descriptions[user.tier] || descriptions.free;
+
+      if (user.tier !== 'free') {
+        upgradeBtn.textContent = user.tier === 'pro' ? 'You have the best plan' : 'Upgrade';
+        if (user.tier === 'pro') upgradeBtn.classList.add('opacity-50', 'pointer-events-none');
+        billingBtn.classList.remove('hidden');
+      }
+
+      // Show checkout success banner
+      if (new URLSearchParams(window.location.search).get('checkout') === 'success') {
+        document.getElementById('checkoutSuccess')!.classList.remove('hidden');
+      }
+
+      // Sign out
+      document.getElementById('signOutBtn')!.addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        window.location.href = '/';
+      });
+
+      // Manage billing — opens Stripe Customer Portal
+      billingBtn.addEventListener('click', async () => {
+        billingBtn.textContent = 'Opening...';
+        try {
+          const token = session.access_token;
+          const res = await fetch('/api/portal', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            billingBtn.textContent = 'Manage Billing';
+            alert(data.error || 'Failed to open billing portal');
+          }
+        } catch {
+          billingBtn.textContent = 'Manage Billing';
+        }
+      });
+    }
+
+    init();
+  </script>
+</Layout>
