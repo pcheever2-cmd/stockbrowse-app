@@ -159,21 +159,21 @@ function getFactorValue(key: string): number | null {
 
 // Helper functions for data display
 function formatPiotroski(score: number | null): { value: string; label: string; color: string } {
-  if (score === null) return { value: 'N/A', label: 'Unknown', color: 'text-slate-400' };
+  if (score === null) return { value: '🔒', label: 'Premium', color: 'text-slate-500' };
   if (score >= 7) return { value: `${score}/9`, label: 'Strong', color: 'text-emerald-400' };
   if (score >= 4) return { value: `${score}/9`, label: 'Average', color: 'text-slate-300' };
   return { value: `${score}/9`, label: 'Weak', color: 'text-red-400' };
 }
 
 function formatAltmanZ(z: number | null): { value: string; label: string; color: string } {
-  if (z === null) return { value: 'N/A', label: 'Unknown', color: 'text-slate-400' };
+  if (z === null) return { value: '🔒', label: 'Premium', color: 'text-slate-500' };
   if (z >= 2.99) return { value: z.toFixed(2), label: 'Safe Zone', color: 'text-emerald-400' };
   if (z >= 1.81) return { value: z.toFixed(2), label: 'Grey Zone', color: 'text-amber-400' };
   return { value: z.toFixed(2), label: 'Distress Zone', color: 'text-red-400' };
 }
 
 function formatRsi(rsi: number | null): { value: string; label: string; color: string } {
-  if (rsi === null) return { value: 'N/A', label: 'Unknown', color: 'text-slate-400' };
+  if (rsi === null) return { value: '🔒', label: 'Premium', color: 'text-slate-500' };
   if (rsi >= 70) return { value: rsi.toFixed(0), label: 'Overbought', color: 'text-red-400' };
   if (rsi <= 30) return { value: rsi.toFixed(0), label: 'Oversold', color: 'text-emerald-400' };
   return { value: rsi.toFixed(0), label: 'Neutral', color: 'text-slate-300' };
@@ -280,7 +280,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             const rating = breakdown[factor.key as keyof typeof breakdown];
             const ratingColors = getFactorRatingColor(rating);
             const factorValue = getFactorValue(factor.key);
-            const displayValue = factorValue !== null ? `${factorValue.toFixed(1)}${factor.unit}` : 'N/A';
+            const displayValue = factorValue !== null ? `${factorValue.toFixed(1)}${factor.unit}` : '🔒';
             return (
               <div class="factor-wrapper">
                 <button
@@ -332,7 +332,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">EV/EBITDA</div>
-              <div data-premium="evEbitda" class="text-2xl font-bold text-slate-100">{stock.evEbitda?.toFixed(1) || 'N/A'}</div>
+              <div data-premium="evEbitda" class="text-2xl font-bold text-slate-100">{stock.evEbitda?.toFixed(1) || '🔒'}</div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
               <h4 class="font-semibold text-slate-100 mb-2">Enterprise Value to EBITDA</h4>
@@ -347,7 +347,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">Forward P/E</div>
-              <div data-premium="forwardPe" class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || 'N/A'}</div>
+              <div data-premium="forwardPe" class="text-2xl font-bold text-slate-100">{stock.forwardPe?.toFixed(1) || '🔒'}</div>
               <div data-premium="sectorPe" class={`text-xs mt-1 ${stock.forwardPe && stock.sectorPe && stock.forwardPe < stock.sectorPe ? 'text-emerald-400' : 'text-[#64748B]'}`}>
                 {stock.sectorPe && stock.forwardPe ? `Sector: ${stock.sectorPe.toFixed(1)}` : ''}
               </div>
@@ -365,7 +365,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <div class="metric-wrapper">
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">PEG Ratio</div>
-              <div data-premium="pegRatio" class="text-2xl font-bold text-slate-100">{stock.pegRatio?.toFixed(2) || 'N/A'}</div>
+              <div data-premium="pegRatio" class="text-2xl font-bold text-slate-100">{stock.pegRatio?.toFixed(2) || '🔒'}</div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
               <h4 class="font-semibold text-slate-100 mb-2">Price/Earnings-to-Growth Ratio</h4>
@@ -472,7 +472,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">vs 50-Day SMA</div>
               <div data-premium="sma50" data-price={stock.price} class={`text-2xl font-bold ${stock.sma50 && stock.price > stock.sma50 ? 'text-emerald-400' : 'text-red-400'}`}>
-                {stock.sma50 ? (stock.price > stock.sma50 ? 'Above' : 'Below') : 'N/A'}
+                {stock.sma50 ? (stock.price > stock.sma50 ? 'Above' : 'Below') : '🔒'}
               </div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
@@ -490,7 +490,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
               <div class="text-sm text-[#64748B] mb-1">vs 200-Day SMA</div>
               <div data-premium="sma200" data-price={stock.price} class={`text-2xl font-bold ${stock.sma200 && stock.price > stock.sma200 ? 'text-emerald-400' : 'text-red-400'}`}>
-                {stock.sma200 ? (stock.price > stock.sma200 ? 'Above' : 'Below') : 'N/A'}
+                {stock.sma200 ? (stock.price > stock.sma200 ? 'Above' : 'Below') : '🔒'}
               </div>
             </button>
             <div class="metric-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
@@ -523,12 +523,12 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Price Target</div>
-              <div data-premium="avgPriceTarget" class="text-xl font-bold text-slate-100">{stock.avgPriceTarget ? `$${stock.avgPriceTarget.toFixed(0)}` : 'N/A'}</div>
+              <div data-premium="avgPriceTarget" class="text-xl font-bold text-slate-100">{stock.avgPriceTarget ? `$${stock.avgPriceTarget.toFixed(0)}` : '🔒'}</div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Upside</div>
               <div data-premium="upside" class={`text-xl font-bold ${stock.upside && stock.upside > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                {stock.upside !== null ? `${stock.upside > 0 ? '+' : ''}${stock.upside}%` : 'N/A'}
+                {stock.upside !== null ? `${stock.upside > 0 ? '+' : ''}${stock.upside}%` : '🔒'}
               </div>
             </div>
           </div>
@@ -544,13 +544,13 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Projected EPS Growth</div>
               <div data-premium="epsGrowth" class={`text-2xl font-bold ${stock.epsGrowth && stock.epsGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                {stock.epsGrowth ? `${stock.epsGrowth > 0 ? '+' : ''}${stock.epsGrowth.toFixed(1)}%` : 'N/A'}
+                {stock.epsGrowth ? `${stock.epsGrowth > 0 ? '+' : ''}${stock.epsGrowth.toFixed(1)}%` : '🔒'}
               </div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Projected Revenue Growth</div>
               <div data-premium="revenueGrowth" class={`text-2xl font-bold ${stock.revenueGrowth && stock.revenueGrowth > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                {stock.revenueGrowth ? `${stock.revenueGrowth > 0 ? '+' : ''}${stock.revenueGrowth.toFixed(1)}%` : 'N/A'}
+                {stock.revenueGrowth ? `${stock.revenueGrowth > 0 ? '+' : ''}${stock.revenueGrowth.toFixed(1)}%` : '🔒'}
               </div>
             </div>
           </div>
@@ -743,8 +743,10 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       // Load the user session (populates window.__compassUser)
       const user = await loadSession();
 
-      // Check if user has premium access
-      const isPremium = hasFeature('score_breakdown');
+      // Check if user has premium access (or dev bypass via ?dev=1)
+      const urlParams = new URLSearchParams(window.location.search);
+      const devBypass = urlParams.get('dev') === '1';
+      const isPremium = hasFeature('score_breakdown') || devBypass;
 
       if (isPremium) {
         // Remove blur and overlays for premium users
@@ -768,7 +770,10 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         const symbol = window.location.pathname.split('/stock/')[1]?.replace(/\/$/, '').toUpperCase();
         if (symbol) {
           try {
-            const res = await authFetch(`/api/stocks/premium?symbol=${symbol}`);
+            const devParam = devBypass ? '&dev=1' : '';
+            const res = devBypass
+              ? await fetch(`/api/stocks/premium?symbol=${symbol}${devParam}`)
+              : await authFetch(`/api/stocks/premium?symbol=${symbol}`);
             if (res.ok) {
               const p = await res.json();
               if (p) {
