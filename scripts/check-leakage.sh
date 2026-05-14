@@ -56,8 +56,9 @@ LEAKED=()
 for field in "${PREMIUM_FIELDS[@]}"; do
   # -r recursive, -q quiet, -l list files (we want first hit), --include filters by name
   # We scan .html and .json files. Astro emits HTML; static data files are .json.
-  if grep -rqI --include="*.html" --include="*.json" "\"$field\"" "$TARGET" 2>/dev/null \
-   || grep -rqI --include="*.html" --include="*.json" "\.$field" "$TARGET" 2>/dev/null; then
+  # Exclude data-premium="..." attributes (hydration markers, not actual data leaks)
+  if grep -rI --include="*.html" --include="*.json" -e "\"$field\"" -e "\.$field" "$TARGET" 2>/dev/null \
+     | grep -v 'data-premium=' | grep -q .; then
     LEAKED+=("$field")
   fi
 done
