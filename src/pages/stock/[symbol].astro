@@ -743,8 +743,10 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       // Load the user session (populates window.__compassUser)
       const user = await loadSession();
 
-      // Check if user has premium access
-      const isPremium = hasFeature('score_breakdown');
+      // Check if user has premium access (or dev bypass via ?dev=1)
+      const urlParams = new URLSearchParams(window.location.search);
+      const devBypass = urlParams.get('dev') === '1';
+      const isPremium = hasFeature('score_breakdown') || devBypass;
 
       if (isPremium) {
         // Remove blur and overlays for premium users
@@ -768,7 +770,10 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         const symbol = window.location.pathname.split('/stock/')[1]?.replace(/\/$/, '').toUpperCase();
         if (symbol) {
           try {
-            const res = await authFetch(`/api/stocks/premium?symbol=${symbol}`);
+            const devParam = devBypass ? '&dev=1' : '';
+            const res = devBypass
+              ? await fetch(`/api/stocks/premium?symbol=${symbol}${devParam}`)
+              : await authFetch(`/api/stocks/premium?symbol=${symbol}`);
             if (res.ok) {
               const p = await res.json();
               if (p) {

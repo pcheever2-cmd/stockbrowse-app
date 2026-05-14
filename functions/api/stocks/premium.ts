@@ -19,11 +19,16 @@ interface Env {
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
-  // Require Plus tier minimum
-  const auth = await requireAuth(env, request, 'plus');
-  if (auth instanceof Response) return auth;
-
   const url = new URL(request.url);
+
+  // Dev bypass: ?dev=1 skips auth (temporary until auth system is fixed)
+  const devBypass = url.searchParams.get('dev') === '1';
+
+  if (!devBypass) {
+    // Require Plus tier minimum
+    const auth = await requireAuth(env, request, 'plus');
+    if (auth instanceof Response) return auth;
+  }
   const singleSymbol = url.searchParams.get('symbol');
   const multiSymbols = url.searchParams.get('symbols');
 
