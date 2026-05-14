@@ -115,30 +115,40 @@ The project was created as a Worker (`npx wrangler deploy`), not a Pages project
 
 ### Step 1: Create a New Pages Project
 
-1. Go to Cloudflare dashboard > Workers & Pages > Create
-2. Select **Pages** > Connect to Git
-3. Connect to `pcheever2-cmd/stockbrowse-app` repo
-4. Configure build settings:
+1. Go to Cloudflare dashboard > Workers & Pages > **Create**
+2. Select **Pages** > **Connect to Git**
+3. Select GitHub account `pcheever2-cmd` and repo `stockbrowse-app`
+4. Set **Production branch** to `main`
+5. Configure build settings:
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
    - **Root directory:** `/`
-5. **Do NOT deploy yet** — configure environment first
+6. **Do NOT deploy yet** — configure environment first
+
+> **Note:** The project name `stockbrowse-app` should work even though a Worker with the same name exists — they're different resource types. If Cloudflare rejects the name, use `stockbrowse-app-pages` temporarily and rename after deleting the old Worker.
 
 ### Step 2: Configure Environment Variables & Bindings
 
-In the new Pages project settings, add these **environment variables** (Production):
+In the new Pages project settings, add these variables (Production environment):
 
-| Name | Type | Value |
-|------|------|-------|
-| `PUBLIC_SUPABASE_URL` | Secret | `https://jyadpvwxedqvqlrsghzy.supabase.co` |
-| `PUBLIC_SUPABASE_ANON_KEY` | Secret | `sb_publishable_mWnsNqWDuUYfbdDJrr5u6w_bzFwgQDk` |
-| `SUPABASE_URL` | Secret | `https://jyadpvwxedqvqlrsghzy.supabase.co` |
-| `SUPABASE_ANON_KEY` | Secret | `sb_publishable_mWnsNqWDuUYfbdDJrr5u6w_bzFwgQDk` |
-| `SUPABASE_SERVICE_ROLE_KEY` | Secret | (get from `.dev.vars`) |
-| `STRIPE_SECRET_KEY` | Secret | (set when ready for payments) |
-| `STRIPE_WEBHOOK_SECRET` | Secret | (set when ready for payments) |
+**Plain text variables** (non-sensitive, needed at build time):
+| Name | Value |
+|------|-------|
+| `PUBLIC_SUPABASE_URL` | `https://jyadpvwxedqvqlrsghzy.supabase.co` |
+| `PUBLIC_SUPABASE_ANON_KEY` | `sb_publishable_mWnsNqWDuUYfbdDJrr5u6w_bzFwgQDk` |
 
-Add **KV namespace binding**:
+**Secrets** (sensitive, needed at runtime by Functions):
+| Name | Value |
+|------|-------|
+| `SUPABASE_URL` | `https://jyadpvwxedqvqlrsghzy.supabase.co` |
+| `SUPABASE_ANON_KEY` | `sb_publishable_mWnsNqWDuUYfbdDJrr5u6w_bzFwgQDk` |
+| `SUPABASE_SERVICE_ROLE_KEY` | (get from `.dev.vars` in compass-score-site) |
+| `STRIPE_SECRET_KEY` | (set when ready for payments) |
+| `STRIPE_WEBHOOK_SECRET` | (set when ready for payments) |
+
+> **Tip:** You can import variables from the old Worker via the dashboard or wrangler CLI to avoid re-entering them.
+
+**KV namespace binding:**
 - Variable name: `STOCKS_PREMIUM_KV`
 - KV namespace: select the existing namespace (ID: `a16202c79b5b4372b3a686d6a4f8baf1`)
 
@@ -146,7 +156,7 @@ Add **KV namespace binding**:
 
 ```toml
 name = "stockbrowse-app"
-compatibility_date = "2024-01-01"
+compatibility_date = "2025-01-01"
 pages_build_output_dir = "./dist"
 
 [[kv_namespaces]]
@@ -154,21 +164,27 @@ binding = "STOCKS_PREMIUM_KV"
 id = "a16202c79b5b4372b3a686d6a4f8baf1"
 ```
 
-Remove the `[assets]` section — Pages doesn't use it.
+**Important:** Remove the entire `[assets]` section and any Worker-specific config. Pages uses `pages_build_output_dir` instead. If you add D1, R2, or other bindings later, add them here too.
 
-### Step 4: Deploy and Verify Functions
+### Step 4: Deploy and Verify Functions on Preview URL
 
 1. Trigger a deployment in the new Pages project
 2. The build will run `npm run build`, then Pages automatically compiles `functions/` into serverless endpoints
-3. Verify API routes work on the Pages preview URL:
-   - `GET <preview-url>/api/stocks/premium?symbol=AAPL&dev=1` — should return JSON
-   - `GET <preview-url>/api/auth/me` — should return 401 (no token), not 404
+3. **Before moving the domain**, verify API routes work on the `.pages.dev` preview URL:
+   - `GET <project>.pages.dev/api/stocks/premium?symbol=AAPL&dev=1` — should return JSON with premium data
+   - `GET <project>.pages.dev/api/auth/me` — should return 401 (not 404)
+   - Visit `<project>.pages.dev/stock/aapl/?dev=1` — premium fields should hydrate
+4. If any endpoint returns 404, check that `functions/` directory is included in the build output and secrets are set
 
-### Step 5: Move the Domain
+### Step 5: Move the Domain (most sensitive step)
 
-1. In the **new Pages project** > Custom domains > Add `app.stockbrowse.co`
-2. In the **old Worker project** > Domains & Routes > Remove `app.stockbrowse.co`
-3. DNS should already point to Cloudflare — just update the routing
+**Sequence matters — do this in order:**
+
+1. **Test first:** Verify everything works on the `.pages.dev` URL (Step 4)
+2. In the **old Worker project** > Domains & Routes > **Remove** `app.stockbrowse.co`
+3. In the **new Pages project** > Custom domains > **Add** `app.stockbrowse.co`
+4. DNS is already Cloudflare-managed, so propagation should be near-instant
+5. Verify `app.stockbrowse.co` serves the Pages version (check API routes)
 
 ### Step 6: Delete the Old Worker
 
@@ -176,19 +192,37 @@ Once the Pages project is serving traffic correctly:
 1. Verify the site works at `app.stockbrowse.co`
 2. Verify API endpoints return proper responses (not 404)
 3. Delete the old `stockbrowse-app` Worker project
+4. Update any internal bookmarks/docs pointing to the old project in the Cloudflare dashboard
 
-### Step 7: Update CI Deploy Command (if needed)
+### Step 7: Update CI Configuration
 
-If the stock-research CI pipeline pushes to the site, update the build token in the stock-research repo to work with the new Pages project.
+The stock-research CI pipeline pushes JSON to the git repo (which triggers Pages auto-build) and syncs KV. Verify:
+
+1. `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets in the stock-research repo still work for KV sync
+2. The `SITE_DEPLOY_TOKEN` (GitHub PAT) still has push access to `stockbrowse-app` repo
+3. Trigger a manual pipeline run and confirm:
+   - JSON files pushed to site repo
+   - Cloudflare Pages auto-builds from the push
+   - KV sync completes
+4. Monitor the first few daily pipeline runs after migration
 
 ### Step 8: Fix Supabase Auth Redirect
 
 In the Supabase dashboard (project `jyadpvwxedqvqlrsghzy`):
-1. Authentication > URL Configuration
+1. **Authentication > URL Configuration**
 2. Set **Site URL** to `https://app.stockbrowse.co`
-3. Add `https://app.stockbrowse.co/auth/callback` to Redirect URLs
+3. Add to **Redirect URLs**:
+   - `https://app.stockbrowse.co/auth/callback`
+   - Any `.pages.dev` preview URLs you want to test with
+4. Test: sign up with a new email, confirm the link goes to `app.stockbrowse.co` (not `localhost:3000`)
 
-This fixes the login email confirmation link (currently points to localhost:3000).
+### Step 9: Remove dev=1 Bypass (after auth works)
+
+Once login and premium access work properly:
+1. Remove `?dev=1` bypass from `functions/api/stocks/premium.ts`
+2. Remove dev bypass logic from `src/pages/stock/[symbol].astro`
+3. Test that logged-in Pro users see premium data without `?dev=1`
+4. Test that free/logged-out users see lock icons
 
 ## Verification Checklist
 
@@ -197,24 +231,26 @@ After migration, test each endpoint:
 - [ ] `app.stockbrowse.co/stock/aapl/?dev=1` — premium fields hydrate (EV/EBITDA, P/E, RSI, etc.)
 - [ ] `app.stockbrowse.co/api/stocks/premium?symbol=AAPL&dev=1` — returns JSON with premium data
 - [ ] `app.stockbrowse.co/api/auth/me` — returns 401 (not 404)
-- [ ] `app.stockbrowse.co/signup` — creates account, confirmation email links to live site
+- [ ] `app.stockbrowse.co/signup` — creates account, confirmation email links to live site (not localhost)
 - [ ] `app.stockbrowse.co/login` — authenticates and sets session
 - [ ] Premium fields show for logged-in Plus/Pro users without `?dev=1`
 - [ ] Free users see lock icons
 - [ ] `app.stockbrowse.co/browse/all` — stock list loads correctly
-- [ ] Daily pipeline still pushes stock data successfully
+- [ ] Daily pipeline pushes stock data and triggers successful Pages build
+- [ ] KV sync completes in CI (check workflow logs)
+- [ ] After removing dev bypass: Pro users see data, free users see locks
 
 ## Files Involved
 
 - `wrangler.toml` — needs update (remove `[assets]`, add `pages_build_output_dir`)
 - `functions/_middleware.ts` — auth helpers, CORS (no changes needed)
-- `functions/api/stocks/premium.ts` — premium data endpoint (no changes needed)
+- `functions/api/stocks/premium.ts` — premium data endpoint (remove dev bypass in Step 9)
 - `functions/api/auth/me.ts` — session endpoint (no changes needed)
 - `functions/api/checkout.ts` — Stripe checkout (no changes needed)
 - `functions/api/watchlists/` — watchlist CRUD (no changes needed)
 - `functions/api/webhooks/stripe.ts` — payment webhooks (no changes needed)
-- `src/pages/stock/[symbol].astro` — premium hydration JS (no changes needed)
+- `src/pages/stock/[symbol].astro` — premium hydration JS (remove dev bypass in Step 9)
 
 ## Estimated Time
 
-~30 minutes if no complications. The code is all ready — this is purely a Cloudflare infrastructure change.
+~30-45 minutes if no complications. The code is all ready — this is purely a Cloudflare infrastructure change. The most sensitive step is the domain migration (Step 5), but since DNS is Cloudflare-managed it should be near-instant.
