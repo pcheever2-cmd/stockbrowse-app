@@ -1,5 +1,5 @@
 # Cloudflare Pages configuration for Astro site with API functions
-name = "stockbrowse-app"
+name = "stockbrowse-app-pages"
 compatibility_date = "2025-01-01"
 pages_build_output_dir = "./dist"
 
