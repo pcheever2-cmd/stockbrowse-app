@@ -1,7 +1,9 @@
-# Cloudflare Pages configuration for Astro static site + Pages Functions
+# Cloudflare Workers configuration for Astro static site
 name = "stockbrowse-app"
 compatibility_date = "2024-01-01"
-pages_build_output_dir = "./dist"
+
+[assets]
+directory = "./dist"
 
 # KV namespace for premium stock data (sharded per symbol as stock:AAPL etc.)
 # Create with: wrangler kv namespace create STOCKS_PREMIUM_KV
