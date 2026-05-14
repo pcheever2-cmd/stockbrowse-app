@@ -1,20 +1,14 @@
-# Cloudflare Workers configuration for Astro static site
+# Cloudflare Pages configuration for Astro site with API functions
 name = "stockbrowse-app"
-compatibility_date = "2024-01-01"
-
-[assets]
-directory = "./dist"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "./dist"
 
 # KV namespace for premium stock data (sharded per symbol as stock:AAPL etc.)
-# Create with: wrangler kv namespace create STOCKS_PREMIUM_KV
-# Then paste the id below.
 [[kv_namespaces]]
 binding = "STOCKS_PREMIUM_KV"
 id = "a16202c79b5b4372b3a686d6a4f8baf1"
 
-# Environment variables (non-secret, safe for config)
-# Secret values (API keys) should be set via `wrangler secret put <NAME>`
-# Required secrets:
+# Secret values should be set in the Cloudflare Pages dashboard:
 #   SUPABASE_URL
 #   SUPABASE_ANON_KEY
 #   SUPABASE_SERVICE_ROLE_KEY

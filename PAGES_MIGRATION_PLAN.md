@@ -125,7 +125,7 @@ The project was created as a Worker (`npx wrangler deploy`), not a Pages project
    - **Root directory:** `/`
 6. **Do NOT deploy yet** — configure environment first
 
-> **Note:** The project name `stockbrowse-app` should work even though a Worker with the same name exists — they're different resource types. If Cloudflare rejects the name, use `stockbrowse-app-pages` temporarily and rename after deleting the old Worker.
+> **Note:** The project name `stockbrowse-app` was rejected (conflict with existing Worker). The Pages project is named **`stockbrowse-app-pages`**. After migration is complete and the old Worker is deleted (Step 6), rename this to `stockbrowse-app`.
 
 ### Step 2: Configure Environment Variables & Bindings
 
