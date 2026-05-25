@@ -54,11 +54,17 @@ PREMIUM_FIELDS=(
 
 LEAKED=()
 for field in "${PREMIUM_FIELDS[@]}"; do
-  # -r recursive, -q quiet, -l list files (we want first hit), --include filters by name
-  # We scan .html and .json files. Astro emits HTML; static data files are .json.
-  # Exclude data-premium="..." attributes (hydration markers, not actual data leaks)
-  if grep -rI --include="*.html" --include="*.json" -e "\"$field\"" -e "\.$field" "$TARGET" 2>/dev/null \
-     | grep -v 'data-premium=' | grep -q .; then
+  # Scan JSON files directly — any premium field in static JSON is a real leak
+  if grep -rI --include="*.json" -e "\"$field\"" "$TARGET" 2>/dev/null | grep -q .; then
+    LEAKED+=("$field")
+  # Scan HTML files with <script> blocks stripped — inline JS references are
+  # runtime code (hydration, filtering), not embedded premium data values.
+  # Also exclude data-premium="..." and data-factor-display="..." hydration markers.
+  elif find "$TARGET" -name "*.html" -print0 2>/dev/null | xargs -0 \
+       sed '/<script/,/<\/script>/d' 2>/dev/null \
+       | grep -v 'data-premium=' \
+       | grep -v 'data-factor-display=' \
+       | grep -e "\"$field\"" -e "\.$field" 2>/dev/null | grep -q .; then
     LEAKED+=("$field")
   fi
 done

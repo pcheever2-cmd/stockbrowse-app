@@ -593,8 +593,8 @@ export function getFactorRatingColor(rating: FactorRating): { bg: string; text: 
 
 // Analyst consensus helpers - calculates from actual analyst ratings
 // Now considers price target vs current price (upside) to avoid contradictory displays
-export function getConsensusInfo(_consensus: string | null, recentRatings: string = '', upside: number | null = null): { label: string; color: string; bgColor: string } {
-  // Calculate consensus from recent ratings (consensus param reserved for future use)
+export function getConsensusInfo(consensus: string | null, recentRatings: string = '', upside: number | null = null): { label: string; color: string; bgColor: string } {
+  // Calculate consensus from detailed analyst ratings (premium data)
   if (recentRatings) {
     const ratings = parseRecentRatings(recentRatings);
     if (ratings.length > 0) {
@@ -649,6 +649,18 @@ export function getConsensusInfo(_consensus: string | null, recentRatings: strin
       }
 
       return consensus;
+    }
+  }
+
+  // Fallback: map simple consensus letter from public data
+  if (consensus) {
+    const letter = consensus.charAt(0);
+    if (letter === 'A' || letter === 'B') {
+      return { label: 'Buy', color: 'text-emerald-400', bgColor: 'bg-emerald-900/40' };
+    } else if (letter === 'S' || letter === 'D') {
+      return { label: 'Sell', color: 'text-red-400', bgColor: 'bg-red-900/40' };
+    } else if (letter === 'C') {
+      return { label: 'Hold', color: 'text-slate-300', bgColor: 'bg-slate-700/40' };
     }
   }
 

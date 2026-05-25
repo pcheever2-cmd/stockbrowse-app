@@ -304,7 +304,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
                 <div class="factor-detail hidden mt-2 p-4 bg-[#0F1419] rounded-lg border border-[#22D3EE33]">
                   <div class="flex items-center justify-between mb-3">
                     <span class="text-sm text-[#64748B]">{stock.name}'s Value:</span>
-                    <span class={`text-xl font-bold ${ratingColors.text}`}>{displayValue}</span>
+                    <span data-factor-display={factor.key} class={`text-xl font-bold ${ratingColors.text}`}>{displayValue}</span>
                   </div>
                   <div class="flex items-center justify-between mb-3">
                     <span class="text-sm text-[#64748B]">Universe Average:</span>
@@ -380,70 +380,41 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         </div>
       </div>
 
-      <!-- Valuation Score (Technical Valuation) -->
-      {stock.valuationRating != null && (
-      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-bold text-slate-100">Technical Valuation</h2>
-          <a href="/valuation-methodology" class="text-xs text-[#64748B] hover:text-[#22D3EE] transition">How it works →</a>
-        </div>
+      <!-- Valuation Score (Technical Valuation) — hidden at SSG, shown via hydration for premium users -->
+      <div id="valuation-section" class="hidden mb-8">
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-slate-100">Technical Valuation</h2>
+            <a href="/valuation-methodology" class="text-xs text-[#64748B] hover:text-[#22D3EE] transition">How it works →</a>
+          </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">Rating</div>
-            <div class={`text-xl font-bold ${stock.valuationRating === 'Undervalued' ? 'text-emerald-400' : stock.valuationRating === 'Fair Value' ? 'text-amber-400' : 'text-red-400'}`}>
-              {stock.valuationRating}
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Rating</div>
+              <div id="val-rating" class="text-xl font-bold text-slate-400">&mdash;</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">vs SMA200</div>
+              <div id="val-sma200" class="text-2xl font-bold text-slate-400">&mdash;</div>
+              <div id="val-sma200-label" class="text-xs text-[#64748B] mt-1"></div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">vs SMA50</div>
+              <div id="val-sma50" class="text-2xl font-bold text-slate-400">&mdash;</div>
+              <div id="val-sma50-label" class="text-xs text-[#64748B] mt-1"></div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">52W Range</div>
+              <div id="val-52w" class="text-2xl font-bold text-slate-100">&mdash;</div>
+              <div id="val-52w-range" class="text-xs text-[#64748B] mt-1"></div>
             </div>
           </div>
 
-          {stock.valuationData && (
-          <>
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">vs SMA200</div>
-            <div class={`text-2xl font-bold ${(stock.valuationData.vsSma200 ?? 0) < 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-              {stock.valuationData.vsSma200 != null ? `${stock.valuationData.vsSma200 > 0 ? '+' : ''}${stock.valuationData.vsSma200}%` : 'N/A'}
-            </div>
-            <div class="text-xs text-[#64748B] mt-1">{(stock.valuationData.vsSma200 ?? 0) < 0 ? 'Below avg' : 'Above avg'}</div>
+          <div class="bg-[#080A0F] rounded-lg p-3">
+            <p id="val-summary" class="text-xs text-[#64748B]"></p>
           </div>
-
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">vs SMA50</div>
-            <div class={`text-2xl font-bold ${(stock.valuationData.vsSma50 ?? 0) < 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-              {stock.valuationData.vsSma50 != null ? `${stock.valuationData.vsSma50 > 0 ? '+' : ''}${stock.valuationData.vsSma50}%` : 'N/A'}
-            </div>
-            <div class="text-xs text-[#64748B] mt-1">{(stock.valuationData.vsSma50 ?? 0) < 0 ? 'Below avg' : 'Above avg'}</div>
-          </div>
-
-          <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-            <div class="text-sm text-[#64748B] mb-1">52W Range</div>
-            <div class="text-2xl font-bold text-slate-100">
-              {stock.valuationData.position52w != null ? `${stock.valuationData.position52w}%` : 'N/A'}
-            </div>
-            <div class="text-xs text-[#64748B] mt-1">
-              {stock.valuationData.low52w != null && stock.valuationData.high52w != null
-                ? `$${stock.valuationData.low52w.toFixed(2)} - $${stock.valuationData.high52w.toFixed(2)}`
-                : ''}
-            </div>
-          </div>
-          </>
-          )}
-        </div>
-
-        <div class="bg-[#080A0F] rounded-lg p-3">
-          <p class="text-xs text-[#64748B]">
-            {stock.valuationRating === 'Undervalued'
-              ? stock.upside && stock.upside > 10
-                ? '✓ Both technical valuation and analyst targets suggest this stock may be undervalued.'
-                : 'Technically undervalued — trading below moving averages. Check analyst targets for confirmation.'
-              : stock.valuationRating === 'Fair Value'
-                ? 'Trading near fair value based on moving averages. No strong technical signal.'
-                : stock.upside && stock.upside > 20
-                  ? '⚠ Analysts see upside, but the stock is technically overextended above moving averages.'
-                  : 'Trading above moving averages — technically overvalued. Consider waiting for a pullback.'}
-          </p>
         </div>
       </div>
-      )}
 
       <!-- FREE SECTION: Technical Overview (Yahoo Finance available) -->
       <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
@@ -513,9 +484,9 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           <h2 class="text-xl font-bold mb-4 text-slate-100">Wall Street View</h2>
 
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div class={`${consensusInfo.bgColor} rounded-lg p-4 text-center`}>
+            <div data-premium="consensusContainer" class={`${consensusInfo.bgColor} rounded-lg p-4 text-center`}>
               <div class="text-sm text-[#64748B] mb-1">Consensus</div>
-              <div class={`text-xl font-bold ${consensusInfo.color}`}>{consensusInfo.label}</div>
+              <div data-premium="consensus" class={`text-xl font-bold ${consensusInfo.color}`}>{consensusInfo.label}</div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Analysts</div>
@@ -834,6 +805,50 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           setVal('upside', `${sign}${p.upside}%`, p.upside > 0 ? 'text-emerald-400' : 'text-red-400');
         }
 
+        // Consensus (recalculate from detailed analyst ratings)
+        if (p.recentRatings) {
+          const ratings = p.recentRatings.split('\n').filter((l: string) => l.trim());
+          if (ratings.length > 0) {
+            let buyCount = 0, holdCount = 0, sellCount = 0;
+            ratings.forEach((line: string) => {
+              const r = line.toLowerCase();
+              if (r.includes('buy') || r.includes('outperform') || r.includes('overweight')) buyCount++;
+              else if (r.includes('sell') || r.includes('underperform') || r.includes('underweight')) sellCount++;
+              else holdCount++;
+            });
+            const total = buyCount + holdCount + sellCount;
+            const buyPct = buyCount / total;
+            const sellPct = sellCount / total;
+
+            let label: string, color: string, bgColor: string;
+            if (buyPct >= 0.6) { label = 'Strong Buy'; color = 'text-emerald-400'; bgColor = 'bg-emerald-900/40'; }
+            else if (buyPct >= 0.4) { label = 'Buy'; color = 'text-blue-400'; bgColor = 'bg-blue-900/40'; }
+            else if (sellPct >= 0.6) { label = 'Strong Sell'; color = 'text-red-400'; bgColor = 'bg-red-900/40'; }
+            else if (sellPct >= 0.4) { label = 'Sell'; color = 'text-amber-400'; bgColor = 'bg-amber-900/40'; }
+            else { label = 'Hold'; color = 'text-slate-300'; bgColor = 'bg-slate-700/40'; }
+
+            // Override if price target conflicts
+            if (p.upside != null && p.upside < -15 && (label === 'Strong Buy' || label === 'Buy')) {
+              label = 'Above Target'; color = 'text-amber-400'; bgColor = 'bg-amber-900/40';
+            }
+            if (p.upside != null && p.upside > 30 && (label === 'Strong Sell' || label === 'Sell')) {
+              label = 'Below Target'; color = 'text-blue-400'; bgColor = 'bg-blue-900/40';
+            }
+
+            const consensusEl = el('consensus');
+            const containerEl = el('consensusContainer');
+            if (consensusEl) {
+              consensusEl.textContent = label;
+              consensusEl.classList.remove('text-emerald-400', 'text-blue-400', 'text-red-400', 'text-amber-400', 'text-slate-300', 'text-slate-400');
+              consensusEl.classList.add(color);
+            }
+            if (containerEl) {
+              containerEl.classList.remove('bg-emerald-900/40', 'bg-blue-900/40', 'bg-red-900/40', 'bg-amber-900/40', 'bg-slate-700/40', 'bg-slate-800/40');
+              containerEl.classList.add(bgColor);
+            }
+          }
+        }
+
         // Growth Projections
         if (p.epsGrowth != null) {
           const sign = p.epsGrowth > 0 ? '+' : '';
@@ -856,6 +871,101 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           const color = p.altmanZ >= 2.99 ? 'text-emerald-400' : p.altmanZ >= 1.81 ? 'text-amber-400' : 'text-red-400';
           setVal('altmanZ', p.altmanZ.toFixed(2), color);
           setVal('altmanLabel', label, color);
+        }
+
+        // Factor Values (Score Breakdown detail panels)
+        if (p.factorValues) {
+          const factorUnits: Record<string, string> = {
+            roa: '%', grossProfit: '%', operatingCashFlow: '%',
+            freeCashFlow: '%', volatility: '%', assetGrowth: '%'
+          };
+          const factorAvgs: Record<string, number> = {
+            roa: 2, grossProfit: 25, operatingCashFlow: 5,
+            freeCashFlow: 3, volatility: 45, assetGrowth: 10
+          };
+          const invertedFactors = new Set(['volatility', 'assetGrowth']);
+
+          Object.entries(p.factorValues).forEach(([key, val]) => {
+            if (val == null) return;
+            const v = val as number;
+            const avg = factorAvgs[key] || 0;
+            const isGood = invertedFactors.has(key) ? v < avg : v > avg;
+            const color = isGood ? 'text-emerald-400' : 'text-red-400';
+
+            const displayEl = document.querySelector(`[data-factor-display="${key}"]`) as HTMLElement;
+            if (displayEl) {
+              displayEl.textContent = `${v.toFixed(1)}${factorUnits[key] || '%'}`;
+              displayEl.classList.remove('text-emerald-400', 'text-red-400', 'text-slate-300', 'text-slate-500');
+              displayEl.classList.add(color);
+            }
+            const btn = document.querySelector(`[data-factor="${key}"]`) as HTMLElement;
+            if (btn) {
+              btn.dataset.factorValue = `${v.toFixed(1)}${factorUnits[key] || '%'}`;
+            }
+          });
+        }
+
+        // Valuation Score section
+        if (p.valuationRating) {
+          const section = document.getElementById('valuation-section');
+          if (section) {
+            section.classList.remove('hidden');
+
+            const ratingEl = document.getElementById('val-rating');
+            if (ratingEl) {
+              ratingEl.textContent = p.valuationRating;
+              const ratingColor = p.valuationRating === 'Undervalued' ? 'text-emerald-400'
+                : p.valuationRating === 'Fair Value' ? 'text-amber-400' : 'text-red-400';
+              ratingEl.classList.remove('text-slate-400');
+              ratingEl.classList.add(ratingColor);
+            }
+
+            if (p.valuationData) {
+              const vd = p.valuationData;
+
+              const sma200El = document.getElementById('val-sma200');
+              const sma200Label = document.getElementById('val-sma200-label');
+              if (sma200El && vd.vsSma200 != null) {
+                sma200El.textContent = `${vd.vsSma200 > 0 ? '+' : ''}${vd.vsSma200}%`;
+                sma200El.classList.remove('text-slate-400');
+                sma200El.classList.add(vd.vsSma200 < 0 ? 'text-emerald-400' : 'text-red-400');
+                if (sma200Label) sma200Label.textContent = vd.vsSma200 < 0 ? 'Below avg' : 'Above avg';
+              }
+
+              const sma50El = document.getElementById('val-sma50');
+              const sma50Label = document.getElementById('val-sma50-label');
+              if (sma50El && vd.vsSma50 != null) {
+                sma50El.textContent = `${vd.vsSma50 > 0 ? '+' : ''}${vd.vsSma50}%`;
+                sma50El.classList.remove('text-slate-400');
+                sma50El.classList.add(vd.vsSma50 < 0 ? 'text-emerald-400' : 'text-red-400');
+                if (sma50Label) sma50Label.textContent = vd.vsSma50 < 0 ? 'Below avg' : 'Above avg';
+              }
+
+              const pos52wEl = document.getElementById('val-52w');
+              const range52wEl = document.getElementById('val-52w-range');
+              if (pos52wEl && vd.position52w != null) {
+                pos52wEl.textContent = `${vd.position52w}%`;
+              }
+              if (range52wEl && vd.low52w != null && vd.high52w != null) {
+                range52wEl.textContent = `$${vd.low52w.toFixed(2)} - $${vd.high52w.toFixed(2)}`;
+              }
+            }
+
+            const summaryEl = document.getElementById('val-summary');
+            if (summaryEl) {
+              if (p.valuationRating === 'Undervalued') {
+                summaryEl.textContent = p.upside && p.upside > 10
+                  ? '✓ Both technical valuation and analyst targets suggest this stock may be undervalued.'
+                  : 'Technically undervalued — trading below moving averages. Check analyst targets for confirmation.';
+              } else if (p.valuationRating === 'Fair Value') {
+                summaryEl.textContent = 'Trading near fair value based on moving averages. No strong technical signal.';
+              } else {
+                summaryEl.textContent = p.upside && p.upside > 20
+                  ? '⚠ Analysts see upside, but the stock is technically overextended above moving averages.'
+                  : 'Trading above moving averages — technically overvalued. Consider waiting for a pullback.';
+              }
+            }
+          }
         }
       }
       }
