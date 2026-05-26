@@ -504,6 +504,9 @@ function rateFactorValue(value: number | null, factor: keyof typeof FACTOR_THRES
 
   // Volatility and assetGrowth are inverted (lower is better)
   if (factor === 'volatility' || factor === 'assetGrowth') {
+    // Negative asset growth (shrinking) is a red flag, not a bonus
+    // Matches the scoring pipeline which caps negative asset growth at 0
+    if (factor === 'assetGrowth' && value < 0) return 'weak';
     if (value <= thresholds.strong) return 'strong';
     if (value >= thresholds.weak) return 'weak';
     return 'average';
