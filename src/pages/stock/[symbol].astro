@@ -967,6 +967,24 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             }
           }
         }
+
+        // Replace remaining locks with "N/A" — premium data was fetched,
+        // so any lock still showing means the data genuinely doesn't exist
+        document.querySelectorAll('[data-premium]').forEach(node => {
+          const el = node as HTMLElement;
+          if (el.textContent?.trim() === '🔒') {
+            el.textContent = 'N/A';
+            el.classList.remove('text-slate-100');
+            el.classList.add('text-slate-500');
+          }
+        });
+        document.querySelectorAll('[data-factor-display]').forEach(node => {
+          const el = node as HTMLElement;
+          if (el.textContent?.trim() === '🔒') {
+            el.textContent = 'N/A';
+            el.classList.add('text-slate-500');
+          }
+        });
       }
       }
 
