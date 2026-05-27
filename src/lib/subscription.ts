@@ -27,7 +27,7 @@ const TIER_FEATURES: Record<SubscriptionTier, string[]> = {
     'price_chart_1y', 'price_chart_5y',
     'score_breakdown', 'moonshot_score', 'long_term_score',
     'analyst_targets', 'analyst_accuracy', 'financial_health',
-    'csv_export', 'watchlist_single',
+    'valuation_score', 'csv_export', 'watchlist_single',
   ],
   pro: [
     'price_chart_1y', 'price_chart_5y',
