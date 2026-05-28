@@ -936,8 +936,8 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           });
         }
 
-        // Valuation Score section
-        if (p.valuationRating) {
+        // Valuation Score section (Pro only)
+        if (p.valuationRating && (hasFeature('valuation_score') || devBypass)) {
           const section = document.getElementById('valuation-section');
           if (section) {
             section.classList.remove('hidden');
