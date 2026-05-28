@@ -5,16 +5,56 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const categories = [
+  { id: 'all', label: 'All' },
+  { id: 'getting-started', label: 'Getting Started' },
+  { id: 'your-money', label: 'Your Money' },
+  { id: 'investing-basics', label: 'Investing Basics' },
+  { id: 'stock-discovery', label: 'Stock Discovery' },
+  { id: 'industry-guides', label: 'Industry Guides' },
+];
+
+function getReadingTime(body: string): number {
+  const words = body.split(/\s+/).length;
+  return Math.ceil(words / 200);
+}
 ---
 
-<Layout title="Learn to Invest | Stockbrowse">
+<Layout title="Learn to Invest | Stockbrowse" description="Free investing guides for people who've never bought a stock. Learn how to start, what to buy, and how to find quality companies — in plain English.">
   <section class="py-16 bg-[#161B24]">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold mb-4">Learn to Invest Smarter</h1>
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold mb-4">Learn to Invest</h1>
         <p class="text-xl text-[#CBD5E1]">
-          Practical guides and insights for building a quality stock portfolio.
+          Plain-English guides for people who are just getting started.
         </p>
+      </div>
+
+      <!-- Start Here callout -->
+      <div class="bg-[#080A0F] border border-[#22D3EE]/20 rounded-xl p-6 mb-10 text-center">
+        <p class="text-[#22D3EE] font-semibold text-sm mb-2">New to investing?</p>
+        <p class="text-[#CBD5E1]">
+          Start with <a href="/blog/how-to-start-investing" class="text-[#22D3EE] hover:underline">How to Start Investing</a> or
+          <a href="/blog/how-much-money-to-start-investing" class="text-[#22D3EE] hover:underline">You Don't Need $1,000 to Start</a>.
+        </p>
+      </div>
+
+      <!-- Category filter tabs -->
+      <div class="flex flex-wrap gap-2 mb-10 justify-center" id="category-filters">
+        {categories.map((cat) => (
+          <button
+            data-category={cat.id}
+            class:list={[
+              'px-4 py-2 rounded-lg text-sm font-medium transition',
+              cat.id === 'all'
+                ? 'bg-[#22D3EE] text-black'
+                : 'bg-[#080A0F] text-[#CBD5E1] hover:bg-[#1a1f2e]'
+            ]}
+          >
+            {cat.label}
+          </button>
+        ))}
       </div>
 
       {posts.length === 0 ? (
@@ -22,26 +62,60 @@ const posts = (await getCollection('blog')).sort(
           <p class="text-[#CBD5E1]">Articles coming soon! Check back later.</p>
         </div>
       ) : (
-        <div class="space-y-8">
-          {posts.map((post) => (
-            <article class="bg-[#080A0F] rounded-xl p-6 hover:shadow-lg transition">
-              <a href={`/blog/${post.id}`} class="block">
-                <p class="text-[#22D3EE] text-sm font-semibold mb-2">
-                  {post.data.pubDate.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </p>
-                <h2 class="text-2xl font-bold mb-2 hover:text-[#22D3EE] transition">
-                  {post.data.title}
-                </h2>
-                <p class="text-[#CBD5E1]">{post.data.description}</p>
-              </a>
-            </article>
-          ))}
+        <div class="space-y-6" id="articles-list">
+          {posts.map(async (post) => {
+            const { Content } = await post.render();
+            const readingTime = getReadingTime(post.body || '');
+            const category = post.data.category || 'getting-started';
+            return (
+              <article class="bg-[#080A0F] rounded-xl p-6 hover:shadow-lg transition" data-category={category}>
+                <a href={`/blog/${post.id}`} class="block">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-[#22D3EE] text-sm font-semibold">
+                      {post.data.pubDate.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </span>
+                    <span class="text-[#64748B] text-sm">{readingTime} min read</span>
+                  </div>
+                  <h2 class="text-2xl font-bold mb-2 hover:text-[#22D3EE] transition">
+                    {post.data.title}
+                  </h2>
+                  <p class="text-[#CBD5E1]">{post.data.description}</p>
+                </a>
+              </article>
+            );
+          })}
         </div>
       )}
     </div>
   </section>
 </Layout>
+
+<script>
+  const buttons = document.querySelectorAll('#category-filters button');
+  const articles = document.querySelectorAll('#articles-list article');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      buttons.forEach((b) => {
+        b.classList.remove('bg-[#22D3EE]', 'text-black');
+        b.classList.add('bg-[#080A0F]', 'text-[#CBD5E1]');
+      });
+      btn.classList.remove('bg-[#080A0F]', 'text-[#CBD5E1]');
+      btn.classList.add('bg-[#22D3EE]', 'text-black');
+
+      articles.forEach((article) => {
+        if (category === 'all' || article.getAttribute('data-category') === category) {
+          (article as HTMLElement).style.display = '';
+        } else {
+          (article as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
