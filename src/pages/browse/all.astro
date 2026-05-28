@@ -648,6 +648,7 @@ const marketCapRanges = [
       // Apply sorting
       sortStocks();
       renderStocks();
+      if (window.__hydrateMoonshot) window.__hydrateMoonshot();
       updateActiveFilters();
       saveFiltersToURL();
     }
@@ -740,7 +741,7 @@ const marketCapRanges = [
                 <div class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-bold" title="Compass Score">
                   ${stock.compassScore}
                 </div>
-                ${stock.moonshotGrade ? `<div class="bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full text-xs font-bold" title="Moonshot Grade">${stock.moonshotGrade}M</div>` : ''}
+                ${stock.moonshotGrade ? `<div class="bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full text-xs font-bold moonshot-badge" data-symbol="${stock.symbol}" title="Moonshot Score">${stock.moonshotGrade}M</div>` : ''}
               </div>
             </div>
 
@@ -1068,6 +1069,20 @@ const marketCapRanges = [
     window.__allStockSymbols = allStocks.map(s => s.symbol);
     window.__applyFilters = applyFilters;
     window.__browseFilters = filters;
+    window.__moonshotMap = {};
+
+    // Re-hydrate moonshot badges after each render (called by module script setup)
+    function hydrateMoonshotBadges() {
+      const map = window.__moonshotMap || {};
+      document.querySelectorAll('.moonshot-badge').forEach(badge => {
+        const sym = badge.dataset.symbol;
+        if (sym && map[sym] != null) {
+          badge.textContent = String(map[sym]);
+          badge.title = 'Moonshot Score';
+        }
+      });
+    }
+    window.__hydrateMoonshot = hydrateMoonshotBadges;
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
@@ -1130,6 +1145,7 @@ const marketCapRanges = [
 
         const symbols: string[] = (window as any).__allStockSymbols || [];
         const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
+        const moonshotMap: Record<string, number> = {};
 
         for (let i = 0; i < symbols.length; i += 50) {
           const batch = symbols.slice(i, i + 50).join(',');
@@ -1143,12 +1159,26 @@ const marketCapRanges = [
               if (fields?.valuationRating) {
                 valuationMap[sym] = fields.valuationRating;
               }
+              if (fields?.moonshotScore != null) {
+                moonshotMap[sym] = fields.moonshotScore;
+              }
             });
           }
         }
+        (window as any).__moonshotMap = moonshotMap;
 
         // Update the shared reference so the filter works
         Object.assign((window as any).__valuationMap, valuationMap);
+
+        // Hydrate moonshot score badges with numeric scores
+        document.querySelectorAll('.moonshot-badge').forEach(badge => {
+          const sym = (badge as HTMLElement).dataset.symbol;
+          if (sym && (window as any).__moonshotMap?.[sym] != null) {
+            const score = (window as any).__moonshotMap[sym];
+            (badge as HTMLElement).textContent = String(score);
+            (badge as HTMLElement).title = 'Moonshot Score';
+          }
+        });
 
         // Re-apply filters if valuation was selected from URL restore
         const filters = (window as any).__browseFilters;
