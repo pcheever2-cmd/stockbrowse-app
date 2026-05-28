@@ -296,7 +296,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
                     <div class="font-semibold text-slate-100 group-hover:text-[#22D3EE] transition">{factor.name}</div>
                     <div class="text-xs text-[#64748B]">{factor.description}</div>
                   </div>
-                  <span class={`px-3 py-1 rounded-full text-sm font-semibold ${ratingColors.bg} ${ratingColors.text}`}>
+                  <span data-factor-rating={factor.key} class={`px-3 py-1 rounded-full text-sm font-semibold ${ratingColors.bg} ${ratingColors.text}`}>
                     {ratingColors.label}
                   </span>
                 </button>
@@ -872,6 +872,16 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           };
           const invertedFactors = new Set(['volatility', 'assetGrowth']);
 
+          // Rating thresholds (must match stocks.ts FACTOR_THRESHOLDS)
+          const thresholds: Record<string, { strong: number; weak: number }> = {
+            roa: { strong: 5, weak: -2 },
+            grossProfit: { strong: 35, weak: 15 },
+            operatingCashFlow: { strong: 10, weak: 0 },
+            freeCashFlow: { strong: 8, weak: -2 },
+            volatility: { strong: 35, weak: 60 },
+            assetGrowth: { strong: 5, weak: 25 },
+          };
+
           Object.entries(p.factorValues).forEach(([key, val]) => {
             if (val == null) return;
             const v = val as number;
@@ -879,6 +889,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             const isGood = invertedFactors.has(key) ? v < avg : v > avg;
             const color = isGood ? 'text-emerald-400' : 'text-red-400';
 
+            // Update detail panel value
             const displayEl = document.querySelector(`[data-factor-display="${key}"]`) as HTMLElement;
             if (displayEl) {
               displayEl.textContent = `${v.toFixed(1)}${factorUnits[key] || '%'}`;
@@ -888,6 +899,35 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             const btn = document.querySelector(`[data-factor="${key}"]`) as HTMLElement;
             if (btn) {
               btn.dataset.factorValue = `${v.toFixed(1)}${factorUnits[key] || '%'}`;
+            }
+
+            // Re-rate and update the badge (SSG fallback may be wrong)
+            const t = thresholds[key];
+            if (t) {
+              let rating: string;
+              if (invertedFactors.has(key)) {
+                if (key === 'assetGrowth' && v < 0) rating = 'Weak';
+                else if (v <= t.strong) rating = 'Strong';
+                else if (v >= t.weak) rating = 'Weak';
+                else rating = 'Average';
+              } else {
+                if (v >= t.strong) rating = 'Strong';
+                else if (v <= t.weak) rating = 'Weak';
+                else rating = 'Average';
+              }
+
+              const badgeEl = document.querySelector(`[data-factor-rating="${key}"]`) as HTMLElement;
+              if (badgeEl) {
+                badgeEl.textContent = rating;
+                badgeEl.classList.remove('bg-emerald-900/40', 'text-emerald-400', 'bg-slate-700/40', 'text-slate-300', 'bg-red-900/40', 'text-red-400');
+                if (rating === 'Strong') {
+                  badgeEl.classList.add('bg-emerald-900/40', 'text-emerald-400');
+                } else if (rating === 'Weak') {
+                  badgeEl.classList.add('bg-red-900/40', 'text-red-400');
+                } else {
+                  badgeEl.classList.add('bg-slate-700/40', 'text-slate-300');
+                }
+              }
             }
           });
         }
