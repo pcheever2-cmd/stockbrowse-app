@@ -75,6 +75,10 @@ const stocksData = stocks.map(s => ({
                   <th class="px-6 py-3 text-right text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Market Cap</th>
                   <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Score</th>
                   <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Grade</th>
+                  <th class="px-6 py-3 text-right text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">EV/EBITDA</th>
+                  <th class="px-6 py-3 text-right text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Fwd P/E</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Moonshot</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Valuation</th>
                   <th class="px-6 py-3 text-center text-xs font-semibold text-[#CBD5E1] uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
@@ -132,16 +136,24 @@ const stocksData = stocks.map(s => ({
       const watchlist = getWatchlist();
       const watchedStocks = stocksData.filter(s => watchlist.includes(s.symbol));
 
-      const headers = ['Symbol', 'Name', 'Industry', 'Price', 'Market Cap (B)', 'Compass Score', 'Grade'];
-      const rows = watchedStocks.map(s => [
-        s.symbol,
-        s.name,
-        s.normalizedIndustry,
-        s.price,
-        s.marketCap,
-        s.compassScore,
-        s.grade
-      ]);
+      const premiumData = window.__watchlistPremium || {};
+      const headers = ['Symbol', 'Name', 'Industry', 'Price', 'Market Cap (B)', 'Compass Score', 'Grade', 'EV/EBITDA', 'Forward P/E', 'Moonshot Score', 'Valuation'];
+      const rows = watchedStocks.map(s => {
+        const p = premiumData[s.symbol] || {};
+        return [
+          s.symbol,
+          s.name,
+          s.normalizedIndustry,
+          s.price,
+          s.marketCap,
+          s.compassScore,
+          s.grade,
+          p.evEbitda != null ? p.evEbitda : '',
+          p.forwardPe != null ? p.forwardPe : '',
+          p.moonshotScore != null ? p.moonshotScore : '',
+          p.valuationRating || ''
+        ];
+      });
 
       const csv = [
         headers.join(','),
@@ -217,6 +229,18 @@ const stocksData = stocks.map(s => ({
                 ${stock.grade}
               </span>
             </td>
+            <td class="px-6 py-4 text-right text-sm premium-cell" data-symbol="${stock.symbol}" data-field="evEbitda">
+              <span class="text-slate-500">—</span>
+            </td>
+            <td class="px-6 py-4 text-right text-sm premium-cell" data-symbol="${stock.symbol}" data-field="forwardPe">
+              <span class="text-slate-500">—</span>
+            </td>
+            <td class="px-6 py-4 text-center text-sm premium-cell" data-symbol="${stock.symbol}" data-field="moonshotScore">
+              <span class="text-slate-500">—</span>
+            </td>
+            <td class="px-6 py-4 text-center text-sm premium-cell" data-symbol="${stock.symbol}" data-field="valuationRating">
+              <span class="text-slate-500">—</span>
+            </td>
             <td class="px-6 py-4 text-center">
               <button onclick="removeFromWatchlist('${stock.symbol}')"
                       class="text-red-600 hover:text-red-700 p-2 hover:bg-red-50 rounded transition">
@@ -245,7 +269,76 @@ const stocksData = stocks.map(s => ({
     // Event listeners
     document.getElementById('exportWatchlist').addEventListener('click', exportToCSV);
 
+    // Expose for premium hydration
+    window.__renderWatchlist = renderWatchlist;
+
     // Initial render
     renderWatchlist();
+  </script>
+
+  <!-- Premium data hydration for watchlist columns -->
+  <script>
+    import { loadSession, hasFeature } from '../lib/subscription';
+    import { authFetch } from '../lib/authFetch';
+
+    async function hydrateWatchlistPremium() {
+      try {
+        await loadSession();
+        const urlParams = new URLSearchParams(window.location.search);
+        const devBypass = urlParams.get('dev') === '1';
+        const isPremium = hasFeature('score_breakdown') || devBypass;
+        if (!isPremium) return;
+
+        // Get watchlist symbols from rendered cells
+        const cells = document.querySelectorAll('.premium-cell');
+        const symbols = [...new Set([...cells].map(c => (c as HTMLElement).dataset.symbol).filter(Boolean))];
+        if (symbols.length === 0) return;
+
+        // Fetch premium data
+        const batch = symbols.join(',');
+        const devParam = devBypass ? '&dev=1' : '';
+        const res = devBypass
+          ? await fetch(`/api/stocks/premium?symbols=${batch}${devParam}`)
+          : await authFetch(`/api/stocks/premium?symbols=${batch}`);
+
+        if (!res.ok) return;
+        const data = await res.json();
+        (window as any).__watchlistPremium = data;
+
+        // Hydrate cells
+        cells.forEach(cell => {
+          const el = cell as HTMLElement;
+          const sym = el.dataset.symbol;
+          const field = el.dataset.field;
+          if (!sym || !field || !data[sym]) return;
+
+          const d = data[sym];
+          let html = '<span class="text-slate-500">—</span>';
+
+          if (field === 'evEbitda' && d.evEbitda != null) {
+            html = `<span class="text-slate-100">${d.evEbitda.toFixed(1)}x</span>`;
+          } else if (field === 'forwardPe' && d.forwardPe != null) {
+            html = `<span class="text-slate-100">${d.forwardPe.toFixed(1)}x</span>`;
+          } else if (field === 'moonshotScore' && d.moonshotScore != null) {
+            const color = d.moonshotScore >= 80 ? 'text-emerald-400' : d.moonshotScore >= 50 ? 'text-blue-400' : 'text-slate-300';
+            html = `<span class="${color} font-bold">${d.moonshotScore}</span>`;
+          } else if (field === 'valuationRating' && d.valuationRating) {
+            const color = d.valuationRating === 'Undervalued' ? 'text-emerald-400' : d.valuationRating === 'Fair Value' ? 'text-amber-400' : 'text-red-400';
+            html = `<span class="${color} font-semibold text-xs">${d.valuationRating}</span>`;
+          }
+
+          el.innerHTML = html;
+        });
+      } catch {
+        // Silently fail
+      }
+    }
+
+    // Run after the inline script renders the table
+    if (document.readyState === 'complete') {
+      hydrateWatchlistPremium();
+    } else {
+      window.addEventListener('load', () => setTimeout(hydrateWatchlistPremium, 100));
+    }
   </script>
 </Layout>
