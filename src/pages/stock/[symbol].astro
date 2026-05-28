@@ -763,15 +763,26 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           setVal('rsiLabel', rsiLabel, rsiColor);
         }
 
-        // SMA comparisons
-        const price = parseFloat(el('sma50')?.dataset.price || '0');
-        if (p.sma50 != null && price > 0) {
-          const above = price > p.sma50;
+        // SMA comparisons — use valuationData percentages when available for consistency
+        if (p.valuationData?.vsSma50 != null) {
+          const above = p.valuationData.vsSma50 > 0;
           setVal('sma50', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
+        } else if (p.sma50 != null) {
+          const price = parseFloat(el('sma50')?.dataset.price || '0');
+          if (price > 0) {
+            const above = price > p.sma50;
+            setVal('sma50', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
+          }
         }
-        if (p.sma200 != null && price > 0) {
-          const above = price > p.sma200;
+        if (p.valuationData?.vsSma200 != null) {
+          const above = p.valuationData.vsSma200 > 0;
           setVal('sma200', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
+        } else if (p.sma200 != null) {
+          const price = parseFloat(el('sma50')?.dataset.price || '0');
+          if (price > 0) {
+            const above = price > p.sma200;
+            setVal('sma200', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
+          }
         }
 
         // Wall Street View
