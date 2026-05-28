@@ -1146,50 +1146,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         });
       });
 
-      // Analyst sorting functionality
-      const sortAccuracyBtn = document.getElementById('sort-accuracy');
-      const sortDateBtn = document.getElementById('sort-date');
-      const analystsList = document.getElementById('analysts-list');
-
-      function sortAnalysts(by: 'accuracy' | 'date') {
-        if (!analystsList) return;
-
-        const rows = Array.from(analystsList.querySelectorAll('.analyst-row'));
-        rows.sort((a, b) => {
-          if (by === 'accuracy') {
-            const aRate = parseFloat(a.getAttribute('data-hitrate') || '0');
-            const bRate = parseFloat(b.getAttribute('data-hitrate') || '0');
-            return bRate - aRate;
-          } else {
-            const aDate = a.getAttribute('data-date') || '';
-            const bDate = b.getAttribute('data-date') || '';
-            // Dates with values come first, then sort by date descending
-            if (aDate && !bDate) return -1;
-            if (!aDate && bDate) return 1;
-            return bDate.localeCompare(aDate);
-          }
-        });
-
-        rows.forEach(row => analystsList.appendChild(row));
-
-        // Update button styles
-        if (sortAccuracyBtn && sortDateBtn) {
-          if (by === 'accuracy') {
-            sortAccuracyBtn.classList.add('bg-[#22D3EE]/20', 'text-[#22D3EE]');
-            sortAccuracyBtn.classList.remove('text-[#64748B]');
-            sortDateBtn.classList.remove('bg-[#22D3EE]/20', 'text-[#22D3EE]');
-            sortDateBtn.classList.add('text-[#64748B]');
-          } else {
-            sortDateBtn.classList.add('bg-[#22D3EE]/20', 'text-[#22D3EE]');
-            sortDateBtn.classList.remove('text-[#64748B]');
-            sortAccuracyBtn.classList.remove('bg-[#22D3EE]/20', 'text-[#22D3EE]');
-            sortAccuracyBtn.classList.add('text-[#64748B]');
-          }
-        }
-      }
-
-      sortAccuracyBtn?.addEventListener('click', () => sortAnalysts('accuracy'));
-      sortDateBtn?.addEventListener('click', () => sortAnalysts('date'));
+      // Analyst sorting is now handled inside hydratePremiumFields()
     });
   </script>
 </Layout>
