@@ -24,7 +24,7 @@
 | Number of Analysts | Yes | Yes | Yes | Yes |
 | Price Target | Locked | Locked | Yes | Yes |
 | Upside % | Locked | Locked | Yes | Yes |
-| Analyst Track Record (covering firms + hit rates) | - | - | Yes | Yes |
+| Analyst Track Record (covering firms + sector & overall hit rates) | - | - | Yes | Yes |
 | Sector Analyst Accuracy | - | - | Yes | Yes |
 | **Technical** |
 | RSI (14) | Locked | Locked | Yes | Yes |

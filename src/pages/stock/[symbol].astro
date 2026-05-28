@@ -578,88 +578,33 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         </div>
       </div>
 
-      <!-- Analyst Track Record -->
-      {(stock.sectorAnalystAccuracy || (stock.coveringAnalysts && stock.coveringAnalysts.length > 0)) && (
-        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+      <!-- Analyst Track Record — hidden at SSG, shown via hydration for Plus+ users -->
+      <div id="analyst-track-record" class="hidden mb-8">
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
           <h2 class="text-xl font-bold mb-4 text-slate-100">Analyst Track Record</h2>
 
-          <div class="premium-content">
-            {stock.sectorAnalystAccuracy && (
-              <div class="mb-4 p-4 bg-[#080A0F] rounded-lg">
-                <div class="text-sm text-[#64748B] mb-1">{stock.sector} Sector Accuracy</div>
-                <div class={`text-2xl font-bold ${stock.sectorAnalystAccuracy >= 55 ? 'text-emerald-400' : stock.sectorAnalystAccuracy >= 50 ? 'text-amber-400' : 'text-red-400'}`}>
-                  {stock.sectorAnalystAccuracy}%
-                </div>
-                <div class="text-xs text-[#64748B] mt-1">Average accuracy across all analysts in this sector</div>
-              </div>
-            )}
+          <div id="sector-accuracy-box" class="hidden mb-4 p-4 bg-[#080A0F] rounded-lg">
+            <div id="sector-accuracy-label" class="text-sm text-[#64748B] mb-1"></div>
+            <div id="sector-accuracy-value" class="text-2xl font-bold text-slate-400"></div>
+            <div class="text-xs text-[#64748B] mt-1">Average accuracy across all analysts in this sector</div>
+          </div>
 
-            {enhancedAnalysts.length > 0 && (
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <div class="text-sm text-[#64748B]">Analysts Covering {stock.symbol}</div>
-                  <div class="flex items-center gap-2 text-xs">
-                    <span class="text-[#64748B]">Sort by:</span>
-                    <button id="sort-accuracy" class="analyst-sort-btn px-2 py-1 rounded bg-[#22D3EE]/20 text-[#22D3EE] font-medium">Accuracy</button>
-                    <button id="sort-date" class="analyst-sort-btn px-2 py-1 rounded text-[#64748B] hover:text-slate-200 transition">Date</button>
-                  </div>
-                </div>
-                <div id="analysts-list" class="space-y-2">
-                  {enhancedAnalysts.map(analyst => {
-                    const ratingColors = analyst.rating ? getRatingColor(analyst.rating) : null;
-                    return (
-                      <div
-                        class="analyst-row flex items-center justify-between bg-[#080A0F] rounded-lg px-4 py-3"
-                        data-hitrate={analyst.hitRate}
-                        data-date={analyst.ratingDate || ''}
-                        data-percentile={analyst.percentile}
-                        data-pricetarget={analyst.priceTarget || ''}
-                      >
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                          <span class="text-slate-200 font-medium">{analyst.firm}</span>
-                          <div class="flex items-center gap-2">
-                            {analyst.rating && ratingColors && (
-                              <span class={`px-2 py-0.5 rounded text-xs font-medium ${ratingColors.bg} ${ratingColors.text}`}>
-                                {analyst.rating}
-                              </span>
-                            )}
-                            {analyst.ratingDate && (
-                              <span class="analyst-date text-[#64748B] text-xs">
-                                {new Date(analyst.ratingDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                          {analyst.priceTarget && (
-                            <div class="text-right">
-                              <span class="text-slate-200 font-semibold">${analyst.priceTarget.toFixed(0)}</span>
-                              {stock.price && (
-                                <span class={`ml-1 text-xs ${analyst.priceTarget > stock.price ? 'text-emerald-400' : 'text-red-400'}`}>
-                                  ({analyst.priceTarget > stock.price ? '+' : ''}{(((analyst.priceTarget - stock.price) / stock.price) * 100).toFixed(0)}%)
-                                </span>
-                              )}
-                            </div>
-                          )}
-                          <span class={`font-bold ${analyst.percentile >= 75 ? 'text-emerald-400' : analyst.percentile >= 25 ? 'text-amber-400' : 'text-red-400'}`}>
-                            {analyst.hitRate}%
-                          </span>
-                          <span class="text-[#64748B] text-sm whitespace-nowrap">
-                            {analyst.percentile >= 50 ? `Top ${100 - analyst.percentile}%` : `Bottom ${analyst.percentile}%`}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div class="mt-3 text-xs text-[#64748B]">
-                  Hit rate = % of calls where the stock moved in the predicted direction
-                </div>
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div id="analysts-covering-label" class="text-sm text-[#64748B]">Analysts Covering</div>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="text-[#64748B]">Sort by:</span>
+                <button id="sort-accuracy" class="analyst-sort-btn px-2 py-1 rounded bg-[#22D3EE]/20 text-[#22D3EE] font-medium">Accuracy</button>
+                <button id="sort-date" class="analyst-sort-btn px-2 py-1 rounded text-[#64748B] hover:text-slate-200 transition">Date</button>
               </div>
-            )}
+            </div>
+            <div id="analysts-list" class="space-y-2"></div>
+            <div class="mt-3 text-xs text-[#64748B]">
+              Hit rate = % of calls where the stock moved in the predicted direction
+            </div>
           </div>
         </div>
-      )}
+      </div>
 
       <!-- Related Stocks (Free) -->
       {relatedStocks.length > 0 && (
@@ -996,6 +941,145 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
                   : 'Trading above moving averages — technically overvalued. Consider waiting for a pullback.';
               }
             }
+          }
+        }
+
+        // Analyst Track Record (Plus+)
+        if ((hasFeature('analyst_accuracy') || devBypass) &&
+            (p.sectorAnalystAccuracy || (p.coveringAnalysts && p.coveringAnalysts.length > 0))) {
+          const section = document.getElementById('analyst-track-record');
+          if (section) {
+            section.classList.remove('hidden');
+
+            // Sector accuracy
+            if (p.sectorAnalystAccuracy) {
+              const box = document.getElementById('sector-accuracy-box');
+              const label = document.getElementById('sector-accuracy-label');
+              const value = document.getElementById('sector-accuracy-value');
+              if (box && label && value) {
+                box.classList.remove('hidden');
+                // Use sector from the page (in the subtitle)
+                const sectorText = document.querySelector('h1 + p')?.textContent?.split('•')[1]?.trim() || 'Sector';
+                label.textContent = `${sectorText} Sector Accuracy`;
+                value.textContent = `${p.sectorAnalystAccuracy}%`;
+                const color = p.sectorAnalystAccuracy >= 55 ? 'text-emerald-400' : p.sectorAnalystAccuracy >= 50 ? 'text-amber-400' : 'text-red-400';
+                value.classList.remove('text-slate-400');
+                value.classList.add(color);
+              }
+            }
+
+            // Covering analysts label
+            const symbol = window.location.pathname.split('/stock/')[1]?.replace(/\/$/, '').toUpperCase();
+            const coveringLabel = document.getElementById('analysts-covering-label');
+            if (coveringLabel) coveringLabel.textContent = `Analysts Covering ${symbol}`;
+
+            // Parse recent ratings for firm -> rating/date lookup
+            const firmRatings: Record<string, { rating: string; date: string }> = {};
+            if (p.recentRatings) {
+              p.recentRatings.split('\n').filter((l: string) => l.trim()).forEach((line: string) => {
+                const rest = line.slice(2).trim();
+                const dateMatch = rest.match(/^(\d{4}-\d{2}-\d{2}):\s*/);
+                if (dateMatch) {
+                  const date = dateMatch[1];
+                  const afterDate = rest.slice(dateMatch[0].length);
+                  const [firm, rating] = afterDate.split('→').map((s: string) => s.trim());
+                  if (firm && !firmRatings[firm]) {
+                    firmRatings[firm] = { rating: rating || '', date };
+                  }
+                }
+              });
+            }
+
+            // Build analyst rows
+            if (p.coveringAnalysts && p.coveringAnalysts.length > 0) {
+              const list = document.getElementById('analysts-list');
+              if (list) {
+                const currentPrice = parseFloat(document.querySelector('[data-premium="avgPriceTarget"]')?.closest('.grid')?.querySelector('.text-xl')?.textContent?.replace('$', '') || '0');
+
+                // Sort by hit rate descending (default)
+                const sorted = [...p.coveringAnalysts].sort((a: any, b: any) => b.hitRate - a.hitRate);
+
+                list.innerHTML = sorted.map((analyst: any) => {
+                  const fr = firmRatings[analyst.firm];
+                  const rating = fr?.rating || '';
+                  const ratingDate = fr?.date || '';
+
+                  // Rating badge color
+                  let ratingBg = 'bg-amber-500/20', ratingText = 'text-amber-400';
+                  if (rating) {
+                    const r = rating.toLowerCase();
+                    if (r.includes('buy') || r.includes('outperform') || r.includes('overweight')) {
+                      ratingBg = 'bg-emerald-500/20'; ratingText = 'text-emerald-400';
+                    } else if (r.includes('sell') || r.includes('underperform') || r.includes('underweight')) {
+                      ratingBg = 'bg-red-500/20'; ratingText = 'text-red-400';
+                    }
+                  }
+
+                  const ratingBadge = rating ? `<span class="px-2 py-0.5 rounded text-xs font-medium ${ratingBg} ${ratingText}">${rating}</span>` : '';
+                  const dateStr = ratingDate ? new Date(ratingDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+                  const dateEl = dateStr ? `<span class="text-[#64748B] text-xs">${dateStr}</span>` : '';
+
+                  // Percentile color
+                  const pctColor = analyst.percentile >= 75 ? 'text-emerald-400' : analyst.percentile >= 25 ? 'text-amber-400' : 'text-red-400';
+                  const pctLabel = analyst.percentile >= 50 ? `Top ${100 - analyst.percentile}%` : `Bottom ${analyst.percentile}%`;
+
+                  // Sector vs overall hit rate
+                  const overallStr = analyst.overallHitRate != null ? `<span class="text-[#64748B] text-xs ml-1">(${analyst.overallHitRate}% overall)</span>` : '';
+
+                  return `
+                    <div class="analyst-row flex items-center justify-between bg-[#080A0F] rounded-lg px-4 py-3"
+                         data-hitrate="${analyst.hitRate}" data-date="${ratingDate}" data-percentile="${analyst.percentile}">
+                      <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                        <span class="text-slate-200 font-medium">${analyst.firm}</span>
+                        <div class="flex items-center gap-2">${ratingBadge}${dateEl}</div>
+                      </div>
+                      <div class="flex items-center gap-4">
+                        <span class="${pctColor} font-bold">${analyst.hitRate}%</span>${overallStr}
+                        <span class="text-[#64748B] text-sm whitespace-nowrap">${pctLabel}</span>
+                      </div>
+                    </div>`;
+                }).join('');
+              }
+            }
+
+            // Wire up sort buttons
+            const sortAccBtn = document.getElementById('sort-accuracy');
+            const sortDateBtn = document.getElementById('sort-date');
+            const analystList = document.getElementById('analysts-list');
+
+            function sortAnalystRows(by: 'accuracy' | 'date') {
+              if (!analystList) return;
+              const rows = Array.from(analystList.querySelectorAll('.analyst-row'));
+              rows.sort((a, b) => {
+                if (by === 'accuracy') {
+                  return parseFloat(b.getAttribute('data-hitrate') || '0') - parseFloat(a.getAttribute('data-hitrate') || '0');
+                } else {
+                  const aDate = a.getAttribute('data-date') || '';
+                  const bDate = b.getAttribute('data-date') || '';
+                  if (aDate && !bDate) return -1;
+                  if (!aDate && bDate) return 1;
+                  return bDate.localeCompare(aDate);
+                }
+              });
+              rows.forEach(row => analystList.appendChild(row));
+
+              if (sortAccBtn && sortDateBtn) {
+                if (by === 'accuracy') {
+                  sortAccBtn.classList.add('bg-[#22D3EE]/20', 'text-[#22D3EE]');
+                  sortAccBtn.classList.remove('text-[#64748B]');
+                  sortDateBtn.classList.remove('bg-[#22D3EE]/20', 'text-[#22D3EE]');
+                  sortDateBtn.classList.add('text-[#64748B]');
+                } else {
+                  sortDateBtn.classList.add('bg-[#22D3EE]/20', 'text-[#22D3EE]');
+                  sortDateBtn.classList.remove('text-[#64748B]');
+                  sortAccBtn.classList.remove('bg-[#22D3EE]/20', 'text-[#22D3EE]');
+                  sortAccBtn.classList.add('text-[#64748B]');
+                }
+              }
+            }
+
+            sortAccBtn?.addEventListener('click', () => sortAnalystRows('accuracy'));
+            sortDateBtn?.addEventListener('click', () => sortAnalystRows('date'));
           }
         }
 

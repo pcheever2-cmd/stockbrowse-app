@@ -78,6 +78,7 @@ export interface PremiumFields {
   coveringAnalysts: Array<{
     firm: string;
     hitRate: number;
+    overallHitRate: number | null;
     percentile: number;
     totalCalls: number;
   }> | null;
