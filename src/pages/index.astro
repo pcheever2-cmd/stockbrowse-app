@@ -349,7 +349,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
       </p>
 
       <!-- Pricing Tier Preview -->
-      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+      <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-8">
         <div class="bg-[#161B24] text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
           <h3 class="font-bold text-xl mb-2">Free</h3>
           <div class="text-3xl font-bold mb-4">$0</div>
@@ -359,27 +359,36 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
             <li>✓ 10 lookups/day</li>
           </ul>
         </div>
+        <div class="bg-[#161B24] text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+          <h3 class="font-bold text-xl mb-2">Newsletter</h3>
+          <div class="text-3xl font-bold mb-4">$1<span class="text-sm text-[#64748B]">/mo</span></div>
+          <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
+            <li>✓ Everything in Free</li>
+            <li>✓ Stockbrowse Weekly</li>
+            <li>✓ Monthly stock picks</li>
+          </ul>
+        </div>
         <div class="bg-[#161B24] text-slate-100 border-2 border-[#06B6D4] rounded-xl p-6 relative shadow-lg">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#22D3EE] text-white px-3 py-1 rounded-full text-xs font-semibold">
             MOST POPULAR
           </div>
-          <h3 class="font-bold text-xl mb-2">Basic</h3>
-          <div class="text-3xl font-bold mb-4">$9<span class="text-sm text-[#64748B]">/mo</span></div>
+          <h3 class="font-bold text-xl mb-2">Plus</h3>
+          <div class="text-3xl font-bold mb-4">$10<span class="text-sm text-[#64748B]">/mo</span></div>
           <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
-            <li>✓ Everything in Free</li>
-            <li>✓ Unlimited lookups</li>
+            <li>✓ Everything in Newsletter</li>
             <li>✓ Full score breakdown</li>
-            <li>✓ Export to CSV</li>
+            <li>✓ Analyst accuracy</li>
+            <li>✓ CSV export + watchlist</li>
           </ul>
         </div>
-        <div class="bg-[#161B24]/90 text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6 opacity-90">
-          <h3 class="font-bold text-xl mb-2">Plus</h3>
-          <div class="text-3xl font-bold mb-4">$19<span class="text-sm text-[#64748B]">/mo</span></div>
+        <div class="bg-[#161B24] text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
+          <h3 class="font-bold text-xl mb-2">Pro</h3>
+          <div class="text-3xl font-bold mb-4">$20<span class="text-sm text-[#64748B]">/mo</span></div>
           <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
-            <li>✓ Everything in Basic</li>
-            <li>✓ Personal watchlists</li>
-            <li>✓ Score change alerts</li>
-            <li>✓ Sector analysis</li>
+            <li>✓ Everything in Plus</li>
+            <li>✓ Valuation Score</li>
+            <li>✓ Multi-watchlists</li>
+            <li>✓ SMS alerts</li>
           </ul>
         </div>
       </div>
@@ -398,7 +407,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
   <!-- Email Capture -->
   <section class="py-16 bg-slate-900 text-white">
     <div class="max-w-2xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold mb-4">Compass Weekly Newsletter</h2>
+      <h2 class="text-2xl font-bold mb-4">Stockbrowse Weekly</h2>
       <p class="text-slate-300 mb-6">
         Get the top-scoring stocks each week, delivered to your inbox. Plus educational content on stock fundamentals.
       </p>
