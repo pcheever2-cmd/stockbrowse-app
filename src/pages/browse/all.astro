@@ -1063,67 +1063,11 @@ const marketCapRanges = [
       });
     });
 
-    // Load premium valuation data for authenticated Plus+ users
-    async function loadValuationData() {
-      try {
-        const { loadSession, hasFeature } = await import('../../lib/subscription');
-        await loadSession();
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const devBypass = urlParams.get('dev') === '1';
-
-        if (!hasFeature('valuation_score') && !devBypass) {
-          // Free user — show upgrade prompt on click
-          const section = document.getElementById('valuationFilterSection');
-          if (section) {
-            section.addEventListener('click', (e) => {
-              if (e.target.closest('input')) {
-                e.preventDefault();
-                window.showUpgradeModal?.();
-              }
-            });
-          }
-          return;
-        }
-
-        // Premium user — enable filters and fetch data
-        const filtersEl = document.getElementById('valuationFilters');
-        const badge = document.getElementById('valuationPremiumBadge');
-        if (filtersEl) {
-          filtersEl.classList.remove('opacity-50', 'pointer-events-none');
-        }
-        if (badge) badge.remove();
-
-        // Fetch valuation data in batches of 50
-        const symbols = allStocks.map(s => s.symbol);
-        for (let i = 0; i < symbols.length; i += 50) {
-          const batch = symbols.slice(i, i + 50).join(',');
-          const devParam = devBypass ? '&dev=1' : '';
-          const fetchFn = devBypass
-            ? fetch(`/api/stocks/premium?symbols=${batch}${devParam}`)
-            : import('../../lib/authFetch').then(m => m.authFetch(`/api/stocks/premium?symbols=${batch}`));
-          const res = await fetchFn;
-          if (res.ok) {
-            const data = await res.json();
-            Object.entries(data).forEach(([sym, fields]) => {
-              if (fields?.valuationRating) {
-                valuationMap[sym] = fields.valuationRating;
-              }
-            });
-          }
-        }
-        valuationDataLoaded = true;
-
-        // Re-apply filters if valuation was selected from URL restore
-        if (filters.valuationRatings.length > 0) {
-          applyFilters();
-        }
-      } catch {
-        // Silently fail — filters stay disabled
-      }
-    }
-
-    loadValuationData();
+    // Expose globals for the premium valuation module script
+    window.__valuationMap = valuationMap;
+    window.__allStockSymbols = allStocks.map(s => s.symbol);
+    window.__applyFilters = applyFilters;
+    window.__browseFilters = filters;
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
@@ -1151,5 +1095,71 @@ const marketCapRanges = [
     updateWatchlistBadge();
     restoreFiltersFromURL();
     applyFilters();
+  </script>
+
+  <!-- Premium valuation filter — separate module script so Astro bundles the imports -->
+  <script>
+    import { loadSession, hasFeature } from '../../lib/subscription';
+    import { authFetch } from '../../lib/authFetch';
+
+    async function loadValuationData() {
+      try {
+        await loadSession();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const devBypass = urlParams.get('dev') === '1';
+
+        if (!hasFeature('valuation_score') && !devBypass) {
+          const section = document.getElementById('valuationFilterSection');
+          if (section) {
+            section.addEventListener('click', (e: Event) => {
+              if ((e.target as HTMLElement).closest('input')) {
+                e.preventDefault();
+                (window as any).showUpgradeModal?.();
+              }
+            });
+          }
+          return;
+        }
+
+        // Premium user — enable filters and fetch data
+        const filtersEl = document.getElementById('valuationFilters');
+        const badge = document.getElementById('valuationPremiumBadge');
+        if (filtersEl) filtersEl.classList.remove('opacity-50', 'pointer-events-none');
+        if (badge) badge.remove();
+
+        const symbols: string[] = (window as any).__allStockSymbols || [];
+        const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
+
+        for (let i = 0; i < symbols.length; i += 50) {
+          const batch = symbols.slice(i, i + 50).join(',');
+          const devParam = devBypass ? '&dev=1' : '';
+          const res = devBypass
+            ? await fetch(`/api/stocks/premium?symbols=${batch}${devParam}`)
+            : await authFetch(`/api/stocks/premium?symbols=${batch}`);
+          if (res.ok) {
+            const data = await res.json();
+            Object.entries(data).forEach(([sym, fields]: [string, any]) => {
+              if (fields?.valuationRating) {
+                valuationMap[sym] = fields.valuationRating;
+              }
+            });
+          }
+        }
+
+        // Update the shared reference so the filter works
+        Object.assign((window as any).__valuationMap, valuationMap);
+
+        // Re-apply filters if valuation was selected from URL restore
+        const filters = (window as any).__browseFilters;
+        if (filters?.valuationRatings?.length > 0) {
+          (window as any).__applyFilters?.();
+        }
+      } catch {
+        // Silently fail — filters stay disabled
+      }
+    }
+
+    loadValuationData();
   </script>
 </Layout>
