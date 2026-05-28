@@ -47,46 +47,82 @@ const marketCapRanges = [
         <p class="text-[#CBD5E1]">Filter and explore 4,500+ stocks with quality scores</p>
       </div>
 
-      <div class="flex gap-6">
-        <!-- Left Sidebar - Filters -->
-        <aside id="filterSidebar" class="w-64 flex-shrink-0 hidden lg:block">
-          <div class="bg-[#161B24] rounded-xl p-6 sticky top-6 space-y-6 max-h-[calc(100vh-3rem)] overflow-y-auto">
-            <div class="flex items-center justify-between">
-              <div>
-                <h3 class="font-semibold text-sm uppercase text-[#64748B] mb-3">Filters</h3>
-                <button id="clearFilters" class="text-sm text-[#22D3EE] hover:underline">Clear all</button>
+      <div>
+        <!-- Search + Sort Bar -->
+        <div class="bg-[#161B24] rounded-xl p-4 mb-4">
+          <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+            <!-- Search -->
+            <div class="flex-1 max-w-lg relative">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder='Try "stocks like Amazon" or "cheap tech stocks"...'
+                class="w-full px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 placeholder:text-[#64748B] rounded-lg focus:ring-2 focus:ring-[#22D3EE] focus:border-transparent"
+              />
+              <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
               </div>
-              <button id="closeFilterSidebar" class="lg:hidden p-2 text-[#CBD5E1] hover:text-white">
+            </div>
+
+            <!-- Sort -->
+            <div class="flex gap-3 items-center">
+              <select id="sortSelect" class="px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 rounded-lg text-sm">
+                <option value="score-desc">Highest Score</option>
+                <option value="score-asc">Lowest Score</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="marketcap-desc">Market Cap: Largest</option>
+                <option value="marketcap-asc">Market Cap: Smallest</option>
+                <option value="name-asc">Name: A-Z</option>
+              </select>
+              <a href="/watchlist" class="relative p-2 hover:bg-[#0C0F14] rounded-lg transition">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                 </svg>
+                <span id="watchlistBadge" class="absolute -top-1 -right-1 bg-[#22D3EE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Smart Search Hint -->
+          <div id="smartSearchHint" class="mt-3 text-sm text-[#22D3EE] bg-[#22D3EE]/10 border border-[#22D3EE]/30 rounded-lg px-3 py-2 hidden">
+            <span class="font-semibold">Smart search active:</span> <span id="smartSearchText"></span>
+          </div>
+        </div>
+
+        <!-- Filter Bar: Quick Chips + Dropdown Popovers -->
+        <div class="bg-[#161B24] rounded-xl p-4 mb-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- Quick-toggle Grade Chips -->
+            {grades.map(grade => {
+              const colors = getGradeColor(grade);
+              return (
+                <button data-grade-chip={grade} class={`grade-chip px-3 py-1.5 rounded-full text-sm font-semibold border border-transparent transition cursor-pointer ${colors.bg} ${colors.text} opacity-60 hover:opacity-100`}>
+                  Grade {grade}
+                </button>
+              );
+            })}
+
+            <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
+
+            <!-- Quick toggles -->
+            <button id="moonshotFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-purple-500/20 text-purple-400 opacity-60 hover:opacity-100 border border-transparent transition">
+              Moonshot
+            </button>
+            <button id="goldenFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-amber-500/20 text-amber-400 opacity-60 hover:opacity-100 border border-transparent transition">
+              ⭐ Golden
+            </button>
+
+            <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
+
+            <!-- Dropdown Popover Buttons -->
+            <div class="relative" id="industryDropdown">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Industry
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
-            </div>
-
-            <!-- Grade Filter -->
-            <div>
-              <h4 class="font-semibold mb-3">Compass Grade</h4>
-              <div class="space-y-2">
-                {grades.map(grade => {
-                  const colors = getGradeColor(grade);
-                  return (
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" name="grade" value={grade} class="rounded text-[#22D3EE] filter-checkbox" />
-                      <span class={`px-2 py-0.5 rounded text-sm font-semibold ${colors.bg} ${colors.text}`}>
-                        Grade {grade}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-
-            <!-- Industry Filter -->
-            <div>
-              <h4 class="font-semibold mb-3">Industry</h4>
-              <div class="space-y-2 max-h-64 overflow-y-auto">
+              <div class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-64 max-h-72 overflow-y-auto">
                 {industries.map(industry => (
-                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5 hover:text-[#22D3EE] transition">
                     <input type="checkbox" name="industry" value={industry} class="rounded text-[#22D3EE] filter-checkbox" />
                     <span>{industry}</span>
                   </label>
@@ -94,12 +130,14 @@ const marketCapRanges = [
               </div>
             </div>
 
-            <!-- Price Range Filter -->
-            <div>
-              <h4 class="font-semibold mb-3">Price Range</h4>
-              <div class="space-y-2">
+            <div class="relative" id="priceDropdown">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Price
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-48">
                 {priceRanges.map(range => (
-                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5 hover:text-[#22D3EE] transition">
                     <input type="checkbox" name="price" value={`${range.min}-${range.max}`} class="rounded text-[#22D3EE] filter-checkbox" />
                     <span>{range.label}</span>
                   </label>
@@ -107,119 +145,54 @@ const marketCapRanges = [
               </div>
             </div>
 
-            <!-- Market Cap Filter -->
-            <div>
-              <h4 class="font-semibold mb-3">Market Cap</h4>
-              <div class="space-y-2">
+            <div class="relative" id="marketCapDropdown">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Market Cap
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-56">
                 {marketCapRanges.map(range => (
-                  <label class="flex items-center gap-2 cursor-pointer text-sm">
+                  <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5 hover:text-[#22D3EE] transition">
                     <input type="checkbox" name="marketcap" value={`${range.min}-${range.max}`} class="rounded text-[#22D3EE] filter-checkbox" />
-                    <span class="text-sm">{range.label}</span>
+                    <span>{range.label}</span>
                   </label>
                 ))}
               </div>
             </div>
 
-            <!-- Moonshot Filter -->
-            <div>
-              <h4 class="font-semibold mb-3">Moonshot Score</h4>
-              <div class="space-y-2">
-                <label class="flex items-center gap-2 cursor-pointer text-sm">
-                  <input type="checkbox" id="moonshotFilter" class="rounded text-[#A855F7] filter-checkbox" />
-                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-purple-500/20 text-purple-400">Has Moonshot Score</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer text-sm">
-                  <input type="checkbox" id="goldenFilter" class="rounded text-[#F59E0B] filter-checkbox" />
-                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-amber-500/20 text-amber-400">⭐ Golden Stocks Only</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Valuation Filter (Premium) -->
-            <div id="valuationFilterSection">
-              <div class="flex items-center gap-2 mb-3">
-                <h4 class="font-semibold">Valuation</h4>
-                <span id="valuationPremiumBadge" class="text-xs bg-[#22D3EE]/20 text-[#22D3EE] px-1.5 py-0.5 rounded font-medium">Plus</span>
-              </div>
-              <div id="valuationFilters" class="space-y-2 opacity-50 pointer-events-none">
-                <label class="flex items-center gap-2 cursor-pointer text-sm">
-                  <input type="checkbox" name="valuation" value="Undervalued" class="rounded text-[#22D3EE] filter-checkbox" />
-                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-emerald-500/20 text-emerald-400">Undervalued</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer text-sm">
-                  <input type="checkbox" name="valuation" value="Fair Value" class="rounded text-[#22D3EE] filter-checkbox" />
-                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-amber-500/20 text-amber-400">Fair Value</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer text-sm">
-                  <input type="checkbox" name="valuation" value="Overvalued" class="rounded text-[#22D3EE] filter-checkbox" />
-                  <span class="px-2 py-0.5 rounded text-sm font-semibold bg-red-500/20 text-red-400">Overvalued</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <!-- Main Content -->
-        <div class="flex-1">
-          <!-- Top Bar -->
-          <div class="bg-[#161B24] rounded-xl p-4 mb-4">
-            <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-              <!-- Mobile Filter Toggle -->
-              <button id="mobileFilterToggle" class="lg:hidden flex items-center gap-2 px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 rounded-lg hover:border-[#22D3EE] transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
-                </svg>
-                <span>Filters</span>
-                <span id="mobileFilterCount" class="bg-[#22D3EE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+            <div class="relative" id="valuationFilterSection">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Valuation <span id="valuationPremiumBadge" class="text-[10px] bg-[#22D3EE]/20 text-[#22D3EE] px-1 rounded ml-1">Pro</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
-
-              <!-- Search -->
-              <div class="flex-1 max-w-md relative">
-                <input
-                  type="text"
-                  id="searchInput"
-                  placeholder='Try "stocks like Amazon" or "cheap tech stocks"...'
-                  class="w-full px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 placeholder:text-[#64748B] rounded-lg focus:ring-2 focus:ring-[#22D3EE] focus:border-transparent"
-                />
-                <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
-                  <!-- Populated dynamically -->
-                </div>
-              </div>
-
-              <!-- Sort & View Options -->
-              <div class="flex gap-3 items-center">
-                <select id="sortSelect" class="px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 rounded-lg">
-                  <option value="score-desc">Highest Score</option>
-                  <option value="score-asc">Lowest Score</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                  <option value="marketcap-desc">Market Cap: Largest</option>
-                  <option value="marketcap-asc">Market Cap: Smallest</option>
-                  <option value="name-asc">Name: A-Z</option>
-                </select>
-
-                <a href="/watchlist" class="relative p-2 hover:bg-[#0C0F14] rounded-lg transition">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                  </svg>
-                  <span id="watchlistBadge" class="absolute -top-1 -right-1 bg-[#22D3EE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
-                </a>
+              <div id="valuationFilters" class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-48 opacity-50 pointer-events-none">
+                <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5">
+                  <input type="checkbox" name="valuation" value="Undervalued" class="rounded text-[#22D3EE] filter-checkbox" />
+                  <span class="text-emerald-400 font-semibold">Undervalued</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5">
+                  <input type="checkbox" name="valuation" value="Fair Value" class="rounded text-[#22D3EE] filter-checkbox" />
+                  <span class="text-amber-400 font-semibold">Fair Value</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5">
+                  <input type="checkbox" name="valuation" value="Overvalued" class="rounded text-[#22D3EE] filter-checkbox" />
+                  <span class="text-red-400 font-semibold">Overvalued</span>
+                </label>
               </div>
             </div>
 
-            <!-- Smart Search Hint -->
-            <div id="smartSearchHint" class="mt-3 text-sm text-[#22D3EE] bg-[#22D3EE]/10 border border-[#22D3EE]/30 rounded-lg px-3 py-2 hidden">
-              <span class="font-semibold">Smart search active:</span> <span id="smartSearchText"></span>
-            </div>
-
-            <!-- Active Filters -->
-            <div id="activeFilters" class="mt-3 flex flex-wrap gap-2 hidden"></div>
-
-            <!-- Results Count -->
-            <div class="mt-3 text-sm text-[#CBD5E1]">
-              <span id="resultsCount">0</span> stocks found
-            </div>
+            <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
+            <button id="clearFilters" class="text-sm text-[#64748B] hover:text-[#22D3EE] transition">Clear all</button>
           </div>
+
+          <!-- Active Filters -->
+          <div id="activeFilters" class="mt-3 flex flex-wrap gap-2 hidden"></div>
+
+          <!-- Results Count -->
+          <div class="mt-3 text-sm text-[#CBD5E1]">
+            <span id="resultsCount">0</span> stocks found
+          </div>
+        </div>
 
           <!-- Stock Grid -->
           <div id="stockGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -235,7 +208,6 @@ const marketCapRanges = [
               Clear All Filters
             </button>
           </div>
-        </div>
       </div>
     </div>
   </section>
@@ -287,8 +259,11 @@ const marketCapRanges = [
       if (params.get('grades')) {
         filters.grades = params.get('grades').split(',');
         filters.grades.forEach(g => {
-          const cb = document.querySelector(`input[name="grade"][value="${g}"]`);
-          if (cb) cb.checked = true;
+          const chip = document.querySelector(`[data-grade-chip="${g}"]`);
+          if (chip) {
+            chip.classList.add('opacity-100', 'border-[#22D3EE]');
+            chip.classList.remove('opacity-60');
+          }
         });
       }
       if (params.get('industries')) {
@@ -321,11 +296,13 @@ const marketCapRanges = [
       }
       if (params.get('moonshot') === '1') {
         filters.hasMoonshot = true;
-        document.getElementById('moonshotFilter').checked = true;
+        const btn = document.getElementById('moonshotFilter');
+        if (btn) { btn.classList.add('opacity-100', 'border-purple-400'); btn.classList.remove('opacity-60'); }
       }
       if (params.get('golden') === '1') {
         filters.goldenOnly = true;
-        document.getElementById('goldenFilter').checked = true;
+        const btn = document.getElementById('goldenFilter');
+        if (btn) { btn.classList.add('opacity-100', 'border-amber-400'); btn.classList.remove('opacity-60'); }
       }
       if (params.get('sort')) {
         filters.sort = params.get('sort');
@@ -849,6 +826,11 @@ const marketCapRanges = [
       };
       document.getElementById('searchInput').value = '';
       document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.grade-chip').forEach(c => { c.classList.remove('opacity-100', 'border-[#22D3EE]'); c.classList.add('opacity-60'); });
+      document.getElementById('moonshotFilter')?.classList.remove('opacity-100', 'border-purple-400');
+      document.getElementById('moonshotFilter')?.classList.add('opacity-60');
+      document.getElementById('goldenFilter')?.classList.remove('opacity-100', 'border-amber-400');
+      document.getElementById('goldenFilter')?.classList.add('opacity-60');
       applyFilters();
     }
 
@@ -998,16 +980,7 @@ const marketCapRanges = [
       applyFilters();
     });
 
-    document.querySelectorAll('input[name="grade"]').forEach(input => {
-      input.addEventListener('change', (e) => {
-        if (e.target.checked) {
-          filters.grades.push(e.target.value);
-        } else {
-          filters.grades = filters.grades.filter(g => g !== e.target.value);
-        }
-        applyFilters();
-      });
-    });
+    // Grade checkboxes removed — now using grade chip toggles above
 
     document.querySelectorAll('input[name="industry"]').forEach(input => {
       input.addEventListener('change', (e) => {
@@ -1042,14 +1015,71 @@ const marketCapRanges = [
       });
     });
 
-    document.getElementById('moonshotFilter').addEventListener('change', (e) => {
-      filters.hasMoonshot = e.target.checked;
+    // Grade chip toggles
+    document.querySelectorAll('.grade-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const grade = chip.dataset.gradeChip;
+        if (filters.grades.includes(grade)) {
+          filters.grades = filters.grades.filter(g => g !== grade);
+          chip.classList.remove('opacity-100', 'border-[#22D3EE]');
+          chip.classList.add('opacity-60');
+        } else {
+          filters.grades.push(grade);
+          chip.classList.add('opacity-100', 'border-[#22D3EE]');
+          chip.classList.remove('opacity-60');
+        }
+        applyFilters();
+      });
+    });
+
+    // Moonshot toggle button
+    document.getElementById('moonshotFilter').addEventListener('click', () => {
+      filters.hasMoonshot = !filters.hasMoonshot;
+      const btn = document.getElementById('moonshotFilter');
+      if (filters.hasMoonshot) {
+        btn.classList.add('opacity-100', 'border-purple-400');
+        btn.classList.remove('opacity-60');
+      } else {
+        btn.classList.remove('opacity-100', 'border-purple-400');
+        btn.classList.add('opacity-60');
+      }
       applyFilters();
     });
 
-    document.getElementById('goldenFilter').addEventListener('change', (e) => {
-      filters.goldenOnly = e.target.checked;
+    // Golden toggle button
+    document.getElementById('goldenFilter').addEventListener('click', () => {
+      filters.goldenOnly = !filters.goldenOnly;
+      const btn = document.getElementById('goldenFilter');
+      if (filters.goldenOnly) {
+        btn.classList.add('opacity-100', 'border-amber-400');
+        btn.classList.remove('opacity-60');
+      } else {
+        btn.classList.remove('opacity-100', 'border-amber-400');
+        btn.classList.add('opacity-60');
+      }
       applyFilters();
+    });
+
+    // Dropdown popover toggle
+    document.querySelectorAll('.filter-dropdown-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const popover = btn.nextElementSibling;
+        // Close all other popovers first
+        document.querySelectorAll('.filter-popover').forEach(p => {
+          if (p !== popover) p.classList.add('hidden');
+        });
+        popover?.classList.toggle('hidden');
+      });
+    });
+
+    // Close popovers when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.filter-popover').forEach(p => p.classList.add('hidden'));
+    });
+    // Prevent popover clicks from closing themselves
+    document.querySelectorAll('.filter-popover').forEach(p => {
+      p.addEventListener('click', (e) => e.stopPropagation());
     });
 
     // Valuation filter (premium — requires runtime data fetch)
@@ -1086,25 +1116,6 @@ const marketCapRanges = [
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
-
-    // Mobile filter toggle
-    function closeMobileFilters() {
-      const sidebar = document.getElementById('filterSidebar');
-      sidebar.classList.add('hidden');
-      sidebar.classList.remove('block', 'fixed', 'inset-0', 'z-50', 'w-full', 'bg-[#080A0F]', 'p-4', 'overflow-y-auto');
-    }
-
-    document.getElementById('mobileFilterToggle')?.addEventListener('click', () => {
-      const sidebar = document.getElementById('filterSidebar');
-      if (sidebar.classList.contains('hidden')) {
-        sidebar.classList.remove('hidden');
-        sidebar.classList.add('block', 'fixed', 'inset-0', 'z-50', 'w-full', 'bg-[#080A0F]', 'p-4', 'overflow-y-auto');
-      } else {
-        closeMobileFilters();
-      }
-    });
-
-    document.getElementById('closeFilterSidebar')?.addEventListener('click', closeMobileFilters);
 
     // Initial render - restore filters from URL first (for back button support)
     updateWatchlistBadge();
