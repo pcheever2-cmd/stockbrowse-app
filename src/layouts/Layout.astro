@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import AuthNav from '../components/AuthNav.astro';
+// AuthNav is now inline in the nav bar (logged-out/logged-in states)
 
 interface Props {
   title: string;
@@ -52,17 +52,30 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
             <div class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -translate-y-2 group-hover:translate-y-0">
               <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-6 w-[700px]">
                 <!-- Browse All Banner -->
-                <a href="/browse/all" class="block mb-5 p-4 bg-gradient-to-r from-[#22D3EE]/10 to-[#06B6D4]/5 border border-[#22D3EE]/20 rounded-lg hover:border-[#22D3EE]/40 transition group/banner">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <div class="text-[#22D3EE] font-semibold">Browse All Stocks</div>
-                      <div class="text-xs text-[#64748B] mt-0.5">View all 4,500+ rated stocks</div>
+                <div class="grid grid-cols-2 gap-3 mb-5">
+                  <a href="/browse/all" class="p-4 bg-gradient-to-r from-[#22D3EE]/10 to-[#06B6D4]/5 border border-[#22D3EE]/20 rounded-lg hover:border-[#22D3EE]/40 transition group/banner">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-[#22D3EE] font-semibold">Browse All Stocks</div>
+                        <div class="text-xs text-[#64748B] mt-0.5">Filter 4,500+ rated stocks</div>
+                      </div>
+                      <svg class="w-5 h-5 text-[#22D3EE] group-hover/banner:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
                     </div>
-                    <svg class="w-5 h-5 text-[#22D3EE] group-hover/banner:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </div>
-                </a>
+                  </a>
+                  <a href="/tool" class="p-4 bg-[#080A0F] border border-[rgba(255,255,255,0.06)] rounded-lg hover:border-[#22D3EE]/40 transition group/banner">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-slate-100 font-semibold">Score Lookup</div>
+                        <div class="text-xs text-[#64748B] mt-0.5">Search any stock by ticker</div>
+                      </div>
+                      <svg class="w-5 h-5 text-[#64748B] group-hover/banner:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
 
                 <!-- 3-Column Grid -->
                 <div class="grid grid-cols-3 gap-6">
@@ -103,18 +116,10 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
             </div>
           </div>
 
-          <a href="/quiz" class="text-[#22D3EE] hover:text-slate-100 text-sm font-medium transition flex items-center gap-1.5">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-            </svg>
-            Find Your Style
-          </a>
-          <a href="/tool" class="text-[#64748B] hover:text-slate-100 text-sm transition">Score Lookup</a>
           <a href="/watchlist" class="text-[#64748B] hover:text-slate-100 text-sm transition relative">
             Watchlist
             <span id="navWatchlistBadge" class="absolute -top-2 -right-2 bg-[#22D3EE] text-[#0C0F14] text-xs rounded-full w-4 h-4 flex items-center justify-center hidden text-[10px] font-bold"></span>
           </a>
-          <AuthNav />
           <!-- How It Works Dropdown -->
           <div class="relative group">
             <button class="text-[#64748B] hover:text-slate-100 flex items-center gap-1 text-sm transition">
@@ -141,10 +146,40 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
             </div>
           </div>
           <a href="/blog" class="text-[#64748B] hover:text-slate-100 text-sm transition">Learn</a>
-          <a href="/pricing" class="text-[#64748B] hover:text-slate-100 text-sm transition">Pricing</a>
-          <a href="/insights" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-4 py-2 rounded-lg font-bold text-sm transition">
-            Subscribe
-          </a>
+
+          <!-- Logged-out: Sign In + Subscribe -->
+          <div id="navLoggedOut" class="flex items-center gap-3">
+            <a href="/pricing" class="text-[#64748B] hover:text-slate-100 text-sm transition">Pricing</a>
+            <a href="/login" class="text-sm font-semibold text-[#22D3EE] hover:text-[#06B6D4] transition">Sign In</a>
+            <a href="/pricing" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-4 py-2 rounded-lg font-bold text-sm transition">
+              Subscribe
+            </a>
+          </div>
+
+          <!-- Logged-in: User dropdown -->
+          <div id="navLoggedIn" class="hidden relative group">
+            <button class="flex items-center gap-2 text-sm hover:text-slate-100 transition">
+              <span id="navUserEmail" class="text-[#CBD5E1] truncate max-w-[140px]"></span>
+              <span id="navUserTier" class="text-xs font-bold px-2 py-0.5 rounded-full bg-[#22D3EE]/20 text-[#22D3EE]"></span>
+              <svg class="w-4 h-4 text-[#64748B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute right-0 top-full pt-2 hidden group-hover:block">
+              <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-xl py-2 w-52">
+                <a href="/account" class="block px-4 py-3 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Account</a>
+                <a href="/pricing" class="block px-4 py-3 hover:bg-[#1C222E] text-sm text-[#CBD5E1]">Pricing</a>
+                <a href="/quiz" class="block px-4 py-3 hover:bg-[#1C222E] text-sm text-[#22D3EE] flex items-center gap-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                  Find Your Style
+                </a>
+                <div class="border-t border-[rgba(255,255,255,0.06)] my-1"></div>
+                <button id="navSignOut" class="block w-full text-left px-4 py-3 hover:bg-[#1C222E] text-sm text-red-400">Sign Out</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -158,21 +193,28 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden md:hidden border-t border-[rgba(255,255,255,0.06)] bg-[#161B24]">
         <div class="px-4 py-4 space-y-3">
-          <a href="/browse" class="block py-2 text-[#CBD5E1] hover:text-slate-100 font-medium">Browse Stocks</a>
-          <a href="/quiz" class="block py-2 text-[#22D3EE] hover:text-slate-100 font-medium flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-            </svg>
-            Find Your Style
-          </a>
+          <a href="/browse/all" class="block py-2 text-[#CBD5E1] hover:text-slate-100 font-medium">Browse All Stocks</a>
           <a href="/tool" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Score Lookup</a>
+          <a href="/watchlist" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Watchlist</a>
           <div class="py-2 text-[#64748B] text-sm font-semibold">How It Works</div>
           <a href="/how-it-works" class="block py-2 pl-4 text-[#CBD5E1] hover:text-slate-100">Compass Score</a>
           <a href="/moonshot-methodology" class="block py-2 pl-4 text-[#CBD5E1] hover:text-slate-100">Moonshot Score</a>
           <a href="/valuation-methodology" class="block py-2 pl-4 text-[#CBD5E1] hover:text-slate-100">Valuation Score</a>
           <a href="/blog" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Learn</a>
-          <a href="/pricing" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Pricing</a>
-          <a href="/insights" class="block py-2 text-[#22D3EE] font-semibold">Subscribe to Newsletter</a>
+          <!-- Mobile logged-out -->
+          <div id="mobileLoggedOut">
+            <a href="/pricing" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Pricing</a>
+            <a href="/login" class="block py-2 text-[#22D3EE] font-semibold">Sign In</a>
+          </div>
+          <!-- Mobile logged-in -->
+          <div id="mobileLoggedIn" class="hidden">
+            <div class="border-t border-[rgba(255,255,255,0.06)] my-2 pt-2">
+              <a href="/account" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Account</a>
+              <a href="/pricing" class="block py-2 text-[#CBD5E1] hover:text-slate-100">Pricing</a>
+              <a href="/quiz" class="block py-2 text-[#22D3EE] hover:text-slate-100">Find Your Style</a>
+              <button id="mobileSignOut" class="block py-2 text-red-400 hover:text-red-300">Sign Out</button>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -317,6 +359,64 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
           updateNavWatchlistBadge();
         }
       });
+    </script>
+
+    <!-- Nav auth state: swap between logged-out and logged-in -->
+    <script>
+      import { supabase } from '../lib/supabase';
+
+      function updateNavAuthState() {
+        const user = (window as any).__compassUser;
+        const loggedOut = document.getElementById('navLoggedOut');
+        const loggedIn = document.getElementById('navLoggedIn');
+        const emailEl = document.getElementById('navUserEmail');
+        const tierEl = document.getElementById('navUserTier');
+
+        if (!loggedOut || !loggedIn) return;
+
+        if (user) {
+          loggedOut.classList.add('hidden');
+          loggedIn.classList.remove('hidden');
+          if (emailEl) emailEl.textContent = user.email;
+          if (tierEl) {
+            const labels: Record<string, string> = { free: 'Free', newsletter: 'Newsletter', plus: 'Plus', pro: 'Pro' };
+            tierEl.textContent = labels[user.tier] || 'Free';
+          }
+        }
+      }
+
+      // Run after session loads
+      if (document.readyState === 'complete') {
+        setTimeout(updateNavAuthState, 150);
+      } else {
+        window.addEventListener('load', () => setTimeout(updateNavAuthState, 150));
+      }
+
+      // Also update mobile menu
+      function updateMobileAuthState() {
+        const user = (window as any).__compassUser;
+        const mobileOut = document.getElementById('mobileLoggedOut');
+        const mobileIn = document.getElementById('mobileLoggedIn');
+        if (user && mobileOut && mobileIn) {
+          mobileOut.classList.add('hidden');
+          mobileIn.classList.remove('hidden');
+        }
+      }
+
+      if (document.readyState === 'complete') {
+        setTimeout(updateMobileAuthState, 150);
+      } else {
+        window.addEventListener('load', () => setTimeout(updateMobileAuthState, 150));
+      }
+
+      // Sign out handlers (desktop + mobile)
+      async function handleSignOut() {
+        await supabase.auth.signOut();
+        (window as any).__compassUser = null;
+        window.location.href = '/';
+      }
+      document.getElementById('navSignOut')?.addEventListener('click', handleSignOut);
+      document.getElementById('mobileSignOut')?.addEventListener('click', handleSignOut);
     </script>
   </body>
 </html>
