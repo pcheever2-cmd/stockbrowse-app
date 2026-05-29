@@ -41,6 +41,7 @@ export interface CatalogEntry {
   theme: string; // canonical human-readable theme label
   slug: string; // slugify(theme) — Vectorize id + KV key suffix
   items: CatalogItem[];
+  aliases?: string[]; // extra phrasings/brand-name queries; stored as sibling theme vectors → same slug
   curatedAt: string; // ISO timestamp
 }
 

@@ -82,11 +82,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   let themeScore: number | undefined;
   let themeSlug: string | undefined;
   try {
-    const themeMatch = await env.VECTORIZE_THEMES.query(vector, { topK: 1 });
+    const themeMatch = await env.VECTORIZE_THEMES.query(vector, { topK: 1, returnMetadata: 'all' });
     const top = themeMatch.matches?.[0];
     if (top) {
       themeScore = top.score;
-      themeSlug = slugify(top.id); // matched vector id IS the slug; normalize defensively
+      // Alias vectors share their theme's slug via metadata; fall back to the id (stripping
+      // any `::N` alias suffix) for older label-only vectors. returnMetadata is safe at topK=1.
+      themeSlug =
+        (top.metadata?.slug as string | undefined) || slugify(String(top.id).split('::')[0]);
       if (top.score >= HIT_THRESHOLD) {
         const entry = await getCatalogEntry(env, themeSlug);
         if (entry && entry.items.length) {
