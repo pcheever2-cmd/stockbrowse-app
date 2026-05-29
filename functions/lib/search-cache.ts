@@ -46,12 +46,13 @@ export interface CatalogEntry {
 }
 
 // Tunables ------------------------------------------------------------------
-// Cosine cutoff for serving a curated theme. Calibrated on the 15-theme pilot:
-// correct paraphrase matches scored ≥0.640, wrong/negative matches ≤0.559 — 0.60 sits
-// in the gap (all true matches hit, zero false positives). Re-calibrate for the full
-// rollout: more themes = denser space = wrong-match scores may creep up. Brand-name
-// queries ("ozempic") embed poorly and need alias vectors, not a lower threshold.
-export const HIT_THRESHOLD = 0.6;
+// Cosine cutoff for serving a curated theme. Recalibrated for the ~181-theme catalog
+// WITH alias vectors: basic-word/alias queries ("weed","robots","ozempic") score 0.95+,
+// but the denser space pushes wrong/negative matches up to ~0.79 (e.g. "tobacco"→cannabis).
+// 0.80 sits just above the negatives — precision-first ("get it wrong once and trust is
+// gone"): every basic-word query + strong paraphrase hits; verbose paraphrases that fall
+// under degrade gracefully to raw semantic. More aliases (Phase D) raise recall over time.
+export const HIT_THRESHOLD = 0.8;
 export const MONTHLY_BUDGET_CAP = 5_000; // arbitrary "spend units" ceiling for any paid path (dormant in Phase A)
 const RECENT_MISS_MAX = 200; // cap on the rolling recent-miss list
 
