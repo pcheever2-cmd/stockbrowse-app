@@ -1132,10 +1132,7 @@ const marketCapRanges = [
       try {
         await loadSession();
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const devBypass = urlParams.get('dev') === '1';
-
-        if (!hasFeature('valuation_score') && !devBypass) {
+        if (!hasFeature('valuation_score')) {
           const section = document.getElementById('valuationFilterSection');
           if (section) {
             section.addEventListener('click', (e: Event) => {
@@ -1160,10 +1157,7 @@ const marketCapRanges = [
 
         for (let i = 0; i < symbols.length; i += 50) {
           const batch = symbols.slice(i, i + 50).join(',');
-          const devParam = devBypass ? '&dev=1' : '';
-          const res = devBypass
-            ? await fetch(`/api/stocks/premium?symbols=${batch}${devParam}`)
-            : await authFetch(`/api/stocks/premium?symbols=${batch}`);
+          const res = await authFetch(`/api/stocks/premium?symbols=${batch}`);
           if (res.ok) {
             const data = await res.json();
             Object.entries(data).forEach(([sym, fields]: [string, any]) => {

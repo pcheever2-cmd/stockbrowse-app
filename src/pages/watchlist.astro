@@ -284,9 +284,7 @@ const stocksData = stocks.map(s => ({
     async function hydrateWatchlistPremium() {
       try {
         await loadSession();
-        const urlParams = new URLSearchParams(window.location.search);
-        const devBypass = urlParams.get('dev') === '1';
-        const isPremium = hasFeature('score_breakdown') || devBypass;
+        const isPremium = hasFeature('score_breakdown');
         if (!isPremium) return;
 
         // Get watchlist symbols from rendered cells
@@ -296,10 +294,7 @@ const stocksData = stocks.map(s => ({
 
         // Fetch premium data
         const batch = symbols.join(',');
-        const devParam = devBypass ? '&dev=1' : '';
-        const res = devBypass
-          ? await fetch(`/api/stocks/premium?symbols=${batch}${devParam}`)
-          : await authFetch(`/api/stocks/premium?symbols=${batch}`);
+        const res = await authFetch(`/api/stocks/premium?symbols=${batch}`);
 
         if (!res.ok) return;
         const data = await res.json();
