@@ -45,7 +45,12 @@ export interface CatalogEntry {
 }
 
 // Tunables ------------------------------------------------------------------
-export const HIT_THRESHOLD = 0.86; // cosine; query must be at least this close to a cataloged theme to serve curated
+// Cosine cutoff for serving a curated theme. Calibrated on the 15-theme pilot:
+// correct paraphrase matches scored ≥0.640, wrong/negative matches ≤0.559 — 0.60 sits
+// in the gap (all true matches hit, zero false positives). Re-calibrate for the full
+// rollout: more themes = denser space = wrong-match scores may creep up. Brand-name
+// queries ("ozempic") embed poorly and need alias vectors, not a lower threshold.
+export const HIT_THRESHOLD = 0.6;
 export const MONTHLY_BUDGET_CAP = 5_000; // arbitrary "spend units" ceiling for any paid path (dormant in Phase A)
 const RECENT_MISS_MAX = 200; // cap on the rolling recent-miss list
 

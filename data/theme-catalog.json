@@ -1,0 +1,1239 @@
+{
+  "entries": [
+    {
+      "theme": "GLP-1 and weight-loss drugs",
+      "items": [
+        {
+          "symbol": "LLY",
+          "kind": "direct",
+          "why": "makes Mounjaro and Zepbound tirzepatide for weight loss"
+        },
+        {
+          "symbol": "NVO",
+          "kind": "direct",
+          "why": "makes Ozempic and Wegovy semaglutide"
+        },
+        {
+          "symbol": "AMGN",
+          "kind": "direct",
+          "why": "develops MariTide monthly obesity injection"
+        },
+        {
+          "symbol": "ALT",
+          "kind": "direct",
+          "why": "develops pemvidutide GLP-1/glucagon obesity drug"
+        },
+        {
+          "symbol": "RYTM",
+          "kind": "direct",
+          "why": "sells setmelanotide for rare genetic obesity"
+        },
+        {
+          "symbol": "TERN",
+          "kind": "direct",
+          "why": "develops oral GLP-1 obesity pill TERN-601"
+        },
+        {
+          "symbol": "MBX",
+          "kind": "direct",
+          "why": "develops long-acting peptides for metabolic obesity"
+        },
+        {
+          "symbol": "MTVA",
+          "kind": "direct",
+          "why": "develops DA-1726 GLP-1/glucagon obesity candidate"
+        },
+        {
+          "symbol": "PFE",
+          "kind": "direct",
+          "why": "develops oral GLP-1 obesity pill program"
+        },
+        {
+          "symbol": "WST",
+          "kind": "picks-shovels",
+          "why": "makes the injection components for GLP-1 pens"
+        },
+        {
+          "symbol": "HIMS",
+          "kind": "picks-shovels",
+          "why": "sells GLP-1 weight-loss prescriptions to consumers"
+        }
+      ]
+    },
+    {
+      "theme": "AI data-center chips",
+      "items": [
+        {
+          "symbol": "NVDA",
+          "kind": "direct",
+          "why": "designs the GPUs that train AI models"
+        },
+        {
+          "symbol": "AMD",
+          "kind": "direct",
+          "why": "makes MI300 GPUs and EPYC CPUs for AI servers"
+        },
+        {
+          "symbol": "AVGO",
+          "kind": "picks-shovels",
+          "why": "designs custom AI accelerators and data-center switch chips"
+        },
+        {
+          "symbol": "MRVL",
+          "kind": "picks-shovels",
+          "why": "designs custom AI silicon and optical networking chips"
+        },
+        {
+          "symbol": "MU",
+          "kind": "picks-shovels",
+          "why": "makes HBM memory stacked on AI GPUs"
+        },
+        {
+          "symbol": "TSM",
+          "kind": "picks-shovels",
+          "why": "fabricates the AI accelerator chips for Nvidia and AMD"
+        },
+        {
+          "symbol": "ASML",
+          "kind": "picks-shovels",
+          "why": "makes the EUV lithography machines that print AI chips"
+        },
+        {
+          "symbol": "ANET",
+          "kind": "picks-shovels",
+          "why": "makes the switches wiring AI GPU clusters together"
+        },
+        {
+          "symbol": "RMBS",
+          "kind": "picks-shovels",
+          "why": "makes DDR and HBM memory interface chips"
+        },
+        {
+          "symbol": "AIP",
+          "kind": "picks-shovels",
+          "why": "licenses the interconnect IP inside AI chips"
+        },
+        {
+          "symbol": "CRDO",
+          "kind": "picks-shovels",
+          "why": "makes active electrical cables linking AI servers"
+        },
+        {
+          "symbol": "AAOI",
+          "kind": "picks-shovels",
+          "why": "makes optical transceivers for data-center networking"
+        },
+        {
+          "symbol": "VRT",
+          "kind": "picks-shovels",
+          "why": "makes the power and cooling for AI data centers"
+        },
+        {
+          "symbol": "SMCI",
+          "kind": "picks-shovels",
+          "why": "builds the GPU servers housing AI accelerators"
+        },
+        {
+          "symbol": "DELL",
+          "kind": "picks-shovels",
+          "why": "builds AI servers packed with Nvidia GPUs"
+        }
+      ]
+    },
+    {
+      "theme": "Nuclear power and SMRs",
+      "items": [
+        {
+          "symbol": "SMR",
+          "kind": "direct",
+          "why": "develops NuScale modular light-water SMR power plants"
+        },
+        {
+          "symbol": "OKLO",
+          "kind": "direct",
+          "why": "builds Aurora micro fission reactors"
+        },
+        {
+          "symbol": "CEG",
+          "kind": "direct",
+          "why": "operates the largest US nuclear reactor fleet"
+        },
+        {
+          "symbol": "BWXT",
+          "kind": "picks-shovels",
+          "why": "manufactures naval and commercial nuclear reactor components"
+        },
+        {
+          "symbol": "LEU",
+          "kind": "picks-shovels",
+          "why": "enriches HALEU fuel for advanced reactors"
+        },
+        {
+          "symbol": "CCJ",
+          "kind": "picks-shovels",
+          "why": "mines and sells uranium to reactor operators"
+        },
+        {
+          "symbol": "UEC",
+          "kind": "picks-shovels",
+          "why": "mines US in-situ uranium for fuel"
+        },
+        {
+          "symbol": "GEV",
+          "kind": "picks-shovels",
+          "why": "builds BWRX-300 small modular reactors"
+        },
+        {
+          "symbol": "MIR",
+          "kind": "picks-shovels",
+          "why": "makes radiation detection systems for nuclear plants"
+        },
+        {
+          "symbol": "LTBR",
+          "kind": "picks-shovels",
+          "why": "develops metallic nuclear fuel rod technology"
+        },
+        {
+          "symbol": "UUUU",
+          "kind": "picks-shovels",
+          "why": "recovers uranium for US reactor fuel"
+        },
+        {
+          "symbol": "DNN",
+          "kind": "picks-shovels",
+          "why": "develops Canadian uranium mining projects"
+        },
+        {
+          "symbol": "ETR",
+          "kind": "direct",
+          "why": "runs nuclear plants supplying its electric utilities"
+        },
+        {
+          "symbol": "SO",
+          "kind": "direct",
+          "why": "built and operates Vogtle nuclear reactors"
+        }
+      ]
+    },
+    {
+      "theme": "Cybersecurity",
+      "items": [
+        {
+          "symbol": "CRWD",
+          "kind": "direct",
+          "why": "runs the Falcon endpoint-detection platform on millions of devices"
+        },
+        {
+          "symbol": "PANW",
+          "kind": "direct",
+          "why": "sells the firewalls and SASE securing enterprise networks"
+        },
+        {
+          "symbol": "FTNT",
+          "kind": "direct",
+          "why": "makes FortiGate firewalls protecting corporate networks"
+        },
+        {
+          "symbol": "ZS",
+          "kind": "direct",
+          "why": "runs the zero-trust cloud gateway inspecting employee traffic"
+        },
+        {
+          "symbol": "S",
+          "kind": "direct",
+          "why": "runs the Singularity AI endpoint-protection platform"
+        },
+        {
+          "symbol": "OKTA",
+          "kind": "direct",
+          "why": "runs the identity login layer guarding enterprise apps"
+        },
+        {
+          "symbol": "TENB",
+          "kind": "direct",
+          "why": "scans networks for unpatched software vulnerabilities"
+        },
+        {
+          "symbol": "QLYS",
+          "kind": "direct",
+          "why": "runs cloud vulnerability scanning and compliance audits"
+        },
+        {
+          "symbol": "NET",
+          "kind": "direct",
+          "why": "blocks DDoS attacks and bot traffic at the edge"
+        },
+        {
+          "symbol": "CHKP",
+          "kind": "direct",
+          "why": "sells firewalls and threat-prevention gateways to enterprises"
+        },
+        {
+          "symbol": "VRNS",
+          "kind": "direct",
+          "why": "monitors and locks down access to sensitive enterprise data"
+        },
+        {
+          "symbol": "SAIL",
+          "kind": "direct",
+          "why": "governs who gets access to what across enterprises"
+        },
+        {
+          "symbol": "GEN",
+          "kind": "direct",
+          "why": "sells Norton and Avast antivirus to consumers"
+        },
+        {
+          "symbol": "RDWR",
+          "kind": "direct",
+          "why": "defends apps against DDoS and bot attacks"
+        },
+        {
+          "symbol": "MITK",
+          "kind": "picks-shovels",
+          "why": "verifies identities via document and selfie scans"
+        }
+      ]
+    },
+    {
+      "theme": "Quantum computing",
+      "items": [
+        {
+          "symbol": "RGTI",
+          "kind": "direct",
+          "why": "builds superconducting quantum processors and full systems"
+        },
+        {
+          "symbol": "QBTS",
+          "kind": "direct",
+          "why": "sells quantum-annealing computers and cloud access"
+        },
+        {
+          "symbol": "IBM",
+          "kind": "direct",
+          "why": "runs superconducting quantum computers on its cloud"
+        },
+        {
+          "symbol": "HON",
+          "kind": "direct",
+          "why": "owns majority of trapped-ion maker Quantinuum"
+        },
+        {
+          "symbol": "QCLS",
+          "kind": "direct",
+          "why": "licenses LightSolver laser processing unit for computing"
+        },
+        {
+          "symbol": "FORM",
+          "kind": "picks-shovels",
+          "why": "makes cryogenic wafer probes for testing qubit chips"
+        }
+      ]
+    },
+    {
+      "theme": "Defense and drones",
+      "items": [
+        {
+          "symbol": "LMT",
+          "kind": "direct",
+          "why": "makes F-35 jets, missiles, and military drones"
+        },
+        {
+          "symbol": "RTX",
+          "kind": "direct",
+          "why": "makes Tomahawk and Patriot missiles, drone interceptors"
+        },
+        {
+          "symbol": "NOC",
+          "kind": "direct",
+          "why": "makes Global Hawk drones and B-21 bombers"
+        },
+        {
+          "symbol": "GD",
+          "kind": "direct",
+          "why": "builds combat vehicles, submarines, munitions for militaries"
+        },
+        {
+          "symbol": "LHX",
+          "kind": "direct",
+          "why": "makes military radios, sensors, and electronic warfare gear"
+        },
+        {
+          "symbol": "AVAV",
+          "kind": "direct",
+          "why": "makes Switchblade loitering munitions and Puma drones"
+        },
+        {
+          "symbol": "KTOS",
+          "kind": "direct",
+          "why": "builds Valkyrie attack drones and jet-powered targets"
+        },
+        {
+          "symbol": "RCAT",
+          "kind": "direct",
+          "why": "makes Teal small reconnaissance drones for the Army"
+        },
+        {
+          "symbol": "ESLT",
+          "kind": "direct",
+          "why": "supplies Hermes drones and battlefield electronics"
+        },
+        {
+          "symbol": "DRS",
+          "kind": "direct",
+          "why": "makes sensors, infrared imaging, and naval power systems"
+        },
+        {
+          "symbol": "MRCY",
+          "kind": "picks-shovels",
+          "why": "supplies rugged processing subsystems inside missiles and radar"
+        },
+        {
+          "symbol": "MTSI",
+          "kind": "picks-shovels",
+          "why": "makes RF and microwave chips for radar, jammers"
+        },
+        {
+          "symbol": "ULBI",
+          "kind": "picks-shovels",
+          "why": "makes batteries powering soldier and drone electronics"
+        },
+        {
+          "symbol": "FEIM",
+          "kind": "picks-shovels",
+          "why": "makes precision atomic clocks for missile and satellite guidance"
+        },
+        {
+          "symbol": "TTMI",
+          "kind": "picks-shovels",
+          "why": "makes RF circuit boards for radar and missiles"
+        },
+        {
+          "symbol": "ESP",
+          "kind": "picks-shovels",
+          "why": "makes power-conversion electronics for military radar, missiles"
+        }
+      ]
+    },
+    {
+      "theme": "Electric vehicles and charging",
+      "items": [
+        {
+          "symbol": "TSLA",
+          "kind": "direct",
+          "why": "makes the best-selling EVs and Supercharger network"
+        },
+        {
+          "symbol": "RIVN",
+          "kind": "direct",
+          "why": "builds R1T trucks and Amazon delivery vans"
+        },
+        {
+          "symbol": "LI",
+          "kind": "direct",
+          "why": "makes premium electric SUVs in China"
+        },
+        {
+          "symbol": "NIO",
+          "kind": "direct",
+          "why": "makes electric SUVs with battery-swap stations"
+        },
+        {
+          "symbol": "EVGO",
+          "kind": "direct",
+          "why": "runs a US DC fast-charging network"
+        },
+        {
+          "symbol": "CHPT",
+          "kind": "direct",
+          "why": "runs EV charging hardware, software and network"
+        },
+        {
+          "symbol": "VFS",
+          "kind": "direct",
+          "why": "makes VinFast electric cars and scooters"
+        },
+        {
+          "symbol": "GP",
+          "kind": "direct",
+          "why": "builds electric buses and commercial trucks"
+        },
+        {
+          "symbol": "KNDI",
+          "kind": "direct",
+          "why": "makes small electric vehicles and parts in China"
+        },
+        {
+          "symbol": "ALB",
+          "kind": "picks-shovels",
+          "why": "mines the lithium for EV battery cells"
+        },
+        {
+          "symbol": "LAC",
+          "kind": "picks-shovels",
+          "why": "develops US lithium for EV batteries"
+        },
+        {
+          "symbol": "APTV",
+          "kind": "picks-shovels",
+          "why": "supplies EV high-voltage wiring and electrical architecture"
+        },
+        {
+          "symbol": "DAN",
+          "kind": "picks-shovels",
+          "why": "supplies EV e-drive axles and powertrains"
+        },
+        {
+          "symbol": "TE",
+          "kind": "picks-shovels",
+          "why": "makes battery cells for electric mobility"
+        },
+        {
+          "symbol": "MVST",
+          "kind": "picks-shovels",
+          "why": "makes battery systems for electric vehicles"
+        },
+        {
+          "symbol": "ABAT",
+          "kind": "picks-shovels",
+          "why": "recycles and mines EV battery metals"
+        },
+        {
+          "symbol": "CBAT",
+          "kind": "picks-shovels",
+          "why": "makes lithium batteries for EVs"
+        }
+      ]
+    },
+    {
+      "theme": "Solar and clean energy",
+      "items": [
+        {
+          "symbol": "FSLR",
+          "kind": "direct",
+          "why": "makes cadmium-telluride PV solar panels in the US"
+        },
+        {
+          "symbol": "ENPH",
+          "kind": "picks-shovels",
+          "why": "makes the microinverters on rooftop solar panels"
+        },
+        {
+          "symbol": "NXT",
+          "kind": "picks-shovels",
+          "why": "makes the trackers that tilt utility solar arrays"
+        },
+        {
+          "symbol": "SEDG",
+          "kind": "picks-shovels",
+          "why": "makes DC-optimized inverters for solar installs"
+        },
+        {
+          "symbol": "RUN",
+          "kind": "direct",
+          "why": "installs and leases home rooftop solar systems"
+        },
+        {
+          "symbol": "ARRY",
+          "kind": "picks-shovels",
+          "why": "makes ground-mount trackers for utility solar farms"
+        },
+        {
+          "symbol": "SHLS",
+          "kind": "picks-shovels",
+          "why": "makes the wiring and connectors for solar farms"
+        },
+        {
+          "symbol": "JKS",
+          "kind": "direct",
+          "why": "makes solar modules, wafers and cells at scale"
+        },
+        {
+          "symbol": "CSIQ",
+          "kind": "direct",
+          "why": "makes solar modules and battery-storage systems"
+        },
+        {
+          "symbol": "FLNC",
+          "kind": "direct",
+          "why": "builds grid-scale battery storage for renewables"
+        },
+        {
+          "symbol": "NEE",
+          "kind": "direct",
+          "why": "operates the largest US wind and solar fleet"
+        },
+        {
+          "symbol": "SPWR",
+          "kind": "direct",
+          "why": "installs residential solar power systems"
+        },
+        {
+          "symbol": "NRGV",
+          "kind": "direct",
+          "why": "builds gravity-based grid energy storage"
+        },
+        {
+          "symbol": "TOYO",
+          "kind": "direct",
+          "why": "makes solar wafers, cells and PV modules"
+        },
+        {
+          "symbol": "SMXT",
+          "kind": "direct",
+          "why": "installs photovoltaic systems in US and China"
+        }
+      ]
+    },
+    {
+      "theme": "Digital payments and fintech",
+      "items": [
+        {
+          "symbol": "V",
+          "kind": "direct",
+          "why": "runs the Visa card-payment network worldwide"
+        },
+        {
+          "symbol": "MA",
+          "kind": "direct",
+          "why": "runs the Mastercard card-payment network"
+        },
+        {
+          "symbol": "PYPL",
+          "kind": "direct",
+          "why": "runs PayPal, Venmo, and Braintree digital wallets"
+        },
+        {
+          "symbol": "XYZ",
+          "kind": "direct",
+          "why": "runs Square seller payments and Cash App"
+        },
+        {
+          "symbol": "FISV",
+          "kind": "direct",
+          "why": "processes card transactions and runs Clover for merchants"
+        },
+        {
+          "symbol": "GPN",
+          "kind": "direct",
+          "why": "processes card and digital payments for merchants"
+        },
+        {
+          "symbol": "FOUR",
+          "kind": "direct",
+          "why": "processes integrated payments for restaurants and hotels"
+        },
+        {
+          "symbol": "AXP",
+          "kind": "direct",
+          "why": "issues American Express cards and runs its network"
+        },
+        {
+          "symbol": "FIS",
+          "kind": "picks-shovels",
+          "why": "runs core banking and payment software for banks"
+        },
+        {
+          "symbol": "ACIW",
+          "kind": "picks-shovels",
+          "why": "builds payment-processing software for banks and billers"
+        },
+        {
+          "symbol": "EEFT",
+          "kind": "direct",
+          "why": "runs ATM networks and cross-border money transfer"
+        },
+        {
+          "symbol": "WU",
+          "kind": "direct",
+          "why": "runs Western Union money-transfer rails worldwide"
+        },
+        {
+          "symbol": "PAYO",
+          "kind": "direct",
+          "why": "runs cross-border payments for online sellers"
+        },
+        {
+          "symbol": "NU",
+          "kind": "direct",
+          "why": "runs Nubank digital bank across Latin America"
+        },
+        {
+          "symbol": "SOFI",
+          "kind": "direct",
+          "why": "runs digital bank lending and Galileo payment processing"
+        },
+        {
+          "symbol": "COIN",
+          "kind": "direct",
+          "why": "runs Coinbase crypto exchange and stablecoin payments"
+        },
+        {
+          "symbol": "AFRM",
+          "kind": "direct",
+          "why": "runs Affirm buy-now-pay-later checkout lending"
+        },
+        {
+          "symbol": "PSFE",
+          "kind": "direct",
+          "why": "processes online payments and digital wallets"
+        },
+        {
+          "symbol": "EVTC",
+          "kind": "direct",
+          "why": "processes card transactions across Latin America"
+        },
+        {
+          "symbol": "RPAY",
+          "kind": "direct",
+          "why": "processes B2B and consumer bill payments"
+        },
+        {
+          "symbol": "IIIV",
+          "kind": "direct",
+          "why": "processes integrated payments for niche software verticals"
+        },
+        {
+          "symbol": "PAYS",
+          "kind": "picks-shovels",
+          "why": "issues prepaid cards for pharma copay programs"
+        }
+      ]
+    },
+    {
+      "theme": "Streaming entertainment",
+      "items": [
+        {
+          "symbol": "NFLX",
+          "kind": "direct",
+          "why": "runs the largest paid video streaming service"
+        },
+        {
+          "symbol": "SPOT",
+          "kind": "direct",
+          "why": "runs the largest music streaming subscription service"
+        },
+        {
+          "symbol": "ROKU",
+          "kind": "direct",
+          "why": "operates the TV streaming OS and ad platform"
+        },
+        {
+          "symbol": "DIS",
+          "kind": "direct",
+          "why": "runs Disney+ and Hulu streaming services"
+        },
+        {
+          "symbol": "WBD",
+          "kind": "direct",
+          "why": "runs the Max streaming service"
+        },
+        {
+          "symbol": "CMCSA",
+          "kind": "direct",
+          "why": "runs the Peacock streaming service"
+        },
+        {
+          "symbol": "FUBO",
+          "kind": "direct",
+          "why": "runs a live sports TV streaming service"
+        },
+        {
+          "symbol": "TME",
+          "kind": "direct",
+          "why": "runs China's largest music streaming platforms"
+        },
+        {
+          "symbol": "SIRI",
+          "kind": "direct",
+          "why": "sells satellite and streaming audio subscriptions"
+        },
+        {
+          "symbol": "CURI",
+          "kind": "direct",
+          "why": "runs a factual-content video streaming service"
+        },
+        {
+          "symbol": "CNVS",
+          "kind": "direct",
+          "why": "operates streaming channels on its own platform"
+        },
+        {
+          "symbol": "LVO",
+          "kind": "direct",
+          "why": "runs music and podcast streaming services"
+        },
+        {
+          "symbol": "WMG",
+          "kind": "picks-shovels",
+          "why": "licenses its music catalog to streaming platforms"
+        },
+        {
+          "symbol": "HLIT",
+          "kind": "picks-shovels",
+          "why": "makes the video delivery software behind streaming"
+        },
+        {
+          "symbol": "DLB",
+          "kind": "picks-shovels",
+          "why": "licenses Atmos audio and imaging into streaming"
+        },
+        {
+          "symbol": "TTD",
+          "kind": "picks-shovels",
+          "why": "runs the ad-buying platform for connected TV"
+        },
+        {
+          "symbol": "PUBM",
+          "kind": "picks-shovels",
+          "why": "runs the ad exchange for streaming inventory"
+        }
+      ]
+    },
+    {
+      "theme": "Online dating apps",
+      "items": [
+        {
+          "symbol": "MTCH",
+          "kind": "direct",
+          "why": "owns Tinder and Hinge dating apps"
+        },
+        {
+          "symbol": "GRND",
+          "kind": "direct",
+          "why": "runs the Grindr LGBTQ dating app"
+        },
+        {
+          "symbol": "BMBL",
+          "kind": "direct",
+          "why": "owns the Bumble dating app"
+        },
+        {
+          "symbol": "APP",
+          "kind": "picks-shovels",
+          "why": "runs the ad engine dating apps buy users on"
+        }
+      ]
+    },
+    {
+      "theme": "Semiconductor equipment",
+      "items": [
+        {
+          "symbol": "AMAT",
+          "kind": "picks-shovels",
+          "why": "makes the deposition and etch tools chip fabs run"
+        },
+        {
+          "symbol": "LRCX",
+          "kind": "picks-shovels",
+          "why": "makes the etch and deposition systems for chipmaking"
+        },
+        {
+          "symbol": "ASML",
+          "kind": "picks-shovels",
+          "why": "owns the EUV lithography machines that print chips"
+        },
+        {
+          "symbol": "KLAC",
+          "kind": "picks-shovels",
+          "why": "makes the inspection and metrology tools for fabs"
+        },
+        {
+          "symbol": "TER",
+          "kind": "picks-shovels",
+          "why": "makes the automated test equipment for finished chips"
+        },
+        {
+          "symbol": "ACLS",
+          "kind": "picks-shovels",
+          "why": "makes the ion implanters that dope wafers"
+        },
+        {
+          "symbol": "KLIC",
+          "kind": "picks-shovels",
+          "why": "makes the wire bonders that assemble chip packages"
+        },
+        {
+          "symbol": "ACMR",
+          "kind": "picks-shovels",
+          "why": "makes the wet-cleaning tools for wafer fabs"
+        },
+        {
+          "symbol": "ONTO",
+          "kind": "picks-shovels",
+          "why": "makes process-control metrology and inspection systems"
+        },
+        {
+          "symbol": "ENTG",
+          "kind": "picks-shovels",
+          "why": "supplies the filtration and materials fabs consume"
+        },
+        {
+          "symbol": "COHU",
+          "kind": "picks-shovels",
+          "why": "makes the test handlers and interface hardware"
+        },
+        {
+          "symbol": "FORM",
+          "kind": "picks-shovels",
+          "why": "makes the probe cards that test wafers"
+        },
+        {
+          "symbol": "AEHR",
+          "kind": "picks-shovels",
+          "why": "makes burn-in test systems for SiC chips"
+        },
+        {
+          "symbol": "UCTT",
+          "kind": "picks-shovels",
+          "why": "builds the subsystems inside fab tools"
+        },
+        {
+          "symbol": "ASYS",
+          "kind": "picks-shovels",
+          "why": "makes diffusion furnaces and SiC processing equipment"
+        },
+        {
+          "symbol": "INTT",
+          "kind": "picks-shovels",
+          "why": "makes thermal test and process handling equipment"
+        },
+        {
+          "symbol": "SSLLF",
+          "kind": "picks-shovels",
+          "why": "makes the silicon wafers fabs build chips on"
+        },
+        {
+          "symbol": "SUOPY",
+          "kind": "picks-shovels",
+          "why": "makes silicon wafers supplied to chipmakers"
+        },
+        {
+          "symbol": "MTRN",
+          "kind": "picks-shovels",
+          "why": "supplies sputtering targets and advanced materials to fabs"
+        },
+        {
+          "symbol": "DNPCF",
+          "kind": "picks-shovels",
+          "why": "makes the photomasks fabs use to pattern chips"
+        },
+        {
+          "symbol": "TRT",
+          "kind": "picks-shovels",
+          "why": "provides semiconductor test and burn-in services"
+        }
+      ]
+    },
+    {
+      "theme": "Cloud and SaaS",
+      "items": [
+        {
+          "symbol": "MSFT",
+          "kind": "direct",
+          "why": "runs Azure cloud and Microsoft 365 SaaS"
+        },
+        {
+          "symbol": "CRM",
+          "kind": "direct",
+          "why": "runs the Salesforce CRM SaaS platform"
+        },
+        {
+          "symbol": "AMZN",
+          "kind": "direct",
+          "why": "operates AWS, the largest cloud provider"
+        },
+        {
+          "symbol": "NOW",
+          "kind": "direct",
+          "why": "runs the ServiceNow enterprise workflow cloud"
+        },
+        {
+          "symbol": "ORCL",
+          "kind": "direct",
+          "why": "runs OCI cloud and cloud database apps"
+        },
+        {
+          "symbol": "SNOW",
+          "kind": "direct",
+          "why": "runs the Snowflake cloud data warehouse"
+        },
+        {
+          "symbol": "GOOGL",
+          "kind": "direct",
+          "why": "operates Google Cloud Platform and Workspace"
+        },
+        {
+          "symbol": "DDOG",
+          "kind": "direct",
+          "why": "sells cloud monitoring and observability SaaS"
+        },
+        {
+          "symbol": "NET",
+          "kind": "direct",
+          "why": "runs Cloudflare edge network and cloud services"
+        },
+        {
+          "symbol": "ADBE",
+          "kind": "direct",
+          "why": "sells Creative Cloud and Document Cloud subscriptions"
+        },
+        {
+          "symbol": "SAP",
+          "kind": "direct",
+          "why": "sells cloud ERP and enterprise application software"
+        },
+        {
+          "symbol": "WDAY",
+          "kind": "direct",
+          "why": "runs Workday HR and finance cloud apps"
+        },
+        {
+          "symbol": "DOCN",
+          "kind": "direct",
+          "why": "runs cloud compute platform for developers"
+        },
+        {
+          "symbol": "PLTR",
+          "kind": "direct",
+          "why": "delivers Foundry and AIP software platforms"
+        },
+        {
+          "symbol": "AKAM",
+          "kind": "direct",
+          "why": "runs CDN, edge cloud and security services"
+        },
+        {
+          "symbol": "TDC",
+          "kind": "direct",
+          "why": "runs the Teradata multi-cloud data platform"
+        },
+        {
+          "symbol": "NICE",
+          "kind": "direct",
+          "why": "runs cloud contact-center and CX software"
+        },
+        {
+          "symbol": "DV",
+          "kind": "direct",
+          "why": "runs SaaS platform for ad verification"
+        },
+        {
+          "symbol": "ZETA",
+          "kind": "direct",
+          "why": "runs cloud-based marketing data platform"
+        },
+        {
+          "symbol": "PHR",
+          "kind": "direct",
+          "why": "runs SaaS intake platform for healthcare providers"
+        },
+        {
+          "symbol": "BSY",
+          "kind": "direct",
+          "why": "sells infrastructure-engineering software subscriptions"
+        },
+        {
+          "symbol": "BLZE",
+          "kind": "direct",
+          "why": "sells low-cost cloud object storage"
+        },
+        {
+          "symbol": "RXT",
+          "kind": "direct",
+          "why": "manages multicloud workloads for enterprises"
+        },
+        {
+          "symbol": "FFIV",
+          "kind": "picks-shovels",
+          "why": "delivers and secures multi-cloud applications"
+        },
+        {
+          "symbol": "VRT",
+          "kind": "picks-shovels",
+          "why": "makes power and cooling gear for data centers"
+        },
+        {
+          "symbol": "DLR",
+          "kind": "picks-shovels",
+          "why": "owns data centers that host cloud infrastructure"
+        },
+        {
+          "symbol": "HPE",
+          "kind": "picks-shovels",
+          "why": "sells GreenLake hybrid-cloud servers and storage"
+        }
+      ]
+    },
+    {
+      "theme": "Robotics and automation",
+      "items": [
+        {
+          "symbol": "ISRG",
+          "kind": "direct",
+          "why": "makes the da Vinci surgical robot"
+        },
+        {
+          "symbol": "SYM",
+          "kind": "direct",
+          "why": "builds warehouse robotics systems for Walmart and Target"
+        },
+        {
+          "symbol": "ROK",
+          "kind": "direct",
+          "why": "sells factory automation controllers and software"
+        },
+        {
+          "symbol": "CGNX",
+          "kind": "picks-shovels",
+          "why": "makes the machine-vision cameras that guide factory robots"
+        },
+        {
+          "symbol": "TER",
+          "kind": "picks-shovels",
+          "why": "owns Universal Robots collaborative-robot maker"
+        },
+        {
+          "symbol": "PRCT",
+          "kind": "direct",
+          "why": "makes the AquaBeam robot for prostate surgery"
+        },
+        {
+          "symbol": "EMR",
+          "kind": "direct",
+          "why": "sells industrial automation control systems and software"
+        },
+        {
+          "symbol": "ATS",
+          "kind": "direct",
+          "why": "builds custom automated assembly lines for manufacturers"
+        },
+        {
+          "symbol": "SERV",
+          "kind": "direct",
+          "why": "operates self-driving sidewalk delivery robots"
+        },
+        {
+          "symbol": "ZBRA",
+          "kind": "picks-shovels",
+          "why": "supplies scanning and warehouse-automation gear, owns Fetch Robotics"
+        },
+        {
+          "symbol": "SYK",
+          "kind": "direct",
+          "why": "makes the Mako robot for joint-replacement surgery"
+        },
+        {
+          "symbol": "HON",
+          "kind": "picks-shovels",
+          "why": "builds Intelligrated warehouse automation and conveyor systems"
+        },
+        {
+          "symbol": "AIT",
+          "kind": "picks-shovels",
+          "why": "distributes motion-control and automation components to factories"
+        },
+        {
+          "symbol": "CMCO",
+          "kind": "picks-shovels",
+          "why": "makes motion-control hoists and material-handling automation"
+        },
+        {
+          "symbol": "SSII",
+          "kind": "direct",
+          "why": "makes the SSI Mantra surgical robot"
+        },
+        {
+          "symbol": "STXS",
+          "kind": "direct",
+          "why": "makes robotic magnetic systems for heart-catheter surgery"
+        },
+        {
+          "symbol": "PATH",
+          "kind": "direct",
+          "why": "sells robotic process automation software for offices"
+        }
+      ]
+    },
+    {
+      "theme": "Space and satellites",
+      "items": [
+        {
+          "symbol": "RKLB",
+          "kind": "direct",
+          "why": "launches rockets and builds satellites for space customers"
+        },
+        {
+          "symbol": "IRDM",
+          "kind": "direct",
+          "why": "runs the 66-satellite Iridium voice and data network"
+        },
+        {
+          "symbol": "ASTS",
+          "kind": "direct",
+          "why": "builds satellites that beam direct to phones"
+        },
+        {
+          "symbol": "VSAT",
+          "kind": "direct",
+          "why": "operates satellites selling broadband to planes and homes"
+        },
+        {
+          "symbol": "GSAT",
+          "kind": "direct",
+          "why": "runs satellite network powering Apple emergency SOS"
+        },
+        {
+          "symbol": "RDW",
+          "kind": "picks-shovels",
+          "why": "makes solar arrays and structures for spacecraft"
+        },
+        {
+          "symbol": "SATL",
+          "kind": "direct",
+          "why": "builds and flies Earth-imaging nano-satellites"
+        },
+        {
+          "symbol": "PL",
+          "kind": "direct",
+          "why": "operates satellites imaging the whole Earth daily"
+        },
+        {
+          "symbol": "LUNR",
+          "kind": "direct",
+          "why": "builds lunar landers and lunar data services"
+        },
+        {
+          "symbol": "SATS",
+          "kind": "direct",
+          "why": "operates Hughes satellite broadband and EchoStar satellites"
+        },
+        {
+          "symbol": "TSAT",
+          "kind": "direct",
+          "why": "building Lightspeed low-orbit broadband satellite constellation"
+        },
+        {
+          "symbol": "GILT",
+          "kind": "picks-shovels",
+          "why": "makes ground antennas and modems for satellite networks"
+        },
+        {
+          "symbol": "CMTL",
+          "kind": "picks-shovels",
+          "why": "makes satellite ground stations and modems"
+        },
+        {
+          "symbol": "LHX",
+          "kind": "picks-shovels",
+          "why": "builds satellite payloads and missile-tracking spacecraft"
+        },
+        {
+          "symbol": "SPCE",
+          "kind": "direct",
+          "why": "flies paying passengers to the edge of space"
+        }
+      ]
+    }
+  ]
+}
