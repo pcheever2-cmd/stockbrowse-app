@@ -78,34 +78,39 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (!vector) return errorResponse('embedding failed', 502);
 
   // 1) Catalog hit? Nearest cataloged theme within threshold.
+  // themeScore/themeSlug are surfaced on BOTH hit and miss for threshold calibration.
+  let themeScore: number | undefined;
+  let themeSlug: string | undefined;
   try {
     const themeMatch = await env.VECTORIZE_THEMES.query(vector, { topK: 1 });
     const top = themeMatch.matches?.[0];
-    if (top && top.score >= HIT_THRESHOLD) {
-      // The matched vector id may be the slug already; normalize defensively.
-      const slug = slugify(top.id);
-      const entry = await getCatalogEntry(env, slug);
-      if (entry && entry.items.length) {
-        // Preserve curated order via a descending synthetic score so the client's
-        // existing "relevance" sort works; it then re-weights by Compass Score.
-        const n = entry.items.length;
-        const symbols = entry.items.map((item, i) => ({
-          symbol: item.symbol,
-          score: (n - i) / n,
-          why: item.why,
-          kind: item.kind,
-        }));
-        return json({ source: 'catalog', query, similarTo: null, theme: entry.theme, symbols });
+    if (top) {
+      themeScore = top.score;
+      themeSlug = slugify(top.id); // matched vector id IS the slug; normalize defensively
+      if (top.score >= HIT_THRESHOLD) {
+        const entry = await getCatalogEntry(env, themeSlug);
+        if (entry && entry.items.length) {
+          // Preserve curated order via a descending synthetic score so the client's
+          // existing "relevance" sort works; it then re-weights by Compass Score.
+          const n = entry.items.length;
+          const symbols = entry.items.map((item, i) => ({
+            symbol: item.symbol,
+            score: (n - i) / n,
+            why: item.why,
+            kind: item.kind,
+          }));
+          return json({ source: 'catalog', query, similarTo: null, theme: entry.theme, themeScore, themeSlug, symbols });
+        }
+        // Index hit but KV entry missing/empty → fall through to raw semantic.
       }
-      // Index hit but KV entry missing/empty → fall through to raw semantic.
     }
   } catch {
-    // Themes index unavailable (e.g. empty in Phase A) → fall through to raw semantic.
+    // Themes index unavailable (e.g. empty) → fall through to raw semantic.
   }
 
   // 2) Miss: record for later curation, then serve the raw stock-similarity index.
   await logMiss(env, query);
   const result = await env.VECTORIZE.query(vector, { topK: TOP_K });
   const symbols = (result.matches || []).map((m) => ({ symbol: m.id, score: m.score }));
-  return json({ source: 'semantic', query, similarTo: null, symbols });
+  return json({ source: 'semantic', query, similarTo: null, themeScore, themeSlug, symbols });
 };
