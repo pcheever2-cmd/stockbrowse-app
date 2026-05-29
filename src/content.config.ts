@@ -7,7 +7,14 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    author: z.string().default('Compass Score Team'),
+    author: z.string().default('Stockbrowse Team'),
+    category: z.enum([
+      'getting-started',
+      'your-money',
+      'investing-basics',
+      'stock-discovery',
+      'industry-guides',
+    ]).default('getting-started'),
   }),
 });
 

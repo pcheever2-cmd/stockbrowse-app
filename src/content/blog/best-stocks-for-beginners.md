@@ -3,6 +3,7 @@ title: "How Beginners Can Browse Stocks Like Shopping on Amazon"
 description: "You opened a brokerage account. Now what? Learn how to find quality stocks without knowing any ticker symbols."
 pubDate: 2026-02-27
 author: "Stockbrowse Team"
+category: "getting-started"
 ---
 
 Most investing tools have a problem. They're built for people who already know what they're looking for.
@@ -35,7 +36,7 @@ That intuition is your starting point. There are roughly 11 major sectors in the
 - **Materials** -- chemicals, metals, mining
 - **Communication Services** -- media, telecom, social platforms
 
-Pick one or two that feel familiar. You've just narrowed 4,500+ publicly traded companies down to a few hundred.
+Pick one or two that feel familiar. You've just narrowed 4,500+ publicly traded companies down to a few hundred. (Want a fuller tour of what each sector actually does? [Here's our guide to all 11](/blog/best-stocks-by-industry).)
 
 ---
 
@@ -54,7 +55,7 @@ What matters is whether the business is high quality. Things like:
 
 The problem is that these metrics are buried inside financial reports that are dense and technical by design.
 
-This is exactly what Stockbrowse was built to solve. The **Compass Score** is a 0-100 quality rating backed by 30 years of market data. It combines all of these factors into a single number. A score of 85+ (Grade A) signals a company with strong profitability, real cash flow (not just accounting profits), and a lower chance of nasty surprises -- the kind of business that tends to compound money over time rather than destroy it. A score below 40 (Grade D or F) flags weak profitability, high volatility, or aggressive expansion that hasn't proven out yet.
+This is exactly what Stockbrowse was built to solve. The **Compass Score** is a 0-100 quality rating backed by 30 years of market data. It combines all of these factors into a single number. A score of 85+ (Grade A) signals a company with strong profitability, real cash flow (not just accounting profits), and a lower chance of nasty surprises -- the kind of business that tends to compound money over time rather than destroy it. A score below 40 (Grade D or F) flags weak profitability, high volatility, or aggressive expansion that hasn't proven out yet. ([Here's exactly what goes into the score](/blog/what-is-a-stock-quality-score).)
 
 You don't need to read a 10-K. You need one number.
 
@@ -78,7 +79,7 @@ On Stockbrowse you can browse by industry, by investment goal (growth, dividends
 
 You don't need to know any ticker symbols to start investing in individual stocks. You need a starting point (an industry you understand), a quality filter (the Compass Score), and a way to browse instead of search.
 
-That's what Stockbrowse is built to give you.
+That's what Stockbrowse is built to give you. And once you've found a few companies worth a look, [here's how to tell whether one is actually worth buying](/blog/how-to-pick-a-good-company).
 
 [Start browsing quality stocks by industry -- no tickers required →](/browse/all)
 

@@ -1,20 +1,30 @@
 ---
 import Layout from './Layout.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
   description: string;
   pubDate: Date;
   author: string;
+  category?: string;
+  slug?: string;
 }
 
-const { title, description, pubDate, author } = Astro.props;
+const { title, description, pubDate, author, category, slug } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
+
+// Get related articles from same category
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(post => post.data.category === category && post.id !== slug)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <Layout title={`${title} | Stockbrowse Blog`} description={description}>
@@ -31,8 +41,37 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
         <slot />
       </div>
 
-      <footer class="mt-12 pt-8 border-t border-[rgba(255,255,255,0.1)]">
-        <a href="/learn" class="text-[#22D3EE] hover:underline">← Back to all articles</a>
+      <!-- CTA Banner -->
+      <div class="mt-12 bg-[#161B24] border border-[#22D3EE]/20 rounded-xl p-8 text-center">
+        <p class="text-white font-bold text-lg mb-2">Ready to explore?</p>
+        <p class="text-[#CBD5E1] mb-4">Look up any stock's quality score or browse companies by industry.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/tool" class="inline-block bg-[#22D3EE] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#06B6D4] transition">
+            Look Up a Stock
+          </a>
+          <a href="/browse" class="inline-block bg-transparent border border-[#22D3EE] text-[#22D3EE] px-6 py-3 rounded-lg font-semibold hover:bg-[#22D3EE]/10 transition">
+            Browse by Industry
+          </a>
+        </div>
+      </div>
+
+      <!-- Related Articles -->
+      {relatedPosts.length > 0 && (
+        <div class="mt-12">
+          <h3 class="text-white font-bold text-lg mb-4">Keep reading</h3>
+          <div class="space-y-4">
+            {relatedPosts.map((post) => (
+              <a href={`/blog/${post.id}`} class="block bg-[#161B24] rounded-lg p-4 hover:bg-[#1a1f2e] transition">
+                <p class="text-white font-semibold hover:text-[#22D3EE] transition">{post.data.title}</p>
+                <p class="text-[#64748B] text-sm mt-1">{post.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <footer class="mt-8 pt-8 border-t border-[rgba(255,255,255,0.1)]">
+        <a href="/blog" class="text-[#22D3EE] hover:underline">← Back to all articles</a>
       </footer>
     </div>
   </article>
