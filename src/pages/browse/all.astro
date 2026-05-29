@@ -66,6 +66,7 @@ const marketCapRanges = [
             <!-- Sort -->
             <div class="flex gap-3 items-center">
               <select id="sortSelect" class="px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 rounded-lg text-sm">
+                <option value="relevance-desc">Best match</option>
                 <option value="score-desc">Highest Score</option>
                 <option value="score-asc">Lowest Score</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -226,6 +227,8 @@ const marketCapRanges = [
       goldenOnly: false,
       sort: 'score-desc'
     };
+    // Map<symbol, similarityScore> when a semantic ("meaning") search is active; null otherwise.
+    let semanticRank = null;
 
     // Premium valuation data (fetched at runtime for Plus+ users)
     let valuationMap = {};  // symbol -> valuationRating
@@ -554,20 +557,47 @@ const marketCapRanges = [
       }
     }
 
+    // Semantic search: returns Map<symbol, score> from the meaning index, or null.
+    // similarToStock (optional) triggers "stocks like X" using that company's own vector.
+    async function fetchSemanticResults(query, similarToStock) {
+      try {
+        const payload = similarToStock ? { similarTo: similarToStock.symbol } : { query };
+        const res = await fetch('/api/search/semantic', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) return null;
+        const data = await res.json();
+        if (!data.symbols || !data.symbols.length) return null;
+        const m = new Map();
+        for (const s of data.symbols) m.set(s.symbol, s.score);
+        return m;
+      } catch {
+        return null;
+      }
+    }
+
     // Filter functions
     function applyFilters() {
       filteredStocks = allStocks.filter(stock => {
-        // Search filter - now supports both literal and smart search
+        // Search filter — semantic discovery when active, else literal/keyword
         if (filters.search) {
           const query = filters.search.toLowerCase();
 
-          // Check for literal ticker/name match first
-          const literalMatch = stock.symbol.toLowerCase().includes(query) ||
-                               stock.name.toLowerCase().includes(query);
-
-          // If no literal match, filters will be applied by smart search
-          if (!literalMatch && !query.match(/\b(stocks?|like|similar|best|top|cheap|under|over|tech|healthcare|finance|dividend|growth)\b/)) {
-            return false;
+          if (semanticRank) {
+            // Discovery mode: keep only stocks the meaning-search surfaced
+            // (plus any exact literal match, so a typed ticker still shows).
+            const literal = stock.symbol.toLowerCase() === query ||
+                            stock.name.toLowerCase().includes(query);
+            if (!semanticRank.has(stock.symbol) && !literal) return false;
+          } else {
+            // Literal lookup / keyword mode
+            const literalMatch = stock.symbol.toLowerCase().includes(query) ||
+                                 stock.name.toLowerCase().includes(query);
+            if (!literalMatch && !query.match(/\b(stocks?|like|similar|best|top|cheap|under|over|tech|healthcare|finance|dividend|growth)\b/)) {
+              return false;
+            }
           }
         }
 
@@ -632,6 +662,18 @@ const marketCapRanges = [
 
     function sortStocks() {
       const [field, direction] = filters.sort.split('-');
+
+      // Relevance = semantic similarity weighted by quality (the "best sellers" bias).
+      // Compass 0-100 maps to a 0.5-1.0 multiplier, so quality nudges order without
+      // overriding a much stronger semantic match.
+      if (field === 'relevance' && semanticRank) {
+        filteredStocks.sort((a, b) => {
+          const sa = (semanticRank.get(a.symbol) || 0) * (0.5 + (a.compassScore || 0) / 200);
+          const sb = (semanticRank.get(b.symbol) || 0) * (0.5 + (b.compassScore || 0) / 200);
+          return sb - sa;
+        });
+        return;
+      }
 
       filteredStocks.sort((a, b) => {
         let aVal, bVal;
@@ -898,68 +940,57 @@ const marketCapRanges = [
       clearTimeout(searchTimeout);
 
       // Debounce for smart search parsing
-      searchTimeout = setTimeout(() => {
+      searchTimeout = setTimeout(async () => {
         const hintEl = document.getElementById('smartSearchHint');
         const hintText = document.getElementById('smartSearchText');
+        const sortSelect = document.getElementById('sortSelect');
+        const q = query.trim();
+        const ql = q.toLowerCase();
 
-        if (query.trim().length > 0) {
-          // Check if this looks like a smart query (contains keywords)
-          if (query.match(/\b(stocks?|like|similar|best|top|cheap|under|over|tech|healthcare|finance|dividend|growth|value|safe|risky)\b/i)) {
-            // Parse and apply smart filters
-            const smartFilters = parseSmartSearch(query);
+        // A single token that matches a ticker/name is a lookup (stay literal);
+        // anything descriptive ("GLP-1 stocks", "stocks like Netflix") goes semantic.
+        const isLookup = q.length > 0 && !q.includes(' ') &&
+          allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql));
+        const goSemantic = q.length > 0 && !isLookup;
 
-            // Only override filter categories that the smart search actually detected
-            // This preserves manually-set filters for categories the search didn't touch
-            if (smartFilters.grades.length > 0) {
-              filters.grades = [];
-            }
-            if (smartFilters.industries.length > 0) {
-              filters.industries = [];
-            }
-            if (smartFilters.priceRanges.length > 0) {
-              filters.priceRanges = [];
-            }
-            if (smartFilters.marketCapRanges && smartFilters.marketCapRanges.length > 0) {
-              filters.marketCapRanges = [];
-            }
+        if (goSemantic) {
+          const parsed = parseSmartSearch(query);
 
-            applySmartFilters(smartFilters);
+          // For thematic queries, honor explicit numeric/grade words ("cheap", "under $50",
+          // "safe"). For "stocks like X" skip these (they're derived from the reference stock).
+          if (!parsed.similarTo) {
+            if (parsed.grades.length > 0) filters.grades = [...new Set(parsed.grades)];
+            if (parsed.priceRanges.length > 0) filters.priceRanges = [...new Set(parsed.priceRanges)];
+            if (parsed.marketCapRanges && parsed.marketCapRanges.length > 0) filters.marketCapRanges = [...new Set(parsed.marketCapRanges)];
+          }
 
-            // Show a hint about what was detected
-            let hintMessage = [];
-            if (smartFilters.similarTo) {
-              hintMessage.push(`Finding stocks similar to ${smartFilters.similarTo.name}`);
-            }
-            if (smartFilters.industries.length > 0) {
-              hintMessage.push(`${smartFilters.industries.join(', ')} industry`);
-            }
-            if (smartFilters.grades.length > 0) {
-              hintMessage.push(`Grade ${smartFilters.grades.join(', ')}`);
-            }
-            if (smartFilters.priceRanges.length > 0) {
-              const priceHints = [];
-              if (smartFilters.priceRanges.includes('0-10')) priceHints.push('under $10');
-              if (smartFilters.priceRanges.includes('10-50')) priceHints.push('$10-$50');
-              if (smartFilters.priceRanges.includes('50-100')) priceHints.push('$50-$100');
-              if (priceHints.length > 0) hintMessage.push(priceHints.join(', '));
-            }
+          hintText.textContent = 'Searching…';
+          hintEl.classList.remove('hidden');
 
-            if (hintMessage.length > 0) {
-              hintText.textContent = hintMessage.join(' • ');
-              hintEl.classList.remove('hidden');
-            } else {
-              hintEl.classList.add('hidden');
-            }
+          semanticRank = await fetchSemanticResults(query, parsed.similarTo);
+
+          if (semanticRank) {
+            filters.sort = 'relevance-desc';
+            if (sortSelect) sortSelect.value = 'relevance-desc';
+            hintText.textContent = parsed.similarTo
+              ? `Stocks similar to ${parsed.similarTo.name}`
+              : `Best matches for "${q}"`;
+            hintEl.classList.remove('hidden');
           } else {
             hintEl.classList.add('hidden');
           }
         } else {
+          // Lookup or cleared: drop semantic mode, restore default sort.
+          semanticRank = null;
+          if (filters.sort === 'relevance-desc') {
+            filters.sort = 'score-desc';
+            if (sortSelect) sortSelect.value = 'score-desc';
+          }
           hintEl.classList.add('hidden');
         }
 
         applyFilters();
 
-        // Hide suggestions after applying
         setTimeout(() => {
           document.getElementById('searchSuggestions')?.classList.add('hidden');
         }, 100);
