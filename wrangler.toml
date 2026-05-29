@@ -8,6 +8,15 @@ pages_build_output_dir = "./dist"
 binding = "STOCKS_PREMIUM_KV"
 id = "a16202c79b5b4372b3a686d6a4f8baf1"
 
+# Workers AI — embeddings (bge-base-en-v1.5) + Llama query parsing for semantic search
+[ai]
+binding = "AI"
+
+# Vectorize — semantic search index over stock descriptions (768-dim, cosine)
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "stockbrowse-stocks"
+
 # Secret values should be set in the Cloudflare Pages dashboard:
 #   SUPABASE_URL
 #   SUPABASE_ANON_KEY
