@@ -15,5 +15,8 @@
     "astro": "^5.17.1",
     "stripe": "^22.0.1",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260528.1"
   }
 }
