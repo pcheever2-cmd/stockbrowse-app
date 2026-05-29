@@ -21,6 +21,19 @@ const TIER_MAP: Record<string, string> = {
   'prod_USo9k60n0wpxdj': 'pro',
 };
 
+/**
+ * Returns the subscription's current period end as an ISO string, or null.
+ * As of API version 2025-03-31.basil, `current_period_end` moved from the
+ * Subscription onto its items. Read item-level first, then fall back to the
+ * legacy top-level field so this works regardless of the account's API version.
+ */
+function periodEndISO(subscription: Stripe.Subscription): string | null {
+  const periodEnd =
+    subscription.items.data[0]?.current_period_end ??
+    (subscription as unknown as { current_period_end?: number }).current_period_end;
+  return periodEnd ? new Date(periodEnd * 1000).toISOString() : null;
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
@@ -69,7 +82,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           .update({
             subscription_tier: tier,
             stripe_customer_id: session.customer as string,
-            current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
+            current_period_end: periodEndISO(subscription),
           })
           .eq('id', userId);
 
@@ -97,7 +110,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         .from('profiles')
         .update({
           subscription_tier: actualTier,
-          current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
+          current_period_end: periodEndISO(subscription),
         })
         .eq('stripe_customer_id', customerId);
 
