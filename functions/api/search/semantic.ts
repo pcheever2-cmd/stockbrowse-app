@@ -47,13 +47,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (!vector) return errorResponse('embedding failed', 502);
   }
 
-  const result = await env.VECTORIZE.query(vector, {
-    topK: TOP_K,
-    returnMetadata: 'all',
-  });
+  // The vector id IS the ticker (set at upsert), so we skip metadata entirely —
+  // Vectorize caps topK low when returnMetadata:'all', and we don't need it.
+  const result = await env.VECTORIZE.query(vector, { topK: TOP_K });
 
   const symbols = (result.matches || [])
-    .map((m) => ({ symbol: (m.metadata?.symbol as string) || m.id, score: m.score }))
+    .map((m) => ({ symbol: m.id, score: m.score }))
     .filter((s) => s.symbol !== similarTo); // exclude the reference stock itself
 
   return json({ query, similarTo, symbols });
