@@ -1,0 +1,15 @@
+# Standalone rate-limiter Worker for the Pages app.
+#
+# Pages projects can't host a Durable Object or the native [[ratelimits]] binding,
+# but a regular Worker CAN use [[ratelimits]] — so the Pages app binds to this Worker
+# via a service binding ([[services]] in the app's wrangler.toml) and asks it to
+# rate-limit by key (the caller's IP). The limit is strongly consistent per CF location.
+name = "stockbrowse-rate-limiter"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# 30 requests / 60s per key (IP), per Cloudflare location.
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "2001"
+simple = { limit = 30, period = 60 }

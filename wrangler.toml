@@ -27,6 +27,13 @@ index_name = "stockbrowse-stocks"
 binding = "VECTORIZE_THEMES"
 index_name = "stockbrowse-themes"
 
+# Rate limiting for /api/search/semantic. Pages can't host the native [[ratelimits]]
+# binding, so we bind to the standalone stockbrowse-rate-limiter Worker (which can) via
+# a service binding. See workers/rate-limiter/. checkRateLimit() fails open if absent.
+[[services]]
+binding = "RATE_LIMITER_SVC"
+service = "stockbrowse-rate-limiter"
+
 # Secret values should be set in the Cloudflare Pages dashboard:
 #   SUPABASE_URL
 #   SUPABASE_ANON_KEY

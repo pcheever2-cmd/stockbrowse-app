@@ -31,6 +31,7 @@ interface Env extends SearchCacheEnv {
   AI: Ai;
   VECTORIZE: VectorizeIndex;
   VECTORIZE_THEMES: VectorizeIndex;
+  RATE_LIMITER_SVC: Fetcher;
 }
 
 const EMBEDDING_MODEL = '@cf/baai/bge-base-en-v1.5';
@@ -67,7 +68,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (query.length > 200) return errorResponse('query too long', 400);
 
   const ip = request.headers.get('CF-Connecting-IP') || '';
-  if (!(await checkRateLimit(env, ip))) {
+  if (!(await checkRateLimit(env.RATE_LIMITER_SVC, ip))) {
     return errorResponse('rate limit exceeded', 429);
   }
 

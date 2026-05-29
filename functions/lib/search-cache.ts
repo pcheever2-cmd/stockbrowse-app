@@ -46,7 +46,6 @@ export interface CatalogEntry {
 
 // Tunables ------------------------------------------------------------------
 export const HIT_THRESHOLD = 0.86; // cosine; query must be at least this close to a cataloged theme to serve curated
-export const RATE_LIMIT_PER_MIN = 30; // per-IP requests to the embed path
 export const MONTHLY_BUDGET_CAP = 5_000; // arbitrary "spend units" ceiling for any paid path (dormant in Phase A)
 const RECENT_MISS_MAX = 200; // cap on the rolling recent-miss list
 
@@ -54,7 +53,6 @@ const RECENT_MISS_MAX = 200; // cap on the rolling recent-miss list
 const catalogKey = (slug: string) => `catalog:${slug}`;
 const missKey = (q: string) => `miss:${q}`;
 const RECENT_MISS_KEY = 'miss:_recent';
-const rlKey = (ip: string, minuteBucket: number) => `rl:${ip}:${minuteBucket}`;
 const budgetKey = (month: string) => `budget:${month}`;
 
 /** kebab-case slug; stable for use as a Vectorize id and KV key suffix. */
@@ -121,19 +119,17 @@ export async function logMiss(env: SearchCacheEnv, query: string): Promise<void>
 
 // Rate limiting -------------------------------------------------------------
 /**
- * Per-IP sliding-minute limiter on the embed path. Returns true if the request is
- * within the cap. Fails OPEN (returns true) on KV errors — availability over
- * strictness for a free endpoint.
+ * Per-IP limiter on the embed path. Pages can't host the native rate-limit binding,
+ * so this calls the standalone stockbrowse-rate-limiter Worker over a service binding
+ * (a Fetcher) — strongly consistent within a CF location, unlike KV. The Worker
+ * returns 200 (within cap) or 429 (exceeded). Fails OPEN on errors / missing binding —
+ * availability over strictness for a free endpoint. No-op when ip is empty.
  */
-export async function checkRateLimit(env: SearchCacheEnv, ip: string): Promise<boolean> {
-  if (!ip) return true;
-  const minuteBucket = Math.floor(Date.now() / 60_000);
-  const key = rlKey(ip, minuteBucket);
+export async function checkRateLimit(svc: Fetcher | undefined, ip: string): Promise<boolean> {
+  if (!ip || !svc) return true;
   try {
-    const count = parseInt((await env.SEARCH_CACHE_KV.get(key)) || '0', 10) || 0;
-    if (count >= RATE_LIMIT_PER_MIN) return false;
-    await env.SEARCH_CACHE_KV.put(key, String(count + 1), { expirationTtl: 90 });
-    return true;
+    const res = await svc.fetch(`https://rate-limiter/?key=${encodeURIComponent(ip)}`);
+    return res.ok; // 200 within cap, 429 exceeded
   } catch {
     return true;
   }
