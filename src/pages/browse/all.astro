@@ -229,6 +229,8 @@ const marketCapRanges = [
     };
     // Map<symbol, similarityScore> when a semantic ("meaning") search is active; null otherwise.
     let semanticRank = null;
+    // Map<symbol, {why, kind}> populated only on a curated-catalog hit; empty otherwise.
+    let semanticWhy = new Map();
 
     // Premium valuation data (fetched at runtime for Plus+ users)
     let valuationMap = {};  // symbol -> valuationRating
@@ -567,13 +569,20 @@ const marketCapRanges = [
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
-        if (!res.ok) return null;
+        if (!res.ok) { semanticWhy = new Map(); return null; }
         const data = await res.json();
-        if (!data.symbols || !data.symbols.length) return null;
+        if (!data.symbols || !data.symbols.length) { semanticWhy = new Map(); return null; }
         const m = new Map();
-        for (const s of data.symbols) m.set(s.symbol, s.score);
+        const why = new Map();
+        for (const s of data.symbols) {
+          m.set(s.symbol, s.score);
+          // Catalog hits carry a one-line "why"; raw-semantic results don't.
+          if (s.why) why.set(s.symbol, { why: s.why, kind: s.kind });
+        }
+        semanticWhy = why;
         return m;
       } catch {
+        semanticWhy = new Map();
         return null;
       }
     }
@@ -741,6 +750,20 @@ const marketCapRanges = [
           ? '<div class="absolute -top-2 -right-2 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs font-bold px-2 py-0.5 rounded-full shadow-lg">⭐ GOLDEN</div>'
           : '';
 
+        // Curated "why this matches the theme" line — only present on catalog hits.
+        const whyEntry = semanticWhy.get(stock.symbol);
+        const isPicksShovels = whyEntry && whyEntry.kind === 'picks-shovels';
+        const kindLabel = isPicksShovels ? 'Picks &amp; shovels' : 'Direct';
+        const kindTitle = isPicksShovels
+          ? 'Supplies the theme without being a pure play on it'
+          : 'A direct bet on the theme';
+        const whyLine = whyEntry
+          ? `<div class="mb-3 text-xs text-[#94A3B8] flex items-start gap-1.5">
+               <span class="shrink-0 mt-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold ${isPicksShovels ? 'bg-sky-500/15 text-sky-300' : 'bg-emerald-500/15 text-emerald-300'}" title="${kindTitle}">${kindLabel}</span>
+               <span>${escapeHtml(whyEntry.why)}</span>
+             </div>`
+          : '';
+
         return `
           <div class="relative bg-[#161B24] ${cardBorder} rounded-xl p-4 hover:shadow-lg transition">
             ${goldenBadge}
@@ -763,6 +786,8 @@ const marketCapRanges = [
                 ${stock.moonshotGrade ? `<div class="bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full text-xs font-bold moonshot-badge" data-symbol="${stock.symbol}" title="Moonshot Score">${stock.moonshotGrade}M</div>` : ''}
               </div>
             </div>
+
+            ${whyLine}
 
             <div class="space-y-1 text-xs text-[#CBD5E1] mb-3">
               <div>${stock.normalizedIndustry}</div>
@@ -886,6 +911,12 @@ const marketCapRanges = [
       return `$${(marketCap * 1000).toFixed(0)}M`;
     };
 
+    // Escape text injected into card innerHTML (curated "why" lines, etc.)
+    function escapeHtml(str) {
+      return String(str ?? '').replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
     // Search suggestions
     const searchExamples = [
       { query: 'stocks like Amazon', description: 'Find similar companies by industry & size' },
@@ -982,6 +1013,7 @@ const marketCapRanges = [
         } else {
           // Lookup or cleared: drop semantic mode, restore default sort.
           semanticRank = null;
+          semanticWhy = new Map();
           if (filters.sort === 'relevance-desc') {
             filters.sort = 'score-desc';
             if (sortSelect) sortSelect.value = 'score-desc';

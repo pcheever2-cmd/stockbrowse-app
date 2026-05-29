@@ -8,6 +8,11 @@ pages_build_output_dir = "./dist"
 binding = "STOCKS_PREMIUM_KV"
 id = "a16202c79b5b4372b3a686d6a4f8baf1"
 
+# KV namespace for the curated theme catalog + miss logging + rate-limit/budget counters
+[[kv_namespaces]]
+binding = "SEARCH_CACHE_KV"
+id = "95b947c54df24b9c9df6f850e0cfd8c1"
+
 # Workers AI — embeddings (bge-base-en-v1.5) + Llama query parsing for semantic search
 [ai]
 binding = "AI"
@@ -16,6 +21,11 @@ binding = "AI"
 [[vectorize]]
 binding = "VECTORIZE"
 index_name = "stockbrowse-stocks"
+
+# Vectorize — curated theme catalog index (768-dim, cosine); vector id = theme slug
+[[vectorize]]
+binding = "VECTORIZE_THEMES"
+index_name = "stockbrowse-themes"
 
 # Secret values should be set in the Cloudflare Pages dashboard:
 #   SUPABASE_URL
