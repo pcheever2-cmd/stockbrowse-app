@@ -244,7 +244,7 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
 
       <!-- Price History (Free) — hidden until the chart loads client-side -->
       <div id="price-history" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 hidden">
-        <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-3">
           <h2 class="text-xl font-bold text-slate-100">Price History</h2>
           <div id="price-range-buttons" class="flex gap-1 text-xs font-semibold">
             {['1M', '6M', '1Y', '5Y', 'All'].map(r => (
@@ -252,8 +252,16 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             ))}
           </div>
         </div>
+        <!-- Valuation overlays — enabled client-side only when data exists -->
+        <div id="overlay-toggles" class="flex items-center gap-2 mb-3 text-xs font-semibold flex-wrap hidden">
+          <span class="text-[#64748B] uppercase tracking-wide">Overlay</span>
+          <button data-overlay="pe" class="px-2.5 py-1 rounded-md border border-[rgba(255,255,255,0.1)] text-[#64748B] hover:text-slate-200 transition">P/E</button>
+          <button data-overlay="evEbitda" class="px-2.5 py-1 rounded-md border border-[rgba(255,255,255,0.1)] text-[#64748B] hover:text-slate-200 transition">EV/EBITDA</button>
+        </div>
+        <!-- Crosshair readout -->
+        <div id="chart-legend" class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs mb-2 min-h-[16px] text-[#94A3B8]"></div>
         <div id="price-chart" data-symbol={stock.symbol} class="w-full h-[320px]"></div>
-        <p class="text-xs text-[#64748B] mt-3">Daily closes, adjusted for splits &amp; dividends. Updated each trading day.</p>
+        <p class="text-xs text-[#64748B] mt-3">Price = daily closes (split/dividend adjusted). P/E &amp; EV/EBITDA are trailing-twelve-month; dashed line = current forward P/E. Updated each trading day.</p>
       </div>
 
       <!-- Company Profile (Free) -->
@@ -1229,9 +1237,11 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
 
   <!-- Price history chart (public, lightweight-charts) -->
   <script>
-    import { createChart, AreaSeries, ColorType } from 'lightweight-charts';
+    import { createChart, AreaSeries, LineSeries, ColorType, LineStyle } from 'lightweight-charts';
 
     const ACCENT = '#22D3EE';
+    const PE_COLOR = '#FBBF24';   // amber
+    const EV_COLOR = '#A78BFA';   // violet
     const RANGE_MONTHS: Record<string, number> = { '1M': 1, '6M': 6, '1Y': 12, '5Y': 60, 'All': 0 };
 
     // Subtract whole months in UTC, clamping the day so month-end dates don't
@@ -1323,6 +1333,112 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       });
       const allBtn = buttons.find(b => b.dataset.range === 'All');
       if (allBtn) setActive(allBtn);
+
+      // ---- Valuation overlays (trailing P/E, EV/EBITDA) on a shared left axis ----
+      const legend = document.getElementById('chart-legend');
+      const fmtPrice = (v: number) => '$' + v.toFixed(2);
+      const fmtMult = (v: number) => v.toFixed(1) + '×';
+      const chip = (color: string, label: string, val: string) =>
+        `<span style="color:${color}">●</span> <span class="text-[#64748B]">${label}</span> <span class="text-slate-200 font-semibold">${val}</span>`;
+
+      let peSeries: any = null;
+      let evSeries: any = null;
+      let overlays: { pe: any[]; evEbitda: any[]; fwdPe: number | null } = { pe: [], evEbitda: [], fwdPe: null };
+      try {
+        const r = await fetch(`/api/stock/${symbol}/overlays`);
+        if (r.ok) overlays = await r.json();
+      } catch { /* no overlays — price-only chart */ }
+
+      const hasPe = Array.isArray(overlays.pe) && overlays.pe.length >= 2;
+      const hasEv = Array.isArray(overlays.evEbitda) && overlays.evEbitda.length >= 2;
+
+      const renderLegend = (param?: any) => {
+        if (!legend) return;
+        const valAt = (s: any, latest: any[]): number | null | undefined => {
+          if (!s) return null;
+          if (param && param.time) {
+            const d = param.seriesData && param.seriesData.get(s);
+            return d ? (d as any).value : undefined; // undefined = gap at this date
+          }
+          return latest.length ? latest[latest.length - 1].value : null;
+        };
+        const parts: string[] = [];
+        const pv = valAt(series, data);
+        if (pv != null) parts.push(chip(ACCENT, 'Price', fmtPrice(pv as number)));
+        else if (pv === undefined) parts.push(chip(ACCENT, 'Price', '—'));
+        if (peSeries && peSeries.options().visible) {
+          const v = valAt(peSeries, overlays.pe);
+          parts.push(chip(PE_COLOR, 'P/E', v == null ? (v === undefined ? '—' : '') : fmtMult(v as number)));
+        }
+        if (evSeries && evSeries.options().visible) {
+          const v = valAt(evSeries, overlays.evEbitda);
+          parts.push(chip(EV_COLOR, 'EV/EBITDA', v == null ? (v === undefined ? '—' : '') : fmtMult(v as number)));
+        }
+        const dateStr = param && param.time ? ` <span class="text-[#64748B]">${param.time}</span>` : '';
+        legend.innerHTML = parts.join('&nbsp;&nbsp;&nbsp;') + dateStr;
+      };
+
+      if (hasPe || hasEv) {
+        document.getElementById('overlay-toggles')?.classList.remove('hidden');
+        chart.applyOptions({ leftPriceScale: { visible: false, borderColor: 'rgba(255,255,255,0.08)' } });
+
+        const mkLine = (seriesData: any[], color: string) => {
+          const s = chart.addSeries(LineSeries, {
+            color, lineWidth: 2, priceScaleId: 'left',
+            priceLineVisible: false, lastValueVisible: false, visible: false,
+            priceFormat: { type: 'price', precision: 1, minMove: 0.1 },
+          });
+          s.setData(seriesData);
+          return s;
+        };
+
+        const peBtn = document.querySelector<HTMLButtonElement>('#overlay-toggles [data-overlay="pe"]');
+        const evBtn = document.querySelector<HTMLButtonElement>('#overlay-toggles [data-overlay="evEbitda"]');
+
+        if (hasPe) {
+          peSeries = mkLine(overlays.pe, PE_COLOR);
+          if (overlays.fwdPe && overlays.fwdPe > 0) {
+            peSeries.createPriceLine({
+              price: overlays.fwdPe, color: PE_COLOR, lineWidth: 1,
+              lineStyle: LineStyle.Dashed, axisLabelVisible: true, title: 'Fwd P/E',
+            });
+          }
+        } else peBtn?.remove();
+        if (hasEv) evSeries = mkLine(overlays.evEbitda, EV_COLOR);
+        else evBtn?.remove();
+
+        const syncLeftAxis = () => {
+          const anyVisible = (peSeries && peSeries.options().visible) || (evSeries && evSeries.options().visible);
+          chart.applyOptions({ leftPriceScale: { visible: !!anyVisible } });
+        };
+        const wireToggle = (btn: HTMLButtonElement | null, getS: () => any, color: string) => {
+          if (!btn || !getS()) return;
+          btn.addEventListener('click', () => {
+            const s = getS();
+            const vis = !s.options().visible;
+            s.applyOptions({ visible: vis });
+            btn.classList.toggle('text-slate-900', vis);
+            btn.classList.toggle('text-[#64748B]', !vis);
+            btn.style.backgroundColor = vis ? color : '';
+            btn.style.borderColor = vis ? color : '';
+            syncLeftAxis();
+            renderLegend();
+          });
+        };
+        wireToggle(peBtn, () => peSeries, PE_COLOR);
+        wireToggle(evBtn, () => evSeries, EV_COLOR);
+
+        // Deep-link: /stock/X?overlay=pe,evEbitda pre-activates overlays (shareable view).
+        const want = new URLSearchParams(location.search).get('overlay');
+        if (want) {
+          want.split(',').forEach(k => {
+            document.querySelector<HTMLButtonElement>(`#overlay-toggles [data-overlay="${k.trim()}"]`)?.click();
+          });
+        }
+      }
+
+      chart.subscribeCrosshairMove(renderLegend);
+      renderLegend();
     });
   </script>
 </Layout>
