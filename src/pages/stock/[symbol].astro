@@ -242,6 +242,20 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         </div>
       </div>
 
+      <!-- Price History (Free) — hidden until the chart loads client-side -->
+      <div id="price-history" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 hidden">
+        <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+          <h2 class="text-xl font-bold text-slate-100">Price History</h2>
+          <div id="price-range-buttons" class="flex gap-1 text-xs font-semibold">
+            {['1M', '6M', '1Y', '5Y', 'All'].map(r => (
+              <button data-range={r} class="px-2.5 py-1 rounded-md text-[#64748B] hover:text-slate-200 hover:bg-[#0F1419] transition">{r}</button>
+            ))}
+          </div>
+        </div>
+        <div id="price-chart" data-symbol={stock.symbol} class="w-full h-[320px]"></div>
+        <p class="text-xs text-[#64748B] mt-3">Daily closes, adjusted for splits &amp; dividends. Updated each trading day.</p>
+      </div>
+
       <!-- Company Profile (Free) -->
       {companyProfile && (
         <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
@@ -1210,6 +1224,105 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
       });
 
       // Analyst sorting is now handled inside hydratePremiumFields()
+    });
+  </script>
+
+  <!-- Price history chart (public, lightweight-charts) -->
+  <script>
+    import { createChart, AreaSeries, ColorType } from 'lightweight-charts';
+
+    const ACCENT = '#22D3EE';
+    const RANGE_MONTHS: Record<string, number> = { '1M': 1, '6M': 6, '1Y': 12, '5Y': 60, 'All': 0 };
+
+    // Subtract whole months in UTC, clamping the day so month-end dates don't
+    // roll forward (e.g. Mar 31 − 1mo → Feb 28, not Mar 3). Returns 'YYYY-MM-DD'.
+    const monthsBefore = (isoDate: string, months: number): string => {
+      const d = new Date(isoDate + 'T00:00:00Z');
+      const day = d.getUTCDate();
+      d.setUTCDate(1);
+      d.setUTCMonth(d.getUTCMonth() - months);
+      const daysInMonth = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 0)).getUTCDate();
+      d.setUTCDate(Math.min(day, daysInMonth));
+      return d.toISOString().slice(0, 10);
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const section = document.getElementById('price-history');
+      const container = document.getElementById('price-chart') as HTMLElement | null;
+      if (!section || !container) return;
+
+      const symbol = container.dataset.symbol;
+      if (!symbol) return;
+
+      let data: { time: string; value: number }[];
+      try {
+        const res = await fetch(`/api/stock/${symbol}/prices`);
+        if (!res.ok) return;
+        data = await res.json();
+      } catch {
+        return; // section stays hidden — degrade gracefully
+      }
+      if (!Array.isArray(data) || data.length < 2) return; // thin/missing history
+
+      // Reveal before creating the chart so autoSize measures a non-zero box.
+      section.classList.remove('hidden');
+
+      const chart = createChart(container, {
+        autoSize: true,
+        layout: {
+          background: { type: ColorType.Solid, color: 'transparent' },
+          textColor: '#94A3B8',
+          attributionLogo: false,
+        },
+        grid: {
+          vertLines: { visible: false },
+          horzLines: { color: 'rgba(255,255,255,0.05)' },
+        },
+        rightPriceScale: { borderColor: 'rgba(255,255,255,0.08)' },
+        timeScale: { borderColor: 'rgba(255,255,255,0.08)' },
+        crosshair: {
+          vertLine: { color: ACCENT, labelBackgroundColor: ACCENT },
+          horzLine: { color: ACCENT, labelBackgroundColor: ACCENT },
+        },
+      });
+
+      const series = chart.addSeries(AreaSeries, {
+        lineColor: ACCENT,
+        topColor: 'rgba(34,211,238,0.25)',
+        bottomColor: 'rgba(34,211,238,0)',
+        lineWidth: 2,
+        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
+      });
+      series.setData(data);
+      chart.timeScale().fitContent();
+
+      // Range selector
+      const first = data[0].time;
+      const last = data[data.length - 1].time;
+      const buttons = Array.from(
+        document.querySelectorAll<HTMLButtonElement>('#price-range-buttons [data-range]')
+      );
+      const setActive = (active: HTMLButtonElement) => {
+        buttons.forEach(b => {
+          b.classList.toggle('text-[#22D3EE]', b === active);
+          b.classList.toggle('bg-[#0F1419]', b === active);
+          b.classList.toggle('text-[#64748B]', b !== active);
+        });
+      };
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const months = RANGE_MONTHS[btn.dataset.range || 'All'];
+          if (!months) {
+            chart.timeScale().fitContent();
+          } else {
+            const from = monthsBefore(last, months);
+            chart.timeScale().setVisibleRange({ from: from < first ? first : from, to: last });
+          }
+          setActive(btn);
+        });
+      });
+      const allBtn = buttons.find(b => b.dataset.range === 'All');
+      if (allBtn) setActive(allBtn);
     });
   </script>
 </Layout>
