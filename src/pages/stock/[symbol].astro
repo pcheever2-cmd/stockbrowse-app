@@ -261,6 +261,8 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         <!-- Crosshair readout -->
         <div id="chart-legend" class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs mb-2 min-h-[16px] text-[#94A3B8]"></div>
         <div id="price-chart" data-symbol={stock.symbol} class="w-full h-[320px]"></div>
+        <!-- Auto valuation read-out (computed client-side from the chart data) -->
+        <div id="chart-analysis" class="mt-4 pt-4 border-t border-[rgba(255,255,255,0.06)] text-sm text-[#CBD5E1] leading-relaxed space-y-1.5 hidden"></div>
         <p class="text-xs text-[#64748B] mt-3">Price = daily closes (split/dividend adjusted). P/E &amp; EV/EBITDA are trailing-twelve-month; dashed line = current forward P/E. Updated each trading day.</p>
       </div>
 
@@ -1436,6 +1438,87 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           });
         }
       }
+
+      // ---- Auto valuation narrative (deterministic — recomputed from the data, never stale) ----
+      const analysisEl = document.getElementById('chart-analysis');
+      const buildNarrative = () => {
+        if (!analysisEl || data.length < 2) return;
+        const lastDate = data[data.length - 1].time;
+        const winStart = monthsBefore(lastDate, 12);
+        const haveYear = data[0].time <= monthsBefore(lastDate, 9);
+        const asOf = (arr: any[]) => {
+          let r = arr[0];
+          for (const p of arr) { if (p.time <= winStart) r = p; else break; }
+          return r;
+        };
+        const pct = (x: number) => (x >= 0 ? '+' : '') + Math.round(x * 100) + '%';
+        const mult = (x: number) => x.toFixed(1) + '×';
+        const strong = (c: string) => `<span class="font-semibold text-slate-100">${c}</span>`;
+        const band = (q: number) => q >= 0.75 ? 'the upper end' : q <= 0.25 ? 'the lower end' : 'the middle';
+        const pctile = (arr: any[], v: number) => arr.filter(p => p.value < v).length / arr.length;
+
+        const peOk = Array.isArray(overlays.pe) && overlays.pe.length >= 30;
+        const evOk = Array.isArray(overlays.evEbitda) && overlays.evEbitda.length >= 30;
+        const primArr = peOk ? overlays.pe : (evOk ? overlays.evEbitda : null);
+        const primName = peOk ? 'P/E' : 'EV/EBITDA';
+
+        if (!primArr) {
+          analysisEl.innerHTML = `<p class="text-[#64748B]">${symbol} hasn't had steady positive earnings over this window, so P/E and EV/EBITDA aren't meaningful here.</p>`;
+          analysisEl.classList.remove('hidden');
+          return;
+        }
+
+        const priceNow = data[data.length - 1].value;
+        const priceThen = (asOf(data) || data[0]).value;
+        const P = priceThen ? priceNow / priceThen - 1 : 0;
+        const mNow = primArr[primArr.length - 1].value;
+        const mThen = (asOf(primArr) || primArr[0]).value;
+        const M = mThen ? mNow / mThen - 1 : 0;
+        const window = haveYear ? 'over the past year' : 'over its available history';
+
+        const sentences: string[] = [];
+
+        // 1) Move decomposition: price change vs multiple change.
+        let head: string;
+        if (P > 0.03) {
+          if (M <= P * 0.33)
+            head = `${symbol} is ${strong(pct(P))} ${window}, but its ${primName} only moved ${strong(pct(M))} — most of that is earnings growing into the price rather than a richer multiple, the more durable kind of move.`;
+          else if (M >= P * 0.75)
+            head = `${symbol} is ${strong(pct(P))} ${window}, and its ${primName} expanded ${strong(pct(M))} right alongside it — much of the move is the market paying up per dollar of earnings, so it leans on expectations holding.`;
+          else
+            head = `${symbol} is ${strong(pct(P))} ${window}, split between earnings growth and a higher multiple (${primName} ${strong(pct(M))}).`;
+        } else if (P < -0.03) {
+          if (M > 0.03)
+            head = `${symbol} is ${strong(pct(P))} ${window}, yet its ${primName} rose ${strong(pct(M))} — earnings fell faster than the price, so it screens more expensive than before.`;
+          else
+            head = `${symbol} is ${strong(pct(P))} ${window} and its ${primName} compressed with it (${strong(pct(M))}) — cheaper on earnings than before.`;
+        } else {
+          if (M > 0.05) head = `${symbol}'s price is roughly flat ${window} but its ${primName} rose ${strong(pct(M))}, a sign earnings softened underneath it.`;
+          else if (M < -0.05) head = `${symbol}'s price is roughly flat ${window} while its ${primName} fell ${strong(pct(M))}, so earnings grew underneath it.`;
+          else head = `${symbol} saw little change in price or valuation ${window}.`;
+        }
+        sentences.push(head);
+
+        // 2) Where it sits in its own multi-year range.
+        let s2 = `At ${strong(mult(mNow))} ${primName.toLowerCase() === 'p/e' ? 'earnings' : 'EBITDA'} it's in ${strong(band(pctile(primArr, mNow)))} of its 5-year range`;
+        if (peOk && evOk) s2 += `, with EV/EBITDA at ${mult(overlays.evEbitda[overlays.evEbitda.length - 1].value)}`;
+        sentences.push(s2 + '.');
+
+        // 3) What the forward multiple implies.
+        const fwd = overlays.fwdPe;
+        if (peOk && fwd && fwd > 0) {
+          const rel = fwd < mNow * 0.95 ? `below the trailing ${mult(mNow)}, so the market's pricing in earnings growth ahead`
+            : fwd > mNow * 1.05 ? `above the trailing ${mult(mNow)}, implying the market expects earnings to soften`
+            : `roughly in line with the trailing ${mult(mNow)}`;
+          sentences.push(`Forward P/E is ${strong(mult(fwd))} — ${rel}.`);
+        }
+
+        analysisEl.innerHTML =
+          `<div class="text-[11px] uppercase tracking-wide text-[#64748B] mb-1">What the valuation's saying <span class="normal-case text-[#475569]">· trailing-twelve-month, educational — not advice</span></div>` +
+          sentences.map(s => `<p>${s}</p>`).join('');
+        analysisEl.classList.remove('hidden');
+      };
+      buildNarrative();
 
       chart.subscribeCrosshairMove(renderLegend);
       renderLegend();
