@@ -77,10 +77,11 @@ Both shipped + realized via a triggered `compass-scores` CI re-run:
 
 ---
 
-## ✅ SHIPPED (this session) — 5-year DAILY price chart per stock
+## ✅ SHIPPED (this session) — price chart + valuation overlays + auto read-out
 
-Live on every stock detail page. Type-anything still works; this is the price-history view
-under the Current Price / Market Cap row.
+Live on every stock detail page (the "Price History" card under Current Price / Market Cap):
+a 5yr daily price chart, toggleable **P/E and EV/EBITDA overlays** with a forward-P/E
+reference line, and a **plain-English valuation read-out** beneath it. All public.
 - **Data:** new `scripts/export_prices_kv.py` (stock-research) streams ~5yr of DAILY closes
   per published symbol from `backtest.db` (`COALESCE(adjusted_close, close)`) into
   byte-chunked KV bulk files. Value shape = exactly what lightweight-charts wants:
@@ -97,13 +98,43 @@ under the Current Price / Market Cap row.
   KV sync. So `prices:SYM` refreshes every weekday with the prior session's settled close
   (standard daily-chart behavior; the hourly `price-update.yml` only touches the headline
   price JSON, not KV). Export logs a **staleness warning** if the latest point >5d old.
-- **Status:** committed to both repos' `main` (stock-research `2050eed`, stockbrowse-app
-  `06027df`), deployed to prod, and FULL KV seeded (all 4,233 symbols) — every page works
-  now, verified live (NATH/AAPL render). Independent 2-reviewer pass = SHIP.
+### Valuation overlays (P/E + EV/EBITDA over time)
+- **Data:** new `scripts/export_overlays_kv.py` computes DAILY trailing P/E and EV/EBITDA per
+  symbol and the current forward-P/E scalar. Two correctness choices baked in: multiples use
+  **RAW `close`** (not adjusted) + as-reported EPS/shares so they stay continuous across
+  in-window splits (verified on NVDA's 2024 10:1 — no jump); fundamentals aligned to each
+  price day by **`filing_date`** (merge_asof backward) to avoid look-ahead. TTM = rolling
+  4-quarter sum from `historical_income_statements` / `historical_balance_sheets`. Emitted
+  only where the denominator is positive (negative-earnings days gap). Key `overlays:SYM` =
+  `{pe, evEbitda, fwdPe}` in the same KV namespace; byte-chunked bulk files.
+- **Serve:** `functions/api/stock/[symbol]/overlays.ts` — **public** pass-through (decision:
+  kept public as a free hook even though the snapshot values are premium elsewhere; gate
+  later via `requireAuth('plus')` if desired — see the NOTE in that file).
+- **Render:** overlay toggles in `[symbol].astro` add P/E (amber) + EV/EBITDA (violet)
+  `LineSeries` on a shared **left axis (×)**, price stays on the right ($). Crosshair legend
+  shows Price/P/E/EV-EBITDA at the hovered date; dashed **Fwd P/E** reference line via
+  `createPriceLine`. Deep-link `?overlay=pe,evEbitda` pre-activates (shareable view).
+- **Refresh:** two more steps in `daily-pipeline.yml` (export after prices, KV sync after the
+  prices sync). ⚠️ KV bulk uploads are flaky over ~76MB files — if a chunk fails, split it
+  (e.g. into thirds) and retry; smaller files go through.
 
-**Possible follow-ups:** dynamic-`import()` lightweight-charts to defer ~55KB off pages
-where the user never scrolls to the chart; optional hover-to-compare vs sector; daily
-freshness assertion that *fails* CI (currently warns).
+### Auto valuation read-out (deterministic narrative)
+- `[symbol].astro` renders a 3-sentence read-out under the chart, computed **client-side from
+  the chart's own data** (no backend, no LLM, never stale, can't hallucinate): (1) decomposes
+  the 1yr move into earnings growth vs multiple expansion, (2) places current P/E & EV/EBITDA
+  in their 5yr percentile band, (3) reads the forward-vs-trailing P/E gap. Graceful fallbacks
+  for negative-earnings / short-history names. Labeled "educational — not advice".
+
+- **Status:** all committed to `main` — stock-research (`2050eed` prices, `1679cf9` overlays);
+  stockbrowse-app (`06027df` chart, `4e3c341` overlays UI, `b082b0b` read-out). Deployed to
+  prod; FULL KV seeded for prices (4,233) + overlays (3,783; 450 dropped for unprofitable/
+  sparse fundamentals). Verified live with screenshots (AAPL "split / upper end", NVDA
+  "earnings-driven / lower end"). Independent 2-reviewer pass on the price chart = SHIP.
+
+**Possible follow-ups:** sector context in the read-out (use `sectorPe` we already compute);
+split P/E and EV/EBITDA onto separate axes so re-ratings pop; Workers-AI prose polish of the
+same computed signals (cached weekly, behind the budget cap); gate overlays behind Plus if the
+free-hook call is revisited; dynamic-`import()` lightweight-charts to defer ~55KB.
 
 ---
 
