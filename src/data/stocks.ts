@@ -62,6 +62,16 @@ export interface PremiumFields {
   // Moonshot Score (number — letter is public)
   moonshotScore: number | null;
 
+  // Catalyst signal (premium) — recent EPS beats + analyst-upgrade momentum.
+  // catalystScore/Tag null|false when a stock has no earnings/analyst coverage.
+  catalystScore: number | null;        // 0-100 composite
+  catalystTag: boolean;                // fires on beatStreak>=2 AND netUpgrades180d>0
+  catalystLabel: string | null;        // "Catalyst" when tagged
+  epsSurprisePct: number | null;       // most recent EPS surprise %
+  beatStreak: number | null;           // consecutive positive EPS surprises
+  netUpgrades180d: number | null;      // net analyst upgrades-downgrades, trailing 180d
+  netUpgrades180dNorm: number | null;  // net / directional actions in window
+
   // Valuation rating (Undervalued / Fair Value / Overvalued)
   valuationScore: number | null;
   valuationRating: 'Undervalued' | 'Fair Value' | 'Overvalued' | null;
@@ -119,6 +129,13 @@ const PREMIUM_NULLS: PremiumFields = {
   valueScore: null,
   longTermScore: null,
   moonshotScore: null,
+  catalystScore: null,
+  catalystTag: false,
+  catalystLabel: null,
+  epsSurprisePct: null,
+  beatStreak: null,
+  netUpgrades180d: null,
+  netUpgrades180dNorm: null,
   valuationScore: null,
   valuationRating: null,
   valuationData: null,

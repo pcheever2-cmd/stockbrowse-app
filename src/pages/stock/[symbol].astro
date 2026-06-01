@@ -609,6 +609,35 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
         </div>
       </div>
 
+      <!-- Catalyst Signal (premium) — recent EPS beats + analyst-upgrade momentum.
+           SSG shows locked 🔒; hydrated for Pro. Neutral UI; details on the methodology page. -->
+      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <div class="flex items-center justify-between mb-1">
+          <h2 class="text-xl font-bold text-slate-100">Catalyst Signal</h2>
+          <span data-premium="catalystLabel" class="hidden text-xs font-semibold px-2 py-1 rounded-full bg-[#22D3EE15] text-[#22D3EE] border border-[#22D3EE33]"></span>
+        </div>
+        <p class="text-[#64748B] text-xs mb-4">
+          Recent earnings beats and analyst-upgrade momentum.
+          <a href="/catalyst-methodology" class="text-[#22D3EE] hover:underline">How it works</a>
+        </p>
+        <div class="premium-content">
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Catalyst Score</div>
+              <div data-premium="catalystScore" class="text-2xl font-bold text-slate-100">🔒</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">EPS Beat Streak</div>
+              <div data-premium="beatStreak" class="text-2xl font-bold text-slate-100">🔒</div>
+            </div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Net Upgrades (180d)</div>
+              <div data-premium="netUpgrades180d" class="text-2xl font-bold text-slate-100">🔒</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Analyst Track Record — hidden at SSG, shown via hydration for Plus+ users -->
       <div id="analyst-track-record" class="hidden mb-8">
         <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
@@ -769,6 +798,26 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
             msCircle.classList.remove('border-slate-600');
             msCircle.classList.add(colors.border);
           }
+        }
+
+        // Catalyst Signal (premium) — set ALL fields explicitly so none are left as 🔒
+        // (the later cleanup would turn 🔒 into "N/A"); null coverage reads "No coverage".
+        setVal('catalystScore',
+               p.catalystScore != null ? String(p.catalystScore) : 'No coverage',
+               p.catalystScore != null ? 'text-slate-100' : 'text-slate-400');
+        setVal('beatStreak',
+               p.beatStreak != null ? String(p.beatStreak) : '—',
+               p.beatStreak != null && p.beatStreak >= 2 ? 'text-emerald-400' : 'text-slate-100');
+        setVal('netUpgrades180d',
+               p.netUpgrades180d != null
+                 ? (p.netUpgrades180d > 0 ? `+${p.netUpgrades180d}` : String(p.netUpgrades180d))
+                 : '—',
+               p.netUpgrades180d == null ? 'text-slate-100'
+                 : p.netUpgrades180d > 0 ? 'text-emerald-400'
+                 : p.netUpgrades180d < 0 ? 'text-red-400' : 'text-slate-100');
+        if (p.catalystTag) {
+          const catBadge = document.querySelector('[data-premium="catalystLabel"]') as HTMLElement | null;
+          if (catBadge) { catBadge.textContent = p.catalystLabel || 'Catalyst'; catBadge.classList.remove('hidden'); }
         }
 
         // Valuation Metrics

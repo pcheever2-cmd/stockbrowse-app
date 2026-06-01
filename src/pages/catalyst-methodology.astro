@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="How the Catalyst Signal Works | Earnings Beats & Analyst Upgrades">
+  <section class="py-16 bg-[#161B24]">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-center mb-4">How the Catalyst Signal Works</h1>
+      <p class="text-xl text-[#CBD5E1] text-center mb-12 max-w-2xl mx-auto">
+        A read on stocks that just had a positive catalyst — recent earnings beats and analyst-upgrade momentum.
+      </p>
+
+      <!-- Honest framing up front -->
+      <div class="bg-gradient-to-r from-amber-900/30 to-amber-800/20 rounded-2xl p-6 mb-12 border border-amber-500/40">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-3xl">🧪</span>
+          <h2 class="text-xl font-bold text-amber-300">Experimental — we're tracking this live</h2>
+        </div>
+        <p class="text-[#CBD5E1]">
+          The Catalyst Signal is <strong class="text-white">promising but not proven.</strong> It comes from a
+          backtest that pointed the right way, but with only about nine independent years behind it —
+          enough to rule things out, not enough to call it settled. So we pre-registered the exact
+          formula (frozen, in writing, before launch) and we're now tracking how it does going forward in real
+          time. That live track record — not the backtest — is the honest test. Treat it as one more input, not
+          a buy signal.
+        </p>
+      </div>
+
+      <!-- What it measures -->
+      <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-2">What it measures</h2>
+        <p class="text-[#CBD5E1] mb-6">
+          Big winners usually share a <em>change</em> a year earlier — something got better and the market started
+          to notice. Static "is it cheap / profitable / small" measures don't predict which stocks run (we checked
+          — that's mostly just volatility). What does show up is <strong class="text-white">expectations
+          shifting</strong>: companies beating earnings and getting upgraded. The signal tracks four things:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">🎯</span>
+              <h3 class="font-semibold">Recent earnings surprise</h3>
+            </div>
+            <p class="text-[#CBD5E1] text-sm">
+              How much the company beat (or missed) the analyst EPS estimate at its most recent report. Beats tend
+              to drift higher for months afterward — a long-documented pattern (post-earnings-announcement drift).
+            </p>
+          </div>
+
+          <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">🔥</span>
+              <h3 class="font-semibold">Beat streak</h3>
+            </div>
+            <p class="text-[#CBD5E1] text-sm">
+              How many quarters in a row the company has beaten estimates. A repeated pattern of beats says more
+              than a single lucky quarter.
+            </p>
+          </div>
+
+          <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">📈</span>
+              <h3 class="font-semibold">Net analyst upgrades</h3>
+            </div>
+            <p class="text-[#CBD5E1] text-sm">
+              Upgrades minus downgrades from Wall Street analysts over the trailing 180 days. Rising conviction
+              among the people who cover the stock.
+            </p>
+          </div>
+
+          <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">⚖️</span>
+              <h3 class="font-semibold">Upgrade intensity</h3>
+            </div>
+            <p class="text-[#CBD5E1] text-sm">
+              Those net upgrades as a share of all rating changes, so a stock with light coverage isn't unfairly
+              outranked by one with dozens of analysts.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- The score and the tag -->
+      <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-4">The Score and the Tag</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-[#161B24] rounded-xl p-6 border border-[#22D3EE33]">
+            <h3 class="font-semibold text-[#22D3EE] mb-2">Catalyst Score (0–100)</h3>
+            <p class="text-[#CBD5E1] text-sm">
+              Each stock is ranked against the rest of the market on the four measures above, and the score is the
+              average of those ranks. Higher means a stronger current catalyst signature. If a stock has no
+              earnings or analyst coverage at all, we show <strong class="text-white">"No coverage"</strong> — not
+              a zero, because absence of data isn't a bad signal.
+            </p>
+          </div>
+          <div class="bg-[#161B24] rounded-xl p-6 border border-[#22D3EE33]">
+            <h3 class="font-semibold text-[#22D3EE] mb-2">The "Catalyst" tag</h3>
+            <p class="text-[#CBD5E1] text-sm">
+              The tag fires on a simple, fixed rule: the company has beaten estimates
+              <strong class="text-white">at least two quarters running</strong> AND has
+              <strong class="text-white">net positive analyst upgrades</strong> in the last 180 days. It's the
+              "both engines firing" case — earnings momentum and Wall Street conviction at once. It only fires on
+              a small slice of the market.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- What the backtest showed -->
+      <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-4">What the backtest showed</h2>
+        <p class="text-[#CBD5E1] mb-6">
+          We tested 2016–2025 (the window where our delisted-company data is clean, so failed stocks aren't quietly
+          dropped). The key discipline: every result is measured against a <strong class="text-white">matched
+          control</strong> — peers with similar volatility and size — so we're not just rediscovering that risky
+          stocks swing more.
+        </p>
+        <ul class="space-y-3 text-[#CBD5E1]">
+          <li class="flex gap-3">
+            <span class="text-emerald-400 font-bold">+</span>
+            <span>In the 2016–2025 test, stocks with a strong catalyst signature hit a <strong class="text-white">+30%
+            one-year gain about 1.5–3 percentage points more often</strong> than matched peers.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-emerald-400 font-bold">+</span>
+            <span>That edge held up even after also matching on price momentum and on value/quality — so it isn't
+            just momentum or a cheap-stock effect wearing a costume.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-emerald-400 font-bold">+</span>
+            <span>It <strong class="text-white">lowered</strong> the rate of big drops, not raised it, and it
+            pointed the right way in 8–9 of the 9 years tested.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-amber-400 font-bold">!</span>
+            <span>By contrast, the "fundamental trend" ideas we also tried — a company's margins or debt load
+            improving, growth speeding up — <strong class="text-white">did not</strong> beat matched peers. The signal that
+            worked was specifically about <em>expectations</em> — beats and upgrades.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- The honest caveats -->
+      <div class="bg-[#161B24] rounded-2xl p-8 mb-12 border border-amber-500/30">
+        <h2 class="text-2xl font-bold mb-4 text-amber-300">The caveats, plainly</h2>
+        <ul class="space-y-3 text-[#CBD5E1]">
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">Nine years is thin.</strong> The effect is real in the data but the
+            sample is small, so the precise size could be smaller (or larger) than measured. We won't oversell it.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">It needs coverage.</strong> The signal only exists for stocks that
+            report earnings and have analysts watching. Plenty of names show "No coverage," and that's honest.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">It's a probability nudge, not a promise.</strong> A higher chance of
+            a big move is still just a chance. Most tagged stocks won't run; the signal is about the odds across
+            many names, not a guarantee on any one.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">Forward-tracking is the real test.</strong> The formula is frozen.
+            We'll let the live results speak, and we'll report them straight — including if they disappoint.</span></li>
+        </ul>
+      </div>
+
+      <div class="text-center">
+        <a href="/" class="inline-block bg-[#22D3EE] text-[#0C0F14] font-semibold px-6 py-3 rounded-lg hover:bg-[#1bb8d4] transition">
+          Look up a stock's Catalyst Signal
+        </a>
+        <p class="text-xs text-[#64748B] mt-6 max-w-2xl mx-auto">
+          Stockbrowse is for research and education, not financial advice. The Catalyst Signal is an experimental
+          indicator based on past patterns; past performance doesn't guarantee future results. Do your own research
+          or talk to a qualified advisor before investing.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
