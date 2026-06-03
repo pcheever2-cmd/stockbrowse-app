@@ -27,6 +27,7 @@ fi
 PREMIUM_FIELDS=(
   "isGolden"
   "catalystScore"
+  "catalystTag"
   "factorValues"
   "avgPriceTarget"
   "upside"

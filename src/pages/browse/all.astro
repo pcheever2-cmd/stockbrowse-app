@@ -15,7 +15,6 @@ const allStocks = stocks.map(s => ({
   grade: s.grade,
   industry: s.industry,
   marketCap: s.marketCap,
-  catalystTag: !!s.catalystTag,  // PUBLIC flag — everyone can filter; the score is premium
   normalizedIndustry: getNormalizedIndustry(s.industry),
 }));
 
@@ -236,6 +235,10 @@ const marketCapRanges = [
     let valuationDataLoaded = false;
     // Golden = Compass A/B + strong catalyst (PREMIUM, hydrated at runtime). Empty for free users.
     let goldenSet = new Set();
+    // Catalyst is PREMIUM: the ⚡ chip shows for everyone but only FUNCTIONS for premium. catalystTagSet
+    // (which stocks are tagged) is hydrated from the premium API; empty for free → filter yields nothing.
+    // Access is tracked on window.__catalystAccess (set true by the premium module script below).
+    let catalystTagSet = new Set();
 
     // URL State Management - persist filters in URL for back button support
     function saveFiltersToURL() {
@@ -645,8 +648,9 @@ const marketCapRanges = [
           return false;
         }
 
-        // Catalyst filter — public flag (everyone): does the stock have a current catalyst?
-        if (filters.catalystOnly && !stock.catalystTag) {
+        // Catalyst filter — PREMIUM: catalystTagSet is hydrated only for paid users (empty for free,
+        // so this yields nothing even if toggled via URL — the chip upsells free users on click).
+        if (filters.catalystOnly && !catalystTagSet.has(stock.symbol)) {
           return false;
         }
 
@@ -782,7 +786,7 @@ const marketCapRanges = [
                 <div class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-bold" title="Compass Score">
                   ${stock.compassScore}
                 </div>
-                ${stock.catalystTag ? `<div class="bg-[#22D3EE]/20 text-[#22D3EE] px-2 py-1 rounded-full text-xs font-bold catalyst-badge" data-symbol="${stock.symbol}" title="Catalyst — recent earnings beats + analyst upgrades">⚡</div>` : ''}
+                ${catalystTagSet.has(stock.symbol) ? `<div class="bg-[#22D3EE]/20 text-[#22D3EE] px-2 py-1 rounded-full text-xs font-bold catalyst-badge" data-symbol="${stock.symbol}" title="Catalyst — recent earnings beats + analyst upgrades">⚡</div>` : ''}
               </div>
             </div>
 
@@ -1127,8 +1131,9 @@ const marketCapRanges = [
       applyFilters();
     });
 
-    // Catalyst toggle button (public flag — works for everyone)
+    // Catalyst toggle button — shows for everyone, but only FUNCTIONS for premium.
     document.getElementById('catalystFilter').addEventListener('click', () => {
+      if (!window.__catalystAccess) { window.showUpgradeModal?.(); return; }
       filters.catalystOnly = !filters.catalystOnly;
       const btn = document.getElementById('catalystFilter');
       if (filters.catalystOnly) {
@@ -1180,9 +1185,11 @@ const marketCapRanges = [
     window.__allStockSymbols = allStocks.map(s => s.symbol);
     window.__applyFilters = applyFilters;
     window.__browseFilters = filters;
-    // Golden set + catalyst-score map are hydrated by the premium module script below.
+    // Golden set + catalyst tag-set/score-map are hydrated by the premium module script below.
     window.__goldenSet = goldenSet;
+    window.__catalystTagSet = catalystTagSet;
     window.__catalystMap = {};
+    window.__catalystAccess = false;
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
@@ -1221,9 +1228,13 @@ const marketCapRanges = [
         if (filtersEl) filtersEl.classList.remove('opacity-50', 'pointer-events-none');
         if (badge) badge.remove();
 
+        // Reaching here means the user is premium → unlock the Catalyst filter.
+        (window as any).__catalystAccess = true;
+
         const symbols: string[] = (window as any).__allStockSymbols || [];
         const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
         const goldenSet: Set<string> = (window as any).__goldenSet || new Set();
+        const catalystTagSet: Set<string> = (window as any).__catalystTagSet || new Set();
         const catalystMap: Record<string, number> = (window as any).__catalystMap || {};
 
         for (let i = 0; i < symbols.length; i += 50) {
@@ -1238,6 +1249,9 @@ const marketCapRanges = [
               if (fields?.isGolden) {
                 goldenSet.add(sym);
               }
+              if (fields?.catalystTag) {
+                catalystTagSet.add(sym);
+              }
               if (fields?.catalystScore != null) {
                 catalystMap[sym] = fields.catalystScore;
               }
@@ -1249,8 +1263,8 @@ const marketCapRanges = [
         Object.assign((window as any).__valuationMap, valuationMap);
         Object.assign((window as any).__catalystMap, catalystMap);
 
-        // Re-render so Golden borders + catalyst numbers appear (and re-apply any
-        // Golden/valuation filters restored from the URL).
+        // Re-render so Golden borders + catalyst tags/numbers appear (and re-apply any
+        // Golden/valuation/catalyst filters restored from the URL).
         (window as any).__applyFilters?.();
       } catch {
         // Silently fail — filters stay disabled

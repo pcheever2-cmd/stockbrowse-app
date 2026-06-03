@@ -22,7 +22,6 @@ export interface PublicStock {
   numAnalysts: number | null;
   consensus: string | null;
   scoreNote: { title: string; text: string } | null;
-  catalystTag: boolean;  // PUBLIC "has a catalyst" flag (everyone can filter); the score is premium
 }
 
 // Premium-tier fields — fetched at runtime via /api/stocks/premium
@@ -65,8 +64,8 @@ export interface PremiumFields {
   // Catalyst signal (premium) — recent EPS beats + analyst-upgrade momentum.
   // catalystScore/Tag null|false when a stock has no earnings/analyst coverage.
   catalystScore: number | null;        // 0-100 composite (PREMIUM — the number on the card)
+  catalystTag: boolean;                // PREMIUM — fires on beatStreak>=2 AND netUpgrades180d>0
   catalystLabel: string | null;        // "Catalyst" when tagged
-  // NOTE: catalystTag is PUBLIC (see PublicStock) — fires on beatStreak>=2 AND netUpgrades180d>0
   epsSurprisePct: number | null;       // most recent EPS surprise %
   beatStreak: number | null;           // consecutive positive EPS surprises
   netUpgrades180d: number | null;      // net analyst upgrades-downgrades, trailing 180d
@@ -130,6 +129,7 @@ const PREMIUM_NULLS: PremiumFields = {
   longTermScore: null,
   isGolden: false,
   catalystScore: null,
+  catalystTag: false,
   catalystLabel: null,
   epsSurprisePct: null,
   beatStreak: null,
