@@ -15,6 +15,7 @@ const allStocks = stocks.map(s => ({
   grade: s.grade,
   industry: s.industry,
   marketCap: s.marketCap,
+  catalystTag: !!s.catalystTag,  // PUBLIC flag — everyone can filter; the score is premium
   normalizedIndustry: getNormalizedIndustry(s.industry),
 }));
 
@@ -104,7 +105,10 @@ const marketCapRanges = [
             <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
 
             <!-- Quick toggles -->
-            <button id="goldenFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-amber-500/20 text-amber-400 opacity-60 hover:opacity-100 border border-transparent transition" title="Premium: high quality (Compass A/B) + a strong catalyst">
+            <button id="catalystFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-[#22D3EE]/15 text-[#22D3EE] opacity-60 hover:opacity-100 border border-transparent transition" title="Has a current catalyst — recent earnings beats + analyst upgrades">
+              ⚡ Catalyst
+            </button>
+            <button id="goldenFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-amber-500/20 text-amber-400 opacity-60 hover:opacity-100 border border-transparent transition" title="Premium: top-decile quality + top-decile catalyst">
               ⭐ Golden
             </button>
 
@@ -219,6 +223,7 @@ const marketCapRanges = [
       marketCapRanges: [],
       valuationRatings: [],
       goldenOnly: false,
+      catalystOnly: false,
       sort: 'score-desc'
     };
     // Map<symbol, similarityScore> when a semantic ("meaning") search is active; null otherwise.
@@ -243,6 +248,7 @@ const marketCapRanges = [
       if (filters.marketCapRanges.length) params.set('cap', filters.marketCapRanges.join(','));
       if (filters.valuationRatings.length) params.set('valuation', filters.valuationRatings.join(','));
       if (filters.goldenOnly) params.set('golden', '1');
+      if (filters.catalystOnly) params.set('catalyst', '1');
       if (filters.sort !== 'score-desc') params.set('sort', filters.sort);
 
       const newURL = params.toString() ? `${window.location.pathname}?${params}` : window.location.pathname;
@@ -298,6 +304,11 @@ const marketCapRanges = [
         filters.goldenOnly = true;
         const btn = document.getElementById('goldenFilter');
         if (btn) { btn.classList.add('opacity-100', 'border-amber-400'); btn.classList.remove('opacity-60'); }
+      }
+      if (params.get('catalyst') === '1') {
+        filters.catalystOnly = true;
+        const btn = document.getElementById('catalystFilter');
+        if (btn) { btn.classList.add('opacity-100', 'border-[#22D3EE]'); btn.classList.remove('opacity-60'); }
       }
       if (params.get('sort')) {
         filters.sort = params.get('sort');
@@ -634,6 +645,11 @@ const marketCapRanges = [
           return false;
         }
 
+        // Catalyst filter — public flag (everyone): does the stock have a current catalyst?
+        if (filters.catalystOnly && !stock.catalystTag) {
+          return false;
+        }
+
         // Valuation filter (premium — uses runtime data from KV)
         if (filters.valuationRatings.length > 0) {
           const rating = valuationMap[stock.symbol];
@@ -766,6 +782,7 @@ const marketCapRanges = [
                 <div class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-bold" title="Compass Score">
                   ${stock.compassScore}
                 </div>
+                ${stock.catalystTag ? `<div class="bg-[#22D3EE]/20 text-[#22D3EE] px-2 py-1 rounded-full text-xs font-bold catalyst-badge" data-symbol="${stock.symbol}" title="Catalyst — recent earnings beats + analyst upgrades">⚡</div>` : ''}
               </div>
             </div>
 
@@ -783,6 +800,21 @@ const marketCapRanges = [
           </div>
         `;
       }).join('');
+
+      // Premium: replace the ⚡ placeholder with the catalyst number on each card (if hydrated).
+      hydrateCatalystBadges();
+    }
+
+    // Fill .catalyst-badge with the numeric catalyst score for premium users (⚡ + score);
+    // no-op for free users (badge stays "⚡"). Re-run after every render.
+    function hydrateCatalystBadges() {
+      const map = window.__catalystMap || {};
+      document.querySelectorAll('.catalyst-badge').forEach(badge => {
+        const sym = badge.dataset.symbol;
+        if (sym && map[sym] != null) {
+          badge.textContent = `⚡${map[sym]}`;
+        }
+      });
     }
 
     function updateActiveFilters() {
@@ -808,6 +840,7 @@ const marketCapRanges = [
       });
       filters.valuationRatings.forEach(v => chips.push({ type: 'valuationRatings', value: v, label: v }));
       if (filters.goldenOnly) chips.push({ type: 'goldenOnly', value: 'true', label: '⭐ Golden Only' });
+      if (filters.catalystOnly) chips.push({ type: 'catalystOnly', value: 'true', label: '⚡ Catalyst Only' });
 
       // Update mobile filter count badge
       const mobileCount = document.getElementById('mobileFilterCount');
@@ -846,6 +879,11 @@ const marketCapRanges = [
         const gf = document.getElementById('goldenFilter');
         gf?.classList.remove('opacity-100', 'border-amber-400');
         gf?.classList.add('opacity-60');
+      } else if (type === 'catalystOnly') {
+        filters.catalystOnly = false;
+        const cf = document.getElementById('catalystFilter');
+        cf?.classList.remove('opacity-100', 'border-[#22D3EE]');
+        cf?.classList.add('opacity-60');
       } else if (type === 'valuationRatings') {
         filters.valuationRatings = filters.valuationRatings.filter(v => v !== value);
         const checkbox = document.querySelector(`input[name="valuation"][value="${value}"]`);
@@ -868,6 +906,7 @@ const marketCapRanges = [
         marketCapRanges: [],
         valuationRatings: [],
         goldenOnly: false,
+        catalystOnly: false,
         sort: filters.sort
       };
       document.getElementById('searchInput').value = '';
@@ -875,6 +914,8 @@ const marketCapRanges = [
       document.querySelectorAll('.grade-chip').forEach(c => { c.classList.remove('opacity-100', 'border-[#22D3EE]'); c.classList.add('opacity-60'); });
       document.getElementById('goldenFilter')?.classList.remove('opacity-100', 'border-amber-400');
       document.getElementById('goldenFilter')?.classList.add('opacity-60');
+      document.getElementById('catalystFilter')?.classList.remove('opacity-100', 'border-[#22D3EE]');
+      document.getElementById('catalystFilter')?.classList.add('opacity-60');
       applyFilters();
     }
 
@@ -1086,6 +1127,20 @@ const marketCapRanges = [
       applyFilters();
     });
 
+    // Catalyst toggle button (public flag — works for everyone)
+    document.getElementById('catalystFilter').addEventListener('click', () => {
+      filters.catalystOnly = !filters.catalystOnly;
+      const btn = document.getElementById('catalystFilter');
+      if (filters.catalystOnly) {
+        btn.classList.add('opacity-100', 'border-[#22D3EE]');
+        btn.classList.remove('opacity-60');
+      } else {
+        btn.classList.remove('opacity-100', 'border-[#22D3EE]');
+        btn.classList.add('opacity-60');
+      }
+      applyFilters();
+    });
+
     // Dropdown popover toggle
     document.querySelectorAll('.filter-dropdown-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -1125,8 +1180,9 @@ const marketCapRanges = [
     window.__allStockSymbols = allStocks.map(s => s.symbol);
     window.__applyFilters = applyFilters;
     window.__browseFilters = filters;
-    // Golden set is hydrated by the premium module script below; expose for it to populate.
+    // Golden set + catalyst-score map are hydrated by the premium module script below.
     window.__goldenSet = goldenSet;
+    window.__catalystMap = {};
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
@@ -1168,6 +1224,7 @@ const marketCapRanges = [
         const symbols: string[] = (window as any).__allStockSymbols || [];
         const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
         const goldenSet: Set<string> = (window as any).__goldenSet || new Set();
+        const catalystMap: Record<string, number> = (window as any).__catalystMap || {};
 
         for (let i = 0; i < symbols.length; i += 50) {
           const batch = symbols.slice(i, i + 50).join(',');
@@ -1181,15 +1238,19 @@ const marketCapRanges = [
               if (fields?.isGolden) {
                 goldenSet.add(sym);
               }
+              if (fields?.catalystScore != null) {
+                catalystMap[sym] = fields.catalystScore;
+              }
             });
           }
         }
 
-        // Update the shared references so the filter + Golden badges work
+        // Update the shared references so the filter + Golden/catalyst badges work
         Object.assign((window as any).__valuationMap, valuationMap);
+        Object.assign((window as any).__catalystMap, catalystMap);
 
-        // Re-render so Golden badges/borders appear (and re-apply any Golden/valuation
-        // filters restored from the URL).
+        // Re-render so Golden borders + catalyst numbers appear (and re-apply any
+        // Golden/valuation filters restored from the URL).
         (window as any).__applyFilters?.();
       } catch {
         // Silently fail — filters stay disabled
