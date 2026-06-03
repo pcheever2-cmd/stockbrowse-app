@@ -2,31 +2,48 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Valuation Score Methodology | Technical Valuation Analysis">
+<Layout title="Valuation Score Methodology | Price-vs-Trend Read-out">
   <section class="py-16 bg-[#161B24]">
     <div class="max-w-5xl mx-auto px-4">
       <h1 class="text-4xl font-bold text-center mb-4">How the Valuation Score Works</h1>
       <p class="text-xl text-[#CBD5E1] text-center mb-12 max-w-2xl mx-auto">
-        A technical signal to identify if stocks are trading above or below fair value based on price momentum.
+        A simple read of where a stock trades relative to its own recent price trend — useful context,
+        <strong class="text-white">not</strong> a buy signal.
       </p>
+
+      <!-- Honest framing up front -->
+      <div class="bg-gradient-to-r from-slate-800/40 to-slate-700/20 rounded-2xl p-6 mb-12 border border-amber-500/40">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-3xl">📐</span>
+          <h2 class="text-xl font-bold text-amber-300">What this is — and what it isn't</h2>
+        </div>
+        <p class="text-[#CBD5E1]">
+          Despite the name, the Valuation Score is a <strong class="text-white">technical, price-based</strong>
+          read-out — it measures how far a stock trades above or below its own moving averages and where it sits
+          in its 52-week range. It is <strong class="text-white">not</strong> a fundamental valuation (that's
+          earnings, cash flow, multiples — see Compass), and <strong class="text-white">it does not predict
+          returns.</strong> When we tested it honestly (below), "trading below the average" did <em>not</em>
+          reliably lead to outperformance. Treat it as a descriptive snapshot of price position — context to pair
+          with fundamentals and analyst targets, never a signal on its own.
+        </p>
+      </div>
 
       <!-- What It Measures -->
       <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
-        <h2 class="text-2xl font-bold mb-6">What the Valuation Score Measures</h2>
+        <h2 class="text-2xl font-bold mb-6">What it measures</h2>
         <p class="text-[#CBD5E1] mb-6">
-          The Valuation Score uses technical price analysis to determine if a stock is trading at a discount or premium
-          relative to its recent history. This is based on mean-reversion research showing that stocks trading below
-          their moving averages tend to outperform over the following 12 months.
+          Three price-based inputs, combined into a 0–100 score (higher = trading lower relative to its own
+          recent prices):
         </p>
 
         <div class="grid md:grid-cols-3 gap-6">
           <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
             <div class="flex items-center gap-3 mb-3">
               <span class="text-2xl">📊</span>
-              <h3 class="font-semibold">Price vs SMA200</h3>
+              <h3 class="font-semibold">Price vs 200-day average</h3>
             </div>
             <p class="text-[#CBD5E1] text-sm">
-              How far is the current price from the 200-day moving average? Below = potential value.
+              How far is the price from its 200-day moving average? The main long-term trend reference.
             </p>
             <div class="mt-3 text-[#22D3EE] font-semibold">Weight: 50%</div>
           </div>
@@ -34,10 +51,10 @@ import Layout from '../layouts/Layout.astro';
           <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
             <div class="flex items-center gap-3 mb-3">
               <span class="text-2xl">📈</span>
-              <h3 class="font-semibold">Price vs SMA50</h3>
+              <h3 class="font-semibold">Price vs 50-day average</h3>
             </div>
             <p class="text-[#CBD5E1] text-sm">
-              Short-term confirmation signal. Being below both SMAs is a stronger undervaluation signal.
+              The shorter-term trend — how the price sits versus the last ~10 weeks.
             </p>
             <div class="mt-3 text-[#22D3EE] font-semibold">Weight: 25%</div>
           </div>
@@ -45,232 +62,128 @@ import Layout from '../layouts/Layout.astro';
           <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
             <div class="flex items-center gap-3 mb-3">
               <span class="text-2xl">📉</span>
-              <h3 class="font-semibold">52-Week Position</h3>
+              <h3 class="font-semibold">52-week position</h3>
             </div>
             <p class="text-[#CBD5E1] text-sm">
-              Where does the price sit in its 52-week range? Near the low = more undervalued.
+              Where the price sits between its 52-week low and high — near the low or near the high.
             </p>
             <div class="mt-3 text-[#22D3EE] font-semibold">Weight: 25%</div>
           </div>
         </div>
       </div>
 
-      <!-- Historical Performance -->
-      <div class="bg-gradient-to-r from-emerald-900/20 to-cyan-900/20 rounded-2xl p-8 mb-12 border border-emerald-500/20">
-        <h2 class="text-2xl font-bold mb-6 text-emerald-300">Historical Performance (Backtested)</h2>
-        <p class="text-[#CBD5E1] mb-6">
-          We tested this signal on 12-month forward returns to match how analysts set price targets.
-          Here's what we found out-of-sample (2020-present):
+      <!-- What we found when we tested it (honest) -->
+      <div class="bg-[#161B24] rounded-2xl p-8 mb-12 border border-amber-500/30">
+        <h2 class="text-2xl font-bold mb-4 text-amber-300">What we found when we tested it — honestly</h2>
+        <p class="text-[#CBD5E1] mb-4">
+          We re-ran this signal through a survivorship-clean backtest (out-of-sample, 2020 onward, failed
+          companies kept in). The popular idea that "stocks below their moving averages bounce back" did
+          <strong class="text-white">not</strong> hold up:
         </p>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
-          <div class="bg-[#080A0F] rounded-xl p-6">
-            <h3 class="font-semibold mb-4 text-emerald-400">Price vs SMA200 Signal</h3>
-            <table class="w-full text-sm">
-              <thead>
-                <tr class="text-[#CBD5E1] border-b border-[rgba(255,255,255,0.1)]">
-                  <th class="text-left py-2">Metric</th>
-                  <th class="text-right py-2">Result</th>
-                </tr>
-              </thead>
-              <tbody class="text-white">
-                <tr class="border-b border-[rgba(255,255,255,0.05)]">
-                  <td class="py-2">Q1 Return (Most Undervalued)</td>
-                  <td class="text-right text-emerald-400 font-semibold">+49.2%</td>
-                </tr>
-                <tr class="border-b border-[rgba(255,255,255,0.05)]">
-                  <td class="py-2">Q5 Return (Most Overvalued)</td>
-                  <td class="text-right text-red-400">+11.9%</td>
-                </tr>
-                <tr class="border-b border-[rgba(255,255,255,0.05)]">
-                  <td class="py-2">Q1-Q5 Spread</td>
-                  <td class="text-right text-emerald-400 font-bold">+37.2pp</td>
-                </tr>
-                <tr>
-                  <td class="py-2">Horizon</td>
-                  <td class="text-right">12 months</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="bg-[#080A0F] rounded-xl p-6">
-            <h3 class="font-semibold mb-4 text-purple-400">Combined with Compass Score</h3>
-            <table class="w-full text-sm">
-              <thead>
-                <tr class="text-[#CBD5E1] border-b border-[rgba(255,255,255,0.1)]">
-                  <th class="text-left py-2">Metric</th>
-                  <th class="text-right py-2">Result</th>
-                </tr>
-              </thead>
-              <tbody class="text-white">
-                <tr class="border-b border-[rgba(255,255,255,0.05)]">
-                  <td class="py-2">Q1 Return (Best Combined)</td>
-                  <td class="text-right text-emerald-400 font-semibold">+58.1%</td>
-                </tr>
-                <tr class="border-b border-[rgba(255,255,255,0.05)]">
-                  <td class="py-2">Q5 Return (Worst Combined)</td>
-                  <td class="text-right text-red-400">+13.5%</td>
-                </tr>
-                <tr class="border-b border-[rgba(255,255,255,0.05)]">
-                  <td class="py-2">Q1-Q5 Spread</td>
-                  <td class="text-right text-emerald-400 font-bold">+44.6pp</td>
-                </tr>
-                <tr>
-                  <td class="py-2">Hit Rate</td>
-                  <td class="text-right text-emerald-400 font-bold">86%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="bg-[#080A0F] rounded-lg p-4">
-          <p class="text-[#CBD5E1] text-sm">
-            <strong class="text-emerald-400">Key Finding:</strong> The valuation signal alone has a large spread (+37pp) but low consistency.
-            When combined 50/50 with Compass Score (quality), the hit rate jumps to 86% while maintaining strong returns.
-            This is why we show both scores - quality + valuation together is more powerful than either alone.
-          </p>
-        </div>
+        <ul class="space-y-3 text-[#CBD5E1]">
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span>Over the recent period, the "below-average" group <strong class="text-white">underperformed</strong>
+            the "above-average" group on a like-for-like basis — the opposite of a bounce. A falling stock often
+            keeps falling.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span>The result <strong class="text-white">flips with the market regime</strong> — it helped sharply
+            coming off the 2009 and 2020 crash bottoms, but hurt in normal and trending markets. There's no stable,
+            dependable edge either way.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span>Combining it with quality (Compass) did <strong class="text-white">not</strong> improve a
+            quality screen — it slightly diluted it.</span></li>
+        </ul>
+        <p class="text-[#CBD5E1] text-sm mt-4">
+          So we make <strong class="text-white">no performance claim</strong> for this score and we've removed the
+          old "expected return" figures that earlier versions of this page showed. It stays on the site as an
+          honest <em>descriptive</em> read of price position — nothing more. <em>(For signals that did hold up in
+          testing, see the <a href="/catalyst-methodology" class="text-[#22D3EE] hover:underline">Catalyst Signal</a>
+          and <a href="/golden-methodology" class="text-amber-300 hover:underline">Golden Stocks</a>.)</em>
+        </p>
       </div>
 
-      <!-- How to Use It -->
+      <!-- How to read it -->
       <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6">How to Use the Valuation Score</h2>
-
+        <h2 class="text-2xl font-bold mb-6">How to read the score</h2>
+        <p class="text-[#CBD5E1] mb-6">These are <strong>descriptions of price position</strong>, not buy/sell calls:</p>
         <div class="grid md:grid-cols-3 gap-6 mb-8">
           <div class="bg-[#080A0F] rounded-xl p-6 border-l-4 border-emerald-500">
-            <h3 class="font-bold text-emerald-400 mb-2">70+ Undervalued</h3>
+            <h3 class="font-bold text-emerald-400 mb-2">70+ · Below its averages</h3>
             <p class="text-[#CBD5E1] text-sm">
-              Stock is trading below its moving averages. If analysts also have upside,
-              this is <strong>alignment</strong> - both technical and fundamental signals agree.
+              Trading below its recent trend. That can mean a pullback — or a business in decline. The score can't
+              tell which, so check the fundamentals and why it's down.
             </p>
           </div>
-
           <div class="bg-[#080A0F] rounded-xl p-6 border-l-4 border-yellow-500">
-            <h3 class="font-bold text-yellow-400 mb-2">40-70 Fair Value</h3>
+            <h3 class="font-bold text-yellow-400 mb-2">40–70 · Around its averages</h3>
             <p class="text-[#CBD5E1] text-sm">
-              Stock is trading near its moving averages. No strong technical signal either way.
-              Rely more on fundamentals (Compass Score) for these.
+              Trading near its recent trend — no strong price-position signal either way.
             </p>
           </div>
-
           <div class="bg-[#080A0F] rounded-xl p-6 border-l-4 border-red-500">
-            <h3 class="font-bold text-red-400 mb-2">&lt;40 Overvalued</h3>
+            <h3 class="font-bold text-red-400 mb-2">&lt;40 · Above its averages</h3>
             <p class="text-[#CBD5E1] text-sm">
-              Stock is trading above its moving averages. Even if analysts have upside,
-              the technical picture suggests <strong>caution</strong>.
+              Trading above its recent trend — could be strong momentum, or extended. Again, the score is
+              descriptive; it isn't predicting a drop.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Analyst Alignment -->
+      <!-- Using with analyst price targets -->
       <div class="bg-[#161B24] rounded-2xl p-8 mb-12 border border-[rgba(255,255,255,0.1)]">
-        <h2 class="text-2xl font-bold mb-4">Using with Analyst Price Targets</h2>
-        <p class="text-[#CBD5E1] mb-6">
-          The Valuation Score helps you evaluate analyst price targets. Here's how to read the combination:
+        <h2 class="text-2xl font-bold mb-4">Using it with analyst price targets</h2>
+        <p class="text-[#CBD5E1]">
+          The most useful role for a price-position read is <strong class="text-white">context for the analyst
+          price targets</strong> shown on each stock page. If a stock is trading well below its trend <em>and</em>
+          analysts see upside, the two views agree it's beaten down — but agreement isn't a guarantee, and a low
+          price can reflect real problems. If it's well above its trend while analysts still see big upside, that's
+          worth a closer look before chasing it. Use it to frame questions, not to make the decision.
         </p>
-
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-[#080A0F] rounded-lg p-4">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-green-400 text-xl">✓</span>
-              <span class="font-semibold text-green-400">Strong Buy Signal</span>
-            </div>
-            <p class="text-[#CBD5E1] text-sm">
-              Analyst upside: 20%+ AND Valuation Score: 70+<br/>
-              <em>Both technical and analyst views agree the stock is undervalued.</em>
-            </p>
-          </div>
-
-          <div class="bg-[#080A0F] rounded-lg p-4">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-yellow-400 text-xl">⚠</span>
-              <span class="font-semibold text-yellow-400">Conflicting Signal</span>
-            </div>
-            <p class="text-[#CBD5E1] text-sm">
-              Analyst upside: 20%+ BUT Valuation Score: &lt;40<br/>
-              <em>Analysts are bullish but the stock is technically overextended. Be cautious.</em>
-            </p>
-          </div>
-
-          <div class="bg-[#080A0F] rounded-lg p-4">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-cyan-400 text-xl">🔍</span>
-              <span class="font-semibold text-cyan-400">Hidden Opportunity</span>
-            </div>
-            <p class="text-[#CBD5E1] text-sm">
-              Valuation Score: 80+ BUT few analyst coverage<br/>
-              <em>Technically undervalued but under the radar. Do your research.</em>
-            </p>
-          </div>
-
-          <div class="bg-[#080A0F] rounded-lg p-4">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="text-red-400 text-xl">✗</span>
-              <span class="font-semibold text-red-400">Avoid Signal</span>
-            </div>
-            <p class="text-[#CBD5E1] text-sm">
-              Analyst downside + Valuation Score: &lt;30<br/>
-              <em>Both technical and analyst views suggest the stock is overvalued.</em>
-            </p>
-          </div>
-        </div>
       </div>
 
       <!-- Limitations -->
       <div class="bg-[#080A0F] rounded-2xl p-8 mb-12 border border-red-500/20">
-        <h2 class="text-2xl font-bold mb-4 text-red-400">Important Limitations</h2>
+        <h2 class="text-2xl font-bold mb-4 text-red-400">Limitations, plainly</h2>
         <ul class="space-y-3 list-disc list-outside ml-6 text-[#CBD5E1]">
-          <li>
-            <strong>Not a timing tool:</strong> Stocks can stay "undervalued" for months before recovering.
-            The 12-month horizon means patience is required.
-          </li>
-          <li>
-            <strong>Doesn't know why it's down:</strong> A stock below its SMA200 might be cheap OR might be falling
-            for good reasons (earnings collapse, fraud, etc.). Always combine with Compass Score.
-          </li>
-          <li>
-            <strong>Works better for quality stocks:</strong> Mean-reversion is strongest when applied to
-            fundamentally sound companies (high Compass Score). Junk stocks that fall may keep falling.
-          </li>
-          <li>
-            <strong>Market regime matters:</strong> In strong bull markets, "overvalued" stocks may keep rising.
-            In bear markets, "undervalued" stocks may keep falling short-term.
-          </li>
+          <li><strong>Not a predictor.</strong> Our own testing found it doesn't reliably forecast returns. It
+            describes where the price is, not where it's going.</li>
+          <li><strong>"Below average" ≠ cheap.</strong> A stock below its SMA200 may be a bargain or may be falling
+            for good reasons (collapsing earnings, structural decline). The score can't distinguish them.</li>
+          <li><strong>Regime-dependent.</strong> Whatever tendency it has flips between crash-rebound and normal
+            markets, so it's unreliable as a rule.</li>
+          <li><strong>Pair it, don't follow it.</strong> Use it only alongside fundamentals (Compass) and the
+            catalyst/analyst picture — never as a standalone buy or sell signal.</li>
         </ul>
       </div>
 
       <!-- Links to Other Methodologies -->
-      <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
         <div class="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-2xl p-6 border border-cyan-500/20">
           <h3 class="text-xl font-bold mb-2 text-cyan-300">Compass Score</h3>
-          <p class="text-[#CBD5E1] text-sm mb-4">
-            Measures company quality using profitability, cash flow, and efficiency metrics.
-            Best used together with Valuation Score.
-          </p>
-          <a href="/how-it-works" class="text-cyan-400 hover:text-cyan-300 font-semibold">
-            Learn About Compass Score →
-          </a>
+          <p class="text-[#CBD5E1] text-sm mb-4">Company quality — profitability, cash flow, stability.</p>
+          <a href="/how-it-works" class="text-cyan-400 hover:text-cyan-300 font-semibold">How Compass works →</a>
         </div>
-
+        <div class="bg-gradient-to-r from-[#22D3EE]/10 to-blue-900/20 rounded-2xl p-6 border border-[#22D3EE]/30">
+          <h3 class="text-xl font-bold mb-2 text-[#22D3EE]">Catalyst Signal</h3>
+          <p class="text-[#CBD5E1] text-sm mb-4">Recent earnings beats + analyst-upgrade momentum.</p>
+          <a href="/catalyst-methodology" class="text-[#22D3EE] hover:underline font-semibold">How Catalyst works →</a>
+        </div>
         <div class="bg-gradient-to-r from-amber-900/20 to-yellow-900/20 rounded-2xl p-6 border border-amber-500/20">
           <h3 class="text-xl font-bold mb-2 text-amber-300">Golden Stocks</h3>
-          <p class="text-[#CBD5E1] text-sm mb-4">
-            Top quality + catalyst stocks — companies that combine strong fundamentals with positive momentum.
-          </p>
-          <a href="/golden-methodology" class="text-amber-400 hover:text-amber-300 font-semibold">
-            Learn About Golden Stocks →
-          </a>
+          <p class="text-[#CBD5E1] text-sm mb-4">Top-decile quality + top-decile catalyst.</p>
+          <a href="/golden-methodology" class="text-amber-400 hover:text-amber-300 font-semibold">About Golden Stocks →</a>
         </div>
       </div>
 
-      <!-- CTA -->
       <div class="text-center">
-        <a href="/tool" class="inline-block bg-[#22D3EE] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-700 transition">
+        <a href="/tool" class="inline-block bg-[#22D3EE] text-[#0C0F14] px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition">
           Try the Stock Screener
         </a>
+        <p class="text-xs text-[#64748B] mt-6 max-w-2xl mx-auto">
+          Stockbrowse is for research and education, not financial advice. The Valuation Score is a descriptive
+          technical indicator with no performance claim; past price patterns don't predict future returns.
+        </p>
       </div>
     </div>
   </section>
