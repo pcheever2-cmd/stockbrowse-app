@@ -3,24 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import { getTopStocks, getGradeColor, formatPrice, getNormalizedIndustry, stocks, getStockBySymbol } from '../data/stocks';
 
 const topStocks = getTopStocks(8);
-const aGradeCount = stocks.filter(s => s.grade === 'A').length;
-const bGradeCount = stocks.filter(s => s.grade === 'B').length;
 
 // Famous stock examples - pulled dynamically (showing A-F range)
 const famousSymbols = ['AAPL', 'NVDA', 'GOOGL', 'META', 'PLTR', 'AMD', 'COIN', 'SMCI'];
 const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Boolean);
 ---
 
-<Layout title="Compass Score | Find Quality Stocks with Confidence">
+<Layout title="Compass Score | Find Quality Stocks, Understand Why">
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-[#22D3EE] to-emerald-700 text-white py-20">
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-6">
-        Stop Guessing. Start Investing with Confidence.
+        Find quality stocks. Understand why in seconds.
       </h1>
       <p class="text-xl md:text-2xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-        The Compass Score rates every stock from 0-100 based on 30 years of research.
-        Find quality companies without needing a finance degree.
+        Every stock gets one 0-100 quality score, built on decades of academic research and tested on
+        our own. Browse by industry, price, or goal, and see exactly what's behind the grade. No finance
+        degree needed.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/browse/all" class="bg-[#161B24] text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition">
@@ -29,30 +28,6 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
         <a href="/tool" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#161B24]/10 transition">
           Look Up a Stock
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Bar -->
-  <section class="py-8 bg-[#161B24] border-b border-[rgba(255,255,255,0.06)]">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 text-center">
-        <div>
-          <div class="text-3xl font-bold text-[#22D3EE]">{stocks.length.toLocaleString()}+</div>
-          <div class="text-sm text-[#CBD5E1]">Stocks Analyzed</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-[#22D3EE]">{aGradeCount}</div>
-          <div class="text-sm text-[#CBD5E1]">Grade A Stocks</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-[#22D3EE]">{bGradeCount}</div>
-          <div class="text-sm text-[#CBD5E1]">Grade B Stocks</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-[#22D3EE]">6</div>
-          <div class="text-sm text-[#CBD5E1]">Quality Factors</div>
-        </div>
       </div>
     </div>
   </section>
@@ -224,10 +199,11 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
   <section class="py-16 bg-[#161B24]">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-4">
-        One Score. Backed by Data.
+        One score. Easy to read.
       </h2>
       <p class="text-xl text-[#CBD5E1] text-center mb-12 max-w-2xl mx-auto">
-        The Compass Score combines the metrics that actually matter into a single 0-100 rating.
+        The Compass Score folds the metrics that matter into a single 0-100 rating, so you can tell quality
+        from junk at a glance and dig into the why when you want to.
       </p>
 
       <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
@@ -294,7 +270,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
             <span class="text-3xl">📊</span>
           </div>
           <h3 class="font-semibold text-xl mb-2">2. See the Compass Score</h3>
-          <p class="text-[#CBD5E1]">Every stock rated 0-100 based on profitability, cash flow, and stability. Backed by 30 years of data.</p>
+          <p class="text-[#CBD5E1]">Every stock rated 0-100 on profitability, cash flow, and stability. Grounded in academic research and tested on 30 years of our own data.</p>
         </div>
         <div class="text-center">
           <div class="w-16 h-16 bg-[#22D3EE]/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -310,9 +286,10 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
   <!-- Research Credibility -->
   <section class="py-16 bg-[#080A0F]">
     <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Built on Real Research</h2>
+      <h2 class="text-3xl font-bold mb-4">Built on research — academic and our own</h2>
       <p class="text-xl text-[#CBD5E1] mb-12 max-w-2xl mx-auto">
-        Not another hype tool. The Compass Score is based on academic finance principles and tested across 30 years of market data.
+        The factors behind the Compass Score come from published finance research. Then we tested them
+        ourselves across 30 years of market data, failed companies included, to see how they actually held up.
       </p>
 
       <div class="grid md:grid-cols-4 gap-6">
