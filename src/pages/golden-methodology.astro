@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="How Golden Stocks Work | Quality + Catalyst">
+  <section class="py-16 bg-[#161B24]">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-center mb-4">How Golden Stocks Work</h1>
+      <p class="text-xl text-[#CBD5E1] text-center mb-12 max-w-2xl mx-auto">
+        Our short list of companies that are both <strong class="text-white">high quality</strong> and have a
+        <strong class="text-white">strong positive catalyst</strong> right now.
+      </p>
+
+      <!-- The idea -->
+      <div class="bg-gradient-to-r from-amber-900/30 to-yellow-800/20 rounded-2xl p-6 mb-12 border border-amber-500/40">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-3xl">⭐</span>
+          <h2 class="text-xl font-bold text-amber-300">Two good things at once</h2>
+        </div>
+        <p class="text-[#CBD5E1]">
+          A great business and a great moment don't always line up. <strong class="text-white">Golden Stocks
+          are the names where they do</strong> — companies in the <em>top 10%</em> on quality (Compass)
+          <em>and</em> the top 10% on a current catalyst (recent earnings beats and analyst upgrades). It's the
+          intersection of the two signals in our research that hold up best — not a new score, just the overlap of
+          the two we trust most.
+        </p>
+      </div>
+
+      <!-- The two ingredients -->
+      <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-6">The two ingredients</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-[#161B24] rounded-xl p-6 border border-[#22D3EE33]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">🧭</span>
+              <h3 class="font-semibold text-[#22D3EE]">Quality — top-decile Compass</h3>
+            </div>
+            <p class="text-[#CBD5E1] text-sm">
+              The Compass Score rates profitability, cash generation, and stability. We require a
+              <strong class="text-white">top-decile score (the top ~10%)</strong>, so a Golden stock is among
+              the strongest businesses we cover — not a cheap or speculative one.
+              <a href="/how-it-works" class="text-[#22D3EE] hover:underline">How Compass works →</a>
+            </p>
+          </div>
+          <div class="bg-[#161B24] rounded-xl p-6 border border-amber-500/40">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">🚀</span>
+              <h3 class="font-semibold text-amber-300">Catalyst — a strong current signal</h3>
+            </div>
+            <p class="text-[#CBD5E1] text-sm">
+              The Catalyst Signal tracks recent earnings beats and analyst-upgrade momentum. We require a
+              <strong class="text-white">top-decile catalyst signal (the top ~10%)</strong>, so something is
+              actually happening now — not just a quiet quality name.
+              <a href="/catalyst-methodology" class="text-amber-300 hover:underline">How Catalyst works →</a>
+            </p>
+          </div>
+        </div>
+        <p class="text-[#CBD5E1] text-sm mt-6">
+          <strong class="text-white">Golden = both.</strong> A stock is Golden only when it lands in the top
+          decile on <em>both</em> at once — a deliberately short, selective list of roughly 75 names at any given
+          moment (about 2% of the stocks we cover), not hundreds.
+        </p>
+      </div>
+
+      <!-- Why these two together -->
+      <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-4">Why pair quality with catalyst?</h2>
+        <p class="text-[#CBD5E1] mb-6">
+          They work for <em>different</em> reasons — quality is a slow, structural edge; catalyst is a fast,
+          event-driven one — so they tend not to move together. In our research that combination held up better
+          than either piece alone, and better than other pairings we tried (quality + cheapness, for instance,
+          added little). When we ranked stocks this way in a survivorship-clean backtest (2020+), the Golden group
+          averaged a meaningfully higher one-year return than the market — more than quality alone or catalyst
+          alone.
+        </p>
+        <p class="text-[#CBD5E1] text-sm">
+          We also retired our old "Moonshot" growth score from this list: when we re-tested it honestly, it
+          showed no reliable edge, so it shouldn't have been gating anything.
+        </p>
+      </div>
+
+      <!-- What the numbers show -->
+      <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-2">What the numbers show</h2>
+        <p class="text-[#CBD5E1] mb-6">
+          In a survivorship-clean backtest (2020 onward — failed companies kept in, counted at their losses),
+          the Golden group didn't just earn more — <strong class="text-white">the quality half controlled the
+          downside.</strong> Here's how the Golden names compared to the market and to each half on its own,
+          over the following 12 months:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-[#CBD5E1]">
+            <thead>
+              <tr class="border-b border-[rgba(255,255,255,0.12)] text-left">
+                <th class="py-2 pr-4 font-semibold">Group</th>
+                <th class="py-2 px-3 font-semibold text-right">Avg 12-mo return</th>
+                <th class="py-2 px-3 font-semibold text-right">Severe losses (worse than −50%)</th>
+                <th class="py-2 pl-3 font-semibold text-right">Return per unit of risk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[rgba(255,255,255,0.06)]">
+                <td class="py-2 pr-4">The market (all stocks)</td>
+                <td class="py-2 px-3 text-right">+8%</td>
+                <td class="py-2 px-3 text-right">13%</td>
+                <td class="py-2 pl-3 text-right">0.13</td>
+              </tr>
+              <tr class="border-b border-[rgba(255,255,255,0.06)]">
+                <td class="py-2 pr-4">Catalyst alone</td>
+                <td class="py-2 px-3 text-right">+13%</td>
+                <td class="py-2 px-3 text-right">9%</td>
+                <td class="py-2 pl-3 text-right">0.21</td>
+              </tr>
+              <tr class="bg-amber-500/10">
+                <td class="py-2 pr-4 font-semibold text-amber-300">⭐ Golden (both)</td>
+                <td class="py-2 px-3 text-right font-semibold text-amber-300">+13%</td>
+                <td class="py-2 px-3 text-right font-semibold text-amber-300">6%</td>
+                <td class="py-2 pl-3 text-right font-semibold text-amber-300">0.25</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-[#CBD5E1] text-sm mt-6">
+          The takeaway: Golden kept the strong return of the catalyst signal but <strong class="text-white">roughly
+          halved the rate of severe losses</strong> (from ~9% to ~6%, versus ~13% for the market) and had the best
+          return-for-the-risk of any group we tested. That's the quality screen doing its job — filtering out the
+          fragile, high-flying names that tend to blow up. <em>These are descriptive historical averages, not a
+          promise — see the caveats below.</em>
+        </p>
+      </div>
+
+      <!-- Honest caveats -->
+      <div class="bg-[#161B24] rounded-2xl p-8 mb-12 border border-amber-500/30">
+        <h2 class="text-2xl font-bold mb-4 text-amber-300">The caveats, plainly</h2>
+        <ul class="space-y-3 text-[#CBD5E1]">
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">Descriptive, not a promise.</strong> The higher historical return is
+            an average across many names over time, measured after the fact — not a guarantee for any one stock or
+            a precise number you should expect. Most of the edge rests on decades of published research on quality
+            and on earnings/upgrade drift, which our own data is consistent with.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">It needs catalyst coverage.</strong> Catalyst only exists for stocks
+            with earnings and analyst coverage, so Golden skews toward larger, well-followed companies. Plenty of
+            good small caps simply can't qualify — that's a data limit, not a verdict on them.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">Not a timing tool.</strong> A strong catalyst can fade; a quality
+            business can stumble. Golden is a starting point for research, not a buy signal.</span></li>
+          <li class="flex gap-3"><span class="text-amber-400">•</span>
+            <span><strong class="text-white">The catalyst half is still being proven forward.</strong> Its backtest
+            window is short; we froze the formula and are tracking it live. We'll report how it does straight —
+            including if it disappoints.</span></li>
+        </ul>
+      </div>
+
+      <div class="text-center">
+        <a href="/browse/all?golden=1" class="inline-block bg-gradient-to-r from-amber-400 to-yellow-500 text-[#0C0F14] font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition">
+          See today's Golden Stocks
+        </a>
+        <p class="text-xs text-[#64748B] mt-6 max-w-2xl mx-auto">
+          Stockbrowse is for research and education, not financial advice. Golden Stocks combine a quality score
+          with an experimental catalyst signal based on past patterns; past performance doesn't guarantee future
+          results. Do your own research or talk to a qualified advisor before investing.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

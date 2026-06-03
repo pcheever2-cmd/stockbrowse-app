@@ -25,13 +25,13 @@ const TIER_FEATURES: Record<SubscriptionTier, string[]> = {
   newsletter: ['price_chart_1y', 'newsletter_monthly'],
   plus: [
     'price_chart_1y', 'price_chart_5y',
-    'score_breakdown', 'moonshot_score', 'long_term_score',
+    'score_breakdown', 'golden_stocks', 'long_term_score',
     'analyst_targets', 'analyst_accuracy', 'financial_health',
     'csv_export', 'watchlist_single',
   ],
   pro: [
     'price_chart_1y', 'price_chart_5y',
-    'score_breakdown', 'moonshot_score', 'long_term_score',
+    'score_breakdown', 'golden_stocks', 'long_term_score',
     'analyst_targets', 'analyst_accuracy', 'financial_health',
     'csv_export', 'watchlist_single',
     'valuation_score', 'watchlist_multi', 'sms_alerts',

@@ -4,9 +4,9 @@ import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndus
 
 // Pre-process all stocks for the page.
 // IMPORTANT: only public fields are passed into the client-side define:vars.
-// Premium fields (moonshotScore, valuationRating, factorValues, etc.) are
-// fetched at runtime via /api/stocks/premium for paid users — never embedded
-// in static HTML. The build canary at scripts/check-leakage.sh enforces this.
+// Premium fields (isGolden, valuationRating, factorValues, etc.) are fetched at
+// runtime via /api/stocks/premium for paid users — never embedded in static HTML.
+// The build canary at scripts/check-leakage.sh enforces this.
 const allStocks = stocks.map(s => ({
   symbol: s.symbol,
   name: s.name,
@@ -15,8 +15,6 @@ const allStocks = stocks.map(s => ({
   grade: s.grade,
   industry: s.industry,
   marketCap: s.marketCap,
-  moonshotGrade: s.moonshotGrade,  // letter only — score is premium
-  isGolden: s.isGolden,
   normalizedIndustry: getNormalizedIndustry(s.industry),
 }));
 
@@ -106,10 +104,7 @@ const marketCapRanges = [
             <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
 
             <!-- Quick toggles -->
-            <button id="moonshotFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-purple-500/20 text-purple-400 opacity-60 hover:opacity-100 border border-transparent transition">
-              Moonshot
-            </button>
-            <button id="goldenFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-amber-500/20 text-amber-400 opacity-60 hover:opacity-100 border border-transparent transition">
+            <button id="goldenFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-amber-500/20 text-amber-400 opacity-60 hover:opacity-100 border border-transparent transition" title="Premium: high quality (Compass A/B) + a strong catalyst">
               ⭐ Golden
             </button>
 
@@ -223,7 +218,6 @@ const marketCapRanges = [
       priceRanges: [],
       marketCapRanges: [],
       valuationRatings: [],
-      hasMoonshot: false,
       goldenOnly: false,
       sort: 'score-desc'
     };
@@ -235,6 +229,8 @@ const marketCapRanges = [
     // Premium valuation data (fetched at runtime for Plus+ users)
     let valuationMap = {};  // symbol -> valuationRating
     let valuationDataLoaded = false;
+    // Golden = Compass A/B + strong catalyst (PREMIUM, hydrated at runtime). Empty for free users.
+    let goldenSet = new Set();
 
     // URL State Management - persist filters in URL for back button support
     function saveFiltersToURL() {
@@ -246,7 +242,6 @@ const marketCapRanges = [
       if (filters.priceRanges.length) params.set('price', filters.priceRanges.join(','));
       if (filters.marketCapRanges.length) params.set('cap', filters.marketCapRanges.join(','));
       if (filters.valuationRatings.length) params.set('valuation', filters.valuationRatings.join(','));
-      if (filters.hasMoonshot) params.set('moonshot', '1');
       if (filters.goldenOnly) params.set('golden', '1');
       if (filters.sort !== 'score-desc') params.set('sort', filters.sort);
 
@@ -298,11 +293,6 @@ const marketCapRanges = [
           const cb = document.querySelector(`input[name="valuation"][value="${v}"]`);
           if (cb) cb.checked = true;
         });
-      }
-      if (params.get('moonshot') === '1') {
-        filters.hasMoonshot = true;
-        const btn = document.getElementById('moonshotFilter');
-        if (btn) { btn.classList.add('opacity-100', 'border-purple-400'); btn.classList.remove('opacity-60'); }
       }
       if (params.get('golden') === '1') {
         filters.goldenOnly = true;
@@ -638,15 +628,9 @@ const marketCapRanges = [
           if (!inRange) return false;
         }
 
-        // Moonshot filter — uses public letter grade as the "has moonshot" signal.
-        // The actual numeric moonshotScore is premium, fetched at runtime in v1.D.
-        if (filters.hasMoonshot && !stock.moonshotGrade) {
-          return false;
-        }
-
-        // Golden filter (A or B in both Compass and Moonshot).
-        // isGolden is precomputed in the export pipeline so it's a public field.
-        if (filters.goldenOnly && !stock.isGolden) {
+        // Golden filter (Compass A/B + strong catalyst). isGolden is a PREMIUM field,
+        // hydrated at runtime into goldenSet for paid users; empty for free users.
+        if (filters.goldenOnly && !goldenSet.has(stock.symbol)) {
           return false;
         }
 
@@ -664,7 +648,6 @@ const marketCapRanges = [
       // Apply sorting
       sortStocks();
       renderStocks();
-      if (window.__hydrateMoonshot) window.__hydrateMoonshot();
       updateActiveFilters();
       saveFiltersToURL();
     }
@@ -739,8 +722,8 @@ const marketCapRanges = [
           ? '<svg class="w-5 h-5 fill-current text-red-500" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
           : '<svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>';
 
-        // Golden stock flag is precomputed in the export pipeline (public field)
-        const isGolden = stock.isGolden;
+        // Golden flag (premium, hydrated into goldenSet at runtime)
+        const isGolden = goldenSet.has(stock.symbol);
 
         const cardBorder = isGolden
           ? 'border-2 border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.3)]'
@@ -783,7 +766,6 @@ const marketCapRanges = [
                 <div class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-bold" title="Compass Score">
                   ${stock.compassScore}
                 </div>
-                ${stock.moonshotGrade ? `<div class="bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full text-xs font-bold moonshot-badge" data-symbol="${stock.symbol}" title="Moonshot Score">${stock.moonshotGrade}M</div>` : ''}
               </div>
             </div>
 
@@ -825,7 +807,6 @@ const marketCapRanges = [
         chips.push({ type: 'marketCapRanges', value: r, label });
       });
       filters.valuationRatings.forEach(v => chips.push({ type: 'valuationRatings', value: v, label: v }));
-      if (filters.hasMoonshot) chips.push({ type: 'hasMoonshot', value: 'true', label: 'Has Moonshot' });
       if (filters.goldenOnly) chips.push({ type: 'goldenOnly', value: 'true', label: '⭐ Golden Only' });
 
       // Update mobile filter count badge
@@ -860,12 +841,11 @@ const marketCapRanges = [
       if (type === 'search') {
         filters.search = '';
         document.getElementById('searchInput').value = '';
-      } else if (type === 'hasMoonshot') {
-        filters.hasMoonshot = false;
-        document.getElementById('moonshotFilter').checked = false;
       } else if (type === 'goldenOnly') {
         filters.goldenOnly = false;
-        document.getElementById('goldenFilter').checked = false;
+        const gf = document.getElementById('goldenFilter');
+        gf?.classList.remove('opacity-100', 'border-amber-400');
+        gf?.classList.add('opacity-60');
       } else if (type === 'valuationRatings') {
         filters.valuationRatings = filters.valuationRatings.filter(v => v !== value);
         const checkbox = document.querySelector(`input[name="valuation"][value="${value}"]`);
@@ -887,15 +867,12 @@ const marketCapRanges = [
         priceRanges: [],
         marketCapRanges: [],
         valuationRatings: [],
-        hasMoonshot: false,
         goldenOnly: false,
         sort: filters.sort
       };
       document.getElementById('searchInput').value = '';
       document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
       document.querySelectorAll('.grade-chip').forEach(c => { c.classList.remove('opacity-100', 'border-[#22D3EE]'); c.classList.add('opacity-60'); });
-      document.getElementById('moonshotFilter')?.classList.remove('opacity-100', 'border-purple-400');
-      document.getElementById('moonshotFilter')?.classList.add('opacity-60');
       document.getElementById('goldenFilter')?.classList.remove('opacity-100', 'border-amber-400');
       document.getElementById('goldenFilter')?.classList.add('opacity-60');
       applyFilters();
@@ -1095,20 +1072,6 @@ const marketCapRanges = [
       });
     });
 
-    // Moonshot toggle button
-    document.getElementById('moonshotFilter').addEventListener('click', () => {
-      filters.hasMoonshot = !filters.hasMoonshot;
-      const btn = document.getElementById('moonshotFilter');
-      if (filters.hasMoonshot) {
-        btn.classList.add('opacity-100', 'border-purple-400');
-        btn.classList.remove('opacity-60');
-      } else {
-        btn.classList.remove('opacity-100', 'border-purple-400');
-        btn.classList.add('opacity-60');
-      }
-      applyFilters();
-    });
-
     // Golden toggle button
     document.getElementById('goldenFilter').addEventListener('click', () => {
       filters.goldenOnly = !filters.goldenOnly;
@@ -1162,20 +1125,8 @@ const marketCapRanges = [
     window.__allStockSymbols = allStocks.map(s => s.symbol);
     window.__applyFilters = applyFilters;
     window.__browseFilters = filters;
-    window.__moonshotMap = {};
-
-    // Re-hydrate moonshot badges after each render (called by module script setup)
-    function hydrateMoonshotBadges() {
-      const map = window.__moonshotMap || {};
-      document.querySelectorAll('.moonshot-badge').forEach(badge => {
-        const sym = badge.dataset.symbol;
-        if (sym && map[sym] != null) {
-          badge.textContent = String(map[sym]);
-          badge.title = 'Moonshot Score';
-        }
-      });
-    }
-    window.__hydrateMoonshot = hydrateMoonshotBadges;
+    // Golden set is hydrated by the premium module script below; expose for it to populate.
+    window.__goldenSet = goldenSet;
 
     document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
     document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
@@ -1216,7 +1167,7 @@ const marketCapRanges = [
 
         const symbols: string[] = (window as any).__allStockSymbols || [];
         const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
-        const moonshotMap: Record<string, number> = {};
+        const goldenSet: Set<string> = (window as any).__goldenSet || new Set();
 
         for (let i = 0; i < symbols.length; i += 50) {
           const batch = symbols.slice(i, i + 50).join(',');
@@ -1227,32 +1178,19 @@ const marketCapRanges = [
               if (fields?.valuationRating) {
                 valuationMap[sym] = fields.valuationRating;
               }
-              if (fields?.moonshotScore != null) {
-                moonshotMap[sym] = fields.moonshotScore;
+              if (fields?.isGolden) {
+                goldenSet.add(sym);
               }
             });
           }
         }
-        (window as any).__moonshotMap = moonshotMap;
 
-        // Update the shared reference so the filter works
+        // Update the shared references so the filter + Golden badges work
         Object.assign((window as any).__valuationMap, valuationMap);
 
-        // Hydrate moonshot score badges with numeric scores
-        document.querySelectorAll('.moonshot-badge').forEach(badge => {
-          const sym = (badge as HTMLElement).dataset.symbol;
-          if (sym && (window as any).__moonshotMap?.[sym] != null) {
-            const score = (window as any).__moonshotMap[sym];
-            (badge as HTMLElement).textContent = String(score);
-            (badge as HTMLElement).title = 'Moonshot Score';
-          }
-        });
-
-        // Re-apply filters if valuation was selected from URL restore
-        const filters = (window as any).__browseFilters;
-        if (filters?.valuationRatings?.length > 0) {
-          (window as any).__applyFilters?.();
-        }
+        // Re-render so Golden badges/borders appear (and re-apply any Golden/valuation
+        // filters restored from the URL).
+        (window as any).__applyFilters?.();
       } catch {
         // Silently fail — filters stay disabled
       }

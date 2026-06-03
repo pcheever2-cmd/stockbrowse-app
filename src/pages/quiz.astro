@@ -76,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="font-semibold">Protecting what I have while still beating inflation</div>
                 <div class="text-sm text-[#64748B] mt-1">Solid, stable companies</div>
               </button>
-              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="moonshot">
+              <button class="answer-card w-full text-left p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#161B24] hover:border-[#22D3EE]/50 transition" data-value="bold">
                 <div class="font-semibold">Finding fast-growing companies with big potential</div>
                 <div class="text-sm text-[#64748B] mt-1">Higher risk, higher possible reward</div>
               </button>
@@ -468,7 +468,7 @@ import Layout from '../layouts/Layout.astro';
       if (answers.goal === 'grow') { scores.growth += 3; scores.steady += 2; }
       if (answers.goal === 'income') { scores.income += 4; }
       if (answers.goal === 'protect') { scores.longGame += 4; scores.steady += 1; }
-      if (answers.goal === 'moonshot') { scores.bold += 3; scores.growth += 2; }
+      if (answers.goal === 'bold') { scores.bold += 3; scores.growth += 2; }
 
       // Q3: Risk
       if (answers.risk === 'pull') { scores.longGame += 3; scores.income += 1; }
@@ -579,13 +579,13 @@ import Layout from '../layouts/Layout.astro';
           { icon: '📈', title: 'Low Asset Growth', explanation: 'Companies reinvesting heavily may not have cash left for dividends. Look for those returning cash to shareholders.' },
         ],
         growth: [
-          { icon: '🚀', title: 'Moonshot Grade A or B', explanation: 'Our Moonshot Score identifies companies with strong growth metrics AND quality fundamentals. Not just fast growth — quality growth.' },
+          { icon: '🌟', title: 'Golden Stocks', explanation: 'Golden Stocks combine top quality with a positive catalyst — strong fundamentals plus growth momentum. Not just fast growth — quality growth.' },
           { icon: '📊', title: 'Rising Revenue & Earnings', explanation: 'Look for companies with projected EPS and revenue growth. Growing earnings are the engine of stock returns.' },
           { icon: '🛡️', title: 'Quality Floor (Grade C+)', explanation: 'Even growth investors need a safety net. We filter out the lowest-quality companies to reduce blowup risk.' },
           { icon: '🏭', title: 'Tech, Healthcare & Communication', explanation: 'These sectors tend to have the highest concentration of quality growth companies.' },
         ],
         bold: [
-          { icon: '⚡', title: 'Moonshot Grade A', explanation: 'The highest growth momentum combined with quality. These companies are growing fast AND have strong fundamentals.' },
+          { icon: '🌟', title: 'Golden Stocks', explanation: 'The highest growth momentum combined with quality. These companies are growing fast AND have strong fundamentals.' },
           { icon: '📈', title: 'High Earnings Growth (15%+)', explanation: 'Look for companies with projected earnings growth above 15%. This is where the big moves come from.' },
           { icon: '🛡️', title: 'Quality Floor (Grade C+)', explanation: 'Bold doesn\'t mean reckless. Even aggressive investors should avoid the lowest-quality companies.' },
           { icon: '⚠️', title: 'Higher Volatility Expected', explanation: 'Fast-growing companies tend to have bigger price swings. Be prepared for ups AND downs.' },
@@ -620,12 +620,12 @@ import Layout from '../layouts/Layout.astro';
         ],
         growth: [
           { icon: '🚀', title: 'Browse Growth Stocks', desc: 'Quality growth companies in tech, healthcare, and more', href: '/browse/growth' },
-          { icon: '📖', title: 'Moonshot Score Methodology', desc: 'How we identify quality growth stocks', href: '/moonshot-methodology' },
+          { icon: '📖', title: 'Golden Stocks Methodology', desc: 'How we identify top quality + catalyst stocks', href: '/golden-methodology' },
           { icon: '🔍', title: 'Browse All Stocks', desc: 'Use advanced filters to find your own picks', href: '/browse/all' },
         ],
         bold: [
           { icon: '🚀', title: 'Browse Growth Stocks', desc: 'The highest-quality growth companies', href: '/browse/growth' },
-          { icon: '📖', title: 'Moonshot Score Methodology', desc: 'Understand how we measure growth momentum', href: '/moonshot-methodology' },
+          { icon: '📖', title: 'Golden Stocks Methodology', desc: 'Understand how we identify top quality + catalyst stocks', href: '/golden-methodology' },
           { icon: '🔍', title: 'Browse All Stocks', desc: 'Apply your own filters across 4,500+ stocks', href: '/browse/all' },
         ],
         smart: [

@@ -21,8 +21,6 @@ export interface PublicStock {
   description: string;
   numAnalysts: number | null;
   consensus: string | null;
-  moonshotGrade: 'A' | 'B' | 'C' | 'D' | 'F' | null;  // Letter only — score is premium
-  isGolden: boolean;
   scoreNote: { title: string; text: string } | null;
 }
 
@@ -59,8 +57,9 @@ export interface PremiumFields {
   valueScore: number | null;
   longTermScore: number | null;
 
-  // Moonshot Score (number — letter is public)
-  moonshotScore: number | null;
+  // Golden Stocks (premium): TOP-DECILE Compass quality AND TOP-DECILE catalyst.
+  // The validated quality×catalyst combination (replaced the old quality×Moonshot combo).
+  isGolden: boolean;
 
   // Catalyst signal (premium) — recent EPS beats + analyst-upgrade momentum.
   // catalystScore/Tag null|false when a stock has no earnings/analyst coverage.
@@ -128,7 +127,7 @@ const PREMIUM_NULLS: PremiumFields = {
   trendSignal: null,
   valueScore: null,
   longTermScore: null,
-  moonshotScore: null,
+  isGolden: false,
   catalystScore: null,
   catalystTag: false,
   catalystLabel: null,

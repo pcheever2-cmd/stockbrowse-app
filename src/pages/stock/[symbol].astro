@@ -182,10 +182,6 @@ function formatRsi(rsi: number | null): { value: string; label: string; color: s
 const rsiInfo = formatRsi(stock.rsi);
 const piotroskiInfo = formatPiotroski(stock.piotroskiScore);
 const altmanInfo = formatAltmanZ(stock.altmanZ);
-
-// Moonshot score display — moonshotGrade is public, moonshotScore is premium
-const hasMoonshot = stock.moonshotGrade !== null;
-const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
 ---
 
 <Layout title={`${stock.name} (${stock.symbol}) Compass Score | Stockbrowse`}>
@@ -213,18 +209,17 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
               <div class="text-xs text-[#64748B] mt-2">Compass</div>
             </div>
 
-            <!-- Moonshot Score (if available) — shows locked circle at SSG, hydrates score+grade at runtime -->
-            {hasMoonshot && (
-              <div class="text-center">
-                <div id="moonshot-circle" data-moonshot-grade={stock.moonshotGrade} class={`w-28 h-28 rounded-full bg-[#0C0F14] border-4 border-slate-600 flex items-center justify-center mx-auto shadow-lg`}>
-                  <div>
-                    <div id="moonshot-score" class="text-3xl font-bold text-slate-500">🔒</div>
-                    <div id="moonshot-grade" class="text-xs font-semibold text-slate-500"></div>
-                  </div>
+            <!-- Golden flag — premium; hidden at SSG, revealed via hydration when isGolden is true -->
+            <a id="golden-badge" href="/golden-methodology" class="hidden text-center group"
+               title="Top-decile quality + top-decile catalyst — see how Golden Stocks work">
+              <div class="w-28 h-28 rounded-full bg-gradient-to-br from-amber-400/20 to-yellow-500/10 border-4 border-amber-400 flex items-center justify-center mx-auto shadow-lg">
+                <div>
+                  <div class="text-3xl">⭐</div>
+                  <div class="text-xs font-semibold text-amber-300">Golden</div>
                 </div>
-                <div class="text-xs text-[#64748B] mt-2">Moonshot</div>
               </div>
-            )}
+              <div class="text-xs text-[#64748B] mt-2 group-hover:text-amber-300 transition">Why? →</div>
+            </a>
 
           </div>
         </div>
@@ -769,35 +764,9 @@ const moonshotColors = hasMoonshot ? getGradeColor(stock.moonshotGrade!) : null;
           }
         };
 
-        // Moonshot Score + Grade
-        if (p.moonshotScore != null) {
-          const gradeColors: Record<string, { border: string; text: string }> = {
-            'A': { border: 'border-emerald-500', text: 'text-emerald-400' },
-            'B': { border: 'border-blue-500', text: 'text-blue-400' },
-            'C': { border: 'border-slate-500', text: 'text-slate-300' },
-            'D': { border: 'border-amber-500', text: 'text-amber-400' },
-            'F': { border: 'border-red-500', text: 'text-red-400' },
-          };
-          const msScoreEl = document.getElementById('moonshot-score');
-          const msGradeEl = document.getElementById('moonshot-grade');
-          const msCircle = document.getElementById('moonshot-circle');
-          const grade = document.getElementById('moonshot-circle')?.dataset.moonshotGrade || 'C';
-          const colors = gradeColors[grade] || gradeColors['C'];
-
-          if (msScoreEl) {
-            msScoreEl.textContent = String(p.moonshotScore);
-            msScoreEl.classList.remove('text-slate-500');
-            msScoreEl.classList.add(colors.text);
-          }
-          if (msGradeEl) {
-            msGradeEl.textContent = `Grade ${grade}`;
-            msGradeEl.classList.remove('text-slate-500');
-            msGradeEl.classList.add(colors.text);
-          }
-          if (msCircle) {
-            msCircle.classList.remove('border-slate-600');
-            msCircle.classList.add(colors.border);
-          }
+        // Golden flag (premium) — reveal the ⭐ Golden badge for top-decile quality + catalyst names.
+        if (p.isGolden) {
+          document.getElementById('golden-badge')?.classList.remove('hidden');
         }
 
         // Catalyst Signal (premium) — set ALL fields explicitly so none are left as 🔒

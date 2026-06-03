@@ -25,7 +25,8 @@ fi
 # Premium field names (must not appear in static output)
 # These are the JSON keys that come out of stocks-premium.json
 PREMIUM_FIELDS=(
-  "moonshotScore"
+  "isGolden"
+  "catalystScore"
   "factorValues"
   "avgPriceTarget"
   "upside"
