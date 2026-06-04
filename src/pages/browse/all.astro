@@ -1250,14 +1250,19 @@ const marketCapRanges = [
       const catalystMap: Record<string, number> = (window as any).__catalystMap || {};
 
       try {
-        // Fetch premium fields in 50-symbol batches. Each batch is isolated in its own
-        // try/catch so one failed request can't truncate the whole set (the prior bug left
-        // only the first batch's stocks hydrated — hence "only ~8 catalyst stocks").
+        // Fetch premium fields for all symbols in 50-symbol batches, IN PARALLEL. Sequential
+        // fetching was ~85 round-trips (~a minute), so the Catalyst/Golden sets filled slowly
+        // and the filter showed a partial count (e.g. "8" = just the first batch) if toggled
+        // before it finished. Parallel completes in a few seconds; each batch is isolated so
+        // one failed request can't drop the rest, and we render once after all settle.
+        const batches: string[] = [];
         for (let i = 0; i < symbols.length; i += 50) {
-          const batch = symbols.slice(i, i + 50).join(',');
+          batches.push(symbols.slice(i, i + 50).join(','));
+        }
+        await Promise.all(batches.map(async (batch) => {
           try {
             const res = await authFetch(`/api/stocks/premium?symbols=${batch}`);
-            if (!res.ok) continue;
+            if (!res.ok) return;
             const data = await res.json();
             Object.entries(data).forEach(([sym, fields]: [string, any]) => {
               if (hasValuation && fields?.valuationRating) valuationMap[sym] = fields.valuationRating;
@@ -1266,9 +1271,9 @@ const marketCapRanges = [
               if (fields?.catalystScore != null) catalystMap[sym] = fields.catalystScore;
             });
           } catch {
-            // Skip just this batch; keep going so a transient error can't drop the rest.
+            // Skip just this batch; the others still populate.
           }
-        }
+        }));
       } finally {
         // Always re-render with whatever hydrated, so Golden borders + catalyst chips/numbers
         // appear and any Golden/valuation/catalyst filters restored from the URL re-apply.
