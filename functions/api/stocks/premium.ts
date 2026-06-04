@@ -35,12 +35,20 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     ? [singleSymbol.toUpperCase()]
     : multiSymbols!.split(',').map(s => s.trim().toUpperCase()).slice(0, 50);
 
+  // Valuation Score is a Pro-only feature — strip it for Plus so it never leaks below Pro.
+  const isPro = auth.tier === 'pro';
+
   // Fetch from sharded KV keys
   const results: Record<string, any> = {};
   await Promise.all(
     symbols.map(async (symbol) => {
-      const data = await env.STOCKS_PREMIUM_KV.get(`stock:${symbol}`, 'json');
+      const data = await env.STOCKS_PREMIUM_KV.get<Record<string, any>>(`stock:${symbol}`, 'json');
       if (data) {
+        if (!isPro) {
+          delete data.valuationRating;
+          delete data.valuationScore;
+          delete data.valuationData;
+        }
         results[symbol] = data;
       }
     })

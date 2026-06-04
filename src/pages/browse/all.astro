@@ -1205,72 +1205,79 @@ const marketCapRanges = [
     import { loadSession, hasFeature } from '../../lib/subscription';
     import { authFetch } from '../../lib/authFetch';
 
-    async function loadValuationData() {
-      try {
-        await loadSession();
-
-        if (!hasFeature('valuation_score')) {
-          const section = document.getElementById('valuationFilterSection');
-          if (section) {
-            section.addEventListener('click', (e: Event) => {
-              if ((e.target as HTMLElement).closest('input')) {
-                e.preventDefault();
-                (window as any).showUpgradeModal?.();
-              }
-            });
-          }
-          return;
+    // Wire the valuation-filter section to the upgrade modal for users without Pro.
+    function wireValuationUpsell() {
+      const section = document.getElementById('valuationFilterSection');
+      if (!section) return;
+      section.addEventListener('click', (e: Event) => {
+        if ((e.target as HTMLElement).closest('input')) {
+          e.preventDefault();
+          (window as any).showUpgradeModal?.();
         }
+      });
+    }
 
-        // Premium user — enable filters and fetch data
+    async function loadPremiumFilters() {
+      await loadSession();
+
+      // Golden + Catalyst are PLUS features (the premium API itself only requires 'plus');
+      // the Valuation filter is PRO-only. Gate each on its OWN feature so Plus users get
+      // Golden/Catalyst — previously the whole block sat behind valuation_score (Pro), so
+      // Plus users saw zero Golden and zero Catalyst.
+      const isPremium = hasFeature('golden_stocks');      // Plus and Pro
+      const hasValuation = hasFeature('valuation_score');  // Pro only
+
+      // Valuation filter UI: enable for Pro; otherwise wire the upsell (incl. Plus users).
+      if (hasValuation) {
         const filtersEl = document.getElementById('valuationFilters');
         const badge = document.getElementById('valuationPremiumBadge');
         if (filtersEl) filtersEl.classList.remove('opacity-50', 'pointer-events-none');
         if (badge) badge.remove();
+      } else {
+        wireValuationUpsell();
+      }
 
-        // Reaching here means the user is premium → unlock the Catalyst filter.
-        (window as any).__catalystAccess = true;
+      // Free / newsletter: no premium per-stock data; the Catalyst chip stays locked.
+      if (!isPremium) return;
 
-        const symbols: string[] = (window as any).__allStockSymbols || [];
-        const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
-        const goldenSet: Set<string> = (window as any).__goldenSet || new Set();
-        const catalystTagSet: Set<string> = (window as any).__catalystTagSet || new Set();
-        const catalystMap: Record<string, number> = (window as any).__catalystMap || {};
+      // Plus+ → unlock the Catalyst (and Golden) filters and hydrate the sets.
+      (window as any).__catalystAccess = true;
 
+      const symbols: string[] = (window as any).__allStockSymbols || [];
+      const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
+      const goldenSet: Set<string> = (window as any).__goldenSet || new Set();
+      const catalystTagSet: Set<string> = (window as any).__catalystTagSet || new Set();
+      const catalystMap: Record<string, number> = (window as any).__catalystMap || {};
+
+      try {
+        // Fetch premium fields in 50-symbol batches. Each batch is isolated in its own
+        // try/catch so one failed request can't truncate the whole set (the prior bug left
+        // only the first batch's stocks hydrated — hence "only ~8 catalyst stocks").
         for (let i = 0; i < symbols.length; i += 50) {
           const batch = symbols.slice(i, i + 50).join(',');
-          const res = await authFetch(`/api/stocks/premium?symbols=${batch}`);
-          if (res.ok) {
+          try {
+            const res = await authFetch(`/api/stocks/premium?symbols=${batch}`);
+            if (!res.ok) continue;
             const data = await res.json();
             Object.entries(data).forEach(([sym, fields]: [string, any]) => {
-              if (fields?.valuationRating) {
-                valuationMap[sym] = fields.valuationRating;
-              }
-              if (fields?.isGolden) {
-                goldenSet.add(sym);
-              }
-              if (fields?.catalystTag) {
-                catalystTagSet.add(sym);
-              }
-              if (fields?.catalystScore != null) {
-                catalystMap[sym] = fields.catalystScore;
-              }
+              if (hasValuation && fields?.valuationRating) valuationMap[sym] = fields.valuationRating;
+              if (fields?.isGolden) goldenSet.add(sym);
+              if (fields?.catalystTag) catalystTagSet.add(sym);
+              if (fields?.catalystScore != null) catalystMap[sym] = fields.catalystScore;
             });
+          } catch {
+            // Skip just this batch; keep going so a transient error can't drop the rest.
           }
         }
-
-        // Update the shared references so the filter + Golden/catalyst badges work
+      } finally {
+        // Always re-render with whatever hydrated, so Golden borders + catalyst chips/numbers
+        // appear and any Golden/valuation/catalyst filters restored from the URL re-apply.
         Object.assign((window as any).__valuationMap, valuationMap);
         Object.assign((window as any).__catalystMap, catalystMap);
-
-        // Re-render so Golden borders + catalyst tags/numbers appear (and re-apply any
-        // Golden/valuation/catalyst filters restored from the URL).
         (window as any).__applyFilters?.();
-      } catch {
-        // Silently fail — filters stay disabled
       }
     }
 
-    loadValuationData();
+    loadPremiumFilters();
   </script>
 </Layout>
