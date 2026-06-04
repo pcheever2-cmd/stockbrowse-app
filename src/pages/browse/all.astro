@@ -1243,37 +1243,26 @@ const marketCapRanges = [
       // Plus+ → unlock the Catalyst (and Golden) filters and hydrate the sets.
       (window as any).__catalystAccess = true;
 
-      const symbols: string[] = (window as any).__allStockSymbols || [];
       const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
       const goldenSet: Set<string> = (window as any).__goldenSet || new Set();
       const catalystTagSet: Set<string> = (window as any).__catalystTagSet || new Set();
       const catalystMap: Record<string, number> = (window as any).__catalystMap || {};
 
       try {
-        // Fetch premium fields for all symbols in 50-symbol batches, IN PARALLEL. Sequential
-        // fetching was ~85 round-trips (~a minute), so the Catalyst/Golden sets filled slowly
-        // and the filter showed a partial count (e.g. "8" = just the first batch) if toggled
-        // before it finished. Parallel completes in a few seconds; each batch is isolated so
-        // one failed request can't drop the rest, and we render once after all settle.
-        const batches: string[] = [];
-        for (let i = 0; i < symbols.length; i += 50) {
-          batches.push(symbols.slice(i, i + 50).join(','));
+        // ONE request for the whole-universe premium-filter map (Catalyst/Golden/Valuation),
+        // served from a single KV key. Replaces ~85 per-symbol round-trips, so the filters
+        // hydrate near-instantly instead of trickling in (which showed a partial count if the
+        // filter was toggled before it finished).
+        const res = await authFetch('/api/stocks/premium-summary');
+        if (res.ok) {
+          const data = await res.json();
+          Object.entries(data).forEach(([sym, fields]: [string, any]) => {
+            if (hasValuation && fields?.valuationRating) valuationMap[sym] = fields.valuationRating;
+            if (fields?.isGolden) goldenSet.add(sym);
+            if (fields?.catalystTag) catalystTagSet.add(sym);
+            if (fields?.catalystScore != null) catalystMap[sym] = fields.catalystScore;
+          });
         }
-        await Promise.all(batches.map(async (batch) => {
-          try {
-            const res = await authFetch(`/api/stocks/premium?symbols=${batch}`);
-            if (!res.ok) return;
-            const data = await res.json();
-            Object.entries(data).forEach(([sym, fields]: [string, any]) => {
-              if (hasValuation && fields?.valuationRating) valuationMap[sym] = fields.valuationRating;
-              if (fields?.isGolden) goldenSet.add(sym);
-              if (fields?.catalystTag) catalystTagSet.add(sym);
-              if (fields?.catalystScore != null) catalystMap[sym] = fields.catalystScore;
-            });
-          } catch {
-            // Skip just this batch; the others still populate.
-          }
-        }));
       } finally {
         // Always re-render with whatever hydrated, so Golden borders + catalyst chips/numbers
         // appear and any Golden/valuation/catalyst filters restored from the URL re-apply.
