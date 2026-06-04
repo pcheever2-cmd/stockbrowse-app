@@ -1150,7 +1150,7 @@
   {
     "symbol": "ASCCY",
     "name": "ASICS Corporation",
-    "price": 28.01,
+    "price": 28.12,
     "compassScore": 98,
     "grade": "A",
     "industry": "Apparel - Footwear & Accessories",
@@ -4916,7 +4916,7 @@
   {
     "symbol": "CLPBY",
     "name": "Coloplast A/S",
-    "price": 5.93,
+    "price": 5.95,
     "compassScore": 92,
     "grade": "A",
     "industry": "Medical - Devices",
@@ -6148,7 +6148,7 @@
   {
     "symbol": "ADDYY",
     "name": "adidas AG",
-    "price": 93.75,
+    "price": 93.83,
     "compassScore": 90,
     "grade": "A",
     "industry": "Apparel - Footwear & Accessories",
@@ -6918,7 +6918,7 @@
   {
     "symbol": "VXRT",
     "name": "Vaxart, Inc.",
-    "price": 0.6001,
+    "price": 0.6,
     "compassScore": 89,
     "grade": "A",
     "industry": "Biotechnology",
@@ -14366,7 +14366,7 @@
   {
     "symbol": "PREKF",
     "name": "PrairieSky Royalty Ltd.",
-    "price": 24.79,
+    "price": 24.785,
     "compassScore": 76,
     "grade": "B",
     "industry": "Oil & Gas Exploration & Production",
@@ -29394,7 +29394,7 @@
   {
     "symbol": "JETMF",
     "name": "Global Crossing Airlines Group Inc.",
-    "price": 0.8548,
+    "price": 0.855,
     "compassScore": 50,
     "grade": "C",
     "industry": "Airlines, Airports & Air Services",
@@ -37640,7 +37640,7 @@
   {
     "symbol": "IPCFF",
     "name": "International Petroleum Corporation",
-    "price": 26.0365,
+    "price": 26.037,
     "compassScore": 36,
     "grade": "D",
     "industry": "Oil & Gas Exploration & Production",
@@ -47510,7 +47510,7 @@
   {
     "symbol": "NSARP",
     "name": "NSTAR Electric Company PFD 4.25%",
-    "price": 69.695,
+    "price": 69.7,
     "compassScore": 19,
     "grade": "F",
     "industry": "Regulated Electric",
@@ -50394,7 +50394,7 @@
   {
     "symbol": "FNMA",
     "name": "Federal National Mortgage Association",
-    "price": 6.34,
+    "price": 6.35,
     "compassScore": 14,
     "grade": "F",
     "industry": "Financial - Mortgages",
@@ -51108,7 +51108,7 @@
   {
     "symbol": "RECAF",
     "name": "Reconnaissance Energy Africa Ltd.",
-    "price": 0.8501,
+    "price": 0.85,
     "compassScore": 13,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -53124,7 +53124,7 @@
   {
     "symbol": "SBDS",
     "name": "Solo Brands, Inc.",
-    "price": 4.235,
+    "price": 4.233,
     "compassScore": 10,
     "grade": "F",
     "industry": "Specialty Retail",
@@ -53544,7 +53544,7 @@
   {
     "symbol": "BLAGF",
     "name": "Blue Lagoon Resources Inc.",
-    "price": 0.57,
+    "price": 0.56,
     "compassScore": 9,
     "grade": "F",
     "industry": "Gold",
@@ -57716,7 +57716,7 @@
   {
     "symbol": "BKYI",
     "name": "BIO-key International, Inc.",
-    "price": 4.29,
+    "price": 4.43,
     "compassScore": 2,
     "grade": "F",
     "industry": "Security & Protection Services",
