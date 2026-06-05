@@ -72,14 +72,15 @@ export interface PremiumFields {
   netUpgrades180dNorm: number | null;  // net / directional actions in window
 
   // Valuation rating (Undervalued / Fair Value / Overvalued)
-  valuationScore: number | null;
-  valuationRating: 'Undervalued' | 'Fair Value' | 'Overvalued' | null;
-  valuationData: {
-    vsSma200: number | null;
-    vsSma50: number | null;
-    position52w: number | null;
-    high52w: number | null;
-    low52w: number | null;
+  // Fundamental per-share Fair Value (Pro-only) — replaces the old SMA valuation score.
+  fairValue: {
+    low: number | null;
+    mid: number | null;
+    high: number | null;
+    upsidePct: number | null;
+    verdict: 'Undervalued' | 'Fair Value' | 'Overvalued';
+    basis: string | null;     // 'industry' | 'sector' peer basis
+    nMethods: number | null;
   } | null;
 
   // Analyst accuracy
@@ -135,9 +136,7 @@ const PREMIUM_NULLS: PremiumFields = {
   beatStreak: null,
   netUpgrades180d: null,
   netUpgrades180dNorm: null,
-  valuationScore: null,
-  valuationRating: null,
-  valuationData: null,
+  fairValue: null,
   sectorAnalystAccuracy: null,
   coveringAnalysts: null,
   factorValues: null,

@@ -2,11 +2,11 @@
  * GET /api/stocks/premium-summary
  *
  * Returns the compact premium-filter map for the WHOLE universe in ONE response:
- *   { "AAPL": { catalystTag?, catalystScore?, isGolden?, valuationRating? }, ... }
+ *   { "AAPL": { catalystTag?, catalystScore?, isGolden?, fairValueVerdict? }, ... }
  *
  * Reads a single KV key (summary:premium-filters) instead of ~85 per-symbol round-trips,
- * so the browse-page Catalyst/Golden/Valuation filters hydrate near-instantly.
- * Plus tier minimum; valuationRating (a Pro-only feature) is stripped for non-Pro.
+ * so the browse-page Catalyst/Golden/Fair-Value filters hydrate near-instantly.
+ * Plus tier minimum; fairValueVerdict (a Pro-only feature) is stripped for non-Pro.
  */
 import { requireAuth, json } from '../../_middleware';
 
@@ -28,10 +28,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   const raw = await env.STOCKS_PREMIUM_KV.get('summary:premium-filters');
   const data: Record<string, any> = raw ? JSON.parse(raw) : {};
 
-  // Valuation Score is Pro-only — strip valuationRating for anyone below Pro.
+  // Fair Value is Pro-only — strip fairValueVerdict for anyone below Pro.
   if (auth.tier !== 'pro') {
     for (const k in data) {
-      if (data[k]?.valuationRating) delete data[k].valuationRating;
+      if (data[k]?.fairValueVerdict) delete data[k].fairValueVerdict;
     }
   }
 

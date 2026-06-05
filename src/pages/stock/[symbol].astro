@@ -399,45 +399,35 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
         </div>
       </div>
 
-      <!-- Valuation Score — hidden at SSG, shown via hydration for Pro users -->
-      <div id="valuation-section" class="hidden mb-8">
+      <!-- Fair Value (per share, Pro only) — hidden at SSG, shown via hydration for Pro users -->
+      <div id="fairvalue-section" class="hidden mb-8">
         <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-slate-100">Valuation Score</h2>
+            <h2 class="text-xl font-bold text-slate-100">Fair Value</h2>
             <a href="/valuation-methodology" class="text-xs text-[#64748B] hover:text-[#22D3EE] transition">How it works →</a>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">Rating</div>
-              <div id="val-rating" class="text-xl font-bold text-slate-400">&mdash;</div>
+              <div class="text-sm text-[#64748B] mb-1">Fair Value Range</div>
+              <div id="fv-range" class="text-xl font-bold text-slate-100">&mdash;</div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">vs SMA200</div>
-              <div id="val-sma200" class="text-2xl font-bold text-slate-400">&mdash;</div>
-              <div id="val-sma200-label" class="text-xs text-[#64748B] mt-1"></div>
+              <div class="text-sm text-[#64748B] mb-1">Fair Value</div>
+              <div id="fv-mid" class="text-2xl font-bold text-slate-100">&mdash;</div>
             </div>
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
-              <div class="text-sm text-[#64748B] mb-1">vs SMA50</div>
-              <div id="val-sma50" class="text-2xl font-bold text-slate-400">&mdash;</div>
-              <div id="val-sma50-label" class="text-xs text-[#64748B] mt-1"></div>
+              <div class="text-sm text-[#64748B] mb-1">vs Price</div>
+              <div id="fv-upside" class="text-2xl font-bold text-slate-400">&mdash;</div>
             </div>
-            <div class="bg-[#080A0F] rounded-lg p-4">
-              <div class="text-sm text-[#64748B] mb-2 text-center">52W Range</div>
-              <div class="flex items-center justify-between text-xs text-[#64748B] mb-1">
-                <span id="val-52w-low">&mdash;</span>
-                <span id="val-52w-high">&mdash;</span>
-              </div>
-              <div class="relative h-2 bg-[#1C222E] rounded-full">
-                <div id="val-52w-bar" class="absolute top-0 left-0 h-2 bg-gradient-to-r from-red-500 via-amber-400 to-emerald-500 rounded-full" style="width: 0%"></div>
-                <div id="val-52w-dot" class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-2 border-[#22D3EE] rounded-full shadow" style="left: 0%"></div>
-              </div>
-              <div id="val-52w-price" class="text-center text-xs text-[#CBD5E1] mt-2"></div>
+            <div class="bg-[#080A0F] rounded-lg p-4 text-center">
+              <div class="text-sm text-[#64748B] mb-1">Verdict</div>
+              <div id="fv-verdict" class="text-xl font-bold text-slate-400">&mdash;</div>
             </div>
           </div>
 
           <div class="bg-[#080A0F] rounded-lg p-3">
-            <p id="val-summary" class="text-xs text-[#64748B]"></p>
+            <p id="fv-summary" class="text-xs text-[#64748B]"></p>
           </div>
         </div>
       </div>
@@ -807,26 +797,15 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           setVal('rsiLabel', rsiLabel, rsiColor);
         }
 
-        // SMA comparisons — use valuationData percentages when available for consistency
-        if (p.valuationData?.vsSma50 != null) {
-          const above = p.valuationData.vsSma50 > 0;
+        // SMA comparisons (current price vs moving averages)
+        const smaPrice = parseFloat(el('sma50')?.dataset.price || '0');
+        if (p.sma50 != null && smaPrice > 0) {
+          const above = smaPrice > p.sma50;
           setVal('sma50', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
-        } else if (p.sma50 != null) {
-          const price = parseFloat(el('sma50')?.dataset.price || '0');
-          if (price > 0) {
-            const above = price > p.sma50;
-            setVal('sma50', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
-          }
         }
-        if (p.valuationData?.vsSma200 != null) {
-          const above = p.valuationData.vsSma200 > 0;
+        if (p.sma200 != null && smaPrice > 0) {
+          const above = smaPrice > p.sma200;
           setVal('sma200', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
-        } else if (p.sma200 != null) {
-          const price = parseFloat(el('sma50')?.dataset.price || '0');
-          if (price > 0) {
-            const above = price > p.sma200;
-            setVal('sma200', above ? 'Above' : 'Below', above ? 'text-emerald-400' : 'text-red-400');
-          }
         }
 
         // Wall Street View
@@ -976,75 +955,48 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           });
         }
 
-        // Valuation Score section (Pro only)
-        if (p.valuationRating && hasFeature('valuation_score')) {
-          const section = document.getElementById('valuation-section');
+        // Fair Value section (Pro only) — fundamental per-share fair value (descriptive, not a forecast)
+        if (p.fairValue && p.fairValue.mid != null && hasFeature('fair_value')) {
+          const fv = p.fairValue;
+          const section = document.getElementById('fairvalue-section');
           if (section) {
             section.classList.remove('hidden');
 
-            const ratingEl = document.getElementById('val-rating');
-            if (ratingEl) {
-              ratingEl.textContent = p.valuationRating;
-              const ratingColor = p.valuationRating === 'Undervalued' ? 'text-emerald-400'
-                : p.valuationRating === 'Fair Value' ? 'text-amber-400' : 'text-red-400';
-              ratingEl.classList.remove('text-slate-400');
-              ratingEl.classList.add(ratingColor);
+            const rangeEl = document.getElementById('fv-range');
+            if (rangeEl && fv.low != null && fv.high != null) {
+              rangeEl.textContent = `$${fv.low.toFixed(0)}–$${fv.high.toFixed(0)}`;
+            }
+            const midEl = document.getElementById('fv-mid');
+            if (midEl) midEl.textContent = `$${fv.mid.toFixed(2)}`;
+
+            const upsideEl = document.getElementById('fv-upside');
+            if (upsideEl && fv.upsidePct != null) {
+              const up = fv.upsidePct;
+              upsideEl.textContent = `${up > 0 ? '+' : ''}${up.toFixed(1)}%`;
+              upsideEl.classList.remove('text-slate-400');
+              upsideEl.classList.add(up >= 15 ? 'text-emerald-400' : up <= -15 ? 'text-red-400' : 'text-amber-400');
             }
 
-            if (p.valuationData) {
-              const vd = p.valuationData;
-
-              const sma200El = document.getElementById('val-sma200');
-              const sma200Label = document.getElementById('val-sma200-label');
-              if (sma200El && vd.vsSma200 != null) {
-                sma200El.textContent = `${vd.vsSma200 > 0 ? '+' : ''}${vd.vsSma200}%`;
-                sma200El.classList.remove('text-slate-400');
-                sma200El.classList.add(vd.vsSma200 < 0 ? 'text-emerald-400' : 'text-red-400');
-                if (sma200Label) sma200Label.textContent = vd.vsSma200 < 0 ? 'Below avg' : 'Above avg';
-              }
-
-              const sma50El = document.getElementById('val-sma50');
-              const sma50Label = document.getElementById('val-sma50-label');
-              if (sma50El && vd.vsSma50 != null) {
-                sma50El.textContent = `${vd.vsSma50 > 0 ? '+' : ''}${vd.vsSma50}%`;
-                sma50El.classList.remove('text-slate-400');
-                sma50El.classList.add(vd.vsSma50 < 0 ? 'text-emerald-400' : 'text-red-400');
-                if (sma50Label) sma50Label.textContent = vd.vsSma50 < 0 ? 'Below avg' : 'Above avg';
-              }
-
-              // 52W Range slider
-              if (vd.low52w != null && vd.high52w != null && vd.position52w != null) {
-                const lowEl = document.getElementById('val-52w-low');
-                const highEl = document.getElementById('val-52w-high');
-                const barEl = document.getElementById('val-52w-bar');
-                const dotEl = document.getElementById('val-52w-dot');
-                const priceEl = document.getElementById('val-52w-price');
-                const pos = Math.max(0, Math.min(100, vd.position52w));
-
-                if (lowEl) lowEl.textContent = `$${vd.low52w.toFixed(0)}`;
-                if (highEl) highEl.textContent = `$${vd.high52w.toFixed(0)}`;
-                if (barEl) barEl.style.width = `${pos}%`;
-                if (dotEl) dotEl.style.left = `${pos}%`;
-                if (priceEl) {
-                  const currentPrice = vd.low52w + (vd.high52w - vd.low52w) * (pos / 100);
-                  priceEl.textContent = `$${currentPrice.toFixed(0)} (${pos.toFixed(0)}% of range)`;
-                }
-              }
+            const verdictEl = document.getElementById('fv-verdict');
+            if (verdictEl && fv.verdict) {
+              verdictEl.textContent = fv.verdict;
+              const c = fv.verdict === 'Undervalued' ? 'text-emerald-400'
+                : fv.verdict === 'Fair Value' ? 'text-amber-400' : 'text-red-400';
+              verdictEl.classList.remove('text-slate-400');
+              verdictEl.classList.add(c);
             }
 
-            const summaryEl = document.getElementById('val-summary');
+            const summaryEl = document.getElementById('fv-summary');
             if (summaryEl) {
-              if (p.valuationRating === 'Undervalued') {
-                summaryEl.textContent = p.upside && p.upside > 10
-                  ? '✓ Both technical valuation and analyst targets suggest this stock may be undervalued.'
-                  : 'Technically undervalued — trading below moving averages. Check analyst targets for confirmation.';
-              } else if (p.valuationRating === 'Fair Value') {
-                summaryEl.textContent = 'Trading near fair value based on moving averages. No strong technical signal.';
-              } else {
-                summaryEl.textContent = p.upside && p.upside > 20
-                  ? '⚠ Analysts see upside, but the stock is technically overextended above moving averages.'
-                  : 'Trading above moving averages — technically overvalued. Consider waiting for a pullback.';
-              }
+              const basis = fv.basis === 'sector' ? 'sector peers' : 'industry peers';
+              summaryEl.textContent =
+                `Estimated from comparable ${basis} and the stock's own 5-year valuation history. `
+                + (fv.verdict === 'Undervalued'
+                    ? 'Trading below what its fundamentals justify vs peers and its own history.'
+                    : fv.verdict === 'Overvalued'
+                    ? 'Trading above what its fundamentals justify vs peers and its own history.'
+                    : 'Trading roughly in line with what its fundamentals justify.')
+                + ' Descriptive estimate — not a price target or forecast; cheap can be a value trap.';
             }
           }
         }

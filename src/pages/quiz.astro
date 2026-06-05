@@ -591,8 +591,8 @@ import Layout from '../layouts/Layout.astro';
           { icon: '⚠️', title: 'Higher Volatility Expected', explanation: 'Fast-growing companies tend to have bigger price swings. Be prepared for ups AND downs.' },
         ],
         smart: [
-          { icon: '🏷️', title: 'Undervalued Rating', explanation: 'Our Valuation Score identifies stocks trading below their 200-day moving average — a signal that they may be priced below fair value.' },
-          { icon: '📊', title: 'Trading Below SMA200', explanation: 'When a stock is below its 200-day average, it\'s historically underperformed recently. Research shows these tend to recover over 12 months.' },
+          { icon: '🏷️', title: 'Fair Value', explanation: 'Our Fair Value estimates what a stock is worth per share from its fundamentals versus comparable companies and its own valuation history.' },
+          { icon: '📊', title: 'Undervalued vs Peers', explanation: 'When the price sits below that fair-value range, the stock is cheap relative to peers and its own history — a descriptive read, not a forecast (cheap can be a value trap).' },
           { icon: '⭐', title: 'Quality Score 50+', explanation: 'Cheap stocks can be cheap for a reason. Combining undervaluation with quality filters helps avoid value traps.' },
           { icon: '⏳', title: 'Patience Required', explanation: 'Value investing takes time. These stocks may take months to recover. The 12-month horizon is where this approach works best.' },
         ],
@@ -629,8 +629,8 @@ import Layout from '../layouts/Layout.astro';
           { icon: '🔍', title: 'Browse All Stocks', desc: 'Apply your own filters across 4,500+ stocks', href: '/browse/all' },
         ],
         smart: [
-          { icon: '🔍', title: 'Browse All Stocks', desc: 'Filter by "Undervalued" in the Technical Valuation filter', href: '/browse/all?valuation=Undervalued' },
-          { icon: '📖', title: 'Valuation Score Methodology', desc: 'How we identify undervalued stocks using SMA200', href: '/valuation-methodology' },
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Filter by "Undervalued" in the Fair Value filter', href: '/browse/all?valuation=Undervalued' },
+          { icon: '📖', title: 'Fair Value Methodology', desc: 'How we estimate worth per share from peers & own history', href: '/valuation-methodology' },
           { icon: '📊', title: 'How the Compass Score Works', desc: 'Combine valuation with quality for better picks', href: '/how-it-works' },
         ],
         steady: [

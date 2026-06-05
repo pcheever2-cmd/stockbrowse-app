@@ -34,7 +34,7 @@ const TIER_FEATURES: Record<SubscriptionTier, string[]> = {
     'score_breakdown', 'golden_stocks', 'long_term_score',
     'analyst_targets', 'analyst_accuracy', 'financial_health',
     'csv_export', 'watchlist_single',
-    'valuation_score', 'watchlist_multi', 'sms_alerts',
+    'fair_value', 'watchlist_multi', 'sms_alerts',
   ],
 };
 

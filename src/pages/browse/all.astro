@@ -161,7 +161,7 @@ const marketCapRanges = [
 
             <div class="relative" id="valuationFilterSection">
               <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
-                Valuation <span id="valuationPremiumBadge" class="text-[10px] bg-[#22D3EE]/20 text-[#22D3EE] px-1 rounded ml-1">Pro</span>
+                Fair Value <span id="valuationPremiumBadge" class="text-[10px] bg-[#22D3EE]/20 text-[#22D3EE] px-1 rounded ml-1">Pro</span>
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               <div id="valuationFilters" class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-48 opacity-50 pointer-events-none">
@@ -1225,7 +1225,7 @@ const marketCapRanges = [
       // Golden/Catalyst — previously the whole block sat behind valuation_score (Pro), so
       // Plus users saw zero Golden and zero Catalyst.
       const isPremium = hasFeature('golden_stocks');      // Plus and Pro
-      const hasValuation = hasFeature('valuation_score');  // Pro only
+      const hasValuation = hasFeature('fair_value');       // Pro only (fundamental Fair Value)
 
       // Valuation filter UI: enable for Pro; otherwise wire the upsell (incl. Plus users).
       if (hasValuation) {
@@ -1257,7 +1257,7 @@ const marketCapRanges = [
         if (res.ok) {
           const data = await res.json();
           Object.entries(data).forEach(([sym, fields]: [string, any]) => {
-            if (hasValuation && fields?.valuationRating) valuationMap[sym] = fields.valuationRating;
+            if (hasValuation && fields?.fairValueVerdict) valuationMap[sym] = fields.fairValueVerdict;
             if (fields?.isGolden) goldenSet.add(sym);
             if (fields?.catalystTag) catalystTagSet.add(sym);
             if (fields?.catalystScore != null) catalystMap[sym] = fields.catalystScore;
