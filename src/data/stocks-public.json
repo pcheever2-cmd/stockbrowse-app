@@ -32384,7 +32384,7 @@
     "marketCap": 1.09987836,
     "description": "Empire State Realty OP, L.P. operates as a subsidiary of Empire State Realty Trust, Inc.",
     "numAnalysts": 1,
-    "consensus": "B",
+    "consensus": "N/A",
     "scoreNote": null
   },
   {
@@ -48050,7 +48050,7 @@
     "marketCap": 0.026096158807500002,
     "description": "Nine Energy Service, Inc. operates as an onshore completion services provider that targets unconventional oil and gas resource development across North American basins and internationally. It offers cementing services, which consist of blending high-grade cement and water with various solid and liquid additives to create a cement slurry that is pumped between the casing and the wellbore of the well. The company also provides a portfolio of completion tools, such as liner hangers and accessories, fracture isolation packers, frac sleeves, stage one prep tools, frac plugs, casing flotation tools, specialty open hole float equipment, disk subs, composite cement retainers, and centralizers that provide pinpoint frac sleeve system technologies. In addition, it offers wireline services consisting of plug-and-perf completions, which is a multistage well completion technique for cased-hole wells that consists of deploying perforating guns and isolation tools to a specified depth; and coiled tubing services, which perform wellbore intervention operations utilizing a continuous steel pipe that is transported to the wellsite wound on a large spool in lengths of up to 30,000 feet. The company was formerly known as NSC-Tripoint, Inc. and changed its name to Nine Energy Service, Inc. in October 2011. Nine Energy Service, Inc. was incorporated in 2011 and is headquartered in Houston, Texas.",
     "numAnalysts": 1,
-    "consensus": "N/A",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -49750,7 +49750,7 @@
   {
     "symbol": "CDLX",
     "name": "Cardlytics, Inc.",
-    "price": 0.5984,
+    "price": 5.984,
     "compassScore": 15,
     "grade": "F",
     "industry": "Advertising Agencies",
@@ -56778,7 +56778,7 @@
   {
     "symbol": "KIDZ",
     "name": "Classover Holdings, Inc. Class B Common Stock",
-    "price": 0.2387,
+    "price": 2.387,
     "compassScore": 4,
     "grade": "F",
     "industry": "Education & Training Services",
