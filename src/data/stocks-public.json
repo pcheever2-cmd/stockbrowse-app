@@ -22982,7 +22982,7 @@
   {
     "symbol": "BTG",
     "name": "B2Gold Corp.",
-    "price": 3.87,
+    "price": 3.88,
     "compassScore": 61,
     "grade": "B",
     "industry": "Gold",
@@ -25474,7 +25474,7 @@
   {
     "symbol": "SIF",
     "name": "SIFCO Industries, Inc.",
-    "price": 19.83,
+    "price": 20.19,
     "compassScore": 57,
     "grade": "C",
     "industry": "Aerospace & Defense",
@@ -39544,7 +39544,7 @@
   {
     "symbol": "KTCC",
     "name": "Key Tronic Corporation",
-    "price": 3.87,
+    "price": 3.75,
     "compassScore": 33,
     "grade": "D",
     "industry": "Computer Hardware",
@@ -48672,7 +48672,7 @@
   {
     "symbol": "CVV",
     "name": "CVD Equipment Corporation",
-    "price": 6.22,
+    "price": 6.4,
     "compassScore": 17,
     "grade": "F",
     "industry": "Industrial - Machinery",
@@ -51080,7 +51080,7 @@
   {
     "symbol": "HYFM",
     "name": "Hydrofarm Holdings Group, Inc.",
-    "price": 0.96,
+    "price": 0.93,
     "compassScore": 13,
     "grade": "F",
     "industry": "Agricultural - Machinery",
@@ -51136,7 +51136,7 @@
   {
     "symbol": "BOXL",
     "name": "Boxlight Corporation",
-    "price": 0.78,
+    "price": 0.79,
     "compassScore": 13,
     "grade": "F",
     "industry": "Consumer Electronics",
@@ -54496,7 +54496,7 @@
   {
     "symbol": "DSS",
     "name": "DSS, Inc.",
-    "price": 0.66,
+    "price": 0.67,
     "compassScore": 7,
     "grade": "F",
     "industry": "Packaging & Containers",
@@ -54818,7 +54818,7 @@
   {
     "symbol": "BYSI",
     "name": "BeyondSpring Inc.",
-    "price": 1.68,
+    "price": 1.65,
     "compassScore": 7,
     "grade": "F",
     "industry": "Biotechnology",
@@ -55728,7 +55728,7 @@
   {
     "symbol": "USAS",
     "name": "Americas Gold and Silver Corporation",
-    "price": 4.56,
+    "price": 4.57,
     "compassScore": 6,
     "grade": "F",
     "industry": "Industrial Materials",
