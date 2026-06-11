@@ -324,7 +324,7 @@
   {
     "symbol": "GDEV",
     "name": "GDEV Inc.",
-    "price": 13.36,
+    "price": 13.363,
     "compassScore": 98,
     "grade": "A",
     "industry": "Electronic Gaming & Multimedia",
@@ -1080,7 +1080,7 @@
   {
     "symbol": "IRMD",
     "name": "IRadimed Corporation",
-    "price": 96,
+    "price": 96.0,
     "compassScore": 98,
     "grade": "A",
     "industry": "Medical - Devices",
@@ -1634,7 +1634,7 @@
     "marketCap": 83.19636,
     "description": "Airbnb, Inc., along with its affiliated entities, manages a global digital marketplace. This platform seamlessly connects individuals, known as hosts, who wish to offer a variety of accommodations and unique local experiences, with guests seeking such services worldwide. Users can easily book anything from private rooms and primary residences to vacation homes through its online and mobile channels. Originally established as AirBed & Breakfast, Inc. in 2007, the company officially rebranded to Airbnb, Inc. in November 2010. Its corporate headquarters are situated in San Francisco, California.",
     "numAnalysts": 21,
-    "consensus": "B+",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -1976,7 +1976,7 @@
   {
     "symbol": "SEMR",
     "name": "Semrush Holdings, Inc.",
-    "price": 12,
+    "price": 12.0,
     "compassScore": 97,
     "grade": "A",
     "industry": "Software - Application",
@@ -2158,7 +2158,7 @@
   {
     "symbol": "NFLX",
     "name": "Netflix, Inc.",
-    "price": 82,
+    "price": 82.0,
     "compassScore": 96,
     "grade": "A",
     "industry": "Entertainment",
@@ -2466,7 +2466,7 @@
   {
     "symbol": "OFLX",
     "name": "Omega Flex, Inc.",
-    "price": 30.48,
+    "price": 30.485,
     "compassScore": 96,
     "grade": "A",
     "industry": "Industrial - Machinery",
@@ -2522,7 +2522,7 @@
   {
     "symbol": "NRP",
     "name": "Natural Resource Partners L.P.",
-    "price": 105,
+    "price": 105.0,
     "compassScore": 96,
     "grade": "A",
     "industry": "Coal",
@@ -2564,7 +2564,7 @@
   {
     "symbol": "NYT",
     "name": "The New York Times Company",
-    "price": 73,
+    "price": 73.0,
     "compassScore": 96,
     "grade": "A",
     "industry": "Publishing",
@@ -2726,7 +2726,7 @@
     "marketCap": 13.16606124,
     "description": "Lincoln Electric Holdings, Inc., an enterprise established in Cleveland, Ohio, in 1895, operates globally, focusing on the innovation, production, and sale of equipment and materials for welding, cutting, and brazing applications. The company is organized into three distinct divisions: Americas Welding, International Welding, and The Harris Products Group. Its extensive product portfolio encompasses a broad spectrum of welding machinery, including arc welding power sources, plasma cutters, wire feeding systems, automated robotic welding setups, comprehensive automation solutions, and fume extraction devices. Additionally, Lincoln Electric provides a variety of consumables such as electrodes, fluxes, various welding accessories, and specialized welding and fabrication materials. Beyond welding, the firm manufactures computer-controlled plasma and oxy-fuel cutting systems, along with regulators and torches essential for oxy-fuel welding, cutting, and brazing. It also supplies consumable alloys for the brazing and soldering markets. The company maintains a retail presence within the United States. Furthermore, it fabricates copper and aluminum headers, distributor assemblies, and manifolds specifically for the heating, ventilation, and air conditioning (HVAC) sector in both the U.S. and Mexico. Lincoln Electric serves a wide array of sectors, including general fabrication, energy and process, automotive and transportation, construction and infrastructure, heavy fabrication, shipbuilding, and maintenance and repair. Its offerings are distributed to end-users via direct sales, industrial distributors, retail channels, and independent agents.",
     "numAnalysts": 6,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -3180,7 +3180,7 @@
   {
     "symbol": "PAY",
     "name": "Paymentus Holdings, Inc.",
-    "price": 21,
+    "price": 21.0,
     "compassScore": 95,
     "grade": "A",
     "industry": "Information Technology Services",
@@ -3866,7 +3866,7 @@
   {
     "symbol": "VIASP",
     "name": "Via Renewables, Inc.",
-    "price": 25.51,
+    "price": 25.5101,
     "compassScore": 94,
     "grade": "A",
     "industry": "Regulated Electric",
@@ -4168,7 +4168,7 @@
     "marketCap": 13.635464,
     "description": "Chewy, Inc., along with its affiliated entities, functions exclusively as an online retail enterprise within the United States. Through its primary website, chewy.com, and its mobile applications, the company provides a comprehensive range of products and services tailored for nearly every type of domestic companion, including canines, felines, aquatic pets, birds, small mammals, horses, and even reptiles. Customers can procure everything from essential pet food and treats to necessary supplies, prescribed medications, and other health and wellness items. This extensive inventory includes roughly 100,000 unique products supplied by approximately 3,000 different partner brands. Chewy was established in 2010 and maintains its corporate headquarters in Dania Beach, Florida.",
     "numAnalysts": 11,
-    "consensus": "B",
+    "consensus": "A",
     "scoreNote": null
   },
   {
@@ -4188,7 +4188,7 @@
   {
     "symbol": "COLM",
     "name": "Columbia Sportswear Company",
-    "price": 64.47,
+    "price": 64.465,
     "compassScore": 93,
     "grade": "A",
     "industry": "Apparel - Manufacturers",
@@ -4210,7 +4210,7 @@
     "marketCap": 16.79015256,
     "description": "DraftKings Inc. operates as a leading digital enterprise specializing in sports entertainment and gaming. The company provides sophisticated multi-channel sports betting and gaming technology solutions to operators across 17 countries, facilitating diverse entertainment experiences. Directly, DraftKings manages its own iGaming services under the DraftKings brand in five U.S. states, and separately operates Golden Nugget Online Gaming, another iGaming offering, in three states. Its Sportsbook platform is accessible for both mobile and physical wagers in 18 U.S. states, all in compliance with local regulations. Beyond traditional betting, DraftKings offers its daily fantasy sports product globally in six countries, spanning 15 different sports disciplines. Further diversifying its portfolio, the company has established DraftKings Marketplace, a user-friendly digital collectibles platform featuring curated NFT releases and supporting secondary trading. It also possesses Vegas Sports Information Network (VSiN), a multi-platform content and broadcasting entity. Established in 2011, DraftKings Inc. maintains its headquarters in Boston, Massachusetts.",
     "numAnalysts": 22,
-    "consensus": "C",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -4776,7 +4776,7 @@
   {
     "symbol": "CHRW",
     "name": "C.H. Robinson Worldwide, Inc.",
-    "price": 185.0,
+    "price": 184.995,
     "compassScore": 92,
     "grade": "A",
     "industry": "Integrated Freight & Logistics",
@@ -4958,7 +4958,7 @@
   {
     "symbol": "ONON",
     "name": "On Holding AG",
-    "price": 38,
+    "price": 38.0,
     "compassScore": 92,
     "grade": "A",
     "industry": "Apparel - Retail",
@@ -5456,7 +5456,7 @@
     "marketCap": 21.0509941,
     "description": "HubSpot, Inc. offers an expansive, cloud-hosted customer relationship management (CRM) platform, catering to businesses across the Americas, Europe, and the Asia Pacific. This integrated system features fundamental modules for marketing, sales, customer service, and content management. Additionally, the platform is equipped with a wide array of specialized tools to optimize operations, such as search engine optimization (SEO), blogging, website management, instant messaging, AI-driven chatbots, social media management, marketing automation, email communications, and predictive lead scoring. It further includes functionalities for boosting sales productivity, creating knowledge bases, facilitating e-commerce, directing conversations, hosting videos, and managing ticketing and helpdesk inquiries. Customer satisfaction is also addressed through NPS surveys, complemented by comprehensive analytics and reporting features. Beyond the software, HubSpot offers professional services to educate and train clients on maximizing the CRM's potential, alongside accessible support options via phone, email, and live chat. The company focuses its services on mid-market business-to-business (B2B) organizations. Incorporated in 2005, HubSpot, Inc. has its main offices located in Cambridge, Massachusetts.",
     "numAnalysts": 16,
-    "consensus": "B-",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -5700,7 +5700,7 @@
   {
     "symbol": "UPS",
     "name": "United Parcel Service, Inc.",
-    "price": 103.25,
+    "price": 103.255,
     "compassScore": 91,
     "grade": "A",
     "industry": "Integrated Freight & Logistics",
@@ -5994,7 +5994,7 @@
   {
     "symbol": "FOXA",
     "name": "Fox Corporation",
-    "price": 68,
+    "price": 68.0,
     "compassScore": 90,
     "grade": "A",
     "industry": "Entertainment",
@@ -6750,7 +6750,7 @@
   {
     "symbol": "MNDO",
     "name": "MIND C.T.I. Ltd",
-    "price": 0.95,
+    "price": 0.9502,
     "compassScore": 89,
     "grade": "A",
     "industry": "Software - Application",
@@ -6988,7 +6988,7 @@
   {
     "symbol": "BSET",
     "name": "Bassett Furniture Industries, Incorporated",
-    "price": 15.02,
+    "price": 15.015,
     "compassScore": 88,
     "grade": "A",
     "industry": "Furnishings, Fixtures & Appliances",
@@ -7640,7 +7640,7 @@
     "marketCap": 7.9579708,
     "description": "Lyft, Inc. facilitates a comprehensive, on-demand transportation platform spanning the United States and Canada. Its core mission involves offering users personalized and immediate access to diverse mobility solutions through its multimodal network. Among its primary services is the Ridesharing Marketplace, which seamlessly connects drivers with passengers. For drivers, the company provides Express Drive, a flexible program for vehicle rentals. Consumers can also utilize Lyft Rentals for longer-distance travel needs. Furthermore, in numerous urban centers, Lyft operates a fleet of shared bikes and scooters, ideal for shorter journeys. The Lyft app enhances its utility by incorporating public transit data, thereby expanding the array of available transport options for users. Beyond these offerings, the company also provides access to autonomous vehicles, specialized enterprise transportation solutions (including concierge services for organizations), and subscription benefits through its Lyft Pink plans. Additional services include Lyft Pass commuter programs, first-mile and last-mile connectivity, and university safe rides initiatives. Established in 2007, the company initially operated as Zimride, Inc. before officially rebranding to Lyft, Inc. in April 2013. Its corporate headquarters are located in San Francisco, California.",
     "numAnalysts": 20,
-    "consensus": "A+",
+    "consensus": "A",
     "scoreNote": null
   },
   {
@@ -7730,7 +7730,7 @@
   {
     "symbol": "AMZN",
     "name": "Amazon.com, Inc.",
-    "price": 238,
+    "price": 238.0,
     "compassScore": 87,
     "grade": "A",
     "industry": "Specialty Retail",
@@ -7738,7 +7738,7 @@
     "marketCap": 2471.85138,
     "description": "Amazon.com, Inc. operates a vast global retail enterprise, distributing consumer goods and subscription services through both its extensive online platforms and a network of physical stores across North America and internationally. Its operations are structured into three primary segments: North America, International, and Amazon Web Services (AWS). The company's product offerings encompass both merchandise and content procured for direct resale, alongside items sold by third-party merchants on its platform. Furthermore, the company develops and markets its own range of electronic devices, such as Kindle e-readers, Fire tablets and TVs, Ring, Blink, eero, and Echo products. It also invests in the development and production of original media content. Amazon provides various programs designed to enable independent sellers to offer their products, and empowers authors, musicians, filmmakers, Twitch streamers, and app developers to publish and commercialize their content. Beyond this, it delivers a comprehensive suite of cloud computing solutions, including compute, storage, database, analytics, and machine learning services through AWS. The company also offers fulfillment services, advertising solutions, and digital content subscriptions. A key offering is Amazon Prime, its exclusive membership program. Amazon caters to a wide array of clientele, including individual consumers, third-party sellers, software developers, enterprise clients, content creators, and advertisers. Incorporated in 1994, Amazon.com, Inc. maintains its headquarters in Seattle, Washington.",
     "numAnalysts": 32,
-    "consensus": "B",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -8402,7 +8402,7 @@
   {
     "symbol": "INVA",
     "name": "Innoviva, Inc.",
-    "price": 23,
+    "price": 23.0,
     "compassScore": 86,
     "grade": "A",
     "industry": "Biotechnology",
@@ -8494,7 +8494,7 @@
     "marketCap": 0.54799635,
     "description": "Oxford Industries, Inc. (OII) operates globally as a lifestyle apparel and accessories enterprise, engaged in the development, procurement, promotion, and sale of various branded products. Its portfolio includes several distinct labels: Tommy Bahama: Offers a diverse range of men's and women's casual wear and related merchandise. Lilly Pulitzer: Specializes in women's and girls' apparel, including dresses, sportswear, and an array of accessories like scarves, bags, jewelry, belts, footwear, and children's swimwear. Southern Tide: Focuses on men's clothing such as shirts, pants, shorts, outerwear, ties, and swimwear, complemented by footwear and accessories, with growing collections for women and youth. OII also manages additional brands: The Beaufort Bonnet Company: Provides upscale children's attire and accessories, encompassing bonnets, hats, clothing, and swimwear, sold through its e-commerce site and wholesale partners. Duck Head: Delivers men's apparel, specifically pants, shorts, and tops, available via its website and wholesale specialty retailers. Furthermore, OII extends its brand presence through licensing agreements. The Tommy Bahama brand is licensed for a broad spectrum of items, including indoor and outdoor furniture, beach equipment, bedding and bath textiles, various fabrics, leather goods, headwear, hosiery, sleepwear, personal care products (shampoo, toiletries, fragrances), cigar accessories, and distilled spirits. Lilly Pulitzer's trademark adorns stationery, gift items, home furnishings, and eyewear, while Southern Tide's brand is licensed for bed and bath products. The company's merchandise reaches consumers through a comprehensive multi-channel distribution network. This includes its own physical retail outlets, major department stores, specialized boutiques, various multi-branded e-commerce platforms, off-price retailers, and its dedicated online stores. As of January 29, 2022, Oxford Industries, Inc. maintained a physical presence comprising 186 full-price, brand-specific retail stores, 21 Tommy Bahama food and beverage establishments, and 35 Tommy Bahama outlet stores. Established in 1942, Oxford Industries, Inc. has its corporate headquarters situated in Atlanta, Georgia.",
     "numAnalysts": 4,
-    "consensus": "C+",
+    "consensus": "C-",
     "scoreNote": null
   },
   {
@@ -8648,7 +8648,7 @@
     "marketCap": 3.00889239,
     "description": "UniFirst Corporation is a prominent provider of workwear and protective uniforms, catering to businesses across the United States, Europe, and Canada. The company segments its operations into U.S. and Canadian Rental and Cleaning, Manufacturing, Specialty Garments Rental and Cleaning, and First Aid divisions. At its core, UniFirst manages the entire lifecycle of work clothing. This includes designing, manufacturing, personalizing, renting, cleaning, delivering, and selling a wide range of uniforms and protective apparel. Their offerings span from standard items like shirts, pants, jackets, coveralls, lab coats, smocks, and aprons to specialized protective gear, such as flame-resistant and high-visibility garments. Beyond uniforms, UniFirst supplies a comprehensive array of facility maintenance and hygiene products. This suite includes industrial wiping cloths, floor mats, and various facility service items, alongside dry and wet mops. They also distribute a selection of restroom and cleaning supplies, such as air fresheners, paper products, gloves, masks, sanitizers, and hand soaps, in addition to other textile products. UniFirst also extends into specialized services. They provide first aid cabinet services and a variety of other safety supplies. Notably, the company offers decontamination and cleaning for work clothes and other materials exposed to radioactive substances, as well as dedicated services for cleanroom protective wear and facilities. Clients benefit from flexible garment service models: Full-service rental programs: UniFirst handles all cleaning and maintenance of the garments. Lease programs: Employees take responsibility for the cleaning and upkeep of their leased garments. Purchase programs: Businesses can directly buy garments and associated items. UniFirst serves an exceptionally diverse client base spanning numerous sectors. This extensive list includes automotive service centers and dealers, delivery services, various retailers (food and general merchandise), food processors and service operations, light manufacturers, maintenance facilities, restaurants, and a wide array of service companies. They also cater to wholesalers of soft and durable goods, transportation companies, healthcare providers, government agencies, research and development laboratories, high-technology firms, and even utilities operating nuclear reactors. Essentially, UniFirst provides clothing solutions for any organization requiring employee attire for branding, identification, safety, or practical utility purposes. UniFirst Corporation was established in 1936 and is headquartered in Wilmington, Massachusetts.",
     "numAnalysts": 1,
-    "consensus": "A-",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -8794,7 +8794,7 @@
   {
     "symbol": "ABT",
     "name": "Abbott Laboratories",
-    "price": 89.14,
+    "price": 89.135,
     "compassScore": 85,
     "grade": "A",
     "industry": "Medical - Devices",
@@ -8948,7 +8948,7 @@
   {
     "symbol": "DBI",
     "name": "Designer Brands Inc.",
-    "price": 7,
+    "price": 7.0,
     "compassScore": 85,
     "grade": "A",
     "industry": "Apparel - Retail",
@@ -9900,7 +9900,7 @@
   {
     "symbol": "HDL",
     "name": "SUPER HI INTERNATIONAL HOLDING Ltd. American Depositary Shares",
-    "price": 13.1,
+    "price": 13.1005,
     "compassScore": 83,
     "grade": "B",
     "industry": "Restaurants",
@@ -10012,7 +10012,7 @@
   {
     "symbol": "APA",
     "name": "APA Corporation",
-    "price": 38,
+    "price": 38.0,
     "compassScore": 83,
     "grade": "B",
     "industry": "Oil & Gas Exploration & Production",
@@ -10076,7 +10076,7 @@
     "marketCap": 112.01194741,
     "description": "ConocoPhillips is an energy company that engages in the global exploration, production, transportation, and marketing of various resources, including crude petroleum, bitumen, natural gas, liquefied natural gas (LNG), and natural gas liquids (NGLs). Its primary operations are centered on both conventional and tight oil formations, shale gas, heavy crude, LNG developments, and oil sands projects. The company's extensive portfolio includes unconventional resources located in North America; established conventional assets spanning North America, Europe, Asia, and Australia; numerous LNG ventures; oil sands properties within Canada; and a significant inventory of potential conventional and unconventional exploration opportunities. ConocoPhillips was established in 1917 and its corporate headquarters are situated in Houston, Texas.",
     "numAnalysts": 4,
-    "consensus": "A-",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -10320,7 +10320,7 @@
   {
     "symbol": "MAMO",
     "name": "Massimo Group Common Stock",
-    "price": 0.98,
+    "price": 0.9813,
     "compassScore": 83,
     "grade": "B",
     "industry": "Auto - Recreational Vehicles",
@@ -10404,7 +10404,7 @@
   {
     "symbol": "TEL",
     "name": "TE Connectivity Ltd.",
-    "price": 202,
+    "price": 202.0,
     "compassScore": 83,
     "grade": "B",
     "industry": "Hardware, Equipment & Parts",
@@ -10776,7 +10776,7 @@
     "marketCap": 2.15668882752,
     "description": "Harmony Biosciences Holdings, Inc. is a commercial-stage pharmaceutical firm dedicated to developing and marketing therapies for individuals in the United States who suffer from rare neurological conditions. Their flagship product, WAKIX, is a prescription medication designed to treat excessive daytime sleepiness in adult patients diagnosed with narcolepsy. The company, which was founded in 2017, was formerly known as Harmony Biosciences II, Inc. before adopting its current name in February 2020. Harmony Biosciences Holdings, Inc. operates out of Plymouth Meeting, Pennsylvania.",
     "numAnalysts": 10,
-    "consensus": "A",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -10810,7 +10810,7 @@
   {
     "symbol": "KEYS",
     "name": "Keysight Technologies, Inc.",
-    "price": 324,
+    "price": 324.0,
     "compassScore": 82,
     "grade": "B",
     "industry": "Hardware, Equipment & Parts",
@@ -11056,7 +11056,7 @@
     "marketCap": 1.94244984,
     "description": "Strategic Education, Inc. (SEI) delivers a broad spectrum of educational services, encompassing both traditional campus-based and online post-secondary learning, alongside programs designed to cultivate career-ready competencies. The company operates through three principal divisions: U.S. Higher Education, Australia/New Zealand, and Education Technology Services. Within its U.S. Higher Education portfolio, SEI manages Strayer University, which provides undergraduate and graduate degrees in disciplines such as business administration, accounting, information technology, education, healthcare administration, public administration, and criminal justice, available at physical locations across the eastern United States and through distance learning. It also offers certificate-level web and mobile application development courses via Hackbright Academy and Devmountain, as well as an executive MBA entirely online from the Jack Welch Management Institute. Another key institution is Capella University, an online-only post-secondary provider catering to working adults with bachelor's, master's, and doctoral programs spanning arts and sciences, business and technology, counseling and human services, education, nursing and health sciences, psychology, and public service leadership. Internationally, the Australia/New Zealand segment features Torrens University, which delivers undergraduate, graduate, research-focused, and specialized degrees, primarily in business, design and creative technology, health, hospitality, and education, accessible both online and at its Australian campuses. This division also includes Think Education, a vocational training organization, and New Zealand's Media Design School, renowned for its industry-aligned courses in 3D animation and visual effects, game art and programming, graphic and motion design, digital media artificial intelligence, and creative advertising. Furthermore, SEI's Education Technology Services offers Workforce Edge, a platform that aids employers in managing education benefits, and Sophia Learning, which facilitates more cost-effective education benefit initiatives. Founded in 1892, Strategic Education, Inc. maintains its corporate headquarters in Herndon, Virginia.",
     "numAnalysts": 2,
-    "consensus": "A-",
+    "consensus": "A",
     "scoreNote": null
   },
   {
@@ -11132,7 +11132,7 @@
   {
     "symbol": "GRBK",
     "name": "Green Brick Partners, Inc.",
-    "price": 70,
+    "price": 70.0,
     "compassScore": 81,
     "grade": "B",
     "industry": "Residential Construction",
@@ -11258,7 +11258,7 @@
   {
     "symbol": "BTM",
     "name": "Bitcoin Depot Inc.",
-    "price": 0.49,
+    "price": 0.4919,
     "compassScore": 81,
     "grade": "B",
     "industry": "Financial - Credit Services",
@@ -12042,7 +12042,7 @@
   {
     "symbol": "AERT",
     "name": "Aeries Technology, Inc",
-    "price": 0.5,
+    "price": 0.5013,
     "compassScore": 80,
     "grade": "B",
     "industry": "Consulting Services",
@@ -12462,7 +12462,7 @@
   {
     "symbol": "BWXT",
     "name": "BWX Technologies, Inc.",
-    "price": 183,
+    "price": 183.0,
     "compassScore": 79,
     "grade": "B",
     "industry": "Aerospace & Defense",
@@ -12498,7 +12498,7 @@
     "marketCap": 47.734884184049996,
     "description": "CBRE Group, Inc. operates as a leading global enterprise, specializing in commercial real estate services and investment management. Its operations are structured around three core divisions: Advisory Services, Global Workplace Solutions, and Real Estate Investments. The Advisory Services segment delivers expert strategic counsel and execution support to a broad spectrum of property stakeholders, including owners, investors, and tenants. This encompasses facilitating leasing arrangements; orchestrating property sales and securing mortgage financing through its CBRE Capital Markets brand; and providing comprehensive property and project management. The latter involves various services such as construction oversight, marketing efforts, building engineering, and financial and accounting support for owners and investors across office, industrial, and retail properties. Additionally, this segment offers extensive valuation services, performing market appraisals, litigation support, discounted cash flow analyses, and feasibility studies, alongside consulting services covering property condition evaluations, hotel advisory, and environmental guidance. The Global Workplace Solutions segment is dedicated to providing integrated facilities administration, project execution supervision, and intricate transaction management services. Finally, the Real Estate Investments segment offers sophisticated investment management solutions through its CBRE Investment Management arm, catering to a diverse institutional client base that includes pension funds, insurance companies, sovereign wealth funds, foundations, and university endowments. It also undertakes significant real estate development projects via its Trammell Crow Company subsidiary, primarily benefiting both end-users and financial backers of commercial properties. Furthermore, this segment provides adaptable workspace solutions operating under the CBRE Hana designation. Established in 1906, the company maintains its global headquarters in Dallas, Texas.",
     "numAnalysts": 6,
-    "consensus": "B",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -13022,7 +13022,7 @@
   {
     "symbol": "QRVO",
     "name": "Qorvo, Inc.",
-    "price": 95,
+    "price": 95.0,
     "compassScore": 78,
     "grade": "B",
     "industry": "Semiconductors",
@@ -13218,7 +13218,7 @@
   {
     "symbol": "ALTG-PA",
     "name": "Alta Equipment Group Inc.",
-    "price": 25.25,
+    "price": 25.2501,
     "compassScore": 78,
     "grade": "B",
     "industry": "Rental & Leasing Services",
@@ -13316,7 +13316,7 @@
   {
     "symbol": "OAK-PA",
     "name": "Oaktree Capital Group, LLC 6.625% PFD UT A",
-    "price": 21.23,
+    "price": 21.225,
     "compassScore": 78,
     "grade": "B",
     "industry": "Asset Management",
@@ -13358,7 +13358,7 @@
   {
     "symbol": "SNT",
     "name": "Senstar Technologies Ltd.",
-    "price": 2.48,
+    "price": 2.475,
     "compassScore": 78,
     "grade": "B",
     "industry": "Security & Protection Services",
@@ -13372,7 +13372,7 @@
   {
     "symbol": "T",
     "name": "AT&T Inc.",
-    "price": 23.2,
+    "price": 23.195,
     "compassScore": 78,
     "grade": "B",
     "industry": "Telecommunications Services",
@@ -14178,7 +14178,7 @@
     "marketCap": 29.23369500042,
     "description": "MongoDB, Inc. serves as a global provider of a versatile database platform. The company's offerings feature MongoDB Enterprise Advanced, a sophisticated commercial database server designed for corporate clients, which can be deployed in cloud, on-premises, or hybrid environments. It also presents MongoDB Atlas, a fully managed, multi-cloud database-as-a-service (DBaaS) solution. For developers seeking to start with MongoDB, the company offers a free, downloadable Community Server that includes fundamental database functionalities. Beyond its core database products, MongoDB, Inc. provides professional services such as consulting and training. Founded in 2007 and based in New York, New York, the company was formerly known as 10gen, Inc. before adopting the name MongoDB, Inc. in August 2013.",
     "numAnalysts": 15,
-    "consensus": "C+",
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -14192,7 +14192,7 @@
     "marketCap": 0.48215610000000003,
     "description": "Mitek Systems, Inc. (MITK) specializes in developing and offering mobile image capture and digital identity verification technologies globally, with operations spanning the United States, Europe, Latin America, and other international markets. These offerings are seamlessly integrated into native mobile applications and web browsers, streamlining digital interactions for users. Among its key products, Mitek provides: Mobile Deposit, enabling individuals and businesses to conveniently deposit checks remotely using their camera-equipped smartphones or tablets. Mobile Verify, an identity verification platform accessible across mobile apps, websites, and desktop applications. Mobile Fill, which enhances user experience through automatic image capture and minimizes clicks for expedited form completion. MiSnap, a mobile-capture software development kit (SDK) that ensures intuitive operation and high-quality image capture for both identity documents and checks. For financial institutions, Mitek offers a dedicated suite of check-related solutions: CheckReader automates data extraction from checks. Check Fraud Defender leverages AI and cloud capabilities to combat check fraud. Check Intelligence provides automatic data extraction from check images received through any deposit channel, from branches to ATMs, remote deposit capture, and mobile. Furthermore, the company's robust identity verification portfolio includes: ID_CLOUD, an automated system for reading and validating identity documents directly within a customer's application. IDLive Face, a passive solution for detecting facial liveness. IDVoice, an advanced AI-powered voice biometric engine. IDLive Voice, designed to prevent spoofing attacks on voice biometric systems. IDLive Doc, which helps counteract fraud associated with digitally displayed document images. Established in 1986, Mitek Systems, Inc. is headquartered in San Diego, California.",
     "numAnalysts": 4,
-    "consensus": "A-",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -15570,7 +15570,7 @@
   {
     "symbol": "HTFC",
     "name": "Horizon Technology Finance Corp",
-    "price": 25.01,
+    "price": 25.0099,
     "compassScore": 74,
     "grade": "B",
     "industry": "Asset Management",
@@ -15836,7 +15836,7 @@
   {
     "symbol": "RCMT",
     "name": "RCM Technologies, Inc.",
-    "price": 24.48,
+    "price": 24.485,
     "compassScore": 73,
     "grade": "B",
     "industry": "Conglomerates",
@@ -16130,7 +16130,7 @@
   {
     "symbol": "TRTN-PA",
     "name": "Triton International Limited",
-    "price": 25.49,
+    "price": 25.4884,
     "compassScore": 73,
     "grade": "B",
     "industry": "Rental & Leasing Services",
@@ -16396,7 +16396,7 @@
   {
     "symbol": "MIRM",
     "name": "Mirum Pharmaceuticals, Inc.",
-    "price": 94,
+    "price": 94.0,
     "compassScore": 72,
     "grade": "B",
     "industry": "Biotechnology",
@@ -16480,7 +16480,7 @@
   {
     "symbol": "AII",
     "name": "American Integrity Insurance Group, Inc.",
-    "price": 17,
+    "price": 17.0,
     "compassScore": 72,
     "grade": "B",
     "industry": "Insurance - Property & Casualty",
@@ -16816,7 +16816,7 @@
   {
     "symbol": "EML",
     "name": "The Eastern Company",
-    "price": 21.68,
+    "price": 21.685,
     "compassScore": 72,
     "grade": "B",
     "industry": "Manufacturing - Tools & Accessories",
@@ -16984,7 +16984,7 @@
   {
     "symbol": "LHX",
     "name": "L3Harris Technologies, Inc.",
-    "price": 303,
+    "price": 303.0,
     "compassScore": 71,
     "grade": "B",
     "industry": "Aerospace & Defense",
@@ -17076,7 +17076,7 @@
     "marketCap": 1.8036822000000003,
     "description": "Progress Software Corporation (PRGS) specializes in providing technology solutions that enable businesses to create, launch, and oversee their software applications. The company's extensive product suite includes: OpenEdge, a powerful development platform used to construct secure, multi-language applications that can be deployed across diverse platforms, devices, and cloud infrastructures. A comprehensive set of developer tools offering user interface (UI) components for building web, mobile, desktop, chat, and augmented/virtual reality (AR/VR) applications, alongside automated testing and reporting utilities. Sitefinity, which serves as a unified platform for managing web content and performing in-depth customer analytics. Corticon, a business rules management system designed to infuse applications with decision automation, efficient change processes, and valuable insights. DataDirect Connect, ensuring seamless data connectivity between applications running on various platforms through industry-standard interfaces. MOVEit, a solution facilitating secure collaboration and the automated transfer of vital business information. Chef, an infrastructure automation platform that aids in the building, deployment, management, and security of applications across multi-cloud, hybrid, and on-premises environments. WhatsUp Gold, a dedicated tool for network monitoring. Kemp LoadMaster, offering crucial load balancing solutions. Kemp Flowmon, providing network performance monitoring and diagnostic capabilities by gathering and analyzing network telemetry data from multiple sources. Beyond its software offerings, Progress also delivers a range of services such as project management, implementation support, custom development, programming, web application enablement, and specialized training. The company markets its products to a broad customer base, including direct end-users, independent software vendors (ISVs), original equipment manufacturers (OEMs), and system integrators. Progress Software operates globally, with a presence across the United States, Canada, Latin America, Europe, the Middle East, Africa, and the Asia Pacific region. Founded in 1981, its corporate headquarters are located in Burlington, Massachusetts.",
     "numAnalysts": 4,
-    "consensus": "B",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -17306,7 +17306,7 @@
   {
     "symbol": "KODK",
     "name": "Eastman Kodak Company",
-    "price": 9.72,
+    "price": 9.725,
     "compassScore": 71,
     "grade": "B",
     "industry": "Hardware, Equipment & Parts",
@@ -17496,7 +17496,7 @@
     "marketCap": 8.15974136592,
     "description": "Millicom International Cellular S.A. functions as a leading telecommunications firm, providing a range of mobile and cable services throughout its operational regions in Latin America and Africa. The company's mobile segment delivers fundamental services such as mobile data and voice communication, along with text messaging (SMS). Additionally, it offers an extensive array of mobile financial solutions, including payment processing, money transfers, international remittances, savings options, instant loans, and micro-insurance. In parallel, Millicom furnishes fixed-line and cable services. Residential customers can access high-speed internet (broadband), diverse content platforms, traditional landline phone services, and subscription television (pay-TV). For businesses of all sizes, from small enterprises to major corporations, and governmental entities, the company provides tailored fixed services, managed IT solutions, cloud computing capabilities, robust cybersecurity measures, and various supplementary value-added offerings. As of December 31, 2021, Millicom had a substantial customer base, serving 44.9 million mobile subscribers and extending its cable network to 12.7 million homes. The firm markets its wide range of products and services primarily under the Tigo and Tigo Business brands. Millicom, which was established in 1990, has its corporate headquarters situated in Luxembourg.",
     "numAnalysts": 7,
-    "consensus": "B",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -18308,7 +18308,7 @@
     "marketCap": 9.781821,
     "description": "DaVita Inc. specializes in delivering essential kidney dialysis treatments and comprehensive renal care to individuals grappling with chronic kidney failure. The company primarily operates an extensive network of outpatient dialysis centers, supplementing this with services provided in hospital inpatient settings and within patients' homes. Beyond direct patient treatment, DaVita manages its own diagnostic laboratories, performing routine tests vital for dialysis patients, alongside other physician-ordered laboratory analyses specifically for those with end-stage renal disease (ESRD). The firm also offers administrative and management support to various other outpatient dialysis facilities. Its broad spectrum of offerings extends to chronic disease management programs, supporting a substantial patient cohort; by year-end 2021, this included 16,000 patients enrolled in risk-based integrated care models and an additional 7,000 in other integrated care arrangements. Further specialized services encompass vascular access interventions, clinical research initiatives, direct physician support, and a complete suite of holistic kidney care solutions. As of December 31, 2021, DaVita's footprint across the United States comprised 2,815 outpatient dialysis centers, collectively serving approximately 203,100 patients. Globally, the company operated 339 outpatient dialysis centers spread across ten countries outside the U.S., attending to roughly 39,900 patients. Moreover, it furnished acute inpatient dialysis services and related laboratory work in around 850 U.S. hospitals. Founded in 1994, DaVita Inc. maintains its headquarters in Denver, Colorado. The company rebranded to its current name in September 2016, having previously been known as DaVita HealthCare Partners Inc.",
     "numAnalysts": 5,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -19056,7 +19056,7 @@
   {
     "symbol": "SOBKY",
     "name": "SoftBank Corp.",
-    "price": 13.3,
+    "price": 13.3003,
     "compassScore": 68,
     "grade": "B",
     "industry": "Telecommunications Services",
@@ -19098,7 +19098,7 @@
   {
     "symbol": "FCRX",
     "name": "Crescent Capital BDC, Inc.",
-    "price": 25.17,
+    "price": 25.1699,
     "compassScore": 68,
     "grade": "B",
     "industry": "Asset Management",
@@ -19372,7 +19372,7 @@
     "marketCap": 16.25038635,
     "description": "Mid-America Apartment Communities, known as MAA, is a prominent S&P 500 entity operating as a Real Estate Investment Trust (REIT). Its core objective is to generate outstanding, comprehensive investment returns for its shareholders. MAA achieves this by strategically acquiring, developing, redeveloping, owning, and managing high-quality apartment complexes. These properties are primarily located across the Southeast, Southwest, and Mid-Atlantic regions of the United States. As of December 31, 2020, the company held an interest in 102,772 apartment units, a figure that includes communities currently under development, spread throughout 16 states and the District of Columbia.",
     "numAnalysts": 5,
-    "consensus": "B",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -19708,7 +19708,7 @@
     "marketCap": 7.9158771023400005,
     "description": "Moog Inc. specializes in the development, manufacture, and integration of high-precision motion and fluid control systems. The company serves original equipment manufacturers (OEMs) and end-users across global aerospace, defense, and industrial markets. Its Aircraft Controls segment delivers essential primary and secondary flight control systems for both military and commercial aircraft. This segment also provides aftermarket support services and ground-based navigation aids. The Space and Defense Controls segment engineers critical control solutions for a broad spectrum of platforms. These include spacecraft, space and launch vehicles, and both tactical and strategic missiles, where it provides steering mechanisms. For armored combat vehicles, its offerings encompass gun aiming, stabilization, and automatic ammunition loading systems. The segment also supports naval surface ships and submarines, security and surveillance operations, and other defense applications, notably with weapons stores management systems for aerial reconnaissance, ground, and sea platforms. Moog's Industrial Systems segment supplies specialized components and comprehensive systems for demanding applications such as injection and blow molding machinery, metal forming presses, and heavy industry, including steel and aluminum production. It also furnishes electromechanical motion simulation bases for flight training, solutions for power generation, and custom test systems for automotive, structural, and fatigue analysis. Further extending its reach, this segment serves the oil and gas exploration and production industry, contributes components for wind turbines, and develops solutions for various medical equipment, including diagnostic imaging (CT scans), sleep apnea devices, oxygen concentrators, and infusion and enteral clinical nutrition pumps. Its product line encompasses hydraulics, slip rings, rotary unions, fiber optic rotary joints, and motors, alongside specialized infusion and enteral pumps. Founded in 1951, Moog Inc. maintains its corporate headquarters in East Aurora, New York.",
     "numAnalysts": 4,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -20848,7 +20848,7 @@
   {
     "symbol": "BRK-A",
     "name": "Berkshire Hathaway Inc.",
-    "price": 727000,
+    "price": 727000.0,
     "compassScore": 65,
     "grade": "B",
     "industry": "Insurance - Diversified",
@@ -20896,7 +20896,7 @@
   {
     "symbol": "MCI",
     "name": "Barings Corporate Investors",
-    "price": 16.86,
+    "price": 16.865,
     "compassScore": 65,
     "grade": "B",
     "industry": "Asset Management",
@@ -21218,7 +21218,7 @@
   {
     "symbol": "DASH",
     "name": "DoorDash, Inc.",
-    "price": 151,
+    "price": 151.0,
     "compassScore": 64,
     "grade": "B",
     "industry": "Internet Content & Information",
@@ -21506,7 +21506,7 @@
     "marketCap": 0.8579735399199999,
     "description": "SI-BONE, Inc. is a medical technology company that develops and markets specialized implantable solutions for musculoskeletal conditions affecting the sacropelvic region. These devices are utilized across the United States and internationally. Its flagship product, iFuse, is a minimally invasive surgical implant system designed to address a range of indications, including sacroiliac joint dysfunction and degeneration, adult spinal deformities, and traumatic fractures of the pelvic ring. Beyond iFuse, the company offers advanced iterations like iFuse-3D. This titanium implant retains the distinctive triangular cross-section of the original iFuse but incorporates a proprietary 3D-printed porous surface and a fenestrated design. Another offering is iFuse-TORQ, a series of 3D-printed threaded implants. These are specifically engineered for treating pelvic fractures and facilitating minimally invasive sacroiliac joint fusion procedures. SI-BONE distributes its products primarily through a dedicated direct sales force, complemented by a network of independent distributors. Established in 2008, the company maintains its corporate headquarters in Santa Clara, California.",
     "numAnalysts": 3,
-    "consensus": "C-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -21568,7 +21568,7 @@
   {
     "symbol": "TMHC",
     "name": "Taylor Morrison Home Corporation",
-    "price": 71.59,
+    "price": 71.595,
     "compassScore": 64,
     "grade": "B",
     "industry": "Residential Construction",
@@ -21932,7 +21932,7 @@
   {
     "symbol": "ABLLL",
     "name": "Abacus Life, Inc. 9.875% Fixed Rate Senior Notes due 2028",
-    "price": 25.61,
+    "price": 25.605,
     "compassScore": 63,
     "grade": "B",
     "industry": "Insurance - Life",
@@ -22254,7 +22254,7 @@
   {
     "symbol": "AKBA",
     "name": "Akebia Therapeutics, Inc.",
-    "price": 0.87,
+    "price": 0.8729,
     "compassScore": 62,
     "grade": "B",
     "industry": "Biotechnology",
@@ -22436,7 +22436,7 @@
   {
     "symbol": "DOO",
     "name": "BRP Inc.",
-    "price": 58,
+    "price": 58.0,
     "compassScore": 62,
     "grade": "B",
     "industry": "Auto - Recreational Vehicles",
@@ -23164,7 +23164,7 @@
   {
     "symbol": "CHSCL",
     "name": "CHS Inc.",
-    "price": 25.82,
+    "price": 25.815,
     "compassScore": 61,
     "grade": "B",
     "industry": "Agricultural Farm Products",
@@ -23332,7 +23332,7 @@
   {
     "symbol": "SSTI",
     "name": "SoundThinking, Inc.",
-    "price": 7.79,
+    "price": 7.795,
     "compassScore": 61,
     "grade": "B",
     "industry": "Software - Application",
@@ -23710,7 +23710,7 @@
   {
     "symbol": "GOODO",
     "name": "Gladstone Commercial Corporation",
-    "price": 20.23,
+    "price": 20.2264,
     "compassScore": 60,
     "grade": "B",
     "industry": "REIT - Diversified",
@@ -23724,7 +23724,7 @@
   {
     "symbol": "MDNDF",
     "name": "McDonald's Holdings Company (Japan), Ltd.",
-    "price": 51,
+    "price": 51.0,
     "compassScore": 60,
     "grade": "B",
     "industry": "Restaurants",
@@ -23892,7 +23892,7 @@
   {
     "symbol": "SAJ",
     "name": "Saratoga Investment Corp 8.00%",
-    "price": 25.47,
+    "price": 25.4687,
     "compassScore": 60,
     "grade": "B",
     "industry": "Investment - Banking & Investment Services",
@@ -24488,7 +24488,7 @@
     "marketCap": 3.598925,
     "description": "Polaris Inc. is a global enterprise specializing in the design, engineering, production, and distribution of powersports vehicles. Its business is structured across three primary segments: Off-Road, On-Road, and Marine. The company's off-road lineup features all-terrain vehicles (ATVs), side-by-side utility vehicles, snowmobiles, and innovative snow bike conversion systems. This segment also produces low-emission, light-duty transport, passenger, and industrial vehicles. For paved roads, Polaris offers a selection of motorcycles, quadricycles, and moto-roadsters. Beyond the vehicles themselves, Polaris provides an extensive array of complementary accessories. For off-road vehicles, these include functional items like winches, plows, and tracks, as well as comfort and style elements such as cab systems, lighting, audio, and specialized wheels. Snowmobile owners can find covers, traction enhancers, electric starters, and various bags and windshields. Motorcycle enthusiasts have access to saddlebags, custom handlebars, exhaust systems, and decorative chrome. Furthermore, Polaris markets a full range of protective gear and apparel, encompassing helmets, jackets, gloves, and boots. Within its Marine division, the company manufactures both pontoon and deck boats. Polaris products are sold through a broad network of dealers and distributors, and directly via its online platforms. Aftermarket parts, apparel, and accessories are additionally available through its 101 physical retail centers, call centers, and e-commerce websites. Founded in 1954 as Polaris Industries Inc., the company's headquarters are located in Medina, Minnesota.",
     "numAnalysts": 13,
-    "consensus": "C",
+    "consensus": "C-",
     "scoreNote": null
   },
   {
@@ -24508,7 +24508,7 @@
   {
     "symbol": "RLX",
     "name": "RLX Technology Inc.",
-    "price": 2,
+    "price": 2.0,
     "compassScore": 59,
     "grade": "C",
     "industry": "Tobacco",
@@ -24558,7 +24558,7 @@
     "marketCap": 11.03843,
     "description": "The J. M. Smucker Company is an international enterprise specializing in the production and marketing of a diverse portfolio of branded food and beverage items. Its operations are organized into three principal U.S. retail divisions: Pet Foods, Coffee, and Consumer Foods. The company's extensive product offerings encompass various coffee options, including roast, ground, single-serve, and premium blends; a wide selection of spreads such as peanut butter and fruit preserves; cooking staples like shortening and oils; convenient frozen sandwiches and snacks; and a full range of pet food and treats. Additionally, Smucker provides hot beverages, portion-controlled items, and flour products for the foodservice sector, alongside frozen handheld meals, juices, beverages, and baking ingredients. These items are marketed under numerous recognizable brands, including Meow Mix, 9Lives, Kibbles 'n Bits, Milk-Bone, Pup-Peroni, Rachael Ray Nutrish, Nature's Recipe, Folgers, Caf\u00e9 Bustelo, Dunkin', 1850, Jif, Smucker's, Smucker's Uncrustables, Robin Hood, and Five Roses. The company distributes its products through a vast network, utilizing both direct sales and brokers to reach grocery stores, club stores, discount and dollar retailers, online platforms, pet specialty stores, natural food outlets and their distributors, pharmacies, military commissaries, and large mass merchandisers. Founded in 1897, The J. M. Smucker Company is headquartered in Orrville, Ohio.",
     "numAnalysts": 12,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -24872,7 +24872,7 @@
   {
     "symbol": "AQNB",
     "name": "Algonquin Power & Utilities Cor",
-    "price": 26.05,
+    "price": 26.0526,
     "compassScore": 58,
     "grade": "C",
     "industry": "Regulated Electric",
@@ -24900,7 +24900,7 @@
   {
     "symbol": "ECCU",
     "name": "Eagle Point Credit Company Inc.",
-    "price": 25.41,
+    "price": 25.405,
     "compassScore": 58,
     "grade": "C",
     "industry": "Asset Management",
@@ -25138,7 +25138,7 @@
   {
     "symbol": "GTEC",
     "name": "Greenland Technologies Holding Corporation",
-    "price": 0.63,
+    "price": 0.6302,
     "compassScore": 57,
     "grade": "C",
     "industry": "Industrial - Machinery",
@@ -25278,7 +25278,7 @@
   {
     "symbol": "CSV",
     "name": "Carriage Services, Inc.",
-    "price": 40,
+    "price": 40.0,
     "compassScore": 57,
     "grade": "C",
     "industry": "Personal Products & Services",
@@ -25745,7 +25745,7 @@
     "grade": "C",
     "industry": "REIT - Industrial",
     "sector": "Real Estate",
-    "marketCap": 3.100312606,
+    "marketCap": 3.109745008,
     "description": "LXP Industrial Trust, identified by its NYSE ticker LXP, functions as a publicly traded real estate investment trust (REIT). Its core holdings encompass a nationwide portfolio of industrial properties, primarily consisting of equity stakes in single-tenant assets under net-lease agreements. The trust is actively engaged in expanding its industrial property footprint through a variety of strategies, including custom build-to-suit developments, sale-leaseback arrangements, and direct acquisitions.",
     "numAnalysts": 3,
     "consensus": "B",
@@ -25894,7 +25894,7 @@
   {
     "symbol": "BEKE",
     "name": "KE Holdings Inc.",
-    "price": 16,
+    "price": 16.0,
     "compassScore": 56,
     "grade": "C",
     "industry": "Real Estate - Services",
@@ -26566,7 +26566,7 @@
   {
     "symbol": "BDL",
     "name": "Flanigan's Enterprises, Inc.",
-    "price": 35.23,
+    "price": 35.225,
     "compassScore": 55,
     "grade": "C",
     "industry": "Restaurants",
@@ -27070,7 +27070,7 @@
   {
     "symbol": "GMGI",
     "name": "Golden Matrix Group, Inc.",
-    "price": 0.64,
+    "price": 0.6372,
     "compassScore": 54,
     "grade": "C",
     "industry": "Electronic Gaming & Multimedia",
@@ -27210,7 +27210,7 @@
   {
     "symbol": "SCCD",
     "name": "Sachem Capital Corp. 6.00% Notes Due 2026",
-    "price": 24.95,
+    "price": 24.945,
     "compassScore": 54,
     "grade": "C",
     "industry": "REIT - Industrial",
@@ -27826,7 +27826,7 @@
   {
     "symbol": "SLQT",
     "name": "SelectQuote, Inc.",
-    "price": 0.86,
+    "price": 0.8646,
     "compassScore": 53,
     "grade": "C",
     "industry": "Insurance - Brokers",
@@ -27952,7 +27952,7 @@
   {
     "symbol": "MBUU",
     "name": "Malibu Boats, Inc.",
-    "price": 26.61,
+    "price": 26.605,
     "compassScore": 52,
     "grade": "C",
     "industry": "Auto - Recreational Vehicles",
@@ -29052,7 +29052,7 @@
     "marketCap": 1.5159451257,
     "description": "Expro Group Holdings N.V. is a global provider of specialized energy services, operating across North and Latin America, Europe, Sub-Saharan Africa, the Middle East, North Africa, and the Asia-Pacific regions. The company delivers solutions crucial for both well construction and ongoing well management. Its construction offerings include advanced drilling technologies, tubular running services, and cementing and tubular goods. For well management, it provides services such as optimizing well flow, subsea well access, and maintaining well integrity through intervention. Expro supports exploration and production companies in both onshore and offshore environments. Established in 1938 and headquartered in Houston, Texas, the company boasts an extensive international presence, serving clients in approximately 60 countries from around 100 locations.",
     "numAnalysts": 3,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -29086,7 +29086,7 @@
   {
     "symbol": "ANIK",
     "name": "Anika Therapeutics, Inc.",
-    "price": 14.95,
+    "price": 14.945,
     "compassScore": 50,
     "grade": "C",
     "industry": "Medical - Devices",
@@ -29408,7 +29408,7 @@
   {
     "symbol": "CHMI-PB",
     "name": "Cherry Hill Mortgage Investment Corporation",
-    "price": 23.85,
+    "price": 23.8499,
     "compassScore": 50,
     "grade": "C",
     "industry": "REIT - Mortgage",
@@ -29688,7 +29688,7 @@
   {
     "symbol": "YTRA",
     "name": "Yatra Online, Inc.",
-    "price": 0.89,
+    "price": 0.8926,
     "compassScore": 50,
     "grade": "C",
     "industry": "Travel Services",
@@ -29982,7 +29982,7 @@
   {
     "symbol": "DOMO",
     "name": "Domo, Inc.",
-    "price": 3.02,
+    "price": 3.015,
     "compassScore": 49,
     "grade": "C",
     "industry": "Software - Application",
@@ -30018,7 +30018,7 @@
     "marketCap": 11.0872887835125,
     "description": "Embraer S.A. is a leading Brazilian firm operating within the aerospace and defense sectors. Its extensive activities encompass the full lifecycle of various aircraft, from their initial design and development through manufacturing and ongoing servicing. This includes a diverse fleet of commercial airliners, executive private jets, and specialized agricultural planes. Beyond its aviation portfolio, the company also delivers advanced defense and security solutions and is a key player in the emerging field of eVTOL (electric Vertical Takeoff and Landing) technologies.",
     "numAnalysts": 7,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -30032,7 +30032,7 @@
     "marketCap": 0.79453,
     "description": "Edgewell Personal Care Company, along with its associated businesses, is a global producer and distributor of a diverse range of personal care items. The company organizes its operations into three main divisions: Wet Shave, Sun and Skin Care, and Feminine Care. The Wet Shave segment provides complete shaving solutions, including razor handles and refillable blade systems, as well as disposable razors for both men and women. This category features well-known brands such as Schick, Wilkinson Sword, Edge, Skintimate, Shave Guard, and Personna. Within its Sun and Skin Care segment, Edgewell offers a broad spectrum of sun protection products\u2014from general and sport formulations to those specifically for children, babies, tanning, and after-sun care\u2014under the Banana Boat and Hawaiian Tropic brand names. This division also includes personal hygiene products like antibacterial and alcohol-based hand wipes, as well as hand sanitizer gels from the Wet Ones brand. Furthermore, it incorporates specialized men's skincare lines, including Bulldog and Jack Black, alongside a wider selection of skincare and grooming products from the Cremo brand. The Feminine Care segment focuses on menstrual hygiene products, offering tampons under established brands such as Playtex Gentle Glide 360\u00b0, Playtex Sport, Playtex, and o.b. This division also distributes sanitary pads and liners through the Stayfree and Carefree brands. Historically, the company operated as Energizer Holdings, Inc. before officially changing its name to Edgewell Personal Care Company in June 2015. Established in 1772, Edgewell Personal Care Company's corporate headquarters are situated in Shelton, Connecticut.",
     "numAnalysts": 4,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -30360,7 +30360,7 @@
   {
     "symbol": "OCSL",
     "name": "Oaktree Specialty Lending Corporation",
-    "price": 12,
+    "price": 12.0,
     "compassScore": 48,
     "grade": "C",
     "industry": "Financial - Credit Services",
@@ -30374,7 +30374,7 @@
   {
     "symbol": "ACCO",
     "name": "ACCO Brands Corporation",
-    "price": 4,
+    "price": 4.0,
     "compassScore": 48,
     "grade": "C",
     "industry": "Business Equipment & Supplies",
@@ -30598,7 +30598,7 @@
   {
     "symbol": "SPHR",
     "name": "Sphere Entertainment Co.",
-    "price": 142,
+    "price": 142.0,
     "compassScore": 48,
     "grade": "C",
     "industry": "Entertainment",
@@ -30612,7 +30612,7 @@
   {
     "symbol": "APWC",
     "name": "Asia Pacific Wire & Cable Corporation Limited",
-    "price": 1.38,
+    "price": 1.375,
     "compassScore": 48,
     "grade": "C",
     "industry": "Electrical Equipment & Parts",
@@ -30682,7 +30682,7 @@
   {
     "symbol": "GEGGL",
     "name": "Great Elm Group, Inc. 7.25% Notes due 2027",
-    "price": 24.48,
+    "price": 24.4845,
     "compassScore": 48,
     "grade": "C",
     "industry": "Investment - Banking & Investment Services",
@@ -31754,7 +31754,7 @@
     "marketCap": 1.9056916799999997,
     "description": "Hawaiian Electric Industries, Inc. (HE) operates as a diversified holding company primarily focused on three key areas within the state of Hawaii: electric utility services, banking, and investments in renewable and sustainable infrastructure. The company's Electric Utility division is responsible for the generation, acquisition, transmission, distribution, and sale of electricity across several Hawaiian islands, including Oahu, Hawaii, Maui, Lanai, and Molokai. This segment utilizes and explores various clean energy sources, such as wind, solar, photovoltaic, geothermal, wave, hydroelectric, municipal waste, and other biofuels. Its customer base includes suburban communities, resort properties, United States armed forces installations, and agricultural operations. Through its Bank segment, the company runs a community financial institution that provides a full spectrum of banking and financial offerings to both consumers and businesses. These services include savings and checking accounts, along with a wide range of loans, encompassing residential and commercial real estate, mortgages, construction and development, multifamily residential and commercial real estate, consumer, and general commercial lending. This banking arm maintains a network of 42 branches throughout the islands: 29 on Oahu, 6 on Maui, 4 on Hawaii, 2 on Kauai, and 1 on Molokai. The \"Other\" segment is dedicated to strategic investments in non-regulated renewable energy and sustainable infrastructure projects exclusively within the Hawaiian Islands. Founded in 1891, Hawaiian Electric Industries Inc. maintains its corporate headquarters in Honolulu, Hawaii.",
     "numAnalysts": 2,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -32082,7 +32082,7 @@
   {
     "symbol": "LNT",
     "name": "Alliant Energy Corporation",
-    "price": 73,
+    "price": 73.0,
     "compassScore": 45,
     "grade": "C",
     "industry": "Regulated Electric",
@@ -32208,7 +32208,7 @@
   {
     "symbol": "FCCO",
     "name": "First Community Corporation",
-    "price": 32,
+    "price": 32.0,
     "compassScore": 45,
     "grade": "C",
     "industry": "Banks - Regional",
@@ -32376,7 +32376,7 @@
   {
     "symbol": "KCLI",
     "name": "Kansas City Life Insurance Company",
-    "price": 33,
+    "price": 33.0,
     "compassScore": 45,
     "grade": "C",
     "industry": "Insurance - Life",
@@ -33112,7 +33112,7 @@
     "marketCap": 1.27917256698,
     "description": "Sila Realty Trust, Inc., a net lease real estate investment trust based in Tampa, Florida, strategically focuses its investments on the significant, growing, and resilient healthcare industry within the U.S. economy. The company acquires high-quality healthcare facilities that cover the full spectrum of patient care, which are expected to generate predictable, durable, and increasing income for the trust. Its portfolio is comprised of properties with premium tenants in various geographic locations, designed to capitalize on the dynamic evolution of healthcare delivery. As of December 31, 2023, Sila owned 131 operating real estate assets and two undeveloped land parcels, situated across 62 distinct markets throughout the United States.",
     "numAnalysts": 4,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -33294,7 +33294,7 @@
     "marketCap": 4.73716828,
     "description": "Macerich operates as a comprehensive, self-managed real estate investment trust (REIT) that independently oversees all aspects of its operations. Its core focus is on the acquisition, leasing, management, development, and revitalization of regional shopping malls throughout the United States. The company currently holds interests in 47 regional retail complexes, representing a total portfolio of 51 million square feet of real estate. Macerich specializes in high-performing retail properties located within America's most sought-after and populous markets, boasting a significant footprint particularly across the West Coast, Arizona, Chicago, and the corridor extending from Metropolitan New York to Washington, D.C. A consistent leader in environmental sustainability, Macerich earned the top GRESB ranking in the North American Retail Sector for an impressive five consecutive years, from 2015 to 2019.",
     "numAnalysts": 5,
-    "consensus": "C-",
+    "consensus": "D+",
     "scoreNote": null
   },
   {
@@ -34154,7 +34154,7 @@
   {
     "symbol": "CIG-C",
     "name": "Companhia Energ\u00e9tica de Minas Gerais",
-    "price": 3,
+    "price": 3.0,
     "compassScore": 42,
     "grade": "C",
     "industry": "Diversified Utilities",
@@ -34336,7 +34336,7 @@
   {
     "symbol": "VRME",
     "name": "VerifyMe, Inc.",
-    "price": 0.68,
+    "price": 0.6835,
     "compassScore": 42,
     "grade": "C",
     "industry": "Security & Protection Services",
@@ -34952,7 +34952,7 @@
   {
     "symbol": "SLRC",
     "name": "SLR Investment Corp.",
-    "price": 13,
+    "price": 13.0,
     "compassScore": 41,
     "grade": "C",
     "industry": "Asset Management",
@@ -35072,7 +35072,7 @@
     "marketCap": 19.61825684,
     "description": "Principal Financial Group, Inc., established in 1879 and headquartered in Des Moines, Iowa, is a global financial services organization. It offers a comprehensive suite of retirement plans, investment management expertise, and insurance policies to a diverse clientele, including businesses, individual investors, and institutional clients worldwide. The company's operations are divided into four primary segments: 1. Retirement and Income Solutions: This division is dedicated to facilitating retirement savings and income generation through various asset accumulation products and services. Its offerings encompass plans like 401(k)s and 403(b)s, traditional defined benefit pensions, specialized executive benefits, employee stock ownership plans, equity compensation, and pension risk transfer services. Additionally, it provides individual retirement accounts, investment-only products, mutual funds, individual variable annuities, and banking services. 2. Principal Global Investors: This segment manages a wide array of investment portfolios, spanning equities, fixed income, real estate, and alternative investments. It also provides strategic services such as asset allocation, stable value management, and other structured investment methodologies. 3. Principal International: Focused on specific international markets, including Brazil, Chile, Mexico, China, Hong Kong Special Administrative Region, India, and Southeast Asia, this segment delivers products for pension accumulation, mutual funds, asset management, income annuities, life insurance accumulation, and voluntary savings programs. 4. U.S. Insurance Solutions: Within the United States, this segment delivers various insurance products. These include specialty group benefits like dental, vision, and life insurance, as well as both group and individual disability coverage, alongside the administration of these group benefits. It also offers individual life insurance options, such as universal, variable universal, indexed universal, and term policies. Furthermore, this segment tailors insurance solutions for small and medium-sized businesses, their owners, and executives.",
     "numAnalysts": 3,
-    "consensus": "B",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -35254,7 +35254,7 @@
     "marketCap": 1.04786161616,
     "description": "FirstSun Capital Bancorp functions as the parent entity for Sunflower Bank, offering a comprehensive suite of commercial and retail banking as well as financial solutions primarily to small and mid-sized businesses. Its deposit offerings include non-interest and interest-bearing demand accounts, standard checking and savings accounts, money market options, and certificates of deposit. The bank provides a variety of lending products, such as commercial and industrial loans, commercial real estate mortgages (both owner and non-owner occupied), 1-4 family and multi-family housing loans, and home equity lines. Consumer credit solutions feature direct installment loans, credit card facilities, overdraft protection, and other revolving credit products. Beyond core banking, FirstSun Capital Bancorp also delivers remote deposit, cash management, and treasury management services, along with extensive wealth management and trust products encompassing personal, employee benefit, investment advisory, and foundation/endowment accounts. The company serves its clientele through branch locations situated in Kansas, Colorado, New Mexico, Texas, and Arizona. Founded in 1892 and headquartered in Denver, Colorado, the firm was formerly known as Sunflower Financial, Inc. before rebranding as FirstSun Capital Bancorp in June 2017.",
     "numAnalysts": 3,
-    "consensus": "A-",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -35568,7 +35568,7 @@
   {
     "symbol": "VCTR",
     "name": "Victory Capital Holdings, Inc.",
-    "price": 87.86,
+    "price": 87.855,
     "compassScore": 40,
     "grade": "C",
     "industry": "Asset Management",
@@ -36072,7 +36072,7 @@
   {
     "symbol": "TRIN",
     "name": "Trinity Capital Inc.",
-    "price": 17,
+    "price": 17.0,
     "compassScore": 39,
     "grade": "D",
     "industry": "Asset Management",
@@ -36584,7 +36584,7 @@
     "marketCap": 11.10805500165,
     "description": "Norwegian Cruise Line Holdings Ltd. (NCLH), along with its subsidiary companies, operates as a major global cruise enterprise. Its operations span North America, Europe, the Asia-Pacific region, and other international markets. The company manages a portfolio of three distinct cruise brands: Norwegian Cruise Line, Oceania Cruises, and Regent Seven Seas Cruises. NCLH offers an extensive range of voyages, from brief three-day excursions to lengthy 180-day expeditions. These itineraries explore a comprehensive list of destinations worldwide, including Scandinavia, Russia, the Mediterranean, and the Greek Isles; the Alaskan wilderness, Canada and New England; Hawaii, Asia, Tahiti, and the South Pacific; Australia and New Zealand; Africa, India, and South America; as well as the Panama Canal and the Caribbean. As of December 31, 2021, the company commanded a fleet of 28 ships, providing approximately 59,150 berths for guests. Its travel products are distributed through multiple channels, including independent retail/travel advisors, direct sales onboard its ships, and specialized services for meetings, incentives, and private charters. Founded in 1966, Norwegian Cruise Line Holdings Ltd. maintains its corporate headquarters in Miami, Florida.",
     "numAnalysts": 10,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -36604,7 +36604,7 @@
   {
     "symbol": "NWN",
     "name": "Northwest Natural Holding Company",
-    "price": 50,
+    "price": 50.0,
     "compassScore": 38,
     "grade": "D",
     "industry": "Regulated Gas",
@@ -37074,7 +37074,7 @@
     "marketCap": 0.58133061,
     "description": "Summit Hotel Properties, Inc. is a publicly listed real estate investment trust (REIT) that concentrates on acquiring and managing premium-branded, efficiently operated hotels, primarily within the upscale segment of the hospitality sector. As of November 3, 2020, the company's diverse portfolio encompassed 72 hotels, 67 of which were wholly owned, providing a total of 11,288 guestrooms situated across 23 U.S. states.",
     "numAnalysts": 4,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -37192,7 +37192,7 @@
   {
     "symbol": "GCBC",
     "name": "Greene County Bancorp, Inc.",
-    "price": 28.86,
+    "price": 28.865,
     "compassScore": 37,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -37206,7 +37206,7 @@
   {
     "symbol": "NHPAP",
     "name": "National Healthcare Properties, Inc.",
-    "price": 22.41,
+    "price": 22.4144,
     "compassScore": 37,
     "grade": "D",
     "industry": "REIT - Industrial",
@@ -37654,7 +37654,7 @@
   {
     "symbol": "IPCFF",
     "name": "International Petroleum Corporation",
-    "price": 25.45,
+    "price": 25.455,
     "compassScore": 36,
     "grade": "D",
     "industry": "Oil & Gas Exploration & Production",
@@ -37766,7 +37766,7 @@
   {
     "symbol": "HFBL",
     "name": "Home Federal Bancorp, Inc. of Louisiana",
-    "price": 20,
+    "price": 20.0,
     "compassScore": 36,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -38144,7 +38144,7 @@
   {
     "symbol": "CZNC",
     "name": "Citizens & Northern Corporation",
-    "price": 21.93,
+    "price": 21.925,
     "compassScore": 35,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -38256,7 +38256,7 @@
   {
     "symbol": "MITT-PC",
     "name": "AG Mortgage Investment Trust, Inc.",
-    "price": 24.7,
+    "price": 24.695,
     "compassScore": 35,
     "grade": "D",
     "industry": "REIT - Mortgage",
@@ -38312,7 +38312,7 @@
   {
     "symbol": "HWBK",
     "name": "Hawthorn Bancshares, Inc.",
-    "price": 37,
+    "price": 37.0,
     "compassScore": 35,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -38620,7 +38620,7 @@
   {
     "symbol": "ARRY",
     "name": "Array Technologies, Inc.",
-    "price": 6.83,
+    "price": 6.835,
     "compassScore": 34,
     "grade": "D",
     "industry": "Solar",
@@ -38830,7 +38830,7 @@
   {
     "symbol": "SNBR",
     "name": "Sleep Number Corporation",
-    "price": 0.74,
+    "price": 0.7429,
     "compassScore": 34,
     "grade": "D",
     "industry": "Furnishings, Fixtures & Appliances",
@@ -39426,7 +39426,7 @@
     "marketCap": 0.88899673139,
     "description": "Esquire Financial Holdings, Inc. functions as the parent entity for Esquire Bank, National Association, delivering a diverse array of commercial banking and financial services across the United States. Its clientele includes the legal sector, small businesses, and both corporate and individual clients. The company's deposit offerings encompass checking, savings, money market, and time deposits, alongside certificates of deposit. Its lending portfolio is extensive, providing commercial loans tailored for operational liquidity, such as short-term funding for inventory, accounts receivable, or supplies, in addition to financing for approved merchant clientele. It also extends commercial lines of credit. Consumer loan options are available for various needs, including post-settlement and structured settlement financing for plaintiffs and claimants, as well as personal loans to individuals for purposes like consolidating debt, covering medical costs, managing living expenses, or settling outstanding bills. Furthermore, it originates real estate loans for multifamily, single-family residential, commercial properties, and construction projects. Merchant services are another component of its offerings. Established in 2006, Esquire Financial Holdings, Inc. maintains its primary corporate office in Jericho, New York. As of early 2022 (specifically January 25), its physical presence included a full-service branch situated in Jericho, New York, and an administrative hub located in Boca Raton, Florida.",
     "numAnalysts": 2,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -39446,7 +39446,7 @@
   {
     "symbol": "FSK",
     "name": "FS KKR Capital Corp.",
-    "price": 11,
+    "price": 11.0,
     "compassScore": 33,
     "grade": "D",
     "industry": "Asset Management",
@@ -40272,7 +40272,7 @@
   {
     "symbol": "TRX",
     "name": "TRX Gold Corporation",
-    "price": 0.86,
+    "price": 0.8601,
     "compassScore": 32,
     "grade": "D",
     "industry": "Gold",
@@ -40356,7 +40356,7 @@
   {
     "symbol": "MAGN",
     "name": "Magnera Corp.",
-    "price": 12,
+    "price": 12.0,
     "compassScore": 31,
     "grade": "D",
     "industry": "Manufacturing - Textiles",
@@ -40482,7 +40482,7 @@
   {
     "symbol": "BA",
     "name": "The Boeing Company",
-    "price": 209,
+    "price": 209.0,
     "compassScore": 31,
     "grade": "D",
     "industry": "Aerospace & Defense",
@@ -40518,7 +40518,7 @@
     "marketCap": 1.01728738386,
     "description": "Chimera Investment Corporation (CIM) operates as a U.S.-based real estate investment trust (REIT), having elected to be taxed under this specific structure. Through its various subsidiaries, the company primarily focuses on building a diverse portfolio of mortgage-related assets. This encompasses holdings such as residential mortgage loans, both agency-backed and non-agency residential mortgage-backed securities (RMBS), and agency mortgage-backed securities (MBS) that are collateralized by pools of both residential and commercial mortgage loans. Additionally, CIM invests in other financial instruments tied to the real estate sector. Its investment scope further extends to include securities across the credit spectrum, ranging from investment-grade and non-investment-grade classes to non-rated tranches. The firm was established in 2007 and is headquartered in New York, New York.",
     "numAnalysts": 4,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -40566,7 +40566,7 @@
   {
     "symbol": "DXLG",
     "name": "Destination XL Group, Inc.",
-    "price": 0.72,
+    "price": 0.7245,
     "compassScore": 31,
     "grade": "D",
     "industry": "Apparel - Retail",
@@ -40608,7 +40608,7 @@
   {
     "symbol": "HPE",
     "name": "Hewlett Packard Enterprise Company",
-    "price": 45.5,
+    "price": 45.498,
     "compassScore": 31,
     "grade": "D",
     "industry": "Computer Hardware",
@@ -40748,7 +40748,7 @@
   {
     "symbol": "FORL",
     "name": "Four Leaf Acquisition Corporation",
-    "price": 11,
+    "price": 11.0,
     "compassScore": 31,
     "grade": "D",
     "industry": "Shell Companies",
@@ -41134,7 +41134,7 @@
     "marketCap": 17.123856,
     "description": "Fabrinet is a global provider of specialized manufacturing services, offering optical packaging, high-precision optical, electromechanical, and electronic solutions across North America, the Asia-Pacific region, and Europe. Its comprehensive capabilities span the entire manufacturing lifecycle, from initial process design and engineering to robust supply chain management, full-scale production, printed circuit board (PCB) assembly, advanced packaging, system integration, final product assembly, and rigorous testing. The company's diverse product portfolio includes core optical networking components such as reconfigurable optical add-drop multiplexers (ROADMs), optical amplifiers, modulators, and various other optical modules. These devices are critical for enabling network managers to efficiently route voice, video, and data traffic over fiber optic cables, accommodating diverse wavelengths, speeds, and transmission distances. This category also features tunable lasers, transceivers, and transponders. Additionally, Fabrinet produces active optical cables, which provide essential high-speed interconnect capabilities for data centers, computing clusters, and various networking protocols like InfiniBand, Ethernet, fiber channel, and optical backplane connectivity. Beyond optical communications, Fabrinet supplies a range of solid-state, diode-pumped, gas, and fiber lasers, utilized across industries such as semiconductor processing, biotechnology, medical device manufacturing, metrology, and material processing. Its sensor offerings include differential pressure, micro-gyro, and fuel sensors primarily for automotive applications, alongside non-contact temperature measurement sensors tailored for the medical industry. The company further specializes in the design and fabrication of advanced optical elements, including application-specific crystals, lenses, prisms, mirrors, laser components, and substrates, as well as custom and standard glass products such as borosilicate, clear fused quartz, and synthetic fused silica. Fabrinet primarily serves original equipment manufacturers (OEMs) involved in optical communication components, modules and sub-systems, industrial lasers, automotive components, medical devices, and sensors. Established in 1999, the company maintains its headquarters in George Town, Cayman Islands.",
     "numAnalysts": 6,
-    "consensus": "B+",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -41210,7 +41210,7 @@
   {
     "symbol": "MITT-PB",
     "name": "AG Mortgage Investment Trust, Inc.",
-    "price": 21.55,
+    "price": 21.545,
     "compassScore": 30,
     "grade": "D",
     "industry": "REIT - Mortgage",
@@ -41224,7 +41224,7 @@
   {
     "symbol": "SFBQF",
     "name": "SoftBank Corp.",
-    "price": 1.32,
+    "price": 1.325,
     "compassScore": 30,
     "grade": "D",
     "industry": "Telecommunications Services",
@@ -41266,7 +41266,7 @@
   {
     "symbol": "LVLU",
     "name": "Lulu's Fashion Lounge Holdings, Inc.",
-    "price": 7.99,
+    "price": 7.985,
     "compassScore": 30,
     "grade": "D",
     "industry": "Apparel - Retail",
@@ -41358,7 +41358,7 @@
     "marketCap": 3.23236716,
     "description": "SL Green Realty Corp., an S&P 500 listed company, is recognized as Manhattan's premier office landlord. Operating as a fully integrated Real Estate Investment Trust (REIT), its core strategy involves the acquisition, management, and value maximization of commercial properties across Manhattan. By December 31, 2020, SL Green had interests in 88 buildings, totaling 38.2 million square feet. This extensive portfolio included 28.6 million square feet of owned Manhattan properties, along with 8.7 million square feet designated as collateral for debt and preferred equity investments.",
     "numAnalysts": 4,
-    "consensus": "C+",
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -41722,7 +41722,7 @@
     "marketCap": 11.365284765239998,
     "description": "Cosan S.A., an enterprise established in 1936 and headquartered in S\u00e3o Paulo, Brazil, operates a diverse business portfolio with a significant global presence, primarily focusing on the distribution of fuels. Its operations extend across Brazil, Europe, Latin America, North America, Asia, and various other international regions through its subsidiary network. The company's core activities are structured into several key segments: Ra\u00edzen: This division spearheads the marketing and distribution of fuels via a franchised network of Shell-branded service stations. It also encompasses petroleum refining, the operation of convenience stores, the production and sale of lubricants for automotive and industrial uses, and the distribution of liquefied petroleum gas (LPG). Beyond fossil fuels, Ra\u00edzen is a major producer and vendor of sugarcane-derived products, including raw sugar and both anhydrous and hydrated ethanol. Additionally, it generates and sells electricity from sugarcane bagasse and maintains interests in companies dedicated to technological research and development. Gas and Power: This segment is responsible for delivering piped natural gas to a wide array of clients, including those in industrial, residential, commercial, automotive, and cogeneration sectors. It also participates in the energy market by trading electricity with other suppliers. Moove: This segment specializes in the manufacturing and worldwide distribution of lubricants, notably under the Mobil and Comma brand names. Logistics: Providing essential logistical services, this segment facilitates rail transportation, storage, and port loading for bulk commodities such as grains and sugar. It also offers leasing options for railway assets, including locomotives and wagons. Cosan Investments: This segment manages various projects within the agricultural, mining, and logistics sectors, and strategically invests in climate technology funds.",
     "numAnalysts": 6,
-    "consensus": "C-",
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -41952,7 +41952,7 @@
   {
     "symbol": "MITQ",
     "name": "Moving iMage Technologies, Inc.",
-    "price": 0.63,
+    "price": 0.6302,
     "compassScore": 29,
     "grade": "D",
     "industry": "Communication Equipment",
@@ -42036,7 +42036,7 @@
   {
     "symbol": "SKIN",
     "name": "The Beauty Health Company",
-    "price": 0.67,
+    "price": 0.6654,
     "compassScore": 29,
     "grade": "D",
     "industry": "Household & Personal Products",
@@ -42540,7 +42540,7 @@
   {
     "symbol": "AOMN",
     "name": "Angel Oak Mortgage REIT, Inc. 9",
-    "price": 25.04,
+    "price": 25.0399,
     "compassScore": 28,
     "grade": "D",
     "industry": "REIT - Industrial",
@@ -42568,7 +42568,7 @@
   {
     "symbol": "LFT",
     "name": "Lument Finance Trust, Inc.",
-    "price": 1,
+    "price": 1.0,
     "compassScore": 28,
     "grade": "D",
     "industry": "REIT - Mortgage",
@@ -42730,7 +42730,7 @@
     "marketCap": 0.313862157,
     "description": "Aldeyra Therapeutics, Inc. is a biotechnology company focused on the discovery and commercialization of therapeutic agents for ocular and systemic immune-mediated disorders. The firm's primary investigational compound is reproxalap, a reactive aldehyde species (RASP) modulator, currently in Phase III clinical trials for addressing dry eye disease and allergic conjunctivitis. Additionally, Aldeyra is advancing ADX-629, an innovative, first-in-class RASP modulator designed for oral administration, which is undergoing Phase II studies for conditions such as psoriasis, asthma, and COVID-19. Another pipeline asset, ADX-2191, a dihydrofolate reductase inhibitor, is in Phase 3 for the prevention of proliferative vitreoretinopathy and in Phase II trials for treating retinitis pigmentosa and primary vitreoretinal lymphoma. The company also holds a license agreement with Madrigal Pharmaceuticals, Inc. for the development of ADX-1612, a compound that inhibits the protein chaperome to tackle inflammatory diseases. Originally incorporated in 2004 as Aldexa Therapeutics, Inc., the company officially adopted the name Aldeyra Therapeutics, Inc. in March 2014 and is headquartered in Lexington, Massachusetts.",
     "numAnalysts": 2,
-    "consensus": "C",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -42862,7 +42862,7 @@
   {
     "symbol": "KSPI",
     "name": "Joint Stock Company Kaspi.kz",
-    "price": 78.58,
+    "price": 78.575,
     "compassScore": 27,
     "grade": "D",
     "industry": "Software - Infrastructure",
@@ -43052,7 +43052,7 @@
     "marketCap": 31.0518,
     "description": "NRG Energy, Inc., together with its affiliated entities, operates as a comprehensive power utility spanning the United States. Its operations are divided into three main geographical divisions: Texas, East, and West. The company plays a crucial role in generating, distributing, and selling electricity and various related services, serving approximately six million customers across residential, commercial, industrial, and wholesale sectors. Their energy generation capabilities are diverse, drawing from natural gas, coal, oil, solar, nuclear, and battery storage technologies. Beyond core power provision, NRG offers an extensive array of solutions, including centralized system power, decentralized generation, renewable energy products, emergency backup power, distributed solar and storage installations, demand-side management, energy efficiency programs, expert advisory services, carbon management initiatives, and bespoke on-site energy solutions. Furthermore, NRG actively engages in the trading of electric power, natural gas, and associated commodities, alongside environmental credits, weather-related products, and various financial instruments such as forwards, futures, options, and swaps. The company also manages fuel procurement and transportation services. It directly markets energy, services, and products to retail consumers through several established brands, including NRG, Reliant, Direct Energy, Green Mountain Energy, Stream, and XOOM Energy. As of December 31, 2021, NRG Energy's generation assets encompassed approximately 18,000 megawatts of capacity across 25 owned and leased facilities. The corporation was founded in 1989 and maintains its corporate headquarters in Houston, Texas.",
     "numAnalysts": 9,
-    "consensus": "C",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -43282,7 +43282,7 @@
   {
     "symbol": "MEC",
     "name": "Mayville Engineering Company, Inc.",
-    "price": 33.91,
+    "price": 33.915,
     "compassScore": 26,
     "grade": "D",
     "industry": "Manufacturing - Metal Fabrication",
@@ -43338,7 +43338,7 @@
   {
     "symbol": "PRPL",
     "name": "Purple Innovation, Inc.",
-    "price": 0.39,
+    "price": 0.3945,
     "compassScore": 26,
     "grade": "D",
     "industry": "Furnishings, Fixtures & Appliances",
@@ -43618,7 +43618,7 @@
   {
     "symbol": "EFC-PD",
     "name": "Ellington Financial Inc.",
-    "price": 23.1,
+    "price": 23.099,
     "compassScore": 26,
     "grade": "D",
     "industry": "REIT - Mortgage",
@@ -43660,7 +43660,7 @@
   {
     "symbol": "HIHO",
     "name": "Highway Holdings Limited",
-    "price": 0.81,
+    "price": 0.8085,
     "compassScore": 26,
     "grade": "D",
     "industry": "Manufacturing - Metal Fabrication",
@@ -43828,7 +43828,7 @@
   {
     "symbol": "LUCY",
     "name": "Innovative Eyewear, Inc.",
-    "price": 0.88,
+    "price": 0.8808,
     "compassScore": 25,
     "grade": "D",
     "industry": "Medical - Instruments & Supplies",
@@ -43954,7 +43954,7 @@
   {
     "symbol": "CVNA",
     "name": "Carvana Co.",
-    "price": 67.28,
+    "price": 67.277,
     "compassScore": 25,
     "grade": "D",
     "industry": "Auto - Dealerships",
@@ -43968,7 +43968,7 @@
   {
     "symbol": "DH",
     "name": "Definitive Healthcare Corp.",
-    "price": 0.83,
+    "price": 0.8315,
     "compassScore": 25,
     "grade": "D",
     "industry": "Medical - Healthcare Information Services",
@@ -44354,7 +44354,7 @@
     "marketCap": 9.53160185088,
     "description": "Westlake Corporation operates as a global producer and supplier of petrochemicals, polymers, and a diverse range of building materials. Its business activities are structured into two main divisions: Performance and Essential Materials, and Housing and Infrastructure Products. The Performance and Essential Materials segment focuses on the manufacture and distribution of various chemical components, including polyethylene, styrene monomer, ethylene co-products, PVC, VCM, ethylene dichloride chlor-alkali, and related chlorinated derivatives. Concurrently, the Housing and Infrastructure Products division manufactures an extensive array of building and consumer goods. These offerings span residential PVC siding, trim, and moldings; roofing applications; decorative stone; windows; PVC decking; various PVC films for items like inflatables, wall coverings, tape, and roofing; polymer composite roof tiles; PVC pipe and fittings; and PVC compounds. This segment also produces consumer and commercial items such as landscape edging, industrial and home matting, marine dock edging, and masonry joint controls. Westlake's broad customer base includes chemical processors, plastics fabricators, smaller construction contractors, municipal entities, and supply warehouses. Their products are integrated into numerous consumer and industrial markets, such as residential construction, flexible and rigid packaging, automotive manufacturing, healthcare, water treatment, coatings, and a wide array of other durable and non-durable goods. Founded in 1986 and headquartered in Houston, Texas, the company adopted its current name, Westlake Corporation, in February 2022, having previously operated as Westlake Chemical Corporation. Westlake Corporation functions as a subsidiary of TTWF LP.",
     "numAnalysts": 10,
-    "consensus": "C+",
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -44402,7 +44402,7 @@
   {
     "symbol": "CBAT",
     "name": "CBAK Energy Technology, Inc.",
-    "price": 0.74,
+    "price": 0.7402,
     "compassScore": 24,
     "grade": "D",
     "industry": "Electrical Equipment & Parts",
@@ -44850,7 +44850,7 @@
   {
     "symbol": "UPLD",
     "name": "Upland Software, Inc.",
-    "price": 0.71,
+    "price": 0.7055,
     "compassScore": 24,
     "grade": "D",
     "industry": "Software - Application",
@@ -45298,7 +45298,7 @@
   {
     "symbol": "GGR",
     "name": "Gogoro Inc.",
-    "price": 4,
+    "price": 4.0,
     "compassScore": 23,
     "grade": "D",
     "industry": "Auto - Parts",
@@ -45382,7 +45382,7 @@
   {
     "symbol": "PNBK",
     "name": "Patriot National Bancorp, Inc.",
-    "price": 0.96,
+    "price": 0.9616,
     "compassScore": 23,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -45676,7 +45676,7 @@
   {
     "symbol": "CTM",
     "name": "Castellum, Inc.",
-    "price": 0.7,
+    "price": 0.6958,
     "compassScore": 22,
     "grade": "D",
     "industry": "Information Technology Services",
@@ -45690,7 +45690,7 @@
   {
     "symbol": "ENLV",
     "name": "Enlivex Therapeutics Ltd.",
-    "price": 0.67,
+    "price": 0.6726,
     "compassScore": 22,
     "grade": "D",
     "industry": "Biotechnology",
@@ -45816,7 +45816,7 @@
   {
     "symbol": "KNDI",
     "name": "Kandi Technologies Group, Inc.",
-    "price": 0.71,
+    "price": 0.7073,
     "compassScore": 22,
     "grade": "D",
     "industry": "Auto - Parts",
@@ -45830,7 +45830,7 @@
   {
     "symbol": "NSP",
     "name": "Insperity, Inc.",
-    "price": 37,
+    "price": 37.0,
     "compassScore": 22,
     "grade": "D",
     "industry": "Staffing & Employment Services",
@@ -46082,7 +46082,7 @@
   {
     "symbol": "LOOP",
     "name": "Loop Industries, Inc.",
-    "price": 1,
+    "price": 1.0,
     "compassScore": 21,
     "grade": "D",
     "industry": "Chemicals - Specialty",
@@ -46166,7 +46166,7 @@
   {
     "symbol": "CEVA",
     "name": "CEVA, Inc.",
-    "price": 41.08,
+    "price": 41.075,
     "compassScore": 21,
     "grade": "D",
     "industry": "Semiconductors",
@@ -46244,7 +46244,7 @@
     "marketCap": 1.0704896,
     "description": "Fox Factory Holding Corp. is a global enterprise dedicated to the design, engineering, production, and distribution of advanced ride dynamics solutions. The company's product line features sophisticated front fork and rear suspension systems for a variety of bicycles, encompassing mid-to-high-end mountain, road, and electric bikes. In addition to suspension components, it offers a comprehensive range of performance cycling accessories, including wheels, cranks, chainrings, pedals, handlebars, stems, and seat posts. For motorized vehicles, Fox Factory develops specialized products catering to diverse applications such as side-by-side vehicles, on-road automobiles (with or without off-road capabilities), dedicated off-road vehicles, all-terrain vehicles, snowmobiles, and various specialty sectors like military, motorcycles, and commercial trucks. The company also sells aftermarket versions of its products to a broad network of dealers and distributors. Its powered vehicle offerings are marketed under prominent brands including FOX, BDS Suspension, Zone Offroad, JKS Manufacturing, RT Pro UTV, 4x4 Posi-Lok, Ridetech, Tuscany, Outside Van, and SCA. Meanwhile, its bicycle-related products are available through the FOX, Race Face, Easton Cycling, and Marzocchi brands. Established in 2007, Fox Factory Holding Corp. maintains its corporate headquarters in Duluth, Georgia.",
     "numAnalysts": 5,
-    "consensus": "C+",
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -46264,7 +46264,7 @@
   {
     "symbol": "GOCO",
     "name": "GoHealth, Inc.",
-    "price": 0.29,
+    "price": 0.2887,
     "compassScore": 21,
     "grade": "D",
     "industry": "Insurance - Brokers",
@@ -46376,7 +46376,7 @@
   {
     "symbol": "CVR",
     "name": "Chicago Rivet & Machine Co.",
-    "price": 10.13,
+    "price": 10.135,
     "compassScore": 21,
     "grade": "D",
     "industry": "Manufacturing - Tools & Accessories",
@@ -46390,7 +46390,7 @@
   {
     "symbol": "INCR",
     "name": "InterCure Ltd.",
-    "price": 0.85,
+    "price": 0.8501,
     "compassScore": 21,
     "grade": "D",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -46684,7 +46684,7 @@
   {
     "symbol": "CCG",
     "name": "Cheche Group Inc.",
-    "price": 0.48,
+    "price": 0.477,
     "compassScore": 20,
     "grade": "D",
     "industry": "Internet Content & Information",
@@ -46908,7 +46908,7 @@
   {
     "symbol": "HRTX",
     "name": "Heron Therapeutics, Inc.",
-    "price": 0.41,
+    "price": 0.4084,
     "compassScore": 20,
     "grade": "D",
     "industry": "Biotechnology",
@@ -47006,7 +47006,7 @@
   {
     "symbol": "GWAV",
     "name": "Greenwave Technology Solutions, Inc.",
-    "price": 3.44,
+    "price": 3.4379,
     "compassScore": 20,
     "grade": "D",
     "industry": "Waste Management",
@@ -47496,7 +47496,7 @@
   {
     "symbol": "GETY",
     "name": "Getty Images Holdings, Inc.",
-    "price": 0.71,
+    "price": 0.7128,
     "compassScore": 19,
     "grade": "F",
     "industry": "Internet Content & Information",
@@ -47594,7 +47594,7 @@
   {
     "symbol": "ULCC",
     "name": "Frontier Group Holdings, Inc.",
-    "price": 5.54,
+    "price": 5.535,
     "compassScore": 19,
     "grade": "F",
     "industry": "Airlines, Airports & Air Services",
@@ -47650,7 +47650,7 @@
   {
     "symbol": "NET",
     "name": "Cloudflare, Inc.",
-    "price": 219.59,
+    "price": 219.585,
     "compassScore": 19,
     "grade": "F",
     "industry": "Software - Infrastructure",
@@ -47832,7 +47832,7 @@
   {
     "symbol": "CTSO",
     "name": "Cytosorbents Corporation",
-    "price": 0.41,
+    "price": 0.411,
     "compassScore": 18,
     "grade": "F",
     "industry": "Medical - Devices",
@@ -47916,7 +47916,7 @@
   {
     "symbol": "RXT",
     "name": "Rackspace Technology, Inc.",
-    "price": 5.29,
+    "price": 5.285,
     "compassScore": 18,
     "grade": "F",
     "industry": "Software - Infrastructure",
@@ -48280,7 +48280,7 @@
   {
     "symbol": "TRINZ",
     "name": "Trinity Capital Inc. 7.875% Notes due 2029",
-    "price": 25.46,
+    "price": 25.465,
     "compassScore": 18,
     "grade": "F",
     "industry": "Asset Management",
@@ -48462,7 +48462,7 @@
   {
     "symbol": "AIRJ",
     "name": "AirJoule Technologies Corporation",
-    "price": 4.12,
+    "price": 4.125,
     "compassScore": 17,
     "grade": "F",
     "industry": "Industrial - Machinery",
@@ -48602,7 +48602,7 @@
   {
     "symbol": "JBTM",
     "name": "JBT Marel Corporation",
-    "price": 119,
+    "price": 119.0,
     "compassScore": 17,
     "grade": "F",
     "industry": "Industrial - Machinery",
@@ -48756,7 +48756,7 @@
   {
     "symbol": "RVP",
     "name": "Retractable Technologies, Inc.",
-    "price": 0.69,
+    "price": 0.6902,
     "compassScore": 17,
     "grade": "F",
     "industry": "Medical - Instruments & Supplies",
@@ -48896,7 +48896,7 @@
   {
     "symbol": "TROX",
     "name": "Tronox Holdings plc",
-    "price": 7.16,
+    "price": 7.155,
     "compassScore": 17,
     "grade": "F",
     "industry": "Chemicals",
@@ -48952,7 +48952,7 @@
   {
     "symbol": "GBLI",
     "name": "Global Indemnity Group, LLC",
-    "price": 25.75,
+    "price": 25.755,
     "compassScore": 16,
     "grade": "F",
     "industry": "Insurance - Property & Casualty",
@@ -48980,7 +48980,7 @@
   {
     "symbol": "MSS",
     "name": "Maison Solutions Inc. Class A Common Stock",
-    "price": 1.0,
+    "price": 0.9996,
     "compassScore": 16,
     "grade": "F",
     "industry": "Grocery Stores",
@@ -49064,7 +49064,7 @@
   {
     "symbol": "ALIT",
     "name": "Alight, Inc.",
-    "price": 0.65,
+    "price": 0.6542,
     "compassScore": 16,
     "grade": "F",
     "industry": "Software - Application",
@@ -49148,7 +49148,7 @@
   {
     "symbol": "FLUX",
     "name": "Flux Power Holdings, Inc.",
-    "price": 0.9,
+    "price": 0.9021,
     "compassScore": 16,
     "grade": "F",
     "industry": "Electrical Equipment & Parts",
@@ -49218,7 +49218,7 @@
   {
     "symbol": "GPRO",
     "name": "GoPro, Inc.",
-    "price": 0.79,
+    "price": 0.7898,
     "compassScore": 16,
     "grade": "F",
     "industry": "Consumer Electronics",
@@ -49260,7 +49260,7 @@
   {
     "symbol": "RGLSF",
     "name": "Regulus Resources Inc.",
-    "price": 2.77,
+    "price": 2.768,
     "compassScore": 16,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -49330,7 +49330,7 @@
   {
     "symbol": "COOT",
     "name": "Australian Oilseeds Holdings Limited Ordinary Shares",
-    "price": 0.62,
+    "price": 0.622,
     "compassScore": 16,
     "grade": "F",
     "industry": "Packaged Foods",
@@ -49344,7 +49344,7 @@
   {
     "symbol": "DUO",
     "name": "Fangdd Network Group Ltd.",
-    "price": 0.92,
+    "price": 0.9221,
     "compassScore": 16,
     "grade": "F",
     "industry": "Real Estate - Services",
@@ -49414,7 +49414,7 @@
   {
     "symbol": "PAMT",
     "name": "Pamt Corp.",
-    "price": 15,
+    "price": 15.0,
     "compassScore": 16,
     "grade": "F",
     "industry": "Trucking",
@@ -49946,7 +49946,7 @@
   {
     "symbol": "SMXT",
     "name": "Solarmax Technology Inc. Common Stock",
-    "price": 0.48,
+    "price": 0.4767,
     "compassScore": 15,
     "grade": "F",
     "industry": "Solar",
@@ -49960,7 +49960,7 @@
   {
     "symbol": "SPWR",
     "name": "SunPower Inc.",
-    "price": 0.79,
+    "price": 0.7902,
     "compassScore": 15,
     "grade": "F",
     "industry": "Solar",
@@ -50086,7 +50086,7 @@
   {
     "symbol": "VACH",
     "name": "Voyager Acquisition Corp.",
-    "price": 17.11,
+    "price": 17.1147,
     "compassScore": 15,
     "grade": "F",
     "industry": "Shell Companies",
@@ -50296,7 +50296,7 @@
   {
     "symbol": "EDAP",
     "name": "Edap Tms S.a.",
-    "price": 4.75,
+    "price": 4.755,
     "compassScore": 14,
     "grade": "F",
     "industry": "Medical - Devices",
@@ -50702,7 +50702,7 @@
   {
     "symbol": "ZEO",
     "name": "Zeo Energy Corp.",
-    "price": 0.78,
+    "price": 0.781,
     "compassScore": 14,
     "grade": "F",
     "industry": "Solar",
@@ -50786,7 +50786,7 @@
   {
     "symbol": "NFE",
     "name": "New Fortress Energy Inc.",
-    "price": 0.52,
+    "price": 0.5178,
     "compassScore": 13,
     "grade": "F",
     "industry": "Regulated Gas",
@@ -50808,7 +50808,7 @@
     "marketCap": 0.11766788168,
     "description": "One Stop Systems, Inc. (OSS) is a key developer and producer of high-performance computing (HPC) modules and systems, specifically tailored for demanding edge deployments both domestically and across global markets. These advanced systems are engineered around cutting-edge graphical processing unit (GPU) and solid-state flash technologies. OSS's comprehensive product portfolio encompasses custom servers, sophisticated data acquisition platforms, powerful compute accelerators, and high-speed solid-state storage arrays. It also includes various PCIe expansion solutions and system I/O expansion units, alongside industrial and panel PCs optimized for edge environments. Furthermore, the company supplies robust mobile tablets and handheld devices, purpose-built to withstand challenging environmental conditions often encountered in edge applications. Serving a diverse client base, OSS distributes its offerings to multinational corporations, government entities, defense contractors, and leading technology providers. Sales channels are varied, including direct sales teams, an online presence (website and web store), dedicated OEM partnerships, and an extensive network of authorized resellers and distributors. Established in 1998, One Stop Systems, Inc. maintains its headquarters in Escondido, California.",
     "numAnalysts": 2,
-    "consensus": "B+",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -51080,7 +51080,7 @@
   {
     "symbol": "HYFM",
     "name": "Hydrofarm Holdings Group, Inc.",
-    "price": 0.93,
+    "price": 0.9335,
     "compassScore": 13,
     "grade": "F",
     "industry": "Agricultural - Machinery",
@@ -51108,7 +51108,7 @@
   {
     "symbol": "RECAF",
     "name": "Reconnaissance Energy Africa Ltd.",
-    "price": 0.81,
+    "price": 0.81428,
     "compassScore": 13,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -51150,7 +51150,7 @@
   {
     "symbol": "GCL",
     "name": "GCL Global Holdings Ltd Ordinary Shares",
-    "price": 0.43,
+    "price": 0.431,
     "compassScore": 13,
     "grade": "F",
     "industry": "Electronic Gaming & Multimedia",
@@ -51304,7 +51304,7 @@
   {
     "symbol": "TRIB",
     "name": "Trinity Biotech plc",
-    "price": 0.69,
+    "price": 0.6875,
     "compassScore": 13,
     "grade": "F",
     "industry": "Medical - Diagnostics & Research",
@@ -51346,7 +51346,7 @@
   {
     "symbol": "XPL",
     "name": "Solitario Zinc Corp.",
-    "price": 0.76,
+    "price": 0.758,
     "compassScore": 13,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -51430,7 +51430,7 @@
   {
     "symbol": "MERC",
     "name": "Mercer International Inc.",
-    "price": 0.85,
+    "price": 0.849,
     "compassScore": 12,
     "grade": "F",
     "industry": "Paper, Lumber & Forest Products",
@@ -51452,7 +51452,7 @@
     "marketCap": 1.7776563999999997,
     "description": "Ramaco Resources, Inc. primarily focuses on the mining and commercialization of metallurgical coal. The company possesses a substantial portfolio of development properties, including the Elk Creek project in southern West Virginia, which spans approximately 20,200 acres of controlled mineral and incorporates 16 distinct coal seams. Additionally, its holdings comprise the Berwind property, an approximately 41,300-acre site of controlled mineral with Squire Jim seam deposits, located on the border between West Virginia and Virginia. Further assets include the Knox Creek property, a vast 62,100-acre controlled mineral tract in Virginia, and the RAM Mine property, encompassing around 1,570 controlled acres in southwestern Pennsylvania. Ramaco provides its products to blast furnace steel manufacturers and coke production facilities throughout the United States, as well as to international consumers of metallurgical coal. The enterprise was established in 2015 and has its corporate headquarters in Lexington, Kentucky.",
     "numAnalysts": 6,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -51626,7 +51626,7 @@
   {
     "symbol": "DFDV",
     "name": "DeFi Development Corp.",
-    "price": 2.65,
+    "price": 2.655,
     "compassScore": 12,
     "grade": "F",
     "industry": "Software - Infrastructure",
@@ -51738,7 +51738,7 @@
   {
     "symbol": "CDT",
     "name": "CDT Equity Inc.",
-    "price": 0.72,
+    "price": 0.7203,
     "compassScore": 12,
     "grade": "F",
     "industry": "Biotechnology",
@@ -51780,7 +51780,7 @@
   {
     "symbol": "MDBH",
     "name": "MDB Capital Holdings, LLC Class A common",
-    "price": 2.91,
+    "price": 2.9098,
     "compassScore": 12,
     "grade": "F",
     "industry": "Financial - Capital Markets",
@@ -51990,7 +51990,7 @@
   {
     "symbol": "LAB",
     "name": "Standard BioTools Inc.",
-    "price": 0.88,
+    "price": 0.8811,
     "compassScore": 11,
     "grade": "F",
     "industry": "Medical - Devices",
@@ -52040,7 +52040,7 @@
     "marketCap": 0.08052363666,
     "description": "American Well Corporation (AMWL) is a telehealth software provider focused on enabling the digital delivery of healthcare services. Its comprehensive platform supports a wide array of medical needs, ranging from urgent and scheduled virtual visits to specialized care for acute behavioral health, telestroke, pediatrics, and chronic conditions like end-stage renal disease and dermatology. These services are deployed across various environments, including retail health centers, schools, and home settings. Beyond its software solutions, AMWL also furnishes essential telemedicine hardware, such as mobile carts, peripherals, Tyto Care devices, TV kits, tablets, and interactive kiosks. Founded in 2006, the company maintains its headquarters in Boston, Massachusetts.",
     "numAnalysts": 2,
-    "consensus": "B-",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -52158,7 +52158,7 @@
   {
     "symbol": "DCGO",
     "name": "DocGo Inc.",
-    "price": 0.56,
+    "price": 0.5557,
     "compassScore": 11,
     "grade": "F",
     "industry": "Medical - Care Facilities",
@@ -52242,7 +52242,7 @@
   {
     "symbol": "HAIN",
     "name": "The Hain Celestial Group, Inc.",
-    "price": 0.63,
+    "price": 0.6341,
     "compassScore": 11,
     "grade": "F",
     "industry": "Packaged Foods",
@@ -52340,7 +52340,7 @@
   {
     "symbol": "SUUN",
     "name": "PowerBank Corporation",
-    "price": 0.81,
+    "price": 0.8092,
     "compassScore": 11,
     "grade": "F",
     "industry": "Renewable Utilities",
@@ -52368,7 +52368,7 @@
   {
     "symbol": "AEC",
     "name": "Anfield Energy Inc. Common Shares",
-    "price": 3.73,
+    "price": 3.725,
     "compassScore": 11,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -52578,7 +52578,7 @@
   {
     "symbol": "YYAI",
     "name": "AiRWA Inc.",
-    "price": 8.68,
+    "price": 8.675,
     "compassScore": 11,
     "grade": "F",
     "industry": "Leisure",
@@ -52620,7 +52620,7 @@
   {
     "symbol": "BFRI",
     "name": "Biofrontera Inc.",
-    "price": 0.86,
+    "price": 0.863,
     "compassScore": 10,
     "grade": "F",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -52718,7 +52718,7 @@
   {
     "symbol": "PROP",
     "name": "Prairie Operating Co.",
-    "price": 0.84,
+    "price": 0.8393,
     "compassScore": 10,
     "grade": "F",
     "industry": "Financial - Capital Markets",
@@ -52928,7 +52928,7 @@
   {
     "symbol": "WAVE",
     "name": "Eco Wave Power Global AB (publ)",
-    "price": 7.51,
+    "price": 7.5051,
     "compassScore": 10,
     "grade": "F",
     "industry": "Renewable Utilities",
@@ -52942,7 +52942,7 @@
   {
     "symbol": "ALTS",
     "name": "ALT5 Sigma Corporation",
-    "price": 0.85,
+    "price": 0.855,
     "compassScore": 10,
     "grade": "F",
     "industry": "Software - Application",
@@ -52970,7 +52970,7 @@
   {
     "symbol": "BTTC",
     "name": "Black Titan Corporation",
-    "price": 1.04,
+    "price": 1.045,
     "compassScore": 10,
     "grade": "F",
     "industry": "Asset Management",
@@ -52984,7 +52984,7 @@
   {
     "symbol": "FLYE",
     "name": "Fly-E Group, Inc. Common Stock",
-    "price": 2,
+    "price": 2.0,
     "compassScore": 10,
     "grade": "F",
     "industry": "Auto - Manufacturers",
@@ -53180,7 +53180,7 @@
   {
     "symbol": "VALN",
     "name": "Valneva SE",
-    "price": 5.26,
+    "price": 5.2599,
     "compassScore": 10,
     "grade": "F",
     "industry": "Biotechnology",
@@ -53250,7 +53250,7 @@
   {
     "symbol": "BTCT",
     "name": "BTC Digital Ltd.",
-    "price": 1.25,
+    "price": 1.245,
     "compassScore": 9,
     "grade": "F",
     "industry": "Education & Training Services",
@@ -53398,7 +53398,7 @@
     "marketCap": 0.2501058,
     "description": "Quanterix Corporation, based in Billerica, Massachusetts, is a life sciences enterprise dedicated to pioneering and commercializing advanced digital immunoassay platforms. These sophisticated systems are designed to enhance precision health in both scientific research and diagnostic applications, reaching markets across North America, Europe, the Middle East, Africa, and the Asia Pacific regions. The company's core offerings include several innovative instruments: The HD-X instrument, which provides highly sensitive and automated multiplex protein detection. The SR-X instrument, enabling researchers to leverage Simoa detection technology for diverse uses, such as the direct detection of nucleic acids. The SP-X instrument, which utilizes Simoa planar array technology for conducting multiplex chemiluminescent immunoassays. Alongside these platforms, Quanterix also supplies crucial consumables, including assay kits and reagents. In addition to its product line, the company delivers various contract research services, encompassing sample analysis, the development of custom \"homebrew\" assays, and other specialized research and development projects. Quanterix's operational focus spans critical health areas like neurology, oncology, cardiology, infectious diseases, and inflammation. Its clientele within the life science research sector primarily consists of laboratories affiliated with academic and governmental research institutions, as well as pharmaceutical, biotechnology, and contract research organizations. Sales are managed through a multifaceted approach, combining a direct sales force, dedicated support organizations, and a network of distributors or sales agents. The company was initially incorporated in 2007 as Digital Genomics, Inc., before rebranding to Quanterix Corporation in August of the same year.",
     "numAnalysts": 3,
-    "consensus": "B",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -53530,7 +53530,7 @@
   {
     "symbol": "BLAGF",
     "name": "Blue Lagoon Resources Inc.",
-    "price": 0.51,
+    "price": 0.5101,
     "compassScore": 9,
     "grade": "F",
     "industry": "Gold",
@@ -53754,7 +53754,7 @@
   {
     "symbol": "TOON",
     "name": "Kartoon Studios Inc.",
-    "price": 0.87,
+    "price": 0.8702,
     "compassScore": 9,
     "grade": "F",
     "industry": "Entertainment",
@@ -53796,7 +53796,7 @@
   {
     "symbol": "VUZI",
     "name": "Vuzix Corporation",
-    "price": 3.0,
+    "price": 2.995,
     "compassScore": 9,
     "grade": "F",
     "industry": "Consumer Electronics",
@@ -53838,7 +53838,7 @@
   {
     "symbol": "NXGL",
     "name": "NEXGEL, Inc.",
-    "price": 0.57,
+    "price": 0.566,
     "compassScore": 8,
     "grade": "F",
     "industry": "Medical - Instruments & Supplies",
@@ -54034,7 +54034,7 @@
   {
     "symbol": "ABTC",
     "name": "American Bitcoin Corp",
-    "price": 0.82,
+    "price": 0.8202,
     "compassScore": 8,
     "grade": "F",
     "industry": "Financial - Capital Markets",
@@ -54076,7 +54076,7 @@
   {
     "symbol": "CTOR",
     "name": "Citius Oncology, Inc.",
-    "price": 0.69,
+    "price": 0.6868,
     "compassScore": 8,
     "grade": "F",
     "industry": "Drug Manufacturers - General",
@@ -54090,7 +54090,7 @@
   {
     "symbol": "DARE",
     "name": "Dar\u00e9 Bioscience, Inc.",
-    "price": 2,
+    "price": 2.0,
     "compassScore": 8,
     "grade": "F",
     "industry": "Biotechnology",
@@ -54160,7 +54160,7 @@
   {
     "symbol": "GLDG",
     "name": "GoldMining Inc.",
-    "price": 0.85,
+    "price": 0.8545,
     "compassScore": 8,
     "grade": "F",
     "industry": "Gold",
@@ -54216,7 +54216,7 @@
   {
     "symbol": "GDC",
     "name": "GD Culture Group Limited",
-    "price": 0.1,
+    "price": 0.1025,
     "compassScore": 8,
     "grade": "F",
     "industry": "Electronic Gaming & Multimedia",
@@ -54258,7 +54258,7 @@
   {
     "symbol": "LGPS",
     "name": "LogProstyle Inc.",
-    "price": 0.79,
+    "price": 0.7944,
     "compassScore": 8,
     "grade": "F",
     "industry": "Real Estate - Services",
@@ -54272,7 +54272,7 @@
   {
     "symbol": "LHAI",
     "name": "Linkhome Holdings Inc.",
-    "price": 0.83,
+    "price": 0.828,
     "compassScore": 8,
     "grade": "F",
     "industry": "Real Estate - Services",
@@ -54314,7 +54314,7 @@
   {
     "symbol": "PRHI",
     "name": "Presurance Holdings, Inc.",
-    "price": 5.04,
+    "price": 5.045,
     "compassScore": 8,
     "grade": "F",
     "industry": "Insurance - Property & Casualty",
@@ -54356,7 +54356,7 @@
   {
     "symbol": "SNAL",
     "name": "Snail, Inc. Class A Common Stock",
-    "price": 0.77,
+    "price": 0.7657,
     "compassScore": 8,
     "grade": "F",
     "industry": "Electronic Gaming & Multimedia",
@@ -54384,7 +54384,7 @@
   {
     "symbol": "TBN",
     "name": "Tamboran Resources Corp",
-    "price": 34,
+    "price": 34.0,
     "compassScore": 8,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -54454,7 +54454,7 @@
   {
     "symbol": "XBIO",
     "name": "Xenetic Biosciences, Inc.",
-    "price": 3,
+    "price": 3.0,
     "compassScore": 8,
     "grade": "F",
     "industry": "Biotechnology",
@@ -54496,7 +54496,7 @@
   {
     "symbol": "DSS",
     "name": "DSS, Inc.",
-    "price": 0.67,
+    "price": 0.6722,
     "compassScore": 7,
     "grade": "F",
     "industry": "Packaging & Containers",
@@ -54664,7 +54664,7 @@
   {
     "symbol": "ELVN",
     "name": "Enliven Therapeutics, Inc.",
-    "price": 37,
+    "price": 37.0,
     "compassScore": 7,
     "grade": "F",
     "industry": "Biotechnology",
@@ -54692,7 +54692,7 @@
   {
     "symbol": "GAUZ",
     "name": "Gauzy Ltd. Ordinary Shares",
-    "price": 0.6,
+    "price": 0.5999,
     "compassScore": 7,
     "grade": "F",
     "industry": "Hardware, Equipment & Parts",
@@ -54790,7 +54790,7 @@
   {
     "symbol": "ADVB",
     "name": "Advanced Biomed Inc. Common Stock",
-    "price": 3.89,
+    "price": 3.893,
     "compassScore": 7,
     "grade": "F",
     "industry": "Medical - Diagnostics & Research",
@@ -54958,7 +54958,7 @@
   {
     "symbol": "QS",
     "name": "QuantumScape Corporation",
-    "price": 7,
+    "price": 7.0,
     "compassScore": 7,
     "grade": "F",
     "industry": "Auto - Parts",
@@ -55112,7 +55112,7 @@
   {
     "symbol": "OSRH",
     "name": "OSR Holdings, Inc.",
-    "price": 0.42,
+    "price": 0.4176,
     "compassScore": 6,
     "grade": "F",
     "industry": "Biotechnology",
@@ -55154,7 +55154,7 @@
   {
     "symbol": "CWD",
     "name": "CaliberCos Inc.",
-    "price": 0.89,
+    "price": 0.889,
     "compassScore": 6,
     "grade": "F",
     "industry": "Asset Management",
@@ -55182,7 +55182,7 @@
   {
     "symbol": "LUNR",
     "name": "Intuitive Machines, Inc.",
-    "price": 26.54,
+    "price": 26.535,
     "compassScore": 6,
     "grade": "F",
     "industry": "Aerospace & Defense",
@@ -55308,7 +55308,7 @@
   {
     "symbol": "PCT",
     "name": "PureCycle Technologies, Inc.",
-    "price": 9.88,
+    "price": 9.885,
     "compassScore": 6,
     "grade": "F",
     "industry": "Industrial - Pollution & Treatment Controls",
@@ -55476,7 +55476,7 @@
   {
     "symbol": "DEFT",
     "name": "DeFi Technologies Inc.",
-    "price": 0.52,
+    "price": 0.517,
     "compassScore": 6,
     "grade": "F",
     "industry": "Financial - Capital Markets",
@@ -55602,7 +55602,7 @@
   {
     "symbol": "CENN",
     "name": "Cenntro Electric Group Limited",
-    "price": 4,
+    "price": 4.0,
     "compassScore": 6,
     "grade": "F",
     "industry": "Auto - Manufacturers",
@@ -55700,7 +55700,7 @@
   {
     "symbol": "TELA",
     "name": "TELA Bio, Inc.",
-    "price": 0.94,
+    "price": 0.9421,
     "compassScore": 6,
     "grade": "F",
     "industry": "Medical - Devices",
@@ -56274,7 +56274,7 @@
   {
     "symbol": "FNGR",
     "name": "FingerMotion, Inc.",
-    "price": 0.63,
+    "price": 0.6342,
     "compassScore": 5,
     "grade": "F",
     "industry": "Telecommunications Services",
@@ -56414,7 +56414,7 @@
   {
     "symbol": "ACON",
     "name": "Aclarion, Inc.",
-    "price": 3.17,
+    "price": 3.165,
     "compassScore": 4,
     "grade": "F",
     "industry": "Medical - Healthcare Information Services",
@@ -56442,7 +56442,7 @@
   {
     "symbol": "LIQT",
     "name": "LiqTech International, Inc.",
-    "price": 0.83,
+    "price": 0.8344,
     "compassScore": 4,
     "grade": "F",
     "industry": "Industrial - Pollution & Treatment Controls",
@@ -56694,7 +56694,7 @@
   {
     "symbol": "KALV",
     "name": "KalVista Pharmaceuticals, Inc.",
-    "price": 27,
+    "price": 27.0,
     "compassScore": 4,
     "grade": "F",
     "industry": "Biotechnology",
@@ -56736,7 +56736,7 @@
   {
     "symbol": "FEED",
     "name": "ENvue Medical, Inc.",
-    "price": 0.83,
+    "price": 0.8336,
     "compassScore": 4,
     "grade": "F",
     "industry": "Medical - Specialties",
@@ -56764,7 +56764,7 @@
   {
     "symbol": "MBIO",
     "name": "Mustang Bio, Inc.",
-    "price": 0.74,
+    "price": 0.737,
     "compassScore": 4,
     "grade": "F",
     "industry": "Biotechnology",
@@ -56806,7 +56806,7 @@
   {
     "symbol": "SCNI",
     "name": "Scinai Immunotherapeutics Ltd.",
-    "price": 0.33,
+    "price": 0.327,
     "compassScore": 4,
     "grade": "F",
     "industry": "Biotechnology",
@@ -56820,7 +56820,7 @@
   {
     "symbol": "SEED",
     "name": "Origin Agritech Limited",
-    "price": 1,
+    "price": 1.0,
     "compassScore": 4,
     "grade": "F",
     "industry": "Agricultural Inputs",
@@ -56932,7 +56932,7 @@
   {
     "symbol": "USEG",
     "name": "U.S. Energy Corp.",
-    "price": 0.99,
+    "price": 0.9854,
     "compassScore": 4,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -56946,7 +56946,7 @@
   {
     "symbol": "VEEA",
     "name": "Veea Inc.",
-    "price": 0.41,
+    "price": 0.4129,
     "compassScore": 4,
     "grade": "F",
     "industry": "Information Technology Services",
@@ -57016,7 +57016,7 @@
   {
     "symbol": "FLD",
     "name": "Fold Holdings Inc",
-    "price": 0.71,
+    "price": 0.7075,
     "compassScore": 3,
     "grade": "F",
     "industry": "Asset Management - Cryptocurrency",
@@ -57058,7 +57058,7 @@
   {
     "symbol": "CTXR",
     "name": "Citius Pharmaceuticals, Inc.",
-    "price": 0.55,
+    "price": 0.5529,
     "compassScore": 3,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57226,12 +57226,12 @@
   {
     "symbol": "RUM",
     "name": "Rumble Inc.",
-    "price": 7,
+    "price": 7.0,
     "compassScore": 3,
     "grade": "F",
     "industry": "Software - Application",
     "sector": "Technology",
-    "marketCap": 3.25383221,
+    "marketCap": 3.040964682,
     "description": "Rumble Inc. oversees a collection of digital video platforms. Their flagship service, rumble.com, offers content creators a comprehensive suite of tools for uploading, live streaming, managing, distributing, and developing Over-The-Top (OTT) feeds, alongside opportunities to earn revenue from their videos. Additionally, the company runs locals.com, which operates as a subscription-based service for sharing video content. Established in 2013, Rumble Inc. is headquartered in Longboat Key, Florida.",
     "numAnalysts": 1,
     "consensus": "C",
@@ -57296,7 +57296,7 @@
   {
     "symbol": "BYND",
     "name": "Beyond Meat, Inc.",
-    "price": 0.68,
+    "price": 0.6823,
     "compassScore": 3,
     "grade": "F",
     "industry": "Packaged Foods",
@@ -57366,7 +57366,7 @@
   {
     "symbol": "DVLT",
     "name": "Datavault AI Inc.",
-    "price": 0.39,
+    "price": 0.3943,
     "compassScore": 3,
     "grade": "F",
     "industry": "Information Technology Services",
@@ -57394,7 +57394,7 @@
   {
     "symbol": "EVGN",
     "name": "Evogene Ltd.",
-    "price": 0.59,
+    "price": 0.592,
     "compassScore": 3,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57436,7 +57436,7 @@
   {
     "symbol": "INVZ",
     "name": "Innoviz Technologies Ltd.",
-    "price": 0.64,
+    "price": 0.6353,
     "compassScore": 3,
     "grade": "F",
     "industry": "Auto - Parts",
@@ -57450,7 +57450,7 @@
   {
     "symbol": "IVVD",
     "name": "Invivyd, Inc.",
-    "price": 0.9,
+    "price": 0.9009,
     "compassScore": 3,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57520,7 +57520,7 @@
   {
     "symbol": "SERA",
     "name": "Sera Prognostics, Inc.",
-    "price": 2,
+    "price": 2.0,
     "compassScore": 3,
     "grade": "F",
     "industry": "Medical - Diagnostics & Research",
@@ -57590,7 +57590,7 @@
   {
     "symbol": "TPET",
     "name": "Trio Petroleum Corp.",
-    "price": 0.4,
+    "price": 0.3977,
     "compassScore": 3,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -57772,7 +57772,7 @@
   {
     "symbol": "QSI",
     "name": "Quantum-Si incorporated",
-    "price": 0.95,
+    "price": 0.9465,
     "compassScore": 2,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57786,7 +57786,7 @@
   {
     "symbol": "RGTI",
     "name": "Rigetti Computing, Inc.",
-    "price": 19.45,
+    "price": 19.445,
     "compassScore": 2,
     "grade": "F",
     "industry": "Computer Hardware",
@@ -57814,7 +57814,7 @@
   {
     "symbol": "RNTX",
     "name": "Rein Therapeutics Inc.",
-    "price": 0.92,
+    "price": 0.9204,
     "compassScore": 2,
     "grade": "F",
     "industry": "Medical - Pharmaceuticals",
@@ -58080,7 +58080,7 @@
   {
     "symbol": "CYPH",
     "name": "Cypherpunk Technologies Inc.",
-    "price": 0.66,
+    "price": 0.658,
     "compassScore": 2,
     "grade": "F",
     "industry": "Biotechnology",
@@ -58122,7 +58122,7 @@
   {
     "symbol": "LITS",
     "name": "Lite Strategy, Inc.",
-    "price": 0.74,
+    "price": 0.7445,
     "compassScore": 2,
     "grade": "F",
     "industry": "Biotechnology",
@@ -58136,7 +58136,7 @@
   {
     "symbol": "LPTX",
     "name": "Leap Therapeutics, Inc.",
-    "price": 0.77,
+    "price": 0.7696,
     "compassScore": 2,
     "grade": "F",
     "industry": "Biotechnology",
@@ -58150,7 +58150,7 @@
   {
     "symbol": "QBTS",
     "name": "D-Wave Quantum Inc.",
-    "price": 23.27,
+    "price": 23.265,
     "compassScore": 2,
     "grade": "F",
     "industry": "Computer Hardware",
@@ -58276,7 +58276,7 @@
   {
     "symbol": "XXII",
     "name": "22nd Century Group, Inc.",
-    "price": 0.33,
+    "price": 0.3339,
     "compassScore": 2,
     "grade": "F",
     "industry": "Tobacco",
@@ -58290,7 +58290,7 @@
   {
     "symbol": "ABAT",
     "name": "American Battery Technology Company Common Stock",
-    "price": 3.08,
+    "price": 3.075,
     "compassScore": 1,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -58514,7 +58514,7 @@
   {
     "symbol": "DPRO",
     "name": "Draganfly Inc.",
-    "price": 5.72,
+    "price": 5.725,
     "compassScore": 1,
     "grade": "F",
     "industry": "Aerospace & Defense",
@@ -58612,7 +58612,7 @@
   {
     "symbol": "TRNR",
     "name": "Interactive Strength Inc.",
-    "price": 0.62,
+    "price": 0.616,
     "compassScore": 1,
     "grade": "F",
     "industry": "Personal Products & Services",
@@ -58822,7 +58822,7 @@
   {
     "symbol": "TLPH",
     "name": "Talphera, Inc.",
-    "price": 0.81,
+    "price": 0.8083,
     "compassScore": 1,
     "grade": "F",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -58990,7 +58990,7 @@
   {
     "symbol": "POET",
     "name": "POET Technologies Inc.",
-    "price": 10.97,
+    "price": 10.975,
     "compassScore": 0,
     "grade": "F",
     "industry": "Semiconductors",
@@ -59004,7 +59004,7 @@
   {
     "symbol": "RANI",
     "name": "Rani Therapeutics Holdings, Inc.",
-    "price": 0.78,
+    "price": 0.783,
     "compassScore": 0,
     "grade": "F",
     "industry": "Biotechnology",
@@ -59018,7 +59018,7 @@
   {
     "symbol": "RCAT",
     "name": "Red Cat Holdings, Inc.",
-    "price": 10.89,
+    "price": 10.895,
     "compassScore": 0,
     "grade": "F",
     "industry": "Computer Hardware",
@@ -59130,7 +59130,7 @@
   {
     "symbol": "OGEN",
     "name": "Oragenics, Inc.",
-    "price": 0.59,
+    "price": 0.592,
     "compassScore": 0,
     "grade": "F",
     "industry": "Biotechnology",
@@ -59214,7 +59214,7 @@
   {
     "symbol": "ZTEK",
     "name": "Zentek Ltd.",
-    "price": 0.47,
+    "price": 0.4663,
     "compassScore": 0,
     "grade": "F",
     "industry": "Medical - Instruments & Supplies",
