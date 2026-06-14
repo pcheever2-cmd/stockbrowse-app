@@ -410,6 +410,16 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
         </div>
       </div>
 
+      <!-- Fair Value teaser (Pro) — shown by default; removed by the Pro reveal below -->
+      <div id="fairvalue-teaser" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <div class="flex items-center gap-2 mb-3">
+          <h2 class="text-xl font-bold text-slate-100">Fair Value</h2>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#A78BFA22] text-[#C4B5FD] border border-[#A78BFA44]">Pro</span>
+        </div>
+        <p class="text-sm text-slate-300 mb-4">See whether this stock trades above or below its fair value.</p>
+        <button class="unlock-btn px-4 py-2 rounded-lg bg-[#22D3EE] text-[#0C0F14] font-semibold text-sm hover:bg-[#67E8F9] transition">Unlock with Pro</button>
+      </div>
+
       <!-- Fair Value (per share, Pro only) — hidden at SSG, shown via hydration for Pro users -->
       <div id="fairvalue-section" class="hidden mb-8">
         <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
@@ -473,16 +483,19 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
 
       <!-- Catalyst Signal (premium) — recent EPS beats + analyst-upgrade momentum.
            SSG shows locked 🔒; hydrated for Pro. Neutral UI; details on the methodology page. -->
-      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+      <div class="premium-section relative bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
         <div class="flex items-center justify-between mb-1">
-          <h2 class="text-xl font-bold text-slate-100">Catalyst Signal</h2>
+          <div class="flex items-center gap-2">
+            <h2 class="text-xl font-bold text-slate-100">Catalyst Signal</h2>
+            <span class="premium-badge text-xs font-semibold px-2 py-0.5 rounded-full bg-[#22D3EE15] text-[#22D3EE] border border-[#22D3EE33]">Plus</span>
+          </div>
           <span data-premium="catalystLabel" class="hidden text-xs font-semibold px-2 py-1 rounded-full bg-[#22D3EE15] text-[#22D3EE] border border-[#22D3EE33]"></span>
         </div>
         <p class="text-[#64748B] text-xs mb-4">
           Recent earnings beats and analyst-upgrade momentum.
           <a href="/catalyst-methodology" class="text-[#22D3EE] hover:underline">How it works</a>
         </p>
-        <div class="premium-content">
+        <div class="premium-content blur-sm pointer-events-none select-none">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Catalyst Score</div>
@@ -498,6 +511,22 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
             </div>
           </div>
         </div>
+        <div class="premium-overlay absolute inset-0 flex items-center justify-center z-10">
+          <div class="text-center bg-[#161B24]/80 backdrop-blur-sm border border-[#22D3EE33] rounded-xl px-6 py-5 max-w-xs">
+            <p class="text-sm text-slate-200 mb-3">See recent earnings beats and analyst-upgrade momentum.</p>
+            <button class="unlock-btn px-4 py-2 rounded-lg bg-[#22D3EE] text-[#0C0F14] font-semibold text-sm hover:bg-[#67E8F9] transition">Unlock with Plus</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analyst Track Record teaser (Plus+) — shown by default; removed by the Plus+ reveal below -->
+      <div id="track-record-teaser" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <div class="flex items-center gap-2 mb-3">
+          <h2 class="text-xl font-bold text-slate-100">Analyst Track Record</h2>
+          <span class="premium-badge text-xs font-semibold px-2 py-0.5 rounded-full bg-[#22D3EE15] text-[#22D3EE] border border-[#22D3EE33]">Plus</span>
+        </div>
+        <p class="text-sm text-slate-300 mb-4">See each covering analyst's historical hit rate.</p>
+        <button class="unlock-btn px-4 py-2 rounded-lg bg-[#22D3EE] text-[#0C0F14] font-semibold text-sm hover:bg-[#67E8F9] transition">Unlock with Plus</button>
       </div>
 
       <!-- Analyst Track Record — hidden at SSG, shown via hydration for Plus+ users -->
@@ -529,11 +558,14 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
       </div>
 
       <!-- Financial Health -->
-      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
-        <h2 class="text-xl font-bold mb-4 text-slate-100">Financial Health</h2>
+      <div class="premium-section relative bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <div class="flex items-center gap-2 mb-4">
+          <h2 class="text-xl font-bold text-slate-100">Financial Health</h2>
+          <span class="premium-badge text-xs font-semibold px-2 py-0.5 rounded-full bg-[#22D3EE15] text-[#22D3EE] border border-[#22D3EE33]">Plus</span>
+        </div>
         <p class="text-[#64748B] text-xs mb-4">Click any metric for details</p>
 
-        <div class="premium-content">
+        <div class="premium-content blur-sm pointer-events-none select-none">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="metric-wrapper">
               <button class="metric-card bg-[#080A0F] rounded-lg p-4 text-center w-full hover:bg-[#0F1419] cursor-pointer transition border border-transparent hover:border-[#22D3EE33]">
@@ -576,13 +608,22 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
             </div>
           </div>
         </div>
+        <div class="premium-overlay absolute inset-0 flex items-center justify-center z-10">
+          <div class="text-center bg-[#161B24]/80 backdrop-blur-sm border border-[#22D3EE33] rounded-xl px-6 py-5 max-w-xs">
+            <p class="text-sm text-slate-200 mb-3">See bankruptcy-risk and financial-strength scores for this company.</p>
+            <button class="unlock-btn px-4 py-2 rounded-lg bg-[#22D3EE] text-[#0C0F14] font-semibold text-sm hover:bg-[#67E8F9] transition">Unlock with Plus</button>
+          </div>
+        </div>
       </div>
 
       <!-- Growth Projections -->
-      <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
-        <h2 class="text-xl font-bold mb-4 text-slate-100">Growth Projections</h2>
+      <div class="premium-section relative bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8">
+        <div class="flex items-center gap-2 mb-4">
+          <h2 class="text-xl font-bold text-slate-100">Growth Projections</h2>
+          <span class="premium-badge text-xs font-semibold px-2 py-0.5 rounded-full bg-[#22D3EE15] text-[#22D3EE] border border-[#22D3EE33]">Plus</span>
+        </div>
 
-        <div class="premium-content">
+        <div class="premium-content blur-sm pointer-events-none select-none">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="bg-[#080A0F] rounded-lg p-4 text-center">
               <div class="text-sm text-[#64748B] mb-1">Projected EPS Growth</div>
@@ -596,6 +637,12 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
                 {stock.revenueGrowth ? `${stock.revenueGrowth > 0 ? '+' : ''}${stock.revenueGrowth.toFixed(1)}%` : '🔒'}
               </div>
             </div>
+          </div>
+        </div>
+        <div class="premium-overlay absolute inset-0 flex items-center justify-center z-10">
+          <div class="text-center bg-[#161B24]/80 backdrop-blur-sm border border-[#22D3EE33] rounded-xl px-6 py-5 max-w-xs">
+            <p class="text-sm text-slate-200 mb-3">See projected EPS and revenue growth for this company.</p>
+            <button class="unlock-btn px-4 py-2 rounded-lg bg-[#22D3EE] text-[#0C0F14] font-semibold text-sm hover:bg-[#67E8F9] transition">Unlock with Plus</button>
           </div>
         </div>
       </div>
@@ -972,6 +1019,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           const section = document.getElementById('fairvalue-section');
           if (section) {
             section.classList.remove('hidden');
+            document.getElementById('fairvalue-teaser')?.remove();
 
             const rangeEl = document.getElementById('fv-range');
             if (rangeEl && fv.low != null && fv.high != null) {
@@ -1018,6 +1066,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           const section = document.getElementById('analyst-track-record');
           if (section) {
             section.classList.remove('hidden');
+            document.getElementById('track-record-teaser')?.remove();
 
             // Sector accuracy
             if (p.sectorAnalystAccuracy) {
