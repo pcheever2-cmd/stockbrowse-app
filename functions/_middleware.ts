@@ -24,15 +24,36 @@ function tierAtLeast(tierA: SubscriptionTier, tierB: SubscriptionTier): boolean 
   return TIER_ORDER.indexOf(tierA) >= TIER_ORDER.indexOf(tierB);
 }
 
+type Identity = { userId: string; email: string; tier: SubscriptionTier };
+
+// TTL for the cached identity below. The cache is keyed by token hash and expires ONLY by
+// TTL — the Stripe webhook can't target it (it knows userId, not the token). So everything
+// that changes a user's access takes effect within at most this window: a tier upgrade
+// (just-paid user waits ≤TTL), a downgrade (retains premium ≤TTL), and a token revocation /
+// sign-out (honored ≤TTL). Kept short and acceptable here because gated data is read-only
+// (no destructive gated actions). Lower this value to tighten all three windows.
+const AUTH_CACHE_TTL = 60; // seconds
+
+/** SHA-256 hex of a string (used to key the auth cache without storing the raw token). */
+async function sha256hex(s: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
 /**
  * Authenticate the request and optionally enforce a minimum tier.
- * Returns the user profile or a 401/403 Response.
+ * Returns the user identity or a 401/403 Response.
+ *
+ * Perf: a previously-validated token's identity is cached in KV (keyed by token hash)
+ * for AUTH_CACHE_TTL, so repeat gated requests skip the Supabase getUser + profiles
+ * round-trips (~80-150ms each). Only tokens that already validated get cached; an
+ * unknown/forged token misses the cache and hits the full live validation.
  */
 export async function requireAuth(
   env: Env,
   request: Request,
   minTier: SubscriptionTier = 'free'
-): Promise<{ userId: string; email: string; tier: SubscriptionTier } | Response> {
+): Promise<Identity | Response> {
   const authHeader = request.headers.get('Authorization');
   if (!authHeader?.startsWith('Bearer ')) {
     return new Response(JSON.stringify({ error: 'Authentication required' }), {
@@ -42,36 +63,57 @@ export async function requireAuth(
   }
 
   const token = authHeader.slice(7);
-  const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
-    global: { headers: { Authorization: `Bearer ${token}` } },
-  });
+  const cacheKey = `authcache:${await sha256hex(token)}`;
 
-  const { data: { user }, error } = await supabase.auth.getUser(token);
-  if (error || !user) {
-    return new Response(JSON.stringify({ error: 'Invalid or expired token' }), {
-      status: 401,
-      headers: { 'Content-Type': 'application/json' },
-    });
+  // Cache hit → skip the two Supabase round-trips.
+  let identity: Identity | null = null;
+  try {
+    identity = await env.STOCKS_PREMIUM_KV.get<Identity>(cacheKey, 'json');
+  } catch {
+    identity = null; // KV unavailable → fall through to live validation
   }
 
-  // Fetch tier from profiles table
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('subscription_tier')
-    .eq('id', user.id)
-    .single();
+  if (!identity) {
+    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
 
-  const tier = (profile?.subscription_tier as SubscriptionTier) || 'free';
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+    if (error || !user) {
+      return new Response(JSON.stringify({ error: 'Invalid or expired token' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
-  // Check minimum tier
-  if (!tierAtLeast(tier, minTier)) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('subscription_tier')
+      .eq('id', user.id)
+      .single();
+
+    identity = {
+      userId: user.id,
+      email: user.email!,
+      tier: (profile?.subscription_tier as SubscriptionTier) || 'free',
+    };
+
+    try {
+      await env.STOCKS_PREMIUM_KV.put(cacheKey, JSON.stringify(identity), { expirationTtl: AUTH_CACHE_TTL });
+    } catch {
+      // Caching is best-effort; a put failure just means the next request re-validates.
+    }
+  }
+
+  // Tier check is per-endpoint (minTier varies), so it stays out of the cached identity.
+  if (!tierAtLeast(identity.tier, minTier)) {
     return new Response(JSON.stringify({ error: 'Upgrade required' }), {
       status: 403,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  return { userId: user.id, email: user.email!, tier };
+  return identity;
 }
 
 /**

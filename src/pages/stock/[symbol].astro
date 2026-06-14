@@ -1209,7 +1209,6 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
 
   <!-- Price history chart (public, lightweight-charts) -->
   <script>
-    import { createChart, AreaSeries, LineSeries, ColorType, LineStyle } from 'lightweight-charts';
     import { authFetch } from '../../lib/authFetch';
 
     const ACCENT = '#22D3EE';
@@ -1236,6 +1235,9 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
 
       const symbol = container.dataset.symbol;
       if (!symbol) return;
+
+      // Code-split the ~30KB charting lib into its own async chunk (kept out of the main page bundle).
+      const { createChart, AreaSeries, LineSeries, ColorType, LineStyle } = await import('lightweight-charts');
 
       let data: { time: string; value: number }[];
       try {
