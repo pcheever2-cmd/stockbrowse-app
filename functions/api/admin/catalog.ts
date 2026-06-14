@@ -10,7 +10,7 @@
  * This is the loader the Phase B curation workflow targets. It does NO LLM curation
  * itself — it just persists already-curated entries.
  */
-import { json, errorResponse } from '../../_middleware';
+import { json, errorResponse, safeEqual } from '../../_middleware';
 import {
   slugify,
   putCatalogEntry,
@@ -41,8 +41,8 @@ const EMBED_CHUNK = 100; // Workers AI text-array cap per call
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
-  const authHeader = request.headers.get('Authorization');
-  if (!env.REINDEX_SECRET || authHeader !== `Bearer ${env.REINDEX_SECRET}`) {
+  const authHeader = request.headers.get('Authorization') || '';
+  if (!env.REINDEX_SECRET || !safeEqual(authHeader, `Bearer ${env.REINDEX_SECRET}`)) {
     return errorResponse('unauthorized', 401);
   }
 

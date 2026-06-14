@@ -75,6 +75,17 @@ export async function requireAuth(
 }
 
 /**
+ * Constant-time string comparison for secret/token checks (avoids timing leaks).
+ * Returns false on length mismatch or non-string input.
+ */
+export function safeEqual(a: string, b: string): boolean {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+/**
  * Add CORS headers to a response.
  */
 export function corsHeaders(): Record<string, string> {

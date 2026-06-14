@@ -75,7 +75,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       if (session.subscription) {
         const subscription = await stripe.subscriptions.retrieve(session.subscription as string);
         const productId = subscription.items.data[0]?.price?.product as string;
-        const tier = TIER_MAP[productId] || 'plus';
+        const tier = TIER_MAP[productId] || 'free'; // unknown product → least privilege, never auto-grant paid
 
         await supabase
           .from('profiles')
@@ -100,7 +100,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       const subscription = event.data.object as Stripe.Subscription;
       const customerId = subscription.customer as string;
       const productId = subscription.items.data[0]?.price?.product as string;
-      const tier = TIER_MAP[productId] || 'plus';
+      const tier = TIER_MAP[productId] || 'free'; // unknown product → least privilege, never auto-grant paid
 
       const newTier = subscription.cancel_at_period_end ? 'free' : tier;
       // Only downgrade to free when the period actually ends

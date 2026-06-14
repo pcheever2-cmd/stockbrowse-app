@@ -430,15 +430,15 @@ export function generateSummary(stock: Stock): string {
   let summary = `${stock.name} is a ${quality} ${industry} company with a Compass Score of ${stock.compassScore}. `;
 
   if (stock.grade === 'A') {
-    summary += 'This stock demonstrates strong fundamentals across profitability, cash flow, and stability metrics. Suitable for long-term investors seeking quality.';
+    summary += 'Profitability, cash flow, and price stability all score well here. The kind of stock long-term investors tend to hold for quality.';
   } else if (stock.grade === 'B') {
-    summary += 'This stock shows solid fundamentals with room for improvement in some areas. Worth considering for a diversified portfolio.';
+    summary += 'Solid fundamentals, with a few weaker spots. Worth a look for a diversified portfolio.';
   } else if (stock.grade === 'C') {
-    summary += 'This stock has mixed fundamentals. Consider carefully and ensure it fits your investment strategy before buying.';
+    summary += 'The fundamentals are mixed. Check that it fits your strategy before you buy.';
   } else if (stock.grade === 'D') {
-    summary += 'This stock shows weak fundamentals or high volatility. May be suitable for speculative positions only.';
+    summary += 'Weak fundamentals or high volatility. More of a speculative position than a core holding.';
   } else {
-    summary += 'This stock has poor quality metrics and high risk. Not recommended for conservative investors.';
+    summary += 'Poor quality metrics and high risk. Not one for conservative investors.';
   }
 
   return summary;

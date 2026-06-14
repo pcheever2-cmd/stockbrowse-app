@@ -7,7 +7,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Browse stocks like products. Invest with clarity. Every stock rated 0-100 on Stockbrowse." } = Astro.props;
+const { title, description = "Browse stocks like products. Every stock rated 0-100 on Stockbrowse, so you can see quality at a glance." } = Astro.props;
 ---
 
 <!doctype html>
@@ -234,8 +234,9 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
         <div class="bg-[#161B24] rounded-2xl p-8 mb-12 text-center border border-[rgba(255,255,255,0.06)]">
           <h3 class="text-slate-100 text-2xl font-bold mb-2">Get Weekly Stock Insights</h3>
           <p class="text-[#64748B] mb-6">Join The Stockbrowse Weekly newsletter. Quality stock picks delivered every Sunday.</p>
-          <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input
+              id="newsletter-email"
               type="email"
               placeholder="Enter your email"
               class="flex-grow px-4 py-3 rounded-lg bg-[#0C0F14] border border-[rgba(255,255,255,0.06)] text-slate-100 placeholder-[#64748B] focus:ring-2 focus:ring-[#22D3EE] focus:border-transparent"
@@ -248,7 +249,8 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
               Subscribe
             </button>
           </form>
-          <p class="text-xs text-[#64748B] mt-3">$9/month after 7-day free trial. Cancel anytime.</p>
+          <p id="newsletter-status" class="text-sm text-[#22D3EE] mt-3 hidden" role="status"></p>
+          <p class="text-xs text-[#64748B] mt-3">$1/month. Cancel anytime.</p>
         </div>
 
         <!-- Footer Links -->
@@ -423,6 +425,39 @@ const { title, description = "Browse stocks like products. Invest with clarity. 
       }
       document.getElementById('navSignOut')?.addEventListener('click', handleSignOut);
       document.getElementById('mobileSignOut')?.addEventListener('click', handleSignOut);
+
+      // Footer newsletter signup → /api/newsletter/subscribe ($1/mo Newsletter tier).
+      const nlForm = document.getElementById('newsletter-form') as HTMLFormElement | null;
+      nlForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = document.getElementById('newsletter-email') as HTMLInputElement | null;
+        const status = document.getElementById('newsletter-status');
+        const btn = nlForm.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+        const email = input?.value.trim();
+        if (!email) return;
+        if (btn) { btn.disabled = true; btn.textContent = '…'; }
+        try {
+          const res = await fetch('/api/newsletter/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+          });
+          const data = await res.json().catch(() => ({} as any));
+          if (res.ok && data.url) { window.location.href = data.url; return; }
+          if (status) {
+            status.textContent = res.ok
+              ? (data.message || 'Thanks — you’re on the list.')
+              : (data.error || 'Something went wrong. Please try again.');
+            status.classList.toggle('text-[#22D3EE]', res.ok);
+            status.classList.toggle('text-red-400', !res.ok);
+            status.classList.remove('hidden');
+          }
+        } catch {
+          if (status) { status.textContent = 'Network error. Please try again.'; status.classList.remove('hidden'); }
+        } finally {
+          if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+        }
+      });
     </script>
   </body>
 </html>

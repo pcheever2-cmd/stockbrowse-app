@@ -6,7 +6,7 @@
  * the vectors into Vectorize, keyed by symbol. Re-runnable; called by the local
  * indexing script. Token-protected so it can't be triggered publicly.
  */
-import { json, errorResponse } from '../../_middleware';
+import { json, errorResponse, safeEqual } from '../../_middleware';
 
 interface Env {
   AI: Ai;
@@ -19,8 +19,8 @@ const EMBEDDING_MODEL = '@cf/baai/bge-base-en-v1.5';
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
-  const authHeader = request.headers.get('Authorization');
-  if (!env.REINDEX_SECRET || authHeader !== `Bearer ${env.REINDEX_SECRET}`) {
+  const authHeader = request.headers.get('Authorization') || '';
+  if (!env.REINDEX_SECRET || !safeEqual(authHeader, `Bearer ${env.REINDEX_SECRET}`)) {
     return errorResponse('unauthorized', 401);
   }
 

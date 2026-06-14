@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page not found — Stockbrowse" description="That page doesn't exist. Find a stock or browse by quality.">
+  <main class="max-w-2xl mx-auto px-4 py-24 text-center">
+    <p class="text-6xl font-bold text-[#22D3EE] mb-4">404</p>
+    <h1 class="text-2xl font-bold text-slate-100 mb-3">That page isn't here</h1>
+    <p class="text-[#94A3B8] mb-8">
+      The link may be broken, or the ticker doesn't exist in our coverage. Try a search, or browse by quality.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-6 py-3 rounded-lg font-bold transition">
+        Go home
+      </a>
+      <a href="/browse" class="border border-[rgba(255,255,255,0.12)] text-slate-100 px-6 py-3 rounded-lg font-semibold hover:bg-[#161B24] transition">
+        Browse stocks
+      </a>
+    </div>
+  </main>
+</Layout>

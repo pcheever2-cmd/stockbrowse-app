@@ -1210,6 +1210,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
   <!-- Price history chart (public, lightweight-charts) -->
   <script>
     import { createChart, AreaSeries, LineSeries, ColorType, LineStyle } from 'lightweight-charts';
+    import { authFetch } from '../../lib/authFetch';
 
     const ACCENT = '#22D3EE';
     const PE_COLOR = '#FBBF24';   // amber
@@ -1238,7 +1239,8 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
 
       let data: { time: string; value: number }[];
       try {
-        const res = await fetch(`/api/stock/${symbol}/prices`);
+        // authFetch sends the token if signed in (Plus+ → full 5yr); anon/free get ~1yr.
+        const res = await authFetch(`/api/stock/${symbol}/prices`);
         if (!res.ok) return;
         data = await res.json();
       } catch {
@@ -1317,7 +1319,9 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
       let evSeries: any = null;
       let overlays: { pe: any[]; evEbitda: any[]; fwdPe: number | null } = { pe: [], evEbitda: [], fwdPe: null };
       try {
-        const r = await fetch(`/api/stock/${symbol}/overlays`);
+        // Overlays are Plus-gated; authFetch sends the token if signed in, else the
+        // request 401s and we fall back to a price-only chart (toggles stay hidden).
+        const r = await authFetch(`/api/stock/${symbol}/overlays`);
         if (r.ok) overlays = await r.json();
       } catch { /* no overlays — price-only chart */ }
 

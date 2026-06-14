@@ -7,23 +7,27 @@
  *
  *   { "pe": [{time,value}], "evEbitda": [{time,value}], "fwdPe": <num|null> }
  *
- * Pass-through of the `overlays:SYM` KV value. Returns an empty payload when a
- * symbol has no usable multiples (unprofitable / sparse fundamentals) so the
- * client just leaves the overlay toggles disabled.
- *
- * NOTE: currently public, matching the public price chart. The underlying
- * valuation fields (forwardPe/evEbitda) are premium elsewhere — if we decide to
- * gate this, swap to requireAuth('plus') like functions/api/stocks/premium.ts.
+ * Premium: the underlying valuation fields (forwardPe / evEbitda) are Plus-tier
+ * elsewhere, so this endpoint requires Plus and is never shared-cached.
  */
-import { corsHeaders } from '../../../_middleware';
+import { requireAuth, corsHeaders } from '../../../_middleware';
 
 interface Env {
+  SUPABASE_URL: string;
+  SUPABASE_ANON_KEY: string;
+  SUPABASE_SERVICE_ROLE_KEY: string;
+  STRIPE_SECRET_KEY: string;
+  STRIPE_WEBHOOK_SECRET: string;
   STOCKS_PREMIUM_KV: KVNamespace;
 }
 
 const EMPTY = '{"pe":[],"evEbitda":[],"fwdPe":null}';
 
-export const onRequestGet: PagesFunction<Env> = async ({ params, env }) => {
+export const onRequestGet: PagesFunction<Env> = async ({ params, env, request }) => {
+  // Premium valuation overlays — Plus tier minimum.
+  const auth = await requireAuth(env, request, 'plus');
+  if (auth instanceof Response) return auth;
+
   const raw = Array.isArray(params.symbol) ? params.symbol[0] : params.symbol;
   const symbol = (raw || '').toUpperCase();
   if (!symbol) {
@@ -38,7 +42,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ params, env }) => {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
-      'Cache-Control': 'public, max-age=3600',
+      // Premium, per-user payload — never let a shared/edge cache serve it to others.
+      'Cache-Control': 'private, no-store',
       ...corsHeaders(),
     },
   });
