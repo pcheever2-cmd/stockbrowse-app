@@ -196,6 +196,11 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           <div>
             <h1 class="text-3xl md:text-4xl font-bold text-slate-100">{stock.name}</h1>
             <p class="text-lg text-[#CBD5E1] mt-1">{stock.symbol} &bull; {industry}</p>
+            <button id="favorite-btn" data-symbol={stock.symbol} aria-label="Add to watchlist"
+              class="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold border border-[#22D3EE33] text-[#22D3EE] hover:bg-[#22D3EE15] transition">
+              <span class="fav-icon text-base leading-none">&#9825;</span>
+              <span class="fav-label">Add to watchlist</span>
+            </button>
           </div>
           <div class="flex items-center gap-4">
             <!-- Compass Score -->
@@ -333,7 +338,10 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
       <!-- Price History (Free) — hidden until the chart loads client-side -->
       <div id="price-history" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-8 hidden">
         <div class="flex items-center justify-between mb-3 flex-wrap gap-3">
-          <h2 class="text-xl font-bold text-slate-100">Price History</h2>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h2 class="text-xl font-bold text-slate-100">Price History</h2>
+            <span id="split-note" class="hidden text-xs text-amber-400/80">Recent prices may not reflect a stock split yet.</span>
+          </div>
           <div id="price-range-buttons" class="flex gap-1 text-xs font-semibold">
             {['1M', '6M', '1Y', '5Y', 'All'].map(r => (
               <button data-range={r} class="px-2.5 py-1 rounded-md text-[#64748B] hover:text-slate-200 hover:bg-[#0F1419] transition">{r}</button>
@@ -1310,6 +1318,22 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
       }
       if (!Array.isArray(data) || data.length < 2) return; // thin/missing history
 
+      // Stored adjusted_close can be stale after a split, leaving one giant single-step
+      // cliff (e.g. ~$2400 history then $254). Flag an extreme adjacent move (>60% in one
+      // step) as a likely unadjusted split and surface a factual note — data is left as-is.
+      let splitSuspected = false;
+      for (let i = 1; i < data.length; i++) {
+        const a = data[i - 1].value;
+        const b = data[i].value;
+        if (a > 0 && b > 0) {
+          const r = b / a;
+          if (r < 0.4 || r > 2.5) { splitSuspected = true; break; }
+        }
+      }
+      if (splitSuspected) {
+        document.getElementById('split-note')?.classList.remove('hidden');
+      }
+
       // Reveal before creating the chart so autoSize measures a non-zero box.
       section.classList.remove('hidden');
 
@@ -1558,6 +1582,53 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
 
       chart.subscribeCrosshairMove(renderLegend);
       renderLegend();
+    });
+  </script>
+
+  <script>
+    // Favorite (watchlist) toggle — reuses the free single-watchlist localStorage pattern
+    // (`compassWatchlist`) shared by /browse/all, the nav badge, and the /watchlist page.
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('favorite-btn');
+      if (!btn) return;
+      const symbol = btn.dataset.symbol;
+      if (!symbol) return;
+
+      const getWatchlist = (): string[] => {
+        const stored = localStorage.getItem('compassWatchlist');
+        return stored ? JSON.parse(stored) : [];
+      };
+      const saveWatchlist = (list: string[]) => {
+        localStorage.setItem('compassWatchlist', JSON.stringify(list));
+      };
+      const toggleWatchlist = (sym: string): string[] => {
+        let list = getWatchlist();
+        list = list.includes(sym) ? list.filter(s => s !== sym) : [...list, sym];
+        saveWatchlist(list);
+        return list;
+      };
+
+      const icon = btn.querySelector('.fav-icon') as HTMLElement | null;
+      const label = btn.querySelector('.fav-label') as HTMLElement | null;
+      const setState = (active: boolean) => {
+        if (icon) icon.innerHTML = active ? '&#9829;' : '&#9825;'; // filled ♥ / outline ♡
+        if (label) label.textContent = active ? 'In watchlist' : 'Add to watchlist';
+        btn.setAttribute('aria-label', active ? 'Remove from watchlist' : 'Add to watchlist');
+        btn.classList.toggle('text-[#22D3EE]', active);
+        btn.classList.toggle('bg-[#22D3EE15]', active);
+      };
+
+      setState(getWatchlist().includes(symbol));
+
+      btn.addEventListener('click', () => {
+        const list = toggleWatchlist(symbol);
+        setState(list.includes(symbol));
+        // Refresh the nav badge in-tab (Layout.astro's storage listener fires updateNavWatchlistBadge).
+        window.dispatchEvent(new StorageEvent('storage', {
+          key: 'compassWatchlist',
+          newValue: localStorage.getItem('compassWatchlist'),
+        }));
+      });
     });
   </script>
 </Layout>

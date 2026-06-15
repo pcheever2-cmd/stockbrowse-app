@@ -1004,7 +1004,9 @@ const marketCapRanges = [
         // anything descriptive ("GLP-1 stocks", "stocks like Netflix") goes semantic.
         const isLookup = q.length > 0 && !q.includes(' ') &&
           allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql));
-        const goSemantic = q.length > 0 && !isLookup;
+        // Require >=2 chars (2-char themes like "vr"/"ar" exist) so single-keystroke fragments
+        // don't fire an embedding + Vectorize call + miss-log; the longer debounce below does the rest.
+        const goSemantic = q.length >= 2 && !isLookup;
 
         if (goSemantic) {
           const parsed = parseSmartSearch(query);
@@ -1048,7 +1050,7 @@ const marketCapRanges = [
         setTimeout(() => {
           document.getElementById('searchSuggestions')?.classList.add('hidden');
         }, 100);
-      }, 300); // Wait 300ms after user stops typing
+      }, 600); // Wait 600ms after typing stops — collapses mid-word keystrokes so partials don't embed/log
     });
 
     // Hide suggestions when clicking outside
