@@ -7490,20 +7490,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "SHOP",
-    "name": "Shopify Inc.",
-    "price": 108.24,
-    "compassScore": 88,
-    "grade": "A",
-    "industry": "Software - Application",
-    "sector": "Technology",
-    "marketCap": 209.09292478420002,
-    "description": "Shopify Inc. functions as a premier commerce technology company, providing an extensive platform and associated services to empower businesses worldwide. Its reach extends across Canada, the United States, Europe, the Middle East, Africa, the Asia Pacific region, and Latin America. The company's robust platform equips merchants to effectively display, organize, market, and sell their merchandise through a multitude of sales avenues. These include digital storefronts accessible via web and mobile, traditional brick-and-mortar stores, temporary pop-up locations, integrated social media channels, proprietary mobile applications, embeddable \"buy buttons,\" and established online marketplaces. Beyond sales, the platform streamlines crucial business operations such as product and inventory management, order and payment processing, fulfillment and shipping logistics, attracting new customers and fostering client relationships, product sourcing, analytical reporting, financial administration encompassing cash, payments, and transactions, and facilitating access to working capital. Additionally, Shopify offers supplementary services like the sale of custom website themes and applications, alongside domain name registration. Its merchant-focused solutions also cover payment acceptance, efficient shipping and order fulfillment, and aid in securing necessary operating funds. Founded in 2004 under the initial name Jaded Pixel Technologies Inc., the company officially rebranded to Shopify Inc. in November 2011. Its global headquarters are located in Ottawa, Canada.",
-    "numAnalysts": 20,
-    "consensus": "B+",
-    "scoreNote": null
-  },
-  {
     "symbol": "SYK",
     "name": "Stryker Corporation",
     "price": 312.2,
@@ -8106,6 +8092,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "SHOP",
+    "name": "Shopify Inc.",
+    "price": 108.24,
+    "compassScore": 87,
+    "grade": "A",
+    "industry": "Software - Application",
+    "sector": "Technology",
+    "marketCap": 209.09292478420002,
+    "description": "Shopify Inc. functions as a premier commerce technology company, providing an extensive platform and associated services to empower businesses worldwide. Its reach extends across Canada, the United States, Europe, the Middle East, Africa, the Asia Pacific region, and Latin America. The company's robust platform equips merchants to effectively display, organize, market, and sell their merchandise through a multitude of sales avenues. These include digital storefronts accessible via web and mobile, traditional brick-and-mortar stores, temporary pop-up locations, integrated social media channels, proprietary mobile applications, embeddable \"buy buttons,\" and established online marketplaces. Beyond sales, the platform streamlines crucial business operations such as product and inventory management, order and payment processing, fulfillment and shipping logistics, attracting new customers and fostering client relationships, product sourcing, analytical reporting, financial administration encompassing cash, payments, and transactions, and facilitating access to working capital. Additionally, Shopify offers supplementary services like the sale of custom website themes and applications, alongside domain name registration. Its merchant-focused solutions also cover payment acceptance, efficient shipping and order fulfillment, and aid in securing necessary operating funds. Founded in 2004 under the initial name Jaded Pixel Technologies Inc., the company officially rebranded to Shopify Inc. in November 2011. Its global headquarters are located in Ottawa, Canada.",
+    "numAnalysts": 20,
+    "consensus": "B+",
+    "scoreNote": null
+  },
+  {
     "symbol": "TBCH",
     "name": "Turtle Beach Corporation",
     "price": 13.29,
@@ -8355,20 +8355,6 @@
     "description": "Cabot Corporation functions as a global leader in specialty chemicals and high-performance materials. Its operations are structured into three main divisions: Reinforcement Materials, Performance Chemicals, and Purification Solutions. Within its Reinforcement Materials segment, the company provides reinforcing carbon black, a critical component for strengthening tires and various industrial rubber items such as hoses, belts, and molded goods. This segment also delivers engineered elastomer composites. The Performance Chemicals division furnishes specialty carbons integral to products like inks, coatings, plastics, adhesives, and electronic applications such as toners, batteries, and displays. Additionally, it produces masterbatch and conductive compounds widely adopted across diverse sectors including automotive, industrial, packaging, infrastructure, agriculture, consumer goods, and electronics. The portfolio also encompasses inkjet colorants for printing, fumed silica (a versatile additive found in adhesives, sealants, cosmetics, batteries, inks, toners, silicone elastomers, coatings, polishing slurries, and pharmaceuticals), and fumed alumina (applied in products such as inkjet media, lighting solutions, coatings, cosmetics, and polishing slurries). Furthermore, it supplies aerogel, a hydrophobic silica-based material valued for its applications in thermal insulation and other specialized chemical processes. The Purification Solutions segment provides activated carbon products designed for the purification of water, air, food and beverages, pharmaceuticals, and a range of other liquids and gases. Its purification offerings also extend to specialized activated carbon solutions, including injection systems for coal-fired power plants, mobile water filtration units, and carbon reactivation services. The company distributes its diverse product portfolio globally via a network of distributors and dedicated sales teams, reaching customers across the Americas, Europe, the Middle East, Africa, and the Asia Pacific region. Established in 1882, Cabot Corporation maintains its corporate headquarters in Boston, Massachusetts.",
     "numAnalysts": 5,
     "consensus": "B+",
-    "scoreNote": null
-  },
-  {
-    "symbol": "CNM",
-    "name": "Core & Main, Inc.",
-    "price": 48.33,
-    "compassScore": 86,
-    "grade": "A",
-    "industry": "Industrial - Distribution",
-    "sector": "Industrials",
-    "marketCap": 9.90445849686,
-    "description": "Core & Main, Inc. (CNM) is a leading supplier of vital infrastructure products and services across the United States. The company specializes in providing comprehensive solutions for water, wastewater, storm drainage, and fire protection systems. Their diverse clientele includes local governments (municipalities), privately owned water utilities, and a wide array of professional contractors working on projects in the residential, non-residential (commercial), and public sectors. Core & Main's extensive product range features essential components such as pipes, valves, hydrants, and fittings. For storm drainage needs, they offer systems including corrugated piping, retention basins, inline drains, manholes, grates, and geosynthetics. Their fire protection inventory covers crucial items like fire protection pipes, sprinkler heads, complete fire suppression systems, related accessories, and specialized fabrication services. Additionally, they provide advanced metering products, including smart meter technology, alongside installation services and software solutions. These specialized materials and services are integral to the construction, maintenance, repair, and replacement of critical water and fire protection infrastructure. Established in 1874, Core & Main is headquartered in St. Louis, Missouri.",
-    "numAnalysts": 9,
-    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -8943,6 +8929,20 @@
     "description": "Cognex Corporation specializes in machine vision technology, offering solutions that interpret and process visual data to streamline and automate production and logistics operations globally. Their advanced vision systems enable the automated manufacturing and tracking of individual components or finished goods, such as mobile devices, pharmaceutical containers, and automotive parts. This is achieved by precisely locating, recognizing, examining, and gauging items throughout their journey from production to delivery. The company provides a comprehensive software portfolio, including VisionPro, a collection of patented tools for sophisticated development; QuickBuild, an intuitive platform enabling users to create vision applications via a graphical, flowchart interface; and its specialized deep learning vision software. Beyond software, their offerings encompass robust vision sensors for tasks like ensuring component presence and accurate sizing, alongside the versatile In-Sight series of integrated vision systems and sensors. These tools support a variety of critical inspection functions, such as pinpointing part locations, confirming identities, precise dimensioning, validating assembly, and guiding robotics. Another key product is DataMan, their line of image-based barcode readers and verification systems. Cognex serves a diverse clientele across various sectors, including consumer electronics, automotive manufacturing, general consumer goods, food and beverage processing, pharmaceuticals, and medical device production. Their products are distributed directly and through a global network of partners and system integrators. Established in 1981, Cognex Corporation maintains its headquarters in Natick, Massachusetts.",
     "numAnalysts": 14,
     "consensus": "B+",
+    "scoreNote": null
+  },
+  {
+    "symbol": "CNM",
+    "name": "Core & Main, Inc.",
+    "price": 48.33,
+    "compassScore": 85,
+    "grade": "A",
+    "industry": "Industrial - Distribution",
+    "sector": "Industrials",
+    "marketCap": 9.90445849686,
+    "description": "Core & Main, Inc. (CNM) is a leading supplier of vital infrastructure products and services across the United States. The company specializes in providing comprehensive solutions for water, wastewater, storm drainage, and fire protection systems. Their diverse clientele includes local governments (municipalities), privately owned water utilities, and a wide array of professional contractors working on projects in the residential, non-residential (commercial), and public sectors. Core & Main's extensive product range features essential components such as pipes, valves, hydrants, and fittings. For storm drainage needs, they offer systems including corrugated piping, retention basins, inline drains, manholes, grates, and geosynthetics. Their fire protection inventory covers crucial items like fire protection pipes, sprinkler heads, complete fire suppression systems, related accessories, and specialized fabrication services. Additionally, they provide advanced metering products, including smart meter technology, alongside installation services and software solutions. These specialized materials and services are integral to the construction, maintenance, repair, and replacement of critical water and fire protection infrastructure. Established in 1874, Core & Main is headquartered in St. Louis, Missouri.",
+    "numAnalysts": 9,
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -9576,20 +9576,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "EXE",
-    "name": "Expand Energy Corporation",
-    "price": 88.78,
-    "compassScore": 84,
-    "grade": "B",
-    "industry": "Oil & Gas Exploration & Production",
-    "sector": "Energy",
-    "marketCap": 26.31821136,
-    "description": "Expand Energy Corporation functions as an independent entity primarily focused on the discovery and extraction of energy resources throughout the United States. Its core operations involve the acquisition, exploration, and subsequent development of properties to produce crude oil, natural gas, and associated liquid hydrocarbons from subterranean geological formations. The company maintains significant interests in key natural gas production areas, specifically within Pennsylvania's northern Appalachian Basin (Marcellus Shale) and northwestern Louisiana (Haynesville/Bossier Shales). As of December 31, 2023, its asset base featured a diverse collection of onshore U.S. unconventional natural gas properties, including ownership stakes in approximately 5,000 natural gas wells. Established in 1989 and based in Oklahoma City, Oklahoma, the corporation was formerly known as Chesapeake Energy Corporation before officially adopting the Expand Energy Corporation name in October 2024.",
-    "numAnalysts": 3,
-    "consensus": "A+",
-    "scoreNote": null
-  },
-  {
     "symbol": "GMED",
     "name": "Globus Medical, Inc.",
     "price": 80.39,
@@ -10105,6 +10091,20 @@
     "description": "EnerSys, established in 2000 and headquartered in Reading, Pennsylvania, operates as a global leader in delivering stored energy solutions for various industrial sectors. The company, which was formerly known as Yuasa, Inc. before rebranding as EnerSys in January 2001, organizes its extensive operations into three core divisions: Energy Systems, Motive Power, and Specialty. The Energy Systems segment focuses on providing critical power infrastructure, including uninterruptible power supplies (UPS) for computer and telecommunication networks. This division also offers switchgear and electrical control systems essential for industrial plants, electric utilities, large-scale energy storage projects, and energy pipelines. Additionally, it delivers integrated power solutions and services to customers in broadband, telecommunications, renewable energy, and other industrial areas, alongside manufacturing thermally managed cabinets and enclosures for sensitive electronics and batteries. In the Motive Power segment, EnerSys specializes in producing power products for electric industrial forklifts, which are indispensable in manufacturing, warehousing, and material handling applications. The Specialty segment addresses highly specific and demanding energy needs. Its offerings include power solutions for mining equipment, diesel locomotive starting, and various other rail applications. This segment also develops specialized batteries for starting, lighting, and ignition in transportation vehicles. Furthermore, it provides advanced energy solutions for critical applications such as satellites, military aircraft, submarines, ships, tactical vehicles, as well as medical and security systems. Beyond its primary product lines, EnerSys supplies a comprehensive range of supplementary items, including battery chargers, power equipment, battery accessories, and durable outdoor cabinet enclosures. The company also backs its industrial battery offerings with extensive after-market and customer-support services. EnerSys effectively reaches its global customer base by distributing its products through a broad network of independent distributors, authorized representatives, and its dedicated internal sales teams.",
     "numAnalysts": 5,
     "consensus": "B+",
+    "scoreNote": null
+  },
+  {
+    "symbol": "EXE",
+    "name": "Expand Energy Corporation",
+    "price": 88.78,
+    "compassScore": 83,
+    "grade": "B",
+    "industry": "Oil & Gas Exploration & Production",
+    "sector": "Energy",
+    "marketCap": 26.31821136,
+    "description": "Expand Energy Corporation functions as an independent entity primarily focused on the discovery and extraction of energy resources throughout the United States. Its core operations involve the acquisition, exploration, and subsequent development of properties to produce crude oil, natural gas, and associated liquid hydrocarbons from subterranean geological formations. The company maintains significant interests in key natural gas production areas, specifically within Pennsylvania's northern Appalachian Basin (Marcellus Shale) and northwestern Louisiana (Haynesville/Bossier Shales). As of December 31, 2023, its asset base featured a diverse collection of onshore U.S. unconventional natural gas properties, including ownership stakes in approximately 5,000 natural gas wells. Established in 1989 and based in Oklahoma City, Oklahoma, the corporation was formerly known as Chesapeake Energy Corporation before officially adopting the Expand Energy Corporation name in October 2024.",
+    "numAnalysts": 3,
+    "consensus": "A+",
     "scoreNote": null
   },
   {
@@ -10766,20 +10766,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "FINV",
-    "name": "FinVolution Group",
-    "price": 5.03,
-    "compassScore": 82,
-    "grade": "B",
-    "industry": "Financial - Credit Services",
-    "sector": "Financial Services",
-    "marketCap": 1.8476603546060002,
-    "description": "FinVolution Group manages a digital financial platform within China that specializes in connecting individual borrowers, who may be underserved by traditional lenders, with various financial institutions. Its core focus lies in the online consumer finance sector. Leveraging its proprietary technological innovations, the platform offers an automated loan transaction process, which significantly enhances the user experience. By March 31, 2022, FinVolution Group had accumulated a substantial user base of approximately 145.3 million registered individuals. Established in 2007, the company, originally known as PPDAI Group Inc., rebranded as FinVolution Group in November 2019. It maintains its headquarters in Shanghai, People's Republic of China.",
-    "numAnalysts": 7,
-    "consensus": "A+",
-    "scoreNote": null
-  },
-  {
     "symbol": "FIVE",
     "name": "Five Below, Inc.",
     "price": 198.49,
@@ -11309,6 +11295,20 @@
     "description": "Franklin Covey Co. provides specialized training and advisory services across the globe, assisting both businesses and individuals. The company's expertise lies in critical areas like operational efficiency, improving sales results, enhancing overall productivity, building customer loyalty, and advancing educational standards. Franklin Covey's operations are structured into three primary segments: its directly managed offices, a network of international licensees, and a dedicated education division. Additionally, the firm offers a wide range of programs and materials designed to boost individual effectiveness and foster leadership development. Established in 1983, its corporate headquarters are located in Salt Lake City, Utah.",
     "numAnalysts": 3,
     "consensus": "B-",
+    "scoreNote": null
+  },
+  {
+    "symbol": "FINV",
+    "name": "FinVolution Group",
+    "price": 5.03,
+    "compassScore": 81,
+    "grade": "B",
+    "industry": "Financial - Credit Services",
+    "sector": "Financial Services",
+    "marketCap": 1.8476603546060002,
+    "description": "FinVolution Group manages a digital financial platform within China that specializes in connecting individual borrowers, who may be underserved by traditional lenders, with various financial institutions. Its core focus lies in the online consumer finance sector. Leveraging its proprietary technological innovations, the platform offers an automated loan transaction process, which significantly enhances the user experience. By March 31, 2022, FinVolution Group had accumulated a substantial user base of approximately 145.3 million registered individuals. Established in 2007, the company, originally known as PPDAI Group Inc., rebranded as FinVolution Group in November 2019. It maintains its headquarters in Shanghai, People's Republic of China.",
+    "numAnalysts": 7,
+    "consensus": "A+",
     "scoreNote": null
   },
   {
@@ -12096,20 +12096,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "RDY",
-    "name": "Dr. Reddy's Laboratories Limited",
-    "price": 13.3,
-    "compassScore": 80,
-    "grade": "B",
-    "industry": "Drug Manufacturers - Specialty & Generic",
-    "sector": "Healthcare",
-    "marketCap": 11.256154889,
-    "description": "Dr. Reddy's Laboratories Limited, together with its subsidiaries, operates as an integrated pharmaceutical company worldwide. It operates through Global Generics, Pharmaceutical Services and Active Ingredients (PSAI), Proprietary Products, and Others segments. The company's Global Generics segment manufactures and markets prescription and over-the-counter finished pharmaceutical products that are marketed under a brand name or as a generic finished dosages with therapeutic equivalence to branded formulations. This segment also engages in the biologics business. The PSAI segment manufactures and markets active pharmaceutical ingredients and intermediates, which are principal ingredients for finished pharmaceutical products. This segment also provides contract research services; and manufactures and sells active pharmaceutical ingredients and steroids in accordance with the specific customer requirements. Its Proprietary Products segment focuses on the research and development of differentiated formulations. The Others segment engages in developing therapies in the fields of oncology and inflammation. The therapeutic categories primarily include gastro-intestinal, cardiovascular, anti-diabetic, dermatology, oncology, respiratory, stomatology, urology, and nephrology. The company has a collaboration, license, and option agreement with Curis, Inc. to discover, develop, and commercialize small molecule antagonists for immuno-oncology and precision oncology targets. Dr. Reddy's Laboratories Limited was incorporated in 1984 and is headquartered in Hyderabad, India.",
-    "numAnalysts": null,
-    "consensus": null,
-    "scoreNote": null
-  },
-  {
     "symbol": "SLAB",
     "name": "Silicon Laboratories Inc.",
     "price": 219.51,
@@ -12712,6 +12698,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "RDY",
+    "name": "Dr. Reddy's Laboratories Limited",
+    "price": 13.3,
+    "compassScore": 79,
+    "grade": "B",
+    "industry": "Drug Manufacturers - Specialty & Generic",
+    "sector": "Healthcare",
+    "marketCap": 11.256154889,
+    "description": "Dr. Reddy's Laboratories Limited, together with its subsidiaries, operates as an integrated pharmaceutical company worldwide. It operates through Global Generics, Pharmaceutical Services and Active Ingredients (PSAI), Proprietary Products, and Others segments. The company's Global Generics segment manufactures and markets prescription and over-the-counter finished pharmaceutical products that are marketed under a brand name or as a generic finished dosages with therapeutic equivalence to branded formulations. This segment also engages in the biologics business. The PSAI segment manufactures and markets active pharmaceutical ingredients and intermediates, which are principal ingredients for finished pharmaceutical products. This segment also provides contract research services; and manufactures and sells active pharmaceutical ingredients and steroids in accordance with the specific customer requirements. Its Proprietary Products segment focuses on the research and development of differentiated formulations. The Others segment engages in developing therapies in the fields of oncology and inflammation. The therapeutic categories primarily include gastro-intestinal, cardiovascular, anti-diabetic, dermatology, oncology, respiratory, stomatology, urology, and nephrology. The company has a collaboration, license, and option agreement with Curis, Inc. to discover, develop, and commercialize small molecule antagonists for immuno-oncology and precision oncology targets. Dr. Reddy's Laboratories Limited was incorporated in 1984 and is headquartered in Hyderabad, India.",
+    "numAnalysts": null,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
     "symbol": "SAIC",
     "name": "Science Applications International Corporation",
     "price": 113.81,
@@ -13199,20 +13199,6 @@
     "description": "Based in Chicago, Equity LifeStyle Properties, Inc. operates as a self-managed Real Estate Investment Trust (REIT). As of January 25, 2021, its extensive portfolio includes 423 quality properties located across 33 U.S. states and British Columbia, collectively comprising 161,229 sites.",
     "numAnalysts": 3,
     "consensus": "B",
-    "scoreNote": null
-  },
-  {
-    "symbol": "FAF",
-    "name": "First American Financial Corporation",
-    "price": 65.74,
-    "compassScore": 78,
-    "grade": "B",
-    "industry": "Insurance - Specialty",
-    "sector": "Financial Services",
-    "marketCap": 6.316032,
-    "description": "First American Financial Corporation (FAF) delivers financial services primarily through its diverse subsidiaries. The company's operations are divided into two main divisions: Title Insurance and Services, and Specialty Insurance. The Title Insurance and Services division is a prominent issuer of title insurance policies for both residential and commercial properties. Beyond core insurance, this segment provides a broad spectrum of related offerings aimed at streamlining real estate transactions and reducing associated risks. These include facilitating property closings and escrow, offering appraisals and other valuation tools, managing lien releases, providing document custody services, and engaging in warehouse lending. Additionally, it supports services related to mortgage subservicing, default management, and even banking, trust, and wealth management. The company also assists clients with tax-deferred real estate exchanges and maintains extensive databases of title information. Its services are accessible via company-owned offices and independent agents across nearly all U.S. states (49 states plus the District of Columbia), as well as internationally in locations such as Canada, the United Kingdom, Australia, and South Korea. The Specialty Insurance division focuses on property and casualty coverage. It provides insurance for homeowners and renters, protecting them against liability and common hazards like fire, theft, vandalism, and various forms of property damage. This segment also offers residential service contracts, which cover the repair or replacement of crucial home systems\u2014such as heating, air conditioning, and major appliances\u2014if they malfunction due to normal use during the contract period. Founded in 1889, First American Financial Corporation is headquartered in Santa Ana, California.",
-    "numAnalysts": 3,
-    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -13787,6 +13773,20 @@
     "description": "Eagle Materials Inc., operating through its subsidiaries across the United States, stands as a key producer and supplier of both heavy construction and light building materials. The company's diverse operations are organized into distinct segments: Cement; Concrete and Aggregates; Gypsum Wallboard; and Recycled Paperboard. Its core activities involve the mining of limestone for the comprehensive manufacture, distribution, and sale of Portland cement, alongside the grinding and distribution of slag. Additionally, Eagle Materials extracts gypsum to produce and market gypsum wallboard, an essential product utilized for finishing interior walls and ceilings in residential, commercial, and industrial structures. The firm also engages in the production and sale of recycled paperboard, catering to the gypsum wallboard industry and other paperboard converters, while also providing containerboard and lightweight packaging grades. Furthermore, its product portfolio includes ready-mix concrete, complemented by the mining, extraction, and sale of various aggregates such as crushed stone, sand, and gravel. These fundamental materials are integral to a broad spectrum of projects, ranging from residential and commercial building construction to public infrastructure developments and the critical construction, expansion, and repair of roads and highways. Established in 1963, the company was initially known as Centex Construction Products, Inc. before rebranding to Eagle Materials Inc. in January 2004. Its corporate headquarters are located in Dallas, Texas.",
     "numAnalysts": 8,
     "consensus": "B+",
+    "scoreNote": null
+  },
+  {
+    "symbol": "FAF",
+    "name": "First American Financial Corporation",
+    "price": 65.74,
+    "compassScore": 77,
+    "grade": "B",
+    "industry": "Insurance - Specialty",
+    "sector": "Financial Services",
+    "marketCap": 6.316032,
+    "description": "First American Financial Corporation (FAF) delivers financial services primarily through its diverse subsidiaries. The company's operations are divided into two main divisions: Title Insurance and Services, and Specialty Insurance. The Title Insurance and Services division is a prominent issuer of title insurance policies for both residential and commercial properties. Beyond core insurance, this segment provides a broad spectrum of related offerings aimed at streamlining real estate transactions and reducing associated risks. These include facilitating property closings and escrow, offering appraisals and other valuation tools, managing lien releases, providing document custody services, and engaging in warehouse lending. Additionally, it supports services related to mortgage subservicing, default management, and even banking, trust, and wealth management. The company also assists clients with tax-deferred real estate exchanges and maintains extensive databases of title information. Its services are accessible via company-owned offices and independent agents across nearly all U.S. states (49 states plus the District of Columbia), as well as internationally in locations such as Canada, the United Kingdom, Australia, and South Korea. The Specialty Insurance division focuses on property and casualty coverage. It provides insurance for homeowners and renters, protecting them against liability and common hazards like fire, theft, vandalism, and various forms of property damage. This segment also offers residential service contracts, which cover the repair or replacement of crucial home systems\u2014such as heating, air conditioning, and major appliances\u2014if they malfunction due to normal use during the contract period. Founded in 1889, First American Financial Corporation is headquartered in Santa Ana, California.",
+    "numAnalysts": 3,
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -15330,20 +15330,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "BRX",
-    "name": "Brixmor Property Group Inc.",
-    "price": 32.58,
-    "compassScore": 74,
-    "grade": "B",
-    "industry": "REIT - Retail",
-    "sector": "Real Estate",
-    "marketCap": 8.05562304,
-    "description": "Brixmor (NYSE: BRX) is a prominent real estate investment trust (REIT) specializing in the ownership and management of a high-caliber, nationwide collection of open-air retail centers. Its extensive portfolio comprises 395 properties, collectively spanning approximately 69 million square feet of strategic commercial space situated within well-established trade zones. The Company's mission is to cultivate and operate shopping destinations that embody its commitment to serving as vital hubs within their respective communities, housing a diverse array of flourishing national, regional, and independent businesses. Brixmor proudly acts as a real estate collaborator for nearly 5,000 retail entities, including major names such as The TJX Companies, The Kroger Co., Publix Super Markets, Wal-Mart, Ross Stores, and L.A. Fitness.",
-    "numAnalysts": 3,
-    "consensus": "B+",
-    "scoreNote": null
-  },
-  {
     "symbol": "BTSG",
     "name": "BrightSpring Health Services, Inc. Common Stock",
     "price": 63.23,
@@ -16016,6 +16002,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "BRX",
+    "name": "Brixmor Property Group Inc.",
+    "price": 32.58,
+    "compassScore": 73,
+    "grade": "B",
+    "industry": "REIT - Retail",
+    "sector": "Real Estate",
+    "marketCap": 8.05562304,
+    "description": "Brixmor (NYSE: BRX) is a prominent real estate investment trust (REIT) specializing in the ownership and management of a high-caliber, nationwide collection of open-air retail centers. Its extensive portfolio comprises 395 properties, collectively spanning approximately 69 million square feet of strategic commercial space situated within well-established trade zones. The Company's mission is to cultivate and operate shopping destinations that embody its commitment to serving as vital hubs within their respective communities, housing a diverse array of flourishing national, regional, and independent businesses. Brixmor proudly acts as a real estate collaborator for nearly 5,000 retail entities, including major names such as The TJX Companies, The Kroger Co., Publix Super Markets, Wal-Mart, Ross Stores, and L.A. Fitness.",
+    "numAnalysts": 3,
+    "consensus": "B+",
+    "scoreNote": null
+  },
+  {
     "symbol": "CAL",
     "name": "Caleres, Inc.",
     "price": 14.64,
@@ -16559,20 +16559,6 @@
     "description": "Rocky Brands, Inc. is engaged in the comprehensive process of designing, manufacturing, and distributing footwear and apparel globally, spanning markets in the United States, Canada, and internationally. The company boasts an extensive brand portfolio, featuring its owned names such as Rocky, Georgia Boot, Durango, Lehigh, Muck, XTRATUF, Servus, NEOS, and Ranger, in addition to products under a licensed Michelin brand. Its operations are structured into three main divisions: Wholesale, Retail, and Contract Manufacturing. The Wholesale segment facilitates the supply of products to approximately 10,000 retail locations. These diverse distribution channels include major sporting goods chains, outdoor equipment retailers, independent shoe stores, hardware stores, catalog merchants, large-scale general merchandise outlets, uniform suppliers, agricultural store chains, specialized safety equipment providers, and various online and specialty retailers. Through its Retail segment, the company connects directly with consumers. This occurs via its various proprietary e-commerce platforms (such as rockyboots.com, georgiaboot.com, durangoboot.com, muckbootcompany.com, and xtratuf.com, among others) and through its physical presence, including the Rocky outlet store in Nelsonville, Ohio, and other retail establishments. The Contract Manufacturing segment focuses on producing private label goods and bespoke footwear products for specific clients, a service that also extends to fulfilling orders for the U.S. Military. Rocky Brands caters to a wide and varied customer base. This includes professionals in industrial and construction fields, hospitality workers (e.g., in restaurants or hotels), farmers and ranchers, individuals who appreciate Western-influenced fashion, commercial military personnel, outdoor enthusiasts (like hunters, fishers, campers, and hikers), law enforcement officers, security personnel, postal employees, and members of the U.S. armed forces. Founded in 1932, Rocky Brands, Inc. is headquartered in Nelsonville, Ohio.",
     "numAnalysts": 2,
     "consensus": "B+",
-    "scoreNote": null
-  },
-  {
-    "symbol": "AMT",
-    "name": "American Tower Corporation",
-    "price": 187.18,
-    "compassScore": 72,
-    "grade": "B",
-    "industry": "REIT - Specialty",
-    "sector": "Real Estate",
-    "marketCap": 82.36741140349,
-    "description": "American Tower Corporation, a prominent global Real Estate Investment Trust (REIT), stands as a premier independent entity specializing in the ownership, operation, and development of shared telecommunications infrastructure. The company manages an extensive portfolio of approximately 219,000 communication sites worldwide. For additional details, including earnings materials and investor presentations, please visit their investor relations website at www.americantower.com.",
-    "numAnalysts": 12,
-    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -17136,6 +17122,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "AMT",
+    "name": "American Tower Corporation",
+    "price": 187.18,
+    "compassScore": 71,
+    "grade": "B",
+    "industry": "REIT - Specialty",
+    "sector": "Real Estate",
+    "marketCap": 82.36741140349,
+    "description": "American Tower Corporation, a prominent global Real Estate Investment Trust (REIT), stands as a premier independent entity specializing in the ownership, operation, and development of shared telecommunications infrastructure. The company manages an extensive portfolio of approximately 219,000 communication sites worldwide. For additional details, including earnings materials and investor presentations, please visit their investor relations website at www.americantower.com.",
+    "numAnalysts": 12,
+    "consensus": "B",
+    "scoreNote": null
+  },
+  {
     "symbol": "APD",
     "name": "Air Products and Chemicals, Inc.",
     "price": 281.62,
@@ -17621,20 +17621,6 @@
     "sector": "Energy",
     "marketCap": 0.096051104,
     "description": "Martin Midstream Partners L.P., together with its subsidiaries, engages in terminalling, processing, storage, and packaging of petroleum products and by-products primarily in the United States Gulf Coast region. The company's Terminalling and Storage segment owns or operates 15 marine shore-based terminal facilities and 13 specialty terminal facilities that provide storage, refining, blending, packaging, and handling services for producers and suppliers of petroleum products and by-products. This segment also offers land rental services to oil and gas companies, as well as storage and handling services for lubricants and fuels. Its Transportation segment operates a fleet of 570 tank trucks and 1,200 trailers; and 29 inland marine tank barges, 14 inland push boats, and 1 articulated offshore tug and barge unit to transport petroleum products and by-products, petrochemicals, and chemicals. The company's Sulfur Services segment processes molten sulfur into prilled or pelletized sulfur, which is used in the production of fertilizers and industrial chemicals. Its Natural Gas Liquids segment stores, distributes, and transports natural gas liquids for wholesale deliveries to refineries, industrial NGL users, and propane retailers, as well as owns approximately 2.1 million barrels of underground storage capacity for NGLs. Martin Midstream GP LLC serves as a general partner of the company. Martin Midstream Partners L.P. was incorporated in 2002 and is based in Kilgore, Texas.",
-    "numAnalysts": 1,
-    "consensus": null,
-    "scoreNote": null
-  },
-  {
-    "symbol": "CUK",
-    "name": "Carnival Corporation & plc",
-    "price": 27.47,
-    "compassScore": 70,
-    "grade": "B",
-    "industry": "Leisure",
-    "sector": "Consumer Cyclical",
-    "marketCap": 36.521520563,
-    "description": "Carnival Corporation & plc operates as a leisure travel company. Its ships visit approximately 700 ports under the Carnival Cruise Line, Princess Cruises, Holland America Line, P&O Cruises (Australia), Seabourn, Costa Cruises, AIDA Cruises, P&O Cruises (UK), and Cunard brand names. The company also provides port destinations and other services, as well as owns and owns and operates hotels, lodges, glass-domed railcars, and motor coaches. It sells its cruises primarily through travel agents, tour operators, vacation planners, and websites. The company operates in the United States, Canada, Continental Europe, the United Kingdom, Australia, New Zealand, Asia, and internationally. It operates 87 ships with 223,000 lower berths. Carnival Corporation & plc was founded in 1972 and is headquartered in Miami, Florida.",
     "numAnalysts": 1,
     "consensus": null,
     "scoreNote": null
@@ -18210,6 +18196,20 @@
     "marketCap": 0.13530164,
     "description": "Forrester Research, Inc. operates as an independent research and advisory services company. The company operates in three segments: Research, Consulting, and Events. The Research segment primary subscription research portfolio services include Forrester Research, SiriusDecisions Research, and Forrester Decisions, which are designed to provide business and technology leaders with a proven path to growth through customer obsession. This segment delivers content, such as future trends, predictions, and market forecasts; deep consumer and business buyer data and insights; curated best practice models and tools to run business functions; operational and performance benchmarking data; and technology and service market landscapes and vendor evaluations through online access. The Consulting segment provides consulting projecs, including conducting maturity assessments, prioritizing best practices, developing strategies, building business cases, selecting technology vendors, structuring organizations, developing content marketing strategies and collateral, and sales tools; and advisory services. The Events segment hosts in-person and virtual events related to business-to-business marketing, sales and product leadership, customer experience, security and risk, new technology and innovation, and data strategies and insights. The company sells its products and services through direct sales force in various locations in the United States, Europe, the United Kingdom, Canada, the Asia Pacific region, and internationally. Forrester Research, Inc. was incorporated in 1983 and is headquartered in Cambridge, Massachusetts.",
     "numAnalysts": 3,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
+    "symbol": "CUK",
+    "name": "Carnival Corporation & plc",
+    "price": 27.47,
+    "compassScore": 69,
+    "grade": "B",
+    "industry": "Leisure",
+    "sector": "Consumer Cyclical",
+    "marketCap": 36.521520563,
+    "description": "Carnival Corporation & plc operates as a leisure travel company. Its ships visit approximately 700 ports under the Carnival Cruise Line, Princess Cruises, Holland America Line, P&O Cruises (Australia), Seabourn, Costa Cruises, AIDA Cruises, P&O Cruises (UK), and Cunard brand names. The company also provides port destinations and other services, as well as owns and owns and operates hotels, lodges, glass-domed railcars, and motor coaches. It sells its cruises primarily through travel agents, tour operators, vacation planners, and websites. The company operates in the United States, Canada, Continental Europe, the United Kingdom, Australia, New Zealand, Asia, and internationally. It operates 87 ships with 223,000 lower berths. Carnival Corporation & plc was founded in 1972 and is headquartered in Miami, Florida.",
+    "numAnalysts": 1,
     "consensus": null,
     "scoreNote": null
   },
@@ -19236,20 +19236,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "RBC",
-    "name": "RBC Bearings Incorporated",
-    "price": 603.64,
-    "compassScore": 68,
-    "grade": "B",
-    "industry": "Manufacturing - Tools & Accessories",
-    "sector": "Industrials",
-    "marketCap": 14.38469619342,
-    "description": "RBC Bearings Incorporated (RBC) is a global enterprise specializing in the design, production, and distribution of precisely engineered bearings and a wide array of related mechanical components. The company strategically operates through two core segments: Aerospace/Defense and Industrial, catering to both domestic and international clients. Its diverse product portfolio includes: Plain bearings: Available in self-lubricating or metal-on-metal designs, featuring rod end, spherical plain, and journal bearings. Roller bearings: These anti-friction devices, such as tapered roller, needle roller, needle bearing track rollers, and cam followers, are vital for various industrial uses and military aircraft platforms. Ball bearings: This category encompasses high-precision aerospace, airframe control, thin section, and industrial ball bearings, all engineered with high-precision ball elements to minimize friction in demanding, high-speed applications. Beyond its primary bearing offerings, RBC also provides: Mounted bearing products: Including complete mounted ball, roller, and plain bearing units. Enclosed gearing systems: A comprehensive range featuring Quantis gearmotors, torque arm units, Tigear, MagnaGear & Maxum lines, and controlled start transmissions. Power transmission components: Such as mechanical drive elements, couplings, and conveyor parts. Engineered hydraulics and valves: Specifically developed for aircraft and submarine systems, alongside comprehensive aftermarket services for the aerospace and defense sectors. Fasteners. Precision mechanical components: Applied across diverse general industrial settings. Machine tool collets: Essential for securing circular or rod-shaped workpieces during machining. RBC reaches an extensive customer base across numerous industries, including automotive, tool holding, agricultural and semiconductor machinery, commercial and defense aerospace, ground defense, construction and mining, oil and natural resource extraction, heavy truck, marine, rail and train, packaging, food and beverage, wind energy, and general industrial markets. The company distributes its products via a dedicated direct sales force and a robust network of industrial and aerospace distributors. Established in 1919, RBC Bearings Incorporated maintains its corporate headquarters in Oxford, Connecticut.",
-    "numAnalysts": 6,
-    "consensus": "B-",
-    "scoreNote": null
-  },
-  {
     "symbol": "RM",
     "name": "Regional Management Corp.",
     "price": 37.21,
@@ -19810,6 +19796,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "RBC",
+    "name": "RBC Bearings Incorporated",
+    "price": 603.64,
+    "compassScore": 67,
+    "grade": "B",
+    "industry": "Manufacturing - Tools & Accessories",
+    "sector": "Industrials",
+    "marketCap": 14.38469619342,
+    "description": "RBC Bearings Incorporated (RBC) is a global enterprise specializing in the design, production, and distribution of precisely engineered bearings and a wide array of related mechanical components. The company strategically operates through two core segments: Aerospace/Defense and Industrial, catering to both domestic and international clients. Its diverse product portfolio includes: Plain bearings: Available in self-lubricating or metal-on-metal designs, featuring rod end, spherical plain, and journal bearings. Roller bearings: These anti-friction devices, such as tapered roller, needle roller, needle bearing track rollers, and cam followers, are vital for various industrial uses and military aircraft platforms. Ball bearings: This category encompasses high-precision aerospace, airframe control, thin section, and industrial ball bearings, all engineered with high-precision ball elements to minimize friction in demanding, high-speed applications. Beyond its primary bearing offerings, RBC also provides: Mounted bearing products: Including complete mounted ball, roller, and plain bearing units. Enclosed gearing systems: A comprehensive range featuring Quantis gearmotors, torque arm units, Tigear, MagnaGear & Maxum lines, and controlled start transmissions. Power transmission components: Such as mechanical drive elements, couplings, and conveyor parts. Engineered hydraulics and valves: Specifically developed for aircraft and submarine systems, alongside comprehensive aftermarket services for the aerospace and defense sectors. Fasteners. Precision mechanical components: Applied across diverse general industrial settings. Machine tool collets: Essential for securing circular or rod-shaped workpieces during machining. RBC reaches an extensive customer base across numerous industries, including automotive, tool holding, agricultural and semiconductor machinery, commercial and defense aerospace, ground defense, construction and mining, oil and natural resource extraction, heavy truck, marine, rail and train, packaging, food and beverage, wind energy, and general industrial markets. The company distributes its products via a dedicated direct sales force and a robust network of industrial and aerospace distributors. Established in 1919, RBC Bearings Incorporated maintains its corporate headquarters in Oxford, Connecticut.",
+    "numAnalysts": 6,
+    "consensus": "B-",
+    "scoreNote": null
+  },
+  {
     "symbol": "SCZM",
     "name": "Santacruz Silver Mining Ltd. Common Shares",
     "price": 6.98,
@@ -20267,20 +20267,6 @@
     "sector": "Technology",
     "marketCap": 0.438823035,
     "description": "Gravity Co., Ltd. develops and publishes online and mobile games in South Korea, Taiwan, Thailand, and Japan. The company offers a massively multiplayer online role-playing game, including Ragnarok Online, Dragonica, Ragnarok Online II, and Ragnarok Prequel II. Its mobile games portfolio includes Ragnarok M: Eternal Love; Ragnarok Origin; Ragnarok X: Next Generation; the Labyrinth of Ragnarok; Ragnarok Poring Merge; Tera Classic; Ragnarok: The Lost Memories; Sadako M; NBA: Rise To Stardom; Milkmaid Of The Milky Way; and Paladog Tactics. The company also provides console games, such as Ragnarok DS for Nintendo DS; Ragnarok: The Princess of Light and Darkness for PlayStation Portable; Ragnarok Odyssey for PlayStation Vita; Double Dragon II for Xbox 360; Ragnarok Odyssey Ace for PlayStation Vita and PlayStation 3; and GRANDIA HD Collection for Nintendo Switch. In addition, it offers games for IPTV, including Pororo: The Little Penguin; and markets dolls, stationery, food, and other character-based merchandises, as well as game manuals, monthly magazines, and other publications. Further, the company provides system development and maintenance services, as well as system integration services to third parties. As of December 31, 2021, it owned 156 registered domain names. The company was incorporated in 2000 and is headquartered in Seoul, South Korea. Gravity Co., Ltd. is a subsidiary of GungHo Online Entertainment, Inc.",
-    "numAnalysts": null,
-    "consensus": null,
-    "scoreNote": null
-  },
-  {
-    "symbol": "MGR",
-    "name": "Affiliated Managers Group, Inc.",
-    "price": 19.96,
-    "compassScore": 66,
-    "grade": "B",
-    "industry": "Investment - Banking & Investment Services",
-    "sector": "Financial Services",
-    "marketCap": 0.6514786682800001,
-    "description": "Affiliated Managers Group, Inc. engages in the provision of investment management services. It offers strategies across a range of return-oriented asset classes and product structures. The company was founded by William J. Nutt in December 1993 and is headquartered in West Palm Beach, FL.",
     "numAnalysts": null,
     "consensus": null,
     "scoreNote": null
@@ -20841,6 +20827,20 @@
     "sector": "Communication Services",
     "marketCap": 0.071721618,
     "description": "Lee Enterprises, Incorporated provides local news and information, and advertising services in the United States. The company offers print and digital editions of daily, weekly, and monthly newspapers and publications; and web hosting and content management services. It also provides advertising and marketing services, such as audience extension, search engine optimization, search engine marketing, web and mobile production, social media services, and reputation monitoring and management. In addition, the company offers integrated digital publishing and content management solutions for creating, distributing, and monetizing multimedia content for media publications, universities, television stations, and niche publications. Further, it provides commercial printing services; distributes third party publications; and operates a digital marketing agency. The company was founded in 1890 and is based in Davenport, Iowa.",
+    "numAnalysts": null,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
+    "symbol": "MGR",
+    "name": "Affiliated Managers Group, Inc.",
+    "price": 19.96,
+    "compassScore": 65,
+    "grade": "B",
+    "industry": "Investment - Banking & Investment Services",
+    "sector": "Financial Services",
+    "marketCap": 0.6514786682800001,
+    "description": "Affiliated Managers Group, Inc. engages in the provision of investment management services. It offers strategies across a range of return-oriented asset classes and product structures. The company was founded by William J. Nutt in December 1993 and is headquartered in West Palm Beach, FL.",
     "numAnalysts": null,
     "consensus": null,
     "scoreNote": null
@@ -23106,20 +23106,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "IGIC",
-    "name": "International General Insurance Holdings Ltd.",
-    "price": 25.11,
-    "compassScore": 61,
-    "grade": "B",
-    "industry": "Insurance - Diversified",
-    "sector": "Financial Services",
-    "marketCap": 1.0508904,
-    "description": "Operating on a global scale, International General Insurance Holdings Ltd. specializes in delivering niche insurance and reinsurance offerings. Its business activities are channeled through three distinct divisions: Specialty Long-tail, Specialty Short-tail, and Reinsurance. The firm assumes a varied array of specialized exposures, encompassing sectors like energy, real estate, civil engineering projects, maritime terminals, general aviation, political unrest, general liability, financial institutions, marine activities, event-based contingencies, and diverse treaty reinsurance agreements. Established in 2001, the company's principal base of operations is situated in Amman, Jordan.",
-    "numAnalysts": 1,
-    "consensus": "A-",
-    "scoreNote": null
-  },
-  {
     "symbol": "IVT",
     "name": "InvenTrust Properties Corp.",
     "price": 35.0,
@@ -23540,20 +23526,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "AL",
-    "name": "Air Lease Corporation",
-    "price": 65.0,
-    "compassScore": 60,
-    "grade": "B",
-    "industry": "Rental & Leasing Services",
-    "sector": "Industrials",
-    "marketCap": 7.178856777330001,
-    "description": "Air Lease Corporation, an aircraft leasing company, engages in the purchase and leasing of commercial jet aircraft to airlines worldwide. It also sells aircraft from its operating lease portfolio to third parties, including other leasing companies, financial services companies, airlines, and other investors. In addition, the company provides fleet management services to investors and owners of aircraft portfolios. As of December 31, 2021, it owned a fleet of 382 aircraft, including 278 narrowbody aircraft and 104 widebody aircraft. The company was incorporated in 2010 and is headquartered in Los Angeles, California.",
-    "numAnalysts": 2,
-    "consensus": "N/A",
-    "scoreNote": null
-  },
-  {
     "symbol": "ALK",
     "name": "Alaska Air Group, Inc.",
     "price": 47.32,
@@ -23690,6 +23662,20 @@
     "marketCap": 1.58598202,
     "description": "Getty Realty Corp. stands as a premier publicly traded real estate investment trust (REIT) in the United States, with its core business centered on the acquisition, rental, and funding of properties housing convenience stores and gas stations. By September 30, 2020, the company's extensive portfolio encompassed 896 properties under its direct ownership, alongside an additional 58 sites leased from external landlords, distributed across 35 states and the District of Columbia.",
     "numAnalysts": 4,
+    "consensus": "A-",
+    "scoreNote": null
+  },
+  {
+    "symbol": "IGIC",
+    "name": "International General Insurance Holdings Ltd.",
+    "price": 25.11,
+    "compassScore": 60,
+    "grade": "B",
+    "industry": "Insurance - Diversified",
+    "sector": "Financial Services",
+    "marketCap": 1.0508904,
+    "description": "Operating on a global scale, International General Insurance Holdings Ltd. specializes in delivering niche insurance and reinsurance offerings. Its business activities are channeled through three distinct divisions: Specialty Long-tail, Specialty Short-tail, and Reinsurance. The firm assumes a varied array of specialized exposures, encompassing sectors like energy, real estate, civil engineering projects, maritime terminals, general aviation, political unrest, general liability, financial institutions, marine activities, event-based contingencies, and diverse treaty reinsurance agreements. Established in 2001, the company's principal base of operations is situated in Amman, Jordan.",
+    "numAnalysts": 1,
     "consensus": "A-",
     "scoreNote": null
   },
@@ -28790,6 +28776,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "DKS",
+    "name": "DICK'S Sporting Goods, Inc.",
+    "price": 220.99,
+    "compassScore": 51,
+    "grade": "C",
+    "industry": "Specialty Retail",
+    "sector": "Consumer Cyclical",
+    "marketCap": 18.8387515,
+    "description": "DICK'S Sporting Goods, Inc., along with its various subsidiaries, functions as a prominent retailer of athletic equipment and apparel, primarily serving the eastern regions of the United States. Its extensive product offering encompasses a wide array of hardgoods such as sports gear, fitness apparatus, golf essentials, and hunting and fishing supplies, complemented by diverse apparel, footwear, and various accessories. The company manages a portfolio of distinct retail banners, including Golf Galaxy, Field & Stream, Public Lands, Going Going Gone!, and other specialized store formats, alongside its primary DICK'S Sporting Goods locations. It also oversees unique experiential concepts like DICK'S House of Sports and Golf Galaxy Performance Centers. Expanding its reach beyond traditional retail, DICK'S Sporting Goods, Inc. is involved in technology with GameChanger, a mobile platform designed for youth sports, facilitating video streaming, scorekeeping, scheduling, and communication. Customers can readily purchase products through its dedicated e-commerce platforms and mobile applications. As of January 29, 2022, the company maintained 730 DICK'S Sporting Goods retail locations. Established in 1948, the enterprise was initially known as Dick'S Clothing and Sporting Goods, Inc. before adopting its current name, DICK'S Sporting Goods, Inc., in April 1999. Its corporate headquarters are situated in Coraopolis, Pennsylvania.",
+    "numAnalysts": 10,
+    "consensus": "B",
+    "scoreNote": null
+  },
+  {
     "symbol": "EIC",
     "name": "Eagle Point Income Company Inc.",
     "price": 10.15,
@@ -28955,20 +28955,6 @@
     "description": "Latham Group, Inc. is a company that focuses on the creation, manufacturing, and distribution of residential in-ground swimming pools. Its market presence spans North America, Australia, and New Zealand. The firm's product range encompasses various types of in-ground swimming pools, along with essential accompanying items like pool covers and liners. Originally incorporated in 2018 under the name Latham Topco, Inc., the company officially adopted its current identity, Latham Group, Inc., in March 2021. Its corporate headquarters are situated in Latham, New York.",
     "numAnalysts": 5,
     "consensus": "B",
-    "scoreNote": null
-  },
-  {
-    "symbol": "ARMN",
-    "name": "Aris Mining Corporation",
-    "price": 19.23,
-    "compassScore": 51,
-    "grade": "C",
-    "industry": "Gold",
-    "sector": "Basic Materials",
-    "marketCap": 3.93328747,
-    "description": "Aris Mining Corporation, together with its subsidiaries, engages in the acquisition, exploration, development, and operation of gold and silver properties. The company holds interests in the Segovia operations comprising the El Silencio, Providencia, Carla, and Sandra K underground mines located in Colombia. It also holds interests in the Marmato project in Colombia; Juby project located in Ontario, Canada; and Toroparu project in the western Guyana gold district. The company was formerly known as GCM Mining Corp. and changed its name to Aris Mining Corporation in September 2022. Aris Mining Corporation is based in Vancouver, Canada.",
-    "numAnalysts": null,
-    "consensus": null,
     "scoreNote": null
   },
   {
@@ -29350,20 +29336,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "DKS",
-    "name": "DICK'S Sporting Goods, Inc.",
-    "price": 220.99,
-    "compassScore": 50,
-    "grade": "C",
-    "industry": "Specialty Retail",
-    "sector": "Consumer Cyclical",
-    "marketCap": 18.8387515,
-    "description": "DICK'S Sporting Goods, Inc., along with its various subsidiaries, functions as a prominent retailer of athletic equipment and apparel, primarily serving the eastern regions of the United States. Its extensive product offering encompasses a wide array of hardgoods such as sports gear, fitness apparatus, golf essentials, and hunting and fishing supplies, complemented by diverse apparel, footwear, and various accessories. The company manages a portfolio of distinct retail banners, including Golf Galaxy, Field & Stream, Public Lands, Going Going Gone!, and other specialized store formats, alongside its primary DICK'S Sporting Goods locations. It also oversees unique experiential concepts like DICK'S House of Sports and Golf Galaxy Performance Centers. Expanding its reach beyond traditional retail, DICK'S Sporting Goods, Inc. is involved in technology with GameChanger, a mobile platform designed for youth sports, facilitating video streaming, scorekeeping, scheduling, and communication. Customers can readily purchase products through its dedicated e-commerce platforms and mobile applications. As of January 29, 2022, the company maintained 730 DICK'S Sporting Goods retail locations. Established in 1948, the enterprise was initially known as Dick'S Clothing and Sporting Goods, Inc. before adopting its current name, DICK'S Sporting Goods, Inc., in April 1999. Its corporate headquarters are situated in Coraopolis, Pennsylvania.",
-    "numAnalysts": 10,
-    "consensus": "B",
-    "scoreNote": null
-  },
-  {
     "symbol": "DOMO",
     "name": "Domo, Inc.",
     "price": 3.02,
@@ -29443,6 +29415,20 @@
     "sector": "Basic Materials",
     "marketCap": 3.39035764,
     "description": "Allied Gold Corporation, together with its subsidiaries, explores and produces mineral deposits in Africa. The company primarily explores for gold and silver ores. Its flagship project is the Sadiola gold project, an open pit mine located in the Republic of Mali. The company holds interest in the Bonikro and Hir\u00e9 mines located in C\u00f4te d'Ivoire; the Agbaou mine located in C\u00f4te d'Ivoire; and the Kurmuk gold project located in Ethiopia. The company was formerly known as Allied Gold Corp Limited & Allied Merger Corporation and changed its name to Allied Gold Corporation in September 2023. Allied Gold Corporation is based in Toronto, Canada.",
+    "numAnalysts": null,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
+    "symbol": "ARMN",
+    "name": "Aris Mining Corporation",
+    "price": 19.23,
+    "compassScore": 50,
+    "grade": "C",
+    "industry": "Gold",
+    "sector": "Basic Materials",
+    "marketCap": 3.93328747,
+    "description": "Aris Mining Corporation, together with its subsidiaries, engages in the acquisition, exploration, development, and operation of gold and silver properties. The company holds interests in the Segovia operations comprising the El Silencio, Providencia, Carla, and Sandra K underground mines located in Colombia. It also holds interests in the Marmato project in Colombia; Juby project located in Ontario, Canada; and Toroparu project in the western Guyana gold district. The company was formerly known as GCM Mining Corp. and changed its name to Aris Mining Corporation in September 2022. Aris Mining Corporation is based in Vancouver, Canada.",
     "numAnalysts": null,
     "consensus": null,
     "scoreNote": null
@@ -32738,6 +32724,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "MRCC",
+    "name": "Monroe Capital Corporation",
+    "price": 5.08,
+    "compassScore": 44,
+    "grade": "C",
+    "industry": "Asset Management",
+    "sector": "Financial Services",
+    "marketCap": 0.15209532,
+    "description": "Monroe Capital Corporation is a business development company specializing in customized financing solutions in senior, unitranche and junior secured debt, subordinated debt financing and to a lesser extent, unsecured debt and equity, including equity co-investments in preferred and common stock and warrants. It also provides financing primarily to leveraged buyouts in lower middle-market companies. It focuses to invest in the United States and Canada. The fund prefers to invest in companies with EBITDA between $3 and $35 million. Its makes minority equity investments.",
+    "numAnalysts": 1,
+    "consensus": "N/A",
+    "scoreNote": null
+  },
+  {
     "symbol": "PDFS",
     "name": "PDF Solutions, Inc.",
     "price": 64.14,
@@ -33158,20 +33158,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "THFF",
-    "name": "First Financial Corporation",
-    "price": 74.98,
-    "compassScore": 44,
-    "grade": "C",
-    "industry": "Banks - Regional",
-    "sector": "Financial Services",
-    "marketCap": 0.7161605559600001,
-    "description": "First Financial Corporation, operating through its subsidiaries, delivers a wide array of financial solutions. The company manages diverse deposit accounts, including both interest-bearing and non-interest-bearing checking options, savings accounts, and various types of term deposits. Its lending activities include commercial financing for business expansion and asset purchases, along with residential real estate mortgages, which cover new construction. Additionally, it provides home equity loans and lines of credit, as well as secured and unsecured personal loans, including those collateralized by cash or certificates of deposit. Other services extend to lease financing, trust management, and insurance offerings. The corporation oversees 78 branches situated in west-central Indiana, east-central Illinois, western Kentucky, and central and western Tennessee. Founded in 1834, First Financial Corporation's headquarters are located in Terre Haute, Indiana.",
-    "numAnalysts": 1,
-    "consensus": "B+",
-    "scoreNote": null
-  },
-  {
     "symbol": "TSBK",
     "name": "Timberland Bancorp, Inc.",
     "price": 42.67,
@@ -33253,20 +33239,6 @@
     "description": "Lakeland Financial Corporation serves as the parent organization for Lake City Bank, offering a broad spectrum of banking and financial solutions. The company manages various deposit accounts, including non-interest-bearing and interest-bearing checking, savings, money market, NOW, and demand deposits. Its lending portfolio is diverse, providing commercial and industrial loans, financing for commercial real estate and multi-family residences, agri-business and agricultural loans, and a variety of consumer loans, such as 1-4 family mortgages. Beyond traditional banking, Lakeland Financial offers retail and merchant credit card services, advanced corporate treasury management, wealth advisory, and trust administration. It also facilitates retail brokerage, featuring investment vehicles like annuities and life insurance, and supports clients with mobile business banking and online treasury management platforms. The firm caters to a wide range of sectors, including commercial real estate, manufacturing, agriculture, construction, retail, wholesale, finance and insurance, hospitality, and healthcare industries. Established in 1872, Lakeland Financial Corporation is headquartered in Warsaw, Indiana. As of December 31, 2021, it operated an extensive network of 51 branches across fifteen counties, with 45 located in northern Indiana and six in central Indiana.",
     "numAnalysts": 2,
     "consensus": "B+",
-    "scoreNote": null
-  },
-  {
-    "symbol": "MRCC",
-    "name": "Monroe Capital Corporation",
-    "price": 5.08,
-    "compassScore": 43,
-    "grade": "C",
-    "industry": "Asset Management",
-    "sector": "Financial Services",
-    "marketCap": 0.15209532,
-    "description": "Monroe Capital Corporation is a business development company specializing in customized financing solutions in senior, unitranche and junior secured debt, subordinated debt financing and to a lesser extent, unsecured debt and equity, including equity co-investments in preferred and common stock and warrants. It also provides financing primarily to leveraged buyouts in lower middle-market companies. It focuses to invest in the United States and Canada. The fund prefers to invest in companies with EBITDA between $3 and $35 million. Its makes minority equity investments.",
-    "numAnalysts": 1,
-    "consensus": "N/A",
     "scoreNote": null
   },
   {
@@ -33686,6 +33658,20 @@
     "marketCap": 0.6304354367999999,
     "description": "South Plains Financial, Inc. functions as the parent entity for City Bank, providing a comprehensive suite of commercial and consumer financial services to both individuals and small to mid-sized businesses. Its operations are structured around two core divisions: Banking and Insurance. The company offers a variety of deposit options, such as checking accounts, interest-bearing accounts, savings, and certificates of deposit (CDs). Their lending portfolio is extensive, encompassing commercial real estate, a broad spectrum of specialized commercial loans (including those for agriculture, energy, finance, investment, insurance, retail, and construction), residential construction, mortgages for 1-4 family homes, and consumer loans for vehicles or other personal needs. Additional offerings include crop insurance, trust and investment management, mortgage banking, convenient online and mobile banking platforms, and debit and credit card services. The company maintains a physical presence through 25 full-service bank branches and 15 loan production offices spread across Texas and Eastern New Mexico. Established in 1941, South Plains Financial, Inc. maintains its headquarters in Lubbock, Texas.",
     "numAnalysts": 3,
+    "consensus": "B+",
+    "scoreNote": null
+  },
+  {
+    "symbol": "THFF",
+    "name": "First Financial Corporation",
+    "price": 74.98,
+    "compassScore": 43,
+    "grade": "C",
+    "industry": "Banks - Regional",
+    "sector": "Financial Services",
+    "marketCap": 0.7161605559600001,
+    "description": "First Financial Corporation, operating through its subsidiaries, delivers a wide array of financial solutions. The company manages diverse deposit accounts, including both interest-bearing and non-interest-bearing checking options, savings accounts, and various types of term deposits. Its lending activities include commercial financing for business expansion and asset purchases, along with residential real estate mortgages, which cover new construction. Additionally, it provides home equity loans and lines of credit, as well as secured and unsecured personal loans, including those collateralized by cash or certificates of deposit. Other services extend to lease financing, trust management, and insurance offerings. The corporation oversees 78 branches situated in west-central Indiana, east-central Illinois, western Kentucky, and central and western Tennessee. Founded in 1834, First Financial Corporation's headquarters are located in Terre Haute, Indiana.",
+    "numAnalysts": 1,
     "consensus": "B+",
     "scoreNote": null
   },
@@ -36210,20 +36196,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "LIF",
-    "name": "Life360, Inc.",
-    "price": 45.25,
-    "compassScore": 38,
-    "grade": "D",
-    "industry": "Software - Application",
-    "sector": "Technology",
-    "marketCap": 8.263365713599999,
-    "description": "Life360, Inc. operates a comprehensive technology platform designed for tracking individuals, animals, and personal belongings across North America, Europe, the Middle East, Africa, and other international markets. The company's primary offering is the Life360 mobile application, which utilizes a freemium model, allowing users to access core services at no cost. This application, a key component of the broader Life360 Platform, provides features for location coordination, personal and driving safety, digital security, and emergency assistance. In addition, Life360 markets Tile hardware tracking devices, distributed through online channels, traditional retail stores, and directly via Tile.com, to help users locate misplaced items. These devices are complemented by the Tile mobile application, which offers a free service along with two advanced subscription tiers, Premium and Premium Protect, that include benefits such as product warranties and item reimbursement. The company also manages Jiobit subscriptions and sells Jiobit wearable location devices, primarily for young children, pets, and seniors, with sales predominantly in the United States through online retailers. Incorporated in 2007 and headquartered in San Mateo, California, the organization was originally known as LReady, Inc. before changing its name to Life360, Inc. in October 2011.",
-    "numAnalysts": 5,
-    "consensus": "B",
-    "scoreNote": null
-  },
-  {
     "symbol": "OBT",
     "name": "Orange County Bancorp, Inc.",
     "price": 36.73,
@@ -36837,6 +36809,20 @@
     "description": "Norwood Financial Corp. functions as the holding entity for Wayne Bank, delivering a comprehensive suite of financial products and services. The institution facilitates a broad array of deposit options, encompassing both interest-bearing and non-interest-bearing checking accounts, alongside statement savings, money market accounts, and certificates of deposit. Its lending portfolio is extensive, featuring commercial loans such as credit lines, revolving credit facilities, term loans, business mortgages, secured lending products, and letters of credit. Norwood also extends financing for municipal projects, construction loans for both commercial developments and single-family homes, and land acquisition loans. Consumer credit and residential mortgage financing for primary and secondary residences are also key offerings. Furthermore, the company engages in indirect dealer financing for automobiles, boats, and recreational vehicles through dealerships. Beyond traditional banking, Norwood provides investment securities services, trust management, and a variety of contemporary cash management solutions. These include direct deposit, remote and mobile deposit capture, mobile payment processing, automated clearing house (ACH) transactions, real estate settlement support, and robust internet and mobile banking platforms. The corporation also diversifies its revenue through the sale of annuities and mutual funds, discount brokerage services, and an insurance agency operation. Catering to a wide client base, Norwood serves individual consumers, corporate entities, non-profit organizations, and local governments. Its operational footprint includes fourteen branch locations throughout Northeastern Pennsylvania and sixteen branches spanning Delaware, Sullivan, Ontario, Otsego, and Yates Counties in New York, supported by thirty-one automated teller machines. Established in 1870, Norwood Financial Corp. maintains its corporate headquarters in Honesdale, Pennsylvania.",
     "numAnalysts": 1,
     "consensus": "B+",
+    "scoreNote": null
+  },
+  {
+    "symbol": "LIF",
+    "name": "Life360, Inc.",
+    "price": 45.25,
+    "compassScore": 37,
+    "grade": "D",
+    "industry": "Software - Application",
+    "sector": "Technology",
+    "marketCap": 8.263365713599999,
+    "description": "Life360, Inc. operates a comprehensive technology platform designed for tracking individuals, animals, and personal belongings across North America, Europe, the Middle East, Africa, and other international markets. The company's primary offering is the Life360 mobile application, which utilizes a freemium model, allowing users to access core services at no cost. This application, a key component of the broader Life360 Platform, provides features for location coordination, personal and driving safety, digital security, and emergency assistance. In addition, Life360 markets Tile hardware tracking devices, distributed through online channels, traditional retail stores, and directly via Tile.com, to help users locate misplaced items. These devices are complemented by the Tile mobile application, which offers a free service along with two advanced subscription tiers, Premium and Premium Protect, that include benefits such as product warranties and item reimbursement. The company also manages Jiobit subscriptions and sells Jiobit wearable location devices, primarily for young children, pets, and seniors, with sales predominantly in the United States through online retailers. Incorporated in 2007 and headquartered in San Mateo, California, the organization was originally known as LReady, Inc. before changing its name to Life360, Inc. in October 2011.",
+    "numAnalysts": 5,
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -37596,20 +37582,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "GHM",
-    "name": "Graham Corporation",
-    "price": 103.89,
-    "compassScore": 36,
-    "grade": "D",
-    "industry": "Industrial - Machinery",
-    "sector": "Industrials",
-    "marketCap": 0.70575924,
-    "description": "Graham Corporation, founded in 1936 and based in Batavia, New York, is an engineering and manufacturing company that, along with its subsidiaries, specializes in creating advanced fluid, power, heat transfer, and vacuum equipment. This specialized machinery serves a broad spectrum of critical industries, including chemical and petrochemical processing, defense, aerospace, petroleum refining, cryogenic applications, and energy. The company's diverse product range includes: Power Generation Solutions: Such as ejectors and surface condensers for power plants, as well as turbines, generators, compressors, and pumps. Defense and Space Technologies: Providing torpedo ejection and power systems that integrate turbines, alternators, regulators, pumps, and blowers; also supplying rocket propulsion systems like turbopumps and fuel pumps. Thermal Management and Life Support Systems: Offering pumps, blowers, and electronics for thermal control, cooling systems featuring pumps, compressors, fans, and blowers, and life support equipment comprising fans, pumps, and blowers. Heat Transfer and Vacuum Equipment: Including ejectors, process and surface condensers, liquid ring pumps, heat exchangers, nozzles, and turbomachinery products. Beyond manufacturing, Graham Corporation also provides comprehensive servicing and supplies spare parts for its equipment. The company distributes its products directly across a global network, with operations in the United States, Canada, the Middle East, Asia, and South America, among other international regions.",
-    "numAnalysts": 4,
-    "consensus": "B-",
-    "scoreNote": null
-  },
-  {
     "symbol": "GXO",
     "name": "GXO Logistics, Inc.",
     "price": 49.7,
@@ -38237,6 +38209,20 @@
     "description": "FinWise Bancorp, the parent company of FinWise Bank, delivers a comprehensive suite of banking solutions to both personal and business clients. Its diverse range of deposit offerings includes demand accounts (both interest and non-interest bearing), Negotiable Order of Withdrawal (NOW) accounts, money market accounts, standard checking and savings options, as well as various time deposits and Certificates of Deposit. The institution also extends a variety of lending products, encompassing Small Business Administration (SBA) loans, financing for residential and commercial real estate, consumer loans, and other commercial credit facilities. Beyond traditional banking, FinWise provides modern conveniences such as debit cards, remote check deposit, digital and mobile banking platforms, direct deposit capabilities, alongside specialized cash management and treasury services. Operationally, the company maintains a single full-service branch in Sandy, Utah, complemented by a loan origination office situated in Rockville Centre, New York. Established in 1999, FinWise Bancorp's corporate headquarters are located in Murray, Utah.",
     "numAnalysts": 2,
     "consensus": "B",
+    "scoreNote": null
+  },
+  {
+    "symbol": "GHM",
+    "name": "Graham Corporation",
+    "price": 103.89,
+    "compassScore": 35,
+    "grade": "D",
+    "industry": "Industrial - Machinery",
+    "sector": "Industrials",
+    "marketCap": 0.70575924,
+    "description": "Graham Corporation, founded in 1936 and based in Batavia, New York, is an engineering and manufacturing company that, along with its subsidiaries, specializes in creating advanced fluid, power, heat transfer, and vacuum equipment. This specialized machinery serves a broad spectrum of critical industries, including chemical and petrochemical processing, defense, aerospace, petroleum refining, cryogenic applications, and energy. The company's diverse product range includes: Power Generation Solutions: Such as ejectors and surface condensers for power plants, as well as turbines, generators, compressors, and pumps. Defense and Space Technologies: Providing torpedo ejection and power systems that integrate turbines, alternators, regulators, pumps, and blowers; also supplying rocket propulsion systems like turbopumps and fuel pumps. Thermal Management and Life Support Systems: Offering pumps, blowers, and electronics for thermal control, cooling systems featuring pumps, compressors, fans, and blowers, and life support equipment comprising fans, pumps, and blowers. Heat Transfer and Vacuum Equipment: Including ejectors, process and surface condensers, liquid ring pumps, heat exchangers, nozzles, and turbomachinery products. Beyond manufacturing, Graham Corporation also provides comprehensive servicing and supplies spare parts for its equipment. The company distributes its products directly across a global network, with operations in the United States, Canada, the Middle East, Asia, and South America, among other international regions.",
+    "numAnalysts": 4,
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -38898,20 +38884,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "NAII",
-    "name": "Natural Alternatives International, Inc.",
-    "price": 2.46,
-    "compassScore": 34,
-    "grade": "D",
-    "industry": "Packaged Foods",
-    "sector": "Consumer Defensive",
-    "marketCap": 0.016566605,
-    "description": "Natural Alternatives International, Inc. engages in formulating, manufacturing, and marketing nutritional supplements in the United States, Europe, Asia, and internationally. The company operates in two segments, Private-Label Contract Manufacturing, and Patent and Trademark Licensing. It offers private-label contract manufacturing services to companies that market and distribute vitamins, minerals, herbal, and other nutritional supplements, as well as other health care products. The company also provides strategic partnering services, such as customized product formulation, clinical studies, manufacturing, marketing support, international regulatory and label law compliance, international product registration, packaging in multiple formats and labeling design, scientific research, proprietary ingredients, customer-specific nutritional product formulation, product testing and evaluation, packaging and delivery system design, and regulatory review. In addition, it sells beta-alanine ingredient under the CarnoSyn and SR CarnoSyn names. The company manufactures products in various forms, including capsules, tablets, chewable wafers, and powders. Its private-label contract manufacturing customers include companies that market nutritional supplements through direct sales marketing channels, direct to consumer e-commerce channels, and retail stores. Natural Alternatives International, Inc. was founded in 1980 and is headquartered in Carlsbad, California.",
-    "numAnalysts": null,
-    "consensus": null,
-    "scoreNote": null
-  },
-  {
     "symbol": "RXO",
     "name": "RXO, Inc.",
     "price": 28.35,
@@ -39458,6 +39430,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "NAII",
+    "name": "Natural Alternatives International, Inc.",
+    "price": 2.46,
+    "compassScore": 33,
+    "grade": "D",
+    "industry": "Packaged Foods",
+    "sector": "Consumer Defensive",
+    "marketCap": 0.016566605,
+    "description": "Natural Alternatives International, Inc. engages in formulating, manufacturing, and marketing nutritional supplements in the United States, Europe, Asia, and internationally. The company operates in two segments, Private-Label Contract Manufacturing, and Patent and Trademark Licensing. It offers private-label contract manufacturing services to companies that market and distribute vitamins, minerals, herbal, and other nutritional supplements, as well as other health care products. The company also provides strategic partnering services, such as customized product formulation, clinical studies, manufacturing, marketing support, international regulatory and label law compliance, international product registration, packaging in multiple formats and labeling design, scientific research, proprietary ingredients, customer-specific nutritional product formulation, product testing and evaluation, packaging and delivery system design, and regulatory review. In addition, it sells beta-alanine ingredient under the CarnoSyn and SR CarnoSyn names. The company manufactures products in various forms, including capsules, tablets, chewable wafers, and powders. Its private-label contract manufacturing customers include companies that market nutritional supplements through direct sales marketing channels, direct to consumer e-commerce channels, and retail stores. Natural Alternatives International, Inc. was founded in 1980 and is headquartered in Carlsbad, California.",
+    "numAnalysts": null,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
     "symbol": "TWO",
     "name": "Two Harbors Investment Corp.",
     "price": 12.34,
@@ -39958,20 +39944,6 @@
     "marketCap": 0.84164699,
     "description": "Hallador Energy Company focuses on extracting steam coal from its operations within Indiana, primarily supplying this fuel to the electric power generation sector. The company's mining assets include the subterranean Oaktown Mine 1 and Oaktown Mine 2, both situated in Oaktown, Indiana, alongside the Ace in the Hole mine, located near Clay City, Indiana. In addition to its coal activities, Hallador Energy also conducts natural gas exploration throughout Indiana. The firm was established in 1949 and its corporate headquarters are located in Terre Haute, Indiana.",
     "numAnalysts": 1,
-    "consensus": "B",
-    "scoreNote": null
-  },
-  {
-    "symbol": "HSBC",
-    "name": "HSBC Holdings plc",
-    "price": 92.67,
-    "compassScore": 32,
-    "grade": "D",
-    "industry": "Banks - Diversified",
-    "sector": "Financial Services",
-    "marketCap": 245.548212,
-    "description": "HSBC Holdings plc functions as a prominent global entity, delivering a full spectrum of banking and financial services around the world. Its operations are structured into three key divisions: Wealth and Personal Banking, Commercial Banking, and Global Banking and Markets. The Wealth and Personal Banking unit is dedicated to individual customers, supplying a broad array of retail banking offerings. This includes essential services like current and savings accounts, various lending products such as mortgages and personal loans, a selection of credit and debit cards, and convenient local and international payment facilities. Furthermore, this segment provides in-depth wealth management solutions, encompassing insurance and investment products, worldwide asset management expertise, and tailored private wealth strategies for both general banking clients and affluent individuals. The Commercial Banking division targets businesses across the size spectrum. It extends crucial services such as credit and financing, treasury and cash flow management, payment processing, business insurance, and investment support. Additionally, it offers corporate cards, international trade and receivables financing, foreign exchange transactions, capital-raising capabilities via debt and equity markets, and strategic advisory services. Its client base spans from small and medium-sized enterprises to larger corporations. Lastly, the Global Banking and Markets segment focuses on advanced financial services for major organizations and investors. It provides sophisticated financing, expert advisory, and transaction execution across various asset classes, including credit, interest rates, foreign exchange, equities, and money market instruments, along with comprehensive securities services. This division also undertakes principal investment activities, serving governmental bodies, corporate entities, institutional clients, and high-net-worth private investors. Founded in 1865, HSBC Holdings plc maintains its central operations in London, United Kingdom.",
-    "numAnalysts": 6,
     "consensus": "B",
     "scoreNote": null
   },
@@ -40550,6 +40522,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "HSBC",
+    "name": "HSBC Holdings plc",
+    "price": 92.67,
+    "compassScore": 31,
+    "grade": "D",
+    "industry": "Banks - Diversified",
+    "sector": "Financial Services",
+    "marketCap": 245.548212,
+    "description": "HSBC Holdings plc functions as a prominent global entity, delivering a full spectrum of banking and financial services around the world. Its operations are structured into three key divisions: Wealth and Personal Banking, Commercial Banking, and Global Banking and Markets. The Wealth and Personal Banking unit is dedicated to individual customers, supplying a broad array of retail banking offerings. This includes essential services like current and savings accounts, various lending products such as mortgages and personal loans, a selection of credit and debit cards, and convenient local and international payment facilities. Furthermore, this segment provides in-depth wealth management solutions, encompassing insurance and investment products, worldwide asset management expertise, and tailored private wealth strategies for both general banking clients and affluent individuals. The Commercial Banking division targets businesses across the size spectrum. It extends crucial services such as credit and financing, treasury and cash flow management, payment processing, business insurance, and investment support. Additionally, it offers corporate cards, international trade and receivables financing, foreign exchange transactions, capital-raising capabilities via debt and equity markets, and strategic advisory services. Its client base spans from small and medium-sized enterprises to larger corporations. Lastly, the Global Banking and Markets segment focuses on advanced financial services for major organizations and investors. It provides sophisticated financing, expert advisory, and transaction execution across various asset classes, including credit, interest rates, foreign exchange, equities, and money market instruments, along with comprehensive securities services. This division also undertakes principal investment activities, serving governmental bodies, corporate entities, institutional clients, and high-net-worth private investors. Founded in 1865, HSBC Holdings plc maintains its central operations in London, United Kingdom.",
+    "numAnalysts": 6,
+    "consensus": "B",
+    "scoreNote": null
+  },
+  {
     "symbol": "INDB",
     "name": "Independent Bank Corp.",
     "price": 83.27,
@@ -40953,20 +40939,6 @@
     "description": "Apollo Global Management, Inc. operates as a prominent investment management firm, primarily concentrating its efforts across credit, private equity, and real estate asset classes. Within its private equity division, Apollo engages in a broad spectrum of transactions, ranging from traditional management buyouts, recapitalizations, and distressed acquisitions to corporate carve-outs, growth capital infusions, turnaround financing, bridge loans, strategic acquisitions, and industry consolidation initiatives. This also includes debt investments in real estate and corporate partnerships, along with investments in distressed assets and special situations within the middle market. Its client base is diverse, encompassing sovereign wealth and endowment funds, as well as various other institutional and private investors. The firm constructs and oversees bespoke portfolios for clients and actively manages a suite of investment vehicles, including hedge funds, real estate funds, and private equity funds. Globally, Apollo also deploys capital in fixed income and alternative investment markets. Its fixed income strategies span a wide array, featuring income-oriented senior secured loans, corporate bonds, collateralized loan obligations (CLOs), structured credit products, opportunistic and non-performing loans, distressed debt, mezzanine financing, and other value-oriented fixed income instruments. Apollo seeks investment opportunities across numerous sectors, such as chemicals, energy (including oil, gas, natural resources), metals and mining, agriculture, consumer and retail, distribution and transportation, financial and business services, manufacturing and industrial, media (distribution, cable, entertainment), telecommunications, technology, packaging and materials, and satellite and wireless communications. Geographically, the firm targets investments in Africa, North America (with a strong emphasis on the United States), and Europe, while also making significant inroads into Western Europe and Asia. Its investment methodology combines contrarian insights with a rigorous focus on intrinsic value and distressed situations. Apollo typically commits equity capital ranging from $10 million to $1.5 billion per transaction, generally pursuing companies with an enterprise value between $750 million and $2.5 billion. Proprietary in-house research underpins its investment selection process. The firm is open to acquiring both minority and controlling stakes in its portfolio companies. Established in 1990 and headquartered in New York, New York, Apollo maintains additional offices across North America, Asia, and Europe to support its global operations.",
     "numAnalysts": 6,
     "consensus": "B-",
-    "scoreNote": null
-  },
-  {
-    "symbol": "ASGN",
-    "name": "ASGN Incorporated",
-    "price": 20.96,
-    "compassScore": 30,
-    "grade": "D",
-    "industry": "Information Technology Services",
-    "sector": "Technology",
-    "marketCap": 2.042408,
-    "description": "ASGN Incorporated provides information technology services and professional solutions in the technology, digital, and creative fields for commercial and government sectors in the United States. It operates through two segments: Commercial and Federal Government. The Commercial Segment provides consulting, creative digital marketing, and permanent placement services primarily to Fortune 1000 and mid-market clients. This segment also offers workforce mobilization, modern enterprise, and digital innovation IT consulting services; and cloud, data and analytics, and digital transformation solutions. The Federal Government Segment provides mission-critical solutions to the department of defense, intelligence agencies, and civilian agencies. This segment offers cloud, cybersecurity, artificial intelligence, machine learning, application and IT modernization, and science and engineering solutions. The company was formerly known as On Assignment, Inc. and changed its name to ASGN Incorporated in April 2018. ASGN Incorporated was incorporated in 1985 and is based in Glen Allen, Virginia.",
-    "numAnalysts": 5,
-    "consensus": "N/A",
     "scoreNote": null
   },
   {
@@ -41611,6 +41583,20 @@
     "description": "Albemarle Corporation stands as a global innovator, producing and distributing a diverse portfolio of engineered specialty chemicals. Its business operations are divided into three principal segments: Lithium, Bromine, and Catalysts. The Lithium division supplies a variety of lithium compounds, including lithium carbonate, hydroxide, and chloride, alongside critical reagents like butyllithium. These materials are vital for manufacturing lithium-ion batteries found in electric vehicles and consumer electronics, as well as for high-performance greases, thermoplastic elastomers used in tires and plastics, and as catalysts for chemical reactions, organic synthesis in areas like steroid chemistry, vitamins, and the pharmaceutical industry. This segment also delivers cesium products for chemical and pharmaceutical applications, zirconium, barium, and titanium for pyrotechnic devices such as airbag initiators, offers expert technical services for the safe handling of reactive lithium products, and provides recycling solutions for lithium-containing by-products. The Bromine segment focuses on bromine and bromine-based fire safety compounds. It produces an array of specialty chemicals, including elemental bromine, various bromides, and brominated powdered activated carbon, which are utilized in chemical synthesis, fluids for oil and gas drilling, mercury emission control, water purification, and food processing. Additionally, it provides tertiary amines, which serve as key ingredients in surfactants, biocides, and sanitizers. Finally, the Catalysts segment offers a range of catalytic agents, including those for hydroprocessing, isomerization, and alkylation, alongside fluidized catalytic cracking (FCC) catalysts and additives, as well as organometallics and curatives. Albemarle's products are integral to numerous industries, including energy storage, petroleum refining, consumer electronics, construction, automotive, lubricants, pharmaceuticals, and crop protection. Established in 1887, the company's headquarters are located in Charlotte, North Carolina.",
     "numAnalysts": 12,
     "consensus": "C-",
+    "scoreNote": null
+  },
+  {
+    "symbol": "ASGN",
+    "name": "ASGN Incorporated",
+    "price": 20.96,
+    "compassScore": 29,
+    "grade": "D",
+    "industry": "Information Technology Services",
+    "sector": "Technology",
+    "marketCap": 2.042408,
+    "description": "ASGN Incorporated provides information technology services and professional solutions in the technology, digital, and creative fields for commercial and government sectors in the United States. It operates through two segments: Commercial and Federal Government. The Commercial Segment provides consulting, creative digital marketing, and permanent placement services primarily to Fortune 1000 and mid-market clients. This segment also offers workforce mobilization, modern enterprise, and digital innovation IT consulting services; and cloud, data and analytics, and digital transformation solutions. The Federal Government Segment provides mission-critical solutions to the department of defense, intelligence agencies, and civilian agencies. This segment offers cloud, cybersecurity, artificial intelligence, machine learning, application and IT modernization, and science and engineering solutions. The company was formerly known as On Assignment, Inc. and changed its name to ASGN Incorporated in April 2018. ASGN Incorporated was incorporated in 1985 and is based in Glen Allen, Virginia.",
+    "numAnalysts": 5,
+    "consensus": "N/A",
     "scoreNote": null
   },
   {
@@ -42454,20 +42440,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "SSYS",
-    "name": "Stratasys Ltd.",
-    "price": 8.92,
-    "compassScore": 28,
-    "grade": "D",
-    "industry": "Computer Hardware",
-    "sector": "Technology",
-    "marketCap": 0.9536911999999999,
-    "description": "Stratasys Ltd., established in 1989 and headquartered in Eden Prairie, Minnesota, specializes in sophisticated, connected polymer-based 3D printing solutions. Its product portfolio encompasses a variety of 3D printing systems, including PolyJet, FDM, stereolithography, and programmable photo polymerization technologies, crucial for rapid prototyping tasks like design validation, visualization, and effective communication. Complementing its hardware, Stratasys supplies a comprehensive array of 3D printing materials, such as FDM spool-based filaments, PolyJet cartridge-based resins, and various non-color and color digital materials, all engineered for seamless integration with its printers and production systems. Furthermore, Stratasys champions an extensive software ecosystem under the GrabCAD banner, featuring the GrabCAD Additive Manufacturing Platform for managing enterprise-scale additive operations, GrabCAD Shop to streamline 3D printing workflows, a GrabCAD software development kit offering APIs and support for custom integrations, and GrabCAD Workbench for cloud-based project data management. Beyond its core offerings, the firm maintains popular online communities like Thingiverse.com for sharing digital 3D designs and the GrabCAD Community, which serves mechanical engineers, designers, manufacturers, and students. The company also provides essential support services, including on-site system installation, operator training, maintenance, repair, and remote technical assistance. These solutions are adopted across a broad spectrum of industries, such as aerospace, automotive, transportation, healthcare, consumer products, dental, medical, and educational sectors. Global distribution is managed via a robust network of authorized resellers and independent sales agents.",
-    "numAnalysts": 4,
-    "consensus": "B-",
-    "scoreNote": null
-  },
-  {
     "symbol": "GEG",
     "name": "Great Elm Group, Inc.",
     "price": 2.25,
@@ -42958,6 +42930,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "SSYS",
+    "name": "Stratasys Ltd.",
+    "price": 8.92,
+    "compassScore": 27,
+    "grade": "D",
+    "industry": "Computer Hardware",
+    "sector": "Technology",
+    "marketCap": 0.9536911999999999,
+    "description": "Stratasys Ltd., established in 1989 and headquartered in Eden Prairie, Minnesota, specializes in sophisticated, connected polymer-based 3D printing solutions. Its product portfolio encompasses a variety of 3D printing systems, including PolyJet, FDM, stereolithography, and programmable photo polymerization technologies, crucial for rapid prototyping tasks like design validation, visualization, and effective communication. Complementing its hardware, Stratasys supplies a comprehensive array of 3D printing materials, such as FDM spool-based filaments, PolyJet cartridge-based resins, and various non-color and color digital materials, all engineered for seamless integration with its printers and production systems. Furthermore, Stratasys champions an extensive software ecosystem under the GrabCAD banner, featuring the GrabCAD Additive Manufacturing Platform for managing enterprise-scale additive operations, GrabCAD Shop to streamline 3D printing workflows, a GrabCAD software development kit offering APIs and support for custom integrations, and GrabCAD Workbench for cloud-based project data management. Beyond its core offerings, the firm maintains popular online communities like Thingiverse.com for sharing digital 3D designs and the GrabCAD Community, which serves mechanical engineers, designers, manufacturers, and students. The company also provides essential support services, including on-site system installation, operator training, maintenance, repair, and remote technical assistance. These solutions are adopted across a broad spectrum of industries, such as aerospace, automotive, transportation, healthcare, consumer products, dental, medical, and educational sectors. Global distribution is managed via a robust network of authorized resellers and independent sales agents.",
+    "numAnalysts": 4,
+    "consensus": "B-",
+    "scoreNote": null
+  },
+  {
     "symbol": "WF",
     "name": "Woori Financial Group Inc.",
     "price": 62.28,
@@ -43374,20 +43360,6 @@
     "marketCap": 21.208668,
     "description": "The Carlyle Group Inc. is a leading global investment firm that employs both direct investment and fund-of-fund strategies. Its direct investment expertise is extensive, encompassing management-led leveraged buyouts, privatizations, and divestitures, as well as strategic minority equity investments. The firm also allocates capital to structured credit opportunities, global distressed and corporate situations, and small-to-middle market enterprises. Its venture and growth capital activities span the full spectrum, from seed/startup and early-stage funding to emerging growth, turnaround situations, mid-venture, late-venture, and Private Investment in Public Equity (PIPES). Carlyle structures its investments across four primary segments: Corporate Private Equity, Real Assets, Global Market Strategies, and Solutions. Carlyle's investment interests are remarkably broad, covering an extensive array of sectors worldwide. These include major industries like industrials (such as manufacturing, building products, chemicals, and metals), consumer and retail (including food and beverage, consumer products, and services), aerospace and defense, technology (covering software, semiconductors, and communications infrastructure), healthcare (services, pharmaceuticals, and medical devices), energy and power, real estate (from office and hotel properties to residential and specialized segments like student housing and senior living), financial services, transportation, telecommunications, media, business services, agribusiness, fintech, utilities, and gaming. The firm actively seeks out growing businesses, including those with overleveraged balance sheets. Typically, Carlyle aims to hold its investments for four to six years, although some may be held for three to five years, with specific mandates for automotive and transportation sector holdings also falling within the four-to-six-year range. With a significant global footprint, Carlyle actively invests across North America (including specific U.S. regions, Mexico, Argentina, Brazil, Chile, and Peru), Europe (encompassing Western, Central-Eastern, and Nordic regions), Asia (including India, Southeast Asia, Korea, Japan, and China), Australia, New Zealand, the Middle East, and both Sub-Saharan and North Africa. The firm has particular geographic interests, such as focusing on the food, financial, and healthcare industries in Western China, and in Japan, it specifically targets companies valued between $100 million and $150 million, avoiding those with over 1,000 employees. Financially, Carlyle typically commits $1 million to $50 million for venture investments and $50 million to $2 billion for buyouts. It targets companies with an enterprise value between $31.57 million and $1 billion, sales ranging from $10 million to $500 million, a market capitalization exceeding $50 million, and EBITDA between $5 million and $25 million. Carlyle is flexible regarding its ownership stake, often taking either a majority or a minority position, and frequently acts as the lead equity investor, originating and structuring transactions. The Carlyle Group Inc. was founded in 1987 and is headquartered in Washington, D.C. It maintains a robust global presence with additional offices in 21 countries across five continents: North America, South America, Asia, Australia, and Europe.",
     "numAnalysts": 5,
-    "consensus": "C",
-    "scoreNote": null
-  },
-  {
-    "symbol": "CLMT",
-    "name": "Calumet, Inc.",
-    "price": 34.42,
-    "compassScore": 26,
-    "grade": "D",
-    "industry": "Oil & Gas Exploration & Production",
-    "sector": "Energy",
-    "marketCap": 1.582470202,
-    "description": "Calumet, Inc. is a diversified enterprise specializing in the development, production, and commercialization of a wide array of branded specialty products. The company serves both industrial and consumer markets, operating extensively throughout North America and internationally. Its operations are structured across several key segments: Specialty Products and Solutions: This division offers a comprehensive portfolio of items including various solvents, waxes, tailored lubricating oils, white oils, petrolatums, gels, and esters. Montana/Renewables: This segment pursues a dual strategy. It processes sustainable feedstocks to generate renewable hydrogen, natural gas, propane, naphtha, kerosene/aviation fuel, and diesel. Additionally, it refines Canadian crude oil, yielding conventional gasoline, diesel, jet fuel, and specialized grades of asphalt. Performance Brands: Focused on high-performance offerings, this segment is responsible for blending, packaging, and distributing products under well-known brands such as Royal Purple, Bel-Ray, and TruFuel. Founded in 1916, Calumet, Inc. maintains its corporate headquarters in Indianapolis, Indiana. It's worth noting that Calumet GP, LLC functions as the general partner for Calumet Specialty Products Partners, L.P.",
-    "numAnalysts": 3,
     "consensus": "C",
     "scoreNote": null
   },
@@ -43963,6 +43935,20 @@
     "description": "Astrana Health, Inc., which rebranded from Apollo Medical Holdings, Inc. in February 2024, is a healthcare management firm based in Alhambra, California, founded in 1985. This company delivers medical services throughout the United States, operating with a physician-centered approach powered by advanced technology. Its operations are structured across three distinct divisions: Care Partners, Care Delivery, and Care Enablement. Astrana Health utilizes its exclusive platform for population health management and healthcare delivery to implement an integrated, value-based care model. This strategic approach empowers the healthcare providers within its network to offer high-quality care to their patients. The organization provides extensive care coordination services to a broad spectrum of stakeholders, including patients, their families, primary care physicians, specialists, acute care hospitals, other inpatient facilities, physician groups, and health plans. Its robust physician network encompasses primary care doctors, specialized practitioners, advanced practice providers (extenders), and hospital-based physicians. Astrana Health serves a diverse patient base, primarily those with insurance coverage\u2014such as private plans, Medicare, Medicaid, and HMOs\u2014but also extends care to uninsured individuals.",
     "numAnalysts": 2,
     "consensus": "B+",
+    "scoreNote": null
+  },
+  {
+    "symbol": "CLMT",
+    "name": "Calumet, Inc.",
+    "price": 34.42,
+    "compassScore": 25,
+    "grade": "D",
+    "industry": "Oil & Gas Exploration & Production",
+    "sector": "Energy",
+    "marketCap": 1.582470202,
+    "description": "Calumet, Inc. is a diversified enterprise specializing in the development, production, and commercialization of a wide array of branded specialty products. The company serves both industrial and consumer markets, operating extensively throughout North America and internationally. Its operations are structured across several key segments: Specialty Products and Solutions: This division offers a comprehensive portfolio of items including various solvents, waxes, tailored lubricating oils, white oils, petrolatums, gels, and esters. Montana/Renewables: This segment pursues a dual strategy. It processes sustainable feedstocks to generate renewable hydrogen, natural gas, propane, naphtha, kerosene/aviation fuel, and diesel. Additionally, it refines Canadian crude oil, yielding conventional gasoline, diesel, jet fuel, and specialized grades of asphalt. Performance Brands: Focused on high-performance offerings, this segment is responsible for blending, packaging, and distributing products under well-known brands such as Royal Purple, Bel-Ray, and TruFuel. Founded in 1916, Calumet, Inc. maintains its corporate headquarters in Indianapolis, Indiana. It's worth noting that Calumet GP, LLC functions as the general partner for Calumet Specialty Products Partners, L.P.",
+    "numAnalysts": 3,
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -44596,20 +44582,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "IART",
-    "name": "Integra LifeSciences Holdings Corporation",
-    "price": 17.77,
-    "compassScore": 24,
-    "grade": "D",
-    "industry": "Medical - Devices",
-    "sector": "Healthcare",
-    "marketCap": 1.09987049,
-    "description": "Integra LifeSciences Holdings Corporation is a medical technology company focused on the creation, production, and global distribution of advanced surgical implants and instruments. These products are utilized across various medical fields, including neurosurgery, limb reconstruction, and general surgical procedures. The company operates through two primary business segments: Codman Specialty Surgical and Tissue Technologies. The Codman Specialty Surgical division offers a comprehensive range of neurosurgical and neuro-critical care products. This includes specialized equipment for tissue ablation, dural repair solutions, cerebral spinal fluid management systems, intracranial monitoring tools, and cranial stabilization devices. Additionally, this segment provides surgical headlamps, various instrumentation, and supports these offerings with asset management software, technical assistance, and after-market services. Integra also supplies an extensive catalog of approximately 40,000 surgical instrument designs, along with a wide selection of surgical and lighting products. Its clientele spans hospitals, surgical centers, and extends to dental, podiatry, and veterinary practices. The Tissue Technologies segment specializes in innovative regenerative technology products for the treatment of both acute and chronic wounds. It further provides surgical tissue repair solutions for a multitude of applications, such as hernia repair, peripheral nerve protection and regeneration, and tendon reconstruction. This encompasses a broad array of offerings for skin and wound repair, plastic and reconstructive surgery products, bone grafting materials, and specialized nerve and tendon repair products. Integra LifeSciences distributes its diverse product portfolio internationally, reaching markets throughout the United States, Europe, Asia Pacific, and other global regions. Distribution is managed directly through its dedicated sales forces and various other channels, serving a wide array of healthcare entities including hospitals, integrated health networks, group purchasing organizations, individual clinicians, surgery centers, and other healthcare providers. Founded in 1989, Integra LifeSciences Holdings Corporation is headquartered in Princeton, New Jersey.",
-    "numAnalysts": 7,
-    "consensus": "C+",
-    "scoreNote": null
-  },
-  {
     "symbol": "IPGP",
     "name": "IPG Photonics Corporation",
     "price": 114.65,
@@ -45212,6 +45184,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "IART",
+    "name": "Integra LifeSciences Holdings Corporation",
+    "price": 17.77,
+    "compassScore": 23,
+    "grade": "D",
+    "industry": "Medical - Devices",
+    "sector": "Healthcare",
+    "marketCap": 1.09987049,
+    "description": "Integra LifeSciences Holdings Corporation is a medical technology company focused on the creation, production, and global distribution of advanced surgical implants and instruments. These products are utilized across various medical fields, including neurosurgery, limb reconstruction, and general surgical procedures. The company operates through two primary business segments: Codman Specialty Surgical and Tissue Technologies. The Codman Specialty Surgical division offers a comprehensive range of neurosurgical and neuro-critical care products. This includes specialized equipment for tissue ablation, dural repair solutions, cerebral spinal fluid management systems, intracranial monitoring tools, and cranial stabilization devices. Additionally, this segment provides surgical headlamps, various instrumentation, and supports these offerings with asset management software, technical assistance, and after-market services. Integra also supplies an extensive catalog of approximately 40,000 surgical instrument designs, along with a wide selection of surgical and lighting products. Its clientele spans hospitals, surgical centers, and extends to dental, podiatry, and veterinary practices. The Tissue Technologies segment specializes in innovative regenerative technology products for the treatment of both acute and chronic wounds. It further provides surgical tissue repair solutions for a multitude of applications, such as hernia repair, peripheral nerve protection and regeneration, and tendon reconstruction. This encompasses a broad array of offerings for skin and wound repair, plastic and reconstructive surgery products, bone grafting materials, and specialized nerve and tendon repair products. Integra LifeSciences distributes its diverse product portfolio internationally, reaching markets throughout the United States, Europe, Asia Pacific, and other global regions. Distribution is managed directly through its dedicated sales forces and various other channels, serving a wide array of healthcare entities including hospitals, integrated health networks, group purchasing organizations, individual clinicians, surgery centers, and other healthcare providers. Founded in 1989, Integra LifeSciences Holdings Corporation is headquartered in Princeton, New Jersey.",
+    "numAnalysts": 7,
+    "consensus": "C+",
+    "scoreNote": null
+  },
+  {
     "symbol": "IDR",
     "name": "Idaho Strategic Resources, Inc.",
     "price": 36.39,
@@ -45786,20 +45772,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "KLC",
-    "name": "KinderCare Learning Companies, Inc.",
-    "price": 4.13,
-    "compassScore": 22,
-    "grade": "D",
-    "industry": "Education & Training Services",
-    "sector": "Consumer Defensive",
-    "marketCap": 0.82136982,
-    "description": "KinderCare Learning Companies, Inc. delivers early childhood education and childcare solutions across the United States. The company's diverse offerings encompass programs for infants, toddlers, preschoolers, and kindergarteners, alongside before- and after-school services. These are provided through both community-based facilities and employer-sponsored initiatives. As of October 2, 2021, KinderCare's operations spanned 1,490 early childhood education centers, with a licensed capacity to serve 195,000 children, in addition to approximately 650 contracted before- and after-school locations. These services cater to children ranging from 6 weeks to 12 years old and are available in 40 U.S. states and the District of Columbia. The company was founded in 1969 and is headquartered in Portland, Oregon.",
-    "numAnalysts": 5,
-    "consensus": "C+",
-    "scoreNote": null
-  },
-  {
     "symbol": "ARL",
     "name": "American Realty Investors, Inc.",
     "price": 14.91,
@@ -46245,6 +46217,20 @@
     "description": "Six Flags Entertainment Corporation stands as a prominent operator of amusement and resort properties situated across North America. Its extensive network encompasses theme parks, aquatic parks, and associated leisure destinations, spanning 17 states within the U.S., as well as locations in Canada and Mexico. The company specializes in delivering exciting and memorable experiences to its diverse clientele. This is achieved through a variety of attractions, including thrilling roller coasters, imaginative themed rides, comprehensive water park facilities, and resort accommodations, all often enhanced by a rich portfolio of popular intellectual properties like Looney Tunes, DC Comics, and PEANUTS. Established in 1983, Six Flags Entertainment Corporation maintains its headquarters in Charlotte, North Carolina.",
     "numAnalysts": 9,
     "consensus": "C-",
+    "scoreNote": null
+  },
+  {
+    "symbol": "KLC",
+    "name": "KinderCare Learning Companies, Inc.",
+    "price": 4.13,
+    "compassScore": 21,
+    "grade": "D",
+    "industry": "Education & Training Services",
+    "sector": "Consumer Defensive",
+    "marketCap": 0.82136982,
+    "description": "KinderCare Learning Companies, Inc. delivers early childhood education and childcare solutions across the United States. The company's diverse offerings encompass programs for infants, toddlers, preschoolers, and kindergarteners, alongside before- and after-school services. These are provided through both community-based facilities and employer-sponsored initiatives. As of October 2, 2021, KinderCare's operations spanned 1,490 early childhood education centers, with a licensed capacity to serve 195,000 children, in addition to approximately 650 contracted before- and after-school locations. These services cater to children ranging from 6 weeks to 12 years old and are available in 40 U.S. states and the District of Columbia. The company was founded in 1969 and is headquartered in Portland, Oregon.",
+    "numAnalysts": 5,
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -47242,20 +47228,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "WGS",
-    "name": "GeneDx Holdings Corp.",
-    "price": 59.92,
-    "compassScore": 20,
-    "grade": "D",
-    "industry": "Medical - Healthcare Information Services",
-    "sector": "Healthcare",
-    "marketCap": 3.49747116278,
-    "description": "GeneDx Holdings Corp. functions as a health intelligence firm singularly focused on the individual patient. It aims to revolutionize healthcare delivery by deploying advanced artificial intelligence and machine learning capabilities. These sophisticated algorithms are applied to vast, longitudinal clinical and genomic datasets to construct comprehensive, dynamic models of human health, ultimately defining personalized, optimal pathways for each person's well-being. Through its exclusive Centrellis health intelligence platform, the company gains profound insights into both disease states and overall wellness, enabling it to furnish evidence-based solutions for the most critical medical challenges. Eric Schadt established the corporation in October 2015, and its principal offices are located in Stamford, Connecticut.",
-    "numAnalysts": 6,
-    "consensus": "D+",
-    "scoreNote": null
-  },
-  {
     "symbol": "ARQ",
     "name": "Arq, Inc.",
     "price": 2.68,
@@ -47802,6 +47774,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "WGS",
+    "name": "GeneDx Holdings Corp.",
+    "price": 59.92,
+    "compassScore": 19,
+    "grade": "F",
+    "industry": "Medical - Healthcare Information Services",
+    "sector": "Healthcare",
+    "marketCap": 3.49747116278,
+    "description": "GeneDx Holdings Corp. functions as a health intelligence firm singularly focused on the individual patient. It aims to revolutionize healthcare delivery by deploying advanced artificial intelligence and machine learning capabilities. These sophisticated algorithms are applied to vast, longitudinal clinical and genomic datasets to construct comprehensive, dynamic models of human health, ultimately defining personalized, optimal pathways for each person's well-being. Through its exclusive Centrellis health intelligence platform, the company gains profound insights into both disease states and overall wellness, enabling it to furnish evidence-based solutions for the most critical medical challenges. Eric Schadt established the corporation in October 2015, and its principal offices are located in Stamford, Connecticut.",
+    "numAnalysts": 6,
+    "consensus": "D+",
+    "scoreNote": null
+  },
+  {
     "symbol": "WIMI",
     "name": "WiMi Hologram Cloud Inc.",
     "price": 1.62,
@@ -47869,20 +47855,6 @@
     "description": "ECARX Holdings, Inc. engages in the design, development, and delivery of vehicle technology. Its products include infotainment head units, digital cockpits, vehicle chip-set, operating system and software stack. The company was founded in 2017 and is based in Shanghai, China with an additional office in Europe.",
     "numAnalysts": 3,
     "consensus": null,
-    "scoreNote": null
-  },
-  {
-    "symbol": "KOS",
-    "name": "Kosmos Energy Ltd.",
-    "price": 2.87,
-    "compassScore": 18,
-    "grade": "F",
-    "industry": "Oil & Gas Exploration & Production",
-    "sector": "Energy",
-    "marketCap": 0.79360130616,
-    "description": "Kosmos Energy Ltd. operates as an independent company primarily engaged in deep-water oil and gas exploration and production, strategically concentrating its operations along the Atlantic Margins. Its core holdings encompass productive oil assets located offshore Ghana, Equatorial Guinea, and in the U.S. Gulf of Mexico. Additionally, the firm is actively developing natural gas resources off the coasts of Mauritania and Senegal. Beyond these established and developing projects, Kosmos Energy also conducts an ongoing exploration program within proven hydrocarbon basins. This entity was founded in 2003 and maintains its principal office in Dallas, Texas.",
-    "numAnalysts": 9,
-    "consensus": "D+",
     "scoreNote": null
   },
   {
@@ -48373,6 +48345,20 @@
     "description": "908 Devices Inc., a commercial-stage technology company, provides various purpose-built handheld and desktop mass spectrometry (Mass Spec) devices to interrogate unknown and invisible materials in life sciences research, bioprocessing, industrial biotech, forensics, and adjacent markets. The company's products include MX908, a handheld, battery-powered, and Mass Spec device that is designed for rapid analysis of gas, liquid, and solid materials of unknown identity; Rebel, a small desktop analyzer that provides real-time information on the extracellular environment in bioprocesses; and ZipChip solution, a plug-and-play, high-resolution separation platform that optimizes Mass Spec sample analysis. It operates in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. The company was incorporated in 2012 and is headquartered in Boston, Massachusetts.",
     "numAnalysts": 1,
     "consensus": null,
+    "scoreNote": null
+  },
+  {
+    "symbol": "KOS",
+    "name": "Kosmos Energy Ltd.",
+    "price": 2.87,
+    "compassScore": 17,
+    "grade": "F",
+    "industry": "Oil & Gas Exploration & Production",
+    "sector": "Energy",
+    "marketCap": 0.79360130616,
+    "description": "Kosmos Energy Ltd. operates as an independent company primarily engaged in deep-water oil and gas exploration and production, strategically concentrating its operations along the Atlantic Margins. Its core holdings encompass productive oil assets located offshore Ghana, Equatorial Guinea, and in the U.S. Gulf of Mexico. Additionally, the firm is actively developing natural gas resources off the coasts of Mauritania and Senegal. Beyond these established and developing projects, Kosmos Energy also conducts an ongoing exploration program within proven hydrocarbon basins. This entity was founded in 2003 and maintains its principal office in Dallas, Texas.",
+    "numAnalysts": 9,
+    "consensus": "D+",
     "scoreNote": null
   },
   {
@@ -49468,20 +49454,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "TIGR",
-    "name": "UP Fintech Holding Ltd. Sponsored ADR Class A",
-    "price": 4.77,
-    "compassScore": 16,
-    "grade": "F",
-    "industry": "Financial - Capital Markets",
-    "sector": "Financial Services",
-    "marketCap": 1.88992602271,
-    "description": "UP Fintech Holding Limited functions as a leading online brokerage firm, primarily catering to investors within the Chinese market. The company furnishes a sophisticated proprietary trading platform, readily accessible via its dedicated mobile application and web-based portal. This platform empowers clients to engage in transactions involving a diverse range of financial instruments, including equities, options, warrants, and other investment products. Beyond core brokerage functionalities, UP Fintech delivers an extensive suite of value-added services. These encompass educational resources for investors, interactive community engagement forums, and an investor relations (IR) platform, alongside efficient account administration. The firm also facilitates trade execution, extends margin financing, and provides securities lending. Furthermore, it is involved in asset and wealth management services, administers employee stock ownership plans (ESOPs), and offers comprehensive support for fund operations. This fund-centric assistance spans license applications, product conceptualization, asset custody, transaction processing, funding allocation, fund structuring, and overall management. The company additionally contributes to initial public offering (IPO) underwriting. Supplementary offerings include market intelligence and simulated trading environments. Established in 2014, UP Fintech Holding Limited maintains its headquarters in Beijing, China.",
-    "numAnalysts": 4,
-    "consensus": "B",
-    "scoreNote": null
-  },
-  {
     "symbol": "TII",
     "name": "Titan Mining Corporation",
     "price": 2.23,
@@ -50042,6 +50014,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "TIGR",
+    "name": "UP Fintech Holding Ltd. Sponsored ADR Class A",
+    "price": 4.77,
+    "compassScore": 15,
+    "grade": "F",
+    "industry": "Financial - Capital Markets",
+    "sector": "Financial Services",
+    "marketCap": 1.88992602271,
+    "description": "UP Fintech Holding Limited functions as a leading online brokerage firm, primarily catering to investors within the Chinese market. The company furnishes a sophisticated proprietary trading platform, readily accessible via its dedicated mobile application and web-based portal. This platform empowers clients to engage in transactions involving a diverse range of financial instruments, including equities, options, warrants, and other investment products. Beyond core brokerage functionalities, UP Fintech delivers an extensive suite of value-added services. These encompass educational resources for investors, interactive community engagement forums, and an investor relations (IR) platform, alongside efficient account administration. The firm also facilitates trade execution, extends margin financing, and provides securities lending. Furthermore, it is involved in asset and wealth management services, administers employee stock ownership plans (ESOPs), and offers comprehensive support for fund operations. This fund-centric assistance spans license applications, product conceptualization, asset custody, transaction processing, funding allocation, fund structuring, and overall management. The company additionally contributes to initial public offering (IPO) underwriting. Supplementary offerings include market intelligence and simulated trading environments. Established in 2014, UP Fintech Holding Limited maintains its headquarters in Beijing, China.",
+    "numAnalysts": 4,
+    "consensus": "B",
+    "scoreNote": null
+  },
+  {
     "symbol": "TOYO",
     "name": "TOYO Co., Ltd.",
     "price": 12.82,
@@ -50515,20 +50501,6 @@
     "description": "flyExclusive, Inc., headquartered in Kinston, North Carolina, is a worldwide proprietor and operator of private jet fleets. The company's comprehensive services encompass on-demand jet charter flights, unique ownership and leaseback programs designed for aircraft buyers, and a full suite of aircraft services including maintenance, repair, interior customization, and exterior painting. Furthermore, flyExclusive offers specialized jet card programs to its clientele. This organization operates as a subsidiary under the umbrella of LGM Enterprises, LLC.",
     "numAnalysts": 1,
     "consensus": "C-",
-    "scoreNote": null
-  },
-  {
-    "symbol": "MBBC",
-    "name": "Marathon Bancorp, Inc.",
-    "price": 14.29,
-    "compassScore": 14,
-    "grade": "F",
-    "industry": "Banks - Regional",
-    "sector": "Financial Services",
-    "marketCap": 0.040130146,
-    "description": "Marathon Bancorp, Inc. focuses on to operate as a bank holding company for Marathon Bank, a chartered savings bank. Marathon Bank offers deposit products, such as demand deposits, savings, and certificates of deposits; and lending products comprising commercial real estate, commercial and industrial, construction, one-to-four-family residential, multi-family real estate, and consumer loans primarily in the Marathon County area of Wisconsin. The company was founded in 2020 and is based in Wausau, Wisconsin. Marathon Bancorp, Inc. operates as a subsidiary of Marathon MHC.",
-    "numAnalysts": null,
-    "consensus": null,
     "scoreNote": null
   },
   {
@@ -51162,6 +51134,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "MBBC",
+    "name": "Marathon Bancorp, Inc.",
+    "price": 14.29,
+    "compassScore": 13,
+    "grade": "F",
+    "industry": "Banks - Regional",
+    "sector": "Financial Services",
+    "marketCap": 0.040130146,
+    "description": "Marathon Bancorp, Inc. focuses on to operate as a bank holding company for Marathon Bank, a chartered savings bank. Marathon Bank offers deposit products, such as demand deposits, savings, and certificates of deposits; and lending products comprising commercial real estate, commercial and industrial, construction, one-to-four-family residential, multi-family real estate, and consumer loans primarily in the Marathon County area of Wisconsin. The company was founded in 2020 and is based in Wausau, Wisconsin. Marathon Bancorp, Inc. operates as a subsidiary of Marathon MHC.",
+    "numAnalysts": null,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
     "symbol": "METCB",
     "name": "Ramaco Resources, Inc.",
     "price": 11.43,
@@ -51397,20 +51383,6 @@
     "description": "Aehr Test Systems, founded in 1977 and based in Fremont, California, specializes in the global provision of advanced burn-in and test systems for integrated circuits, encompassing logic, optical, and memory devices. Its extensive product lineup includes the ABTS and FOX-P families of test and burn-in solutions, complemented by specialized components such as the FOX WaferPak Aligner, FOX-XP WaferPak Contactor, FOX DiePak Carrier, and FOX DiePak Loader. The ABTS system is specifically designed for both production and qualification assessments of packaged parts, covering a range of lower and higher power logic devices, as well as various memory types. For more complex integrated circuits like memories, digital signal processors, microprocessors, microcontrollers, systems-on-a-chip, and integrated optical devices, the FOX-XP and FOX-NP systems facilitate burn-in and functional testing at both the wafer and individual die/module levels. Aehr's FOX-CP system offers a compact, single-wafer solution for verifying the reliability of logic, memory, and photonic devices. A distinguishing offering, the WaferPak Contactor, features an exclusive full-wafer probe card, accommodating wafers up to 300mm, which enables semiconductor manufacturers to conduct comprehensive wafer-level testing and burn-in on Aehr's FOX platforms. Furthermore, the DiePak Carrier provides a reusable, temporary packaging medium, empowering IC manufacturers to complete final testing and burn-in processes for bare die and modules.",
     "numAnalysts": 1,
     "consensus": "C-",
-    "scoreNote": null
-  },
-  {
-    "symbol": "BAK",
-    "name": "Braskem S.A.",
-    "price": 3.67,
-    "compassScore": 12,
-    "grade": "F",
-    "industry": "Chemicals",
-    "sector": "Basic Materials",
-    "marketCap": 5.127544932746544,
-    "description": "Braskem S.A., along with its affiliated companies, specializes in the production and global distribution of thermoplastic resins. The enterprise structures its operations into three primary geographical divisions: Brazil; the United States and Europe; and Mexico. Within the Brazil segment, the company manufactures and offers a broad spectrum of chemicals, including ethylene, various grades of polymer and chemical propylene, butadiene, butene-1, benzene, toluene, and xylenes. This division also supplies fuels such as automotive gasoline, liquefied petroleum gas (LPG), ethyl tertiary-butyl ether (ETBE), and methyl tertiary-butyl ether (MTBE), alongside intermediates like cumene. Its portfolio further extends to aliphatics, aromatics, hydrogenated solvents, and a range of specialty chemicals, including isoprene, dicyclopentadiene, piperylene, nonene, tetramer, polyisobutylene, and hydrocarbon resins. Additionally, it undertakes the manufacturing and sale of both polyethylene (PE) and polypropylene (PP), provides electricity and other essential inputs to second-generation producers, and is notable for its production of green PE derived from renewable sources. Polyvinyl chloride (PVC) and caustic soda are also among the products generated and marketed by this segment. The United States and Europe segment focuses specifically on the manufacture and sale of polypropylene (PP) across these regions, particularly within the U.S. and Germany. In Mexico, the company is responsible for the production and distribution of ethylene, high-density PE, and low-density PE. Beyond these segmented activities, Braskem engages broadly in the manufacturing, selling, importing, and exporting of chemicals, petrochemicals, and various fuels. It also plays a role in generating and supplying crucial utilities like steam, water, compressed air, and industrial gases, in addition to providing a suite of industrial services. Established in 1972, the company initially traded as Copene Petroqu\u00edmica do Nordeste S.A. before rebranding as Braskem S.A. in 2002. Its principal corporate office is situated in Cama\u00e7ari, Brazil.",
-    "numAnalysts": 3,
-    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -51946,20 +51918,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "OSRH",
-    "name": "OSR Holdings, Inc.",
-    "price": 0.381,
-    "compassScore": 11,
-    "grade": "F",
-    "industry": "Biotechnology",
-    "sector": "Healthcare",
-    "marketCap": 0.00239787,
-    "description": "OSR Holdings, Inc. operates as a blank check company. It was formed for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization, or similar business combination with one or more businesses. The company was founded on February 25, 2020 and is headquartered in Bellevue, WA.",
-    "numAnalysts": 1,
-    "consensus": null,
-    "scoreNote": null
-  },
-  {
     "symbol": "LSF",
     "name": "Laird Superfood, Inc.",
     "price": 3.7,
@@ -52111,6 +52069,20 @@
     "description": "AbCellera Biologics Inc. specializes in pioneering an advanced platform for the discovery of antibodies. This comprehensive, AI-driven system meticulously explores and analyzes natural immune systems to identify antibodies suitable for the creation of new pharmaceutical drugs. As of December 31, 2021, the company had cultivated 156 discovery programs, ranging from completed to in-progress or under contract, in partnership with 36 entities. Notably, AbCellera maintains a crucial research collaboration and license agreement with Eli Lilly and Company. Founded in 2012, the firm is headquartered in Vancouver, Canada.",
     "numAnalysts": 5,
     "consensus": "C",
+    "scoreNote": null
+  },
+  {
+    "symbol": "BAK",
+    "name": "Braskem S.A.",
+    "price": 3.67,
+    "compassScore": 11,
+    "grade": "F",
+    "industry": "Chemicals",
+    "sector": "Basic Materials",
+    "marketCap": 5.127544932746544,
+    "description": "Braskem S.A., along with its affiliated companies, specializes in the production and global distribution of thermoplastic resins. The enterprise structures its operations into three primary geographical divisions: Brazil; the United States and Europe; and Mexico. Within the Brazil segment, the company manufactures and offers a broad spectrum of chemicals, including ethylene, various grades of polymer and chemical propylene, butadiene, butene-1, benzene, toluene, and xylenes. This division also supplies fuels such as automotive gasoline, liquefied petroleum gas (LPG), ethyl tertiary-butyl ether (ETBE), and methyl tertiary-butyl ether (MTBE), alongside intermediates like cumene. Its portfolio further extends to aliphatics, aromatics, hydrogenated solvents, and a range of specialty chemicals, including isoprene, dicyclopentadiene, piperylene, nonene, tetramer, polyisobutylene, and hydrocarbon resins. Additionally, it undertakes the manufacturing and sale of both polyethylene (PE) and polypropylene (PP), provides electricity and other essential inputs to second-generation producers, and is notable for its production of green PE derived from renewable sources. Polyvinyl chloride (PVC) and caustic soda are also among the products generated and marketed by this segment. The United States and Europe segment focuses specifically on the manufacture and sale of polypropylene (PP) across these regions, particularly within the U.S. and Germany. In Mexico, the company is responsible for the production and distribution of ethylene, high-density PE, and low-density PE. Beyond these segmented activities, Braskem engages broadly in the manufacturing, selling, importing, and exporting of chemicals, petrochemicals, and various fuels. It also plays a role in generating and supplying crucial utilities like steam, water, compressed air, and industrial gases, in addition to providing a suite of industrial services. Established in 1972, the company initially traded as Copene Petroqu\u00edmica do Nordeste S.A. before rebranding as Braskem S.A. in 2002. Its principal corporate office is situated in Cama\u00e7ari, Brazil.",
+    "numAnalysts": 3,
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -52571,6 +52543,20 @@
     "sector": "Healthcare",
     "marketCap": 0.01944996956,
     "description": "NEXGEL, Inc. manufactures high water content, electron beam cross-linked, and aqueous polymer hydrogels and gels. Its products are used for wound care, medical diagnostics, transdermal drug delivery, and cosmetics. The company was formerly known as AquaMed Technologies, Inc. and changed its name to NEXGEL, Inc. in November 2019. NEXGEL, Inc. was founded in 1997 and is based in Langhorne, Pennsylvania.",
+    "numAnalysts": 1,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
+    "symbol": "OSRH",
+    "name": "OSR Holdings, Inc.",
+    "price": 0.381,
+    "compassScore": 10,
+    "grade": "F",
+    "industry": "Biotechnology",
+    "sector": "Healthcare",
+    "marketCap": 0.00239787,
+    "description": "OSR Holdings, Inc. operates as a blank check company. It was formed for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization, or similar business combination with one or more businesses. The company was founded on February 25, 2020 and is headquartered in Bellevue, WA.",
     "numAnalysts": 1,
     "consensus": null,
     "scoreNote": null
@@ -53663,20 +53649,6 @@
     "sector": "Technology",
     "marketCap": 0.355654608,
     "description": "Nano Dimension Ltd., together with its subsidiaries, provides additive electronics in Israel and internationally. The company's flagship product is DragonFly IV system that serves cross-industry High-Performance-Electronic-Devices' fabrication needs by depositing proprietary conductive and dielectric substances, as well as integrates in-situ capacitors, antennas, coils, transformers, and electromechanical components. It also provides nanotechnology based conductive and dielectric inks; and FLIGHT software platform that enables the 3D design of electrical and mechanical features. The company markets and sells products and services to companies that develop products with electronic components, including companies in the defense, automotive, consumer electronics, semiconductor, aerospace, and medical industries, as well as research institutes. Nano Dimension Ltd. was founded in 2012 and is headquartered in Ness Ziona, Israel.",
-    "numAnalysts": null,
-    "consensus": null,
-    "scoreNote": null
-  },
-  {
-    "symbol": "NVFY",
-    "name": "Nova LifeStyle, Inc.",
-    "price": 6.18,
-    "compassScore": 9,
-    "grade": "F",
-    "industry": "Furnishings, Fixtures & Appliances",
-    "sector": "Consumer Cyclical",
-    "marketCap": 0.085215835,
-    "description": "Nova LifeStyle, Inc., through its subsidiaries, designs, manufactures, markets, and sells residential and commercial furniture for middle and upper middle-income consumers worldwide. The company offers upholstered, wood, and metal-based furniture pieces for the living, dining, and bedrooms, as well as home offices. Its products include sofas, chairs, dining and coffee tables, beds, entertainment consoles, cabinets, and cupboards. The company also provides physiotherapeutic jade mats for use in therapy clinic, hospitality, and real estate projects. It distributes its products under the Diamond Sofa brand directly, as well as through internet sales and online marketing campaigns, and participation in exhibitions and trade shows primarily to furniture distributors and retailers. The company was formerly known as Stevens Resources, Inc. Nova LifeStyle, Inc. was founded in 2003 and is headquartered in Commerce, California.",
     "numAnalysts": null,
     "consensus": null,
     "scoreNote": null
@@ -55096,20 +55068,6 @@
     "scoreNote": null
   },
   {
-    "symbol": "DSS",
-    "name": "DSS, Inc.",
-    "price": 0.5876,
-    "compassScore": 6,
-    "grade": "F",
-    "industry": "Packaging & Containers",
-    "sector": "Consumer Cyclical",
-    "marketCap": 0.004194003,
-    "description": "DSS, Inc. operates in the product packaging, biotechnology, direct, commercial lending, securities and investment management, alternative trading, digital transformation, secure living, and alternative energy businesses worldwide. It manufactures, markets, and sells custom folding cartons, mailers, photo sleeves, and 3-dimensional direct mail solutions; and markets and distributes nutritional and personal care products. The company also invests in or acquires companies in the biohealth and biomedical fields, including businesses that focuses on the advancement of drug discovery and prevention, inhibition, and treatment of neurological, oncological, and immune related diseases; and develops open-air defense initiatives for air-borne infectious diseases comprising tuberculosis and influenza. In addition, it focuses on acquiring equity positions in undervalued commercial banks, bank holding companies, and nonbanking licensed financial companies; and companies engaged in\u2014nonbanking activities related to banking, including loan syndication services, mortgage banking, trust and escrow services, banking technology, loan servicing, equipment leasing, problem asset management, special purpose acquisition company consulting, and advisory capital raising services. Further, the company provides securities and investment management services, as well as operates a real estate investment trust for acquiring hospitals and other acute or post-acute care centers; and focuses on developing healthy living communities. Additionally, it develops and/or acquires assets and investments in the securities trading and/or funds management arena, as well as operates as a digital assets broker dealer; and offers solar farms, solar battery banks, and residential energy creation and storage services. The company was formerly known as Document Security Systems, Inc. and changed its name to DSS, Inc. in September 2021. DSS, Inc. was incorporated in 1984 and is headquartered in West Henrietta, New York.",
-    "numAnalysts": 1,
-    "consensus": null,
-    "scoreNote": null
-  },
-  {
     "symbol": "ISPR",
     "name": "Ispire Technology Inc.",
     "price": 1.6,
@@ -55558,6 +55516,20 @@
     "scoreNote": null
   },
   {
+    "symbol": "NAK",
+    "name": "Northern Dynasty Minerals Ltd.",
+    "price": 2.04,
+    "compassScore": 6,
+    "grade": "F",
+    "industry": "Industrial Materials",
+    "sector": "Basic Materials",
+    "marketCap": 0.9187188175439999,
+    "description": "Northern Dynasty Minerals Ltd. is an enterprise focused on prospecting for mineral deposits across the United States. The company's primary asset is the extensive Pebble project, an exploration site rich in copper, gold, molybdenum, silver, and rhenium. This significant property encompasses 1,840 mining claims, spanning roughly 274 square miles in southwestern Alaska. It lies just 17 miles from the communities of Iliamna and Newhalen, and approximately 200 miles southwest of Alaska's largest city, Anchorage. Initially established as Northern Dynasty Explorations Ltd., the company adopted its current name, Northern Dynasty Minerals Ltd., in October of 1997. Founded in 1983, its corporate headquarters are situated in Vancouver, Canada.",
+    "numAnalysts": 1,
+    "consensus": "C-",
+    "scoreNote": null
+  },
+  {
     "symbol": "NFGC",
     "name": "New Found Gold Corp.",
     "price": 1.58,
@@ -55694,6 +55666,20 @@
     "marketCap": 0.165028437,
     "description": "Venu Holding Corporation, an entertainment and hospitality company, designs, develops, owns, and operates up-scale music venues, outdoor amphitheaters, and full-service restaurants and bars in the United States. It owns and operates indoor music venues under the Bourbon Brothers Presents name; outdoor music amphitheaters under The Sunset Amphitheater name; restaurants under the Bourbon Brothers Smokehouse & Tavern, Notes Eatery, Roth's Seafood & Chophouse, and Notes Hospitality Collection names; and bars under the Brohan's name. The company also hosts events; and rents event space. Venu Holding Corporation was formerly known as Notes Live, Inc. and changed its name to Venu Holding Corporation in September 2024. The company was incorporated in 2017 and is based in Colorado Springs, Colorado.",
     "numAnalysts": null,
+    "consensus": null,
+    "scoreNote": null
+  },
+  {
+    "symbol": "DSS",
+    "name": "DSS, Inc.",
+    "price": 0.5876,
+    "compassScore": 5,
+    "grade": "F",
+    "industry": "Packaging & Containers",
+    "sector": "Consumer Cyclical",
+    "marketCap": 0.004194003,
+    "description": "DSS, Inc. operates in the product packaging, biotechnology, direct, commercial lending, securities and investment management, alternative trading, digital transformation, secure living, and alternative energy businesses worldwide. It manufactures, markets, and sells custom folding cartons, mailers, photo sleeves, and 3-dimensional direct mail solutions; and markets and distributes nutritional and personal care products. The company also invests in or acquires companies in the biohealth and biomedical fields, including businesses that focuses on the advancement of drug discovery and prevention, inhibition, and treatment of neurological, oncological, and immune related diseases; and develops open-air defense initiatives for air-borne infectious diseases comprising tuberculosis and influenza. In addition, it focuses on acquiring equity positions in undervalued commercial banks, bank holding companies, and nonbanking licensed financial companies; and companies engaged in\u2014nonbanking activities related to banking, including loan syndication services, mortgage banking, trust and escrow services, banking technology, loan servicing, equipment leasing, problem asset management, special purpose acquisition company consulting, and advisory capital raising services. Further, the company provides securities and investment management services, as well as operates a real estate investment trust for acquiring hospitals and other acute or post-acute care centers; and focuses on developing healthy living communities. Additionally, it develops and/or acquires assets and investments in the securities trading and/or funds management arena, as well as operates as a digital assets broker dealer; and offers solar farms, solar battery banks, and residential energy creation and storage services. The company was formerly known as Document Security Systems, Inc. and changed its name to DSS, Inc. in September 2021. DSS, Inc. was incorporated in 1984 and is headquartered in West Henrietta, New York.",
+    "numAnalysts": 1,
     "consensus": null,
     "scoreNote": null
   },
@@ -56143,20 +56129,6 @@
     "description": "Spire Global, Inc. specializes in creating advanced hardware and a sophisticated analytics platform designed to observe oceanic activities, atmospheric conditions, and weather phenomena worldwide. This enterprise provides its solutions to a diverse range of sectors, including the maritime industry, meteorological services, aviation, space operations, earth intelligence, and various government entities. A significant strategic alliance exists between Spire Global and TAC Index Limited. Founded in 2012, the company initially operated under the name Nanosatisfi, Inc., before officially adopting its current corporate identity, Spire Global, Inc., in July 2014. While its primary headquarters are situated in San Francisco, California, Spire Global also maintains additional facilities in Boulder, Colorado; Washington, D.C.; Glasgow, United Kingdom; Luxembourg; and Singapore.",
     "numAnalysts": 4,
     "consensus": "B+",
-    "scoreNote": null
-  },
-  {
-    "symbol": "NAK",
-    "name": "Northern Dynasty Minerals Ltd.",
-    "price": 2.04,
-    "compassScore": 5,
-    "grade": "F",
-    "industry": "Industrial Materials",
-    "sector": "Basic Materials",
-    "marketCap": 0.9187188175439999,
-    "description": "Northern Dynasty Minerals Ltd. is an enterprise focused on prospecting for mineral deposits across the United States. The company's primary asset is the extensive Pebble project, an exploration site rich in copper, gold, molybdenum, silver, and rhenium. This significant property encompasses 1,840 mining claims, spanning roughly 274 square miles in southwestern Alaska. It lies just 17 miles from the communities of Iliamna and Newhalen, and approximately 200 miles southwest of Alaska's largest city, Anchorage. Initially established as Northern Dynasty Explorations Ltd., the company adopted its current name, Northern Dynasty Minerals Ltd., in October of 1997. Founded in 1983, its corporate headquarters are situated in Vancouver, Canada.",
-    "numAnalysts": 1,
-    "consensus": "C-",
     "scoreNote": null
   },
   {

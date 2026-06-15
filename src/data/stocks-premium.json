@@ -788,7 +788,7 @@
     "beatStreak": 9,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 62,
+    "catalystScore": 61,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -3509,7 +3509,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 49,
+    "catalystScore": 48,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -9404,9 +9404,9 @@
     },
     "epsSurprisePct": 3.5,
     "beatStreak": 18,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 43,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 64,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -9473,9 +9473,9 @@
     },
     "epsSurprisePct": 19.6,
     "beatStreak": 5,
-    "netUpgrades180d": 3,
+    "netUpgrades180d": 2,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 83,
+    "catalystScore": 82,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -9667,7 +9667,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 35,
+    "catalystScore": 34,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -9916,7 +9916,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 26,
+    "catalystScore": 25,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -13417,7 +13417,7 @@
       "grossProfit": 97.4,
       "operatingCashFlow": 11.7,
       "freeCashFlow": 10.0,
-      "volatility": 53.2,
+      "volatility": 53.1,
       "assetGrowth": -18.6
     },
     "epsSurprisePct": -33.3,
@@ -13697,9 +13697,9 @@
     },
     "epsSurprisePct": 2.6,
     "beatStreak": 9,
-    "netUpgrades180d": 3,
+    "netUpgrades180d": 2,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 78,
+    "catalystScore": 77,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -16055,7 +16055,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 37,
+    "catalystScore": 36,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -17215,7 +17215,7 @@
       "grossProfit": 42.0,
       "operatingCashFlow": 16.4,
       "freeCashFlow": 14.1,
-      "volatility": 28.3,
+      "volatility": 28.5,
       "assetGrowth": -4.0
     },
     "epsSurprisePct": 11.0,
@@ -17372,9 +17372,9 @@
     },
     "epsSurprisePct": 5.1,
     "beatStreak": 2,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -0.33,
-    "catalystScore": 41,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": 0.0,
+    "catalystScore": 52,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -18168,7 +18168,7 @@
     "beatStreak": 15,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 66,
+    "catalystScore": 65,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -19068,9 +19068,9 @@
     },
     "epsSurprisePct": 2.1,
     "beatStreak": 3,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 35,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 53,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -19367,7 +19367,7 @@
       "grossProfit": 81.7,
       "operatingCashFlow": 14.3,
       "freeCashFlow": 12.8,
-      "volatility": 64.4,
+      "volatility": 65.0,
       "assetGrowth": -0.7
     },
     "epsSurprisePct": -190.0,
@@ -20271,7 +20271,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 32,
+    "catalystScore": 31,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -21692,9 +21692,9 @@
     },
     "epsSurprisePct": 2.5,
     "beatStreak": 20,
-    "netUpgrades180d": 3,
+    "netUpgrades180d": 2,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 80,
+    "catalystScore": 79,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -23448,11 +23448,11 @@
     },
     "epsSurprisePct": 3.2,
     "beatStreak": 7,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 0.33,
-    "catalystScore": 68,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": 0.0,
+    "catalystScore": 57,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "AZZ": {
     "isGolden": false,
@@ -24126,7 +24126,7 @@
       "grossProfit": 90.8,
       "operatingCashFlow": 3.5,
       "freeCashFlow": -1.8,
-      "volatility": 12.0,
+      "volatility": 12.1,
       "assetGrowth": -15.4
     },
     "epsSurprisePct": -57.1,
@@ -24209,7 +24209,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 49,
+    "catalystScore": 48,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -26824,9 +26824,9 @@
     },
     "epsSurprisePct": 9.8,
     "beatStreak": 9,
-    "netUpgrades180d": 3,
+    "netUpgrades180d": 2,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 82,
+    "catalystScore": 81,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -27185,7 +27185,7 @@
     "beatStreak": 2,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 56,
+    "catalystScore": 55,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -27349,9 +27349,9 @@
     },
     "epsSurprisePct": 1.8,
     "beatStreak": 1,
-    "netUpgrades180d": 2,
-    "netUpgrades180dNorm": 0.33,
-    "catalystScore": 60,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 0.2,
+    "catalystScore": 57,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -28087,9 +28087,9 @@
     },
     "epsSurprisePct": 14.6,
     "beatStreak": 9,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -0.33,
-    "catalystScore": 53,
+    "netUpgrades180d": -2,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 45,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -29777,7 +29777,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 55,
+    "catalystScore": 54,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -32716,7 +32716,7 @@
     "beatStreak": 2,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 67,
+    "catalystScore": 66,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -32868,7 +32868,7 @@
       "grossProfit": 41.9,
       "operatingCashFlow": 7.5,
       "freeCashFlow": 6.9,
-      "volatility": 7.5,
+      "volatility": 7.6,
       "assetGrowth": -4.6
     },
     "epsSurprisePct": 11.0,
@@ -33962,7 +33962,7 @@
     "beatStreak": 6,
     "netUpgrades180d": 1,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 83,
+    "catalystScore": 84,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -36020,7 +36020,7 @@
     "beatStreak": 13,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 68,
+    "catalystScore": 67,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -36639,7 +36639,7 @@
       "grossProfit": 31.8,
       "operatingCashFlow": 11.2,
       "freeCashFlow": 10.1,
-      "volatility": 26.0,
+      "volatility": 26.3,
       "assetGrowth": -14.0
     },
     "epsSurprisePct": 0.0,
@@ -37201,89 +37201,6 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 78,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "SHOP": {
-    "isGolden": false,
-    "avgPriceTarget": 156.79,
-    "upside": 45,
-    "recentRatings": "\u25fe 2026-05-06: Barclays \u2192 Equal Weight\n\u25fe 2026-05-06: RBC Capital \u2192 Outperform\n\u25fe 2026-05-06: Canaccord Genuity \u2192 Buy\n\u25fe 2026-05-06: DA Davidson \u2192 Buy\n\u25fe 2026-05-06: Wells Fargo \u2192 Overweight",
-    "analystPriceTargets": "2026-05-06|UBS|130|106.8635\n2026-05-06|D.A. Davidson|140|107.76\n2026-05-06|Oppenheimer|175|107.63\n2026-05-06|Robert W. Baird|150|107.63\n2026-05-06|Barclays|126|107.63\n2026-05-05|Jefferies|140|107.63\n2026-05-05|Piper Sandler|150|105.745\n2026-03-08|Jefferies|150|130.2\n2026-02-17|Truist Financial|150|112.7\n2026-02-16|Jefferies|125|112.7",
-    "evEbitda": 239.7,
-    "forwardPe": 43.7,
-    "sectorPe": 17.2,
-    "pegRatio": 1.46,
-    "epsGrowth": 29.9,
-    "revenueGrowth": 17.0,
-    "piotroskiScore": 6,
-    "altmanZ": 61.41,
-    "rsi": 46.4,
-    "sma50": 114.33,
-    "sma200": 137.87,
-    "trendSignal": null,
-    "valueScore": 28,
-    "longTermScore": 40.0,
-    "fairValue": {
-      "low": 33.67,
-      "mid": 45.83,
-      "high": 67.27,
-      "upsidePct": -57.7,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 3
-    },
-    "sectorAnalystAccuracy": 50.7,
-    "coveringAnalysts": [
-      {
-        "firm": "Barclays",
-        "hitRate": 48.4,
-        "overallHitRate": 49.4,
-        "percentile": 30,
-        "totalCalls": 568
-      },
-      {
-        "firm": "RBC Capital",
-        "hitRate": 51.4,
-        "overallHitRate": 51.1,
-        "percentile": 65,
-        "totalCalls": 352
-      },
-      {
-        "firm": "Canaccord Genuity",
-        "hitRate": 53.2,
-        "overallHitRate": 50.1,
-        "percentile": 73,
-        "totalCalls": 231
-      },
-      {
-        "firm": "DA Davidson",
-        "hitRate": 49.7,
-        "overallHitRate": 49.4,
-        "percentile": 41,
-        "totalCalls": 332
-      },
-      {
-        "firm": "Wells Fargo",
-        "hitRate": 46.8,
-        "overallHitRate": 48.4,
-        "percentile": 19,
-        "totalCalls": 380
-      }
-    ],
-    "factorValues": {
-      "roa": 9.4,
-      "grossProfit": 41.9,
-      "operatingCashFlow": 15.2,
-      "freeCashFlow": 15.0,
-      "volatility": 62.0,
-      "assetGrowth": 5.7
-    },
-    "epsSurprisePct": 10.4,
-    "beatStreak": 1,
-    "netUpgrades180d": 2,
-    "netUpgrades180dNorm": 0.5,
-    "catalystScore": 65,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -40154,6 +40071,89 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "SHOP": {
+    "isGolden": false,
+    "avgPriceTarget": 156.79,
+    "upside": 45,
+    "recentRatings": "\u25fe 2026-05-06: Barclays \u2192 Equal Weight\n\u25fe 2026-05-06: RBC Capital \u2192 Outperform\n\u25fe 2026-05-06: Canaccord Genuity \u2192 Buy\n\u25fe 2026-05-06: DA Davidson \u2192 Buy\n\u25fe 2026-05-06: Wells Fargo \u2192 Overweight",
+    "analystPriceTargets": "2026-05-06|UBS|130|106.8635\n2026-05-06|D.A. Davidson|140|107.76\n2026-05-06|Oppenheimer|175|107.63\n2026-05-06|Robert W. Baird|150|107.63\n2026-05-06|Barclays|126|107.63\n2026-05-05|Jefferies|140|107.63\n2026-05-05|Piper Sandler|150|105.745\n2026-03-08|Jefferies|150|130.2\n2026-02-17|Truist Financial|150|112.7\n2026-02-16|Jefferies|125|112.7",
+    "evEbitda": 239.7,
+    "forwardPe": 43.7,
+    "sectorPe": 17.2,
+    "pegRatio": 1.46,
+    "epsGrowth": 29.9,
+    "revenueGrowth": 17.0,
+    "piotroskiScore": 6,
+    "altmanZ": 61.41,
+    "rsi": 46.4,
+    "sma50": 114.33,
+    "sma200": 137.87,
+    "trendSignal": null,
+    "valueScore": 28,
+    "longTermScore": 40.0,
+    "fairValue": {
+      "low": 33.67,
+      "mid": 45.83,
+      "high": 67.27,
+      "upsidePct": -57.7,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 3
+    },
+    "sectorAnalystAccuracy": 50.7,
+    "coveringAnalysts": [
+      {
+        "firm": "Barclays",
+        "hitRate": 48.4,
+        "overallHitRate": 49.4,
+        "percentile": 30,
+        "totalCalls": 568
+      },
+      {
+        "firm": "RBC Capital",
+        "hitRate": 51.4,
+        "overallHitRate": 51.1,
+        "percentile": 65,
+        "totalCalls": 352
+      },
+      {
+        "firm": "Canaccord Genuity",
+        "hitRate": 53.2,
+        "overallHitRate": 50.1,
+        "percentile": 73,
+        "totalCalls": 231
+      },
+      {
+        "firm": "DA Davidson",
+        "hitRate": 49.7,
+        "overallHitRate": 49.4,
+        "percentile": 41,
+        "totalCalls": 332
+      },
+      {
+        "firm": "Wells Fargo",
+        "hitRate": 46.8,
+        "overallHitRate": 48.4,
+        "percentile": 19,
+        "totalCalls": 380
+      }
+    ],
+    "factorValues": {
+      "roa": 9.4,
+      "grossProfit": 41.9,
+      "operatingCashFlow": 15.2,
+      "freeCashFlow": 15.0,
+      "volatility": 62.0,
+      "assetGrowth": 5.7
+    },
+    "epsSurprisePct": 10.4,
+    "beatStreak": 1,
+    "netUpgrades180d": 2,
+    "netUpgrades180dNorm": 0.5,
+    "catalystScore": 65,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "TBCH": {
     "isGolden": false,
     "avgPriceTarget": 15.0,
@@ -41360,83 +41360,7 @@
     "beatStreak": 6,
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 44,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "CNM": {
-    "isGolden": false,
-    "avgPriceTarget": 50.67,
-    "upside": 5,
-    "recentRatings": "\u25fe 2026-06-11: Citigroup \u2192 Neutral\n\u25fe 2026-03-25: Deutsche Bank \u2192 Buy\n\u25fe 2026-03-25: Barclays \u2192 Overweight\n\u25fe 2026-01-14: Wells Fargo \u2192 Overweight\n\u25fe 2026-01-08: Citigroup \u2192 Neutral",
-    "analystPriceTargets": "2026-06-11|Goldman Sachs|24|50.06\n2026-01-14|Wells Fargo|65|56.28\n2026-01-09|RBC Capital|63|55.1\n2025-12-11|Deutsche Bank|65|56.3275\n2025-12-10|Robert W. Baird|64|51.595\n2025-12-10|Wells Fargo|57|51.595\n2025-12-01|Barclays|63|48.34\n2025-10-01|Wells Fargo|60|53.83\n2025-09-29|UBS|65|52.82\n2025-07-28|Loop Capital Markets|68|65.53",
-    "evEbitda": 12.6,
-    "forwardPe": 18.6,
-    "sectorPe": 15.6,
-    "pegRatio": 1.39,
-    "epsGrowth": 13.4,
-    "revenueGrowth": 5.0,
-    "piotroskiScore": 9,
-    "altmanZ": 3.52,
-    "rsi": 44.1,
-    "sma50": 49.73,
-    "sma200": 52.03,
-    "trendSignal": null,
-    "valueScore": 38,
-    "longTermScore": 31.0,
-    "fairValue": {
-      "low": 48.8,
-      "mid": 49.97,
-      "high": 52.15,
-      "upsidePct": 3.4,
-      "verdict": "Fair Value",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 48.5,
-    "coveringAnalysts": [
-      {
-        "firm": "Citigroup",
-        "hitRate": 56.9,
-        "overallHitRate": 50.7,
-        "percentile": 87,
-        "totalCalls": 392
-      },
-      {
-        "firm": "Deutsche Bank",
-        "hitRate": 47.1,
-        "overallHitRate": 50.6,
-        "percentile": 45,
-        "totalCalls": 635
-      },
-      {
-        "firm": "Barclays",
-        "hitRate": 46.7,
-        "overallHitRate": 49.4,
-        "percentile": 43,
-        "totalCalls": 580
-      },
-      {
-        "firm": "Wells Fargo",
-        "hitRate": 44.5,
-        "overallHitRate": 48.4,
-        "percentile": 29,
-        "totalCalls": 389
-      }
-    ],
-    "factorValues": {
-      "roa": 7.3,
-      "grossProfit": 32.7,
-      "operatingCashFlow": 10.4,
-      "freeCashFlow": 9.6,
-      "volatility": 35.1,
-      "assetGrowth": 0.7
-    },
-    "epsSurprisePct": 6.7,
-    "beatStreak": 4,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 59,
+    "catalystScore": 43,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -44082,7 +44006,7 @@
     "beatStreak": 4,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 56,
+    "catalystScore": 55,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -44156,11 +44080,87 @@
     },
     "epsSurprisePct": 36.0,
     "beatStreak": 9,
-    "netUpgrades180d": 4,
+    "netUpgrades180d": 3,
     "netUpgrades180dNorm": 1.0,
     "catalystScore": 88,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
+  },
+  "CNM": {
+    "isGolden": false,
+    "avgPriceTarget": 50.67,
+    "upside": 5,
+    "recentRatings": "\u25fe 2026-06-11: Citigroup \u2192 Neutral\n\u25fe 2026-03-25: Deutsche Bank \u2192 Buy\n\u25fe 2026-03-25: Barclays \u2192 Overweight\n\u25fe 2026-01-14: Wells Fargo \u2192 Overweight\n\u25fe 2026-01-08: Citigroup \u2192 Neutral",
+    "analystPriceTargets": "2026-06-11|Goldman Sachs|24|50.06\n2026-01-14|Wells Fargo|65|56.28\n2026-01-09|RBC Capital|63|55.1\n2025-12-11|Deutsche Bank|65|56.3275\n2025-12-10|Robert W. Baird|64|51.595\n2025-12-10|Wells Fargo|57|51.595\n2025-12-01|Barclays|63|48.34\n2025-10-01|Wells Fargo|60|53.83\n2025-09-29|UBS|65|52.82\n2025-07-28|Loop Capital Markets|68|65.53",
+    "evEbitda": 12.6,
+    "forwardPe": 18.6,
+    "sectorPe": 15.6,
+    "pegRatio": 1.39,
+    "epsGrowth": 13.4,
+    "revenueGrowth": 5.0,
+    "piotroskiScore": 9,
+    "altmanZ": 3.52,
+    "rsi": 44.1,
+    "sma50": 49.73,
+    "sma200": 52.03,
+    "trendSignal": null,
+    "valueScore": 38,
+    "longTermScore": 31.0,
+    "fairValue": {
+      "low": 48.8,
+      "mid": 49.97,
+      "high": 52.15,
+      "upsidePct": 3.4,
+      "verdict": "Fair Value",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 48.5,
+    "coveringAnalysts": [
+      {
+        "firm": "Citigroup",
+        "hitRate": 56.9,
+        "overallHitRate": 50.7,
+        "percentile": 87,
+        "totalCalls": 392
+      },
+      {
+        "firm": "Deutsche Bank",
+        "hitRate": 47.1,
+        "overallHitRate": 50.6,
+        "percentile": 45,
+        "totalCalls": 635
+      },
+      {
+        "firm": "Barclays",
+        "hitRate": 46.7,
+        "overallHitRate": 49.4,
+        "percentile": 43,
+        "totalCalls": 580
+      },
+      {
+        "firm": "Wells Fargo",
+        "hitRate": 44.5,
+        "overallHitRate": 48.4,
+        "percentile": 29,
+        "totalCalls": 389
+      }
+    ],
+    "factorValues": {
+      "roa": 7.3,
+      "grossProfit": 32.7,
+      "operatingCashFlow": 10.4,
+      "freeCashFlow": 9.6,
+      "volatility": 35.1,
+      "assetGrowth": 0.7
+    },
+    "epsSurprisePct": 6.7,
+    "beatStreak": 4,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 59,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "CTRN": {
     "isGolden": false,
@@ -47228,82 +47228,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "EXE": {
-    "isGolden": false,
-    "avgPriceTarget": 134.22,
-    "upside": 51,
-    "recentRatings": "\u2b07\ufe0f 2026-05-26: Barclays \u2192 Equal Weight\n\u25fe 2026-05-22: Morgan Stanley \u2192 Overweight\n\u2b07\ufe0f 2026-04-30: William Blair \u2192 Market Perform\n\u25fe 2026-04-30: Truist Securities \u2192 Buy\n\u25fe 2026-04-30: UBS \u2192 Buy",
-    "analystPriceTargets": "2026-05-26|Barclays|110|97.94\n2026-05-22|Morgan Stanley|139|97.08\n2026-04-09|Truist Financial|133|99.5\n2026-03-27|Morgan Stanley|141|113.5\n2026-02-23|UBS|135|106.04\n2026-02-23|Wells Fargo|123|108.06\n2026-02-23|Barclays|125|108.06\n2026-02-19|Jefferies|141|99.52\n2026-02-18|Stephens|146|102.75\n2026-01-28|Piper Sandler|137|108.82",
-    "evEbitda": 3.3,
-    "forwardPe": 9.0,
-    "sectorPe": 14.0,
-    "pegRatio": 1.03,
-    "epsGrowth": 8.8,
-    "revenueGrowth": 3.5,
-    "piotroskiScore": 6,
-    "altmanZ": 2.4,
-    "rsi": 36.1,
-    "sma50": 95.98,
-    "sma200": 104.54,
-    "trendSignal": null,
-    "valueScore": 48,
-    "longTermScore": 25.0,
-    "fairValue": {
-      "low": 66.87,
-      "mid": 74.76,
-      "high": 86.23,
-      "upsidePct": -15.8,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 47.9,
-    "coveringAnalysts": [
-      {
-        "firm": "Barclays",
-        "hitRate": 48.2,
-        "overallHitRate": 49.4,
-        "percentile": 46,
-        "totalCalls": 529
-      },
-      {
-        "firm": "Morgan Stanley",
-        "hitRate": 54.0,
-        "overallHitRate": 52.0,
-        "percentile": 89,
-        "totalCalls": 582
-      },
-      {
-        "firm": "Truist Securities",
-        "hitRate": 62.2,
-        "overallHitRate": 57.7,
-        "percentile": 96,
-        "totalCalls": 74
-      },
-      {
-        "firm": "UBS",
-        "hitRate": 51.7,
-        "overallHitRate": 50.8,
-        "percentile": 72,
-        "totalCalls": 265
-      }
-    ],
-    "factorValues": {
-      "roa": 6.4,
-      "grossProfit": 21.1,
-      "operatingCashFlow": 16.1,
-      "freeCashFlow": 6.0,
-      "volatility": 26.1,
-      "assetGrowth": 1.4
-    },
-    "epsSurprisePct": 3.8,
-    "beatStreak": 3,
-    "netUpgrades180d": -3,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 34,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "GMED": {
     "isGolden": false,
     "avgPriceTarget": 110.29,
@@ -47916,7 +47840,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 31,
+    "catalystScore": 30,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -49382,9 +49306,9 @@
     },
     "epsSurprisePct": 100.0,
     "beatStreak": 2,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 0.33,
-    "catalystScore": 74,
+    "netUpgrades180d": 2,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 82,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -49744,6 +49668,82 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 66,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "EXE": {
+    "isGolden": false,
+    "avgPriceTarget": 134.22,
+    "upside": 51,
+    "recentRatings": "\u2b07\ufe0f 2026-05-26: Barclays \u2192 Equal Weight\n\u25fe 2026-05-22: Morgan Stanley \u2192 Overweight\n\u2b07\ufe0f 2026-04-30: William Blair \u2192 Market Perform\n\u25fe 2026-04-30: Truist Securities \u2192 Buy\n\u25fe 2026-04-30: UBS \u2192 Buy",
+    "analystPriceTargets": "2026-05-26|Barclays|110|97.94\n2026-05-22|Morgan Stanley|139|97.08\n2026-04-09|Truist Financial|133|99.5\n2026-03-27|Morgan Stanley|141|113.5\n2026-02-23|UBS|135|106.04\n2026-02-23|Wells Fargo|123|108.06\n2026-02-23|Barclays|125|108.06\n2026-02-19|Jefferies|141|99.52\n2026-02-18|Stephens|146|102.75\n2026-01-28|Piper Sandler|137|108.82",
+    "evEbitda": 3.3,
+    "forwardPe": 9.0,
+    "sectorPe": 14.0,
+    "pegRatio": 1.03,
+    "epsGrowth": 8.8,
+    "revenueGrowth": 3.5,
+    "piotroskiScore": 6,
+    "altmanZ": 2.4,
+    "rsi": 36.1,
+    "sma50": 95.98,
+    "sma200": 104.54,
+    "trendSignal": null,
+    "valueScore": 48,
+    "longTermScore": 25.0,
+    "fairValue": {
+      "low": 66.87,
+      "mid": 74.76,
+      "high": 86.23,
+      "upsidePct": -15.8,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 47.9,
+    "coveringAnalysts": [
+      {
+        "firm": "Barclays",
+        "hitRate": 48.2,
+        "overallHitRate": 49.4,
+        "percentile": 46,
+        "totalCalls": 529
+      },
+      {
+        "firm": "Morgan Stanley",
+        "hitRate": 54.0,
+        "overallHitRate": 52.0,
+        "percentile": 89,
+        "totalCalls": 582
+      },
+      {
+        "firm": "Truist Securities",
+        "hitRate": 62.2,
+        "overallHitRate": 57.7,
+        "percentile": 96,
+        "totalCalls": 74
+      },
+      {
+        "firm": "UBS",
+        "hitRate": 51.7,
+        "overallHitRate": 50.8,
+        "percentile": 72,
+        "totalCalls": 265
+      }
+    ],
+    "factorValues": {
+      "roa": 6.4,
+      "grossProfit": 21.1,
+      "operatingCashFlow": 16.1,
+      "freeCashFlow": 6.0,
+      "volatility": 26.1,
+      "assetGrowth": 1.4
+    },
+    "epsSurprisePct": 3.8,
+    "beatStreak": 3,
+    "netUpgrades180d": -3,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 34,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -50340,7 +50340,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 47,
+    "catalystScore": 46,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -50644,7 +50644,7 @@
       "grossProfit": 44.8,
       "operatingCashFlow": 10.1,
       "freeCashFlow": 4.3,
-      "volatility": 40.1,
+      "volatility": 39.0,
       "assetGrowth": 5.8
     },
     "epsSurprisePct": -15.7,
@@ -52870,68 +52870,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 72,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "FINV": {
-    "isGolden": false,
-    "avgPriceTarget": 5.94,
-    "upside": 18,
-    "recentRatings": "\u2b06\ufe0f 2025-05-23: UBS \u2192 Buy\n\u2b07\ufe0f 2025-03-20: UBS \u2192 Neutral\n\u2b06\ufe0f 2025-03-18: Citigroup \u2192 Buy\n\u2b07\ufe0f 2023-06-01: Citigroup \u2192 Neutral\n\u25fe 2023-05-18: Citigroup \u2192 Buy",
-    "analystPriceTargets": "2024-08-26|Jefferies|6.2|5.32\n2022-08-24|Citigroup|5.68|4.7",
-    "evEbitda": 1.3,
-    "forwardPe": 0.5,
-    "sectorPe": 9.7,
-    "pegRatio": 0.02,
-    "epsGrowth": 22.2,
-    "revenueGrowth": 5.4,
-    "piotroskiScore": 5,
-    "altmanZ": 2.33,
-    "rsi": 50.9,
-    "sma50": 4.98,
-    "sma200": 5.67,
-    "trendSignal": "Price > SMA50",
-    "valueScore": 54,
-    "longTermScore": 35.0,
-    "fairValue": {
-      "low": 13.47,
-      "mid": 22.22,
-      "high": 30.98,
-      "upsidePct": 341.7,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": [
-      {
-        "firm": "UBS",
-        "hitRate": 52.0,
-        "overallHitRate": 50.8,
-        "percentile": 67,
-        "totalCalls": 602
-      },
-      {
-        "firm": "Citigroup",
-        "hitRate": 52.5,
-        "overallHitRate": 50.7,
-        "percentile": 69,
-        "totalCalls": 796
-      }
-    ],
-    "factorValues": {
-      "roa": 10.0,
-      "grossProfit": 41.8,
-      "operatingCashFlow": 7.2,
-      "freeCashFlow": 5.5,
-      "volatility": 49.8,
-      "assetGrowth": 7.7
-    },
-    "epsSurprisePct": 11.4,
-    "beatStreak": 2,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 57,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -55558,6 +55496,68 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "FINV": {
+    "isGolden": false,
+    "avgPriceTarget": 5.94,
+    "upside": 18,
+    "recentRatings": "\u2b06\ufe0f 2025-05-23: UBS \u2192 Buy\n\u2b07\ufe0f 2025-03-20: UBS \u2192 Neutral\n\u2b06\ufe0f 2025-03-18: Citigroup \u2192 Buy\n\u2b07\ufe0f 2023-06-01: Citigroup \u2192 Neutral\n\u25fe 2023-05-18: Citigroup \u2192 Buy",
+    "analystPriceTargets": "2024-08-26|Jefferies|6.2|5.32\n2022-08-24|Citigroup|5.68|4.7",
+    "evEbitda": 1.3,
+    "forwardPe": 0.5,
+    "sectorPe": 9.7,
+    "pegRatio": 0.02,
+    "epsGrowth": 22.2,
+    "revenueGrowth": 5.4,
+    "piotroskiScore": 5,
+    "altmanZ": 2.33,
+    "rsi": 50.9,
+    "sma50": 4.98,
+    "sma200": 5.67,
+    "trendSignal": "Price > SMA50",
+    "valueScore": 54,
+    "longTermScore": 35.0,
+    "fairValue": {
+      "low": 13.47,
+      "mid": 22.22,
+      "high": 30.98,
+      "upsidePct": 341.7,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": [
+      {
+        "firm": "UBS",
+        "hitRate": 52.0,
+        "overallHitRate": 50.8,
+        "percentile": 67,
+        "totalCalls": 602
+      },
+      {
+        "firm": "Citigroup",
+        "hitRate": 52.5,
+        "overallHitRate": 50.7,
+        "percentile": 69,
+        "totalCalls": 796
+      }
+    ],
+    "factorValues": {
+      "roa": 10.0,
+      "grossProfit": 41.8,
+      "operatingCashFlow": 7.2,
+      "freeCashFlow": 5.5,
+      "volatility": 49.8,
+      "assetGrowth": 7.7
+    },
+    "epsSurprisePct": 11.4,
+    "beatStreak": 2,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 57,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "HG": {
     "isGolden": false,
     "avgPriceTarget": 31.2,
@@ -55853,9 +55853,9 @@
     },
     "epsSurprisePct": 21.3,
     "beatStreak": 20,
-    "netUpgrades180d": 2,
+    "netUpgrades180d": 1,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 87,
+    "catalystScore": 85,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -57368,9 +57368,9 @@
     },
     "epsSurprisePct": -4.5,
     "beatStreak": 0,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -0.33,
-    "catalystScore": 25,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": 0.0,
+    "catalystScore": 36,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -58129,7 +58129,7 @@
       "grossProfit": 86.9,
       "operatingCashFlow": 26.0,
       "freeCashFlow": 25.5,
-      "volatility": 284.7,
+      "volatility": 287.8,
       "assetGrowth": 62.8
     },
     "epsSurprisePct": -151.1,
@@ -58343,7 +58343,7 @@
     "beatStreak": 12,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 72,
+    "catalystScore": 71,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -58845,7 +58845,7 @@
     },
     "epsSurprisePct": 11.1,
     "beatStreak": 19,
-    "netUpgrades180d": -10,
+    "netUpgrades180d": -9,
     "netUpgrades180dNorm": -1.0,
     "catalystScore": 44,
     "catalystTag": false,
@@ -59189,45 +59189,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 30,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "RDY": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": 0.2,
-    "sectorPe": 14.3,
-    "pegRatio": null,
-    "epsGrowth": -9.7,
-    "revenueGrowth": null,
-    "piotroskiScore": 6,
-    "altmanZ": 5.75,
-    "rsi": 48.3,
-    "sma50": 13.35,
-    "sma200": 13.86,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 15.0,
-    "fairValue": null,
-    "sectorAnalystAccuracy": 51.7,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": 7.6,
-      "grossProfit": 31.3,
-      "operatingCashFlow": 10.0,
-      "freeCashFlow": 4.3,
-      "volatility": 29.5,
-      "assetGrowth": 15.2
-    },
-    "epsSurprisePct": -33.3,
-    "beatStreak": 0,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 28,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -62160,6 +62121,45 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "RDY": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": 0.2,
+    "sectorPe": 14.3,
+    "pegRatio": null,
+    "epsGrowth": -9.7,
+    "revenueGrowth": null,
+    "piotroskiScore": 6,
+    "altmanZ": 5.75,
+    "rsi": 48.3,
+    "sma50": 13.35,
+    "sma200": 13.86,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 15.0,
+    "fairValue": null,
+    "sectorAnalystAccuracy": 51.7,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": 7.6,
+      "grossProfit": 31.3,
+      "operatingCashFlow": 10.0,
+      "freeCashFlow": 4.3,
+      "volatility": 29.5,
+      "assetGrowth": 15.2
+    },
+    "epsSurprisePct": -33.3,
+    "beatStreak": 0,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 28,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "SAIC": {
     "isGolden": false,
     "avgPriceTarget": 111.75,
@@ -62362,7 +62362,7 @@
       "grossProfit": 14.3,
       "operatingCashFlow": 13.2,
       "freeCashFlow": 13.1,
-      "volatility": 17.2,
+      "volatility": 17.3,
       "assetGrowth": -18.0
     },
     "epsSurprisePct": -402.9,
@@ -62800,7 +62800,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 60,
+    "catalystScore": 59,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -63899,9 +63899,9 @@
     },
     "epsSurprisePct": 45.7,
     "beatStreak": 11,
-    "netUpgrades180d": -4,
+    "netUpgrades180d": -3,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 49,
+    "catalystScore": 50,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -64554,75 +64554,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "FAF": {
-    "isGolden": false,
-    "avgPriceTarget": 83.0,
-    "upside": 26,
-    "recentRatings": "\u25fe 2026-04-27: Stephens & Co. \u2192 Overweight\n\u25fe 2026-04-24: Truist Securities \u2192 Buy\n\u25fe 2026-04-24: Barclays \u2192 Overweight\n\u2b06\ufe0f 2026-04-06: Barclays \u2192 Overweight\n\u2b06\ufe0f 2026-03-02: Stephens & Co. \u2192 Overweight",
-    "analystPriceTargets": "2026-04-27|Stephens|84|70.87\n2026-04-24|Truist Financial|85|70.52\n2026-04-24|Barclays|80|68.84\n2026-02-17|Truist Financial|82|67.745\n2026-02-13|Barclays|70|66.14\n2026-01-06|Barclays|68|62.18\n2025-10-23|Truist Financial|76|63.54\n2025-10-06|Barclays|71|64.31\n2025-01-03|Deutsche Bank|86|61.81\n2024-07-25|Truist Financial|68|58.06",
-    "evEbitda": 4.7,
-    "forwardPe": 10.2,
-    "sectorPe": 9.7,
-    "pegRatio": 1.14,
-    "epsGrowth": 8.9,
-    "revenueGrowth": 3.3,
-    "piotroskiScore": 8,
-    "altmanZ": 1.18,
-    "rsi": 47.0,
-    "sma50": 66.77,
-    "sma200": 64.43,
-    "trendSignal": null,
-    "valueScore": 49,
-    "longTermScore": 45.0,
-    "fairValue": {
-      "low": 63.69,
-      "mid": 65.74,
-      "high": 100.2,
-      "upsidePct": 0.0,
-      "verdict": "Fair Value",
-      "basis": "industry",
-      "nMethods": 3
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": [
-      {
-        "firm": "Stephens & Co.",
-        "hitRate": 57.6,
-        "overallHitRate": 54.2,
-        "percentile": 89,
-        "totalCalls": 344
-      },
-      {
-        "firm": "Truist Securities",
-        "hitRate": 45.7,
-        "overallHitRate": 57.7,
-        "percentile": 23,
-        "totalCalls": 46
-      },
-      {
-        "firm": "Barclays",
-        "hitRate": 52.5,
-        "overallHitRate": 49.4,
-        "percentile": 68,
-        "totalCalls": 509
-      }
-    ],
-    "factorValues": {
-      "roa": 3.8,
-      "grossProfit": 33.2,
-      "operatingCashFlow": 5.9,
-      "freeCashFlow": 4.7,
-      "volatility": 27.4,
-      "assetGrowth": 8.9
-    },
-    "epsSurprisePct": 25.5,
-    "beatStreak": 8,
-    "netUpgrades180d": 2,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 85,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
-  },
   "HAFN": {
     "isGolden": false,
     "avgPriceTarget": 10.0,
@@ -65243,9 +65174,9 @@
     },
     "epsSurprisePct": 0.0,
     "beatStreak": 0,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": 0.0,
-    "catalystScore": 38,
+    "netUpgrades180d": -1,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 21,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -66299,7 +66230,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 30,
+    "catalystScore": 29,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -67536,6 +67467,75 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "FAF": {
+    "isGolden": false,
+    "avgPriceTarget": 83.0,
+    "upside": 26,
+    "recentRatings": "\u25fe 2026-04-27: Stephens & Co. \u2192 Overweight\n\u25fe 2026-04-24: Truist Securities \u2192 Buy\n\u25fe 2026-04-24: Barclays \u2192 Overweight\n\u2b06\ufe0f 2026-04-06: Barclays \u2192 Overweight\n\u2b06\ufe0f 2026-03-02: Stephens & Co. \u2192 Overweight",
+    "analystPriceTargets": "2026-04-27|Stephens|84|70.87\n2026-04-24|Truist Financial|85|70.52\n2026-04-24|Barclays|80|68.84\n2026-02-17|Truist Financial|82|67.745\n2026-02-13|Barclays|70|66.14\n2026-01-06|Barclays|68|62.18\n2025-10-23|Truist Financial|76|63.54\n2025-10-06|Barclays|71|64.31\n2025-01-03|Deutsche Bank|86|61.81\n2024-07-25|Truist Financial|68|58.06",
+    "evEbitda": 4.7,
+    "forwardPe": 10.2,
+    "sectorPe": 9.7,
+    "pegRatio": 1.14,
+    "epsGrowth": 8.9,
+    "revenueGrowth": 3.3,
+    "piotroskiScore": 8,
+    "altmanZ": 1.18,
+    "rsi": 47.0,
+    "sma50": 66.77,
+    "sma200": 64.43,
+    "trendSignal": null,
+    "valueScore": 49,
+    "longTermScore": 45.0,
+    "fairValue": {
+      "low": 63.69,
+      "mid": 65.74,
+      "high": 100.2,
+      "upsidePct": 0.0,
+      "verdict": "Fair Value",
+      "basis": "industry",
+      "nMethods": 3
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": [
+      {
+        "firm": "Stephens & Co.",
+        "hitRate": 57.6,
+        "overallHitRate": 54.2,
+        "percentile": 89,
+        "totalCalls": 344
+      },
+      {
+        "firm": "Truist Securities",
+        "hitRate": 45.7,
+        "overallHitRate": 57.7,
+        "percentile": 23,
+        "totalCalls": 46
+      },
+      {
+        "firm": "Barclays",
+        "hitRate": 52.5,
+        "overallHitRate": 49.4,
+        "percentile": 68,
+        "totalCalls": 509
+      }
+    ],
+    "factorValues": {
+      "roa": 3.8,
+      "grossProfit": 33.2,
+      "operatingCashFlow": 5.9,
+      "freeCashFlow": 4.7,
+      "volatility": 27.4,
+      "assetGrowth": 8.9
+    },
+    "epsSurprisePct": 25.5,
+    "beatStreak": 8,
+    "netUpgrades180d": 2,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 85,
+    "catalystTag": true,
+    "catalystLabel": "Catalyst"
+  },
   "GDEN": {
     "isGolden": false,
     "avgPriceTarget": 28.0,
@@ -67594,7 +67594,7 @@
       "grossProfit": 24.6,
       "operatingCashFlow": 8.2,
       "freeCashFlow": 3.5,
-      "volatility": 15.1,
+      "volatility": 15.2,
       "assetGrowth": -5.7
     },
     "epsSurprisePct": -109.1,
@@ -68621,11 +68621,11 @@
     },
     "epsSurprisePct": 9.7,
     "beatStreak": 13,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 80,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 67,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "TRUP": {
     "isGolden": false,
@@ -69718,7 +69718,7 @@
     "beatStreak": 9,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 72,
+    "catalystScore": 71,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -72565,7 +72565,7 @@
     "beatStreak": 3,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 70,
+    "catalystScore": 71,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -74936,89 +74936,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "BRX": {
-    "isGolden": false,
-    "avgPriceTarget": 32.44,
-    "upside": 0,
-    "recentRatings": "\u25fe 2026-05-27: Truist Securities \u2192 Buy\n\u25fe 2026-05-26: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-05-18: UBS \u2192 Buy\n\u25fe 2026-05-12: Keybanc \u2192 Overweight\n\u25fe 2026-04-29: Evercore ISI Group \u2192 Outperform",
-    "analystPriceTargets": "2026-05-27|Truist Financial|33|31.115\n2026-05-26|Wells Fargo|33|30.84\n2026-05-18|UBS|34|29.92\n2026-05-04|BMO Capital|35|29.82\n2026-04-29|Evercore ISI|34|29.945\n2026-04-28|Stifel Nicolaus|31|30.5\n2026-02-17|Piper Sandler|34|29.29\n2026-02-10|Stifel Nicolaus|29.75|28.14\n2026-01-14|UBS|29|25.79\n2026-01-09|Mizuho Securities|29|26.23",
-    "evEbitda": 14.1,
-    "forwardPe": 30.0,
-    "sectorPe": 20.4,
-    "pegRatio": 3.99,
-    "epsGrowth": 7.5,
-    "revenueGrowth": 3.4,
-    "piotroskiScore": 7,
-    "altmanZ": 1.22,
-    "rsi": 73.7,
-    "sma50": 30.34,
-    "sma200": 28.13,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 30,
-    "longTermScore": 46.0,
-    "fairValue": {
-      "low": 31.03,
-      "mid": 31.72,
-      "high": 32.91,
-      "upsidePct": -2.6,
-      "verdict": "Fair Value",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 50.8,
-    "coveringAnalysts": [
-      {
-        "firm": "Truist Securities",
-        "hitRate": 57.5,
-        "overallHitRate": 57.7,
-        "percentile": 86,
-        "totalCalls": 127
-      },
-      {
-        "firm": "Wells Fargo",
-        "hitRate": 48.3,
-        "overallHitRate": 48.4,
-        "percentile": 32,
-        "totalCalls": 383
-      },
-      {
-        "firm": "UBS",
-        "hitRate": 47.1,
-        "overallHitRate": 50.8,
-        "percentile": 29,
-        "totalCalls": 153
-      },
-      {
-        "firm": "Keybanc",
-        "hitRate": 58.6,
-        "overallHitRate": 50.6,
-        "percentile": 90,
-        "totalCalls": 292
-      },
-      {
-        "firm": "Evercore ISI Group",
-        "hitRate": 51.4,
-        "overallHitRate": 53.3,
-        "percentile": 58,
-        "totalCalls": 615
-      }
-    ],
-    "factorValues": {
-      "roa": 4.2,
-      "grossProfit": 12.6,
-      "operatingCashFlow": 7.1,
-      "freeCashFlow": 7.1,
-      "volatility": 16.6,
-      "assetGrowth": 2.5
-    },
-    "epsSurprisePct": 131.4,
-    "beatStreak": 6,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 76,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "BTSG": {
     "isGolden": false,
     "avgPriceTarget": 60.45,
@@ -75324,9 +75241,9 @@
     },
     "epsSurprisePct": -20.7,
     "beatStreak": 0,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": 0.0,
-    "catalystScore": 34,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 51,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -75706,7 +75623,7 @@
       "grossProfit": 35.9,
       "operatingCashFlow": 4.9,
       "freeCashFlow": 4.9,
-      "volatility": 9.2,
+      "volatility": 9.3,
       "assetGrowth": -20.1
     },
     "epsSurprisePct": -550.0,
@@ -75794,9 +75711,9 @@
     },
     "epsSurprisePct": 11.7,
     "beatStreak": 6,
-    "netUpgrades180d": 2,
+    "netUpgrades180d": 1,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 81,
+    "catalystScore": 78,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -78472,6 +78389,89 @@
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
+  "BRX": {
+    "isGolden": false,
+    "avgPriceTarget": 32.44,
+    "upside": 0,
+    "recentRatings": "\u25fe 2026-05-27: Truist Securities \u2192 Buy\n\u25fe 2026-05-26: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-05-18: UBS \u2192 Buy\n\u25fe 2026-05-12: Keybanc \u2192 Overweight\n\u25fe 2026-04-29: Evercore ISI Group \u2192 Outperform",
+    "analystPriceTargets": "2026-05-27|Truist Financial|33|31.115\n2026-05-26|Wells Fargo|33|30.84\n2026-05-18|UBS|34|29.92\n2026-05-04|BMO Capital|35|29.82\n2026-04-29|Evercore ISI|34|29.945\n2026-04-28|Stifel Nicolaus|31|30.5\n2026-02-17|Piper Sandler|34|29.29\n2026-02-10|Stifel Nicolaus|29.75|28.14\n2026-01-14|UBS|29|25.79\n2026-01-09|Mizuho Securities|29|26.23",
+    "evEbitda": 14.1,
+    "forwardPe": 30.0,
+    "sectorPe": 20.4,
+    "pegRatio": 3.99,
+    "epsGrowth": 7.5,
+    "revenueGrowth": 3.4,
+    "piotroskiScore": 7,
+    "altmanZ": 1.22,
+    "rsi": 73.7,
+    "sma50": 30.34,
+    "sma200": 28.13,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 30,
+    "longTermScore": 46.0,
+    "fairValue": {
+      "low": 31.03,
+      "mid": 31.72,
+      "high": 32.91,
+      "upsidePct": -2.6,
+      "verdict": "Fair Value",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 50.8,
+    "coveringAnalysts": [
+      {
+        "firm": "Truist Securities",
+        "hitRate": 57.5,
+        "overallHitRate": 57.7,
+        "percentile": 86,
+        "totalCalls": 127
+      },
+      {
+        "firm": "Wells Fargo",
+        "hitRate": 48.3,
+        "overallHitRate": 48.4,
+        "percentile": 32,
+        "totalCalls": 383
+      },
+      {
+        "firm": "UBS",
+        "hitRate": 47.1,
+        "overallHitRate": 50.8,
+        "percentile": 29,
+        "totalCalls": 153
+      },
+      {
+        "firm": "Keybanc",
+        "hitRate": 58.6,
+        "overallHitRate": 50.6,
+        "percentile": 90,
+        "totalCalls": 292
+      },
+      {
+        "firm": "Evercore ISI Group",
+        "hitRate": 51.4,
+        "overallHitRate": 53.3,
+        "percentile": 58,
+        "totalCalls": 615
+      }
+    ],
+    "factorValues": {
+      "roa": 4.2,
+      "grossProfit": 12.6,
+      "operatingCashFlow": 7.1,
+      "freeCashFlow": 7.1,
+      "volatility": 16.6,
+      "assetGrowth": 2.5
+    },
+    "epsSurprisePct": 131.4,
+    "beatStreak": 6,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 76,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "CAL": {
     "isGolden": false,
     "avgPriceTarget": 28.25,
@@ -78810,9 +78810,9 @@
     },
     "epsSurprisePct": 183.9,
     "beatStreak": 20,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -0.2,
-    "catalystScore": 62,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": 0.0,
+    "catalystScore": 73,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -80535,9 +80535,9 @@
     },
     "epsSurprisePct": 12.4,
     "beatStreak": 6,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -0.33,
-    "catalystScore": 50,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": 0.0,
+    "catalystScore": 61,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -81055,75 +81055,6 @@
     "catalystScore": 30,
     "catalystTag": false,
     "catalystLabel": null
-  },
-  "AMT": {
-    "isGolden": false,
-    "avgPriceTarget": 211.0,
-    "upside": 13,
-    "recentRatings": "\u2b06\ufe0f 2026-05-19: Bernstein \u2192 Outperform\n\u25fe 2026-04-30: Truist Securities \u2192 Buy\n\u25fe 2026-04-30: RBC Capital \u2192 Sector Perform\n\u25fe 2026-04-29: Citizens \u2192 Market Outperform\n\u25fe 2026-04-29: JP Morgan \u2192 Overweight",
-    "analystPriceTargets": "2026-05-19|Bernstein|207|177.28\n2026-04-30|Truist Financial|208|178.19\n2026-04-29|Scotiabank|218|178.42\n2026-04-29|Raymond James|240|177.295\n2026-04-16|Barclays|195|176.99\n2026-01-20|UBS|254|180.11\n2026-01-14|Scotiabank|220|179.16\n2026-01-12|Mizuho Securities|189|170.37\n2026-01-09|BMO Capital|185|170.33\n2026-01-05|New Street|203|174.8",
-    "evEbitda": 19.1,
-    "forwardPe": 26.0,
-    "sectorPe": 20.4,
-    "pegRatio": 4.59,
-    "epsGrowth": 5.7,
-    "revenueGrowth": 5.8,
-    "piotroskiScore": 5,
-    "altmanZ": 1.26,
-    "rsi": 53.0,
-    "sma50": 181.38,
-    "sma200": 182.5,
-    "trendSignal": null,
-    "valueScore": 20,
-    "longTermScore": 33.0,
-    "fairValue": {
-      "low": 153.96,
-      "mid": 184.83,
-      "high": 222.73,
-      "upsidePct": -1.3,
-      "verdict": "Fair Value",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 50.8,
-    "coveringAnalysts": [
-      {
-        "firm": "Truist Securities",
-        "hitRate": 57.5,
-        "overallHitRate": 57.7,
-        "percentile": 86,
-        "totalCalls": 127
-      },
-      {
-        "firm": "RBC Capital",
-        "hitRate": 51.1,
-        "overallHitRate": 51.1,
-        "percentile": 56,
-        "totalCalls": 223
-      },
-      {
-        "firm": "JP Morgan",
-        "hitRate": 48.6,
-        "overallHitRate": 50.5,
-        "percentile": 34,
-        "totalCalls": 484
-      }
-    ],
-    "factorValues": {
-      "roa": 4.3,
-      "grossProfit": 13.4,
-      "operatingCashFlow": 9.3,
-      "freeCashFlow": 6.5,
-      "volatility": 28.1,
-      "assetGrowth": -4.3
-    },
-    "epsSurprisePct": 15.0,
-    "beatStreak": 3,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 0.33,
-    "catalystScore": 70,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
   },
   "AXTA": {
     "isGolden": false,
@@ -82992,7 +82923,7 @@
     "beatStreak": 5,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 61,
+    "catalystScore": 60,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -83540,11 +83471,11 @@
     },
     "epsSurprisePct": 7.5,
     "beatStreak": 12,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 79,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 66,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "LTH": {
     "isGolden": false,
@@ -83849,6 +83780,75 @@
     "catalystScore": 62,
     "catalystTag": false,
     "catalystLabel": null
+  },
+  "AMT": {
+    "isGolden": false,
+    "avgPriceTarget": 211.0,
+    "upside": 13,
+    "recentRatings": "\u2b06\ufe0f 2026-05-19: Bernstein \u2192 Outperform\n\u25fe 2026-04-30: Truist Securities \u2192 Buy\n\u25fe 2026-04-30: RBC Capital \u2192 Sector Perform\n\u25fe 2026-04-29: Citizens \u2192 Market Outperform\n\u25fe 2026-04-29: JP Morgan \u2192 Overweight",
+    "analystPriceTargets": "2026-05-19|Bernstein|207|177.28\n2026-04-30|Truist Financial|208|178.19\n2026-04-29|Scotiabank|218|178.42\n2026-04-29|Raymond James|240|177.295\n2026-04-16|Barclays|195|176.99\n2026-01-20|UBS|254|180.11\n2026-01-14|Scotiabank|220|179.16\n2026-01-12|Mizuho Securities|189|170.37\n2026-01-09|BMO Capital|185|170.33\n2026-01-05|New Street|203|174.8",
+    "evEbitda": 19.1,
+    "forwardPe": 26.0,
+    "sectorPe": 20.4,
+    "pegRatio": 4.59,
+    "epsGrowth": 5.7,
+    "revenueGrowth": 5.8,
+    "piotroskiScore": 5,
+    "altmanZ": 1.26,
+    "rsi": 53.0,
+    "sma50": 181.38,
+    "sma200": 182.5,
+    "trendSignal": null,
+    "valueScore": 20,
+    "longTermScore": 33.0,
+    "fairValue": {
+      "low": 153.96,
+      "mid": 184.83,
+      "high": 222.73,
+      "upsidePct": -1.3,
+      "verdict": "Fair Value",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 50.8,
+    "coveringAnalysts": [
+      {
+        "firm": "Truist Securities",
+        "hitRate": 57.5,
+        "overallHitRate": 57.7,
+        "percentile": 86,
+        "totalCalls": 127
+      },
+      {
+        "firm": "RBC Capital",
+        "hitRate": 51.1,
+        "overallHitRate": 51.1,
+        "percentile": 56,
+        "totalCalls": 223
+      },
+      {
+        "firm": "JP Morgan",
+        "hitRate": 48.6,
+        "overallHitRate": 50.5,
+        "percentile": 34,
+        "totalCalls": 484
+      }
+    ],
+    "factorValues": {
+      "roa": 4.3,
+      "grossProfit": 13.4,
+      "operatingCashFlow": 9.3,
+      "freeCashFlow": 6.5,
+      "volatility": 28.1,
+      "assetGrowth": -4.3
+    },
+    "epsSurprisePct": 15.0,
+    "beatStreak": 3,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 0.33,
+    "catalystScore": 70,
+    "catalystTag": true,
+    "catalystLabel": "Catalyst"
   },
   "APD": {
     "isGolden": false,
@@ -85125,9 +85125,9 @@
     },
     "epsSurprisePct": 106.9,
     "beatStreak": 10,
-    "netUpgrades180d": 2,
-    "netUpgrades180dNorm": 0.33,
-    "catalystScore": 84,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 0.2,
+    "catalystScore": 81,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -86197,53 +86197,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 24,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "CUK": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": 9.6,
-    "sectorPe": 12.4,
-    "pegRatio": 0.84,
-    "epsGrowth": 11.5,
-    "revenueGrowth": null,
-    "piotroskiScore": 7,
-    "altmanZ": 1.29,
-    "rsi": 53.5,
-    "sma50": 26.6,
-    "sma200": 27.44,
-    "trendSignal": null,
-    "valueScore": 5,
-    "longTermScore": 35.0,
-    "fairValue": {
-      "low": 34.41,
-      "mid": 40.97,
-      "high": 48.16,
-      "upsidePct": 49.1,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 49.0,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": 6.2,
-      "grossProfit": 20.1,
-      "operatingCashFlow": 13.0,
-      "freeCashFlow": 5.9,
-      "volatility": 50.8,
-      "assetGrowth": 4.0
-    },
-    "epsSurprisePct": 8.4,
-    "beatStreak": 14,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 67,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -89010,6 +88963,53 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "CUK": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": 9.6,
+    "sectorPe": 12.4,
+    "pegRatio": 0.84,
+    "epsGrowth": 11.5,
+    "revenueGrowth": null,
+    "piotroskiScore": 7,
+    "altmanZ": 1.29,
+    "rsi": 53.5,
+    "sma50": 26.6,
+    "sma200": 27.44,
+    "trendSignal": null,
+    "valueScore": 5,
+    "longTermScore": 35.0,
+    "fairValue": {
+      "low": 34.41,
+      "mid": 40.97,
+      "high": 48.16,
+      "upsidePct": 49.1,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 49.0,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": 6.2,
+      "grossProfit": 20.1,
+      "operatingCashFlow": 13.0,
+      "freeCashFlow": 5.9,
+      "volatility": 51.2,
+      "assetGrowth": 4.0
+    },
+    "epsSurprisePct": 8.4,
+    "beatStreak": 14,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 67,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "LQDA": {
     "isGolden": false,
     "avgPriceTarget": 68.0,
@@ -90215,7 +90215,7 @@
     "beatStreak": 6,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 83,
+    "catalystScore": 84,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -91170,7 +91170,7 @@
     "beatStreak": 9,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 68,
+    "catalystScore": 67,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -93051,9 +93051,9 @@
     },
     "epsSurprisePct": 165.9,
     "beatStreak": 5,
-    "netUpgrades180d": 3,
+    "netUpgrades180d": 2,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 89,
+    "catalystScore": 88,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -94174,75 +94174,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 58,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "RBC": {
-    "isGolden": false,
-    "avgPriceTarget": 583.8,
-    "upside": -3,
-    "recentRatings": "\u25fe 2026-05-19: Morgan Stanley \u2192 Overweight\n\u25fe 2026-05-19: Truist Securities \u2192 Buy\n\u25fe 2026-03-02: Keybanc \u2192 Overweight\n\u25fe 2026-02-06: Truist Securities \u2192 Buy\n\u25fe 2026-02-06: Keybanc \u2192 Overweight",
-    "analystPriceTargets": "2026-05-19|Morgan Stanley|640|553.025\n2026-05-19|Truist Financial|615|551.12\n2026-02-09|Goldman Sachs|542|549.37\n2026-02-06|Morgan Stanley|600|546.15997\n2026-02-06|Truist Financial|599|547.39\n2026-02-06|KeyBanc|595|520.16\n2026-01-09|Truist Financial|542|485\n2026-01-06|KeyBanc|535|461.21\n2025-12-17|Deutsche Bank|527|449.9\n2025-11-03|Truist Financial|471|422.41",
-    "evEbitda": 39.3,
-    "forwardPe": 44.7,
-    "sectorPe": 15.6,
-    "pegRatio": 3.25,
-    "epsGrowth": 13.7,
-    "revenueGrowth": 8.4,
-    "piotroskiScore": 6,
-    "altmanZ": 6.76,
-    "rsi": 57.2,
-    "sma50": 588.08,
-    "sma200": 494.68,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 9,
-    "longTermScore": 48.0,
-    "fairValue": {
-      "low": 245.21,
-      "mid": 329.38,
-      "high": 409.53,
-      "upsidePct": -45.4,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 48.5,
-    "coveringAnalysts": [
-      {
-        "firm": "Morgan Stanley",
-        "hitRate": 49.6,
-        "overallHitRate": 52.0,
-        "percentile": 58,
-        "totalCalls": 595
-      },
-      {
-        "firm": "Truist Securities",
-        "hitRate": 59.4,
-        "overallHitRate": 57.7,
-        "percentile": 89,
-        "totalCalls": 106
-      },
-      {
-        "firm": "Keybanc",
-        "hitRate": 47.3,
-        "overallHitRate": 50.6,
-        "percentile": 47,
-        "totalCalls": 588
-      }
-    ],
-    "factorValues": {
-      "roa": 5.8,
-      "grossProfit": 16.2,
-      "operatingCashFlow": 8.1,
-      "freeCashFlow": 6.7,
-      "volatility": 34.2,
-      "assetGrowth": 9.3
-    },
-    "epsSurprisePct": 8.7,
-    "beatStreak": 6,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 63,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -95725,7 +95656,7 @@
     "beatStreak": 6,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 65,
+    "catalystScore": 64,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -97038,6 +96969,75 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "RBC": {
+    "isGolden": false,
+    "avgPriceTarget": 583.8,
+    "upside": -3,
+    "recentRatings": "\u25fe 2026-05-19: Morgan Stanley \u2192 Overweight\n\u25fe 2026-05-19: Truist Securities \u2192 Buy\n\u25fe 2026-03-02: Keybanc \u2192 Overweight\n\u25fe 2026-02-06: Truist Securities \u2192 Buy\n\u25fe 2026-02-06: Keybanc \u2192 Overweight",
+    "analystPriceTargets": "2026-05-19|Morgan Stanley|640|553.025\n2026-05-19|Truist Financial|615|551.12\n2026-02-09|Goldman Sachs|542|549.37\n2026-02-06|Morgan Stanley|600|546.15997\n2026-02-06|Truist Financial|599|547.39\n2026-02-06|KeyBanc|595|520.16\n2026-01-09|Truist Financial|542|485\n2026-01-06|KeyBanc|535|461.21\n2025-12-17|Deutsche Bank|527|449.9\n2025-11-03|Truist Financial|471|422.41",
+    "evEbitda": 39.3,
+    "forwardPe": 44.7,
+    "sectorPe": 15.6,
+    "pegRatio": 3.25,
+    "epsGrowth": 13.7,
+    "revenueGrowth": 8.4,
+    "piotroskiScore": 6,
+    "altmanZ": 6.76,
+    "rsi": 57.2,
+    "sma50": 588.08,
+    "sma200": 494.68,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 9,
+    "longTermScore": 48.0,
+    "fairValue": {
+      "low": 245.21,
+      "mid": 329.38,
+      "high": 409.53,
+      "upsidePct": -45.4,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 48.5,
+    "coveringAnalysts": [
+      {
+        "firm": "Morgan Stanley",
+        "hitRate": 49.6,
+        "overallHitRate": 52.0,
+        "percentile": 58,
+        "totalCalls": 595
+      },
+      {
+        "firm": "Truist Securities",
+        "hitRate": 59.4,
+        "overallHitRate": 57.7,
+        "percentile": 89,
+        "totalCalls": 106
+      },
+      {
+        "firm": "Keybanc",
+        "hitRate": 47.3,
+        "overallHitRate": 50.6,
+        "percentile": 47,
+        "totalCalls": 588
+      }
+    ],
+    "factorValues": {
+      "roa": 5.8,
+      "grossProfit": 16.2,
+      "operatingCashFlow": 8.1,
+      "freeCashFlow": 6.7,
+      "volatility": 34.2,
+      "assetGrowth": 9.3
+    },
+    "epsSurprisePct": 8.7,
+    "beatStreak": 6,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 63,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "SCZM": {
     "isGolden": false,
     "avgPriceTarget": 12.0,
@@ -98089,9 +98089,9 @@
     },
     "epsSurprisePct": 10.8,
     "beatStreak": 5,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 43,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 63,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -99015,7 +99015,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 61,
+    "catalystScore": 60,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -99214,53 +99214,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "MGR": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": 0.6,
-    "sectorPe": 9.7,
-    "pegRatio": 0.03,
-    "epsGrowth": 17.4,
-    "revenueGrowth": null,
-    "piotroskiScore": 4,
-    "altmanZ": 2.57,
-    "rsi": 42.6,
-    "sma50": 20.24,
-    "sma200": 21.17,
-    "trendSignal": null,
-    "valueScore": 8,
-    "longTermScore": 30.0,
-    "fairValue": {
-      "low": 55.68,
-      "mid": 75.08,
-      "high": 94.49,
-      "upsidePct": 276.2,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": 8.2,
-      "grossProfit": 18.3,
-      "operatingCashFlow": -2.3,
-      "freeCashFlow": -2.4,
-      "volatility": 10.7,
-      "assetGrowth": 7.8
-    },
-    "epsSurprisePct": -49.4,
-    "beatStreak": 0,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 16,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "MOG-A": {
     "isGolden": false,
     "avgPriceTarget": 131.0,
@@ -99326,7 +99279,7 @@
     "beatStreak": 3,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 61,
+    "catalystScore": 60,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -99531,11 +99484,11 @@
     },
     "epsSurprisePct": 21.4,
     "beatStreak": 4,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 79,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 66,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "PAAS": {
     "isGolden": false,
@@ -99794,7 +99747,7 @@
       "grossProfit": 46.2,
       "operatingCashFlow": 17.4,
       "freeCashFlow": 17.4,
-      "volatility": 77.2,
+      "volatility": 77.9,
       "assetGrowth": 91.3
     },
     "epsSurprisePct": -19.2,
@@ -102025,6 +101978,53 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 68,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "MGR": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": 0.6,
+    "sectorPe": 9.7,
+    "pegRatio": 0.03,
+    "epsGrowth": 17.4,
+    "revenueGrowth": null,
+    "piotroskiScore": 4,
+    "altmanZ": 2.57,
+    "rsi": 42.6,
+    "sma50": 20.24,
+    "sma200": 21.17,
+    "trendSignal": null,
+    "valueScore": 8,
+    "longTermScore": 30.0,
+    "fairValue": {
+      "low": 55.68,
+      "mid": 75.08,
+      "high": 94.49,
+      "upsidePct": 276.2,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": 8.2,
+      "grossProfit": 18.3,
+      "operatingCashFlow": -2.3,
+      "freeCashFlow": -2.4,
+      "volatility": 10.7,
+      "assetGrowth": 7.8
+    },
+    "epsSurprisePct": -49.4,
+    "beatStreak": 0,
+    "netUpgrades180d": null,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 16,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -107118,7 +107118,7 @@
     "beatStreak": 11,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 77,
+    "catalystScore": 76,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -107317,7 +107317,7 @@
       "grossProfit": 22.9,
       "operatingCashFlow": -5.2,
       "freeCashFlow": -5.4,
-      "volatility": 7.5,
+      "volatility": 7.6,
       "assetGrowth": 3.2
     },
     "epsSurprisePct": -60.4,
@@ -108016,7 +108016,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 29,
+    "catalystScore": 28,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -110257,7 +110257,7 @@
     "beatStreak": 2,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 51,
+    "catalystScore": 50,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -112816,68 +112816,6 @@
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
-  "IGIC": {
-    "isGolden": false,
-    "avgPriceTarget": 19.0,
-    "upside": -24,
-    "recentRatings": "\u25fe 2025-02-27: Oppenheimer \u2192 Outperform\n\u25fe 2025-02-27: RBC Capital \u2192 Outperform\n\u25fe 2024-11-07: RBC Capital \u2192 Outperform\n\u25fe 2024-08-08: RBC Capital \u2192 Outperform\n\u25fe 2024-03-14: RBC Capital \u2192 Outperform",
-    "analystPriceTargets": "2024-08-08|RBC Capital|19|15.69",
-    "evEbitda": 7.6,
-    "forwardPe": 7.8,
-    "sectorPe": 9.7,
-    "pegRatio": 1.7,
-    "epsGrowth": 4.6,
-    "revenueGrowth": 3.6,
-    "piotroskiScore": 4,
-    "altmanZ": 1.97,
-    "rsi": 49.6,
-    "sma50": 25.49,
-    "sma200": 24.35,
-    "trendSignal": null,
-    "valueScore": 40,
-    "longTermScore": 50.0,
-    "fairValue": {
-      "low": 20.19,
-      "mid": 20.72,
-      "high": 22.92,
-      "upsidePct": -17.5,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 3
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": [
-      {
-        "firm": "Oppenheimer",
-        "hitRate": 54.3,
-        "overallHitRate": 48.8,
-        "percentile": 73,
-        "totalCalls": 186
-      },
-      {
-        "firm": "RBC Capital",
-        "hitRate": 51.0,
-        "overallHitRate": 51.1,
-        "percentile": 55,
-        "totalCalls": 294
-      }
-    ],
-    "factorValues": {
-      "roa": 7.2,
-      "grossProfit": 14.4,
-      "operatingCashFlow": 0.0,
-      "freeCashFlow": 0.0,
-      "volatility": 27.5,
-      "assetGrowth": -14.0
-    },
-    "epsSurprisePct": -20.6,
-    "beatStreak": 0,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 19,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "IVT": {
     "isGolden": false,
     "avgPriceTarget": 35.33,
@@ -114875,82 +114813,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "AL": {
-    "isGolden": false,
-    "avgPriceTarget": 65.0,
-    "upside": 0,
-    "recentRatings": "\u2b07\ufe0f 2026-01-06: Barclays \u2192 Equal Weight\n\u25fe 2025-07-10: Barclays \u2192 Overweight\n\u2b06\ufe0f 2025-05-20: Citigroup \u2192 Buy\n\u2b07\ufe0f 2025-03-07: B of A Securities \u2192 Underperform\n\u25fe 2025-02-18: JP Morgan \u2192 Overweight",
-    "analystPriceTargets": "2026-01-06|Barclays|65|64.17\n2025-03-07|UBS|50|45.9\n2024-11-21|Goldman Sachs|65|42.99\n2024-08-02|Barclays|54|47.71\n2024-04-16|Barclays|55|48.22",
-    "evEbitda": 3.3,
-    "forwardPe": 10.9,
-    "sectorPe": 15.6,
-    "pegRatio": 0.56,
-    "epsGrowth": 19.4,
-    "revenueGrowth": 6.1,
-    "piotroskiScore": 8,
-    "altmanZ": 0.64,
-    "rsi": 65.3,
-    "sma50": 64.82,
-    "sma200": 63.04,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 56,
-    "longTermScore": 60.0,
-    "fairValue": {
-      "low": 81.4,
-      "mid": 93.11,
-      "high": 102.27,
-      "upsidePct": 43.2,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 48.5,
-    "coveringAnalysts": [
-      {
-        "firm": "Barclays",
-        "hitRate": 46.7,
-        "overallHitRate": 49.4,
-        "percentile": 43,
-        "totalCalls": 580
-      },
-      {
-        "firm": "Citigroup",
-        "hitRate": 56.9,
-        "overallHitRate": 50.7,
-        "percentile": 87,
-        "totalCalls": 392
-      },
-      {
-        "firm": "B of A Securities",
-        "hitRate": 49.6,
-        "overallHitRate": 50.4,
-        "percentile": 58,
-        "totalCalls": 1264
-      },
-      {
-        "firm": "JP Morgan",
-        "hitRate": 49.5,
-        "overallHitRate": 50.5,
-        "percentile": 57,
-        "totalCalls": 965
-      }
-    ],
-    "factorValues": {
-      "roa": 3.2,
-      "grossProfit": 3.5,
-      "operatingCashFlow": 5.3,
-      "freeCashFlow": -5.3,
-      "volatility": 1.2,
-      "assetGrowth": 1.9
-    },
-    "epsSurprisePct": 53.6,
-    "beatStreak": 1,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 41,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "ALK": {
     "isGolden": false,
     "avgPriceTarget": 63.5,
@@ -115669,6 +115531,68 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "IGIC": {
+    "isGolden": false,
+    "avgPriceTarget": 19.0,
+    "upside": -24,
+    "recentRatings": "\u25fe 2025-02-27: Oppenheimer \u2192 Outperform\n\u25fe 2025-02-27: RBC Capital \u2192 Outperform\n\u25fe 2024-11-07: RBC Capital \u2192 Outperform\n\u25fe 2024-08-08: RBC Capital \u2192 Outperform\n\u25fe 2024-03-14: RBC Capital \u2192 Outperform",
+    "analystPriceTargets": "2024-08-08|RBC Capital|19|15.69",
+    "evEbitda": 7.6,
+    "forwardPe": 7.8,
+    "sectorPe": 9.7,
+    "pegRatio": 1.7,
+    "epsGrowth": 4.6,
+    "revenueGrowth": 3.6,
+    "piotroskiScore": 4,
+    "altmanZ": 1.97,
+    "rsi": 49.6,
+    "sma50": 25.49,
+    "sma200": 24.35,
+    "trendSignal": null,
+    "valueScore": 40,
+    "longTermScore": 50.0,
+    "fairValue": {
+      "low": 20.19,
+      "mid": 20.72,
+      "high": 22.92,
+      "upsidePct": -17.5,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 3
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": [
+      {
+        "firm": "Oppenheimer",
+        "hitRate": 54.3,
+        "overallHitRate": 48.8,
+        "percentile": 73,
+        "totalCalls": 186
+      },
+      {
+        "firm": "RBC Capital",
+        "hitRate": 51.0,
+        "overallHitRate": 51.1,
+        "percentile": 55,
+        "totalCalls": 294
+      }
+    ],
+    "factorValues": {
+      "roa": 7.2,
+      "grossProfit": 14.4,
+      "operatingCashFlow": 0.0,
+      "freeCashFlow": 0.0,
+      "volatility": 27.5,
+      "assetGrowth": -14.0
+    },
+    "epsSurprisePct": -20.6,
+    "beatStreak": 0,
+    "netUpgrades180d": null,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 19,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "REPX": {
     "isGolden": false,
     "avgPriceTarget": 37.0,
@@ -115814,7 +115738,7 @@
       "grossProfit": 10.3,
       "operatingCashFlow": 5.1,
       "freeCashFlow": 5.1,
-      "volatility": 4.2,
+      "volatility": 4.0,
       "assetGrowth": -7.3
     },
     "epsSurprisePct": null,
@@ -116343,7 +116267,7 @@
     "beatStreak": 2,
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 46,
+    "catalystScore": 45,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -118927,7 +118851,7 @@
       "grossProfit": 10.3,
       "operatingCashFlow": 5.1,
       "freeCashFlow": 5.1,
-      "volatility": 5.8,
+      "volatility": 5.9,
       "assetGrowth": -7.3
     },
     "epsSurprisePct": null,
@@ -119180,7 +119104,7 @@
       "grossProfit": 1.8,
       "operatingCashFlow": 4.9,
       "freeCashFlow": 4.9,
-      "volatility": 4.6,
+      "volatility": 4.4,
       "assetGrowth": -23.4
     },
     "epsSurprisePct": -210.4,
@@ -119796,7 +119720,7 @@
     "beatStreak": 4,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 63,
+    "catalystScore": 62,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -120376,7 +120300,7 @@
     "beatStreak": 4,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 70,
+    "catalystScore": 69,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -125038,11 +124962,11 @@
     },
     "epsSurprisePct": 12.9,
     "beatStreak": 5,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 78,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 65,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "MNRO": {
     "isGolden": false,
@@ -127639,7 +127563,7 @@
     "beatStreak": 4,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 67,
+    "catalystScore": 66,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -130315,7 +130239,7 @@
     "beatStreak": 1,
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 37,
+    "catalystScore": 36,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -130695,7 +130619,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 46,
+    "catalystScore": 45,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -132007,9 +131931,9 @@
     },
     "epsSurprisePct": 103.2,
     "beatStreak": 3,
-    "netUpgrades180d": 4,
-    "netUpgrades180dNorm": 0.67,
-    "catalystScore": 81,
+    "netUpgrades180d": 5,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 86,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -133579,7 +133503,7 @@
     "beatStreak": 1,
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 34,
+    "catalystScore": 33,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -133655,7 +133579,7 @@
     "beatStreak": 3,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 62,
+    "catalystScore": 61,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -134013,7 +133937,7 @@
       "grossProfit": 48.5,
       "operatingCashFlow": 16.1,
       "freeCashFlow": 7.2,
-      "volatility": 243.0,
+      "volatility": 245.1,
       "assetGrowth": -1.7
     },
     "epsSurprisePct": 575.8,
@@ -135356,7 +135280,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 1,
     "netUpgrades180dNorm": 0.33,
-    "catalystScore": 44,
+    "catalystScore": 45,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -138552,7 +138476,7 @@
       "grossProfit": 63.0,
       "operatingCashFlow": 3.5,
       "freeCashFlow": 3.5,
-      "volatility": 288.1,
+      "volatility": 290.7,
       "assetGrowth": 34.1
     },
     "epsSurprisePct": 139.5,
@@ -138777,9 +138701,9 @@
     },
     "epsSurprisePct": 1.8,
     "beatStreak": 1,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 29,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 45,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -139065,6 +138989,89 @@
     "catalystScore": 54,
     "catalystTag": false,
     "catalystLabel": null
+  },
+  "DKS": {
+    "isGolden": false,
+    "avgPriceTarget": 266.86,
+    "upside": 21,
+    "recentRatings": "\u25fe 2026-05-28: Morgan Stanley \u2192 Overweight\n\u25fe 2026-05-28: Truist Securities \u2192 Buy\n\u25fe 2026-05-28: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-05-28: BTIG \u2192 Buy\n\u25fe 2026-05-28: Barclays \u2192 Overweight",
+    "analystPriceTargets": "2026-05-28|Robert W. Baird|264|219.21\n2026-05-28|Morgan Stanley|270|219.21\n2026-05-28|Barclays|280|219.21\n2026-05-27|Jefferies|224|219.39\n2026-05-27|Truist Financial|270|222.5\n2026-04-16|BTIG|300|216.98\n2026-03-12|Truist Financial|252|197.6\n2026-03-12|Jefferies|210|197.6\n2026-02-11|Robert W. Baird|253|199.81\n2026-01-15|Morgan Stanley|260|209.2",
+    "evEbitda": 16.4,
+    "forwardPe": 14.9,
+    "sectorPe": 12.4,
+    "pegRatio": 0.95,
+    "epsGrowth": 15.8,
+    "revenueGrowth": 3.6,
+    "piotroskiScore": 4,
+    "altmanZ": 2.68,
+    "rsi": 51.2,
+    "sma50": 219.69,
+    "sma200": 213.97,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 22,
+    "longTermScore": 48.0,
+    "fairValue": {
+      "low": 116.09,
+      "mid": 152.09,
+      "high": 192.08,
+      "upsidePct": -31.2,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 49.0,
+    "coveringAnalysts": [
+      {
+        "firm": "Morgan Stanley",
+        "hitRate": 49.0,
+        "overallHitRate": 52.0,
+        "percentile": 51,
+        "totalCalls": 927
+      },
+      {
+        "firm": "Truist Securities",
+        "hitRate": 59.1,
+        "overallHitRate": 57.7,
+        "percentile": 87,
+        "totalCalls": 137
+      },
+      {
+        "firm": "Wells Fargo",
+        "hitRate": 52.8,
+        "overallHitRate": 48.4,
+        "percentile": 73,
+        "totalCalls": 623
+      },
+      {
+        "firm": "BTIG",
+        "hitRate": 50.0,
+        "overallHitRate": 52.4,
+        "percentile": 60,
+        "totalCalls": 186
+      },
+      {
+        "firm": "Barclays",
+        "hitRate": 51.9,
+        "overallHitRate": 49.4,
+        "percentile": 71,
+        "totalCalls": 567
+      }
+    ],
+    "factorValues": {
+      "roa": 5.1,
+      "grossProfit": 34.7,
+      "operatingCashFlow": 10.3,
+      "freeCashFlow": 3.4,
+      "volatility": 40.7,
+      "assetGrowth": 70.9
+    },
+    "epsSurprisePct": 0.3,
+    "beatStreak": 11,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 74,
+    "catalystTag": true,
+    "catalystLabel": "Catalyst"
   },
   "EIC": {
     "isGolden": false,
@@ -139476,7 +139483,7 @@
     "beatStreak": 4,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 55,
+    "catalystScore": 54,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -139877,53 +139884,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 29,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "ARMN": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": 6.4,
-    "sectorPe": 12.0,
-    "pegRatio": 0.2,
-    "epsGrowth": 31.4,
-    "revenueGrowth": null,
-    "piotroskiScore": 7,
-    "altmanZ": 2.91,
-    "rsi": 58.2,
-    "sma50": 19.42,
-    "sma200": 14.24,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 15,
-    "longTermScore": 45.0,
-    "fairValue": {
-      "low": 9.25,
-      "mid": 11.83,
-      "high": 14.88,
-      "upsidePct": -38.5,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 48.5,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": 3.2,
-      "grossProfit": 18.0,
-      "operatingCashFlow": 13.7,
-      "freeCashFlow": 4.0,
-      "volatility": 53.9,
-      "assetGrowth": 25.7
-    },
-    "epsSurprisePct": -75.9,
-    "beatStreak": 0,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 14,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -140765,7 +140725,7 @@
     "beatStreak": 3,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 73,
+    "catalystScore": 72,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -140893,8 +140853,8 @@
     },
     "epsSurprisePct": 6.7,
     "beatStreak": 14,
-    "netUpgrades180d": 4,
-    "netUpgrades180dNorm": 0.67,
+    "netUpgrades180d": 3,
+    "netUpgrades180dNorm": 0.6,
     "catalystScore": 77,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
@@ -141698,89 +141658,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "DKS": {
-    "isGolden": false,
-    "avgPriceTarget": 266.86,
-    "upside": 21,
-    "recentRatings": "\u25fe 2026-05-28: Morgan Stanley \u2192 Overweight\n\u25fe 2026-05-28: Truist Securities \u2192 Buy\n\u25fe 2026-05-28: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-05-28: BTIG \u2192 Buy\n\u25fe 2026-05-28: Barclays \u2192 Overweight",
-    "analystPriceTargets": "2026-05-28|Robert W. Baird|264|219.21\n2026-05-28|Morgan Stanley|270|219.21\n2026-05-28|Barclays|280|219.21\n2026-05-27|Jefferies|224|219.39\n2026-05-27|Truist Financial|270|222.5\n2026-04-16|BTIG|300|216.98\n2026-03-12|Truist Financial|252|197.6\n2026-03-12|Jefferies|210|197.6\n2026-02-11|Robert W. Baird|253|199.81\n2026-01-15|Morgan Stanley|260|209.2",
-    "evEbitda": 16.4,
-    "forwardPe": 14.9,
-    "sectorPe": 12.4,
-    "pegRatio": 0.95,
-    "epsGrowth": 15.8,
-    "revenueGrowth": 3.6,
-    "piotroskiScore": 4,
-    "altmanZ": 2.68,
-    "rsi": 51.2,
-    "sma50": 219.69,
-    "sma200": 213.97,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 22,
-    "longTermScore": 48.0,
-    "fairValue": {
-      "low": 116.09,
-      "mid": 152.09,
-      "high": 192.08,
-      "upsidePct": -31.2,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 49.0,
-    "coveringAnalysts": [
-      {
-        "firm": "Morgan Stanley",
-        "hitRate": 49.0,
-        "overallHitRate": 52.0,
-        "percentile": 51,
-        "totalCalls": 927
-      },
-      {
-        "firm": "Truist Securities",
-        "hitRate": 59.1,
-        "overallHitRate": 57.7,
-        "percentile": 87,
-        "totalCalls": 137
-      },
-      {
-        "firm": "Wells Fargo",
-        "hitRate": 52.8,
-        "overallHitRate": 48.4,
-        "percentile": 73,
-        "totalCalls": 623
-      },
-      {
-        "firm": "BTIG",
-        "hitRate": 50.0,
-        "overallHitRate": 52.4,
-        "percentile": 60,
-        "totalCalls": 186
-      },
-      {
-        "firm": "Barclays",
-        "hitRate": 51.9,
-        "overallHitRate": 49.4,
-        "percentile": 71,
-        "totalCalls": 567
-      }
-    ],
-    "factorValues": {
-      "roa": 5.1,
-      "grossProfit": 34.7,
-      "operatingCashFlow": 10.3,
-      "freeCashFlow": 3.4,
-      "volatility": 40.7,
-      "assetGrowth": 70.9
-    },
-    "epsSurprisePct": 0.3,
-    "beatStreak": 11,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 74,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
-  },
   "DOMO": {
     "isGolden": false,
     "avgPriceTarget": 7.5,
@@ -142190,6 +142067,53 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 60,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "ARMN": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": 6.4,
+    "sectorPe": 12.0,
+    "pegRatio": 0.2,
+    "epsGrowth": 31.4,
+    "revenueGrowth": null,
+    "piotroskiScore": 7,
+    "altmanZ": 2.91,
+    "rsi": 58.2,
+    "sma50": 19.42,
+    "sma200": 14.24,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 15,
+    "longTermScore": 45.0,
+    "fairValue": {
+      "low": 9.25,
+      "mid": 11.83,
+      "high": 14.88,
+      "upsidePct": -38.5,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 48.5,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": 3.2,
+      "grossProfit": 18.0,
+      "operatingCashFlow": 13.7,
+      "freeCashFlow": 4.0,
+      "volatility": 54.4,
+      "assetGrowth": 25.7
+    },
+    "epsSurprisePct": -75.9,
+    "beatStreak": 0,
+    "netUpgrades180d": null,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 14,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -145449,7 +145373,7 @@
     "beatStreak": 3,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 66,
+    "catalystScore": 65,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -146016,7 +145940,7 @@
     },
     "epsSurprisePct": 0.0,
     "beatStreak": 0,
-    "netUpgrades180d": 6,
+    "netUpgrades180d": 5,
     "netUpgrades180dNorm": 1.0,
     "catalystScore": 58,
     "catalystTag": false,
@@ -146168,11 +146092,11 @@
     },
     "epsSurprisePct": 2.1,
     "beatStreak": 20,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": 0.0,
-    "catalystScore": 59,
-    "catalystTag": false,
-    "catalystLabel": null
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 77,
+    "catalystTag": true,
+    "catalystLabel": "Catalyst"
   },
   "AWK": {
     "isGolden": false,
@@ -148560,7 +148484,7 @@
     "beatStreak": 3,
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 49,
+    "catalystScore": 48,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -149637,7 +149561,7 @@
       "grossProfit": 3.4,
       "operatingCashFlow": 1.1,
       "freeCashFlow": 1.1,
-      "volatility": 18.4,
+      "volatility": 18.6,
       "assetGrowth": 2.1
     },
     "epsSurprisePct": 21.7,
@@ -150427,7 +150351,7 @@
       "grossProfit": 80.6,
       "operatingCashFlow": -2.1,
       "freeCashFlow": -1.7,
-      "volatility": 42.6,
+      "volatility": 43.0,
       "assetGrowth": -27.0
     },
     "epsSurprisePct": null,
@@ -151158,7 +151082,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 33,
+    "catalystScore": 32,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -151860,7 +151784,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 32,
+    "catalystScore": 31,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -153170,7 +153094,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 25,
+    "catalystScore": 24,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -154318,7 +154242,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 61,
+    "catalystScore": 60,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -154442,7 +154366,7 @@
       "grossProfit": 7.0,
       "operatingCashFlow": 4.6,
       "freeCashFlow": 1.9,
-      "volatility": 34.8,
+      "volatility": 35.0,
       "assetGrowth": -6.0
     },
     "epsSurprisePct": -134.8,
@@ -157290,6 +157214,75 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "MRCC": {
+    "isGolden": false,
+    "avgPriceTarget": 8.0,
+    "upside": 57,
+    "recentRatings": "\u25fe 2025-03-04: Oppenheimer \u2192 Perform\n\u25fe 2024-03-13: Ladenburg Thalmann \u2192 Buy\n\u25fe 2023-08-11: B. Riley Securities \u2192 Neutral\n\u2b07\ufe0f 2022-08-08: Oppenheimer \u2192 Perform\n\u2b06\ufe0f 2021-11-04: B. Riley Securities \u2192 Buy",
+    "analystPriceTargets": "2025-03-04|Oppenheimer|8|8.14",
+    "evEbitda": 27.3,
+    "forwardPe": 39.1,
+    "sectorPe": 9.7,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": 6.1,
+    "piotroskiScore": 3,
+    "altmanZ": 0.49,
+    "rsi": 52.9,
+    "sma50": 5.0,
+    "sma200": 6.28,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 20.0,
+    "fairValue": {
+      "low": 2.15,
+      "mid": 3.23,
+      "high": 4.31,
+      "upsidePct": -36.4,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": [
+      {
+        "firm": "Oppenheimer",
+        "hitRate": 54.3,
+        "overallHitRate": 48.8,
+        "percentile": 73,
+        "totalCalls": 186
+      },
+      {
+        "firm": "Ladenburg Thalmann",
+        "hitRate": 51.4,
+        "overallHitRate": 47.2,
+        "percentile": 61,
+        "totalCalls": 107
+      },
+      {
+        "firm": "B. Riley Securities",
+        "hitRate": 47.0,
+        "overallHitRate": 50.4,
+        "percentile": 31,
+        "totalCalls": 151
+      }
+    ],
+    "factorValues": {
+      "roa": 0.4,
+      "grossProfit": 3.5,
+      "operatingCashFlow": 6.6,
+      "freeCashFlow": 6.6,
+      "volatility": 42.8,
+      "assetGrowth": -24.0
+    },
+    "epsSurprisePct": 22.2,
+    "beatStreak": 1,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 56,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "PDFS": {
     "isGolden": false,
     "avgPriceTarget": 48.0,
@@ -159328,75 +159321,6 @@
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
-  "THFF": {
-    "isGolden": false,
-    "avgPriceTarget": 50.0,
-    "upside": -33,
-    "recentRatings": "\u25fe 2026-05-05: Keefe, Bruyette & Woods \u2192 Market Perform\n\u25fe 2025-10-30: Keefe, Bruyette & Woods \u2192 Market Perform\n\u25fe 2025-07-23: Keefe, Bruyette & Woods \u2192 Market Perform\n\u2b07\ufe0f 2025-07-08: Raymond James \u2192 Market Perform\n\u2b06\ufe0f 2025-02-24: Janney Montgomery Scott \u2192 Buy",
-    "analystPriceTargets": "2022-05-02|Raymond James|50|42.62\n2022-04-12|Raymond James|49|42.65",
-    "evEbitda": 14.3,
-    "forwardPe": 10.5,
-    "sectorPe": 9.7,
-    "pegRatio": 3.64,
-    "epsGrowth": 2.9,
-    "revenueGrowth": 4.2,
-    "piotroskiScore": 8,
-    "altmanZ": 0.62,
-    "rsi": 72.4,
-    "sma50": 67.83,
-    "sma200": 62.15,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 18,
-    "longTermScore": 43.0,
-    "fairValue": {
-      "low": 64.4,
-      "mid": 69.17,
-      "high": 82.07,
-      "upsidePct": -7.7,
-      "verdict": "Fair Value",
-      "basis": "industry",
-      "nMethods": 3
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": [
-      {
-        "firm": "Keefe, Bruyette & Woods",
-        "hitRate": 53.7,
-        "overallHitRate": 55.3,
-        "percentile": 72,
-        "totalCalls": 1643
-      },
-      {
-        "firm": "Raymond James",
-        "hitRate": 51.0,
-        "overallHitRate": 50.7,
-        "percentile": 56,
-        "totalCalls": 1505
-      },
-      {
-        "firm": "Janney Montgomery Scott",
-        "hitRate": 55.2,
-        "overallHitRate": 51.9,
-        "percentile": 77,
-        "totalCalls": 281
-      }
-    ],
-    "factorValues": {
-      "roa": 1.4,
-      "grossProfit": 4.4,
-      "operatingCashFlow": 1.1,
-      "freeCashFlow": 1.1,
-      "volatility": 23.9,
-      "assetGrowth": 3.5
-    },
-    "epsSurprisePct": 1.8,
-    "beatStreak": 6,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 58,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "TSBK": {
     "isGolden": false,
     "avgPriceTarget": null,
@@ -159720,75 +159644,6 @@
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
     "catalystScore": 34,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "MRCC": {
-    "isGolden": false,
-    "avgPriceTarget": 8.0,
-    "upside": 57,
-    "recentRatings": "\u25fe 2025-03-04: Oppenheimer \u2192 Perform\n\u25fe 2024-03-13: Ladenburg Thalmann \u2192 Buy\n\u25fe 2023-08-11: B. Riley Securities \u2192 Neutral\n\u2b07\ufe0f 2022-08-08: Oppenheimer \u2192 Perform\n\u2b06\ufe0f 2021-11-04: B. Riley Securities \u2192 Buy",
-    "analystPriceTargets": "2025-03-04|Oppenheimer|8|8.14",
-    "evEbitda": 27.3,
-    "forwardPe": 39.1,
-    "sectorPe": 9.7,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": 6.1,
-    "piotroskiScore": 3,
-    "altmanZ": 0.49,
-    "rsi": 52.9,
-    "sma50": 5.0,
-    "sma200": 6.28,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 20.0,
-    "fairValue": {
-      "low": 2.15,
-      "mid": 3.23,
-      "high": 4.31,
-      "upsidePct": -36.4,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": [
-      {
-        "firm": "Oppenheimer",
-        "hitRate": 54.3,
-        "overallHitRate": 48.8,
-        "percentile": 73,
-        "totalCalls": 186
-      },
-      {
-        "firm": "Ladenburg Thalmann",
-        "hitRate": 51.4,
-        "overallHitRate": 47.2,
-        "percentile": 61,
-        "totalCalls": 107
-      },
-      {
-        "firm": "B. Riley Securities",
-        "hitRate": 47.0,
-        "overallHitRate": 50.4,
-        "percentile": 31,
-        "totalCalls": 151
-      }
-    ],
-    "factorValues": {
-      "roa": 0.4,
-      "grossProfit": 3.5,
-      "operatingCashFlow": 6.6,
-      "freeCashFlow": 6.6,
-      "volatility": 44.5,
-      "assetGrowth": -24.0
-    },
-    "epsSurprisePct": 22.2,
-    "beatStreak": 1,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 57,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -161053,9 +160908,9 @@
     },
     "epsSurprisePct": 6.9,
     "beatStreak": 20,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": 0.0,
-    "catalystScore": 63,
+    "netUpgrades180d": -1,
+    "netUpgrades180dNorm": -0.2,
+    "catalystScore": 52,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -161693,6 +161548,75 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "THFF": {
+    "isGolden": false,
+    "avgPriceTarget": 50.0,
+    "upside": -33,
+    "recentRatings": "\u25fe 2026-05-05: Keefe, Bruyette & Woods \u2192 Market Perform\n\u25fe 2025-10-30: Keefe, Bruyette & Woods \u2192 Market Perform\n\u25fe 2025-07-23: Keefe, Bruyette & Woods \u2192 Market Perform\n\u2b07\ufe0f 2025-07-08: Raymond James \u2192 Market Perform\n\u2b06\ufe0f 2025-02-24: Janney Montgomery Scott \u2192 Buy",
+    "analystPriceTargets": "2022-05-02|Raymond James|50|42.62\n2022-04-12|Raymond James|49|42.65",
+    "evEbitda": 14.3,
+    "forwardPe": 10.5,
+    "sectorPe": 9.7,
+    "pegRatio": 3.64,
+    "epsGrowth": 2.9,
+    "revenueGrowth": 4.2,
+    "piotroskiScore": 8,
+    "altmanZ": 0.62,
+    "rsi": 72.4,
+    "sma50": 67.83,
+    "sma200": 62.15,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 18,
+    "longTermScore": 43.0,
+    "fairValue": {
+      "low": 64.4,
+      "mid": 69.17,
+      "high": 82.07,
+      "upsidePct": -7.7,
+      "verdict": "Fair Value",
+      "basis": "industry",
+      "nMethods": 3
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": [
+      {
+        "firm": "Keefe, Bruyette & Woods",
+        "hitRate": 53.7,
+        "overallHitRate": 55.3,
+        "percentile": 72,
+        "totalCalls": 1643
+      },
+      {
+        "firm": "Raymond James",
+        "hitRate": 51.0,
+        "overallHitRate": 50.7,
+        "percentile": 56,
+        "totalCalls": 1505
+      },
+      {
+        "firm": "Janney Montgomery Scott",
+        "hitRate": 55.2,
+        "overallHitRate": 51.9,
+        "percentile": 77,
+        "totalCalls": 281
+      }
+    ],
+    "factorValues": {
+      "roa": 1.4,
+      "grossProfit": 4.4,
+      "operatingCashFlow": 1.1,
+      "freeCashFlow": 1.1,
+      "volatility": 23.9,
+      "assetGrowth": 3.5
+    },
+    "epsSurprisePct": 1.8,
+    "beatStreak": 6,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 58,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "TSEM": {
     "isGolden": false,
     "avgPriceTarget": 257.33,
@@ -161867,7 +161791,7 @@
       "grossProfit": 25.9,
       "operatingCashFlow": -7.1,
       "freeCashFlow": -7.9,
-      "volatility": 12.4,
+      "volatility": 12.5,
       "assetGrowth": 4.2
     },
     "epsSurprisePct": null,
@@ -171755,9 +171679,9 @@
     },
     "epsSurprisePct": 8.0,
     "beatStreak": 3,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": 0.0,
-    "catalystScore": 56,
+    "netUpgrades180d": -1,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 39,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -172752,7 +172676,7 @@
     "beatStreak": 0,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 13,
+    "catalystScore": 14,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -173074,82 +172998,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 61,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "LIF": {
-    "isGolden": false,
-    "avgPriceTarget": 62.44,
-    "upside": 38,
-    "recentRatings": "\u25fe 2026-05-13: DA Davidson \u2192 Neutral\n\u25fe 2026-05-12: UBS \u2192 Buy\n\u25fe 2026-05-12: Evercore ISI Group \u2192 Outperform\n\u25fe 2026-04-09: Citigroup \u2192 Buy\n\u2b07\ufe0f 2026-03-19: DA Davidson \u2192 Neutral",
-    "analystPriceTargets": "2026-05-12|UBS|64|40.02\n2026-05-12|Evercore ISI|68|40.41\n2026-05-12|Canaccord Genuity|72|43.28\n2026-04-28|Macquarie|32.2|43.89\n2026-03-03|Canaccord Genuity|94|53.79\n2026-01-27|Stifel Nicolaus|76|65.98\n2025-12-11|D.A. Davidson|94|69.06\n2025-12-09|Stifel Nicolaus|92|73.6511\n2025-09-19|UBS|120|103.08\n2025-07-02|Canaccord Genuity|75|63.92",
-    "evEbitda": 96.8,
-    "forwardPe": 20.6,
-    "sectorPe": 17.2,
-    "pegRatio": 0.35,
-    "epsGrowth": 58.9,
-    "revenueGrowth": 3.6,
-    "piotroskiScore": 6,
-    "altmanZ": 8.31,
-    "rsi": 53.6,
-    "sma50": 43.25,
-    "sma200": 64.63,
-    "trendSignal": null,
-    "valueScore": 21,
-    "longTermScore": 35.0,
-    "fairValue": {
-      "low": 12.6,
-      "mid": 16.9,
-      "high": 21.2,
-      "upsidePct": -62.7,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 50.7,
-    "coveringAnalysts": [
-      {
-        "firm": "DA Davidson",
-        "hitRate": 49.7,
-        "overallHitRate": 49.4,
-        "percentile": 41,
-        "totalCalls": 332
-      },
-      {
-        "firm": "UBS",
-        "hitRate": 51.3,
-        "overallHitRate": 50.8,
-        "percentile": 63,
-        "totalCalls": 394
-      },
-      {
-        "firm": "Evercore ISI Group",
-        "hitRate": 50.0,
-        "overallHitRate": 53.3,
-        "percentile": 49,
-        "totalCalls": 262
-      },
-      {
-        "firm": "Citigroup",
-        "hitRate": 47.8,
-        "overallHitRate": 50.7,
-        "percentile": 26,
-        "totalCalls": 619
-      }
-    ],
-    "factorValues": {
-      "roa": 14.3,
-      "grossProfit": 39.2,
-      "operatingCashFlow": 9.0,
-      "freeCashFlow": 8.3,
-      "volatility": 66.7,
-      "assetGrowth": 128.6
-    },
-    "epsSurprisePct": 1432.3,
-    "beatStreak": 2,
-    "netUpgrades180d": -2,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 46,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -173866,7 +173714,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 33,
+    "catalystScore": 32,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -175968,6 +175816,82 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 21,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "LIF": {
+    "isGolden": false,
+    "avgPriceTarget": 62.44,
+    "upside": 38,
+    "recentRatings": "\u25fe 2026-05-13: DA Davidson \u2192 Neutral\n\u25fe 2026-05-12: UBS \u2192 Buy\n\u25fe 2026-05-12: Evercore ISI Group \u2192 Outperform\n\u25fe 2026-04-09: Citigroup \u2192 Buy\n\u2b07\ufe0f 2026-03-19: DA Davidson \u2192 Neutral",
+    "analystPriceTargets": "2026-05-12|UBS|64|40.02\n2026-05-12|Evercore ISI|68|40.41\n2026-05-12|Canaccord Genuity|72|43.28\n2026-04-28|Macquarie|32.2|43.89\n2026-03-03|Canaccord Genuity|94|53.79\n2026-01-27|Stifel Nicolaus|76|65.98\n2025-12-11|D.A. Davidson|94|69.06\n2025-12-09|Stifel Nicolaus|92|73.6511\n2025-09-19|UBS|120|103.08\n2025-07-02|Canaccord Genuity|75|63.92",
+    "evEbitda": 96.8,
+    "forwardPe": 20.6,
+    "sectorPe": 17.2,
+    "pegRatio": 0.35,
+    "epsGrowth": 58.9,
+    "revenueGrowth": 3.6,
+    "piotroskiScore": 6,
+    "altmanZ": 8.31,
+    "rsi": 53.6,
+    "sma50": 43.25,
+    "sma200": 64.63,
+    "trendSignal": null,
+    "valueScore": 21,
+    "longTermScore": 35.0,
+    "fairValue": {
+      "low": 12.6,
+      "mid": 16.9,
+      "high": 21.2,
+      "upsidePct": -62.7,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 50.7,
+    "coveringAnalysts": [
+      {
+        "firm": "DA Davidson",
+        "hitRate": 49.7,
+        "overallHitRate": 49.4,
+        "percentile": 41,
+        "totalCalls": 332
+      },
+      {
+        "firm": "UBS",
+        "hitRate": 51.3,
+        "overallHitRate": 50.8,
+        "percentile": 63,
+        "totalCalls": 394
+      },
+      {
+        "firm": "Evercore ISI Group",
+        "hitRate": 50.0,
+        "overallHitRate": 53.3,
+        "percentile": 49,
+        "totalCalls": 262
+      },
+      {
+        "firm": "Citigroup",
+        "hitRate": 47.8,
+        "overallHitRate": 50.7,
+        "percentile": 26,
+        "totalCalls": 619
+      }
+    ],
+    "factorValues": {
+      "roa": 14.3,
+      "grossProfit": 39.2,
+      "operatingCashFlow": 9.0,
+      "freeCashFlow": 8.3,
+      "volatility": 66.7,
+      "assetGrowth": 128.6
+    },
+    "epsSurprisePct": 1432.3,
+    "beatStreak": 2,
+    "netUpgrades180d": -2,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 46,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -179364,9 +179288,9 @@
     },
     "epsSurprisePct": -3.9,
     "beatStreak": 0,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 19,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 32,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -179560,75 +179484,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 46,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "GHM": {
-    "isGolden": false,
-    "avgPriceTarget": 110.5,
-    "upside": 6,
-    "recentRatings": "\u25fe 2026-06-09: Oppenheimer \u2192 Outperform\n\u25fe 2022-02-08: Maxim Group \u2192 Buy\n\u2b07\ufe0f 2022-02-08: Colliers Securities \u2192 Neutral\n\u25fe 2019-04-18: Maxim Group \u2192 Buy\n\u2b07\ufe0f 2013-02-04: Roth Capital \u2192 Neutral",
-    "analystPriceTargets": "2026-06-09|Northland Securities|111|103.07\n2026-06-09|Oppenheimer|110|95.34\n2026-01-27|Northland Securities|80|74.98\n2025-06-23|Northland Securities|55|48.4",
-    "evEbitda": 83.1,
-    "forwardPe": 53.2,
-    "sectorPe": 15.6,
-    "pegRatio": 0.91,
-    "epsGrowth": 58.7,
-    "revenueGrowth": 10.9,
-    "piotroskiScore": 4,
-    "altmanZ": 4.43,
-    "rsi": 55.7,
-    "sma50": 96.38,
-    "sma200": 74.07,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 31,
-    "longTermScore": 53.0,
-    "fairValue": {
-      "low": 33.56,
-      "mid": 40.07,
-      "high": 53.37,
-      "upsidePct": -61.4,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 48.5,
-    "coveringAnalysts": [
-      {
-        "firm": "Oppenheimer",
-        "hitRate": 48.2,
-        "overallHitRate": 48.8,
-        "percentile": 51,
-        "totalCalls": 197
-      },
-      {
-        "firm": "Maxim Group",
-        "hitRate": 38.1,
-        "overallHitRate": 46.1,
-        "percentile": 12,
-        "totalCalls": 42
-      },
-      {
-        "firm": "Roth Capital",
-        "hitRate": 50.0,
-        "overallHitRate": 48.6,
-        "percentile": 64,
-        "totalCalls": 66
-      }
-    ],
-    "factorValues": {
-      "roa": 3.8,
-      "grossProfit": 17.8,
-      "operatingCashFlow": 4.9,
-      "freeCashFlow": -0.0,
-      "volatility": 53.7,
-      "assetGrowth": 22.5
-    },
-    "epsSurprisePct": -40.0,
-    "beatStreak": 0,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 27,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -180612,7 +180467,7 @@
     "beatStreak": 6,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
-    "catalystScore": 69,
+    "catalystScore": 68,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -180755,11 +180610,11 @@
     },
     "epsSurprisePct": 1.1,
     "beatStreak": 2,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 67,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 50,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "STM": {
     "isGolden": false,
@@ -181092,9 +180947,9 @@
     },
     "epsSurprisePct": 10.6,
     "beatStreak": 5,
-    "netUpgrades180d": 2,
+    "netUpgrades180d": 1,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 79,
+    "catalystScore": 77,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -182423,6 +182278,75 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 16,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "GHM": {
+    "isGolden": false,
+    "avgPriceTarget": 110.5,
+    "upside": 6,
+    "recentRatings": "\u25fe 2026-06-09: Oppenheimer \u2192 Outperform\n\u25fe 2022-02-08: Maxim Group \u2192 Buy\n\u2b07\ufe0f 2022-02-08: Colliers Securities \u2192 Neutral\n\u25fe 2019-04-18: Maxim Group \u2192 Buy\n\u2b07\ufe0f 2013-02-04: Roth Capital \u2192 Neutral",
+    "analystPriceTargets": "2026-06-09|Northland Securities|111|103.07\n2026-06-09|Oppenheimer|110|95.34\n2026-01-27|Northland Securities|80|74.98\n2025-06-23|Northland Securities|55|48.4",
+    "evEbitda": 83.1,
+    "forwardPe": 53.2,
+    "sectorPe": 15.6,
+    "pegRatio": 0.91,
+    "epsGrowth": 58.7,
+    "revenueGrowth": 10.9,
+    "piotroskiScore": 4,
+    "altmanZ": 4.43,
+    "rsi": 55.7,
+    "sma50": 96.38,
+    "sma200": 74.07,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 31,
+    "longTermScore": 53.0,
+    "fairValue": {
+      "low": 33.56,
+      "mid": 40.07,
+      "high": 53.37,
+      "upsidePct": -61.4,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 48.5,
+    "coveringAnalysts": [
+      {
+        "firm": "Oppenheimer",
+        "hitRate": 48.2,
+        "overallHitRate": 48.8,
+        "percentile": 51,
+        "totalCalls": 197
+      },
+      {
+        "firm": "Maxim Group",
+        "hitRate": 38.1,
+        "overallHitRate": 46.1,
+        "percentile": 12,
+        "totalCalls": 42
+      },
+      {
+        "firm": "Roth Capital",
+        "hitRate": 50.0,
+        "overallHitRate": 48.6,
+        "percentile": 64,
+        "totalCalls": 66
+      }
+    ],
+    "factorValues": {
+      "roa": 3.8,
+      "grossProfit": 17.8,
+      "operatingCashFlow": 4.9,
+      "freeCashFlow": -0.0,
+      "volatility": 53.7,
+      "assetGrowth": 22.5
+    },
+    "epsSurprisePct": -40.0,
+    "beatStreak": 0,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 27,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -184962,7 +184886,7 @@
     },
     "epsSurprisePct": 4.7,
     "beatStreak": 3,
-    "netUpgrades180d": -3,
+    "netUpgrades180d": -2,
     "netUpgrades180dNorm": -1.0,
     "catalystScore": 35,
     "catalystTag": false,
@@ -185451,53 +185375,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 49,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "NAII": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": null,
-    "sectorPe": 12.4,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": null,
-    "piotroskiScore": 3,
-    "altmanZ": 1.63,
-    "rsi": 35.2,
-    "sma50": 2.64,
-    "sma200": 3.05,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 15.0,
-    "fairValue": {
-      "low": 12.32,
-      "mid": 12.37,
-      "high": 12.43,
-      "upsidePct": 402.8,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 52.5,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": -8.0,
-      "grossProfit": 7.2,
-      "operatingCashFlow": 4.1,
-      "freeCashFlow": 1.1,
-      "volatility": 32.7,
-      "assetGrowth": -1.8
-    },
-    "epsSurprisePct": null,
-    "beatStreak": null,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": null,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -187962,6 +187839,53 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "NAII": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": null,
+    "sectorPe": 12.4,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": null,
+    "piotroskiScore": 3,
+    "altmanZ": 1.63,
+    "rsi": 35.2,
+    "sma50": 2.64,
+    "sma200": 3.05,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 15.0,
+    "fairValue": {
+      "low": 12.32,
+      "mid": 12.37,
+      "high": 12.43,
+      "upsidePct": 402.8,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 52.5,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": -8.0,
+      "grossProfit": 7.2,
+      "operatingCashFlow": 4.1,
+      "freeCashFlow": 1.1,
+      "volatility": 32.7,
+      "assetGrowth": -1.8
+    },
+    "epsSurprisePct": null,
+    "beatStreak": null,
+    "netUpgrades180d": null,
+    "netUpgrades180dNorm": null,
+    "catalystScore": null,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "TWO": {
     "isGolden": false,
     "avgPriceTarget": 13.5,
@@ -190196,82 +190120,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "HSBC": {
-    "isGolden": false,
-    "avgPriceTarget": 52.0,
-    "upside": -44,
-    "recentRatings": "\u2b06\ufe0f 2025-12-17: Keefe, Bruyette & Woods \u2192 Outperform\n\u2b06\ufe0f 2025-12-10: B of A Securities \u2192 Buy\n\u2b07\ufe0f 2025-10-10: Jefferies \u2192 Hold\n\u2b06\ufe0f 2025-03-04: Barclays \u2192 Overweight\n\u2b07\ufe0f 2024-03-27: Barclays \u2192 Equal Weight",
-    "analystPriceTargets": "2024-10-29|CFRA|52|46.44",
-    "evEbitda": 16.5,
-    "forwardPe": 11.2,
-    "sectorPe": 9.7,
-    "pegRatio": 1.17,
-    "epsGrowth": 9.6,
-    "revenueGrowth": 3.7,
-    "piotroskiScore": 6,
-    "altmanZ": 0.35,
-    "rsi": 53.6,
-    "sma50": 90.73,
-    "sma200": 80.15,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 9,
-    "longTermScore": 50.0,
-    "fairValue": {
-      "low": 74.72,
-      "mid": 98.23,
-      "high": 102.58,
-      "upsidePct": 6.0,
-      "verdict": "Fair Value",
-      "basis": "industry",
-      "nMethods": 3
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": [
-      {
-        "firm": "Keefe, Bruyette & Woods",
-        "hitRate": 53.7,
-        "overallHitRate": 55.3,
-        "percentile": 72,
-        "totalCalls": 1643
-      },
-      {
-        "firm": "B of A Securities",
-        "hitRate": 47.5,
-        "overallHitRate": 50.4,
-        "percentile": 32,
-        "totalCalls": 959
-      },
-      {
-        "firm": "Jefferies",
-        "hitRate": 59.3,
-        "overallHitRate": 51.9,
-        "percentile": 94,
-        "totalCalls": 322
-      },
-      {
-        "firm": "Barclays",
-        "hitRate": 52.5,
-        "overallHitRate": 49.4,
-        "percentile": 68,
-        "totalCalls": 509
-      }
-    ],
-    "factorValues": {
-      "roa": 0.7,
-      "grossProfit": 2.5,
-      "operatingCashFlow": 0.3,
-      "freeCashFlow": 0.3,
-      "volatility": 32.4,
-      "assetGrowth": 7.2
-    },
-    "epsSurprisePct": 0.9,
-    "beatStreak": 9,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 74,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
-  },
   "IBKR": {
     "isGolden": false,
     "avgPriceTarget": 87.67,
@@ -192094,7 +191942,7 @@
     "beatStreak": 11,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 81,
+    "catalystScore": 80,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -192646,7 +192494,7 @@
       "grossProfit": 45.8,
       "operatingCashFlow": 1.4,
       "freeCashFlow": -3.2,
-      "volatility": 83.9,
+      "volatility": 83.5,
       "assetGrowth": -3.7
     },
     "epsSurprisePct": 7.7,
@@ -192884,6 +192732,82 @@
     "catalystScore": 35,
     "catalystTag": false,
     "catalystLabel": null
+  },
+  "HSBC": {
+    "isGolden": false,
+    "avgPriceTarget": 52.0,
+    "upside": -44,
+    "recentRatings": "\u2b06\ufe0f 2025-12-17: Keefe, Bruyette & Woods \u2192 Outperform\n\u2b06\ufe0f 2025-12-10: B of A Securities \u2192 Buy\n\u2b07\ufe0f 2025-10-10: Jefferies \u2192 Hold\n\u2b06\ufe0f 2025-03-04: Barclays \u2192 Overweight\n\u2b07\ufe0f 2024-03-27: Barclays \u2192 Equal Weight",
+    "analystPriceTargets": "2024-10-29|CFRA|52|46.44",
+    "evEbitda": 16.5,
+    "forwardPe": 11.2,
+    "sectorPe": 9.7,
+    "pegRatio": 1.17,
+    "epsGrowth": 9.6,
+    "revenueGrowth": 3.7,
+    "piotroskiScore": 6,
+    "altmanZ": 0.35,
+    "rsi": 53.6,
+    "sma50": 90.73,
+    "sma200": 80.15,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 9,
+    "longTermScore": 50.0,
+    "fairValue": {
+      "low": 74.72,
+      "mid": 98.23,
+      "high": 102.58,
+      "upsidePct": 6.0,
+      "verdict": "Fair Value",
+      "basis": "industry",
+      "nMethods": 3
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": [
+      {
+        "firm": "Keefe, Bruyette & Woods",
+        "hitRate": 53.7,
+        "overallHitRate": 55.3,
+        "percentile": 72,
+        "totalCalls": 1643
+      },
+      {
+        "firm": "B of A Securities",
+        "hitRate": 47.5,
+        "overallHitRate": 50.4,
+        "percentile": 32,
+        "totalCalls": 959
+      },
+      {
+        "firm": "Jefferies",
+        "hitRate": 59.3,
+        "overallHitRate": 51.9,
+        "percentile": 94,
+        "totalCalls": 322
+      },
+      {
+        "firm": "Barclays",
+        "hitRate": 52.5,
+        "overallHitRate": 49.4,
+        "percentile": 68,
+        "totalCalls": 509
+      }
+    ],
+    "factorValues": {
+      "roa": 0.7,
+      "grossProfit": 2.5,
+      "operatingCashFlow": 0.3,
+      "freeCashFlow": 0.3,
+      "volatility": 32.4,
+      "assetGrowth": 7.2
+    },
+    "epsSurprisePct": 0.9,
+    "beatStreak": 9,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 74,
+    "catalystTag": true,
+    "catalystLabel": "Catalyst"
   },
   "INDB": {
     "isGolden": false,
@@ -194701,89 +194625,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "ASGN": {
-    "isGolden": false,
-    "avgPriceTarget": 37.6,
-    "upside": 79,
-    "recentRatings": "\u25fe 2026-04-23: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-04-23: UBS \u2192 Sell\n\u2b07\ufe0f 2026-04-23: Truist Securities \u2192 Hold\n\u2b07\ufe0f 2026-04-23: BMO Capital \u2192 Market Perform\n\u25fe 2026-04-23: Baird \u2192 Neutral",
-    "analystPriceTargets": "2026-04-23|UBS|35|24.515\n2026-04-23|Robert W. Baird|38|40.43\n2026-04-23|BMO Capital|33|40.43\n2026-04-23|Truist Financial|33|40.43\n2026-02-06|BMO Capital|65|53.07\n2026-02-05|Robert W. Baird|62|53.28\n2026-01-27|Truist Financial|60|50.385\n2026-01-21|Wells Fargo|49|48.58\n2025-12-03|BMO Capital|57|45.5\n2025-11-21|Truist Financial|50|40.01",
-    "evEbitda": 4.2,
-    "forwardPe": 3.6,
-    "sectorPe": 17.2,
-    "pegRatio": 0.21,
-    "epsGrowth": 16.9,
-    "revenueGrowth": 4.6,
-    "piotroskiScore": 5,
-    "altmanZ": 1.99,
-    "rsi": 34.8,
-    "sma50": 25.7,
-    "sma200": 41.08,
-    "trendSignal": null,
-    "valueScore": 55,
-    "longTermScore": 35.0,
-    "fairValue": {
-      "low": 35.39,
-      "mid": 39.51,
-      "high": 48.53,
-      "upsidePct": 88.5,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 4
-    },
-    "sectorAnalystAccuracy": 50.7,
-    "coveringAnalysts": [
-      {
-        "firm": "Wells Fargo",
-        "hitRate": 46.8,
-        "overallHitRate": 48.4,
-        "percentile": 19,
-        "totalCalls": 380
-      },
-      {
-        "firm": "UBS",
-        "hitRate": 51.3,
-        "overallHitRate": 50.8,
-        "percentile": 63,
-        "totalCalls": 394
-      },
-      {
-        "firm": "Truist Securities",
-        "hitRate": 55.7,
-        "overallHitRate": 57.7,
-        "percentile": 83,
-        "totalCalls": 61
-      },
-      {
-        "firm": "BMO Capital",
-        "hitRate": 51.1,
-        "overallHitRate": 50.6,
-        "percentile": 60,
-        "totalCalls": 227
-      },
-      {
-        "firm": "Baird",
-        "hitRate": 51.8,
-        "overallHitRate": 51.0,
-        "percentile": 69,
-        "totalCalls": 392
-      }
-    ],
-    "factorValues": {
-      "roa": 3.1,
-      "grossProfit": 30.6,
-      "operatingCashFlow": 8.9,
-      "freeCashFlow": 7.8,
-      "volatility": 120.7,
-      "assetGrowth": 7.5
-    },
-    "epsSurprisePct": -29.6,
-    "beatStreak": 0,
-    "netUpgrades180d": -2,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 15,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "AX": {
     "isGolden": false,
     "avgPriceTarget": 111.0,
@@ -195491,7 +195332,7 @@
     "beatStreak": 0,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 27,
+    "catalystScore": 26,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -195967,7 +195808,7 @@
     "beatStreak": 14,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 80,
+    "catalystScore": 79,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -196041,9 +195882,9 @@
     },
     "epsSurprisePct": -55.4,
     "beatStreak": 0,
-    "netUpgrades180d": -3,
+    "netUpgrades180d": -2,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 13,
+    "catalystScore": 14,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -197837,6 +197678,89 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "ASGN": {
+    "isGolden": false,
+    "avgPriceTarget": 37.6,
+    "upside": 79,
+    "recentRatings": "\u25fe 2026-04-23: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-04-23: UBS \u2192 Sell\n\u2b07\ufe0f 2026-04-23: Truist Securities \u2192 Hold\n\u2b07\ufe0f 2026-04-23: BMO Capital \u2192 Market Perform\n\u25fe 2026-04-23: Baird \u2192 Neutral",
+    "analystPriceTargets": "2026-04-23|UBS|35|24.515\n2026-04-23|Robert W. Baird|38|40.43\n2026-04-23|BMO Capital|33|40.43\n2026-04-23|Truist Financial|33|40.43\n2026-02-06|BMO Capital|65|53.07\n2026-02-05|Robert W. Baird|62|53.28\n2026-01-27|Truist Financial|60|50.385\n2026-01-21|Wells Fargo|49|48.58\n2025-12-03|BMO Capital|57|45.5\n2025-11-21|Truist Financial|50|40.01",
+    "evEbitda": 4.2,
+    "forwardPe": 3.6,
+    "sectorPe": 17.2,
+    "pegRatio": 0.21,
+    "epsGrowth": 16.9,
+    "revenueGrowth": 4.6,
+    "piotroskiScore": 5,
+    "altmanZ": 1.99,
+    "rsi": 34.8,
+    "sma50": 25.7,
+    "sma200": 41.08,
+    "trendSignal": null,
+    "valueScore": 55,
+    "longTermScore": 35.0,
+    "fairValue": {
+      "low": 35.39,
+      "mid": 39.51,
+      "high": 48.53,
+      "upsidePct": 88.5,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 4
+    },
+    "sectorAnalystAccuracy": 50.7,
+    "coveringAnalysts": [
+      {
+        "firm": "Wells Fargo",
+        "hitRate": 46.8,
+        "overallHitRate": 48.4,
+        "percentile": 19,
+        "totalCalls": 380
+      },
+      {
+        "firm": "UBS",
+        "hitRate": 51.3,
+        "overallHitRate": 50.8,
+        "percentile": 63,
+        "totalCalls": 394
+      },
+      {
+        "firm": "Truist Securities",
+        "hitRate": 55.7,
+        "overallHitRate": 57.7,
+        "percentile": 83,
+        "totalCalls": 61
+      },
+      {
+        "firm": "BMO Capital",
+        "hitRate": 51.1,
+        "overallHitRate": 50.6,
+        "percentile": 60,
+        "totalCalls": 227
+      },
+      {
+        "firm": "Baird",
+        "hitRate": 51.8,
+        "overallHitRate": 51.0,
+        "percentile": 69,
+        "totalCalls": 392
+      }
+    ],
+    "factorValues": {
+      "roa": 3.1,
+      "grossProfit": 30.6,
+      "operatingCashFlow": 8.9,
+      "freeCashFlow": 7.8,
+      "volatility": 120.7,
+      "assetGrowth": 7.5
+    },
+    "epsSurprisePct": -29.6,
+    "beatStreak": 0,
+    "netUpgrades180d": -2,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 15,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "ASH": {
     "isGolden": false,
     "avgPriceTarget": 67.25,
@@ -198254,7 +198178,7 @@
     "beatStreak": 0,
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 13,
+    "catalystScore": 12,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -199002,7 +198926,7 @@
     "beatStreak": 2,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 68,
+    "catalystScore": 69,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -199515,9 +199439,9 @@
     },
     "epsSurprisePct": 34.8,
     "beatStreak": 2,
-    "netUpgrades180d": 6,
+    "netUpgrades180d": 5,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 81,
+    "catalystScore": 80,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
   },
@@ -201214,9 +201138,9 @@
     },
     "epsSurprisePct": -47.5,
     "beatStreak": 0,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -0.33,
-    "catalystScore": 21,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 50,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -201747,75 +201671,6 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": null,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "SSYS": {
-    "isGolden": false,
-    "avgPriceTarget": 12.5,
-    "upside": 40,
-    "recentRatings": "\u25fe 2026-03-06: Craig-Hallum \u2192 Buy\n\u25fe 2026-03-05: Needham \u2192 Buy\n\u25fe 2025-11-14: Cantor Fitzgerald \u2192 Overweight\n\u25fe 2025-11-14: Needham \u2192 Buy\n\u25fe 2025-08-13: Needham \u2192 Buy",
-    "analystPriceTargets": "2025-11-14|Cantor Fitzgerald|13.5|9.14\n2025-03-04|Cantor Fitzgerald|15|10.61\n2024-09-16|Loop Capital Markets|11|7.58\n2024-09-05|Loop Capital Markets|7|6.66\n2024-07-01|Craig-Hallum|14|8.314\n2024-05-30|CFRA|12|9.08\n2024-05-30|Needham|12|9.44",
-    "evEbitda": -9.4,
-    "forwardPe": 26.2,
-    "sectorPe": 17.2,
-    "pegRatio": 0.66,
-    "epsGrowth": 39.9,
-    "revenueGrowth": 3.7,
-    "piotroskiScore": 5,
-    "altmanZ": 0.08,
-    "rsi": 47.7,
-    "sma50": 8.85,
-    "sma200": 9.64,
-    "trendSignal": null,
-    "valueScore": 11,
-    "longTermScore": 30.0,
-    "fairValue": {
-      "low": 10.82,
-      "mid": 11.95,
-      "high": 13.07,
-      "upsidePct": 34.0,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 50.7,
-    "coveringAnalysts": [
-      {
-        "firm": "Craig-Hallum",
-        "hitRate": 57.4,
-        "overallHitRate": 55.8,
-        "percentile": 87,
-        "totalCalls": 420
-      },
-      {
-        "firm": "Needham",
-        "hitRate": 51.9,
-        "overallHitRate": 51.2,
-        "percentile": 70,
-        "totalCalls": 584
-      },
-      {
-        "firm": "Cantor Fitzgerald",
-        "hitRate": 51.2,
-        "overallHitRate": 50.4,
-        "percentile": 63,
-        "totalCalls": 43
-      }
-    ],
-    "factorValues": {
-      "roa": -10.7,
-      "grossProfit": 22.0,
-      "operatingCashFlow": 1.2,
-      "freeCashFlow": -1.0,
-      "volatility": 53.5,
-      "assetGrowth": 4.9
-    },
-    "epsSurprisePct": 50.0,
-    "beatStreak": 2,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 65,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -203358,7 +203213,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 52,
+    "catalystScore": 51,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -204117,6 +203972,75 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 62,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "SSYS": {
+    "isGolden": false,
+    "avgPriceTarget": 12.5,
+    "upside": 40,
+    "recentRatings": "\u25fe 2026-03-06: Craig-Hallum \u2192 Buy\n\u25fe 2026-03-05: Needham \u2192 Buy\n\u25fe 2025-11-14: Cantor Fitzgerald \u2192 Overweight\n\u25fe 2025-11-14: Needham \u2192 Buy\n\u25fe 2025-08-13: Needham \u2192 Buy",
+    "analystPriceTargets": "2025-11-14|Cantor Fitzgerald|13.5|9.14\n2025-03-04|Cantor Fitzgerald|15|10.61\n2024-09-16|Loop Capital Markets|11|7.58\n2024-09-05|Loop Capital Markets|7|6.66\n2024-07-01|Craig-Hallum|14|8.314\n2024-05-30|CFRA|12|9.08\n2024-05-30|Needham|12|9.44",
+    "evEbitda": -9.4,
+    "forwardPe": 26.2,
+    "sectorPe": 17.2,
+    "pegRatio": 0.66,
+    "epsGrowth": 39.9,
+    "revenueGrowth": 3.7,
+    "piotroskiScore": 5,
+    "altmanZ": 0.08,
+    "rsi": 47.7,
+    "sma50": 8.85,
+    "sma200": 9.64,
+    "trendSignal": null,
+    "valueScore": 11,
+    "longTermScore": 30.0,
+    "fairValue": {
+      "low": 10.82,
+      "mid": 11.95,
+      "high": 13.07,
+      "upsidePct": 34.0,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 50.7,
+    "coveringAnalysts": [
+      {
+        "firm": "Craig-Hallum",
+        "hitRate": 57.4,
+        "overallHitRate": 55.8,
+        "percentile": 87,
+        "totalCalls": 420
+      },
+      {
+        "firm": "Needham",
+        "hitRate": 51.9,
+        "overallHitRate": 51.2,
+        "percentile": 70,
+        "totalCalls": 584
+      },
+      {
+        "firm": "Cantor Fitzgerald",
+        "hitRate": 51.2,
+        "overallHitRate": 50.4,
+        "percentile": 63,
+        "totalCalls": 43
+      }
+    ],
+    "factorValues": {
+      "roa": -10.7,
+      "grossProfit": 22.0,
+      "operatingCashFlow": 1.2,
+      "freeCashFlow": -1.0,
+      "volatility": 53.5,
+      "assetGrowth": 4.9
+    },
+    "epsSurprisePct": 50.0,
+    "beatStreak": 2,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 65,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -205872,53 +205796,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "CLMT": {
-    "isGolden": false,
-    "avgPriceTarget": 31.0,
-    "upside": -10,
-    "recentRatings": "\u25fe 2026-03-30: HC Wainwright & Co. \u2192 Buy\n\u25fe 2026-03-12: Goldman Sachs \u2192 Buy\n\u25fe 2026-01-30: Goldman Sachs \u2192 Buy\n\u25fe 2025-11-10: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-10-22: Goldman Sachs \u2192 Buy",
-    "analystPriceTargets": "2026-04-24|Goldman Sachs|36|32.78\n2026-02-13|UBS|26|28.51\n2026-01-30|Goldman Sachs|24|22.39\n2025-10-22|Goldman Sachs|20|18.67\n2025-08-12|UBS|13.25|13.88\n2025-03-05|Wells Fargo|28|12.98\n2022-12-14|UBS|15.7|13.48\n2022-04-21|Wells Fargo|29|14.27",
-    "evEbitda": -26.5,
-    "forwardPe": 149.7,
-    "sectorPe": 14.0,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": 4.9,
-    "piotroskiScore": 3,
-    "altmanZ": 1.31,
-    "rsi": 50.8,
-    "sma50": 33.52,
-    "sma200": 24.93,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 12,
-    "longTermScore": 50.0,
-    "fairValue": null,
-    "sectorAnalystAccuracy": 47.9,
-    "coveringAnalysts": [
-      {
-        "firm": "Goldman Sachs",
-        "hitRate": 48.5,
-        "overallHitRate": 50.5,
-        "percentile": 51,
-        "totalCalls": 648
-      }
-    ],
-    "factorValues": {
-      "roa": -8.1,
-      "grossProfit": -0.2,
-      "operatingCashFlow": 4.8,
-      "freeCashFlow": 3.1,
-      "volatility": 47.6,
-      "assetGrowth": -2.4
-    },
-    "epsSurprisePct": -12.3,
-    "beatStreak": 0,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 30,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "CME": {
     "isGolden": false,
     "avgPriceTarget": 320.8,
@@ -207377,7 +207254,7 @@
     "beatStreak": 2,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 79,
+    "catalystScore": 78,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -208187,7 +208064,7 @@
       "grossProfit": 61.2,
       "operatingCashFlow": -7.0,
       "freeCashFlow": -9.4,
-      "volatility": 80.4,
+      "volatility": 81.1,
       "assetGrowth": -2.3
     },
     "epsSurprisePct": 0.0,
@@ -208432,6 +208309,53 @@
     "catalystScore": 81,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
+  },
+  "CLMT": {
+    "isGolden": false,
+    "avgPriceTarget": 31.0,
+    "upside": -10,
+    "recentRatings": "\u25fe 2026-03-30: HC Wainwright & Co. \u2192 Buy\n\u25fe 2026-03-12: Goldman Sachs \u2192 Buy\n\u25fe 2026-01-30: Goldman Sachs \u2192 Buy\n\u25fe 2025-11-10: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-10-22: Goldman Sachs \u2192 Buy",
+    "analystPriceTargets": "2026-04-24|Goldman Sachs|36|32.78\n2026-02-13|UBS|26|28.51\n2026-01-30|Goldman Sachs|24|22.39\n2025-10-22|Goldman Sachs|20|18.67\n2025-08-12|UBS|13.25|13.88\n2025-03-05|Wells Fargo|28|12.98\n2022-12-14|UBS|15.7|13.48\n2022-04-21|Wells Fargo|29|14.27",
+    "evEbitda": -26.5,
+    "forwardPe": 149.7,
+    "sectorPe": 14.0,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": 4.9,
+    "piotroskiScore": 3,
+    "altmanZ": 1.31,
+    "rsi": 50.8,
+    "sma50": 33.52,
+    "sma200": 24.93,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 12,
+    "longTermScore": 50.0,
+    "fairValue": null,
+    "sectorAnalystAccuracy": 47.9,
+    "coveringAnalysts": [
+      {
+        "firm": "Goldman Sachs",
+        "hitRate": 48.5,
+        "overallHitRate": 50.5,
+        "percentile": 51,
+        "totalCalls": 648
+      }
+    ],
+    "factorValues": {
+      "roa": -8.1,
+      "grossProfit": -0.2,
+      "operatingCashFlow": 4.8,
+      "freeCashFlow": 3.1,
+      "volatility": 47.6,
+      "assetGrowth": -2.4
+    },
+    "epsSurprisePct": -12.3,
+    "beatStreak": 0,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 30,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "CLNE": {
     "isGolden": false,
@@ -209050,7 +208974,7 @@
     "beatStreak": 2,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 67,
+    "catalystScore": 66,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -211293,82 +211217,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
     "catalystScore": 38,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "IART": {
-    "isGolden": false,
-    "avgPriceTarget": 12.0,
-    "upside": -32,
-    "recentRatings": "\u2b06\ufe0f 2026-05-28: Citigroup \u2192 Neutral\n\u25fe 2026-05-06: Citigroup \u2192 Sell\n\u25fe 2026-05-06: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-04-15: Truist Securities \u2192 Hold\n\u2b07\ufe0f 2026-04-15: Argus Research \u2192 Hold",
-    "analystPriceTargets": "2026-04-15|Truist Financial|12|11.01\n2025-10-15|Truist Financial|15|14.755\n2024-10-07|BTIG|20|17.43\n2024-07-30|Truist Financial|26|24.59\n2024-07-30|Citigroup|23|25.42\n2024-07-29|BTIG|22|25.42\n2024-07-16|Truist Financial|32|29.84\n2024-05-07|Truist Financial|25|23.14\n2024-05-07|JMP Securities|40|23.14\n2024-05-06|Wells Fargo|25|23.14",
-    "evEbitda": -11.6,
-    "forwardPe": 6.8,
-    "sectorPe": 14.3,
-    "pegRatio": 0.58,
-    "epsGrowth": 11.8,
-    "revenueGrowth": 3.2,
-    "piotroskiScore": 5,
-    "altmanZ": 0.59,
-    "rsi": 68.4,
-    "sma50": 13.34,
-    "sma200": 12.7,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 0,
-    "longTermScore": 45.0,
-    "fairValue": {
-      "low": 56.79,
-      "mid": 64.89,
-      "high": 73.0,
-      "upsidePct": 265.2,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 51.7,
-    "coveringAnalysts": [
-      {
-        "firm": "Citigroup",
-        "hitRate": 50.1,
-        "overallHitRate": 50.7,
-        "percentile": 38,
-        "totalCalls": 671
-      },
-      {
-        "firm": "Wells Fargo",
-        "hitRate": 53.7,
-        "overallHitRate": 48.4,
-        "percentile": 68,
-        "totalCalls": 486
-      },
-      {
-        "firm": "Truist Securities",
-        "hitRate": 56.3,
-        "overallHitRate": 57.7,
-        "percentile": 81,
-        "totalCalls": 103
-      },
-      {
-        "firm": "Argus Research",
-        "hitRate": 45.8,
-        "overallHitRate": 46.8,
-        "percentile": 17,
-        "totalCalls": 190
-      }
-    ],
-    "factorValues": {
-      "roa": -13.9,
-      "grossProfit": 24.5,
-      "operatingCashFlow": 2.0,
-      "freeCashFlow": -0.8,
-      "volatility": 70.6,
-      "assetGrowth": -11.7
-    },
-    "epsSurprisePct": 31.7,
-    "beatStreak": 4,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": 0.0,
-    "catalystScore": 63,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -214089,6 +213937,82 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "IART": {
+    "isGolden": false,
+    "avgPriceTarget": 12.0,
+    "upside": -32,
+    "recentRatings": "\u2b06\ufe0f 2026-05-28: Citigroup \u2192 Neutral\n\u25fe 2026-05-06: Citigroup \u2192 Sell\n\u25fe 2026-05-06: Wells Fargo \u2192 Equal Weight\n\u25fe 2026-04-15: Truist Securities \u2192 Hold\n\u2b07\ufe0f 2026-04-15: Argus Research \u2192 Hold",
+    "analystPriceTargets": "2026-04-15|Truist Financial|12|11.01\n2025-10-15|Truist Financial|15|14.755\n2024-10-07|BTIG|20|17.43\n2024-07-30|Truist Financial|26|24.59\n2024-07-30|Citigroup|23|25.42\n2024-07-29|BTIG|22|25.42\n2024-07-16|Truist Financial|32|29.84\n2024-05-07|Truist Financial|25|23.14\n2024-05-07|JMP Securities|40|23.14\n2024-05-06|Wells Fargo|25|23.14",
+    "evEbitda": -11.6,
+    "forwardPe": 6.8,
+    "sectorPe": 14.3,
+    "pegRatio": 0.58,
+    "epsGrowth": 11.8,
+    "revenueGrowth": 3.2,
+    "piotroskiScore": 5,
+    "altmanZ": 0.59,
+    "rsi": 68.4,
+    "sma50": 13.34,
+    "sma200": 12.7,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 0,
+    "longTermScore": 45.0,
+    "fairValue": {
+      "low": 56.79,
+      "mid": 64.89,
+      "high": 73.0,
+      "upsidePct": 265.2,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 51.7,
+    "coveringAnalysts": [
+      {
+        "firm": "Citigroup",
+        "hitRate": 50.1,
+        "overallHitRate": 50.7,
+        "percentile": 38,
+        "totalCalls": 671
+      },
+      {
+        "firm": "Wells Fargo",
+        "hitRate": 53.7,
+        "overallHitRate": 48.4,
+        "percentile": 68,
+        "totalCalls": 486
+      },
+      {
+        "firm": "Truist Securities",
+        "hitRate": 56.3,
+        "overallHitRate": 57.7,
+        "percentile": 81,
+        "totalCalls": 103
+      },
+      {
+        "firm": "Argus Research",
+        "hitRate": 45.8,
+        "overallHitRate": 46.8,
+        "percentile": 17,
+        "totalCalls": 190
+      }
+    ],
+    "factorValues": {
+      "roa": -13.9,
+      "grossProfit": 24.5,
+      "operatingCashFlow": 2.0,
+      "freeCashFlow": -0.8,
+      "volatility": 70.6,
+      "assetGrowth": -11.7
+    },
+    "epsSurprisePct": 31.7,
+    "beatStreak": 4,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": 0.0,
+    "catalystScore": 63,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "IDR": {
     "isGolden": false,
     "avgPriceTarget": 45.0,
@@ -216485,82 +216409,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "KLC": {
-    "isGolden": false,
-    "avgPriceTarget": 4.6,
-    "upside": 11,
-    "recentRatings": "\u25fe 2026-05-18: Barclays \u2192 Underweight\n\u25fe 2026-05-18: BMO Capital \u2192 Outperform\n\u25fe 2026-05-15: UBS \u2192 Neutral\n\u25fe 2026-05-15: Baird \u2192 Neutral\n\u2b07\ufe0f 2026-03-16: Barclays \u2192 Underweight",
-    "analystPriceTargets": "2026-05-18|BMO Capital|6|4.02\n2026-05-18|Barclays|3|4.02\n2026-05-15|Deutsche Bank|5|3.795\n2026-05-15|UBS|5|3.78\n2026-05-15|Robert W. Baird|4|4.37\n2026-03-13|UBS|3|1.985\n2026-03-13|BMO Capital|4|2.11\n2025-10-15|Goldman Sachs|6|5.88\n2025-10-10|UBS|10|6.19\n2025-05-14|Morgan Stanley|19|13.53",
-    "evEbitda": -9.6,
-    "forwardPe": 6.0,
-    "sectorPe": 12.4,
-    "pegRatio": 0.65,
-    "epsGrowth": 9.2,
-    "revenueGrowth": 3.7,
-    "piotroskiScore": 5,
-    "altmanZ": 0.83,
-    "rsi": 58.4,
-    "sma50": 3.65,
-    "sma200": 4.49,
-    "trendSignal": null,
-    "valueScore": 11,
-    "longTermScore": 30.0,
-    "fairValue": {
-      "low": 6.95,
-      "mid": 9.7,
-      "high": 12.44,
-      "upsidePct": 134.9,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 52.5,
-    "coveringAnalysts": [
-      {
-        "firm": "Barclays",
-        "hitRate": 49.2,
-        "overallHitRate": 49.4,
-        "percentile": 35,
-        "totalCalls": 187
-      },
-      {
-        "firm": "BMO Capital",
-        "hitRate": 50.6,
-        "overallHitRate": 50.6,
-        "percentile": 48,
-        "totalCalls": 247
-      },
-      {
-        "firm": "UBS",
-        "hitRate": 59.0,
-        "overallHitRate": 50.8,
-        "percentile": 88,
-        "totalCalls": 188
-      },
-      {
-        "firm": "Baird",
-        "hitRate": 45.0,
-        "overallHitRate": 51.0,
-        "percentile": 15,
-        "totalCalls": 20
-      }
-    ],
-    "factorValues": {
-      "roa": -12.3,
-      "grossProfit": 12.2,
-      "operatingCashFlow": 5.0,
-      "freeCashFlow": 1.1,
-      "volatility": 72.9,
-      "assetGrowth": -7.4
-    },
-    "epsSurprisePct": 500.0,
-    "beatStreak": 3,
-    "netUpgrades180d": -3,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 47,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "ARL": {
     "isGolden": false,
     "avgPriceTarget": null,
@@ -218079,11 +217927,11 @@
     },
     "epsSurprisePct": 107.2,
     "beatStreak": 5,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 85,
-    "catalystTag": true,
-    "catalystLabel": "Catalyst"
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 74,
+    "catalystTag": false,
+    "catalystLabel": null
   },
   "BKV": {
     "isGolden": false,
@@ -218586,6 +218434,82 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": 0.0,
     "catalystScore": 54,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "KLC": {
+    "isGolden": false,
+    "avgPriceTarget": 4.6,
+    "upside": 11,
+    "recentRatings": "\u25fe 2026-05-18: Barclays \u2192 Underweight\n\u25fe 2026-05-18: BMO Capital \u2192 Outperform\n\u25fe 2026-05-15: UBS \u2192 Neutral\n\u25fe 2026-05-15: Baird \u2192 Neutral\n\u2b07\ufe0f 2026-03-16: Barclays \u2192 Underweight",
+    "analystPriceTargets": "2026-05-18|BMO Capital|6|4.02\n2026-05-18|Barclays|3|4.02\n2026-05-15|Deutsche Bank|5|3.795\n2026-05-15|UBS|5|3.78\n2026-05-15|Robert W. Baird|4|4.37\n2026-03-13|UBS|3|1.985\n2026-03-13|BMO Capital|4|2.11\n2025-10-15|Goldman Sachs|6|5.88\n2025-10-10|UBS|10|6.19\n2025-05-14|Morgan Stanley|19|13.53",
+    "evEbitda": -9.6,
+    "forwardPe": 6.0,
+    "sectorPe": 12.4,
+    "pegRatio": 0.65,
+    "epsGrowth": 9.2,
+    "revenueGrowth": 3.7,
+    "piotroskiScore": 5,
+    "altmanZ": 0.83,
+    "rsi": 58.4,
+    "sma50": 3.65,
+    "sma200": 4.49,
+    "trendSignal": null,
+    "valueScore": 11,
+    "longTermScore": 30.0,
+    "fairValue": {
+      "low": 6.95,
+      "mid": 9.7,
+      "high": 12.44,
+      "upsidePct": 134.9,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 52.5,
+    "coveringAnalysts": [
+      {
+        "firm": "Barclays",
+        "hitRate": 49.2,
+        "overallHitRate": 49.4,
+        "percentile": 35,
+        "totalCalls": 187
+      },
+      {
+        "firm": "BMO Capital",
+        "hitRate": 50.6,
+        "overallHitRate": 50.6,
+        "percentile": 48,
+        "totalCalls": 247
+      },
+      {
+        "firm": "UBS",
+        "hitRate": 59.0,
+        "overallHitRate": 50.8,
+        "percentile": 88,
+        "totalCalls": 188
+      },
+      {
+        "firm": "Baird",
+        "hitRate": 45.0,
+        "overallHitRate": 51.0,
+        "percentile": 15,
+        "totalCalls": 20
+      }
+    ],
+    "factorValues": {
+      "roa": -12.3,
+      "grossProfit": 12.2,
+      "operatingCashFlow": 5.0,
+      "freeCashFlow": 1.1,
+      "volatility": 72.9,
+      "assetGrowth": -7.4
+    },
+    "epsSurprisePct": 500.0,
+    "beatStreak": 3,
+    "netUpgrades180d": -3,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 47,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -219640,7 +219564,7 @@
     "beatStreak": 7,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 83,
+    "catalystScore": 84,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -219707,9 +219631,9 @@
     },
     "epsSurprisePct": 700.0,
     "beatStreak": 1,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -0.2,
-    "catalystScore": 50,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": 0.0,
+    "catalystScore": 61,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -219854,7 +219778,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 59,
+    "catalystScore": 58,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -221935,7 +221859,7 @@
       "grossProfit": 43.5,
       "operatingCashFlow": -8.2,
       "freeCashFlow": -8.5,
-      "volatility": 83.1,
+      "volatility": 83.5,
       "assetGrowth": 4.4
     },
     "epsSurprisePct": -33.3,
@@ -222923,82 +222847,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "WGS": {
-    "isGolden": false,
-    "avgPriceTarget": 96.43,
-    "upside": 61,
-    "recentRatings": "\u25fe 2026-05-05: Canaccord Genuity \u2192 Buy\n\u25fe 2026-05-05: BTIG \u2192 Buy\n\u25fe 2026-05-05: Guggenheim \u2192 Buy\n\u25fe 2026-05-05: Wells Fargo \u2192 Overweight\n\u25fe 2026-04-20: Canaccord Genuity \u2192 Buy",
-    "analystPriceTargets": "2026-05-05|Craig-Hallum|85|35.5899\n2026-05-05|BTIG|90|67.93\n2026-05-05|Guggenheim|70|67.93\n2026-05-05|Canaccord Genuity|75|67.93\n2026-05-05|Wells Fargo|75|67.93\n2026-04-20|Canaccord Genuity|100|67.72\n2026-02-24|BTIG|170|87.08\n2026-02-24|Piper Sandler|130|87.08\n2026-02-23|Jefferies|150|87.08\n2025-12-22|Canaccord Genuity|170|140.44",
-    "evEbitda": -38.2,
-    "forwardPe": 31.6,
-    "sectorPe": 14.3,
-    "pegRatio": 0.13,
-    "epsGrowth": 238.1,
-    "revenueGrowth": 30.3,
-    "piotroskiScore": 8,
-    "altmanZ": 5.67,
-    "rsi": 60.5,
-    "sma50": 54.95,
-    "sma200": 100.05,
-    "trendSignal": null,
-    "valueScore": 25,
-    "longTermScore": 45.0,
-    "fairValue": {
-      "low": 13.07,
-      "mid": 14.58,
-      "high": 16.09,
-      "upsidePct": -75.7,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 51.7,
-    "coveringAnalysts": [
-      {
-        "firm": "Canaccord Genuity",
-        "hitRate": 44.5,
-        "overallHitRate": 50.1,
-        "percentile": 13,
-        "totalCalls": 218
-      },
-      {
-        "firm": "BTIG",
-        "hitRate": 53.9,
-        "overallHitRate": 52.4,
-        "percentile": 69,
-        "totalCalls": 271
-      },
-      {
-        "firm": "Guggenheim",
-        "hitRate": 61.5,
-        "overallHitRate": 54.2,
-        "percentile": 91,
-        "totalCalls": 260
-      },
-      {
-        "firm": "Wells Fargo",
-        "hitRate": 53.7,
-        "overallHitRate": 48.4,
-        "percentile": 68,
-        "totalCalls": 486
-      }
-    ],
-    "factorValues": {
-      "roa": -15.1,
-      "grossProfit": 59.8,
-      "operatingCashFlow": -1.8,
-      "freeCashFlow": -5.7,
-      "volatility": 127.0,
-      "assetGrowth": 13.4
-    },
-    "epsSurprisePct": -366.7,
-    "beatStreak": 0,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 47,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "ARQ": {
     "isGolden": false,
     "avgPriceTarget": 7.5,
@@ -223129,7 +222977,7 @@
       "grossProfit": 12.5,
       "operatingCashFlow": -0.7,
       "freeCashFlow": -0.7,
-      "volatility": 69.1,
+      "volatility": 69.2,
       "assetGrowth": 27.2
     },
     "epsSurprisePct": 564.8,
@@ -224253,7 +224101,7 @@
       "grossProfit": 27.8,
       "operatingCashFlow": -20.4,
       "freeCashFlow": -21.2,
-      "volatility": 2.0,
+      "volatility": 1.8,
       "assetGrowth": -12.9
     },
     "epsSurprisePct": -12.9,
@@ -225523,6 +225371,82 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "WGS": {
+    "isGolden": false,
+    "avgPriceTarget": 96.43,
+    "upside": 61,
+    "recentRatings": "\u25fe 2026-05-05: Canaccord Genuity \u2192 Buy\n\u25fe 2026-05-05: BTIG \u2192 Buy\n\u25fe 2026-05-05: Guggenheim \u2192 Buy\n\u25fe 2026-05-05: Wells Fargo \u2192 Overweight\n\u25fe 2026-04-20: Canaccord Genuity \u2192 Buy",
+    "analystPriceTargets": "2026-05-05|Craig-Hallum|85|35.5899\n2026-05-05|BTIG|90|67.93\n2026-05-05|Guggenheim|70|67.93\n2026-05-05|Canaccord Genuity|75|67.93\n2026-05-05|Wells Fargo|75|67.93\n2026-04-20|Canaccord Genuity|100|67.72\n2026-02-24|BTIG|170|87.08\n2026-02-24|Piper Sandler|130|87.08\n2026-02-23|Jefferies|150|87.08\n2025-12-22|Canaccord Genuity|170|140.44",
+    "evEbitda": -38.2,
+    "forwardPe": 31.6,
+    "sectorPe": 14.3,
+    "pegRatio": 0.13,
+    "epsGrowth": 238.1,
+    "revenueGrowth": 30.3,
+    "piotroskiScore": 8,
+    "altmanZ": 5.67,
+    "rsi": 60.5,
+    "sma50": 54.95,
+    "sma200": 100.05,
+    "trendSignal": null,
+    "valueScore": 25,
+    "longTermScore": 45.0,
+    "fairValue": {
+      "low": 13.07,
+      "mid": 14.58,
+      "high": 16.09,
+      "upsidePct": -75.7,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 51.7,
+    "coveringAnalysts": [
+      {
+        "firm": "Canaccord Genuity",
+        "hitRate": 44.5,
+        "overallHitRate": 50.1,
+        "percentile": 13,
+        "totalCalls": 218
+      },
+      {
+        "firm": "BTIG",
+        "hitRate": 53.9,
+        "overallHitRate": 52.4,
+        "percentile": 69,
+        "totalCalls": 271
+      },
+      {
+        "firm": "Guggenheim",
+        "hitRate": 61.5,
+        "overallHitRate": 54.2,
+        "percentile": 91,
+        "totalCalls": 260
+      },
+      {
+        "firm": "Wells Fargo",
+        "hitRate": 53.7,
+        "overallHitRate": 48.4,
+        "percentile": 68,
+        "totalCalls": 486
+      }
+    ],
+    "factorValues": {
+      "roa": -15.1,
+      "grossProfit": 59.8,
+      "operatingCashFlow": -1.8,
+      "freeCashFlow": -5.7,
+      "volatility": 127.0,
+      "assetGrowth": 13.4
+    },
+    "epsSurprisePct": -366.7,
+    "beatStreak": 0,
+    "netUpgrades180d": 1,
+    "netUpgrades180dNorm": 1.0,
+    "catalystScore": 47,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "WIMI": {
     "isGolden": false,
     "avgPriceTarget": null,
@@ -225739,82 +225663,6 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 12,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "KOS": {
-    "isGolden": false,
-    "avgPriceTarget": 2.63,
-    "upside": -8,
-    "recentRatings": "\u2b07\ufe0f 2026-05-27: Mizuho \u2192 Underperform\n\u25fe 2026-03-25: Johnson Rice \u2192 Buy\n\u25fe 2026-01-30: Goldman Sachs \u2192 Neutral\n\u25fe 2026-01-05: Bernstein \u2192 Market Perform\n\u25fe 2025-12-12: Mizuho \u2192 Neutral",
-    "analystPriceTargets": "2026-05-27|Mizuho Securities|3|2.85\n2026-05-20|Goldman Sachs|2.5|3.18\n2026-05-11|Bernstein|2.4|2.75\n2026-04-09|Goldman Sachs|2.25|2.55\n2025-12-12|Mizuho Securities|1.5|1.005\n2025-12-05|Johnson Rice|3.5|1.07\n2025-09-22|Goldman Sachs|2|1.69\n2024-12-18|Jefferies|5.6|3.17\n2024-10-15|Mizuho Securities|5|4.27\n2022-04-06|Barclays|11|7.74",
-    "evEbitda": 217.1,
-    "forwardPe": 26.7,
-    "sectorPe": 14.0,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": -2.9,
-    "piotroskiScore": 3,
-    "altmanZ": -0.16,
-    "rsi": 48.6,
-    "sma50": 2.88,
-    "sma200": 1.95,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 35.0,
-    "fairValue": {
-      "low": 3.72,
-      "mid": 5.36,
-      "high": 7.01,
-      "upsidePct": 86.8,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 47.9,
-    "coveringAnalysts": [
-      {
-        "firm": "Mizuho",
-        "hitRate": 56.7,
-        "overallHitRate": 50.6,
-        "percentile": 91,
-        "totalCalls": 157
-      },
-      {
-        "firm": "Johnson Rice",
-        "hitRate": 51.9,
-        "overallHitRate": 44.4,
-        "percentile": 74,
-        "totalCalls": 54
-      },
-      {
-        "firm": "Goldman Sachs",
-        "hitRate": 48.5,
-        "overallHitRate": 50.5,
-        "percentile": 51,
-        "totalCalls": 648
-      },
-      {
-        "firm": "Bernstein",
-        "hitRate": 47.3,
-        "overallHitRate": 53.2,
-        "percentile": 39,
-        "totalCalls": 167
-      }
-    ],
-    "factorValues": {
-      "roa": -17.1,
-      "grossProfit": 3.4,
-      "operatingCashFlow": 5.0,
-      "freeCashFlow": 1.5,
-      "volatility": 70.8,
-      "assetGrowth": -9.2
-    },
-    "epsSurprisePct": -191.3,
-    "beatStreak": 0,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 14,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -227395,9 +227243,9 @@
     },
     "epsSurprisePct": -87.0,
     "beatStreak": 0,
-    "netUpgrades180d": 4,
-    "netUpgrades180dNorm": 0.67,
-    "catalystScore": 47,
+    "netUpgrades180d": 3,
+    "netUpgrades180dNorm": 0.6,
+    "catalystScore": 46,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -227802,6 +227650,82 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 27,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "KOS": {
+    "isGolden": false,
+    "avgPriceTarget": 2.63,
+    "upside": -8,
+    "recentRatings": "\u2b07\ufe0f 2026-05-27: Mizuho \u2192 Underperform\n\u25fe 2026-03-25: Johnson Rice \u2192 Buy\n\u25fe 2026-01-30: Goldman Sachs \u2192 Neutral\n\u25fe 2026-01-05: Bernstein \u2192 Market Perform\n\u25fe 2025-12-12: Mizuho \u2192 Neutral",
+    "analystPriceTargets": "2026-05-27|Mizuho Securities|3|2.85\n2026-05-20|Goldman Sachs|2.5|3.18\n2026-05-11|Bernstein|2.4|2.75\n2026-04-09|Goldman Sachs|2.25|2.55\n2025-12-12|Mizuho Securities|1.5|1.005\n2025-12-05|Johnson Rice|3.5|1.07\n2025-09-22|Goldman Sachs|2|1.69\n2024-12-18|Jefferies|5.6|3.17\n2024-10-15|Mizuho Securities|5|4.27\n2022-04-06|Barclays|11|7.74",
+    "evEbitda": 217.1,
+    "forwardPe": 26.7,
+    "sectorPe": 14.0,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": -2.9,
+    "piotroskiScore": 3,
+    "altmanZ": -0.16,
+    "rsi": 48.6,
+    "sma50": 2.88,
+    "sma200": 1.95,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 35.0,
+    "fairValue": {
+      "low": 3.72,
+      "mid": 5.36,
+      "high": 7.01,
+      "upsidePct": 86.8,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 47.9,
+    "coveringAnalysts": [
+      {
+        "firm": "Mizuho",
+        "hitRate": 56.7,
+        "overallHitRate": 50.6,
+        "percentile": 91,
+        "totalCalls": 157
+      },
+      {
+        "firm": "Johnson Rice",
+        "hitRate": 51.9,
+        "overallHitRate": 44.4,
+        "percentile": 74,
+        "totalCalls": 54
+      },
+      {
+        "firm": "Goldman Sachs",
+        "hitRate": 48.5,
+        "overallHitRate": 50.5,
+        "percentile": 51,
+        "totalCalls": 648
+      },
+      {
+        "firm": "Bernstein",
+        "hitRate": 47.3,
+        "overallHitRate": 53.2,
+        "percentile": 39,
+        "totalCalls": 167
+      }
+    ],
+    "factorValues": {
+      "roa": -17.1,
+      "grossProfit": 3.4,
+      "operatingCashFlow": 5.0,
+      "freeCashFlow": 1.5,
+      "volatility": 70.8,
+      "assetGrowth": -9.2
+    },
+    "epsSurprisePct": -191.3,
+    "beatStreak": 0,
+    "netUpgrades180d": -1,
+    "netUpgrades180dNorm": -1.0,
+    "catalystScore": 14,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -231393,7 +231317,7 @@
     "beatStreak": 3,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 72,
+    "catalystScore": 71,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -232254,7 +232178,7 @@
       "grossProfit": 5.0,
       "operatingCashFlow": 3.5,
       "freeCashFlow": 1.8,
-      "volatility": 42.3,
+      "volatility": 39.6,
       "assetGrowth": 9887.3
     },
     "epsSurprisePct": 20.0,
@@ -232369,7 +232293,7 @@
     "beatStreak": 7,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 72,
+    "catalystScore": 71,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -232505,9 +232429,9 @@
     },
     "epsSurprisePct": 16.7,
     "beatStreak": 1,
-    "netUpgrades180d": -1,
-    "netUpgrades180dNorm": -1.0,
-    "catalystScore": 37,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 55,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -232577,75 +232501,6 @@
     "netUpgrades180d": -3,
     "netUpgrades180dNorm": -1.0,
     "catalystScore": 12,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "TIGR": {
-    "isGolden": false,
-    "avgPriceTarget": 8.21,
-    "upside": 72,
-    "recentRatings": "\u2b07\ufe0f 2024-10-22: Citigroup \u2192 Sell\n\u25fe 2024-09-03: Citigroup \u2192 Buy\n\u25fe 2024-03-21: Citigroup \u2192 Buy\n\u25fe 2023-11-28: Goldman Sachs \u2192 Sell\n\u2b07\ufe0f 2023-05-19: Daiwa Capital \u2192 Hold",
-    "analystPriceTargets": "2025-12-05|Goldman Sachs|4.73|8.995\n2025-10-23|UBS|13.1|9.6\n2025-09-29|Jefferies|12|10.16\n2024-10-22|Citigroup|5.5|6.45\n2022-06-13|Daiwa|5.7|4.13",
-    "evEbitda": -13.4,
-    "forwardPe": 4.1,
-    "sectorPe": 9.7,
-    "pegRatio": 0.28,
-    "epsGrowth": 14.7,
-    "revenueGrowth": -3.0,
-    "piotroskiScore": 6,
-    "altmanZ": 0.38,
-    "rsi": 37.9,
-    "sma50": 6.04,
-    "sma200": 8.39,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 15.0,
-    "fairValue": {
-      "low": 5.2,
-      "mid": 5.54,
-      "high": 10.89,
-      "upsidePct": 16.1,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 3
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": [
-      {
-        "firm": "Citigroup",
-        "hitRate": 52.5,
-        "overallHitRate": 50.7,
-        "percentile": 69,
-        "totalCalls": 796
-      },
-      {
-        "firm": "Goldman Sachs",
-        "hitRate": 52.0,
-        "overallHitRate": 50.5,
-        "percentile": 66,
-        "totalCalls": 839
-      },
-      {
-        "firm": "Daiwa Capital",
-        "hitRate": 60.0,
-        "overallHitRate": 62.8,
-        "percentile": 95,
-        "totalCalls": 25
-      }
-    ],
-    "factorValues": {
-      "roa": 1.4,
-      "grossProfit": 3.9,
-      "operatingCashFlow": 7.9,
-      "freeCashFlow": 7.9,
-      "volatility": 77.7,
-      "assetGrowth": 78.7
-    },
-    "epsSurprisePct": -156.0,
-    "beatStreak": 0,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 24,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -232950,7 +232805,7 @@
       "grossProfit": 65.1,
       "operatingCashFlow": -24.8,
       "freeCashFlow": -25.2,
-      "volatility": 63.8,
+      "volatility": 63.3,
       "assetGrowth": -20.1
     },
     "epsSurprisePct": -33.3,
@@ -234879,7 +234734,7 @@
       "grossProfit": 6.7,
       "operatingCashFlow": 2.9,
       "freeCashFlow": 2.9,
-      "volatility": 69.5,
+      "volatility": 70.1,
       "assetGrowth": 36.3
     },
     "epsSurprisePct": null,
@@ -235020,6 +234875,75 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": null,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "TIGR": {
+    "isGolden": false,
+    "avgPriceTarget": 8.21,
+    "upside": 72,
+    "recentRatings": "\u2b07\ufe0f 2024-10-22: Citigroup \u2192 Sell\n\u25fe 2024-09-03: Citigroup \u2192 Buy\n\u25fe 2024-03-21: Citigroup \u2192 Buy\n\u25fe 2023-11-28: Goldman Sachs \u2192 Sell\n\u2b07\ufe0f 2023-05-19: Daiwa Capital \u2192 Hold",
+    "analystPriceTargets": "2025-12-05|Goldman Sachs|4.73|8.995\n2025-10-23|UBS|13.1|9.6\n2025-09-29|Jefferies|12|10.16\n2024-10-22|Citigroup|5.5|6.45\n2022-06-13|Daiwa|5.7|4.13",
+    "evEbitda": -13.4,
+    "forwardPe": 4.1,
+    "sectorPe": 9.7,
+    "pegRatio": 0.28,
+    "epsGrowth": 14.7,
+    "revenueGrowth": -3.0,
+    "piotroskiScore": 6,
+    "altmanZ": 0.38,
+    "rsi": 37.9,
+    "sma50": 6.04,
+    "sma200": 8.39,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 15.0,
+    "fairValue": {
+      "low": 5.2,
+      "mid": 5.54,
+      "high": 10.89,
+      "upsidePct": 16.1,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 3
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": [
+      {
+        "firm": "Citigroup",
+        "hitRate": 52.5,
+        "overallHitRate": 50.7,
+        "percentile": 69,
+        "totalCalls": 796
+      },
+      {
+        "firm": "Goldman Sachs",
+        "hitRate": 52.0,
+        "overallHitRate": 50.5,
+        "percentile": 66,
+        "totalCalls": 839
+      },
+      {
+        "firm": "Daiwa Capital",
+        "hitRate": 60.0,
+        "overallHitRate": 62.8,
+        "percentile": 95,
+        "totalCalls": 25
+      }
+    ],
+    "factorValues": {
+      "roa": 1.4,
+      "grossProfit": 3.9,
+      "operatingCashFlow": 7.9,
+      "freeCashFlow": 7.9,
+      "volatility": 77.7,
+      "assetGrowth": 78.7
+    },
+    "epsSurprisePct": -156.0,
+    "beatStreak": 0,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 24,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -237028,53 +236952,6 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 58,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "MBBC": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": null,
-    "sectorPe": 9.7,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": null,
-    "piotroskiScore": 7,
-    "altmanZ": 0.35,
-    "rsi": 52.0,
-    "sma50": 14.22,
-    "sma200": 12.51,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 0,
-    "longTermScore": 40.0,
-    "fairValue": {
-      "low": 3.46,
-      "mid": 3.81,
-      "high": 4.16,
-      "upsidePct": -73.3,
-      "verdict": "Overvalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 50.4,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": 0.0,
-      "grossProfit": 0.0,
-      "operatingCashFlow": 0.8,
-      "freeCashFlow": 0.7,
-      "volatility": 43.9,
-      "assetGrowth": 113704.6
-    },
-    "epsSurprisePct": null,
-    "beatStreak": null,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": null,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -239387,7 +239264,7 @@
     "beatStreak": 1,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 54,
+    "catalystScore": 53,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -239573,7 +239450,7 @@
       "grossProfit": 0.0,
       "operatingCashFlow": -0.0,
       "freeCashFlow": -0.0,
-      "volatility": 141.3,
+      "volatility": 142.5,
       "assetGrowth": 1.7
     },
     "epsSurprisePct": null,
@@ -239735,6 +239612,53 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 27,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "MBBC": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": null,
+    "sectorPe": 9.7,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": null,
+    "piotroskiScore": 7,
+    "altmanZ": 0.35,
+    "rsi": 52.0,
+    "sma50": 14.22,
+    "sma200": 12.51,
+    "trendSignal": "Bullish Aligned",
+    "valueScore": 0,
+    "longTermScore": 40.0,
+    "fairValue": {
+      "low": 3.46,
+      "mid": 3.81,
+      "high": 4.16,
+      "upsidePct": -73.3,
+      "verdict": "Overvalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 50.4,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": 0.0,
+      "grossProfit": 0.0,
+      "operatingCashFlow": 0.8,
+      "freeCashFlow": 0.7,
+      "volatility": 43.9,
+      "assetGrowth": 113704.6
+    },
+    "epsSurprisePct": null,
+    "beatStreak": null,
+    "netUpgrades180d": null,
+    "netUpgrades180dNorm": null,
+    "catalystScore": null,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -240403,7 +240327,7 @@
     "beatStreak": 2,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 70,
+    "catalystScore": 69,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -240605,7 +240529,7 @@
     "beatStreak": 2,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 60,
+    "catalystScore": 59,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -240729,70 +240653,9 @@
     "beatStreak": 2,
     "netUpgrades180d": 1,
     "netUpgrades180dNorm": 1.0,
-    "catalystScore": 77,
+    "catalystScore": 78,
     "catalystTag": true,
     "catalystLabel": "Catalyst"
-  },
-  "BAK": {
-    "isGolden": false,
-    "avgPriceTarget": 1.5,
-    "upside": -59,
-    "recentRatings": "\u2b07\ufe0f 2025-09-26: UBS \u2192 Neutral\n\u25fe 2025-08-27: JP Morgan \u2192 Neutral\n\u2b06\ufe0f 2024-09-18: UBS \u2192 Buy\n\u25fe 2024-09-10: JP Morgan \u2192 Neutral\n\u2b06\ufe0f 2024-08-20: Citigroup \u2192 Buy",
-    "analystPriceTargets": "2026-04-21|Bradesco|1.5|3.64\n2025-09-26|UBS|3.8|2.735\n2024-09-18|UBS|10|6.91\n2024-09-03|Bradesco|8.5|6.335",
-    "evEbitda": null,
-    "forwardPe": null,
-    "sectorPe": 12.0,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": 7.6,
-    "piotroskiScore": 2,
-    "altmanZ": 0.7,
-    "rsi": 39.8,
-    "sma50": 3.98,
-    "sma200": 3.43,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 30.0,
-    "fairValue": null,
-    "sectorAnalystAccuracy": 48.5,
-    "coveringAnalysts": [
-      {
-        "firm": "UBS",
-        "hitRate": 48.8,
-        "overallHitRate": 50.8,
-        "percentile": 46,
-        "totalCalls": 320
-      },
-      {
-        "firm": "JP Morgan",
-        "hitRate": 52.8,
-        "overallHitRate": 50.5,
-        "percentile": 73,
-        "totalCalls": 691
-      },
-      {
-        "firm": "Citigroup",
-        "hitRate": 51.7,
-        "overallHitRate": 50.7,
-        "percentile": 64,
-        "totalCalls": 495
-      }
-    ],
-    "factorValues": {
-      "roa": -12.4,
-      "grossProfit": 1.8,
-      "operatingCashFlow": -8.1,
-      "freeCashFlow": -12.3,
-      "volatility": 84.6,
-      "assetGrowth": -21.5
-    },
-    "epsSurprisePct": 234.5,
-    "beatStreak": 5,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 75,
-    "catalystTag": false,
-    "catalystLabel": null
   },
   "BDSX": {
     "isGolden": false,
@@ -242315,7 +242178,7 @@
       "grossProfit": 7.8,
       "operatingCashFlow": -18.3,
       "freeCashFlow": -18.3,
-      "volatility": 66.2,
+      "volatility": 66.7,
       "assetGrowth": -15.0
     },
     "epsSurprisePct": null,
@@ -243105,45 +242968,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "OSRH": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": null,
-    "sectorPe": 14.3,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": null,
-    "piotroskiScore": 4,
-    "altmanZ": -0.29,
-    "rsi": 36.5,
-    "sma50": 0.58,
-    "sma200": 0.72,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 10.0,
-    "fairValue": null,
-    "sectorAnalystAccuracy": 51.7,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": -12.2,
-      "grossProfit": -1.1,
-      "operatingCashFlow": -3.1,
-      "freeCashFlow": -3.1,
-      "volatility": 124.4,
-      "assetGrowth": -1.4
-    },
-    "epsSurprisePct": 69.0,
-    "beatStreak": 1,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 68,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "LSF": {
     "isGolden": false,
     "avgPriceTarget": null,
@@ -243234,7 +243058,7 @@
     "beatStreak": 5,
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
-    "catalystScore": 75,
+    "catalystScore": 74,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -243809,6 +243633,67 @@
     "netUpgrades180d": 0,
     "netUpgrades180dNorm": null,
     "catalystScore": 64,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "BAK": {
+    "isGolden": false,
+    "avgPriceTarget": 1.5,
+    "upside": -59,
+    "recentRatings": "\u2b07\ufe0f 2025-09-26: UBS \u2192 Neutral\n\u25fe 2025-08-27: JP Morgan \u2192 Neutral\n\u2b06\ufe0f 2024-09-18: UBS \u2192 Buy\n\u25fe 2024-09-10: JP Morgan \u2192 Neutral\n\u2b06\ufe0f 2024-08-20: Citigroup \u2192 Buy",
+    "analystPriceTargets": "2026-04-21|Bradesco|1.5|3.64\n2025-09-26|UBS|3.8|2.735\n2024-09-18|UBS|10|6.91\n2024-09-03|Bradesco|8.5|6.335",
+    "evEbitda": null,
+    "forwardPe": null,
+    "sectorPe": 12.0,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": 7.6,
+    "piotroskiScore": 2,
+    "altmanZ": 0.7,
+    "rsi": 39.8,
+    "sma50": 3.98,
+    "sma200": 3.43,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 30.0,
+    "fairValue": null,
+    "sectorAnalystAccuracy": 48.5,
+    "coveringAnalysts": [
+      {
+        "firm": "UBS",
+        "hitRate": 48.8,
+        "overallHitRate": 50.8,
+        "percentile": 46,
+        "totalCalls": 320
+      },
+      {
+        "firm": "JP Morgan",
+        "hitRate": 52.8,
+        "overallHitRate": 50.5,
+        "percentile": 73,
+        "totalCalls": 691
+      },
+      {
+        "firm": "Citigroup",
+        "hitRate": 51.7,
+        "overallHitRate": 50.7,
+        "percentile": 64,
+        "totalCalls": 495
+      }
+    ],
+    "factorValues": {
+      "roa": -12.4,
+      "grossProfit": 1.8,
+      "operatingCashFlow": -8.1,
+      "freeCashFlow": -12.3,
+      "volatility": 84.6,
+      "assetGrowth": -21.5
+    },
+    "epsSurprisePct": 234.5,
+    "beatStreak": 5,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 75,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -245130,14 +245015,14 @@
       "grossProfit": 0.0,
       "operatingCashFlow": -8.0,
       "freeCashFlow": -8.0,
-      "volatility": 16.5,
+      "volatility": 16.6,
       "assetGrowth": 181.7
     },
     "epsSurprisePct": 13.3,
     "beatStreak": 9,
     "netUpgrades180d": -6,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 43,
+    "catalystScore": 44,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -245544,6 +245429,45 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 15,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "OSRH": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": null,
+    "sectorPe": 14.3,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": null,
+    "piotroskiScore": 4,
+    "altmanZ": -0.29,
+    "rsi": 36.5,
+    "sma50": 0.58,
+    "sma200": 0.72,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 10.0,
+    "fairValue": null,
+    "sectorAnalystAccuracy": 51.7,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": -12.2,
+      "grossProfit": -1.1,
+      "operatingCashFlow": -3.1,
+      "freeCashFlow": -3.1,
+      "volatility": 124.4,
+      "assetGrowth": -1.4
+    },
+    "epsSurprisePct": 69.0,
+    "beatStreak": 1,
+    "netUpgrades180d": null,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 68,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -246901,9 +246825,9 @@
     },
     "epsSurprisePct": -60.7,
     "beatStreak": 0,
-    "netUpgrades180d": 1,
-    "netUpgrades180dNorm": 1.0,
-    "catalystScore": 49,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 26,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -248849,7 +248773,7 @@
     "beatStreak": 6,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 81,
+    "catalystScore": 82,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -249951,45 +249875,6 @@
       "freeCashFlow": -12.7,
       "volatility": 63.3,
       "assetGrowth": -23.8
-    },
-    "epsSurprisePct": null,
-    "beatStreak": null,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": null,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
-  "NVFY": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": null,
-    "sectorPe": 12.4,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": null,
-    "piotroskiScore": 2,
-    "altmanZ": 7.98,
-    "rsi": 72.8,
-    "sma50": 6.48,
-    "sma200": 5.18,
-    "trendSignal": "Bullish Aligned",
-    "valueScore": 0,
-    "longTermScore": 40.0,
-    "fairValue": null,
-    "sectorAnalystAccuracy": 49.0,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": -15.3,
-      "grossProfit": 23.7,
-      "operatingCashFlow": -13.1,
-      "freeCashFlow": -13.2,
-      "volatility": 51.0,
-      "assetGrowth": 261.5
     },
     "epsSurprisePct": null,
     "beatStreak": null,
@@ -251802,7 +251687,7 @@
       "grossProfit": 42.0,
       "operatingCashFlow": -26.3,
       "freeCashFlow": -26.5,
-      "volatility": 109.3,
+      "volatility": 109.8,
       "assetGrowth": 3.5
     },
     "epsSurprisePct": 0.0,
@@ -251864,7 +251749,7 @@
       "grossProfit": 10.5,
       "operatingCashFlow": -11.1,
       "freeCashFlow": -11.7,
-      "volatility": 99.7,
+      "volatility": 100.6,
       "assetGrowth": -33.6
     },
     "epsSurprisePct": 1.7,
@@ -252136,7 +252021,7 @@
       "grossProfit": -0.0,
       "operatingCashFlow": -0.0,
       "freeCashFlow": -0.0,
-      "volatility": 259.3,
+      "volatility": 262.9,
       "assetGrowth": 24503178635.4
     },
     "epsSurprisePct": null,
@@ -252531,7 +252416,7 @@
       "grossProfit": 39.1,
       "operatingCashFlow": -22.6,
       "freeCashFlow": -26.5,
-      "volatility": 849.7,
+      "volatility": 857.6,
       "assetGrowth": 4.8
     },
     "epsSurprisePct": 81.6,
@@ -252863,7 +252748,7 @@
       "grossProfit": 0.0,
       "operatingCashFlow": -0.0,
       "freeCashFlow": -0.0,
-      "volatility": 112.0,
+      "volatility": 111.8,
       "assetGrowth": 18545551.1
     },
     "epsSurprisePct": -5900.0,
@@ -253664,7 +253549,7 @@
       "grossProfit": -11.1,
       "operatingCashFlow": -3.3,
       "freeCashFlow": -5.1,
-      "volatility": 2680.2,
+      "volatility": 2704.3,
       "assetGrowth": -22.1
     },
     "epsSurprisePct": 59.3,
@@ -255513,53 +255398,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "DSS": {
-    "isGolden": false,
-    "avgPriceTarget": null,
-    "upside": null,
-    "recentRatings": null,
-    "analystPriceTargets": null,
-    "evEbitda": null,
-    "forwardPe": null,
-    "sectorPe": 12.4,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": null,
-    "piotroskiScore": 4,
-    "altmanZ": -6.6,
-    "rsi": 53.7,
-    "sma50": 0.68,
-    "sma200": 1.0,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 20.0,
-    "fairValue": {
-      "low": 1.22,
-      "mid": 1.63,
-      "high": 2.04,
-      "upsidePct": 177.4,
-      "verdict": "Undervalued",
-      "basis": "industry",
-      "nMethods": 2
-    },
-    "sectorAnalystAccuracy": 49.0,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": -34.8,
-      "grossProfit": -4.4,
-      "operatingCashFlow": -10.7,
-      "freeCashFlow": -11.3,
-      "volatility": 115.3,
-      "assetGrowth": -22.9
-    },
-    "epsSurprisePct": -57.9,
-    "beatStreak": 0,
-    "netUpgrades180d": null,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 15,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "ISPR": {
     "isGolden": false,
     "avgPriceTarget": null,
@@ -257346,6 +257184,45 @@
     "catalystTag": false,
     "catalystLabel": null
   },
+  "NAK": {
+    "isGolden": false,
+    "avgPriceTarget": 1.3,
+    "upside": -36,
+    "recentRatings": "\u25fe 2025-12-19: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-10-07: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-07-07: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-02-04: HC Wainwright & Co. \u2192 Buy\n\u25fe 2024-11-06: HC Wainwright & Co. \u2192 Buy",
+    "analystPriceTargets": "2024-11-06|H.C. Wainwright|1.3|0.4199",
+    "evEbitda": -42.3,
+    "forwardPe": null,
+    "sectorPe": 12.0,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": null,
+    "piotroskiScore": 1,
+    "altmanZ": -2.22,
+    "rsi": 44.8,
+    "sma50": 2.03,
+    "sma200": 1.78,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 45.0,
+    "fairValue": null,
+    "sectorAnalystAccuracy": 48.5,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": -38.5,
+      "grossProfit": -0.1,
+      "operatingCashFlow": -19.6,
+      "freeCashFlow": -19.6,
+      "volatility": 82.0,
+      "assetGrowth": -10.0
+    },
+    "epsSurprisePct": 239.1,
+    "beatStreak": 1,
+    "netUpgrades180d": 0,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 64,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
   "NFGC": {
     "isGolden": false,
     "avgPriceTarget": null,
@@ -257881,6 +257758,53 @@
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
     "catalystScore": 19,
+    "catalystTag": false,
+    "catalystLabel": null
+  },
+  "DSS": {
+    "isGolden": false,
+    "avgPriceTarget": null,
+    "upside": null,
+    "recentRatings": null,
+    "analystPriceTargets": null,
+    "evEbitda": null,
+    "forwardPe": null,
+    "sectorPe": 12.4,
+    "pegRatio": null,
+    "epsGrowth": null,
+    "revenueGrowth": null,
+    "piotroskiScore": 4,
+    "altmanZ": -6.6,
+    "rsi": 53.7,
+    "sma50": 0.68,
+    "sma200": 1.0,
+    "trendSignal": null,
+    "valueScore": 0,
+    "longTermScore": 20.0,
+    "fairValue": {
+      "low": 1.22,
+      "mid": 1.63,
+      "high": 2.04,
+      "upsidePct": 177.4,
+      "verdict": "Undervalued",
+      "basis": "industry",
+      "nMethods": 2
+    },
+    "sectorAnalystAccuracy": 49.0,
+    "coveringAnalysts": null,
+    "factorValues": {
+      "roa": -34.8,
+      "grossProfit": -4.4,
+      "operatingCashFlow": -10.7,
+      "freeCashFlow": -11.3,
+      "volatility": 116.2,
+      "assetGrowth": -22.9
+    },
+    "epsSurprisePct": -57.9,
+    "beatStreak": 0,
+    "netUpgrades180d": null,
+    "netUpgrades180dNorm": null,
+    "catalystScore": 15,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -259826,45 +259750,6 @@
     "catalystTag": false,
     "catalystLabel": null
   },
-  "NAK": {
-    "isGolden": false,
-    "avgPriceTarget": 1.3,
-    "upside": -36,
-    "recentRatings": "\u25fe 2025-12-19: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-10-07: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-07-07: HC Wainwright & Co. \u2192 Buy\n\u25fe 2025-02-04: HC Wainwright & Co. \u2192 Buy\n\u25fe 2024-11-06: HC Wainwright & Co. \u2192 Buy",
-    "analystPriceTargets": "2024-11-06|H.C. Wainwright|1.3|0.4199",
-    "evEbitda": -42.3,
-    "forwardPe": null,
-    "sectorPe": 12.0,
-    "pegRatio": null,
-    "epsGrowth": null,
-    "revenueGrowth": null,
-    "piotroskiScore": 1,
-    "altmanZ": -2.22,
-    "rsi": 44.8,
-    "sma50": 2.03,
-    "sma200": 1.78,
-    "trendSignal": null,
-    "valueScore": 0,
-    "longTermScore": 45.0,
-    "fairValue": null,
-    "sectorAnalystAccuracy": 48.5,
-    "coveringAnalysts": null,
-    "factorValues": {
-      "roa": -38.5,
-      "grossProfit": -0.1,
-      "operatingCashFlow": -19.6,
-      "freeCashFlow": -19.6,
-      "volatility": 82.0,
-      "assetGrowth": -10.0
-    },
-    "epsSurprisePct": 239.1,
-    "beatStreak": 1,
-    "netUpgrades180d": 0,
-    "netUpgrades180dNorm": null,
-    "catalystScore": 64,
-    "catalystTag": false,
-    "catalystLabel": null
-  },
   "NMAX": {
     "isGolden": false,
     "avgPriceTarget": null,
@@ -260697,7 +260582,7 @@
     "beatStreak": 0,
     "netUpgrades180d": null,
     "netUpgrades180dNorm": null,
-    "catalystScore": 14,
+    "catalystScore": 15,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -261141,7 +261026,7 @@
       "grossProfit": 24.9,
       "operatingCashFlow": -30.1,
       "freeCashFlow": -30.3,
-      "volatility": 77.8,
+      "volatility": 77.0,
       "assetGrowth": 65.7
     },
     "epsSurprisePct": -168.8,
@@ -262623,7 +262508,7 @@
       "grossProfit": 9.0,
       "operatingCashFlow": -14.7,
       "freeCashFlow": -15.5,
-      "volatility": 866.7,
+      "volatility": 875.4,
       "assetGrowth": 960.0
     },
     "epsSurprisePct": null,
@@ -262801,7 +262686,7 @@
       "grossProfit": -14.2,
       "operatingCashFlow": -48.0,
       "freeCashFlow": -48.2,
-      "volatility": 134.1,
+      "volatility": 135.7,
       "assetGrowth": -20.3
     },
     "epsSurprisePct": null,
@@ -263185,7 +263070,7 @@
       "grossProfit": 0.6,
       "operatingCashFlow": -58.6,
       "freeCashFlow": -59.3,
-      "volatility": 111.9,
+      "volatility": 112.2,
       "assetGrowth": -34.5
     },
     "epsSurprisePct": null,
@@ -265585,7 +265470,7 @@
       "grossProfit": 1.6,
       "operatingCashFlow": -16.3,
       "freeCashFlow": -16.1,
-      "volatility": 121.7,
+      "volatility": 121.9,
       "assetGrowth": 7.2
     },
     "epsSurprisePct": null,
@@ -266126,7 +266011,7 @@
       "grossProfit": 0.0,
       "operatingCashFlow": -36.6,
       "freeCashFlow": -36.6,
-      "volatility": 50.5,
+      "volatility": 50.9,
       "assetGrowth": 45.7
     },
     "epsSurprisePct": -6.3,
@@ -266891,7 +266776,7 @@
       "grossProfit": -0.9,
       "operatingCashFlow": -38.4,
       "freeCashFlow": -57.2,
-      "volatility": 117.7,
+      "volatility": 118.5,
       "assetGrowth": 36.6
     },
     "epsSurprisePct": -350.0,
@@ -267224,7 +267109,7 @@
     "beatStreak": 0,
     "netUpgrades180d": -1,
     "netUpgrades180dNorm": -1.0,
-    "catalystScore": 15,
+    "catalystScore": 14,
     "catalystTag": false,
     "catalystLabel": null
   },
@@ -267487,7 +267372,7 @@
       "grossProfit": -12.3,
       "operatingCashFlow": -54.4,
       "freeCashFlow": -55.6,
-      "volatility": 126.4,
+      "volatility": 124.2,
       "assetGrowth": 232.2
     },
     "epsSurprisePct": 560.0,
@@ -269234,7 +269119,7 @@
       "grossProfit": 6.3,
       "operatingCashFlow": -10.5,
       "freeCashFlow": -10.8,
-      "volatility": 132.2,
+      "volatility": 130.3,
       "assetGrowth": 161.4
     },
     "epsSurprisePct": 37.5,
@@ -269724,7 +269609,7 @@
       "grossProfit": 1.1,
       "operatingCashFlow": -7.8,
       "freeCashFlow": -75.2,
-      "volatility": 90.3,
+      "volatility": 91.1,
       "assetGrowth": 944.6
     },
     "epsSurprisePct": 100.0,
@@ -269951,7 +269836,7 @@
       "grossProfit": 5.5,
       "operatingCashFlow": -34.0,
       "freeCashFlow": -34.0,
-      "volatility": 160.7,
+      "volatility": 161.5,
       "assetGrowth": 76.9
     },
     "epsSurprisePct": null,
@@ -270780,7 +270665,7 @@
       "grossProfit": -12.1,
       "operatingCashFlow": -25.9,
       "freeCashFlow": -26.3,
-      "volatility": 2466.7,
+      "volatility": 2488.7,
       "assetGrowth": 41.3
     },
     "epsSurprisePct": -322.5,
@@ -271922,7 +271807,7 @@
       "grossProfit": -4.1,
       "operatingCashFlow": -32.3,
       "freeCashFlow": -34.5,
-      "volatility": 139.3,
+      "volatility": 140.8,
       "assetGrowth": 31.4
     },
     "epsSurprisePct": 58.3,
