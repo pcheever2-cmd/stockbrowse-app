@@ -35,7 +35,12 @@ interface InputEntry {
   aliases?: string[];
 }
 
-const MAX_ALIASES = 8;
+// Raised 8 -> 20 (2026-07-03): the everyday-word indexing pass found most
+// themes already at 6-7 aliases, so new casual synonyms ("booze", "shrooms",
+// "hedge funds") were being silently truncated. Alias vectors are tiny
+// (~3KB each in Vectorize) and the serve path reads topK=1 metadata.slug
+// regardless of alias count — the cap only bounds embed cost per reload.
+const MAX_ALIASES = 20;
 const EMBED_CHUNK = 100; // Workers AI text-array cap per call
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
