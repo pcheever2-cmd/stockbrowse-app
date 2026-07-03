@@ -1155,10 +1155,10 @@ const marketCapRanges = [
         // anything descriptive ("GLP-1 stocks", "stocks like Netflix") goes semantic.
         const isLookup = q.length > 0 && !q.includes(' ') &&
           (allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)) ||
-           recentIpos.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)) ||
-           // Exact brand words ("instagram", "aws") resolve deterministically —
-           // don't fire the semantic API or charge a free-tier search for them.
-           !!BRAND_ALIASES[ql]);
+           recentIpos.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)));
+        // Brand words (BRAND_ALIASES) deliberately DO go semantic: "xbox" pins
+        // MSFT first via the alias AND fetches the ecosystem basket (EA,
+        // Take-Two...) from the theme catalog — parent + who-builds-for-it.
         // Require >=2 chars (2-char themes like "vr"/"ar" exist) so single-keystroke fragments
         // don't fire an embedding + Vectorize call + miss-log; the longer debounce below does the rest.
         const goSemantic = q.length >= 2 && !isLookup;
