@@ -59,7 +59,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
         <div class="grid md:grid-cols-2 gap-4 mb-4">
           <div class="flex items-start gap-2">
             <span class="text-[#22D3EE] mt-1">✓</span>
-            <span class="text-[#CBD5E1]">Browse all 4,500+ stocks</span>
+            <span class="text-[#CBD5E1]">Browse all 4,000+ stocks</span>
           </div>
           <div class="flex items-start gap-2">
             <span class="text-[#22D3EE] mt-1">✓</span>
@@ -67,7 +67,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
           </div>
           <div class="flex items-start gap-2">
             <span class="text-[#22D3EE] mt-1">✓</span>
-            <span class="text-[#CBD5E1]">10 full score lookups per day</span>
+            <span class="text-[#CBD5E1]">10 full stock views + 5 smart searches per day</span>
           </div>
           <div class="flex items-start gap-2">
             <span class="text-[#22D3EE] mt-1">✓</span>
@@ -75,7 +75,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
           </div>
         </div>
         <p class="text-sm text-[#64748B] text-center">
-          Upgrade anytime for unlimited lookups and premium features.
+          Upgrade anytime for unlimited views, unlimited search, and premium features.
         </p>
       </div>
     </div>
@@ -333,7 +333,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
           <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
             <li>✓ Browse all stocks</li>
             <li>✓ Letter grades (A-F)</li>
-            <li>✓ 10 lookups/day</li>
+            <li>✓ 10 stock views + 5 searches/day</li>
           </ul>
         </div>
         <div class="bg-[#161B24] text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
@@ -404,22 +404,14 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
           </li>
         </ul>
       </div>
-      <form class="flex flex-col sm:flex-row gap-3 mb-4">
-        <input
-          type="email"
-          placeholder="Enter your email"
-          class="flex-1 px-4 py-3 rounded-lg text-slate-100 placeholder:text-[#64748B]"
-          required
-        />
-        <button type="submit" class="bg-[#22D3EE] hover:bg-[#06B6D4] px-6 py-3 rounded-lg font-semibold transition">
-          Start Free Trial
-        </button>
-      </form>
+      <a href="/insights" class="inline-block bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] px-8 py-3 rounded-lg font-semibold transition mb-4">
+        Get Stockbrowse Weekly — $1/mo
+      </a>
       <p class="text-sm text-slate-400">
-        $9/month after 7-day free trial. Cancel anytime.
+        $1/month. Cancel anytime.
       </p>
       <p class="text-xs text-[#64748B] mt-4">
-        <a href="/insights" class="text-[#06B6D4] hover:underline">Learn more about Compass Weekly →</a>
+        <a href="/insights" class="text-[#06B6D4] hover:underline">Learn more about Stockbrowse Weekly →</a>
       </p>
     </div>
   </section>
@@ -436,9 +428,9 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Stock quality scoring system based on 30 years of academic research. Browse 4,500+ stocks with free letter grades (A-F).",
+    "description": "Stock quality scoring system based on 30 years of academic research. Browse 4,000+ stocks with free letter grades (A-F).",
     "featureList": [
-      "Browse 4,500+ stocks by industry and budget",
+      "Browse 4,000+ stocks by industry and budget",
       "Letter grades (A-F) for every company",
       "Research-backed quality scores",
       "Plain English stock assessments"
@@ -462,7 +454,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
       "name": "Is the Compass Score free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. You can browse all 4,500+ stocks and see letter grades (A-F) for free. Free users get 10 detailed score lookups per day."
+        "text": "Yes. You can browse all 4,000+ stocks and see letter grades (A-F) for free. Free users get 10 full stock views and 5 smart searches per day."
       }
     }]
   }
