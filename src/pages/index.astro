@@ -779,6 +779,23 @@ const marketCapRanges = [
         if (ai > 0) filteredStocks.unshift(filteredStocks.splice(ai, 1)[0]);
       }
 
+      // Hand the active search context to the compare tool (sessionStorage,
+      // same tab only): its peer chips then offer "more from your oil search"
+      // in this result order instead of generic industry peers.
+      try {
+        if (filters.search && filteredStocks.length > 1) {
+          sessionStorage.setItem('browseContext', JSON.stringify({
+            query: filters.search,
+            ts: Date.now(),
+            symbols: filteredStocks.slice(0, 30).map(s => s.symbol),
+          }));
+        } else if (!filters.search) {
+          // Abandoned search = abandoned context — compare must not keep
+          // suggesting "more from your oil search" an hour later.
+          sessionStorage.removeItem('browseContext');
+        }
+      } catch (e) { /* sessionStorage unavailable — compare falls back to industry peers */ }
+
       renderStocks();
       updateActiveFilters();
       saveFiltersToURL();

@@ -194,14 +194,37 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
         s.symbol !== base.symbol && s.symbol !== excludeSym && s.marketCap > 0));
     }
 
+    // If the user arrived from a browse SEARCH ("oil"), prefer peers from that
+    // result set (in its relevance order) over generic industry peers. The
+    // browse page writes this context to sessionStorage; it expires after an
+    // hour and only applies when the base stock came from that search.
+    function browseContextPeers(base, excludeSym, n = 6) {
+      try {
+        const ctx = JSON.parse(sessionStorage.getItem('browseContext') || 'null');
+        if (!ctx || !Array.isArray(ctx.symbols) || !ctx.query) return null;
+        if (Date.now() - (ctx.ts || 0) > 3600000) return null;
+        if (!ctx.symbols.includes(base.symbol)) return null;
+        const peers = ctx.symbols
+          .filter(sym => sym !== base.symbol && sym !== excludeSym)
+          .map(sym => bySymbol.get(sym))
+          .filter(Boolean)
+          .slice(0, n);
+        return peers.length >= 2 ? { query: String(ctx.query).slice(0, 60), peers } : null;
+      } catch { return null; }
+    }
+
     function updateSuggestions() {
       const box = document.getElementById('cmp-suggest');
       const base = state.a || state.b;
       if (!base) { box.classList.add('hidden'); return; }
       const other = state.a && state.b ? (base === state.a ? state.b : state.a) : null;
-      const peers = peerSuggestions(base, other?.symbol);
+      const ctx = browseContextPeers(base, other?.symbol);
+      const peers = ctx ? ctx.peers : peerSuggestions(base, other?.symbol);
       if (!peers.length) { box.classList.add('hidden'); return; }
-      document.getElementById('cmp-suggest-label').textContent = other ? 'Also compare' : 'Compare';
+      // textContent (not innerHTML) — ctx.query is user-typed search text.
+      document.getElementById('cmp-suggest-label').textContent = ctx
+        ? `More from your "${ctx.query}" search — compare`
+        : (other ? 'Also compare' : 'Compare');
       document.getElementById('cmp-suggest-name').textContent = base.symbol;
       document.getElementById('cmp-suggest-chips').innerHTML = peers.map(p => `
         <button class="cmp-peer flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#161B24] border border-[rgba(255,255,255,0.08)] hover:border-[#22D3EE55] transition text-sm" data-symbol="${p.symbol}">
