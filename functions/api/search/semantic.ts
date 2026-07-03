@@ -105,8 +105,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       unlimited = identity.tier === 'plus' || identity.tier === 'pro';
     }
   }
-  if (!unlimited && (await searchQuotaExceeded(env, meterId))) {
-    return json(
+  const quotaBlocked = async () => !unlimited && (await searchQuotaExceeded(env, meterId));
+  const limitResponse = () =>
+    json(
       {
         error: 'daily search limit reached',
         code: 'SEARCH_LIMIT',
@@ -115,13 +116,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       },
       429
     );
-  }
 
   // --- "Stocks like X": per-stock neighbor lookup, no catalog ---------------
   if (similarTo) {
     const existing = await env.VECTORIZE.getByIds([similarTo]);
     const vector = existing?.[0]?.values as number[] | undefined;
+    // 404 BEFORE the quota charge — an unknown symbol must not consume a search.
     if (!vector) return errorResponse(`no vector for ${similarTo}`, 404);
+    if (await quotaBlocked()) return limitResponse();
 
     const result = await env.VECTORIZE.query(vector, { topK: TOP_K });
     const symbols = (result.matches || [])
@@ -131,6 +133,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   // --- Thematic query: catalog-first --------------------------------------
+  // Quota charged before the embed on purpose: over-quota callers must not
+  // keep incurring Workers AI cost, and charging failed embeds (rare 502s)
+  // is the fail-closed side of that trade.
+  if (await quotaBlocked()) return limitResponse();
 
   // Embed once; the same vector serves both the themes index and the stocks index.
   const emb = (await env.AI.run(EMBEDDING_MODEL, { text: [query] })) as { data?: number[][] };

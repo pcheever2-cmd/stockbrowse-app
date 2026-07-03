@@ -102,6 +102,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         const subscription = await stripe.subscriptions.retrieve(session.subscription as string);
         const productId = subscription.items.data[0]?.price?.product as string;
         const tier = TIER_MAP[productId] || 'free'; // unknown product → least privilege, never auto-grant paid
+        if (!TIER_MAP[productId]) {
+          // Loud: a product missing from TIER_MAP silently strips a PAYING customer
+          // to free (e.g. a 4th Stripe product added without updating this map).
+          console.error(`stripe-webhook: product ${productId} not in TIER_MAP — customer paid but got 'free' (checkout ${session.id})`);
+        }
 
         // .select('id') so a 0-row match is detectable: PostgREST returns
         // error:null when an UPDATE matches nothing (e.g. profile row not
@@ -133,14 +138,18 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       const customerId = subscription.customer as string;
       const productId = subscription.items.data[0]?.price?.product as string;
       const tier = TIER_MAP[productId] || 'free'; // unknown product → least privilege, never auto-grant paid
+      if (!TIER_MAP[productId]) {
+        console.error(`stripe-webhook: product ${productId} not in TIER_MAP — subscription.updated writing 'free' for customer ${customerId}`);
+      }
 
-      // Tier follows subscription STATUS alone: active/trialing keep the paid
-      // tier; past_due/unpaid/canceled/etc downgrade. cancel_at_period_end
-      // must NOT downgrade early — the .deleted event handles period end.
-      // (Old logic kept paid tier on 'unpaid' forever and dropped trialing
-      // users with a scheduled cancel immediately.)
-      const actualTier =
-        subscription.status === 'active' || subscription.status === 'trialing' ? tier : 'free';
+      // Tier follows subscription STATUS: active/trialing/past_due keep the
+      // paid tier; unpaid/canceled/etc downgrade. past_due stays paid on
+      // purpose — a transient card decline enters dunning and Stripe retries
+      // (matching invoice.payment_failed's "don't downgrade yet"); if dunning
+      // exhausts, the sub moves to unpaid/canceled and THAT downgrades.
+      // cancel_at_period_end must NOT downgrade early — .deleted owns period end.
+      const KEEP_PAID = ['active', 'trialing', 'past_due'];
+      const actualTier = KEEP_PAID.includes(subscription.status) ? tier : 'free';
 
       // 0-row match throws: checkout.session.completed (which writes
       // stripe_customer_id) can arrive AFTER this event — retrying later heals
