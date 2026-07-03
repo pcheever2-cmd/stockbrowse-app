@@ -40,6 +40,15 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
         ))}
       </div>
 
+      <!-- Peer recommendations: fills the cold-start when one slot is chosen
+           (the stock-page Compare button lands here with only ?a=). Client-side
+           peers — same industry, nearest market cap, quality-forward. -->
+      <div id="cmp-suggest" class="hidden mb-8">
+        <p class="text-sm text-[#64748B] mb-2"><span id="cmp-suggest-label">Compare</span>
+          <span id="cmp-suggest-name" class="text-slate-300 font-semibold"></span> with:</p>
+        <div id="cmp-suggest-chips" class="flex flex-wrap gap-2"></div>
+      </div>
+
       <!-- Empty state -->
       <div id="cmp-empty" class="text-center py-12 text-[#64748B]">
         <div class="text-5xl mb-3">&#8644;</div>
@@ -142,6 +151,76 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
       });
     }
     wirePicker('a'); wirePicker('b');
+
+    // --- Peer recommendations -------------------------------------------------
+    // Same industry, nearest by market cap (log scale, so AAPL suggests
+    // mega-caps not $50M shells), quality-forward among the size-neighbors.
+    function peerSuggestions(base, excludeSym, n = 6) {
+      // Share-class/ADR variants (GOOG+GOOGL, BRK.A/B) must not eat chip slots:
+      // dedupe on the name with class suffixes stripped, keeping the nearest-cap one.
+      const nameKey = s => s.name.toLowerCase().replace(/\s*\(?class [a-c]\)?.*$/i, '').replace(/[^a-z0-9]/g, '');
+      const dedupe = arr => {
+        const seen = new Set(); const out = [];
+        for (const x of arr) { const k = nameKey(x.s); if (!seen.has(k)) { seen.add(k); out.push(x); } }
+        return out;
+      };
+      // No trustworthy size for the base -> industry-only, quality-ranked (a
+      // $0-cap anchor would otherwise pull the smallest names in the universe).
+      if (!(base.marketCap > 0)) {
+        return dedupe(allStocks
+          .filter(s => s.symbol !== base.symbol && s.symbol !== excludeSym && s.industry === base.industry)
+          .map(s => ({ s, d: 0 })))
+          .sort((a, b) => (b.s.compassScore || 0) - (a.s.compassScore || 0))
+          .slice(0, n).map(x => x.s);
+      }
+      const lm = Math.log10(Math.max(base.marketCap || 0.001, 0.001));
+      const dist = s => Math.abs(Math.log10(Math.max(s.marketCap, 0.001)) - lm);
+      const rank = pool => dedupe(pool
+        .map(s => ({ s, d: dist(s) }))
+        .sort((a, b) => a.d - b.d))
+        .slice(0, 24)
+        .sort((a, b) => (b.s.compassScore || 0) - (a.s.compassScore || 0))
+        .slice(0, n)
+        .map(x => x.s);
+      // Same industry AND within ~30x size (1.5 log-decades) — a $3T stock must
+      // not suggest $200M names just because its industry is thin.
+      const near = allStocks.filter(s =>
+        s.symbol !== base.symbol && s.symbol !== excludeSym &&
+        s.industry === base.industry && s.marketCap > 0 && dist(s) <= 1.5);
+      if (near.length >= 3) return rank(near);
+      // Thin industry at this size: nearest caps across the whole universe
+      // (AAPL's real comparables are MSFT/GOOGL, not tiny electronics names).
+      return rank(allStocks.filter(s =>
+        s.symbol !== base.symbol && s.symbol !== excludeSym && s.marketCap > 0));
+    }
+
+    function updateSuggestions() {
+      const box = document.getElementById('cmp-suggest');
+      const base = state.a || state.b;
+      if (!base) { box.classList.add('hidden'); return; }
+      const other = state.a && state.b ? (base === state.a ? state.b : state.a) : null;
+      const peers = peerSuggestions(base, other?.symbol);
+      if (!peers.length) { box.classList.add('hidden'); return; }
+      document.getElementById('cmp-suggest-label').textContent = other ? 'Also compare' : 'Compare';
+      document.getElementById('cmp-suggest-name').textContent = base.symbol;
+      document.getElementById('cmp-suggest-chips').innerHTML = peers.map(p => `
+        <button class="cmp-peer flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#161B24] border border-[rgba(255,255,255,0.08)] hover:border-[#22D3EE55] transition text-sm" data-symbol="${p.symbol}">
+          <span class="font-semibold text-slate-100">${p.symbol}</span>
+          <span class="text-[#64748B] max-w-[150px] truncate">${esc(p.name)}</span>
+          <span class="text-xs px-1.5 py-0.5 rounded border ${gradeChip[p.grade] || gradeChip.C}">${p.grade}</span>
+        </button>`).join('');
+      box.querySelectorAll('.cmp-peer').forEach(btn => btn.addEventListener('click', () => {
+        const stock = bySymbol.get(btn.dataset.symbol);
+        if (!stock) return;
+        // Fill the empty slot; when both are set, the chip replaces the non-base side.
+        const slot = !state.a ? 'a' : (!state.b ? 'b' : (base === state.a ? 'b' : 'a'));
+        state[slot] = stock;
+        document.getElementById(`pick-${slot}`).value = `${stock.symbol} — ${stock.name}`;
+        syncURL();
+        render();
+      }));
+      box.classList.remove('hidden');
+    }
 
     document.querySelectorAll('.cmp-example').forEach(btn => btn.addEventListener('click', () => {
       state.a = bySymbol.get(btn.dataset.a); state.b = bySymbol.get(btn.dataset.b);
@@ -283,6 +362,7 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
     let renderToken = 0; // guards against out-of-order async renders clobbering newer state
 
     async function render() {
+      updateSuggestions(); // peer chips track every state change, incl. one-slot states
       if (!state.a || !state.b) return;
       if (state.a.symbol === state.b.symbol) {
         // Same stock in both slots: show the empty state, never stale results.
