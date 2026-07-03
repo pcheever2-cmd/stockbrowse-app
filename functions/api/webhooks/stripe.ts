@@ -103,7 +103,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         const productId = subscription.items.data[0]?.price?.product as string;
         const tier = TIER_MAP[productId] || 'free'; // unknown product → least privilege, never auto-grant paid
 
-        await supabase
+        // .select('id') so a 0-row match is detectable: PostgREST returns
+        // error:null when an UPDATE matches nothing (e.g. profile row not
+        // created yet) — that must throw and retry, not mark-processed.
+        const { data: updatedRows, error: updateErr } = await supabase
           .from('profiles')
           .update({
             subscription_tier: tier,
@@ -111,13 +114,15 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             current_period_end: periodEndISO(subscription),
           })
           .eq('id', userId)
-          .then(mustSucceed('checkout tier update'));
+          .select('id');
+        if (updateErr) throw new Error(`checkout tier update: ${updateErr.message}`);
+        if (!updatedRows?.length) throw new Error(`checkout tier update matched no profile for ${userId}`);
 
-        // Audit log
+        // Audit log (event_id included so retry-duplicates are traceable)
         await supabase.from('audit_log').insert({
           user_id: userId,
           event_type: 'subscription_created',
-          payload: { tier, stripe_customer_id: session.customer },
+          payload: { tier, stripe_customer_id: session.customer, event_id: event.id },
         }).then(bestEffort('subscription_created'));
       }
       break;
@@ -129,18 +134,27 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       const productId = subscription.items.data[0]?.price?.product as string;
       const tier = TIER_MAP[productId] || 'free'; // unknown product → least privilege, never auto-grant paid
 
-      const newTier = subscription.cancel_at_period_end ? 'free' : tier;
-      // Only downgrade to free when the period actually ends
-      const actualTier = subscription.status === 'active' ? tier : newTier;
+      // Tier follows subscription STATUS alone: active/trialing keep the paid
+      // tier; past_due/unpaid/canceled/etc downgrade. cancel_at_period_end
+      // must NOT downgrade early — the .deleted event handles period end.
+      // (Old logic kept paid tier on 'unpaid' forever and dropped trialing
+      // users with a scheduled cancel immediately.)
+      const actualTier =
+        subscription.status === 'active' || subscription.status === 'trialing' ? tier : 'free';
 
-      await supabase
+      // 0-row match throws: checkout.session.completed (which writes
+      // stripe_customer_id) can arrive AFTER this event — retrying later heals
+      // the ordering instead of silently no-opping.
+      const { data: updRows, error: updErr } = await supabase
         .from('profiles')
         .update({
           subscription_tier: actualTier,
           current_period_end: periodEndISO(subscription),
         })
         .eq('stripe_customer_id', customerId)
-        .then(mustSucceed('subscription.updated tier update'));
+        .select('id');
+      if (updErr) throw new Error(`subscription.updated tier update: ${updErr.message}`);
+      if (!updRows?.length) throw new Error(`subscription.updated matched no profile for ${customerId} (checkout may not have landed yet)`);
 
       break;
     }
@@ -166,7 +180,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         await supabase.from('audit_log').insert({
           user_id: profile.id,
           event_type: 'subscription_cancelled',
-          payload: { stripe_customer_id: customerId },
+          payload: { stripe_customer_id: customerId, event_id: event.id },
         }).then(bestEffort('subscription_cancelled'));
       }
       break;
