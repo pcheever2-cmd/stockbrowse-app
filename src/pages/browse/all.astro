@@ -1,6 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry, displayIndustries } from '../../data/stocks';
+// Recently-IPO'd names that can't be Compass-scored yet (built by the data
+// pipeline's collectors/collect_ipos.py). Surfaced in SEARCH ONLY, as "score
+// pending" cards, so a lookup for e.g. SPCX / SpaceX returns the real company.
+import recentIposRaw from '../../data/recent-ipos.json';
 
 // Pre-process all stocks for the page.
 // IMPORTANT: only public fields are passed into the client-side define:vars.
@@ -16,6 +20,19 @@ const allStocks = stocks.map(s => ({
   industry: s.industry,
   marketCap: s.marketCap,
   normalizedIndustry: getNormalizedIndustry(s.industry),
+}));
+
+// Score-pending IPOs for the search index (all public fields). Kept separate from
+// allStocks so they never enter the ranked grid, sorts, or score/grade filters.
+const recentIpos = (recentIposRaw || []).map(s => ({
+  symbol: s.symbol,
+  name: s.name,
+  price: s.price,
+  marketCap: s.marketCap,
+  normalizedIndustry: getNormalizedIndustry(s.industry || s.sector || ''),
+  ipoDate: s.ipoDate,
+  daysPublic: s.daysPublic,
+  isRecentIpo: true,
 }));
 
 // Extract unique values for filters
@@ -211,7 +228,7 @@ const marketCapRanges = [
     </div>
   </section>
 
-  <script define:vars={{ allStocks }}>
+  <script define:vars={{ allStocks, recentIpos }}>
     // State
     let filteredStocks = [...allStocks];
     let filters = {
@@ -667,9 +684,30 @@ const marketCapRanges = [
 
       // Apply sorting
       sortStocks();
+
+      // Score-pending IPOs append to the END on a pure search match only (no
+      // structural filters). They have no Compass score, so they stay out of the
+      // ranked grid and sorts — this just makes a lookup like "SPCX"/"SpaceX" return
+      // the real company instead of nothing.
+      appendRecentIpoMatches();
+
       renderStocks();
       updateActiveFilters();
       saveFiltersToURL();
+    }
+
+    function appendRecentIpoMatches() {
+      const q = (filters.search || '').trim().toLowerCase();
+      if (!q) return;
+      const hasStructuralFilters = filters.grades.length || filters.industries.length ||
+        filters.priceRanges.length || filters.marketCapRanges.length ||
+        filters.goldenOnly || filters.catalystOnly || filters.valuationRatings.length;
+      if (hasStructuralFilters) return;
+      const have = new Set(filteredStocks.map(s => s.symbol));
+      const matches = recentIpos.filter(s =>
+        !have.has(s.symbol) &&
+        (s.symbol.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)));
+      filteredStocks = filteredStocks.concat(matches);
     }
 
     function sortStocks() {
@@ -730,6 +768,30 @@ const marketCapRanges = [
       noResults.classList.add('hidden');
 
       grid.innerHTML = filteredStocks.map(stock => {
+        // Score-pending IPO card — no grade/score, no detail page yet.
+        if (stock.isRecentIpo) {
+          const days = stock.daysPublic != null ? `${stock.daysPublic}d ago` : '';
+          return `
+            <div class="relative bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4">
+              <div class="flex justify-between items-start mb-3">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-bold text-lg">${stock.symbol}</h3>
+                  <p class="text-[#64748B] text-sm truncate">${escapeHtml(stock.name)}</p>
+                </div>
+                <span class="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-violet-500/15 text-violet-300" title="Just went public — not yet Compass-scored">NEW IPO</span>
+              </div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="text-2xl font-bold">$${stock.price.toFixed(2)}</div>
+                <div class="px-3 py-1 rounded-full text-xs font-semibold bg-[#0C0F14] text-[#94A3B8]" title="Needs ~30 days of trading and a few quarters of filings before it can be Compass-scored">Score pending</div>
+              </div>
+              <div class="space-y-1 text-xs text-[#CBD5E1]">
+                <div>${stock.normalizedIndustry}</div>
+                <div>Market Cap: ${formatMarketCap(stock.marketCap)}</div>
+                <div class="text-[#64748B]">IPO'd ${stock.ipoDate}${days ? ` · ${days}` : ''}</div>
+              </div>
+            </div>
+          `;
+        }
         const gradeColors = {
           'A': 'bg-emerald-100 text-emerald-700',
           'B': 'bg-blue-100 text-blue-700',
@@ -1003,7 +1065,8 @@ const marketCapRanges = [
         // A single token that matches a ticker/name is a lookup (stay literal);
         // anything descriptive ("GLP-1 stocks", "stocks like Netflix") goes semantic.
         const isLookup = q.length > 0 && !q.includes(' ') &&
-          allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql));
+          (allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)) ||
+           recentIpos.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)));
         // Require >=2 chars (2-char themes like "vr"/"ar" exist) so single-keystroke fragments
         // don't fire an embedding + Vectorize call + miss-log; the longer debounce below does the rest.
         const goSemantic = q.length >= 2 && !isLookup;
