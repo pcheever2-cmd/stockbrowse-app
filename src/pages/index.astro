@@ -1,462 +1,1367 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getTopStocks, getGradeColor, formatPrice, getNormalizedIndustry, stocks, getStockBySymbol } from '../data/stocks';
+import Layout from '../../layouts/Layout.astro';
+import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry, displayIndustries } from '../../data/stocks';
+// Recently-IPO'd names that can't be Compass-scored yet (built by the data
+// pipeline's collectors/collect_ipos.py). Surfaced in SEARCH ONLY, as "score
+// pending" cards, so a lookup for e.g. SPCX / SpaceX returns the real company.
+import recentIposRaw from '../../data/recent-ipos.json';
 
-const topStocks = getTopStocks(8);
+// Pre-process all stocks for the page.
+// IMPORTANT: only public fields are passed into the client-side define:vars.
+// Premium fields (isGolden, valuationRating, factorValues, etc.) are fetched at
+// runtime via /api/stocks/premium for paid users — never embedded in static HTML.
+// The build canary at scripts/check-leakage.sh enforces this.
+const allStocks = stocks.map(s => ({
+  symbol: s.symbol,
+  name: s.name,
+  price: s.price,
+  compassScore: s.compassScore,
+  grade: s.grade,
+  industry: s.industry,
+  marketCap: s.marketCap,
+  normalizedIndustry: getNormalizedIndustry(s.industry),
+}));
 
-// Famous stock examples - pulled dynamically (showing A-F range)
-const famousSymbols = ['AAPL', 'NVDA', 'GOOGL', 'META', 'PLTR', 'AMD', 'COIN', 'SMCI'];
-const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Boolean);
+// Score-pending IPOs for the search index (all public fields). Kept separate from
+// allStocks so they never enter the ranked grid, sorts, or score/grade filters.
+const recentIpos = (recentIposRaw || []).map(s => ({
+  symbol: s.symbol,
+  name: s.name,
+  price: s.price,
+  marketCap: s.marketCap,
+  normalizedIndustry: getNormalizedIndustry(s.industry || s.sector || ''),
+  ipoDate: s.ipoDate,
+  daysPublic: s.daysPublic,
+  isRecentIpo: true,
+}));
+
+// Extract unique values for filters
+const grades = ['A', 'B', 'C', 'D', 'F'];
+const industries = displayIndustries.map(i => i.name);
+const priceRanges = [
+  { label: 'Under $10', min: 0, max: 10 },
+  { label: '$10 - $50', min: 10, max: 50 },
+  { label: '$50 - $100', min: 50, max: 100 },
+  { label: '$100 - $500', min: 100, max: 500 },
+  { label: '$500+', min: 500, max: 999999 }
+];
+const marketCapRanges = [
+  { label: 'Small Cap (<$2B)', min: 0, max: 2 },
+  { label: 'Mid Cap ($2B-$10B)', min: 2, max: 10 },
+  { label: 'Large Cap ($10B-$200B)', min: 10, max: 200 },
+  { label: 'Mega Cap ($200B+)', min: 200, max: 999999 }
+];
 ---
 
-<Layout title="Compass Score | Find Quality Stocks, Understand Why">
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-[#22D3EE] to-emerald-700 text-white py-20">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">
-        Find quality stocks. Understand why in seconds.
-      </h1>
-      <p class="text-xl md:text-2xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-        Every stock gets one 0-100 quality score, built on decades of academic research and tested on
-        our own. Browse by industry, price, or goal, and see exactly what's behind the grade. No finance
-        degree needed.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/browse/all" class="bg-[#161B24] text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition">
-          Browse Quality Stocks
-        </a>
-        <a href="/tool" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#161B24]/10 transition">
-          Look Up a Stock
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quiz CTA Section -->
-  <section class="py-10 bg-gradient-to-r from-emerald-600/20 to-cyan-600/20 border-b border-[rgba(255,255,255,0.06)]">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold mb-3 text-slate-100">Not sure where to start?</h2>
-      <p class="text-[#CBD5E1] mb-6 max-w-xl mx-auto">
-        Take our 1-minute quiz to discover your investing style and find stocks that match your goals.
-      </p>
-      <a href="/quiz" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-[#0C0F14] px-8 py-3.5 rounded-lg font-bold text-lg transition">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-        </svg>
-        Find Your Investing Style
-      </a>
-    </div>
-  </section>
-
-  <!-- Free Forever Section -->
-  <section class="py-12 bg-[#161B24]">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="bg-[#080A0F] border-2 border-[#22D3EE]/30 rounded-xl p-8">
-        <h3 class="text-2xl font-bold mb-4 text-center text-slate-100">Free Forever</h3>
-        <p class="text-[#CBD5E1] mb-6 text-center max-w-2xl mx-auto">
-          Start browsing quality stocks today. No credit card required.
-        </p>
-        <div class="grid md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-start gap-2">
-            <span class="text-[#22D3EE] mt-1">✓</span>
-            <span class="text-[#CBD5E1]">Browse all 4,000+ stocks</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-[#22D3EE] mt-1">✓</span>
-            <span class="text-[#CBD5E1]">See letter grades (A-F) for every company</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-[#22D3EE] mt-1">✓</span>
-            <span class="text-[#CBD5E1]">10 full stock views + 5 smart searches per day</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-[#22D3EE] mt-1">✓</span>
-            <span class="text-[#CBD5E1]">Filter by industry, budget, and goals</span>
-          </div>
-        </div>
-        <p class="text-sm text-[#64748B] text-center">
-          Upgrade anytime for unlimited views, unlimited search, and premium features.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick Browse Cards -->
-  <section class="py-12 bg-[#080A0F]">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-8">Browse Quality Stocks</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <a href="/browse/growth" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 text-center hover:shadow-lg hover:border-emerald-300 transition">
-          <div class="text-3xl mb-2">📈</div>
-          <div class="font-semibold">Growth</div>
-        </a>
-        <a href="/browse/dividends" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 text-center hover:shadow-lg hover:border-emerald-300 transition">
-          <div class="text-3xl mb-2">💰</div>
-          <div class="font-semibold">Dividends</div>
-        </a>
-        <a href="/browse/low-risk" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 text-center hover:shadow-lg hover:border-emerald-300 transition">
-          <div class="text-3xl mb-2">🛡️</div>
-          <div class="font-semibold">Low-Risk</div>
-        </a>
-        <a href="/browse" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 text-center hover:shadow-lg hover:border-emerald-300 transition">
-          <div class="text-3xl mb-2">🏭</div>
-          <div class="font-semibold">By Industry</div>
-        </a>
-        <a href="/browse/under-50" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 text-center hover:shadow-lg hover:border-emerald-300 transition">
-          <div class="text-3xl mb-2">💸</div>
-          <div class="font-semibold">Under $50</div>
-        </a>
-        <a href="/browse/under-100" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 text-center hover:shadow-lg hover:border-emerald-300 transition">
-          <div class="text-3xl mb-2">💳</div>
-          <div class="font-semibold">Under $100</div>
-        </a>
-        <a href="/browse/under-500" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 text-center hover:shadow-lg hover:border-emerald-300 transition">
-          <div class="text-3xl mb-2">🎯</div>
-          <div class="font-semibold">Under $500</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Top Rated Stocks -->
-  <section class="py-16 bg-[#161B24]">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold mb-2">Top-Rated Stocks Right Now</h2>
-        <p class="text-[#CBD5E1]">Highest quality companies based on the Compass Score</p>
+<Layout title="Browse All Stocks | Compass Score">
+  <section class="py-8 bg-[#080A0F] min-h-screen">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Header -->
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold mb-2">Browse All Stocks</h1>
+        <p class="text-[#CBD5E1]">Filter and explore 4,000+ stocks with quality scores</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {topStocks.map(stock => {
-          const colors = getGradeColor(stock.grade);
-          return (
-            <a href={`/stock/${stock.symbol.toLowerCase()}`}
-               class="bg-[#080A0F] border border-[rgba(255,255,255,0.06)] rounded-xl p-5 hover:shadow-lg hover:border-emerald-300 transition">
-              <div class="flex justify-between items-start mb-3">
-                <div>
-                  <h3 class="font-bold text-lg">{stock.symbol}</h3>
-                  <p class="text-[#64748B] text-sm truncate max-w-[140px]">{stock.name}</p>
-                </div>
-                <div class={`px-3 py-1 rounded-full ${colors.bg} ${colors.text} font-bold`}>
-                  {stock.compassScore}
-                </div>
+      <div>
+        <!-- Search + Sort Bar -->
+        <div class="bg-[#161B24] rounded-xl p-4 mb-4">
+          <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+            <!-- Search -->
+            <div class="flex-1 max-w-lg relative">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder='Try "stocks like Amazon" or "cheap tech stocks"...'
+                class="w-full px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 placeholder:text-[#64748B] rounded-lg focus:ring-2 focus:ring-[#22D3EE] focus:border-transparent"
+              />
+              <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
               </div>
-              <div class="flex justify-between items-end">
-                <div>
-                  <div class="text-xl font-bold">{formatPrice(stock.price)}</div>
-                  <div class="text-xs text-[#64748B]">{getNormalizedIndustry(stock.industry)}</div>
-                </div>
-                <div class={`text-sm font-semibold ${colors.text}`}>
-                  Grade {stock.grade}
-                </div>
+              <div id="searchLimitNotice" class="hidden mt-2 text-sm bg-[#161B24] border border-amber-500/40 text-amber-300 rounded-lg px-3 py-2">
+                You've used your 5 free smart searches today — resets tomorrow.
+                <a href="/pricing" class="text-[#22D3EE] hover:underline font-semibold">Upgrade for unlimited search →</a>
               </div>
-            </a>
-          );
-        })}
-      </div>
+            </div>
 
-      <div class="text-center">
-        <a href="/browse" class="inline-block bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-3 rounded-lg font-semibold transition">
-          View All {stocks.length.toLocaleString()}+ Stocks
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Problem Section -->
-  <section class="py-16 bg-[#080A0F]">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">
-        Tired of Being Told to "Do Your Research"?
-      </h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl">😵</span>
-          </div>
-          <h3 class="font-semibold mb-2">Information Overload</h3>
-          <p class="text-[#CBD5E1]">Hundreds of metrics, ratios, and charts. Where do you even start?</p>
-        </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl">💸</span>
-          </div>
-          <h3 class="font-semibold mb-2">Expensive Tools</h3>
-          <p class="text-[#CBD5E1]">Premium platforms cost $30-50/month and assume you already know what you're doing.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl">🎰</span>
-          </div>
-          <h3 class="font-semibold mb-2">Meme Stock Madness</h3>
-          <p class="text-[#CBD5E1]">Social media pushes hype over substance. One bad pick and your savings are gone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Solution Section -->
-  <section class="py-16 bg-[#161B24]">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-4">
-        One score. Easy to read.
-      </h2>
-      <p class="text-xl text-[#CBD5E1] text-center mb-12 max-w-2xl mx-auto">
-        The Compass Score folds the metrics that matter into a single 0-100 rating, so you can tell quality
-        from junk at a glance and dig into the why when you want to.
-      </p>
-
-      <div class="bg-[#080A0F] rounded-2xl p-8 mb-12">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 class="text-2xl font-bold mb-4">What the Score Tells You</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <span class="text-[#22D3EE] mt-1">✓</span>
-                <span><strong>85-100 (Grade A):</strong> High quality. Strong fundamentals, low risk.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-[#22D3EE] mt-1">✓</span>
-                <span><strong>60-84 (Grade B):</strong> Above average. Good quality, moderate risk.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-slate-400 mt-1">—</span>
-                <span><strong>40-59 (Grade C):</strong> Neutral. Average characteristics.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-amber-500 mt-1">⚠</span>
-                <span><strong>20-39 (Grade D):</strong> Speculative. Weak fundamentals or high volatility.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-red-500 mt-1">✗</span>
-                <span><strong>0-19 (Grade F):</strong> High risk. Poor quality metrics.</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
-            <h4 class="font-semibold text-center mb-2">Famous Stock Examples</h4>
-            <p class="text-xs text-[#64748B] text-center mb-4">From high-quality giants to speculative plays</p>
-            <div class="space-y-3">
-              {famousStocks.map(stock => {
-                const colors = getGradeColor(stock.grade);
-                return (
-                  <a href={`/stock/${stock.symbol.toLowerCase()}`} class="flex justify-between items-center hover:bg-[#080A0F] p-2 rounded-lg transition">
-                    <span>{stock.name} ({stock.symbol})</span>
-                    <span class={`${colors.bg} ${colors.text} px-3 py-1 rounded-full text-sm font-semibold`}>{stock.compassScore} - {stock.grade}</span>
-                  </a>
-                );
-              })}
+            <!-- Sort -->
+            <div class="flex gap-3 items-center">
+              <select id="sortSelect" class="px-4 py-2 bg-[#0C0F14] border border-[rgba(255,255,255,0.1)] text-slate-100 rounded-lg text-sm">
+                <option value="relevance-desc">Best match</option>
+                <option value="score-desc">Highest Score</option>
+                <option value="score-asc">Lowest Score</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="marketcap-desc">Market Cap: Largest</option>
+                <option value="marketcap-asc">Market Cap: Smallest</option>
+                <option value="name-asc">Name: A-Z</option>
+              </select>
+              <a href="/watchlist" class="relative p-2 hover:bg-[#0C0F14] rounded-lg transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+                <span id="watchlistBadge" class="absolute -top-1 -right-1 bg-[#22D3EE] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+              </a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- How It Works -->
-  <section class="py-16 bg-[#161B24]">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-[#22D3EE]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🔍</span>
+          <!-- Smart Search Hint -->
+          <div id="smartSearchHint" class="mt-3 text-sm text-[#22D3EE] bg-[#22D3EE]/10 border border-[#22D3EE]/30 rounded-lg px-3 py-2 hidden">
+            <span class="font-semibold">Smart search active:</span> <span id="smartSearchText"></span>
           </div>
-          <h3 class="font-semibold text-xl mb-2">1. Browse by Your Goals</h3>
-          <p class="text-[#CBD5E1]">Filter by industry, budget, dividends, or risk level. No finance jargon required.</p>
         </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-[#22D3EE]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">📊</span>
+
+        <!-- Filter Bar: Quick Chips + Dropdown Popovers -->
+        <div class="bg-[#161B24] rounded-xl p-4 mb-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- Quick-toggle Grade Chips -->
+            {grades.map(grade => {
+              const colors = getGradeColor(grade);
+              return (
+                <button data-grade-chip={grade} class={`grade-chip px-3 py-1.5 rounded-full text-sm font-semibold border border-transparent transition cursor-pointer ${colors.bg} ${colors.text} opacity-60 hover:opacity-100`}>
+                  Grade {grade}
+                </button>
+              );
+            })}
+
+            <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
+
+            <!-- Quick toggles -->
+            <button id="catalystFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-[#22D3EE]/15 text-[#22D3EE] opacity-60 hover:opacity-100 border border-transparent transition" title="Has a current catalyst — recent earnings beats + analyst upgrades">
+              ⚡ Catalyst
+            </button>
+            <button id="goldenFilter" class="quick-toggle px-3 py-1.5 rounded-full text-sm font-semibold bg-amber-500/20 text-amber-400 opacity-60 hover:opacity-100 border border-transparent transition" title="Premium: top-decile quality + top-decile catalyst">
+              ⭐ Golden
+            </button>
+
+            <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
+
+            <!-- Dropdown Popover Buttons -->
+            <div class="relative" id="industryDropdown">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Industry
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-64 max-h-72 overflow-y-auto">
+                {industries.map(industry => (
+                  <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5 hover:text-[#22D3EE] transition">
+                    <input type="checkbox" name="industry" value={industry} class="rounded text-[#22D3EE] filter-checkbox" />
+                    <span>{industry}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="relative" id="priceDropdown">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Price
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-48">
+                {priceRanges.map(range => (
+                  <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5 hover:text-[#22D3EE] transition">
+                    <input type="checkbox" name="price" value={`${range.min}-${range.max}`} class="rounded text-[#22D3EE] filter-checkbox" />
+                    <span>{range.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="relative" id="marketCapDropdown">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Market Cap
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-56">
+                {marketCapRanges.map(range => (
+                  <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5 hover:text-[#22D3EE] transition">
+                    <input type="checkbox" name="marketcap" value={`${range.min}-${range.max}`} class="rounded text-[#22D3EE] filter-checkbox" />
+                    <span>{range.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div class="relative" id="valuationFilterSection">
+              <button class="filter-dropdown-btn px-3 py-1.5 rounded-lg text-sm bg-[#080A0F] border border-[rgba(255,255,255,0.1)] text-[#CBD5E1] hover:border-[#22D3EE] transition flex items-center gap-1">
+                Fair Value <span id="valuationPremiumBadge" class="text-[10px] bg-[#22D3EE]/20 text-[#22D3EE] px-1 rounded ml-1">Pro</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="valuationFilters" class="filter-popover hidden absolute left-0 top-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-2xl p-4 z-20 w-48 opacity-50 pointer-events-none">
+                <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5">
+                  <input type="checkbox" name="valuation" value="Undervalued" class="rounded text-[#22D3EE] filter-checkbox" />
+                  <span class="text-emerald-400 font-semibold">Undervalued</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5">
+                  <input type="checkbox" name="valuation" value="Fair Value" class="rounded text-[#22D3EE] filter-checkbox" />
+                  <span class="text-amber-400 font-semibold">Fair Value</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-sm py-1.5">
+                  <input type="checkbox" name="valuation" value="Overvalued" class="rounded text-[#22D3EE] filter-checkbox" />
+                  <span class="text-red-400 font-semibold">Overvalued</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="w-px h-6 bg-[rgba(255,255,255,0.1)]"></div>
+            <button id="clearFilters" class="text-sm text-[#64748B] hover:text-[#22D3EE] transition">Clear all</button>
           </div>
-          <h3 class="font-semibold text-xl mb-2">2. See the Compass Score</h3>
-          <p class="text-[#CBD5E1]">Every stock rated 0-100 on profitability, cash flow, and stability. Grounded in academic research and tested on 30 years of our own data.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-[#22D3EE]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">✅</span>
+
+          <!-- Active Filters -->
+          <div id="activeFilters" class="mt-3 flex flex-wrap gap-2 hidden"></div>
+
+          <!-- Results Count -->
+          <div class="mt-3 text-sm text-[#CBD5E1]">
+            <span id="resultsCount">0</span> stocks found
           </div>
-          <h3 class="font-semibold text-xl mb-2">3. Read Plain English</h3>
-          <p class="text-[#CBD5E1]">No spreadsheets. Get a simple assessment: is this a quality company?</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Research Credibility -->
-  <section class="py-16 bg-[#080A0F]">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Built on research — academic and our own</h2>
-      <p class="text-xl text-[#CBD5E1] mb-12 max-w-2xl mx-auto">
-        The factors behind the Compass Score come from published finance research. Then we tested them
-        ourselves across 30 years of market data, failed companies included, to see how they actually held up.
-      </p>
-
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
-          <div class="text-3xl font-bold text-[#22D3EE] mb-2">935,000+</div>
-          <div class="text-[#CBD5E1]">Stock Observations</div>
-        </div>
-        <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
-          <div class="text-3xl font-bold text-[#22D3EE] mb-2">30</div>
-          <div class="text-[#CBD5E1]">Years Backtested</div>
-        </div>
-        <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
-          <div class="text-3xl font-bold text-[#22D3EE] mb-2">+6.79%</div>
-          <div class="text-[#CBD5E1]">OOS Annual Spread*</div>
-        </div>
-        <div class="bg-[#161B24] rounded-xl p-6 border border-[rgba(255,255,255,0.06)]">
-          <div class="text-3xl font-bold text-[#22D3EE] mb-2">All 4</div>
-          <div class="text-[#CBD5E1]">Market Cap Segments</div>
-        </div>
-      </div>
-      <p class="text-sm text-[#64748B] mt-6">
-        *Out-of-sample Q5-Q1 spread (2020-2026). Past performance does not guarantee future results.
-        <a href="/how-it-works" class="text-[#22D3EE] hover:underline">Read the research →</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-16 bg-[#22D3EE] text-white">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Ready to Invest Smarter?</h2>
-      <p class="text-xl text-emerald-100 mb-8">
-        Look up any stock and see its Compass Score instantly.
-      </p>
-
-      <!-- Pricing Tier Preview -->
-      <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-8">
-        <div class="bg-[#161B24] text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
-          <h3 class="font-bold text-xl mb-2">Free</h3>
-          <div class="text-3xl font-bold mb-4">$0</div>
-          <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
-            <li>✓ Browse all stocks</li>
-            <li>✓ Letter grades (A-F)</li>
-            <li>✓ 10 stock views + 5 searches/day</li>
-          </ul>
-        </div>
-        <div class="bg-[#161B24] text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
-          <h3 class="font-bold text-xl mb-2">Newsletter</h3>
-          <div class="text-3xl font-bold mb-4">$1<span class="text-sm text-[#64748B]">/mo</span></div>
-          <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
-            <li>✓ Everything in Free</li>
-            <li>✓ Stockbrowse Weekly</li>
-            <li>✓ Monthly stock picks</li>
-          </ul>
-        </div>
-        <div class="bg-[#161B24] text-slate-100 border-2 border-[#06B6D4] rounded-xl p-6 relative shadow-lg">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#22D3EE] text-white px-3 py-1 rounded-full text-xs font-semibold">
-            MOST POPULAR
+          <!-- Stock Grid -->
+          <div id="stockGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Populated by JavaScript -->
           </div>
-          <h3 class="font-bold text-xl mb-2">Plus</h3>
-          <div class="text-3xl font-bold mb-4">$10<span class="text-sm text-[#64748B]">/mo</span></div>
-          <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
-            <li>✓ Everything in Newsletter</li>
-            <li>✓ Full score breakdown</li>
-            <li>✓ Analyst accuracy</li>
-            <li>✓ CSV export + watchlist</li>
-          </ul>
-        </div>
-        <div class="bg-[#161B24] text-slate-100 border border-[rgba(255,255,255,0.06)] rounded-xl p-6">
-          <h3 class="font-bold text-xl mb-2">Pro</h3>
-          <div class="text-3xl font-bold mb-4">$20<span class="text-sm text-[#64748B]">/mo</span></div>
-          <ul class="text-sm space-y-2 text-left text-[#CBD5E1]">
-            <li>✓ Everything in Plus</li>
-            <li>✓ Fair Value (per share)</li>
-            <li>✓ Multi-watchlists</li>
-            <li>✓ SMS alerts</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/tool" class="inline-block bg-[#161B24] text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition">
-          Try the Score Lookup Tool
-        </a>
-        <a href="/pricing" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#161B24]/10 transition">
-          View Pricing
-        </a>
+          <!-- No Results -->
+          <div id="noResults" class="hidden bg-[#161B24] rounded-xl p-12 text-center">
+            <div class="text-5xl mb-4">🔍</div>
+            <h3 class="text-xl font-bold mb-2">No stocks found</h3>
+            <p class="text-[#CBD5E1] mb-4">Try adjusting your filters or search term</p>
+            <button id="clearFiltersBtn" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-6 py-2 rounded-lg font-semibold transition">
+              Clear All Filters
+            </button>
+          </div>
       </div>
     </div>
   </section>
 
-  <!-- Email Capture -->
-  <section class="py-16 bg-slate-900 text-white">
-    <div class="max-w-2xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold mb-4">Stockbrowse Weekly</h2>
-      <p class="text-slate-300 mb-6">
-        Get the top-scoring stocks each week, delivered to your inbox. Plus educational content on stock fundamentals.
-      </p>
-      <div class="bg-slate-800 rounded-lg p-6 mb-6 text-left">
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3">
-            <span class="text-[#06B6D4] mt-1">✓</span>
-            <span class="text-slate-300">Top 10 quality stocks updated weekly</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-[#06B6D4] mt-1">✓</span>
-            <span class="text-slate-300">Plain English market insights</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-[#06B6D4] mt-1">✓</span>
-            <span class="text-slate-300">Learn to pick stocks yourself</span>
-          </li>
-        </ul>
-      </div>
-      <a href="/insights" class="inline-block bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] px-8 py-3 rounded-lg font-semibold transition mb-4">
-        Get Stockbrowse Weekly — $1/mo
-      </a>
-      <p class="text-sm text-slate-400">
-        $1/month. Cancel anytime.
-      </p>
-      <p class="text-xs text-[#64748B] mt-4">
-        <a href="/insights" class="text-[#06B6D4] hover:underline">Learn more about Stockbrowse Weekly →</a>
-      </p>
-    </div>
-  </section>
+  <script define:vars={{ allStocks, recentIpos }}>
+    // State
+    let filteredStocks = [...allStocks];
+    let filters = {
+      search: '',
+      grades: [],
+      industries: [],
+      priceRanges: [],
+      marketCapRanges: [],
+      valuationRatings: [],
+      goldenOnly: false,
+      catalystOnly: false,
+      sort: 'score-desc'
+    };
+    // Map<symbol, similarityScore> when a semantic ("meaning") search is active; null otherwise.
+    let semanticRank = null;
+    // Map<symbol, {why, kind}> populated only on a curated-catalog hit; empty otherwise.
+    let semanticWhy = new Map();
 
-  <!-- JSON-LD Structured Data for AI Discoverability -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Compass Score",
-    "applicationCategory": "FinanceApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "description": "Stock quality scoring system based on 30 years of academic research. Browse 4,000+ stocks with free letter grades (A-F).",
-    "featureList": [
-      "Browse 4,000+ stocks by industry and budget",
-      "Letter grades (A-F) for every company",
-      "Research-backed quality scores",
-      "Plain English stock assessments"
-    ]
-  }
+    // Premium valuation data (fetched at runtime for Plus+ users)
+    let valuationMap = {};  // symbol -> valuationRating
+    let valuationDataLoaded = false;
+    // Golden = Compass A/B + strong catalyst (PREMIUM, hydrated at runtime). Empty for free users.
+    let goldenSet = new Set();
+    // Catalyst is PREMIUM: the ⚡ chip shows for everyone but only FUNCTIONS for premium. catalystTagSet
+    // (which stocks are tagged) is hydrated from the premium API; empty for free → filter yields nothing.
+    // Access is tracked on window.__catalystAccess (set true by the premium module script below).
+    let catalystTagSet = new Set();
+
+    // URL State Management - persist filters in URL for back button support
+    function saveFiltersToURL() {
+      const params = new URLSearchParams();
+
+      if (filters.search) params.set('q', filters.search);
+      if (filters.grades.length) params.set('grades', filters.grades.join(','));
+      if (filters.industries.length) params.set('industries', filters.industries.join(','));
+      if (filters.priceRanges.length) params.set('price', filters.priceRanges.join(','));
+      if (filters.marketCapRanges.length) params.set('cap', filters.marketCapRanges.join(','));
+      if (filters.valuationRatings.length) params.set('valuation', filters.valuationRatings.join(','));
+      if (filters.goldenOnly) params.set('golden', '1');
+      if (filters.catalystOnly) params.set('catalyst', '1');
+      if (filters.sort !== 'score-desc') params.set('sort', filters.sort);
+
+      const newURL = params.toString() ? `${window.location.pathname}?${params}` : window.location.pathname;
+      history.replaceState(null, '', newURL);
+    }
+
+    function restoreFiltersFromURL() {
+      const params = new URLSearchParams(window.location.search);
+
+      if (params.get('q')) {
+        filters.search = params.get('q');
+        document.getElementById('searchInput').value = filters.search;
+      }
+      if (params.get('grades')) {
+        filters.grades = params.get('grades').split(',');
+        filters.grades.forEach(g => {
+          const chip = document.querySelector(`[data-grade-chip="${g}"]`);
+          if (chip) {
+            chip.classList.add('opacity-100', 'border-[#22D3EE]');
+            chip.classList.remove('opacity-60');
+          }
+        });
+      }
+      if (params.get('industries')) {
+        filters.industries = params.get('industries').split(',');
+        filters.industries.forEach(i => {
+          const cb = document.querySelector(`input[name="industry"][value="${i}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('price')) {
+        filters.priceRanges = params.get('price').split(',');
+        filters.priceRanges.forEach(r => {
+          const cb = document.querySelector(`input[name="price"][value="${r}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('cap')) {
+        filters.marketCapRanges = params.get('cap').split(',');
+        filters.marketCapRanges.forEach(r => {
+          const cb = document.querySelector(`input[name="marketcap"][value="${r}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('valuation')) {
+        filters.valuationRatings = params.get('valuation').split(',');
+        filters.valuationRatings.forEach(v => {
+          const cb = document.querySelector(`input[name="valuation"][value="${v}"]`);
+          if (cb) cb.checked = true;
+        });
+      }
+      if (params.get('golden') === '1') {
+        filters.goldenOnly = true;
+        const btn = document.getElementById('goldenFilter');
+        if (btn) { btn.classList.add('opacity-100', 'border-amber-400'); btn.classList.remove('opacity-60'); }
+      }
+      if (params.get('catalyst') === '1') {
+        filters.catalystOnly = true;
+        const btn = document.getElementById('catalystFilter');
+        if (btn) { btn.classList.add('opacity-100', 'border-[#22D3EE]'); btn.classList.remove('opacity-60'); }
+      }
+      if (params.get('sort')) {
+        filters.sort = params.get('sort');
+        document.getElementById('sortSelect').value = filters.sort;
+      }
+    }
+
+    // Watchlist (stored in localStorage)
+    function getWatchlist() {
+      const stored = localStorage.getItem('compassWatchlist');
+      return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveWatchlist(watchlist) {
+      localStorage.setItem('compassWatchlist', JSON.stringify(watchlist));
+      updateWatchlistBadge();
+    }
+
+    function toggleWatchlist(symbol) {
+      let watchlist = getWatchlist();
+      if (watchlist.includes(symbol)) {
+        watchlist = watchlist.filter(s => s !== symbol);
+      } else {
+        watchlist.push(symbol);
+      }
+      saveWatchlist(watchlist);
+      renderStocks(); // Re-render to update heart icons
+    }
+
+    function updateWatchlistBadge() {
+      const watchlist = getWatchlist();
+      const badge = document.getElementById('watchlistBadge');
+      if (watchlist.length > 0) {
+        badge.textContent = watchlist.length;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    // Intelligent search parser
+    function parseSmartSearch(query) {
+      const q = query.toLowerCase().trim();
+      const parsedFilters = {
+        grades: [],
+        industries: [],
+        priceRanges: [],
+        marketCapRanges: [],
+        similarTo: null,
+        keywords: []
+      };
+
+      // Pattern: "stocks like [company]" or "similar to [company]"
+      const likePattern = /(?:stocks?\s+like|similar\s+to|like)\s+([a-z0-9\s]+?)(?:\s|$)/i;
+      const likeMatch = q.match(likePattern);
+      if (likeMatch) {
+        const companyQuery = likeMatch[1].trim();
+        // Common company name aliases (what people type → actual symbol)
+        const companyAliases = {
+          'nvidia': 'NVDA', 'tesla': 'TSLA', 'apple': 'AAPL',
+          'amazon': 'AMZN', 'microsoft': 'MSFT', 'google': 'GOOGL',
+          'alphabet': 'GOOGL', 'meta': 'META', 'facebook': 'META',
+          'costco': 'COST', 'walmart': 'WMT', 'netflix': 'NFLX',
+          'disney': 'DIS', 'coca-cola': 'KO', 'coke': 'KO',
+          'pepsi': 'PEP', 'palantir': 'PLTR', 'amd': 'AMD',
+          'intel': 'INTC', 'qualcomm': 'QCOM', 'broadcom': 'AVGO',
+          'rivian': 'RIVN', 'lucid': 'LCID', 'ford': 'F',
+          'gm': 'GM', 'general motors': 'GM', 'alibaba': 'BABA',
+          'shopify': 'SHOP', 'ebay': 'EBAY', 'target': 'TGT',
+          'salesforce': 'CRM', 'oracle': 'ORCL', 'snowflake': 'SNOW',
+          'spotify': 'SPOT', 'uber': 'UBER', 'airbnb': 'ABNB',
+          'paypal': 'PYPL', 'visa': 'V', 'mastercard': 'MA',
+          'nike': 'NKE', 'starbucks': 'SBUX', 'mcdonalds': 'MCD',
+          'boeing': 'BA', 'lockheed': 'LMT', 'raytheon': 'RTX',
+          'chevron': 'CVX', 'exxon': 'XOM', 'shell': 'SHEL',
+          'jpmorgan': 'JPM', 'goldman': 'GS', 'morgan stanley': 'MS',
+          'berkshire': 'BRK-B', 'buffett': 'BRK-B'
+        };
+
+        // Check alias first, then fall back to symbol/name match
+        const aliasSymbol = companyAliases[companyQuery.toLowerCase()];
+        let referenceStock;
+        if (aliasSymbol) {
+          referenceStock = allStocks.find(s => s.symbol === aliasSymbol);
+        }
+        if (!referenceStock) {
+          referenceStock = allStocks.find(s =>
+            s.symbol.toLowerCase() === companyQuery.toLowerCase() ||
+            s.name.toLowerCase().includes(companyQuery.toLowerCase())
+          );
+        }
+        if (referenceStock) {
+          parsedFilters.similarTo = referenceStock;
+          // Auto-filter by same industry
+          parsedFilters.industries.push(referenceStock.normalizedIndustry);
+
+          // Also filter by similar market cap tier
+          const mc = referenceStock.marketCap;
+          if (mc >= 200) {
+            parsedFilters.marketCapRanges.push('200-999999'); // Mega cap
+          } else if (mc >= 10) {
+            parsedFilters.marketCapRanges.push('10-200'); // Large cap
+          } else if (mc >= 2) {
+            parsedFilters.marketCapRanges.push('2-10'); // Mid cap
+          } else {
+            parsedFilters.marketCapRanges.push('0-2'); // Small cap
+          }
+
+          // Prefer high quality similar stocks
+          if (referenceStock.grade === 'A' || referenceStock.grade === 'B') {
+            parsedFilters.grades.push('A', 'B');
+          }
+        }
+      }
+
+      // Industry keywords
+      const industryMap = {
+        // Technology
+        'tech': 'Technology', 'technology': 'Technology', 'software': 'Technology',
+        'ai': 'Technology', 'artificial intelligence': 'Technology', 'cloud': 'Technology',
+        'cybersecurity': 'Technology', 'semiconductor': 'Technology', 'chips': 'Technology',
+        'saas': 'Technology', 'fintech': 'Technology',
+
+        // Healthcare
+        'healthcare': 'Healthcare', 'health': 'Healthcare', 'biotech': 'Healthcare', 'pharma': 'Healthcare',
+        'medical': 'Healthcare', 'drug': 'Healthcare', 'hospital': 'Healthcare',
+
+        // Finance
+        'finance': 'Finance', 'financial': 'Finance', 'bank': 'Finance', 'banking': 'Finance',
+        'insurance': 'Finance', 'mortgage': 'Finance', 'credit': 'Finance', 'investment': 'Finance',
+
+        // Consumer
+        'consumer': 'Consumer', 'retail': 'Consumer', 'restaurant': 'Consumer',
+        'sports': 'Consumer', 'soccer': 'Consumer', 'racing': 'Consumer', 'entertainment': 'Consumer',
+        'gaming': 'Consumer', 'casino': 'Consumer', 'hotels': 'Consumer', 'travel': 'Consumer',
+        'automotive': 'Consumer', 'auto': 'Consumer', 'cars': 'Consumer', 'ev': 'Consumer',
+        'electric vehicle': 'Consumer', 'food': 'Consumer', 'beverage': 'Consumer',
+        'apparel': 'Consumer', 'fashion': 'Consumer', 'luxury': 'Consumer',
+
+        // Energy
+        'energy': 'Energy', 'oil': 'Energy', 'gas': 'Energy',
+        'petroleum': 'Energy', 'solar': 'Energy', 'renewable': 'Energy', 'drilling': 'Energy',
+        'natural gas': 'Energy', 'pipeline': 'Energy', 'refinery': 'Energy',
+
+        // Industrials
+        'industrial': 'Industrials', 'manufacturing': 'Industrials',
+        'aerospace': 'Industrials', 'defense': 'Industrials', 'airlines': 'Industrials',
+        'logistics': 'Industrials', 'shipping': 'Industrials', 'construction': 'Industrials',
+
+        // Real Estate
+        'real estate': 'Real Estate', 'realestate': 'Real Estate', 'reit': 'Real Estate',
+        'property': 'Real Estate', 'housing': 'Real Estate',
+
+        // Utilities
+        'utilities': 'Utilities', 'utility': 'Utilities', 'electric': 'Utilities', 'water': 'Utilities',
+
+        // Materials
+        'materials': 'Materials', 'mining': 'Materials', 'steel': 'Materials', 'chemicals': 'Materials',
+        'gold': 'Materials', 'copper': 'Materials',
+
+        // Communication
+        'communication': 'Communication Services', 'telecom': 'Communication Services', 'media': 'Communication Services',
+        'streaming': 'Communication Services', 'social media': 'Communication Services', 'advertising': 'Communication Services'
+      };
+      for (const [keyword, industry] of Object.entries(industryMap)) {
+        if (q.includes(keyword) && !parsedFilters.industries.includes(industry)) {
+          parsedFilters.industries.push(industry);
+        }
+      }
+
+      // Quality/Grade keywords
+      if (q.match(/\b(best|top|high quality|highest rated|excellent|premium|grade a)\b/)) {
+        parsedFilters.grades.push('A');
+      }
+      if (q.match(/\b(good|solid|quality|above average|grade b)\b/) && !parsedFilters.grades.includes('A')) {
+        parsedFilters.grades.push('A', 'B');
+      }
+      if (q.match(/\b(safe|low risk|stable|conservative|defensive)\b/)) {
+        parsedFilters.grades.push('A', 'B');
+      }
+      if (q.match(/\b(risky|speculative|high risk|volatile)\b/)) {
+        parsedFilters.grades.push('D', 'F');
+      }
+
+      // Price keywords
+      if (q.match(/\b(cheap|affordable|budget|inexpensive|penny)\b/)) {
+        parsedFilters.priceRanges.push('0-10', '10-50');
+      }
+      if (q.match(/\bunder\s*\$?\s*(\d+)\b/)) {
+        const priceMatch = q.match(/\bunder\s*\$?\s*(\d+)\b/);
+        const price = parseInt(priceMatch[1]);
+        if (price <= 10) parsedFilters.priceRanges.push('0-10');
+        else if (price <= 50) parsedFilters.priceRanges.push('0-10', '10-50');
+        else if (price <= 100) parsedFilters.priceRanges.push('0-10', '10-50', '50-100');
+        else parsedFilters.priceRanges.push('0-10', '10-50', '50-100', '100-500');
+      }
+      if (q.match(/\bover\s*\$?\s*(\d+)\b/)) {
+        const priceMatch = q.match(/\bover\s*\$?\s*(\d+)\b/);
+        const price = parseInt(priceMatch[1]);
+        if (price >= 500) parsedFilters.priceRanges.push('500-999999');
+        else if (price >= 100) parsedFilters.priceRanges.push('100-500', '500-999999');
+        else if (price >= 50) parsedFilters.priceRanges.push('50-100', '100-500', '500-999999');
+      }
+
+      // Market cap keywords
+      if (q.match(/\b(large cap|mega cap|big companies|giants)\b/)) {
+        parsedFilters.marketCapRanges.push('10-200', '200-999999');
+      }
+      if (q.match(/\b(small cap|microcap|micro cap|small companies)\b/)) {
+        parsedFilters.marketCapRanges.push('0-2');
+      }
+      if (q.match(/\b(mid cap|medium sized|midsize)\b/)) {
+        parsedFilters.marketCapRanges.push('2-10');
+      }
+
+      // Goal keywords
+      if (q.match(/\b(dividend|income|yield)\b/)) {
+        parsedFilters.industries.push('Utilities', 'Real Estate', 'Finance', 'Consumer');
+        if (!parsedFilters.grades.includes('A')) {
+          parsedFilters.grades.push('A', 'B');
+        }
+      }
+      if (q.match(/\b(growth|growing|expansion)\b/)) {
+        parsedFilters.industries.push('Technology', 'Healthcare', 'Communication Services');
+        if (!parsedFilters.grades.includes('A')) {
+          parsedFilters.grades.push('A', 'B');
+        }
+      }
+      if (q.match(/\b(value|undervalued|bargain)\b/)) {
+        parsedFilters.grades.push('B', 'C');
+      }
+
+      return parsedFilters;
+    }
+
+    function applySmartFilters(smartFilters) {
+      // Apply parsed filters
+      if (smartFilters.grades.length > 0) {
+        filters.grades = [...new Set([...filters.grades, ...smartFilters.grades])];
+      }
+      if (smartFilters.industries.length > 0) {
+        filters.industries = [...new Set([...filters.industries, ...smartFilters.industries])];
+      }
+      if (smartFilters.priceRanges.length > 0) {
+        filters.priceRanges = [...new Set([...filters.priceRanges, ...smartFilters.priceRanges])];
+      }
+      if (smartFilters.marketCapRanges.length > 0) {
+        filters.marketCapRanges = [...new Set([...filters.marketCapRanges, ...smartFilters.marketCapRanges])];
+      }
+    }
+
+    // Semantic search: returns Map<symbol, score> from the meaning index, or null.
+    // similarToStock (optional) triggers "stocks like X" using that company's own vector.
+    async function fetchSemanticResults(query, similarToStock) {
+      try {
+        const payload = similarToStock ? { similarTo: similarToStock.symbol } : { query };
+        // window.__authFetch (set by the premium module script) sends the Bearer
+        // so paid users are exempt from the free search quota; falls back to
+        // plain fetch for anonymous visitors.
+        const doFetch = window.__authFetch || fetch;
+        const res = await doFetch('/api/search/semantic', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const limitNotice = document.getElementById('searchLimitNotice');
+        if (res.status === 429) {
+          // Show the quota notice ONLY for the daily free-search limit —
+          // the abuse rate-limiter also 429s (and paid users can hit it);
+          // that one keeps the silent-degrade behavior.
+          let isQuota = false;
+          try { isQuota = (await res.json()).code === 'SEARCH_LIMIT'; } catch { /* not JSON */ }
+          if (isQuota && limitNotice) limitNotice.classList.remove('hidden');
+          semanticWhy = new Map();
+          return null;
+        }
+        if (limitNotice) limitNotice.classList.add('hidden');
+        if (!res.ok) { semanticWhy = new Map(); return null; }
+        const data = await res.json();
+        if (!data.symbols || !data.symbols.length) { semanticWhy = new Map(); return null; }
+        const m = new Map();
+        const why = new Map();
+        for (const s of data.symbols) {
+          m.set(s.symbol, s.score);
+          // Catalog hits carry a one-line "why"; raw-semantic results don't.
+          if (s.why) why.set(s.symbol, { why: s.why, kind: s.kind });
+        }
+        semanticWhy = why;
+        return m;
+      } catch {
+        semanticWhy = new Map();
+        return null;
+      }
+    }
+
+    // Filter functions
+    function applyFilters() {
+      filteredStocks = allStocks.filter(stock => {
+        // Search filter — semantic discovery when active, else literal/keyword
+        if (filters.search) {
+          const query = filters.search.toLowerCase();
+
+          if (semanticRank) {
+            // Discovery mode: keep only stocks the meaning-search surfaced
+            // (plus any exact literal match, so a typed ticker still shows).
+            const literal = stock.symbol.toLowerCase() === query ||
+                            stock.name.toLowerCase().includes(query);
+            if (!semanticRank.has(stock.symbol) && !literal) return false;
+          } else {
+            // Literal lookup / keyword mode
+            const literalMatch = stock.symbol.toLowerCase().includes(query) ||
+                                 stock.name.toLowerCase().includes(query);
+            if (!literalMatch && !query.match(/\b(stocks?|like|similar|best|top|cheap|under|over|tech|healthcare|finance|dividend|growth)\b/)) {
+              return false;
+            }
+          }
+        }
+
+        // Grade filter
+        if (filters.grades.length > 0 && !filters.grades.includes(stock.grade)) {
+          return false;
+        }
+
+        // Industry filter
+        if (filters.industries.length > 0 && !filters.industries.includes(stock.normalizedIndustry)) {
+          return false;
+        }
+
+        // Price range filter
+        if (filters.priceRanges.length > 0) {
+          const inRange = filters.priceRanges.some(range => {
+            const [min, max] = range.split('-').map(Number);
+            return stock.price >= min && stock.price <= max;
+          });
+          if (!inRange) return false;
+        }
+
+        // Market cap filter
+        if (filters.marketCapRanges.length > 0) {
+          const inRange = filters.marketCapRanges.some(range => {
+            const [min, max] = range.split('-').map(Number);
+            return stock.marketCap >= min && stock.marketCap <= max;
+          });
+          if (!inRange) return false;
+        }
+
+        // Golden filter (Compass A/B + strong catalyst). isGolden is a PREMIUM field,
+        // hydrated at runtime into goldenSet for paid users; empty for free users.
+        if (filters.goldenOnly && !goldenSet.has(stock.symbol)) {
+          return false;
+        }
+
+        // Catalyst filter — PREMIUM: catalystTagSet is hydrated only for paid users (empty for free,
+        // so this yields nothing even if toggled via URL — the chip upsells free users on click).
+        if (filters.catalystOnly && !catalystTagSet.has(stock.symbol)) {
+          return false;
+        }
+
+        // Valuation filter (premium — uses runtime data from KV)
+        if (filters.valuationRatings.length > 0) {
+          const rating = valuationMap[stock.symbol];
+          if (!rating || !filters.valuationRatings.includes(rating)) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      // Apply sorting
+      sortStocks();
+
+      // Score-pending IPOs append to the END on a pure search match only (no
+      // structural filters). They have no Compass score, so they stay out of the
+      // ranked grid and sorts — this just makes a lookup like "SPCX"/"SpaceX" return
+      // the real company instead of nothing.
+      appendRecentIpoMatches();
+
+      renderStocks();
+      updateActiveFilters();
+      saveFiltersToURL();
+    }
+
+    function appendRecentIpoMatches() {
+      const q = (filters.search || '').trim().toLowerCase();
+      if (!q) return;
+      const hasStructuralFilters = filters.grades.length || filters.industries.length ||
+        filters.priceRanges.length || filters.marketCapRanges.length ||
+        filters.goldenOnly || filters.catalystOnly || filters.valuationRatings.length;
+      if (hasStructuralFilters) return;
+      const have = new Set(filteredStocks.map(s => s.symbol));
+      const matches = recentIpos.filter(s =>
+        !have.has(s.symbol) &&
+        (s.symbol.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)));
+      filteredStocks = filteredStocks.concat(matches);
+    }
+
+    function sortStocks() {
+      const [field, direction] = filters.sort.split('-');
+
+      // Relevance = semantic similarity weighted by quality (the "best sellers" bias).
+      // Compass 0-100 maps to a 0.5-1.0 multiplier, so quality nudges order without
+      // overriding a much stronger semantic match.
+      if (field === 'relevance' && semanticRank) {
+        filteredStocks.sort((a, b) => {
+          const sa = (semanticRank.get(a.symbol) || 0) * (0.5 + (a.compassScore || 0) / 200);
+          const sb = (semanticRank.get(b.symbol) || 0) * (0.5 + (b.compassScore || 0) / 200);
+          return sb - sa;
+        });
+        return;
+      }
+
+      filteredStocks.sort((a, b) => {
+        let aVal, bVal;
+
+        if (field === 'score') {
+          aVal = a.compassScore;
+          bVal = b.compassScore;
+        } else if (field === 'price') {
+          aVal = a.price;
+          bVal = b.price;
+        } else if (field === 'marketcap') {
+          aVal = a.marketCap;
+          bVal = b.marketCap;
+        } else if (field === 'name') {
+          aVal = a.name.toLowerCase();
+          bVal = b.name.toLowerCase();
+        }
+
+        if (direction === 'asc') {
+          return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+        } else {
+          return aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
+        }
+      });
+    }
+
+    function renderStocks() {
+      const grid = document.getElementById('stockGrid');
+      const noResults = document.getElementById('noResults');
+      const resultsCount = document.getElementById('resultsCount');
+      const watchlist = getWatchlist();
+
+      resultsCount.textContent = filteredStocks.length.toLocaleString();
+
+      if (filteredStocks.length === 0) {
+        grid.classList.add('hidden');
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      noResults.classList.add('hidden');
+
+      grid.innerHTML = filteredStocks.map(stock => {
+        // Score-pending IPO card — no grade/score, no detail page yet.
+        if (stock.isRecentIpo) {
+          const days = stock.daysPublic != null ? `${stock.daysPublic}d ago` : '';
+          return `
+            <div class="relative bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4">
+              <div class="flex justify-between items-start mb-3">
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-bold text-lg">${stock.symbol}</h3>
+                  <p class="text-[#64748B] text-sm truncate">${escapeHtml(stock.name)}</p>
+                </div>
+                <span class="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-violet-500/15 text-violet-300" title="Just went public — not yet Compass-scored">NEW IPO</span>
+              </div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="text-2xl font-bold">$${stock.price.toFixed(2)}</div>
+                <div class="px-3 py-1 rounded-full text-xs font-semibold bg-[#0C0F14] text-[#94A3B8]" title="Needs ~30 days of trading and a few quarters of filings before it can be Compass-scored">Score pending</div>
+              </div>
+              <div class="space-y-1 text-xs text-[#CBD5E1]">
+                <div>${stock.normalizedIndustry}</div>
+                <div>Market Cap: ${formatMarketCap(stock.marketCap)}</div>
+                <div class="text-[#64748B]">IPO'd ${stock.ipoDate}${days ? ` · ${days}` : ''}</div>
+              </div>
+            </div>
+          `;
+        }
+        const gradeColors = {
+          'A': 'bg-emerald-100 text-emerald-700',
+          'B': 'bg-blue-100 text-blue-700',
+          'C': 'bg-[#0C0F14] text-slate-700',
+          'D': 'bg-amber-100 text-amber-700',
+          'F': 'bg-red-100 text-red-700'
+        };
+        const isInWatchlist = watchlist.includes(stock.symbol);
+        const heartIcon = isInWatchlist
+          ? '<svg class="w-5 h-5 fill-current text-red-500" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
+          : '<svg class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>';
+
+        // Golden flag (premium, hydrated into goldenSet at runtime)
+        const isGolden = goldenSet.has(stock.symbol);
+
+        const cardBorder = isGolden
+          ? 'border-2 border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.3)]'
+          : 'border border-[rgba(255,255,255,0.06)]';
+
+        const goldenBadge = isGolden
+          ? '<div class="absolute -top-2 -right-2 bg-gradient-to-r from-amber-400 to-yellow-500 text-black text-xs font-bold px-2 py-0.5 rounded-full shadow-lg">⭐ GOLDEN</div>'
+          : '';
+
+        // Curated "why this matches the theme" line — only present on catalog hits.
+        const whyEntry = semanticWhy.get(stock.symbol);
+        const isPicksShovels = whyEntry && whyEntry.kind === 'picks-shovels';
+        const kindLabel = isPicksShovels ? 'Picks &amp; shovels' : 'Direct';
+        const kindTitle = isPicksShovels
+          ? 'Supplies the theme without being a pure play on it'
+          : 'A direct bet on the theme';
+        const whyLine = whyEntry
+          ? `<div class="mb-3 text-xs text-[#94A3B8] flex items-start gap-1.5">
+               <span class="shrink-0 mt-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold ${isPicksShovels ? 'bg-sky-500/15 text-sky-300' : 'bg-emerald-500/15 text-emerald-300'}" title="${kindTitle}">${kindLabel}</span>
+               <span>${escapeHtml(whyEntry.why)}</span>
+             </div>`
+          : '';
+
+        return `
+          <div class="relative bg-[#161B24] ${cardBorder} rounded-xl p-4 hover:shadow-lg transition">
+            ${goldenBadge}
+            <div class="flex justify-between items-start mb-3">
+              <a href="/stock/${stock.symbol.toLowerCase()}" class="flex-1">
+                <h3 class="font-bold text-lg">${stock.symbol}</h3>
+                <p class="text-[#64748B] text-sm truncate">${stock.name}</p>
+              </a>
+              <button onclick="toggleWatchlist('${stock.symbol}')" class="p-2 hover:bg-[#0C0F14] rounded-lg transition">
+                ${heartIcon}
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-2xl font-bold">$${stock.price.toFixed(2)}</div>
+              <div class="flex items-center gap-2">
+                <div class="${gradeColors[stock.grade]} px-3 py-1 rounded-full text-sm font-bold" title="Compass Score">
+                  ${stock.compassScore}
+                </div>
+                ${catalystTagSet.has(stock.symbol) ? `<div class="bg-[#22D3EE]/20 text-[#22D3EE] px-2 py-1 rounded-full text-xs font-bold catalyst-badge" data-symbol="${stock.symbol}" title="Catalyst — recent earnings beats + analyst upgrades">⚡</div>` : ''}
+              </div>
+            </div>
+
+            ${whyLine}
+
+            <div class="space-y-1 text-xs text-[#CBD5E1] mb-3">
+              <div>${stock.normalizedIndustry}</div>
+              <div>Market Cap: ${formatMarketCap(stock.marketCap)}</div>
+            </div>
+
+            <a href="/stock/${stock.symbol.toLowerCase()}"
+               class="block w-full bg-[#22D3EE] hover:bg-[#06B6D4] text-white text-center py-2 rounded-lg font-semibold transition">
+              View Details
+            </a>
+          </div>
+        `;
+      }).join('');
+
+      // Premium: replace the ⚡ placeholder with the catalyst number on each card (if hydrated).
+      hydrateCatalystBadges();
+    }
+
+    // Fill .catalyst-badge with the numeric catalyst score for premium users (⚡ + score);
+    // no-op for free users (badge stays "⚡"). Re-run after every render.
+    function hydrateCatalystBadges() {
+      const map = window.__catalystMap || {};
+      document.querySelectorAll('.catalyst-badge').forEach(badge => {
+        const sym = badge.dataset.symbol;
+        if (sym && map[sym] != null) {
+          badge.textContent = `⚡${map[sym]}`;
+        }
+      });
+    }
+
+    function updateActiveFilters() {
+      const container = document.getElementById('activeFilters');
+      const chips = [];
+
+      if (filters.search) chips.push({ type: 'search', value: filters.search, label: `"${filters.search}"` });
+      filters.grades.forEach(g => chips.push({ type: 'grades', value: g, label: `Grade ${g}` }));
+      filters.industries.forEach(i => chips.push({ type: 'industries', value: i, label: i }));
+      filters.priceRanges.forEach(r => {
+        const [min, max] = r.split('-').map(Number);
+        const label = max > 500 ? `$${min}+` : `$${min}-$${max}`;
+        chips.push({ type: 'priceRanges', value: r, label });
+      });
+      filters.marketCapRanges.forEach(r => {
+        const [min, max] = r.split('-').map(Number);
+        let label = '';
+        if (max > 200) label = 'Mega Cap';
+        else if (min >= 10) label = 'Large Cap';
+        else if (min >= 2) label = 'Mid Cap';
+        else label = 'Small Cap';
+        chips.push({ type: 'marketCapRanges', value: r, label });
+      });
+      filters.valuationRatings.forEach(v => chips.push({ type: 'valuationRatings', value: v, label: v }));
+      if (filters.goldenOnly) chips.push({ type: 'goldenOnly', value: 'true', label: '⭐ Golden Only' });
+      if (filters.catalystOnly) chips.push({ type: 'catalystOnly', value: 'true', label: '⚡ Catalyst Only' });
+
+      // Update mobile filter count badge
+      const mobileCount = document.getElementById('mobileFilterCount');
+      if (mobileCount) {
+        if (chips.length > 0) {
+          mobileCount.textContent = chips.length;
+          mobileCount.classList.remove('hidden');
+        } else {
+          mobileCount.classList.add('hidden');
+        }
+      }
+
+      if (chips.length === 0) {
+        container.classList.add('hidden');
+        return;
+      }
+
+      container.classList.remove('hidden');
+      container.innerHTML = chips.map(chip => `
+        <button class="flex items-center gap-1 bg-[#22D3EE]/20 text-[#22D3EE] px-3 py-1 rounded-full text-sm"
+                onclick="removeFilter('${chip.type}', '${chip.value}')">
+          ${chip.label}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      `).join('');
+    }
+
+    function removeFilter(type, value) {
+      if (type === 'search') {
+        filters.search = '';
+        document.getElementById('searchInput').value = '';
+      } else if (type === 'goldenOnly') {
+        filters.goldenOnly = false;
+        const gf = document.getElementById('goldenFilter');
+        gf?.classList.remove('opacity-100', 'border-amber-400');
+        gf?.classList.add('opacity-60');
+      } else if (type === 'catalystOnly') {
+        filters.catalystOnly = false;
+        const cf = document.getElementById('catalystFilter');
+        cf?.classList.remove('opacity-100', 'border-[#22D3EE]');
+        cf?.classList.add('opacity-60');
+      } else if (type === 'valuationRatings') {
+        filters.valuationRatings = filters.valuationRatings.filter(v => v !== value);
+        const checkbox = document.querySelector(`input[name="valuation"][value="${value}"]`);
+        if (checkbox) checkbox.checked = false;
+      } else {
+        filters[type] = filters[type].filter(v => v !== value);
+        // Uncheck the corresponding checkbox
+        const checkbox = document.querySelector(`input[name="${type.replace(/Ranges$/, '').replace(/s$/, '')}"][value="${value}"]`);
+        if (checkbox) checkbox.checked = false;
+      }
+      applyFilters();
+    }
+
+    function clearAllFilters() {
+      filters = {
+        search: '',
+        grades: [],
+        industries: [],
+        priceRanges: [],
+        marketCapRanges: [],
+        valuationRatings: [],
+        goldenOnly: false,
+        catalystOnly: false,
+        sort: filters.sort
+      };
+      document.getElementById('searchInput').value = '';
+      document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.grade-chip').forEach(c => { c.classList.remove('opacity-100', 'border-[#22D3EE]'); c.classList.add('opacity-60'); });
+      document.getElementById('goldenFilter')?.classList.remove('opacity-100', 'border-amber-400');
+      document.getElementById('goldenFilter')?.classList.add('opacity-60');
+      document.getElementById('catalystFilter')?.classList.remove('opacity-100', 'border-[#22D3EE]');
+      document.getElementById('catalystFilter')?.classList.add('opacity-60');
+      applyFilters();
+    }
+
+    // Make functions global for onclick handlers
+    window.toggleWatchlist = toggleWatchlist;
+    window.removeFilter = removeFilter;
+    window.formatMarketCap = (marketCap) => {
+      if (!marketCap || marketCap <= 0) return 'N/A';
+      if (marketCap >= 1000) return `$${(marketCap / 1000).toFixed(1)}T`;
+      if (marketCap >= 1) return `$${marketCap.toFixed(1)}B`;
+      return `$${(marketCap * 1000).toFixed(0)}M`;
+    };
+
+    // Escape text injected into card innerHTML (curated "why" lines, etc.)
+    function escapeHtml(str) {
+      return String(str ?? '').replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    // Search suggestions
+    const searchExamples = [
+      { query: 'stocks like Amazon', description: 'Find similar companies by industry & size' },
+      { query: 'best tech stocks', description: 'Top-rated technology companies' },
+      { query: 'cheap dividend stocks', description: 'Affordable income-generating stocks' },
+      { query: 'under $50', description: 'Stocks priced below $50' },
+      { query: 'high quality healthcare', description: 'A-rated healthcare stocks' },
+      { query: 'safe large cap', description: 'Low-risk established companies' },
+      { query: 'growth stocks', description: 'Technology & healthcare growth plays' }
+    ];
+
+    function showSearchSuggestions(query) {
+      const suggestions = document.getElementById('searchSuggestions');
+
+      if (!query || query.length < 2) {
+        suggestions.classList.add('hidden');
+        return;
+      }
+
+      // Show relevant examples
+      const matches = searchExamples.filter(ex =>
+        ex.query.toLowerCase().includes(query.toLowerCase()) ||
+        ex.description.toLowerCase().includes(query.toLowerCase())
+      );
+
+      if (matches.length === 0) {
+        suggestions.classList.add('hidden');
+        return;
+      }
+
+      suggestions.innerHTML = matches.map(ex => `
+        <button class="w-full text-left px-4 py-3 hover:bg-[#080A0F] border-b border-[rgba(255,255,255,0.06)] last:border-b-0"
+                onclick="document.getElementById('searchInput').value = '${ex.query}'; document.getElementById('searchInput').dispatchEvent(new Event('input')); document.getElementById('searchSuggestions').classList.add('hidden');">
+          <div class="font-semibold text-sm text-slate-100">${ex.query}</div>
+          <div class="text-xs text-[#64748B]">${ex.description}</div>
+        </button>
+      `).join('');
+
+      suggestions.classList.remove('hidden');
+    }
+
+    // Event listeners
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const query = e.target.value;
+      filters.search = query;
+
+      // Show suggestions
+      showSearchSuggestions(query);
+
+      // Clear previous timeout
+      clearTimeout(searchTimeout);
+
+      // Debounce for smart search parsing
+      searchTimeout = setTimeout(async () => {
+        const hintEl = document.getElementById('smartSearchHint');
+        const hintText = document.getElementById('smartSearchText');
+        const sortSelect = document.getElementById('sortSelect');
+        const q = query.trim();
+        const ql = q.toLowerCase();
+
+        // A single token that matches a ticker/name is a lookup (stay literal);
+        // anything descriptive ("GLP-1 stocks", "stocks like Netflix") goes semantic.
+        const isLookup = q.length > 0 && !q.includes(' ') &&
+          (allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)) ||
+           recentIpos.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)));
+        // Require >=2 chars (2-char themes like "vr"/"ar" exist) so single-keystroke fragments
+        // don't fire an embedding + Vectorize call + miss-log; the longer debounce below does the rest.
+        const goSemantic = q.length >= 2 && !isLookup;
+
+        if (goSemantic) {
+          const parsed = parseSmartSearch(query);
+
+          // For thematic queries, honor explicit numeric/grade words ("cheap", "under $50",
+          // "safe"). For "stocks like X" skip these (they're derived from the reference stock).
+          if (!parsed.similarTo) {
+            if (parsed.grades.length > 0) filters.grades = [...new Set(parsed.grades)];
+            if (parsed.priceRanges.length > 0) filters.priceRanges = [...new Set(parsed.priceRanges)];
+            if (parsed.marketCapRanges && parsed.marketCapRanges.length > 0) filters.marketCapRanges = [...new Set(parsed.marketCapRanges)];
+          }
+
+          hintText.textContent = 'Searching…';
+          hintEl.classList.remove('hidden');
+
+          semanticRank = await fetchSemanticResults(query, parsed.similarTo);
+
+          if (semanticRank) {
+            filters.sort = 'relevance-desc';
+            if (sortSelect) sortSelect.value = 'relevance-desc';
+            hintText.textContent = parsed.similarTo
+              ? `Stocks similar to ${parsed.similarTo.name}`
+              : `Best matches for "${q}"`;
+            hintEl.classList.remove('hidden');
+          } else {
+            hintEl.classList.add('hidden');
+          }
+        } else {
+          // Lookup or cleared: drop semantic mode, restore default sort.
+          semanticRank = null;
+          semanticWhy = new Map();
+          if (filters.sort === 'relevance-desc') {
+            filters.sort = 'score-desc';
+            if (sortSelect) sortSelect.value = 'score-desc';
+          }
+          hintEl.classList.add('hidden');
+        }
+
+        applyFilters();
+
+        setTimeout(() => {
+          document.getElementById('searchSuggestions')?.classList.add('hidden');
+        }, 100);
+      }, 600); // Wait 600ms after typing stops — collapses mid-word keystrokes so partials don't embed/log
+    });
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', (e) => {
+      const searchInput = document.getElementById('searchInput');
+      const suggestions = document.getElementById('searchSuggestions');
+      if (e.target !== searchInput && !suggestions?.contains(e.target)) {
+        suggestions?.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      filters.sort = e.target.value;
+      applyFilters();
+    });
+
+    // Grade checkboxes removed — now using grade chip toggles above
+
+    document.querySelectorAll('input[name="industry"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.industries.push(e.target.value);
+        } else {
+          filters.industries = filters.industries.filter(i => i !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('input[name="price"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.priceRanges.push(e.target.value);
+        } else {
+          filters.priceRanges = filters.priceRanges.filter(p => p !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('input[name="marketcap"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.marketCapRanges.push(e.target.value);
+        } else {
+          filters.marketCapRanges = filters.marketCapRanges.filter(m => m !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    // Grade chip toggles
+    document.querySelectorAll('.grade-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const grade = chip.dataset.gradeChip;
+        if (filters.grades.includes(grade)) {
+          filters.grades = filters.grades.filter(g => g !== grade);
+          chip.classList.remove('opacity-100', 'border-[#22D3EE]');
+          chip.classList.add('opacity-60');
+        } else {
+          filters.grades.push(grade);
+          chip.classList.add('opacity-100', 'border-[#22D3EE]');
+          chip.classList.remove('opacity-60');
+        }
+        applyFilters();
+      });
+    });
+
+    // Golden toggle button
+    document.getElementById('goldenFilter').addEventListener('click', () => {
+      filters.goldenOnly = !filters.goldenOnly;
+      const btn = document.getElementById('goldenFilter');
+      if (filters.goldenOnly) {
+        btn.classList.add('opacity-100', 'border-amber-400');
+        btn.classList.remove('opacity-60');
+      } else {
+        btn.classList.remove('opacity-100', 'border-amber-400');
+        btn.classList.add('opacity-60');
+      }
+      applyFilters();
+    });
+
+    // Catalyst toggle button — shows for everyone, but only FUNCTIONS for premium.
+    document.getElementById('catalystFilter').addEventListener('click', () => {
+      if (!window.__catalystAccess) { window.showUpgradeModal?.(); return; }
+      filters.catalystOnly = !filters.catalystOnly;
+      const btn = document.getElementById('catalystFilter');
+      if (filters.catalystOnly) {
+        btn.classList.add('opacity-100', 'border-[#22D3EE]');
+        btn.classList.remove('opacity-60');
+      } else {
+        btn.classList.remove('opacity-100', 'border-[#22D3EE]');
+        btn.classList.add('opacity-60');
+      }
+      applyFilters();
+    });
+
+    // Dropdown popover toggle
+    document.querySelectorAll('.filter-dropdown-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const popover = btn.nextElementSibling;
+        // Close all other popovers first
+        document.querySelectorAll('.filter-popover').forEach(p => {
+          if (p !== popover) p.classList.add('hidden');
+        });
+        popover?.classList.toggle('hidden');
+      });
+    });
+
+    // Close popovers when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.filter-popover').forEach(p => p.classList.add('hidden'));
+    });
+    // Prevent popover clicks from closing themselves
+    document.querySelectorAll('.filter-popover').forEach(p => {
+      p.addEventListener('click', (e) => e.stopPropagation());
+    });
+
+    // Valuation filter (premium — requires runtime data fetch)
+    document.querySelectorAll('input[name="valuation"]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          filters.valuationRatings.push(e.target.value);
+        } else {
+          filters.valuationRatings = filters.valuationRatings.filter(v => v !== e.target.value);
+        }
+        applyFilters();
+      });
+    });
+
+    // Expose globals for the premium valuation module script
+    window.__valuationMap = valuationMap;
+    window.__allStockSymbols = allStocks.map(s => s.symbol);
+    window.__applyFilters = applyFilters;
+    window.__browseFilters = filters;
+    // Golden set + catalyst tag-set/score-map are hydrated by the premium module script below.
+    window.__goldenSet = goldenSet;
+    window.__catalystTagSet = catalystTagSet;
+    window.__catalystMap = {};
+    window.__catalystAccess = false;
+
+    document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+    document.getElementById('clearFiltersBtn')?.addEventListener('click', clearAllFilters);
+
+    // Initial render - restore filters from URL first (for back button support)
+    updateWatchlistBadge();
+    restoreFiltersFromURL();
+    applyFilters();
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [{
-      "@type": "Question",
-      "name": "What is the Compass Score?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Compass Score rates stocks from 0-100 based on profitability, cash flow, and stability. Scores are based on 30 years of backtested data across 935,000+ stock observations."
+  <!-- Premium valuation filter — separate module script so Astro bundles the imports -->
+  <script>
+    import { loadSession, hasFeature } from '../../lib/subscription';
+    import { authFetch } from '../../lib/authFetch';
+
+    // Expose to the classic inline script (which can't import modules) so the
+    // semantic-search fetch sends the Bearer — paid users are exempt from the
+    // free search quota server-side.
+    (window as any).__authFetch = authFetch;
+
+    // Wire the valuation-filter section to the upgrade modal for users without Pro.
+    function wireValuationUpsell() {
+      const section = document.getElementById('valuationFilterSection');
+      if (!section) return;
+      section.addEventListener('click', (e: Event) => {
+        if ((e.target as HTMLElement).closest('input')) {
+          e.preventDefault();
+          (window as any).showUpgradeModal?.();
+        }
+      });
+    }
+
+    async function loadPremiumFilters() {
+      await loadSession();
+
+      // Golden + Catalyst are PLUS features (the premium API itself only requires 'plus');
+      // the Valuation filter is PRO-only. Gate each on its OWN feature so Plus users get
+      // Golden/Catalyst — previously the whole block sat behind valuation_score (Pro), so
+      // Plus users saw zero Golden and zero Catalyst.
+      const isPremium = hasFeature('golden_stocks');      // Plus and Pro
+      const hasValuation = hasFeature('fair_value');       // Pro only (fundamental Fair Value)
+
+      // Valuation filter UI: enable for Pro; otherwise wire the upsell (incl. Plus users).
+      if (hasValuation) {
+        const filtersEl = document.getElementById('valuationFilters');
+        const badge = document.getElementById('valuationPremiumBadge');
+        if (filtersEl) filtersEl.classList.remove('opacity-50', 'pointer-events-none');
+        if (badge) badge.remove();
+      } else {
+        wireValuationUpsell();
       }
-    }, {
-      "@type": "Question",
-      "name": "Is the Compass Score free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. You can browse all 4,000+ stocks and see letter grades (A-F) for free. Free users get 10 full stock views and 5 smart searches per day."
+
+      // Free / newsletter: no premium per-stock data; the Catalyst chip stays locked.
+      if (!isPremium) return;
+
+      // Plus+ → unlock the Catalyst (and Golden) filters and hydrate the sets.
+      (window as any).__catalystAccess = true;
+
+      const valuationMap: Record<string, string> = (window as any).__valuationMap || {};
+      const goldenSet: Set<string> = (window as any).__goldenSet || new Set();
+      const catalystTagSet: Set<string> = (window as any).__catalystTagSet || new Set();
+      const catalystMap: Record<string, number> = (window as any).__catalystMap || {};
+
+      try {
+        // ONE request for the whole-universe premium-filter map (Catalyst/Golden/Valuation),
+        // served from a single KV key. Replaces ~85 per-symbol round-trips, so the filters
+        // hydrate near-instantly instead of trickling in (which showed a partial count if the
+        // filter was toggled before it finished).
+        const res = await authFetch('/api/stocks/premium-summary');
+        if (res.ok) {
+          const data = await res.json();
+          Object.entries(data).forEach(([sym, fields]: [string, any]) => {
+            if (hasValuation && fields?.fairValueVerdict) valuationMap[sym] = fields.fairValueVerdict;
+            if (fields?.isGolden) goldenSet.add(sym);
+            if (fields?.catalystTag) catalystTagSet.add(sym);
+            if (fields?.catalystScore != null) catalystMap[sym] = fields.catalystScore;
+          });
+        }
+      } finally {
+        // Always re-render with whatever hydrated, so Golden borders + catalyst chips/numbers
+        // appear and any Golden/valuation/catalyst filters restored from the URL re-apply.
+        Object.assign((window as any).__valuationMap, valuationMap);
+        Object.assign((window as any).__catalystMap, catalystMap);
+        (window as any).__applyFilters?.();
       }
-    }]
-  }
+    }
+
+    loadPremiumFilters();
   </script>
 </Layout>
