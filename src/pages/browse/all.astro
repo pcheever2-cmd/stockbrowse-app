@@ -76,6 +76,10 @@ const marketCapRanges = [
               />
               <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
               </div>
+              <div id="searchLimitNotice" class="hidden mt-2 text-sm bg-[#161B24] border border-amber-500/40 text-amber-300 rounded-lg px-3 py-2">
+                You've used your 5 free smart searches today — resets tomorrow.
+                <a href="/pricing" class="text-[#22D3EE] hover:underline font-semibold">Upgrade for unlimited search →</a>
+              </div>
             </div>
 
             <!-- Sort -->
@@ -585,11 +589,27 @@ const marketCapRanges = [
     async function fetchSemanticResults(query, similarToStock) {
       try {
         const payload = similarToStock ? { similarTo: similarToStock.symbol } : { query };
-        const res = await fetch('/api/search/semantic', {
+        // window.__authFetch (set by the premium module script) sends the Bearer
+        // so paid users are exempt from the free search quota; falls back to
+        // plain fetch for anonymous visitors.
+        const doFetch = window.__authFetch || fetch;
+        const res = await doFetch('/api/search/semantic', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
+        const limitNotice = document.getElementById('searchLimitNotice');
+        if (res.status === 429) {
+          // Show the quota notice ONLY for the daily free-search limit —
+          // the abuse rate-limiter also 429s (and paid users can hit it);
+          // that one keeps the silent-degrade behavior.
+          let isQuota = false;
+          try { isQuota = (await res.json()).code === 'SEARCH_LIMIT'; } catch { /* not JSON */ }
+          if (isQuota && limitNotice) limitNotice.classList.remove('hidden');
+          semanticWhy = new Map();
+          return null;
+        }
+        if (limitNotice) limitNotice.classList.add('hidden');
         if (!res.ok) { semanticWhy = new Map(); return null; }
         const data = await res.json();
         if (!data.symbols || !data.symbols.length) { semanticWhy = new Map(); return null; }
@@ -1269,6 +1289,11 @@ const marketCapRanges = [
   <script>
     import { loadSession, hasFeature } from '../../lib/subscription';
     import { authFetch } from '../../lib/authFetch';
+
+    // Expose to the classic inline script (which can't import modules) so the
+    // semantic-search fetch sends the Bearer — paid users are exempt from the
+    // free search quota server-side.
+    (window as any).__authFetch = authFetch;
 
     // Wire the valuation-filter section to the upgrade modal for users without Pro.
     function wireValuationUpsell() {

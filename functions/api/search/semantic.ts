@@ -17,7 +17,7 @@
  * symbols to its loaded data), so this endpoint never touches stale data and
  * delisted names drop out automatically.
  */
-import { json, errorResponse } from '../../_middleware';
+import { json, errorResponse, requireAuth } from '../../_middleware';
 import {
   getCatalogEntry,
   logMiss,
@@ -32,10 +32,40 @@ interface Env extends SearchCacheEnv {
   VECTORIZE: VectorizeIndex;
   VECTORIZE_THEMES: VectorizeIndex;
   RATE_LIMITER_SVC: Fetcher;
+  // requireAuth deps (present in the Pages env; typed here for the optional
+  // paid-tier exemption below)
+  SUPABASE_URL: string;
+  SUPABASE_ANON_KEY: string;
+  SUPABASE_SERVICE_ROLE_KEY: string;
+  STRIPE_SECRET_KEY: string;
+  STRIPE_WEBHOOK_SECRET: string;
+  STOCKS_PREMIUM_KV: KVNamespace;
 }
 
 const EMBEDDING_MODEL = '@cf/baai/bge-base-en-v1.5';
 const TOP_K = 100; // wider recall so diversified names (e.g. LLY) survive to client-side ranking
+
+// Free-tier smart-search quota (server-enforced — the searches copy on
+// home/pricing must stay true). Anonymous callers are metered by IP; logged-in
+// free users by userId; any paid tier is exempt. Keys live in SEARCH_CACHE_KV
+// (`quota:` prefix — no collision with catalog:/miss:) and self-expire.
+const FREE_SEARCHES_PER_DAY = 5;
+const QUOTA_TTL_SECONDS = 172800; // 2 days — outlives the UTC day it meters
+
+async function searchQuotaExceeded(env: Env, meterId: string): Promise<boolean> {
+  const day = new Date().toISOString().slice(0, 10);
+  const key = `quota:search:${day}:${meterId}`;
+  try {
+    const used = parseInt((await env.SEARCH_CACHE_KV.get(key)) || '0', 10) || 0;
+    if (used >= FREE_SEARCHES_PER_DAY) return true;
+    // Best-effort increment (non-atomic, same trade-off as logMiss — a racing
+    // double-count under-charges by at most one search).
+    await env.SEARCH_CACHE_KV.put(key, String(used + 1), { expirationTtl: QUOTA_TTL_SECONDS });
+    return false;
+  } catch {
+    return false; // KV unavailable → fail open, never block search on infra
+  }
+}
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
@@ -50,6 +80,43 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const similarTo = (body.similarTo || '').trim().toUpperCase();
   const query = (body.query || '').trim();
 
+  if (!similarTo && !query) return errorResponse('query or similarTo is required', 400);
+  if (query.length > 200) return errorResponse('query too long', 400);
+
+  // Abuse rate-limit covers BOTH branches (similarTo previously bypassed it —
+  // unmetered anonymous Vectorize queries).
+  const ip = request.headers.get('CF-Connecting-IP') || '';
+  if (!(await checkRateLimit(env.RATE_LIMITER_SVC, ip))) {
+    return errorResponse('rate limit exceeded', 429);
+  }
+
+  // Daily smart-search quota covers BOTH branches too — "stocks like X" is a
+  // smart search in the UI, so it must count against the same 5/day.
+  // UNLIMITED requires Plus or Pro (the pricing page sells it as a Plus
+  // feature; Newsletter is "everything in Free"). A Bearer header is OPTIONAL —
+  // an invalid/expired token degrades to anonymous metering, never a 401
+  // (search must keep working through a token refresh).
+  let meterId = `ip:${ip || 'unknown'}`;
+  let unlimited = false;
+  if (request.headers.get('Authorization')?.startsWith('Bearer ')) {
+    const identity = await requireAuth(env, request);
+    if (!(identity instanceof Response)) {
+      meterId = `user:${identity.userId}`;
+      unlimited = identity.tier === 'plus' || identity.tier === 'pro';
+    }
+  }
+  if (!unlimited && (await searchQuotaExceeded(env, meterId))) {
+    return json(
+      {
+        error: 'daily search limit reached',
+        code: 'SEARCH_LIMIT',
+        limit: FREE_SEARCHES_PER_DAY,
+        message: `Free plan includes ${FREE_SEARCHES_PER_DAY} smart searches per day. Upgrade to Plus for unlimited search.`,
+      },
+      429
+    );
+  }
+
   // --- "Stocks like X": per-stock neighbor lookup, no catalog ---------------
   if (similarTo) {
     const existing = await env.VECTORIZE.getByIds([similarTo]);
@@ -63,14 +130,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ source: 'semantic', query, similarTo, symbols });
   }
 
-  // --- Thematic query: rate-limit the embed path, then catalog-first --------
-  if (!query) return errorResponse('query or similarTo is required', 400);
-  if (query.length > 200) return errorResponse('query too long', 400);
-
-  const ip = request.headers.get('CF-Connecting-IP') || '';
-  if (!(await checkRateLimit(env.RATE_LIMITER_SVC, ip))) {
-    return errorResponse('rate limit exceeded', 429);
-  }
+  // --- Thematic query: catalog-first --------------------------------------
 
   // Embed once; the same vector serves both the themes index and the stocks index.
   const emb = (await env.AI.run(EMBEDDING_MODEL, { text: [query] })) as { data?: number[][] };
