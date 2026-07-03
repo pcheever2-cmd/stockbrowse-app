@@ -81,7 +81,7 @@ You don't need to know any ticker symbols to start investing in individual stock
 
 That's what Stockbrowse is built to give you. And once you've found a few companies worth a look, [here's how to tell whether one is actually worth buying](/blog/how-to-pick-a-good-company).
 
-[Start browsing quality stocks by industry -- no tickers required →](/browse/all)
+[Start browsing quality stocks by industry -- no tickers required →](/)
 
 ---
 

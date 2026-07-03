@@ -20,7 +20,7 @@ const tiers = [
       'No valuation rating',
     ],
     cta: 'Start Browsing',
-    ctaLink: '/browse/all',
+    ctaLink: '/',
     highlighted: false,
     tier: 'free',
   },
@@ -242,7 +242,7 @@ const tiers = [
       btn.addEventListener('click', async () => {
         const tier = (btn as HTMLElement).dataset.tier;
         if (!tier || tier === 'free') {
-          window.location.href = '/browse/all';
+          window.location.href = '/';
           return;
         }
 

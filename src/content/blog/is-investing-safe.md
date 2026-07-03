@@ -57,6 +57,6 @@ Still nervous? That's normal. Read about the [five most common mistakes beginner
 
 ## Check Quality Before You Buy
 
-See which stocks score highest for financial health, earnings stability, and cash flow on [Stockbrowse](/browse/all). It's a simple way to separate strong companies from shaky ones before you put money in.
+See which stocks score highest for financial health, earnings stability, and cash flow on [Stockbrowse](/). It's a simple way to separate strong companies from shaky ones before you put money in.
 
 *Stockbrowse is for research and education, not financial advice. "The market recovers" is a historical pattern, not a promise, and any individual stock can go to zero. Past performance doesn't guarantee future results. Do your own research or talk to a qualified advisor before investing.*

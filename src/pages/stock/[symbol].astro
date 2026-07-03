@@ -187,8 +187,8 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
 <Layout title={`${stock.name} (${stock.symbol}) Compass Score | Stockbrowse`}>
   <section class="py-12 bg-[#0C0F14] min-h-screen">
     <div class="max-w-6xl mx-auto px-4">
-      <!-- Back Link - uses history.back() if coming from browse page to preserve filters -->
-      <a href="/browse/all" onclick="if(document.referrer.includes('/browse/')) { history.back(); return false; }" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">&larr; Back to Browse</a>
+      <!-- Back Link - uses history.back() if coming from the browser (now at /) or any /browse/ page, preserving filters/sort/scroll -->
+      <a href="/" onclick="try { const r = document.referrer; if (r.startsWith(location.origin) && (new URL(r).pathname === '/' || r.includes('/browse/'))) { history.back(); return false; } } catch (e) {}" class="text-[#22D3EE] hover:underline text-sm mb-6 inline-block">&larr; Back to Browse</a>
 
       <!-- Header with Score -->
       <div class="rounded-2xl p-8 bg-[#161B24] border border-[rgba(255,255,255,0.06)] mb-8">
@@ -1587,7 +1587,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
 
   <script>
     // Favorite (watchlist) toggle — reuses the free single-watchlist localStorage pattern
-    // (`compassWatchlist`) shared by /browse/all, the nav badge, and the /watchlist page.
+    // (`compassWatchlist`) shared by /, the nav badge, and the /watchlist page.
     document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('favorite-btn');
       if (!btn) return;
@@ -1658,7 +1658,7 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
           ${signupCta}
           <a href="/pricing" class="block w-full ${isLoggedIn ? 'bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F]' : 'bg-[#0C0F14] hover:bg-[#1a2030] text-slate-100 border border-[rgba(255,255,255,0.1)]'} font-semibold px-6 py-3 rounded-lg transition mb-4">Upgrade for unlimited views</a>
           ${isLoggedIn ? '' : '<p class="text-xs text-[#64748B] mb-4">Free accounts keep the same daily limit — Plus removes it.</p>'}
-          <a href="/browse/all" class="text-sm text-[#64748B] hover:text-[#CBD5E1] transition">← Back to browsing</a>
+          <a href="/" class="text-sm text-[#64748B] hover:text-[#CBD5E1] transition">← Back to browsing</a>
         </div>`;
       document.body.appendChild(wall);
       document.body.style.overflow = 'hidden';

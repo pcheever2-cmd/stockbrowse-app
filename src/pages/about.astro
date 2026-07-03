@@ -9,12 +9,12 @@ const famousSymbols = ['AAPL', 'NVDA', 'GOOGL', 'META', 'PLTR', 'AMD', 'COIN', '
 const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Boolean);
 ---
 
-<Layout title="Compass Score | Find Quality Stocks, Understand Why">
-  <!-- Hero Section -->
+<Layout title="About Stockbrowse | Browse Stocks Like Products">
+  <!-- Hero Section (this page carries the marketing story; the home page IS the browser) -->
   <section class="bg-gradient-to-br from-[#22D3EE] to-emerald-700 text-white py-20">
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-6">
-        Find quality stocks. Understand why in seconds.
+        Why we built Stockbrowse
       </h1>
       <p class="text-xl md:text-2xl text-emerald-100 mb-8 max-w-2xl mx-auto">
         Every stock gets one 0-100 quality score, built on decades of academic research and tested on
@@ -22,7 +22,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
         degree needed.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/browse/all" class="bg-[#161B24] text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition">
+        <a href="/" class="bg-[#161B24] text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition">
           Browse Quality Stocks
         </a>
         <a href="/tool" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#161B24]/10 transition">
@@ -156,7 +156,7 @@ const famousStocks = famousSymbols.map(sym => getStockBySymbol(sym)).filter(Bool
       </div>
 
       <div class="text-center">
-        <a href="/browse" class="inline-block bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-3 rounded-lg font-semibold transition">
+        <a href="/" class="inline-block bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-3 rounded-lg font-semibold transition">
           View All {stocks.length.toLocaleString()}+ Stocks
         </a>
       </div>

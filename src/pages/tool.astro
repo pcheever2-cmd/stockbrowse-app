@@ -1,21 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { stocks, getGradeColor, generateSummary, formatPrice, formatMarketCap, getNormalizedIndustry } from '../data/stocks';
+import { stocks } from '../data/stocks';
 
-// Pass stocks to client-side as JSON. Public fields only —
-// avgPriceTarget / upside / recentRatings are premium and will be hydrated
-// at runtime in v1.D for paid users via /api/stocks/premium.
+// Lookup navigates STRAIGHT to /stock/<symbol> (no inline result card), so the
+// client only needs the fields the autocomplete renders. Dropping description
+// alone takes this page from ~6MB of inlined HTML to a light symbol index.
 const stocksJson = JSON.stringify(stocks.map(s => ({
   symbol: s.symbol,
   name: s.name,
-  price: s.price,
   compassScore: s.compassScore,
   grade: s.grade,
-  industry: getNormalizedIndustry(s.industry),
-  marketCap: s.marketCap,
-  description: s.description,
-  numAnalysts: s.numAnalysts,
-  consensus: s.consensus,
 })));
 ---
 
@@ -49,11 +43,6 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
         <!-- Autocomplete Dropdown -->
         <div id="autocomplete" class="absolute z-10 w-full mt-2 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-lg hidden max-h-80 overflow-y-auto">
         </div>
-      </div>
-
-      <!-- Result Display -->
-      <div id="result" class="hidden">
-        <!-- Stock result will be inserted here -->
       </div>
 
       <!-- Empty State -->
@@ -104,8 +93,6 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
 
     const searchInput = document.getElementById('search-input');
     const autocomplete = document.getElementById('autocomplete');
-    const resultDiv = document.getElementById('result');
-    const emptyState = document.getElementById('empty-state');
 
     function getGradeColors(grade) {
       const colors = {
@@ -116,45 +103,6 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
         'F': { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200', ring: 'ring-red-500' },
       };
       return colors[grade] || colors['C'];
-    }
-
-    function formatPrice(price) {
-      if (!price || price <= 0) return 'N/A';
-      return `$${price.toFixed(2)}`;
-    }
-
-    function formatMarketCap(cap) {
-      if (!cap || cap <= 0) return 'N/A';
-      if (cap >= 1000) return `$${(cap / 1000).toFixed(1)}T`;
-      if (cap >= 1) return `$${cap.toFixed(1)}B`;
-      return `$${(cap * 1000).toFixed(0)}M`;
-    }
-
-    // getConsensusInfo + parseRecentRatings removed in v1.C — they consumed
-    // premium fields (recent ratings, upside) which are now fetched at runtime
-    // via /api/stocks/premium for paid users in v1.D.
-
-    function generateSummary(stock) {
-      const quality = stock.grade === 'A' ? 'high-quality' :
-                      stock.grade === 'B' ? 'above-average quality' :
-                      stock.grade === 'C' ? 'average quality' :
-                      stock.grade === 'D' ? 'below-average quality' : 'high-risk';
-
-      let summary = `${stock.name} is a ${quality} ${stock.industry.toLowerCase()} company with a Compass Score of ${stock.compassScore}. `;
-
-      if (stock.grade === 'A') {
-        summary += 'This stock demonstrates strong fundamentals across profitability, cash flow, and stability metrics. Suitable for long-term investors seeking quality.';
-      } else if (stock.grade === 'B') {
-        summary += 'This stock shows solid fundamentals with room for improvement in some areas. Worth considering for a diversified portfolio.';
-      } else if (stock.grade === 'C') {
-        summary += 'This stock has mixed fundamentals. Consider carefully and ensure it fits your investment strategy before buying.';
-      } else if (stock.grade === 'D') {
-        summary += 'This stock shows weak fundamentals or high volatility. May be suitable for speculative positions only.';
-      } else {
-        summary += 'This stock has poor quality metrics and high risk. Not recommended for conservative investors.';
-      }
-
-      return summary;
     }
 
     function searchStocks(query) {
@@ -199,126 +147,8 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
     function selectStock(symbol) {
       const stock = stocks.find(s => s.symbol === symbol);
       if (!stock) return;
-
-      searchInput.value = `${stock.symbol} - ${stock.name}`;
-      autocomplete.classList.add('hidden');
-      emptyState.classList.add('hidden');
-      showResult(stock);
-    }
-
-    function showResult(stock) {
-      const colors = getGradeColors(stock.grade);
-      const summary = generateSummary(stock);
-      const hasAnalystData = stock.numAnalysts && stock.numAnalysts > 0;
-
-      // Truncate description
-      let profile = '';
-      if (stock.description && stock.description.length >= 20) {
-        if (stock.description.length <= 400) {
-          profile = stock.description;
-        } else {
-          const cutoff = stock.description.slice(0, 450).lastIndexOf('. ');
-          profile = cutoff > 200 ? stock.description.slice(0, cutoff + 1) : stock.description.slice(0, 400) + '...';
-        }
-      }
-
-      // Wall Street View — placeholder slot for v1.D hydration.
-      // Premium analyst details (price target, upside, recent ratings) are
-      // fetched at runtime from /api/stocks/premium for paid users.
-      let analystHtml = '';
-      if (hasAnalystData) {
-        analystHtml = `
-          <div data-premium-slot="analyst-summary" data-symbol="${stock.symbol}"
-               class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
-            <h3 class="text-lg font-bold mb-2">Wall Street View</h3>
-            <p class="text-[#64748B] text-sm mb-3">${stock.numAnalysts} analyst(s) cover ${stock.symbol}.</p>
-            <p class="text-[#64748B] text-sm">Price targets, upside, and rating history are part of Plus.
-              <a href="/pricing" class="text-[#22D3EE] hover:underline">See plans →</a></p>
-          </div>
-        `;
-      }
-
-      // Company profile HTML
-      let profileHtml = '';
-      if (profile) {
-        profileHtml = `
-          <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
-            <h3 class="text-lg font-bold mb-3">About ${stock.name}</h3>
-            <p class="text-[#CBD5E1] leading-relaxed">${profile}</p>
-          </div>
-        `;
-      }
-
-      resultDiv.innerHTML = `
-        <div class="bg-[#161B24] border-2 ${colors.border} rounded-2xl overflow-hidden shadow-lg">
-          <!-- Header -->
-          <div class="p-8 ${colors.bg}">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div>
-                <h2 class="text-3xl font-bold ${colors.text}">${stock.name}</h2>
-                <p class="text-lg text-[#CBD5E1] mt-1">${stock.symbol} • ${stock.industry}</p>
-              </div>
-              <div class="text-center">
-                <div class="w-28 h-28 rounded-full ${colors.bg} border-4 ${colors.border} flex items-center justify-center mx-auto ring-4 ${colors.ring} ring-opacity-30">
-                  <div>
-                    <div class="text-4xl font-bold ${colors.text}">${stock.compassScore}</div>
-                    <div class="text-sm font-semibold ${colors.text}">Grade ${stock.grade}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Details -->
-          <div class="p-8">
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-              <div class="bg-[#080A0F] rounded-xl p-4">
-                <div class="text-sm text-[#64748B] mb-1">Current Price</div>
-                <div class="text-2xl font-bold">${formatPrice(stock.price)}</div>
-              </div>
-              <div class="bg-[#080A0F] rounded-xl p-4">
-                <div class="text-sm text-[#64748B] mb-1">Market Cap</div>
-                <div class="text-2xl font-bold">${formatMarketCap(stock.marketCap)}</div>
-              </div>
-            </div>
-
-            <!-- Company Profile -->
-            ${profileHtml}
-
-            <!-- Quality Assessment -->
-            <div class="${colors.bg} border ${colors.border} rounded-xl p-6 mb-6">
-              <h3 class="text-lg font-bold mb-3">Quality Assessment</h3>
-              <p class="${colors.text} leading-relaxed">${summary}</p>
-            </div>
-
-            <!-- Wall Street View -->
-            ${analystHtml}
-
-            <!-- CTA -->
-            <div class="bg-slate-900 rounded-xl p-6 text-center">
-              <h3 class="text-white text-xl font-semibold mb-2">Ready to Invest in ${stock.symbol}?</h3>
-              <p class="text-slate-400 text-sm mb-4">Open a brokerage account and start building your portfolio.</p>
-              <div class="flex justify-center">
-                <a href="https://robinhood.com/" target="_blank" rel="noopener" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-white px-8 py-3 rounded-lg font-semibold transition">
-                  Trade on Robinhood
-                </a>
-              </div>
-              <p class="text-xs text-[#64748B] mt-3">We may earn a commission. This doesn't affect our ratings.</p>
-            </div>
-          </div>
-
-          <!-- View Full Details -->
-          <div class="border-t border-slate-100 p-6 bg-[#080A0F]">
-            <p class="text-center text-[#CBD5E1]">
-              <a href="/stock/${stock.symbol.toLowerCase()}" class="text-[#22D3EE] hover:underline font-medium">View full ${stock.symbol} analysis →</a>
-              <span class="mx-3 text-slate-300">|</span>
-              <a href="/browse" class="text-[#22D3EE] hover:underline font-medium">Browse more stocks</a>
-            </p>
-          </div>
-        </div>
-      `;
-
-      resultDiv.classList.remove('hidden');
+      // Straight to the full analysis page — the inline result card is gone.
+      window.location.href = `/stock/${stock.symbol.toLowerCase()}`;
     }
 
     // Event listeners
@@ -335,6 +165,10 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         autocomplete.classList.add('hidden');
+      } else if (e.key === 'Enter') {
+        // Navigate to the top match — selection IS navigation now.
+        const first = searchStocks(searchInput.value)[0];
+        if (first) selectStock(first.symbol);
       }
     });
 

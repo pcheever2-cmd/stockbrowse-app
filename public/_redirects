@@ -1,2 +1,5 @@
 # Retired the Moonshot score (re-validated at ~0 edge); its list role is now "Golden Stocks".
 /moonshot-methodology   /golden-methodology   301
+# Home IS the browser now; preserve old deep links (query strings pass through).
+/browse/all   /   301
+/browse/all/  /   301

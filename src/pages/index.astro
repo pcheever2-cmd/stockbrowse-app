@@ -1,10 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry, displayIndustries } from '../../data/stocks';
+import Layout from '../layouts/Layout.astro';
+import { stocks, getGradeColor, formatPrice, formatMarketCap, getNormalizedIndustry, displayIndustries } from '../data/stocks';
 // Recently-IPO'd names that can't be Compass-scored yet (built by the data
 // pipeline's collectors/collect_ipos.py). Surfaced in SEARCH ONLY, as "score
 // pending" cards, so a lookup for e.g. SPCX / SpaceX returns the real company.
-import recentIposRaw from '../../data/recent-ipos.json';
+import recentIposRaw from '../data/recent-ipos.json';
 
 // Pre-process all stocks for the page.
 // IMPORTANT: only public fields are passed into the client-side define:vars.
@@ -53,14 +53,30 @@ const marketCapRanges = [
 ];
 ---
 
-<Layout title="Browse All Stocks | Compass Score">
+<Layout title="Stockbrowse | Browse Stocks Like Products">
   <section class="py-8 bg-[#080A0F] min-h-screen">
     <div class="max-w-7xl mx-auto px-4">
-      <!-- Header -->
+      <!-- Header: the site's home IS the browser — one-line value prop, then the grid -->
       <div class="mb-6">
-        <h1 class="text-3xl font-bold mb-2">Browse All Stocks</h1>
-        <p class="text-[#CBD5E1]">Filter and explore 4,000+ stocks with quality scores</p>
+        <h1 class="text-3xl font-bold mb-2">Find quality stocks. Understand why in seconds.</h1>
+        <p class="text-[#CBD5E1]">
+          Every US stock graded A–F on research-backed quality. Try the search: <span class="text-slate-300">"GLP-1"</span>, <span class="text-slate-300">"weed"</span>, or <span class="text-slate-300">"stocks like Amazon"</span>.
+          <a href="/how-it-works" class="text-[#22D3EE] hover:underline ml-1">How it works →</a>
+        </p>
       </div>
+
+      <!-- Root-URL structured data (the FAQPage schema lives on /about with the marketing content) -->
+      <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Stockbrowse",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "description": "Browse stocks like products. Research-backed quality scores and letter grades for 4,000+ US companies.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+      </script>
 
       <div>
         <!-- Search + Sort Bar -->
@@ -1287,8 +1303,8 @@ const marketCapRanges = [
 
   <!-- Premium valuation filter — separate module script so Astro bundles the imports -->
   <script>
-    import { loadSession, hasFeature } from '../../lib/subscription';
-    import { authFetch } from '../../lib/authFetch';
+    import { loadSession, hasFeature } from '../lib/subscription';
+    import { authFetch } from '../lib/authFetch';
 
     // Expose to the classic inline script (which can't import modules) so the
     // semantic-search fetch sends the Bearer — paid users are exempt from the

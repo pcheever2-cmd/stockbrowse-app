@@ -63,6 +63,6 @@ The lesson is straightforward. Time in the market beats timing the market.
 
 ## See It in Action
 
-Now that you see how growth works, the next move is finding companies built to keep it going. [Browse companies on Stockbrowse](/browse/all) and look for the ones with the strongest, steadiest fundamentals — high quality scores and real, consistent profits. Those are the businesses that tend to make compounding work hardest for you.
+Now that you see how growth works, the next move is finding companies built to keep it going. [Browse companies on Stockbrowse](/) and look for the ones with the strongest, steadiest fundamentals — high quality scores and real, consistent profits. Those are the businesses that tend to make compounding work hardest for you.
 
 *Stockbrowse is for research and education, not financial advice. The return figures above are historical averages, not predictions, and your actual results will vary. Past performance doesn't guarantee future results. Do your own research or talk to a qualified advisor before investing.*

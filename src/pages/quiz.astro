@@ -191,7 +191,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Actions -->
       <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
-        <a id="explore-btn" href="/browse/all" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-6 py-3 rounded-xl font-bold transition text-center w-full sm:w-auto">
+        <a id="explore-btn" href="/" class="bg-[#22D3EE] hover:bg-[#06B6D4] text-[#0C0F14] px-6 py-3 rounded-xl font-bold transition text-center w-full sm:w-auto">
           Start exploring
         </a>
         <button id="retake-btn" class="text-[#64748B] hover:text-slate-100 text-sm transition">Retake Quiz</button>
@@ -280,7 +280,7 @@ import Layout from '../layouts/Layout.astro';
           'You believe in doing research and being patient',
         ],
         pool: 'smart',
-        exploreLink: '/browse/all',
+        exploreLink: '/',
       },
       steady: {
         name: 'Steady Climber',
@@ -293,7 +293,7 @@ import Layout from '../layouts/Layout.astro';
           'You want stocks you can buy and feel good about holding',
         ],
         pool: 'steady',
-        exploreLink: '/browse/all',
+        exploreLink: '/',
       },
     };
 
@@ -621,20 +621,20 @@ import Layout from '../layouts/Layout.astro';
         growth: [
           { icon: '🚀', title: 'Browse Growth Stocks', desc: 'Quality growth companies in tech, healthcare, and more', href: '/browse/growth' },
           { icon: '📖', title: 'Golden Stocks Methodology', desc: 'How we identify top quality + catalyst stocks', href: '/golden-methodology' },
-          { icon: '🔍', title: 'Browse All Stocks', desc: 'Use advanced filters to find your own picks', href: '/browse/all' },
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Use advanced filters to find your own picks', href: '/' },
         ],
         bold: [
           { icon: '🚀', title: 'Browse Growth Stocks', desc: 'The highest-quality growth companies', href: '/browse/growth' },
           { icon: '📖', title: 'Golden Stocks Methodology', desc: 'Understand how we identify top quality + catalyst stocks', href: '/golden-methodology' },
-          { icon: '🔍', title: 'Browse All Stocks', desc: 'Apply your own filters across 4,000+ stocks', href: '/browse/all' },
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Apply your own filters across 4,000+ stocks', href: '/' },
         ],
         smart: [
-          { icon: '🔍', title: 'Browse All Stocks', desc: 'Filter by "Undervalued" in the Fair Value filter', href: '/browse/all?valuation=Undervalued' },
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Filter by "Undervalued" in the Fair Value filter', href: '/?valuation=Undervalued' },
           { icon: '📖', title: 'Fair Value Methodology', desc: 'How we estimate worth per share from peers & own history', href: '/valuation-methodology' },
           { icon: '📊', title: 'How the Compass Score Works', desc: 'Combine valuation with quality for better picks', href: '/how-it-works' },
         ],
         steady: [
-          { icon: '🔍', title: 'Browse All Stocks', desc: 'Explore 4,000+ stocks with quality and valuation filters', href: '/browse/all' },
+          { icon: '🔍', title: 'Browse All Stocks', desc: 'Explore 4,000+ stocks with quality and valuation filters', href: '/' },
           { icon: '📖', title: 'How the Compass Score Works', desc: 'Understand the quality factors behind the ratings', href: '/how-it-works' },
           { icon: '🚀', title: 'Browse Growth Stocks', desc: 'See the highest-quality growth companies', href: '/browse/growth' },
         ],
