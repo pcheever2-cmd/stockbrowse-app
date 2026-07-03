@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { stocks, getNormalizedIndustry } from '../data/stocks';
+
+// Client payload: only what the pickers + side-by-side cards render.
+// (No descriptions — same lesson as /tool: keep this page light.)
+const stocksJson = JSON.stringify(stocks.map(s => ({
+  symbol: s.symbol,
+  name: s.name,
+  price: s.price,
+  compassScore: s.compassScore,
+  grade: s.grade,
+  industry: getNormalizedIndustry(s.industry),
+  marketCap: s.marketCap,
+})));
+---
+
+<Layout title="Compare Stocks Side by Side | Stockbrowse">
+  <section class="py-10 bg-[#080A0F] min-h-screen">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">Compare two stocks</h1>
+        <p class="text-[#CBD5E1]">Quality grades, scale, and performance — side by side, in plain English.</p>
+      </div>
+
+      <!-- Pickers -->
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {['a', 'b'].map((slot) => (
+          <div class="relative">
+            <input
+              type="text"
+              id={`pick-${slot}`}
+              data-slot={slot}
+              placeholder={slot === 'a' ? 'First stock (e.g. AAPL)' : 'Second stock (e.g. MSFT)'}
+              autocomplete="off"
+              class="pick-input w-full px-4 py-3 bg-[#161B24] border border-[rgba(255,255,255,0.1)] text-slate-100 placeholder:text-[#64748B] rounded-xl focus:ring-2 focus:ring-[#22D3EE] focus:border-transparent"
+            />
+            <div id={`suggest-${slot}`} class="hidden absolute z-10 w-full mt-1 bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-lg max-h-64 overflow-y-auto"></div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty state -->
+      <div id="cmp-empty" class="text-center py-12 text-[#64748B]">
+        <div class="text-5xl mb-3">&#8644;</div>
+        <p>Pick two stocks to compare. Try <button class="cmp-example text-[#22D3EE] hover:underline" data-a="AAPL" data-b="MSFT">AAPL vs MSFT</button> or <button class="cmp-example text-[#22D3EE] hover:underline" data-a="KO" data-b="PEP">KO vs PEP</button>.</p>
+      </div>
+
+      <!-- Results -->
+      <div id="cmp-result" class="hidden">
+        <!-- Side-by-side cards -->
+        <div id="cmp-cards" class="grid grid-cols-2 gap-4 mb-6"></div>
+
+        <!-- Plain-English verdict (deterministic — computed from the data on this page) -->
+        <div id="cmp-verdict" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
+          <h2 class="text-lg font-bold mb-3 text-slate-100">The read</h2>
+          <div id="cmp-verdict-text" class="text-[#CBD5E1] leading-relaxed space-y-2"></div>
+          <p class="text-xs text-[#64748B] mt-4">Educational, not investment advice. Quality = Compass Score; see <a href="/how-it-works" class="text-[#22D3EE] hover:underline">how it works</a>.</p>
+        </div>
+
+        <!-- Relative performance chart -->
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-lg font-bold text-slate-100">Relative performance</h2>
+            <span id="cmp-chart-range" class="text-xs text-[#64748B]"></span>
+          </div>
+          <div id="cmp-chart" class="w-full" style="height: 320px;"></div>
+          <div id="cmp-chart-legend" class="flex gap-6 mt-3 text-sm"></div>
+          <p id="cmp-chart-note" class="text-xs text-[#64748B] mt-2 hidden">Price history unavailable for one of these symbols.</p>
+        </div>
+
+        <!-- Premium extras (hydrated at runtime for entitled users; teaser otherwise) -->
+        <div id="cmp-premium" class="grid grid-cols-2 gap-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ stocksJson }}>
+    const allStocks = JSON.parse(stocksJson);
+    const bySymbol = new Map(allStocks.map(s => [s.symbol, s]));
+
+    const gradeChip = {
+      A: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+      B: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
+      C: 'bg-slate-500/20 text-slate-300 border-slate-500/40',
+      D: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+      F: 'bg-red-500/15 text-red-300 border-red-500/30',
+    };
+
+    const fmtPrice = p => (p && p > 0 ? `$${p.toFixed(2)}` : 'N/A');
+    const fmtCap = c => (!c || c <= 0 ? 'N/A' : c >= 1000 ? `$${(c/1000).toFixed(1)}T` : c >= 1 ? `$${c.toFixed(1)}B` : `$${(c*1000).toFixed(0)}M`);
+    const esc = s => String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+
+    const state = { a: null, b: null };
+
+    function readParams() {
+      const q = new URLSearchParams(location.search);
+      for (const slot of ['a', 'b']) {
+        const sym = (q.get(slot) || '').toUpperCase();
+        if (bySymbol.has(sym)) {
+          state[slot] = bySymbol.get(sym);
+          document.getElementById(`pick-${slot}`).value = `${sym} — ${bySymbol.get(sym).name}`;
+        }
+      }
+    }
+
+    function syncURL() {
+      const q = new URLSearchParams();
+      if (state.a) q.set('a', state.a.symbol);
+      if (state.b) q.set('b', state.b.symbol);
+      history.replaceState(null, '', q.toString() ? `?${q}` : location.pathname);
+    }
+
+    // --- Pickers ------------------------------------------------------------
+    function wirePicker(slot) {
+      const input = document.getElementById(`pick-${slot}`);
+      const box = document.getElementById(`suggest-${slot}`);
+      input.addEventListener('input', () => {
+        const q = input.value.toLowerCase().trim();
+        if (q.length < 1) { box.classList.add('hidden'); return; }
+        const results = allStocks.filter(s =>
+          s.symbol.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)).slice(0, 8);
+        if (!results.length) { box.classList.add('hidden'); return; }
+        box.innerHTML = results.map(s => `
+          <button class="w-full px-4 py-2.5 flex items-center justify-between hover:bg-[#0C0F14] text-left" data-symbol="${s.symbol}">
+            <span><span class="font-semibold text-slate-100">${s.symbol}</span>
+            <span class="text-[#64748B] ml-2 text-sm">${esc(s.name)}</span></span>
+            <span class="text-xs px-2 py-0.5 rounded border ${gradeChip[s.grade] || gradeChip.C}">${s.grade}</span>
+          </button>`).join('');
+        box.classList.remove('hidden');
+        box.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+          state[slot] = bySymbol.get(btn.dataset.symbol);
+          input.value = `${btn.dataset.symbol} — ${state[slot].name}`;
+          box.classList.add('hidden');
+          syncURL();
+          render();
+        }));
+      });
+      input.addEventListener('focus', () => input.select());
+      document.addEventListener('click', (e) => {
+        if (!input.contains(e.target) && !box.contains(e.target)) box.classList.add('hidden');
+      });
+    }
+    wirePicker('a'); wirePicker('b');
+
+    document.querySelectorAll('.cmp-example').forEach(btn => btn.addEventListener('click', () => {
+      state.a = bySymbol.get(btn.dataset.a); state.b = bySymbol.get(btn.dataset.b);
+      document.getElementById('pick-a').value = `${btn.dataset.a} — ${state.a.name}`;
+      document.getElementById('pick-b').value = `${btn.dataset.b} — ${state.b.name}`;
+      syncURL(); render();
+    }));
+
+    // --- Rendering ----------------------------------------------------------
+    function card(s, accent) {
+      return `
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-5 text-center">
+          <div class="w-20 h-20 rounded-full mx-auto mb-3 flex items-center justify-center border-4" style="border-color:${accent}">
+            <div>
+              <div class="text-2xl font-bold text-slate-100">${s.compassScore}</div>
+              <div class="text-xs font-semibold text-[#CBD5E1]">Grade ${s.grade}</div>
+            </div>
+          </div>
+          <a href="/stock/${s.symbol.toLowerCase()}" class="font-bold text-slate-100 hover:text-[#22D3EE] transition">${esc(s.name)}</a>
+          <p class="text-sm text-[#64748B] mb-3">${s.symbol} · ${esc(s.industry)}</p>
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <div class="bg-[#0C0F14] rounded-lg p-2"><div class="text-[#64748B] text-xs">Price</div><div class="font-semibold text-slate-100">${fmtPrice(s.price)}</div></div>
+            <div class="bg-[#0C0F14] rounded-lg p-2"><div class="text-[#64748B] text-xs">Mkt Cap</div><div class="font-semibold text-slate-100">${fmtCap(s.marketCap)}</div></div>
+          </div>
+        </div>`;
+    }
+
+    function verdict(a, b, perf) {
+      const lines = [];
+      const d = a.compassScore - b.compassScore;
+      const hi = d >= 0 ? a : b, lo = d >= 0 ? b : a;
+      if (Math.abs(d) <= 5) {
+        lines.push(`On quality, this is a dead heat: ${esc(a.name)} scores ${a.compassScore} (${a.grade}) and ${esc(b.name)} ${b.compassScore} (${b.grade}).`);
+      } else if (Math.abs(d) <= 15) {
+        lines.push(`${esc(hi.name)} edges the quality race — ${hi.compassScore} (${hi.grade}) vs ${lo.compassScore} (${lo.grade}).`);
+      } else {
+        lines.push(`${esc(hi.name)} grades meaningfully higher on research-backed quality: ${hi.compassScore} (${hi.grade}) vs ${lo.compassScore} (${lo.grade}).`);
+      }
+      if (a.industry === b.industry) {
+        const big = a.marketCap >= b.marketCap ? a : b, small = a.marketCap >= b.marketCap ? b : a;
+        const ratio = small.marketCap > 0 ? big.marketCap / small.marketCap : null;
+        lines.push(`Both are ${esc(a.industry)} companies${ratio && ratio >= 1.5 ? `, though ${esc(big.name)} is ~${ratio >= 10 ? Math.round(ratio) : ratio.toFixed(1)}x larger` : ' of comparable size'}.`);
+      } else {
+        lines.push(`They compete in different arenas — ${esc(a.name)} in ${esc(a.industry)}, ${esc(b.name)} in ${esc(b.industry)} — so the quality score is the cleanest common yardstick.`);
+      }
+      if (perf) {
+        const [ra, rb] = perf;
+        const lead = ra >= rb ? a : b;
+        const fmt = r => `${r >= 0 ? '+' : ''}${r.toFixed(1)}%`;
+        lines.push(`Over the shared window on the chart, ${esc(a.symbol)} returned ${fmt(ra)} vs ${esc(b.symbol)}'s ${fmt(rb)} — ${Math.abs(ra - rb) < 3 ? 'essentially even' : `${esc(lead.symbol)} out in front`}.`);
+      }
+      return lines.map(l => `<p>${l}</p>`).join('');
+    }
+
+    // --- Chart ---------------------------------------------------------------
+    const COLORS = ['#22D3EE', '#F59E0B'];
+    let chart = null;
+
+    async function fetchSeries(sym) {
+      try {
+        const doFetch = window.__authFetch || fetch;
+        const res = await doFetch(`/api/stock/${sym}/prices`);
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+      } catch { return []; }
+    }
+
+    async function renderChart(a, b, token) {
+      const note = document.getElementById('cmp-chart-note');
+      const el = document.getElementById('cmp-chart');
+      const legend = document.getElementById('cmp-chart-legend');
+      const rangeEl = document.getElementById('cmp-chart-range');
+      const [sa, sb] = await Promise.all([fetchSeries(a.symbol), fetchSeries(b.symbol)]);
+      // Superseded while fetching? Bail BEFORE any DOM writes — otherwise a
+      // slow stale render can chart.remove() the newer chart and draw old data.
+      if (token !== renderToken) return null;
+      // Only compare over the SHARED window; normalize each to % from its first shared point.
+      const mapB = new Map(sb.map(p => [p.time, p.value]));
+      const shared = sa.filter(p => mapB.has(p.time));
+      if (shared.length < 10) {
+        note.classList.remove('hidden'); el.style.display = 'none'; legend.innerHTML = ''; rangeEl.textContent = '';
+        return null;
+      }
+      note.classList.add('hidden'); el.style.display = '';
+      const baseA = shared[0].value, baseB = mapB.get(shared[0].time);
+      const lineA = shared.map(p => ({ time: p.time, value: (p.value / baseA - 1) * 100 }));
+      const lineB = shared.map(p => ({ time: p.time, value: (mapB.get(p.time) / baseB - 1) * 100 }));
+
+      // The chart lib is bundled + exposed by the MODULE script below — a bare
+      // import('lightweight-charts') here would throw (this classic define:vars
+      // script is not processed by Vite, so bare specifiers don't resolve).
+      // If the bridge isn't up yet, skip silently: the authfetch-ready re-render
+      // draws the chart moments later (don't flash the "unavailable" note).
+      if (!window.__LWC) return null;
+      const { createChart, LineSeries, ColorType } = window.__LWC;
+      if (chart) { chart.remove(); chart = null; }
+      chart = createChart(el, {
+        layout: { background: { type: ColorType.Solid, color: 'transparent' }, textColor: '#64748B' },
+        grid: { vertLines: { visible: false }, horzLines: { color: 'rgba(255,255,255,0.05)' } },
+        rightPriceScale: { borderVisible: false },
+        timeScale: { borderVisible: false },
+        height: 320,
+        autoSize: true,
+      });
+      const s1 = chart.addSeries(LineSeries, { color: COLORS[0], lineWidth: 2, priceFormat: { type: 'custom', formatter: v => `${v.toFixed(0)}%` } });
+      const s2 = chart.addSeries(LineSeries, { color: COLORS[1], lineWidth: 2, priceFormat: { type: 'custom', formatter: v => `${v.toFixed(0)}%` } });
+      s1.setData(lineA); s2.setData(lineB);
+      chart.timeScale().fitContent();
+      legend.innerHTML = [a, b].map((s, i) =>
+        `<span class="flex items-center gap-2"><span class="w-3 h-0.5 inline-block" style="background:${COLORS[i]}"></span><span class="text-[#CBD5E1]">${s.symbol}</span></span>`).join('');
+      rangeEl.textContent = `${shared[0].time} → ${shared[shared.length - 1].time} (% change)`;
+      return [lineA[lineA.length - 1].value, lineB[lineB.length - 1].value];
+    }
+
+    // --- Premium hydration (golden/catalyst/fair-value labels) ---------------
+    async function hydratePremium(a, b) {
+      const box = document.getElementById('cmp-premium');
+      try {
+        if (!window.__authFetch) { box.innerHTML = teaser(); return; }
+        const res = await window.__authFetch('/api/stocks/premium-summary');
+        if (!res.ok) { box.innerHTML = teaser(); return; }
+        const sum = await res.json();
+        // Shape: { "AAPL": { catalystTag?, catalystScore?, isGolden?, fairValueVerdict? }, ... }
+        box.innerHTML = [a, b].map(s => {
+          const d = (sum && sum[s.symbol]) || {};
+          const bits = [];
+          if (d.isGolden) bits.push('<span class="text-amber-300">⭐ Golden</span>');
+          if (typeof d.catalystScore === 'number') bits.push(`<span class="text-[#CBD5E1]">⚡ Catalyst ${d.catalystScore}</span>`);
+          if (d.fairValueVerdict) bits.push(`<span class="text-[#CBD5E1]">${esc(d.fairValueVerdict)}</span>`);
+          return `<div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 text-center text-sm">${bits.length ? bits.join(' · ') : '<span class="text-[#64748B]">No premium signals</span>'}</div>`;
+        }).join('');
+      } catch { box.innerHTML = teaser(); }
+    }
+    const teaser = () => ['a','b'].map(() =>
+      `<div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 text-center text-sm text-[#64748B]">🔒 Golden, Catalyst &amp; Fair Value in <a href="/pricing" class="text-[#22D3EE] hover:underline">Plus</a></div>`).join('');
+
+    // --- Orchestration --------------------------------------------------------
+    let renderToken = 0; // guards against out-of-order async renders clobbering newer state
+
+    async function render() {
+      if (!state.a || !state.b) return;
+      if (state.a.symbol === state.b.symbol) {
+        // Same stock in both slots: show the empty state, never stale results.
+        document.getElementById('cmp-result').classList.add('hidden');
+        document.getElementById('cmp-empty').classList.remove('hidden');
+        return;
+      }
+      const token = ++renderToken;
+      const a = state.a, b = state.b;
+
+      // Meter: one view per comparison (sorted pair). Fires on every rendered
+      // pair — deep links AND picker changes (the module exposes the meter).
+      if (window.__applyMeter) {
+        const ok = await window.__applyMeter(`CMP:${[a.symbol, b.symbol].sort().join(':')}`);
+        if (!ok || token !== renderToken) return; // wall shown, or superseded
+      }
+
+      document.getElementById('cmp-empty').classList.add('hidden');
+      document.getElementById('cmp-result').classList.remove('hidden');
+      document.getElementById('cmp-cards').innerHTML = card(a, COLORS[0]) + card(b, COLORS[1]);
+      document.getElementById('cmp-verdict-text').innerHTML = verdict(a, b, null);
+      hydratePremium(a, b);
+      const perf = await renderChart(a, b, token);
+      if (token !== renderToken) return; // a newer render superseded this one
+      if (perf) document.getElementById('cmp-verdict-text').innerHTML = verdict(a, b, perf);
+    }
+
+    readParams();
+    render();
+
+    // The module script below sets window.__authFetch/__LWC/__applyMeter AFTER
+    // this classic script runs. Re-run the FULL render once ready: paid users
+    // get their 5yr chart window + premium extras (a premium-only re-hydrate
+    // left deep-linked Plus users on the anonymous 1yr chart), and the chart
+    // lib becomes available for the first paint.
+    window.addEventListener('authfetch-ready', () => {
+      if (state.a && state.b) render();
+    });
+  </script>
+
+  <!-- Meter + auth bridge (module script: imports allowed) -->
+  <script>
+    import { applyViewMeter } from '../lib/viewMeter';
+    import { authFetch } from '../lib/authFetch';
+    import * as LWC from 'lightweight-charts';
+    // Bridge to the classic define:vars script (which Vite doesn't process, so
+    // it can't import bare specifiers or lib modules itself).
+    (window as any).__authFetch = authFetch;
+    (window as any).__LWC = LWC;
+    (window as any).__applyMeter = applyViewMeter;
+    // The classic script's render() meters each compared pair (one view per
+    // comparison) and re-runs now that the bridges exist.
+    window.dispatchEvent(new Event('authfetch-ready'));
+  </script>
+</Layout>

@@ -201,6 +201,11 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
               <span class="fav-icon text-base leading-none">&#9825;</span>
               <span class="fav-label">Add to watchlist</span>
             </button>
+            <a href={`/compare?a=${stock.symbol}`} aria-label={`Compare ${stock.symbol} with another stock`}
+              class="mt-3 ml-2 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold border border-[rgba(255,255,255,0.12)] text-[#CBD5E1] hover:bg-[#0C0F14] transition">
+              <span class="text-base leading-none">&#8644;</span>
+              <span>Compare</span>
+            </a>
           </div>
           <div class="flex items-center gap-4">
             <!-- Compass Score -->
@@ -1632,66 +1637,10 @@ const altmanInfo = formatAltmanZ(stock.altmanZ);
     });
   </script>
 
-  <!-- Free-tier view meter: 10 distinct stock pages per day (soft, NYT-style).
-       Client-side by necessity — auth is Bearer/localStorage (no cookies), so
-       these static pages can't be gated server-side. Paid tiers exempt.
-       Crawlers render each page statelessly (count=1), so SEO is unaffected. -->
+  <!-- Free-tier view meter (shared lib — see src/lib/viewMeter.ts) -->
   <script>
-    import { loadSession } from '../../lib/subscription';
-
-    const VIEW_LIMIT = 10;
-    const METER_KEY = 'viewMeter';
-
-    function showViewWall(isLoggedIn: boolean) {
-      if (document.getElementById('viewWall')) return;
-      const wall = document.createElement('div');
-      wall.id = 'viewWall';
-      wall.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-[#080A0F]/80 backdrop-blur-md px-4';
-      const signupCta = isLoggedIn
-        ? ''
-        : `<a href="/signup" class="block w-full bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F] font-semibold px-6 py-3 rounded-lg transition mb-3">Create a free account</a>`;
-      wall.innerHTML = `
-        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.1)] rounded-2xl max-w-md w-full p-8 text-center">
-          <div class="text-4xl mb-3">📊</div>
-          <h2 class="text-xl font-bold text-slate-100 mb-2">You've used your 10 free stock views today</h2>
-          <p class="text-sm text-[#CBD5E1] mb-6">Your views reset tomorrow — or go unlimited with Plus.</p>
-          ${signupCta}
-          <a href="/pricing" class="block w-full ${isLoggedIn ? 'bg-[#22D3EE] hover:bg-[#06B6D4] text-[#080A0F]' : 'bg-[#0C0F14] hover:bg-[#1a2030] text-slate-100 border border-[rgba(255,255,255,0.1)]'} font-semibold px-6 py-3 rounded-lg transition mb-4">Upgrade for unlimited views</a>
-          ${isLoggedIn ? '' : '<p class="text-xs text-[#64748B] mb-4">Free accounts keep the same daily limit — Plus removes it.</p>'}
-          <a href="/" class="text-sm text-[#64748B] hover:text-[#CBD5E1] transition">← Back to browsing</a>
-        </div>`;
-      document.body.appendChild(wall);
-      document.body.style.overflow = 'hidden';
-    }
-
-    (async () => {
-      try {
-        const user = await loadSession();
-        // Unlimited views is a PLUS feature (pricing page); Newsletter is
-        // "everything in Free" and stays metered.
-        if (user && (user.tier === 'plus' || user.tier === 'pro')) return;
-
-        const sym = location.pathname.split('/')[2]?.toUpperCase();
-        if (!sym) return;
-
-        const today = new Date().toISOString().slice(0, 10);
-        let meter: { date: string; symbols: string[] } | null = null;
-        try { meter = JSON.parse(localStorage.getItem(METER_KEY) || 'null'); } catch { meter = null; }
-        if (!meter || meter.date !== today || !Array.isArray(meter.symbols)) {
-          meter = { date: today, symbols: [] };
-        }
-
-        if (!meter.symbols.includes(sym)) {
-          if (meter.symbols.length >= VIEW_LIMIT) {
-            showViewWall(!!user);
-            return; // not recorded — the wall blocks this view
-          }
-          meter.symbols.push(sym);
-        }
-        localStorage.setItem(METER_KEY, JSON.stringify(meter));
-      } catch {
-        // Metering must never break the page.
-      }
-    })();
+    import { applyViewMeter } from '../../lib/viewMeter';
+    const meterSym = location.pathname.split('/')[2]?.toUpperCase();
+    if (meterSym) applyViewMeter(meterSym);
   </script>
 </Layout>
