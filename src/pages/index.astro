@@ -406,30 +406,10 @@ const marketCapRanges = [
       const likeMatch = q.match(likePattern);
       if (likeMatch) {
         const companyQuery = likeMatch[1].trim();
-        // Common company name aliases (what people type → actual symbol)
-        const companyAliases = {
-          'nvidia': 'NVDA', 'tesla': 'TSLA', 'apple': 'AAPL',
-          'amazon': 'AMZN', 'microsoft': 'MSFT', 'google': 'GOOGL',
-          'alphabet': 'GOOGL', 'meta': 'META', 'facebook': 'META',
-          'costco': 'COST', 'walmart': 'WMT', 'netflix': 'NFLX',
-          'disney': 'DIS', 'coca-cola': 'KO', 'coke': 'KO',
-          'pepsi': 'PEP', 'palantir': 'PLTR', 'amd': 'AMD',
-          'intel': 'INTC', 'qualcomm': 'QCOM', 'broadcom': 'AVGO',
-          'rivian': 'RIVN', 'lucid': 'LCID', 'ford': 'F',
-          'gm': 'GM', 'general motors': 'GM', 'alibaba': 'BABA',
-          'shopify': 'SHOP', 'ebay': 'EBAY', 'target': 'TGT',
-          'salesforce': 'CRM', 'oracle': 'ORCL', 'snowflake': 'SNOW',
-          'spotify': 'SPOT', 'uber': 'UBER', 'airbnb': 'ABNB',
-          'paypal': 'PYPL', 'visa': 'V', 'mastercard': 'MA',
-          'nike': 'NKE', 'starbucks': 'SBUX', 'mcdonalds': 'MCD',
-          'boeing': 'BA', 'lockheed': 'LMT', 'raytheon': 'RTX',
-          'chevron': 'CVX', 'exxon': 'XOM', 'shell': 'SHEL',
-          'jpmorgan': 'JPM', 'goldman': 'GS', 'morgan stanley': 'MS',
-          'berkshire': 'BRK-B', 'buffett': 'BRK-B'
-        };
+        // Shared brand/company alias map (defined above applyFilters).
 
         // Check alias first, then fall back to symbol/name match
-        const aliasSymbol = companyAliases[companyQuery.toLowerCase()];
+        const aliasSymbol = BRAND_ALIASES[companyQuery.toLowerCase()];
         let referenceStock;
         if (aliasSymbol) {
           referenceStock = allStocks.find(s => s.symbol === aliasSymbol);
@@ -645,6 +625,65 @@ const marketCapRanges = [
     }
 
     // Filter functions
+    // Brand/product/subsidiary -> parent ticker. Fixes the worst "nothing
+    // relevant" class: typing "instagram"/"aws"/"gatorade" literal-matches no
+    // company NAME, so users got junk substring hits or a vague semantic
+    // basket. Every entry machine-validated against the live universe (ticker
+    // exists; alias is not itself another company's ticker). Exact-query
+    // aliases also rank their target FIRST over junk substring matches.
+    const BRAND_ALIASES = {
+  'google':'GOOGL','facebook':'META','coke':'KO','buffett':'BRK-B','mcdonalds':'MCD','raytheon':'RTX',
+  '7up':'KDP','acrobat':'ADBE','acura':'HMC','airpods':'AAPL','alexa':'AMZN',
+  'aliexpress':'BABA','amex':'AXP','android':'GOOGL','app store':'AAPL','apple watch':'AAPL',
+  'applebees':'DIN','athleta':'GAP','audible':'AMZN','autocad':'ADSK','aveeno':'KVUE',
+  'aws':'AMZN','azure':'MSFT','banana republic':'GAP','band-aid':'KVUE','benadryl':'KVUE',
+  'betty crocker':'GIS','bing':'MSFT','botox':'ABBV','bounty':'PG','bronco':'F','buick':'GM',
+  'burger king':'QSR','cadbury':'MDLZ','cadillac':'GM','call of duty':'MSFT','canada dry':'KDP',
+  'capri sun':'KHC','cash app':'XYZ','charmin':'PG','chase bank':'JPM','cheerios':'GIS',
+  'cheetos':'PEP','chevrolet':'GM','chevy':'GM','chilis':'EAT','chips ahoy':'MDLZ',
+  'chrome':'GOOGL','cnn':'WBD','confluence':'TEAM','copenhagen dip':'MO','copilot':'MSFT',
+  'corona beer':'STZ','corvette':'GM','crest':'PG','cuda':'NVDA','cybertruck':'TSLA',
+  'dasani':'KO','dc comics':'WBD','deepmind':'GOOGL','discover card':'COF','disney plus':'DIS',
+  'doritos':'PEP','ensure':'ABT','epyc':'AMD','espn':'DIS','etrade':'MS',
+  'excel':'MSFT','f-150':'F','facetime':'AAPL','falcon 9':'SPCX','fanta':'KO','febreze':'PG',
+  'fitbit':'GOOGL','freestyle libre':'ABT','frito lay':'PEP','frontier airlines':'ULCC',
+  'gardasil':'MRK','gatorade':'PEP','geforce':'NVDA','geico':'BRK-B','gemini ai':'GOOGL',
+  'gillette':'PG','github':'MSFT','gmail':'GOOGL','gmc':'GM','green mountain coffee':'KDP',
+  'haagen dazs':'GIS','hampton inn':'HLT','hbo':'WBD','head and shoulders':'PG',
+  'homegoods':'TJX','hotels.com':'EXPE','hulu':'DIS','humira':'ABBV','icloud':'AAPL',
+  'ihop':'DIN','imdb':'AMZN','instagram':'META','invisalign':'ALGN','ipad':'AAPL',
+  'iphone':'AAPL','jell-o':'KHC','jira':'TEAM','jolly rancher':'HSY','kayak':'BKNG',
+  'keytruda':'MRK','kfc':'YUM','kindle':'AMZN','kitkat':'HSY','kool-aid':'KHC','lays':'PEP',
+  'lexus':'TM','lincoln cars':'F','linkedin':'MSFT','listerine':'KVUE',
+  'longhorn steakhouse':'DRI','lucky charms':'GIS','lunchables':'KHC','macbook':'AAPL',
+  'marlboro':'MO','marshalls':'TJX','marvel':'DIS','max streaming':'WBD','messenger':'META',
+  'minecraft':'MSFT','minute maid':'KO','model 3':'TSLA','model y':'TSLA','modelo':'STZ',
+  'mounjaro':'LLY','mountain dew':'PEP','mtv':'PSKY','mustang':'F','nbc':'CMCSA','nest':'GOOGL',
+  'neutrogena':'KVUE','nickelodeon':'PSKY','oculus':'META','olay':'PG','old navy':'GAP',
+  'old spice':'PG','olive garden':'DRI','opentable':'BKNG','oral-b':'PG','oreo':'MDLZ',
+  'oscar mayer':'KHC','outlook':'MSFT','ozempic':'NVO','pampers':'PG','pandora music':'SIRI',
+  'paramount plus':'PSKY','paxlovid':'PFE','peacock':'CMCSA','photoshop':'ADBE',
+  'pillsbury':'GIS','pixar':'DIS','pixel phone':'GOOGL','pizza hut':'YUM','popeyes':'QSR',
+  'powerade':'KO','powerwall':'TSLA','priceline':'BKNG','prime video':'AMZN',
+  'quest headset':'META','radeon':'AMD','reeses':'HSY',
+  'ring doorbell':'AMZN','ritz carlton':'MAR','ritz crackers':'MDLZ','ryzen':'AMD',
+  'sheraton':'MAR','similac':'ABT','skyrizi':'ABBV','slack':'CRM','smartwater':'KO',
+  'snapdragon':'QCOM','snapple':'KDP','sour patch kids':'MDLZ','splunk':'CSCO','sprite':'KO',
+  'square payments':'XYZ','star wars':'DIS','starlink':'SPCX','stelara':'JNJ',
+  'supercharger':'TSLA','swiffer':'PG','tableau':'CRM','taco bell':'YUM','taobao':'BABA',
+  'td ameritrade':'SCHW','teams':'MSFT','temu':'PDD','threads':'META','tide':'PG',
+  'tim hortons':'QSR','tj maxx':'TJX','trello':'TEAM','trulicity':'LLY','tsmc':'TSM',
+  'twitch':'AMZN','twizzlers':'HSY','tylenol':'KVUE','tylenol pm':'KVUE',
+  'universal studios':'CMCSA','velveeta':'KHC','venmo':'PYPL','viagra':'PFE',
+  'victoria secret':'VSCO','vision pro':'AAPL','vmware':'AVGO','vrbo':'EXPE',
+  'waldorf astoria':'HLT','waymo':'GOOGL','waze':'GOOGL','webex':'CSCO','wegovy':'NVO',
+  'westin':'MAR','whatsapp':'META','whole foods':'AMZN','windows':'MSFT','xbox':'MSFT',
+  'xfinity':'CMCSA','youtube':'GOOGL','zappos':'AMZN','zepbound':'LLY',
+  'zyrtec':'KVUE'
+    };
+    Object.setPrototypeOf(BRAND_ALIASES, null); // 'constructor' etc. must not resolve
+    const SYMBOL_SET = new Set(allStocks.map(s => s.symbol.toLowerCase()));
+
     function applyFilters() {
       filteredStocks = allStocks.filter(stock => {
         // Search filter — semantic discovery when active, else literal/keyword
@@ -655,12 +694,14 @@ const marketCapRanges = [
             // Discovery mode: keep only stocks the meaning-search surfaced
             // (plus any exact literal match, so a typed ticker still shows).
             const literal = stock.symbol.toLowerCase() === query ||
-                            stock.name.toLowerCase().includes(query);
+                            stock.name.toLowerCase().includes(query) ||
+                            BRAND_ALIASES[query.trim()] === stock.symbol;
             if (!semanticRank.has(stock.symbol) && !literal) return false;
           } else {
             // Literal lookup / keyword mode
             const literalMatch = stock.symbol.toLowerCase().includes(query) ||
-                                 stock.name.toLowerCase().includes(query);
+                                 stock.name.toLowerCase().includes(query) ||
+                                 BRAND_ALIASES[query.trim()] === stock.symbol;
             if (!literalMatch && !query.match(/\b(stocks?|like|similar|best|top|cheap|under|over|tech|healthcare|finance|dividend|growth)\b/)) {
               return false;
             }
@@ -727,6 +768,17 @@ const marketCapRanges = [
       // the real company instead of nothing.
       appendRecentIpoMatches();
 
+      // Exact brand query ("instagram", "aws"): the aliased parent outranks
+      // junk substring matches (e.g. "aws" used to surface Dawson Geophysical).
+      const aq = (filters.search || '').toLowerCase().trim();
+      // Exact-ticker queries always win over brand aliases ("coke" aliases KO,
+      // but a user typing the literal ticker COKE means Coca-Cola Consolidated).
+      const aliasTarget = aq && !SYMBOL_SET.has(aq) && BRAND_ALIASES[aq];
+      if (aliasTarget) {
+        const ai = filteredStocks.findIndex(s => s.symbol === aliasTarget);
+        if (ai > 0) filteredStocks.unshift(filteredStocks.splice(ai, 1)[0]);
+      }
+
       renderStocks();
       updateActiveFilters();
       saveFiltersToURL();
@@ -742,7 +794,8 @@ const marketCapRanges = [
       const have = new Set(filteredStocks.map(s => s.symbol));
       const matches = recentIpos.filter(s =>
         !have.has(s.symbol) &&
-        (s.symbol.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)));
+        (s.symbol.toLowerCase().includes(q) || s.name.toLowerCase().includes(q) ||
+         BRAND_ALIASES[q] === s.symbol)); // brand words can target score-pending IPOs too ("starlink" -> SPCX)
       filteredStocks = filteredStocks.concat(matches);
     }
 
@@ -1102,7 +1155,10 @@ const marketCapRanges = [
         // anything descriptive ("GLP-1 stocks", "stocks like Netflix") goes semantic.
         const isLookup = q.length > 0 && !q.includes(' ') &&
           (allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)) ||
-           recentIpos.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)));
+           recentIpos.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)) ||
+           // Exact brand words ("instagram", "aws") resolve deterministically —
+           // don't fire the semantic API or charge a free-tier search for them.
+           !!BRAND_ALIASES[ql]);
         // Require >=2 chars (2-char themes like "vr"/"ar" exist) so single-keystroke fragments
         // don't fire an embedding + Vectorize call + miss-log; the longer debounce below does the rest.
         const goSemantic = q.length >= 2 && !isLookup;
