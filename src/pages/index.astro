@@ -266,6 +266,8 @@ const marketCapRanges = [
     let semanticRank = null;
     // Map<symbol, {why, kind}> populated only on a curated-catalog hit; empty otherwise.
     let semanticWhy = new Map();
+    // Monotonic counter so an out-of-order semantic response is discarded.
+    let searchSeq = 0;
 
     // Premium valuation data (fetched at runtime for Plus+ users)
     let valuationMap = {};  // symbol -> valuationRating
@@ -580,11 +582,17 @@ const marketCapRanges = [
       }
     }
 
-    // Semantic search: returns Map<symbol, score> from the meaning index, or null.
+    // Semantic search: resolves to { rank: Map<symbol,score>, why: Map } or null.
+    // Pure — no global writes, so a stale response can be discarded whole by the
+    // caller's sequence guard (out-of-order responses used to clobber semanticWhy).
     // similarToStock (optional) triggers "stocks like X" using that company's own vector.
-    async function fetchSemanticResults(query, similarToStock) {
+    // catalogOnly (optional) probes just the curated catalog: null on a miss
+    // (grid stays literal) instead of falling back to the raw stock index.
+    async function fetchSemanticResults(query, similarToStock, catalogOnly) {
       try {
-        const payload = similarToStock ? { similarTo: similarToStock.symbol } : { query };
+        const payload = similarToStock ? { similarTo: similarToStock.symbol }
+          : catalogOnly ? { query, catalogOnly: true }
+          : { query };
         // window.__authFetch (set by the premium module script) sends the Bearer
         // so paid users are exempt from the free search quota; falls back to
         // plain fetch for anonymous visitors.
@@ -602,24 +610,21 @@ const marketCapRanges = [
           let isQuota = false;
           try { isQuota = (await res.json()).code === 'SEARCH_LIMIT'; } catch { /* not JSON */ }
           if (isQuota && limitNotice) limitNotice.classList.remove('hidden');
-          semanticWhy = new Map();
           return null;
         }
         if (limitNotice) limitNotice.classList.add('hidden');
-        if (!res.ok) { semanticWhy = new Map(); return null; }
+        if (!res.ok) return null;
         const data = await res.json();
-        if (!data.symbols || !data.symbols.length) { semanticWhy = new Map(); return null; }
-        const m = new Map();
+        if (!data.symbols || !data.symbols.length) return null;
+        const rank = new Map();
         const why = new Map();
         for (const s of data.symbols) {
-          m.set(s.symbol, s.score);
+          rank.set(s.symbol, s.score);
           // Catalog hits carry a one-line "why"; raw-semantic results don't.
           if (s.why) why.set(s.symbol, { why: s.why, kind: s.kind });
         }
-        semanticWhy = why;
-        return m;
+        return { rank, why };
       } catch {
-        semanticWhy = new Map();
         return null;
       }
     }
@@ -779,6 +784,15 @@ const marketCapRanges = [
         if (ai > 0) filteredStocks.unshift(filteredStocks.splice(ai, 1)[0]);
       }
 
+      // An exactly-typed ticker always tops the list — over substring matches
+      // in literal mode, over the theme basket in probe mode ("gold" pins
+      // Barrick above the gold-miners picks). Mutually exclusive with the
+      // brand pin: aliasTarget requires aq NOT be a ticker.
+      if (aq && SYMBOL_SET.has(aq)) {
+        const ti = filteredStocks.findIndex(s => s.symbol.toLowerCase() === aq);
+        if (ti > 0) filteredStocks.unshift(filteredStocks.splice(ti, 1)[0]);
+      }
+
       // Hand the active search context to the compare tool (sessionStorage,
       // same tab only): its peer chips then offer "more from your oil search"
       // in this result order instead of generic industry peers.
@@ -822,12 +836,19 @@ const marketCapRanges = [
       // Relevance = semantic similarity weighted by quality (the "best sellers" bias).
       // Compass 0-100 maps to a 0.5-1.0 multiplier, so quality nudges order without
       // overriding a much stronger semantic match.
-      if (field === 'relevance' && semanticRank) {
-        filteredStocks.sort((a, b) => {
-          const sa = (semanticRank.get(a.symbol) || 0) * (0.5 + (a.compassScore || 0) / 200);
-          const sb = (semanticRank.get(b.symbol) || 0) * (0.5 + (b.compassScore || 0) / 200);
-          return sb - sa;
-        });
+      if (field === 'relevance') {
+        if (semanticRank) {
+          filteredStocks.sort((a, b) => {
+            const sa = (semanticRank.get(a.symbol) || 0) * (0.5 + (a.compassScore || 0) / 200);
+            const sb = (semanticRank.get(b.symbol) || 0) * (0.5 + (b.compassScore || 0) / 200);
+            return sb - sa;
+          });
+        } else {
+          // "Best match" with no active semantic ranking (e.g. sort restored
+          // from a shared URL): fall back to score order instead of leaving
+          // the grid unsorted via an unknown compare field.
+          filteredStocks.sort((a, b) => (b.compassScore || 0) - (a.compassScore || 0));
+        }
         return;
       }
 
@@ -1070,6 +1091,13 @@ const marketCapRanges = [
     }
 
     function clearAllFilters() {
+      // Invalidate any in-flight semantic/probe response and drop semantic
+      // state — a slow "oil" reply must not repaint a basket over the
+      // just-cleared grid.
+      ++searchSeq;
+      semanticRank = null;
+      semanticWhy = new Map();
+      document.getElementById('smartSearchHint')?.classList.add('hidden');
       filters = {
         search: '',
         grades: [],
@@ -1079,8 +1107,10 @@ const marketCapRanges = [
         valuationRatings: [],
         goldenOnly: false,
         catalystOnly: false,
-        sort: filters.sort
+        sort: filters.sort === 'relevance-desc' ? 'score-desc' : filters.sort
       };
+      const clearSortSelect = document.getElementById('sortSelect');
+      if (clearSortSelect && clearSortSelect.value === 'relevance-desc') clearSortSelect.value = 'score-desc';
       document.getElementById('searchInput').value = '';
       document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
       document.querySelectorAll('.grade-chip').forEach(c => { c.classList.remove('opacity-100', 'border-[#22D3EE]'); c.classList.add('opacity-60'); });
@@ -1168,33 +1198,61 @@ const marketCapRanges = [
         const q = query.trim();
         const ql = q.toLowerCase();
 
-        // A single token that matches a ticker/name is a lookup (stay literal);
-        // anything descriptive ("GLP-1 stocks", "stocks like Netflix") goes semantic.
-        const isLookup = q.length > 0 && !q.includes(' ') &&
-          (allStocks.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)) ||
+        // Single tokens that match a ticker or a company-name PREFIX are
+        // lookup-SHAPED — but "oil" (starts "Oil-Dri"), "gold" (Barrick's
+        // ticker), and "tide" (starts "Tidewater") usually mean the THEME.
+        // These go out as catalog PROBES (catalogOnly): literal matches
+        // render immediately below, and the grid upgrades to curated picks
+        // + why-lines only if the catalog covers the word. A probe miss
+        // costs no search quota and logs no miss, so plain lookups like
+        // "apple" or "netfl" stay free. Brand words ("xbox") that match no
+        // name go full semantic: MSFT pins via the alias AND the ecosystem
+        // basket (EA, Take-Two...) comes back from the catalog.
+        const singleToken = q.length >= 2 && !q.includes(' ');
+        const catalogProbe = singleToken &&
+          (SYMBOL_SET.has(ql) ||
+           allStocks.some(s => s.name.toLowerCase().startsWith(ql)) ||
            recentIpos.some(s => s.symbol.toLowerCase() === ql || s.name.toLowerCase().startsWith(ql)));
-        // Brand words (BRAND_ALIASES) deliberately DO go semantic: "xbox" pins
-        // MSFT first via the alias AND fetches the ecosystem basket (EA,
-        // Take-Two...) from the theme catalog — parent + who-builds-for-it.
         // Require >=2 chars (2-char themes like "vr"/"ar" exist) so single-keystroke fragments
         // don't fire an embedding + Vectorize call + miss-log; the longer debounce below does the rest.
-        const goSemantic = q.length >= 2 && !isLookup;
+        const goSemantic = q.length >= 2;
+        // Guard against out-of-order responses: a slow "oi" reply must not
+        // clobber the "oil" basket that already rendered.
+        const seq = ++searchSeq;
 
         if (goSemantic) {
           const parsed = parseSmartSearch(query);
 
           // For thematic queries, honor explicit numeric/grade words ("cheap", "under $50",
-          // "safe"). For "stocks like X" skip these (they're derived from the reference stock).
-          if (!parsed.similarTo) {
+          // "safe"). For "stocks like X" skip these (they're derived from the reference
+          // stock). Probes skip them too: "solid"/"top"/"penny" are company lookups first —
+          // mutating grade/price filters would hide the very stock being looked up.
+          if (!parsed.similarTo && !catalogProbe) {
             if (parsed.grades.length > 0) filters.grades = [...new Set(parsed.grades)];
             if (parsed.priceRanges.length > 0) filters.priceRanges = [...new Set(parsed.priceRanges)];
             if (parsed.marketCapRanges && parsed.marketCapRanges.length > 0) filters.marketCapRanges = [...new Set(parsed.marketCapRanges)];
           }
 
-          hintText.textContent = 'Searching…';
-          hintEl.classList.remove('hidden');
+          if (catalogProbe) {
+            // Literal-first: show ticker/name matches NOW (a lookup must not
+            // wait on the network); the probe upgrades the grid on a hit.
+            semanticRank = null;
+            semanticWhy = new Map();
+            if (filters.sort === 'relevance-desc') {
+              filters.sort = 'score-desc';
+              if (sortSelect) sortSelect.value = 'score-desc';
+            }
+            hintEl.classList.add('hidden');
+            applyFilters();
+          } else {
+            hintText.textContent = 'Searching…';
+            hintEl.classList.remove('hidden');
+          }
 
-          semanticRank = await fetchSemanticResults(query, parsed.similarTo);
+          const result = await fetchSemanticResults(query, parsed.similarTo, catalogProbe);
+          if (seq !== searchSeq) return; // superseded by a newer query
+          semanticRank = result ? result.rank : null;
+          semanticWhy = result ? result.why : new Map();
 
           if (semanticRank) {
             filters.sort = 'relevance-desc';
@@ -1204,10 +1262,17 @@ const marketCapRanges = [
               : `Best matches for "${q}"`;
             hintEl.classList.remove('hidden');
           } else {
+            // Miss / probe miss / error: stay literal — and restore the
+            // default sort if a PREVIOUS semantic query set relevance, or
+            // sortStocks() is left comparing a field it doesn't know.
+            if (filters.sort === 'relevance-desc') {
+              filters.sort = 'score-desc';
+              if (sortSelect) sortSelect.value = 'score-desc';
+            }
             hintEl.classList.add('hidden');
           }
         } else {
-          // Lookup or cleared: drop semantic mode, restore default sort.
+          // Lookup fragment or cleared: drop semantic mode, restore default sort.
           semanticRank = null;
           semanticWhy = new Map();
           if (filters.sort === 'relevance-desc') {
