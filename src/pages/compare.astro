@@ -12,6 +12,8 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
   grade: s.grade,
   industry: getNormalizedIndustry(s.industry),
   marketCap: s.marketCap,
+  consensus: s.consensus,
+  numAnalysts: s.numAnalysts,
 })));
 ---
 
@@ -60,6 +62,14 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
         <!-- Side-by-side cards -->
         <div id="cmp-cards" class="grid grid-cols-2 gap-4 mb-6"></div>
 
+        <!-- Head-to-head metrics dashboard (free rows always; valuation +
+             signal rows hydrate for entitled users, one lock line otherwise) -->
+        <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6 overflow-x-auto">
+          <h2 class="text-lg font-bold mb-3 text-slate-100">Head to head</h2>
+          <table class="w-full text-sm" id="cmp-dash-table"></table>
+          <p id="cmp-dash-lock" class="hidden text-xs text-[#64748B] mt-3">🔒 <a href="/pricing" class="text-[#22D3EE] hover:underline">Plus</a> adds P/E, Forward P/E, EV/EBITDA, Catalyst &amp; Golden here — Fair Value comes with Pro.</p>
+        </div>
+
         <!-- Plain-English verdict (deterministic — computed from the data on this page) -->
         <div id="cmp-verdict" class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
           <h2 class="text-lg font-bold mb-3 text-slate-100">The read</h2>
@@ -69,17 +79,15 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
 
         <!-- Relative performance chart -->
         <div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-6 mb-6">
-          <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center justify-between mb-1">
             <h2 class="text-lg font-bold text-slate-100">Relative performance</h2>
             <span id="cmp-chart-range" class="text-xs text-[#64748B]"></span>
           </div>
+          <p class="text-xs text-[#64748B] mb-3">Both lines start at 0% on the first shared trading day and track price change since — so a $10 stock and a $500 stock compare on equal footing.</p>
           <div id="cmp-chart" class="w-full" style="height: 320px;"></div>
           <div id="cmp-chart-legend" class="flex gap-6 mt-3 text-sm"></div>
           <p id="cmp-chart-note" class="text-xs text-[#64748B] mt-2 hidden">Price history unavailable for one of these symbols.</p>
         </div>
-
-        <!-- Premium extras (hydrated at runtime for entitled users; teaser otherwise) -->
-        <div id="cmp-premium" class="grid grid-cols-2 gap-4"></div>
       </div>
     </div>
   </section>
@@ -359,27 +367,113 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
       return [lineA[lineA.length - 1].value, lineB[lineB.length - 1].value];
     }
 
-    // --- Premium hydration (golden/catalyst/fair-value labels) ---------------
-    async function hydratePremium(a, b) {
-      const box = document.getElementById('cmp-premium');
-      try {
-        if (!window.__authFetch) { box.innerHTML = teaser(); return; }
-        const res = await window.__authFetch('/api/stocks/premium-summary');
-        if (!res.ok) { box.innerHTML = teaser(); return; }
-        const sum = await res.json();
-        // Shape: { "AAPL": { catalystTag?, catalystScore?, isGolden?, fairValueVerdict? }, ... }
-        box.innerHTML = [a, b].map(s => {
-          const d = (sum && sum[s.symbol]) || {};
-          const bits = [];
-          if (d.isGolden) bits.push('<span class="text-amber-300">⭐ Golden</span>');
-          if (typeof d.catalystScore === 'number') bits.push(`<span class="text-[#CBD5E1]">⚡ Catalyst ${d.catalystScore}</span>`);
-          if (d.fairValueVerdict) bits.push(`<span class="text-[#CBD5E1]">${esc(d.fairValueVerdict)}</span>`);
-          return `<div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 text-center text-sm">${bits.length ? bits.join(' · ') : '<span class="text-[#64748B]">No premium signals</span>'}</div>`;
-        }).join('');
-      } catch { box.innerHTML = teaser(); }
+    // --- Head-to-head dashboard ----------------------------------------------
+    // Free rows (Compass, analyst consensus) render for everyone; valuation
+    // multiples + Catalyst/Fair Value/Golden hydrate for Plus+ via the
+    // overlays + premium-summary endpoints, one lock line otherwise.
+    // Real data domain: A+ … D+, plus S/S- ("Sell", the worst bucket — ranks
+    // below every D) and N/A (treated as no data, like null).
+    const CONSENSUS_ORDER = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','D-','S+','S','S-'];
+    const consensusRank = c => {
+      const i = CONSENSUS_ORDER.indexOf(c);
+      return i === -1 ? null : CONSENSUS_ORDER.length - i;
+    };
+    const hasConsensus = s => s.consensus && s.consensus !== 'N/A';
+
+    // prem: null = loading, false = not entitled, or { a: {...}, b: {...} }.
+    function renderDashboard(a, b, prem) {
+      const table = document.getElementById('cmp-dash-table');
+      const lock = document.getElementById('cmp-dash-lock');
+      // winner: 0 = a stronger, 1 = b stronger, -1 = tie/unknown. Only OUR
+      // quality signals get the highlight — valuation multiples stay neutral
+      // (a lower P/E is cheaper, not automatically better).
+      const cmp = (x, y) => (typeof x !== 'number' || typeof y !== 'number' || x === y) ? -1 : (x > y ? 0 : 1);
+      const rows = [];
+      rows.push({ label: 'Compass Score', a: `${a.compassScore} (${a.grade})`, b: `${b.compassScore} (${b.grade})`, w: cmp(a.compassScore, b.compassScore) });
+      const consCell = s => hasConsensus(s) ? `${esc(s.consensus)}${s.numAnalysts ? ` · ${s.numAnalysts} analysts` : ''}` : '—';
+      rows.push({ label: 'Analyst consensus', a: consCell(a), b: consCell(b), w: cmp(consensusRank(a.consensus), consensusRank(b.consensus)) });
+
+      if (prem === false) {
+        lock.classList.remove('hidden');
+      } else {
+        lock.classList.add('hidden');
+        const pa = (prem && prem.a) || {}, pb = (prem && prem.b) || {};
+        const ratio = v => (typeof v === 'number' && v > 0 ? `${v.toFixed(1)}x` : '—');
+        const cell = v => (prem === null ? '…' : ratio(v));
+        rows.push({ label: 'P/E (trailing)', a: cell(pa.pe), b: cell(pb.pe), w: -1 });
+        rows.push({ label: 'Forward P/E', a: cell(pa.fwdPe), b: cell(pb.fwdPe), w: -1 });
+        rows.push({ label: 'EV/EBITDA', a: cell(pa.evEbitda), b: cell(pb.evEbitda), w: -1 });
+        const cat = d => (typeof d.catalystScore === 'number' ? `⚡ ${d.catalystScore}` : '—');
+        rows.push({ label: 'Catalyst', a: prem === null ? '…' : cat(pa), b: prem === null ? '…' : cat(pb),
+                    w: prem === null ? -1 : cmp(pa.catalystScore, pb.catalystScore) });
+        if (prem && (pa.fairValueVerdict || pb.fairValueVerdict)) {
+          rows.push({ label: 'Fair Value', a: pa.fairValueVerdict ? esc(pa.fairValueVerdict) : '—', b: pb.fairValueVerdict ? esc(pb.fairValueVerdict) : '—', w: -1 });
+        }
+        if (prem && (pa.isGolden || pb.isGolden)) {
+          rows.push({ label: 'Golden', a: pa.isGolden ? '<span class="text-amber-300">⭐ Yes</span>' : '—', b: pb.isGolden ? '<span class="text-amber-300">⭐ Yes</span>' : '—', w: -1 });
+        }
+      }
+
+      const valCls = (w, i) => (w === i ? 'text-emerald-300 font-semibold' : 'text-slate-100');
+      table.innerHTML = `
+        <thead><tr>
+          <th class="text-left font-normal text-[#64748B] pb-2 pr-4">Metric</th>
+          <th class="text-right font-bold pb-2" style="color:${COLORS[0]}">${a.symbol}</th>
+          <th class="text-right font-bold pb-2 pl-6" style="color:${COLORS[1]}">${b.symbol}</th>
+        </tr></thead>
+        <tbody>${rows.map(r => `
+          <tr class="border-t border-[rgba(255,255,255,0.05)]">
+            <td class="py-2.5 text-[#64748B] pr-4">${r.label}</td>
+            <td class="py-2.5 text-right ${valCls(r.w, 0)}">${r.a}</td>
+            <td class="py-2.5 text-right pl-6 ${valCls(r.w, 1)}">${r.b}</td>
+          </tr>`).join('')}</tbody>`;
     }
-    const teaser = () => ['a','b'].map(() =>
-      `<div class="bg-[#161B24] border border-[rgba(255,255,255,0.06)] rounded-xl p-4 text-center text-sm text-[#64748B]">🔒 Golden, Catalyst &amp; Fair Value in <a href="/pricing" class="text-[#22D3EE] hover:underline">Plus</a></div>`).join('');
+
+    // Remembered entitlement: once the API said "not entitled", later renders
+    // skip the '…' loading rows (no phantom-row flash for free users). Reset
+    // to unknown on success so a mid-session upgrade re-hydrates cleanly.
+    let dashLocked = false;
+
+    async function hydrateDashboard(a, b, token) {
+      try {
+        if (!window.__authFetch) { if (token === renderToken) renderDashboard(a, b, false); return; }
+        const [sumRes, resA, resB] = await Promise.all([
+          window.__authFetch('/api/stocks/premium-summary'),
+          window.__authFetch(`/api/stock/${a.symbol}/overlays`),
+          window.__authFetch(`/api/stock/${b.symbol}/overlays`),
+        ]);
+        if (token !== renderToken) return;
+        if (!sumRes.ok) {
+          // Only a definitive auth answer shows the upsell lock — a transient
+          // 5xx must not tell a paying user to upgrade (nor unlearn a known
+          // lock). Other failures render the premium rows as dashes.
+          if (sumRes.status === 401 || sumRes.status === 403) dashLocked = true;
+          renderDashboard(a, b, dashLocked ? false : { a: {}, b: {} });
+          return;
+        }
+        dashLocked = false;
+        const sum = await sumRes.json();
+        const parseOverlay = async r => { try { return r.ok ? await r.json() : {}; } catch { return {}; } };
+        const [ovA, ovB] = await Promise.all([parseOverlay(resA), parseOverlay(resB)]);
+        if (token !== renderToken) return;
+        // Latest point of each daily series = the current trailing multiple.
+        const last = arr => {
+          const p = Array.isArray(arr) && arr.length ? arr[arr.length - 1] : null;
+          return p && typeof p.value === 'number' ? p.value : null;
+        };
+        const pack = (s, ov) => ({
+          ...((sum && sum[s.symbol]) || {}),
+          pe: last(ov.pe),
+          evEbitda: last(ov.evEbitda),
+          fwdPe: typeof ov.fwdPe === 'number' ? ov.fwdPe : null,
+        });
+        renderDashboard(a, b, { a: pack(a, ovA), b: pack(b, ovB) });
+      } catch {
+        // Network/parse failure: keep a known lock, else neutral dashes —
+        // tier unknown must never claim entitlement or show a false upsell.
+        if (token === renderToken) renderDashboard(a, b, dashLocked ? false : { a: {}, b: {} });
+      }
+    }
 
     // --- Orchestration --------------------------------------------------------
     let renderToken = 0; // guards against out-of-order async renders clobbering newer state
@@ -406,8 +500,9 @@ const stocksJson = JSON.stringify(stocks.map(s => ({
       document.getElementById('cmp-empty').classList.add('hidden');
       document.getElementById('cmp-result').classList.remove('hidden');
       document.getElementById('cmp-cards').innerHTML = card(a, COLORS[0]) + card(b, COLORS[1]);
+      renderDashboard(a, b, dashLocked ? false : null);
       document.getElementById('cmp-verdict-text').innerHTML = verdict(a, b, null);
-      hydratePremium(a, b);
+      hydrateDashboard(a, b, token);
       const perf = await renderChart(a, b, token);
       if (token !== renderToken) return; // a newer render superseded this one
       if (perf) document.getElementById('cmp-verdict-text').innerHTML = verdict(a, b, perf);
