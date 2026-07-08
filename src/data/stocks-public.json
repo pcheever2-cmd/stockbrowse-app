@@ -296,7 +296,7 @@
   {
     "symbol": "GDEV",
     "name": "GDEV Inc.",
-    "price": 11.66,
+    "price": 12.17,
     "compassScore": 98,
     "grade": "A",
     "industry": "Electronic Gaming & Multimedia",
@@ -590,7 +590,7 @@
   {
     "symbol": "AREN",
     "name": "The Arena Group Holdings, Inc.",
-    "price": 0.91,
+    "price": 0.828,
     "compassScore": 98,
     "grade": "A",
     "industry": "Internet Content & Information",
@@ -1486,7 +1486,7 @@
   {
     "symbol": "MKTW",
     "name": "MarketWise, Inc.",
-    "price": 18.93,
+    "price": 18.925,
     "compassScore": 97,
     "grade": "A",
     "industry": "Software - Application",
@@ -1612,7 +1612,7 @@
   {
     "symbol": "BJRI",
     "name": "BJ's Restaurants, Inc.",
-    "price": 60.26,
+    "price": 60.255,
     "compassScore": 97,
     "grade": "A",
     "industry": "Restaurants",
@@ -1920,7 +1920,7 @@
   {
     "symbol": "SEMR",
     "name": "Semrush Holdings, Inc.",
-    "price": 12,
+    "price": 12.0,
     "compassScore": 97,
     "grade": "A",
     "industry": "Software - Application",
@@ -1990,7 +1990,7 @@
   {
     "symbol": "UCL",
     "name": "uCloudlink Group Inc.",
-    "price": 0.92,
+    "price": 0.9201,
     "compassScore": 97,
     "grade": "A",
     "industry": "Telecommunications Services",
@@ -2124,7 +2124,7 @@
     "marketCap": 77.00303919,
     "description": "O'Reilly Automotive, Inc., along with its subsidiary companies, functions as a leading retail and wholesale provider of automotive aftermarket products, specialized tools, supplies, and accessories across the United States. The company's comprehensive inventory includes both new and reconditioned vehicle hard parts and essential maintenance items. This expansive selection covers critical components such as alternators, batteries, brake system parts, belts, chassis and driveline components, engine parts, fuel pumps, hoses, starters, temperature control systems, and water pumps. Additionally, they supply consumables like antifreeze, appearance products, engine additives, filters, various fluids, lighting solutions, oil, and wiper blades. Their accessory range features items like floor mats, seat covers, and specific truck enhancements. Beyond just parts, O'Reilly's outlets also stock auto body paint and related materials, a wide array of automotive tools, and specialized equipment catering to professional service providers. Customers can also benefit from a suite of value-added services and programs offered in-store. These include recycling initiatives for used oil, oil filters, and batteries; complimentary installation services for batteries, wiper blades, and light bulbs; comprehensive diagnostic testing for batteries, electrical systems, and vehicle modules; retrieval of check engine light codes; a convenient loaner tool program; resurfacing services for brake drums and rotors; custom hydraulic hose fabrication; and professional-grade paint shop mixing with associated materials. O'Reilly's stores serve a diverse clientele, providing an extensive product assortment for both individual do-it-yourself (DIY) mechanics and professional auto repair facilities, covering domestic and imported automobiles, vans, and trucks. As of December 31, 2021, the company maintained a significant retail presence, operating 5,759 stores throughout the United States and an additional 25 locations in Mexico. Established in 1957, O'Reilly Automotive, Inc. is headquartered in Springfield, Missouri.",
     "numAnalysts": 11,
-    "consensus": "C+",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -2242,7 +2242,7 @@
   {
     "symbol": "BSM",
     "name": "Black Stone Minerals, L.P.",
-    "price": 14,
+    "price": 14.0,
     "compassScore": 96,
     "grade": "A",
     "industry": "Oil & Gas Exploration & Production",
@@ -2522,7 +2522,7 @@
   {
     "symbol": "RDDT",
     "name": "Reddit, Inc.",
-    "price": 199.44,
+    "price": 199.435,
     "compassScore": 96,
     "grade": "A",
     "industry": "Internet Content & Information",
@@ -2592,7 +2592,7 @@
   {
     "symbol": "VXRT",
     "name": "Vaxart, Inc.",
-    "price": 0.55,
+    "price": 0.5503,
     "compassScore": 96,
     "grade": "A",
     "industry": "Biotechnology",
@@ -2740,7 +2740,7 @@
     "marketCap": 4.50527242,
     "description": "The Marzetti Company is a producer and distributor of various specialized food items. Their extensive product line includes garlic breads, dinner rolls, salad dressings, dips, pasta, and croutons. These offerings are supplied to both retail outlets for consumers and the commercial foodservice industry across the United States.",
     "numAnalysts": 4,
-    "consensus": "A-",
+    "consensus": "A",
     "scoreNote": null
   },
   {
@@ -3502,7 +3502,7 @@
   {
     "symbol": "HUBS",
     "name": "HubSpot, Inc.",
-    "price": 205.22,
+    "price": 205.225,
     "compassScore": 94,
     "grade": "A",
     "industry": "Software - Application",
@@ -3608,7 +3608,7 @@
     "marketCap": 241.2974192,
     "description": "Philip Morris International Inc. functions as a prominent tobacco enterprise, actively working toward a smoke-free future. The company is strategically diversifying its long-term product range to incorporate items beyond traditional tobacco and nicotine. Its primary business involves both conventional cigarettes and an expanding array of smoke-free alternatives, such as innovative heat-not-burn devices, vapor products, and oral nicotine solutions. These offerings are distributed in markets worldwide, with the exception of the United States. The smoke-free portfolio includes brands like HEETS (encompassing Creations, Dimensions, Marlboro variants), Parliament HeatSticks, and TEREA, in addition to KT&G-licensed brands Fiit and Miix. For conventional cigarettes, the company sells internationally recognized brands such as Marlboro, Parliament, Bond Street, Chesterfield, L&M, Lark, and Philip Morris. Regionally, it also owns major cigarette brands like Dji Sam Soe, Sampoerna A, and Sampoerna U in Indonesia, and Fortune and Jackpot in the Philippines. PMI's smoke-free innovations are currently available across 71 global markets. Established in 1987, Philip Morris International Inc. is headquartered in New York, New York.",
     "numAnalysts": 10,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -3642,7 +3642,7 @@
   {
     "symbol": "APXTU",
     "name": "Apex Treasury Corporation",
-    "price": 10.26,
+    "price": 10.255,
     "compassScore": 94,
     "grade": "A",
     "industry": "Shell Companies",
@@ -5056,7 +5056,7 @@
   {
     "symbol": "ABEV",
     "name": "Ambev S.A.",
-    "price": 3,
+    "price": 3.0,
     "compassScore": 91,
     "grade": "A",
     "industry": "Beverages - Alcoholic",
@@ -5126,7 +5126,7 @@
   {
     "symbol": "ENVA",
     "name": "Enova International, Inc.",
-    "price": 237,
+    "price": 237.0,
     "compassScore": 91,
     "grade": "A",
     "industry": "Financial - Credit Services",
@@ -6498,7 +6498,7 @@
   {
     "symbol": "WSO-B",
     "name": "Watsco, Inc.",
-    "price": 385,
+    "price": 385.0,
     "compassScore": 89,
     "grade": "A",
     "industry": "Industrial - Distribution",
@@ -6688,7 +6688,7 @@
     "marketCap": 8.0745858,
     "description": "Valmont Industries, Inc. is a global enterprise specializing in engineered products, conducting operations across the United States, Australia, Brazil, Denmark, and other international markets. The company's business is organized into two primary divisions: Infrastructure and Agriculture. Within its Infrastructure segment, Valmont designs, produces, and distributes a wide array of engineered metal, steel, wood, aluminum, and composite structures, including poles, towers, and components. These are deployed in critical areas such as lighting, traffic control, and wireless communication networks. The segment also delivers specialized access systems, integrated structural solutions for smart urban environments, and highway safety products. Furthermore, it provides robust steel and concrete pole structures essential for utility transmission, power distribution, substations, and renewable energy generation facilities, complemented by inspection services. To ensure the durability of metal products, Valmont offers protective services like hot-dipped galvanizing, anodizing, and powder coating. The Agriculture segment focuses on advanced water management technologies and solutions tailored for precision farming. It manufactures and supplies mechanical irrigation equipment, along with associated parts and support services, primarily serving the agricultural industry under its well-known Valley brand. Additionally, this segment produces tubular products for various industrial clients. Valmont's extensive customer base includes municipalities and government agencies, manufacturers of commercial lighting fixtures, construction contractors, telecommunications and utility providers, large agricultural operations, and the broader manufacturing sector. Established in 1946, the company maintains its headquarters in Omaha, Nebraska.",
     "numAnalysts": 5,
-    "consensus": "B+",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -6828,7 +6828,7 @@
     "marketCap": 1.57604088,
     "description": "Papa John's International, Inc. is a global pizza chain that manages and grants franchises for its Papa John's branded delivery and take-out restaurants across the United States and internationally. The company's operations are divided into four primary segments: company-owned restaurants within the U.S., commissary services for North America, North American franchising, and its international ventures. Beyond its core model, Papa John's also runs dine-in and delivery establishments in various international markets. By December 26, 2021, the Papa John's network spanned 5,650 locations across 50 different countries and territories, comprising 600 directly owned by the company and 5,050 operating as franchises. Established in 1984, the company's corporate headquarters are located in Louisville, Kentucky.",
     "numAnalysts": 11,
-    "consensus": "C-",
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -7352,7 +7352,7 @@
   {
     "symbol": "RCMT",
     "name": "RCM Technologies, Inc.",
-    "price": 27.59,
+    "price": 27.595,
     "compassScore": 87,
     "grade": "A",
     "industry": "Conglomerates",
@@ -7702,7 +7702,7 @@
   {
     "symbol": "JBHT",
     "name": "J.B. Hunt Transport Services, Inc.",
-    "price": 275,
+    "price": 275.0,
     "compassScore": 87,
     "grade": "A",
     "industry": "Integrated Freight & Logistics",
@@ -8038,7 +8038,7 @@
   {
     "symbol": "APA",
     "name": "APA Corporation",
-    "price": 34,
+    "price": 34.0,
     "compassScore": 86,
     "grade": "A",
     "industry": "Oil & Gas Exploration & Production",
@@ -8116,7 +8116,7 @@
     "marketCap": 8.74871624506,
     "description": "Amdocs Limited is a global provider of software solutions and associated services, operating through its various subsidiaries worldwide. The company is actively involved in the full lifecycle of its cloud-based portfolio, from designing and developing to operating, implementing, supporting, and marketing these open and modular offerings. Its diverse product lineup includes CES21, a leading customer experience suite built on 5G and cloud-native microservices architecture, which empowers service providers to develop, deliver, and monetize advanced services. Amdocs also offers a Commerce and Care suite for streamlining order processing and customer engagement, and a Monetization suite that handles charging, billing, policy enforcement, and overall revenue management. Further offerings include an Intelligent Networking suite, providing modular, flexible, and open service lifecycle management capabilities for network automation; MarketONE, a cloud-native business ecosystem; the Digital Brands Suite, a pre-integrated digital business platform tailored for emerging digital telecom brands and smaller service providers; and the eSIM Cloud for service providers. Beyond these core products, Amdocs furnishes AI-powered, cloud-native home operating systems, various data intelligence solutions, and applications. The company also extends its expertise to media services for publishers, TV networks, and video streaming providers, along with end-to-end application development and maintenance services and continuous operational support. Amdocs provides an extensive array of services that cater to every stage of a service provider's lifecycle. These encompass design, delivery, quality engineering, operations, systems integration, mobile network services, expert consulting, and content services. Additionally, its managed services segment covers application development, modernization, and maintenance, IT and infrastructure support, testing, and professional services, all designed to assist clients in the selection, implementation, operation, management, and upkeep of their IT systems. The company's clientele primarily consists of service providers across the communications, cable and satellite, entertainment, and broader media industries, alongside mobile virtual network operators (MVNOs) and directory publishers. Amdocs Limited was established in 1988 and maintains its corporate headquarters in Saint Louis, Missouri.",
     "numAnalysts": 2,
-    "consensus": "A-",
+    "consensus": "A",
     "scoreNote": null
   },
   {
@@ -8158,7 +8158,7 @@
     "marketCap": 16.336869246416747,
     "description": "Fomento Econ\u00f3mico Mexicano, S.A.B. de C.V. (FEMSA) is a diverse multinational enterprise. Its operations include acting as a key bottler, marketer, and distributor of Coca-Cola trademark beverages across a wide territory encompassing Mexico, Guatemala, Nicaragua, Costa Rica, Panama, Colombia, Venezuela, Brazil, Argentina, and Uruguay. Furthermore, FEMSA is a significant player in the retail sector, managing 20,431 OXXO convenience stores in Mexico, Colombia, Peru, Chile, and Brazil as of December 31, 2021. The company also operates 567 OXXO GAS service stations in Mexico, which supply fuels, motor oils, lubricants, and car care items. Its pharmaceutical retail division comprises 3,652 drugstores operating under names such as Cruz Verde, Fybeca, SanaSana, YZA, La Moderna, and Farmacon in Chile, Colombia, Ecuador, and Mexico. In addition to these core activities, FEMSA is involved in the manufacturing of chillers, commercial refrigeration equipment, plastic containers, and specialized food processing and weighing machinery. It also offers comprehensive logistic transportation, distribution, and maintenance services, point-of-sale refrigeration solutions, plastic solutions, and runs a distribution platform for cleaning products and various consumables. Established in 1890, the company is headquartered in Monterrey, Mexico.",
     "numAnalysts": 4,
-    "consensus": "B-",
+    "consensus": "C+",
     "scoreNote": null
   },
   {
@@ -8374,7 +8374,7 @@
   {
     "symbol": "WFCF",
     "name": "Where Food Comes From, Inc.",
-    "price": 13.49,
+    "price": 13.4907,
     "compassScore": 86,
     "grade": "A",
     "industry": "Software - Application",
@@ -9158,7 +9158,7 @@
   {
     "symbol": "CGNX",
     "name": "Cognex Corporation",
-    "price": 64.2,
+    "price": 64.205,
     "compassScore": 84,
     "grade": "B",
     "industry": "Hardware, Equipment & Parts",
@@ -9264,7 +9264,7 @@
     "marketCap": 5.0903585,
     "description": "FTI Consulting, Inc. is a global advisory firm dedicated to assisting organizations in navigating significant transitions, mitigating potential risks, and resolving intricate disputes. The company structures its diverse expertise across five distinct segments. Its Corporate Finance & Restructuring division offers services encompassing business transformation, transactional support, and turnaround management for financially challenged entities. The Forensic and Litigation Consulting segment provides specialized guidance in areas such as construction and environmental issues, data analytics, dispute resolution, healthcare solutions, and risk investigations. Within Economic Consulting, clients receive advice on antitrust and competition matters, financial economics, and international arbitration. The Technology segment focuses on corporate legal operations, e-discovery and digital expertise, alongside information governance, privacy, and cybersecurity services. Lastly, the Strategic Communications segment helps shape corporate reputation, manage financial communications, and handle public affairs. FTI Consulting serves an extensive range of industries, including but not limited to aerospace, financial services, healthcare, energy, real estate, retail, and technology. Founded in 1982, the firm maintains its headquarters in Washington, D.C.",
     "numAnalysts": 2,
-    "consensus": "B+",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -9312,7 +9312,7 @@
   {
     "symbol": "IMPPP",
     "name": "Imperial Petroleum Inc.",
-    "price": 25.89,
+    "price": 25.8945,
     "compassScore": 84,
     "grade": "B",
     "industry": "Oil & Gas Exploration & Production",
@@ -9872,7 +9872,7 @@
   {
     "symbol": "JETMF",
     "name": "Global Crossing Airlines Group Inc.",
-    "price": 0.55,
+    "price": 0.5523,
     "compassScore": 83,
     "grade": "B",
     "industry": "Airlines, Airports & Air Services",
@@ -9900,7 +9900,7 @@
   {
     "symbol": "CRWS",
     "name": "Crown Crafts, Inc.",
-    "price": 3,
+    "price": 3.0,
     "compassScore": 83,
     "grade": "B",
     "industry": "Furnishings, Fixtures & Appliances",
@@ -10174,7 +10174,7 @@
     "marketCap": 1.005180028,
     "description": "Daktronics, Inc. is a global leader specializing in the design, manufacture, marketing, and sale of advanced electronic display systems and associated products. Its operations are organized into five distinct segments: Commercial, Live Events, High School Park and Recreation, Transportation, and International. The company's extensive product portfolio encompasses a variety of video display systems capable of presenting dynamic video, graphics, and animations. This includes a wide range of indoor and outdoor LED video displays, such as prominent centerhung displays, landmark installations, ribbon boards, corporate entrance features, video walls, and hanging banners. Additionally, they provide mobile and modular display solutions, as well as architectural lighting and display elements. For athletic venues, Daktronics supplies indoor and outdoor scoreboards tailored for numerous sports, alongside digit displays, scoring and timing controllers, and essential statistics software. Their precision timing systems primarily serve aquatics and track competitions, featuring swimming touchpads, race start systems, and relay take-off platforms. Beyond sports, their offerings extend to control components for live event video applications, diverse message displays, and Intelligent Transportation System (ITS) dynamic message signs (LED displays for road management). They also furnish mass transit displays and comprehensive sound systems for both indoor and outdoor sports facilities. In the realm of advertising, Daktronics produces out-of-home displays like digital billboards and street furniture. Their specialized products include the DataTime line for outdoor time and temperature readouts and Fuelight digit displays designed for the petroleum industry. Furthermore, they offer ADFLOW DMS systems, providing networked indoor solutions for retailers, convenience stores, and other commercial entities. The company's software suite, featuring Venus Control Suite, Show Control, and Vanguard, is complemented by professional and maintenance services for their products. Daktronics distributes its offerings through both direct sales channels and a network of resellers. Established in 1968, the company maintains its headquarters in Brookings, South Dakota.",
     "numAnalysts": 2,
-    "consensus": "A",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -10608,7 +10608,7 @@
     "marketCap": 24.06038305,
     "description": "Constellation Brands, Inc., together with its subsidiaries, produces, imports, markets, and sells beer, wine, and spirits in the United States, Canada, Mexico, New Zealand, and Italy. The company offers beer under the Corona Extra, Corona Familiar, Corona Hard Seltzer, Corona Light, Corona Non-Alcoholic, Corona Premier, Corona Refresca, Modelo Especial, Modelo Chelada, Modelo Negra, Modelo Oro, Victoria, Vicky Chamoy, and Pacifico brands. It also offers wine under the Cook\u2019s California Champagne, Kim Crawford, Meiomi, Mount Veeder, Ruffino, SIMI, My Favorite Neighbor, Robert Mondavi Winery, Schrader, and The Prisoner Wine Company brands; and spirits under the Casa Noble, Copper & Kings, High West, Mi CAMPO, Nelson\u2019s Green Brier, and SVEDKA brands. The company provides its products to wholesale distributors, retailers, on-premise locations, and state alcohol beverage control agencies. Constellation Brands, Inc. was founded in 1945 and is based in Rochester, New York.",
     "numAnalysts": 11,
-    "consensus": "B+",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -11090,7 +11090,7 @@
   {
     "symbol": "MAMO",
     "name": "Massimo Group Common Stock",
-    "price": 0.95,
+    "price": 0.9498,
     "compassScore": 81,
     "grade": "B",
     "industry": "Auto - Recreational Vehicles",
@@ -11468,7 +11468,7 @@
   {
     "symbol": "ANAB",
     "name": "AnaptysBio, Inc.",
-    "price": 67.33,
+    "price": 67.325,
     "compassScore": 80,
     "grade": "B",
     "industry": "Biotechnology",
@@ -11720,7 +11720,7 @@
   {
     "symbol": "MMM",
     "name": "3M Company",
-    "price": 158,
+    "price": 158.0,
     "compassScore": 80,
     "grade": "B",
     "industry": "Conglomerates",
@@ -12084,7 +12084,7 @@
   {
     "symbol": "BTM",
     "name": "Bitcoin Depot Inc.",
-    "price": 0.49,
+    "price": 0.4919,
     "compassScore": 79,
     "grade": "B",
     "industry": "Financial - Credit Services",
@@ -12616,7 +12616,7 @@
   {
     "symbol": "B",
     "name": "Barrick Mining Corporation",
-    "price": 36.85,
+    "price": 36.855,
     "compassScore": 78,
     "grade": "B",
     "industry": "Gold",
@@ -12826,7 +12826,7 @@
   {
     "symbol": "CPHC",
     "name": "Canterbury Park Holding Corporation",
-    "price": 16,
+    "price": 16.0,
     "compassScore": 78,
     "grade": "B",
     "industry": "Gambling, Resorts & Casinos",
@@ -13800,7 +13800,7 @@
     "marketCap": 2.0847410999999996,
     "description": "DigitalBridge Group, Inc., known on the NYSE as DBRG, operates as a specialized investment firm focused on infrastructure. Its core business involves both deploying capital into and actively managing companies throughout the extensive digital ecosystem. This encompasses a broad spectrum of critical assets, including mobile communication towers, data centers, fiber optic networks, small cell deployments, edge infrastructure, broader digital infrastructure components, and related real estate holdings. Established in 2009, the company's corporate headquarters are located in Boca Raton, Florida. DigitalBridge also maintains a global presence with additional offices in Los Angeles, California; New York, New York; Boston, Massachusetts; Denver, Colorado; London, United Kingdom; Senningerberg, Luxembourg; and Singapore.",
     "numAnalysts": 3,
-    "consensus": "B+",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -13876,7 +13876,7 @@
   {
     "symbol": "LWAY",
     "name": "Lifeway Foods, Inc.",
-    "price": 29.32,
+    "price": 29.315,
     "compassScore": 76,
     "grade": "B",
     "industry": "Packaged Foods",
@@ -13974,7 +13974,7 @@
   {
     "symbol": "MRSH",
     "name": "Marsh & McLennan Companies, Inc.",
-    "price": 178,
+    "price": 178.0,
     "compassScore": 76,
     "grade": "B",
     "industry": "Insurance - Brokers",
@@ -14282,7 +14282,7 @@
   {
     "symbol": "PATK",
     "name": "Patrick Industries, Inc.",
-    "price": 87.72,
+    "price": 87.725,
     "compassScore": 75,
     "grade": "B",
     "industry": "Furnishings, Fixtures & Appliances",
@@ -14338,7 +14338,7 @@
   {
     "symbol": "AEO",
     "name": "American Eagle Outfitters, Inc.",
-    "price": 16.52,
+    "price": 16.525,
     "compassScore": 75,
     "grade": "B",
     "industry": "Apparel - Retail",
@@ -14632,7 +14632,7 @@
   {
     "symbol": "CTA-PA",
     "name": "EIDP, Inc.",
-    "price": 53,
+    "price": 53.0,
     "compassScore": 75,
     "grade": "B",
     "industry": "Agricultural Inputs",
@@ -14674,7 +14674,7 @@
   {
     "symbol": "RGS",
     "name": "Regis Corporation",
-    "price": 27.8,
+    "price": 27.7999,
     "compassScore": 75,
     "grade": "B",
     "industry": "Personal Products & Services",
@@ -15136,7 +15136,7 @@
   {
     "symbol": "FOVSY",
     "name": "Ford Otomotiv Sanayi A.S.",
-    "price": 9,
+    "price": 9.0,
     "compassScore": 74,
     "grade": "B",
     "industry": "Auto - Manufacturers",
@@ -15374,7 +15374,7 @@
   {
     "symbol": "XOM",
     "name": "Exxon Mobil Corporation",
-    "price": 141.65,
+    "price": 141.645,
     "compassScore": 74,
     "grade": "B",
     "industry": "Oil & Gas Integrated",
@@ -15416,7 +15416,7 @@
   {
     "symbol": "LNG",
     "name": "Cheniere Energy, Inc.",
-    "price": 255,
+    "price": 255.0,
     "compassScore": 73,
     "grade": "B",
     "industry": "Oil & Gas Midstream",
@@ -15710,7 +15710,7 @@
   {
     "symbol": "VNO-PL",
     "name": "Vornado Realty Trust",
-    "price": 18,
+    "price": 18.0,
     "compassScore": 73,
     "grade": "B",
     "industry": "REIT - Office",
@@ -15738,7 +15738,7 @@
   {
     "symbol": "HTFC",
     "name": "Horizon Technology Finance Corp",
-    "price": 24.8,
+    "price": 24.805,
     "compassScore": 73,
     "grade": "B",
     "industry": "Asset Management",
@@ -16214,7 +16214,7 @@
   {
     "symbol": "TRTN-PA",
     "name": "Triton International Limited",
-    "price": 25.93,
+    "price": 25.9306,
     "compassScore": 72,
     "grade": "B",
     "industry": "Rental & Leasing Services",
@@ -16228,7 +16228,7 @@
   {
     "symbol": "VNO-PO",
     "name": "Vornado Realty Trust",
-    "price": 15.12,
+    "price": 15.124,
     "compassScore": 72,
     "grade": "B",
     "industry": "REIT - Office",
@@ -16312,7 +16312,7 @@
   {
     "symbol": "SAIA",
     "name": "Saia, Inc.",
-    "price": 416,
+    "price": 416.0,
     "compassScore": 72,
     "grade": "B",
     "industry": "Trucking",
@@ -16746,7 +16746,7 @@
   {
     "symbol": "TRTN-PC",
     "name": "Triton International Limited",
-    "price": 24.72,
+    "price": 24.7201,
     "compassScore": 71,
     "grade": "B",
     "industry": "Rental & Leasing Services",
@@ -17278,7 +17278,7 @@
   {
     "symbol": "DIS",
     "name": "The Walt Disney Company",
-    "price": 97.46,
+    "price": 97.4635,
     "compassScore": 70,
     "grade": "B",
     "industry": "Entertainment",
@@ -17992,7 +17992,7 @@
   {
     "symbol": "EML",
     "name": "The Eastern Company",
-    "price": 26.07,
+    "price": 26.065,
     "compassScore": 69,
     "grade": "B",
     "industry": "Manufacturing - Tools & Accessories",
@@ -18580,7 +18580,7 @@
   {
     "symbol": "FCRX",
     "name": "Crescent Capital BDC, Inc.",
-    "price": 25.17,
+    "price": 25.1699,
     "compassScore": 68,
     "grade": "B",
     "industry": "Asset Management",
@@ -18846,7 +18846,7 @@
   {
     "symbol": "POWI",
     "name": "Power Integrations, Inc.",
-    "price": 66.83,
+    "price": 66.835,
     "compassScore": 67,
     "grade": "B",
     "industry": "Semiconductors",
@@ -19532,7 +19532,7 @@
   {
     "symbol": "CLOV",
     "name": "Clover Health Investments, Corp.",
-    "price": 5,
+    "price": 5.0,
     "compassScore": 66,
     "grade": "B",
     "industry": "Medical - Healthcare Plans",
@@ -19574,7 +19574,7 @@
   {
     "symbol": "FIVN",
     "name": "Five9, Inc.",
-    "price": 24.98,
+    "price": 24.985,
     "compassScore": 66,
     "grade": "B",
     "industry": "Software - Application",
@@ -20792,7 +20792,7 @@
   {
     "symbol": "GOODO",
     "name": "Gladstone Commercial Corporation",
-    "price": 20.01,
+    "price": 20.014,
     "compassScore": 64,
     "grade": "B",
     "industry": "REIT - Diversified",
@@ -20820,7 +20820,7 @@
   {
     "symbol": "ABLLL",
     "name": "Abacus Life, Inc. 9.875% Fixed Rate Senior Notes due 2028",
-    "price": 25.61,
+    "price": 25.605,
     "compassScore": 64,
     "grade": "B",
     "industry": "Insurance - Life",
@@ -21492,7 +21492,7 @@
   {
     "symbol": "BRK-B",
     "name": "Berkshire Hathaway Inc.",
-    "price": 504,
+    "price": 504.0,
     "compassScore": 63,
     "grade": "B",
     "industry": "Insurance - Diversified",
@@ -21775,7 +21775,7 @@
   {
     "symbol": "AMH",
     "name": "American Homes 4 Rent",
-    "price": 34,
+    "price": 34.0,
     "compassScore": 62,
     "grade": "B",
     "industry": "REIT - Residential",
@@ -22027,7 +22027,7 @@
   {
     "symbol": "BRK-A",
     "name": "Berkshire Hathaway Inc.",
-    "price": 756000,
+    "price": 756000.0,
     "compassScore": 62,
     "grade": "B",
     "industry": "Insurance - Diversified",
@@ -22310,7 +22310,7 @@
   {
     "symbol": "AAT",
     "name": "American Assets Trust, Inc.",
-    "price": 25,
+    "price": 25.0,
     "compassScore": 61,
     "grade": "B",
     "industry": "REIT - Diversified",
@@ -22360,7 +22360,7 @@
     "marketCap": 7.9853559999999995,
     "description": "Affiliated Managers Group, Inc. (AMG) functions as an asset management firm, leveraging its network of affiliates to provide comprehensive investment management solutions. Its primary clientele in the United States includes mutual funds, institutional investors, and high-net-worth individuals. AMG additionally offers advisory and subadvisory services to mutual funds, which are distributed to retail and institutional clients through direct channels and a wide range of intermediaries. These intermediaries encompass independent financial advisors, retirement plan sponsors, broker-dealers, major fund marketplaces, and bank trust departments. The company delivers a diverse portfolio of investment products to its institutional clients, covering various styles such as equity strategies focused on small, small-to-mid, mid, and large-capitalization value and growth, as well as emerging markets. AMG's offerings further extend to quantitative, alternative, and fixed-income products. The firm also manages assets for charitable foundations, endowments, and both corporate and municipal defined benefit and defined contribution plans. Beyond general investment management, AMG provides customized investment counseling and robust fiduciary services. Founded in 1993, Affiliated Managers Group, Inc. is headquartered in West Palm Beach, Florida, with additional global offices located in Prides Crossing, Massachusetts; Stamford, Connecticut; London, United Kingdom; Dubai, United Arab Emirates; Sydney, Australia; Hong Kong; Tokyo, Japan; Zurich, Switzerland; and Delaware.",
     "numAnalysts": 4,
-    "consensus": "A",
+    "consensus": "A-",
     "scoreNote": null
   },
   {
@@ -22478,7 +22478,7 @@
   {
     "symbol": "ADC-PA",
     "name": "Agree Realty Corporation",
-    "price": 17.22,
+    "price": 17.2223,
     "compassScore": 61,
     "grade": "B",
     "industry": "REIT - Retail",
@@ -22702,7 +22702,7 @@
   {
     "symbol": "TBHC",
     "name": "The Brand House Collective, Inc.",
-    "price": 0.94,
+    "price": 0.9399,
     "compassScore": 61,
     "grade": "B",
     "industry": "Specialty Retail",
@@ -22954,7 +22954,7 @@
   {
     "symbol": "AL",
     "name": "Air Lease Corporation",
-    "price": 65,
+    "price": 65.0,
     "compassScore": 60,
     "grade": "B",
     "industry": "Rental & Leasing Services",
@@ -23346,7 +23346,7 @@
   {
     "symbol": "VNCE",
     "name": "Vince Holding Corp.",
-    "price": 6.32,
+    "price": 6.315,
     "compassScore": 60,
     "grade": "B",
     "industry": "Apparel - Manufacturers",
@@ -23542,7 +23542,7 @@
   {
     "symbol": "CAG",
     "name": "Conagra Brands, Inc.",
-    "price": 14.04,
+    "price": 14.035,
     "compassScore": 59,
     "grade": "C",
     "industry": "Packaged Foods",
@@ -23612,7 +23612,7 @@
   {
     "symbol": "CTM",
     "name": "Castellum, Inc.",
-    "price": 0.67,
+    "price": 0.6749,
     "compassScore": 59,
     "grade": "C",
     "industry": "Information Technology Services",
@@ -23752,7 +23752,7 @@
   {
     "symbol": "RC-PE",
     "name": "Ready Capital Corporation",
-    "price": 12.01,
+    "price": 12.0063,
     "compassScore": 59,
     "grade": "C",
     "industry": "REIT - Mortgage",
@@ -24200,7 +24200,7 @@
   {
     "symbol": "CVNA",
     "name": "Carvana Co.",
-    "price": 67.47,
+    "price": 67.4719,
     "compassScore": 58,
     "grade": "C",
     "industry": "Auto - Dealerships",
@@ -24368,7 +24368,7 @@
   {
     "symbol": "ELC",
     "name": "Entergy Louisiana, LLC COLLATERAL TR MT",
-    "price": 20.04,
+    "price": 20.035,
     "compassScore": 58,
     "grade": "C",
     "industry": "Regulated Electric",
@@ -25115,7 +25115,7 @@
     "grade": "C",
     "industry": "REIT - Industrial",
     "sector": "Real Estate",
-    "marketCap": 3.280117768,
+    "marketCap": 3.319026426,
     "description": "LXP Industrial Trust, identified by its NYSE ticker LXP, functions as a publicly traded real estate investment trust (REIT). Its core holdings encompass a nationwide portfolio of industrial properties, primarily consisting of equity stakes in single-tenant assets under net-lease agreements. The trust is actively engaged in expanding its industrial property footprint through a variety of strategies, including custom build-to-suit developments, sale-leaseback arrangements, and direct acquisitions.",
     "numAnalysts": 3,
     "consensus": "B-",
@@ -25188,7 +25188,7 @@
     "marketCap": 1.42197751125,
     "description": "Arcos Dorados Holdings Inc. serves as the premier franchisee for McDonald's, holding exclusive rights to operate, own, and sub-franchise the fast-food chain's eateries. Its extensive domain covers 20 countries and territories throughout Latin America and the Caribbean, specifically encompassing nations like Argentina, Brazil, Mexico, Chile, Colombia, Peru, Uruguay, Panama, Ecuador, Costa Rica, and Venezuela, alongside island territories such as Aruba, Curacao, Guadeloupe, Martinique, French Guiana, Puerto Rico, Trinidad and Tobago, and the U.S. Virgin Islands (St. Croix and St. Thomas). As of the end of 2021 (December 31st), the company managed or franchised a total of 2,261 restaurant locations. This enterprise was established in 2007 and has its main offices situated in Montevideo, Uruguay.",
     "numAnalysts": 6,
-    "consensus": "A-",
+    "consensus": "A",
     "scoreNote": null
   },
   {
@@ -25376,7 +25376,7 @@
   {
     "symbol": "CMS-PB",
     "name": "Consumers Energy Company",
-    "price": 76.95,
+    "price": 76.955,
     "compassScore": 56,
     "grade": "C",
     "industry": "Regulated Electric",
@@ -25754,7 +25754,7 @@
   {
     "symbol": "ANDE",
     "name": "The Andersons, Inc.",
-    "price": 68,
+    "price": 68.0,
     "compassScore": 55,
     "grade": "C",
     "industry": "Specialty Business Services",
@@ -25964,7 +25964,7 @@
   {
     "symbol": "ECCC",
     "name": "Eagle Point Credit Company Inc.",
-    "price": 24.98,
+    "price": 24.985,
     "compassScore": 55,
     "grade": "C",
     "industry": "Asset Management",
@@ -26020,7 +26020,7 @@
   {
     "symbol": "ORIO",
     "name": "Orion Digital Corp.",
-    "price": 0.85,
+    "price": 0.8525,
     "compassScore": 55,
     "grade": "C",
     "industry": "Software - Infrastructure",
@@ -26034,7 +26034,7 @@
   {
     "symbol": "PRPO",
     "name": "Precipio, Inc.",
-    "price": 26,
+    "price": 26.0,
     "compassScore": 55,
     "grade": "C",
     "industry": "Medical - Diagnostics & Research",
@@ -27042,7 +27042,7 @@
   {
     "symbol": "CUB",
     "name": "Lionheart Holdings",
-    "price": 10.8,
+    "price": 10.7957,
     "compassScore": 53,
     "grade": "C",
     "industry": "Shell Companies",
@@ -27126,7 +27126,7 @@
   {
     "symbol": "PRA",
     "name": "ProAssurance Corporation",
-    "price": 25,
+    "price": 25.0,
     "compassScore": 53,
     "grade": "C",
     "industry": "Insurance - Property & Casualty",
@@ -27168,7 +27168,7 @@
   {
     "symbol": "SCCD",
     "name": "Sachem Capital Corp. 6.00% Notes Due 2026",
-    "price": 24.68,
+    "price": 24.6801,
     "compassScore": 53,
     "grade": "C",
     "industry": "REIT - Industrial",
@@ -27182,7 +27182,7 @@
   {
     "symbol": "SCCF",
     "name": "Sachem Capital Corp. 7.125% Not",
-    "price": 24.48,
+    "price": 24.485,
     "compassScore": 53,
     "grade": "C",
     "industry": "REIT - Industrial",
@@ -27280,7 +27280,7 @@
   {
     "symbol": "MATW",
     "name": "Matthews International Corporation",
-    "price": 27,
+    "price": 27.0,
     "compassScore": 52,
     "grade": "C",
     "industry": "Conglomerates",
@@ -27546,7 +27546,7 @@
   {
     "symbol": "GMGI",
     "name": "Golden Matrix Group, Inc.",
-    "price": 0.64,
+    "price": 0.6372,
     "compassScore": 52,
     "grade": "C",
     "industry": "Electronic Gaming & Multimedia",
@@ -27560,7 +27560,7 @@
   {
     "symbol": "GSBD",
     "name": "Goldman Sachs BDC, Inc.",
-    "price": 9,
+    "price": 9.0,
     "compassScore": 52,
     "grade": "C",
     "industry": "Asset Management",
@@ -27728,7 +27728,7 @@
   {
     "symbol": "PRS",
     "name": "Prudential Financial, Inc. 5.62",
-    "price": 22,
+    "price": 22.0,
     "compassScore": 52,
     "grade": "C",
     "industry": "Insurance - Life",
@@ -28162,7 +28162,7 @@
   {
     "symbol": "CHMI-PB",
     "name": "Cherry Hill Mortgage Investment Corporation",
-    "price": 24,
+    "price": 24.0,
     "compassScore": 51,
     "grade": "C",
     "industry": "REIT - Mortgage",
@@ -28232,7 +28232,7 @@
   {
     "symbol": "FGN",
     "name": "F&G Annuities & Life, Inc.",
-    "price": 24.89,
+    "price": 24.8872,
     "compassScore": 51,
     "grade": "C",
     "industry": "Insurance - Life",
@@ -28372,7 +28372,7 @@
   {
     "symbol": "SLQT",
     "name": "SelectQuote, Inc.",
-    "price": 0.73,
+    "price": 0.7259,
     "compassScore": 51,
     "grade": "C",
     "industry": "Insurance - Brokers",
@@ -28512,7 +28512,7 @@
   {
     "symbol": "LYB",
     "name": "LyondellBasell Industries N.V.",
-    "price": 54.6,
+    "price": 54.605,
     "compassScore": 50,
     "grade": "C",
     "industry": "Chemicals",
@@ -28904,7 +28904,7 @@
   {
     "symbol": "MFAO",
     "name": "MFA Financial, Inc. 9.000% Senior Notes",
-    "price": 25.4,
+    "price": 25.398,
     "compassScore": 50,
     "grade": "C",
     "industry": "REIT - Mortgage",
@@ -28918,7 +28918,7 @@
   {
     "symbol": "NIQ",
     "name": "NIQ Global Intelligence Plc",
-    "price": 11,
+    "price": 11.0,
     "compassScore": 50,
     "grade": "C",
     "industry": "Information Technology Services",
@@ -29016,7 +29016,7 @@
   {
     "symbol": "MNY",
     "name": "MoneyHero Limited Class A Ordinary Shares",
-    "price": 0.91,
+    "price": 0.9101,
     "compassScore": 49,
     "grade": "C",
     "industry": "Internet Content & Information",
@@ -29506,7 +29506,7 @@
   {
     "symbol": "SW",
     "name": "Smurfit Westrock plc",
-    "price": 45,
+    "price": 45.0,
     "compassScore": 49,
     "grade": "C",
     "industry": "Packaging & Containers",
@@ -29562,7 +29562,7 @@
   {
     "symbol": "HTB",
     "name": "HomeTrust Bancshares, Inc.",
-    "price": 49,
+    "price": 49.0,
     "compassScore": 48,
     "grade": "C",
     "industry": "Banks - Regional",
@@ -29590,7 +29590,7 @@
   {
     "symbol": "CPSS",
     "name": "Consumer Portfolio Services, Inc.",
-    "price": 9,
+    "price": 9.0,
     "compassScore": 48,
     "grade": "C",
     "industry": "Financial - Credit Services",
@@ -30178,7 +30178,7 @@
   {
     "symbol": "OMDA",
     "name": "Omada Health",
-    "price": 23,
+    "price": 23.0,
     "compassScore": 47,
     "grade": "C",
     "industry": "Medical - Healthcare Information Services",
@@ -30424,7 +30424,7 @@
     "marketCap": 26.11714959175,
     "description": "Formula One Group is a global entity primarily involved in the motorsports industry, both domestically in the United States and abroad. It holds the exclusive commercial rights for the Formula 1 World Championship, an extensive series of motor races spanning roughly nine months each year. During this competition, both teams and individual drivers vie for separate titles: the Constructors' Championship for the teams and the Drivers' Championship for the individual racers. The company was established in 1950 and is headquartered in Englewood, Colorado, operating as a subsidiary of Liberty Media Corporation.",
     "numAnalysts": 11,
-    "consensus": "B-",
+    "consensus": "B",
     "scoreNote": null
   },
   {
@@ -30626,7 +30626,7 @@
   {
     "symbol": "SAT",
     "name": "Saratoga Investment Corp 6.00%",
-    "price": 25.12,
+    "price": 25.08,
     "compassScore": 47,
     "grade": "C",
     "industry": "Asset Management",
@@ -30732,7 +30732,7 @@
     "marketCap": 0.04151437,
     "description": "ACCESS Newswire Inc., originally incorporated as Issuer Direct Corporation in 1988, is a communications and compliance company headquartered in Raleigh, North Carolina, having adopted its current name in January 2025. The firm delivers an extensive suite of services designed for public relations and investor relations professionals, serving clients across the United States and internationally. Its diverse offerings include the Media Advantage Platform, which facilitates press release distribution, provides access to comprehensive media databases, offers media monitoring services, and enables custom newsrooms. Furthermore, the company operates ACCESSWIRE, a dedicated service for news dissemination and media outreach. For virtual engagements, its Webcaster Platform offers a cloud-based environment for live and on-demand webcasts, webinars, and virtual meetings, allowing users to efficiently create, produce, and broadcast events to audiences of all sizes. The company also provides advanced professional conference and events software, featuring a mobile application that empowers organizers, issuers, and investors to streamline registration, request and approve one-on-one meetings, manage schedules, handle event promotion and sponsorships, print attendee badges, and coordinate lodging. An investor relations content network supplies vital data feeds, encompassing news updates, stock information, financial fundamentals, regulatory filings, corporate governance insights, and other critical data points. In the realm of compliance, ACCESS Newswire offers a whistleblower hotline for secure incident notifications and essential workflow management, ensuring alignment with corporate governance policies. It also includes a stock transfer module, providing clients with real-time access to shareholder information, stock ledgers, and reports, alongside capabilities for issuing new shares. A proxy module further delivers a real-time voting platform for its customers and their registered shareholders. The company's clientele is broad, encompassing public and private corporations, mutual funds, law firms, brokerage houses, investment banks, individuals, and various other institutional organizations.",
     "numAnalysts": 1,
-    "consensus": "C+",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -32250,7 +32250,7 @@
   {
     "symbol": "CPBI",
     "name": "Central Plains Bancshares, Inc. Common Stock",
-    "price": 19.01,
+    "price": 19.0106,
     "compassScore": 44,
     "grade": "C",
     "industry": "Shell Companies",
@@ -32390,7 +32390,7 @@
   {
     "symbol": "TMDX",
     "name": "TransMedics Group, Inc.",
-    "price": 71.11,
+    "price": 71.115,
     "compassScore": 44,
     "grade": "C",
     "industry": "Medical - Devices",
@@ -32558,7 +32558,7 @@
   {
     "symbol": "BANR",
     "name": "Banner Corporation",
-    "price": 67.33,
+    "price": 67.325,
     "compassScore": 43,
     "grade": "C",
     "industry": "Banks - Regional",
@@ -33860,7 +33860,7 @@
   {
     "symbol": "ASTE",
     "name": "Astec Industries, Inc.",
-    "price": 56,
+    "price": 56.0,
     "compassScore": 41,
     "grade": "C",
     "industry": "Agricultural - Machinery",
@@ -34126,7 +34126,7 @@
   {
     "symbol": "TBI",
     "name": "TrueBlue, Inc.",
-    "price": 8,
+    "price": 8.0,
     "compassScore": 41,
     "grade": "C",
     "industry": "Staffing & Employment Services",
@@ -34314,9 +34314,9 @@
     "industry": "Banks - Diversified",
     "sector": "Financial Services",
     "marketCap": 25.61499588,
-    "description": "Northern Trust Corporation, a financial holding company, provides wealth management, asset servicing, asset management, and banking solutions for corporations, institutions, families, and individuals worldwide. It operates in two segments, Asset Servicing and Wealth Management. The Asset Servicing segment offers asset servicing and related services, including custody, fund administration, investment operations outsourcing, investment management, investment risk and analytical services, employee benefit services, securities lending, foreign exchange, treasury management, brokerage services, transition management services, banking, and cash management services. This segment serves corporate and public retirement funds, foundations, endowments, fund managers, insurance companies, sovereign wealth funds, and other institutional investors. The Wealth Management segment offers trust, investment management, custody, and philanthropic; financial consulting; guardianship and estate administration; family business consulting; family financial education; brokerage services; and private and business banking services. This segment serves high-net-worth individuals and families, business owners, executives, professionals, retirees, and established privately held businesses. The company also provides asset management services, such as active and passive equity; active and passive fixed income; cash management; alternative asset classes comprising private equity and hedge funds of funds; and multi-manager advisory services and products through separately managed accounts, bank common and collective funds, registered investment companies, exchange traded funds, non-U.S. collective investment funds, and unregistered private investment funds. In addition, it offers overlay and other risk management services. Northern Trust Corporation was founded in 1889 and is headquartered in Chicago, Illinois.",
+    "description": "Northern Trust Corporation, a financial holding company established in 1889 and based in Chicago, Illinois, offers a comprehensive suite of wealth management, asset servicing, asset management, and banking solutions worldwide. Its diverse client base includes corporations, institutions, families, and individual investors. The company structures its operations across two primary segments: Asset Servicing and Wealth Management. The Asset Servicing division delivers a broad spectrum of support and operational services tailored for institutional entities. These services include custody, fund administration, outsourced investment operations, investment management, investment risk and analytical reporting, employee benefit services, securities lending, foreign exchange, treasury management, brokerage, transition management, and banking and cash management solutions. This segment serves corporate and public retirement funds, charitable foundations, endowments, investment managers, insurance companies, sovereign wealth funds, and other major institutional investors. Conversely, the Wealth Management segment is dedicated to high-net-worth individuals, families, business owners, executives, professionals, retirees, and established privately held businesses. Its offerings span trust administration, investment management, custody, philanthropic advisory, financial consulting, guardianship and estate administration, family business consulting, family financial education, brokerage services, and private and business banking. Furthermore, Northern Trust provides extensive asset management capabilities, encompassing active and passive strategies for both equity and fixed income, cash management, and alternative asset classes like private equity and hedge funds of funds. These investment products are delivered via diverse vehicles, including individually managed accounts, bank common and collective funds, registered investment companies, exchange-traded funds, non-U.S. collective investment funds, and unregistered private investment funds. The corporation also offers sophisticated overlay and other risk management services.",
     "numAnalysts": 8,
-    "consensus": "B",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -34658,7 +34658,7 @@
   {
     "symbol": "NHPBP",
     "name": "National Healthcare Properties, Inc.",
-    "price": 22.88,
+    "price": 22.875,
     "compassScore": 40,
     "grade": "C",
     "industry": "REIT - Healthcare Facilities",
@@ -35162,7 +35162,7 @@
   {
     "symbol": "SVM",
     "name": "Silvercorp Metals Inc.",
-    "price": 9.35,
+    "price": 9.37,
     "compassScore": 39,
     "grade": "D",
     "industry": "Silver",
@@ -35568,7 +35568,7 @@
   {
     "symbol": "CFBK",
     "name": "CF Bankshares Inc.",
-    "price": 31.64,
+    "price": 31.635,
     "compassScore": 38,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -36016,7 +36016,7 @@
   {
     "symbol": "MNSB",
     "name": "MainStreet Bancshares, Inc.",
-    "price": 24.05,
+    "price": 24.055,
     "compassScore": 37,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -36212,7 +36212,7 @@
   {
     "symbol": "CLBK",
     "name": "Columbia Financial, Inc.",
-    "price": 21.46,
+    "price": 21.465,
     "compassScore": 37,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -36268,7 +36268,7 @@
   {
     "symbol": "DXLG",
     "name": "Destination XL Group, Inc.",
-    "price": 0.62,
+    "price": 0.623,
     "compassScore": 37,
     "grade": "D",
     "industry": "Apparel - Retail",
@@ -37038,7 +37038,7 @@
   {
     "symbol": "BWNB",
     "name": "Babcock & Wilcox Enterprises, I",
-    "price": 25,
+    "price": 25.0,
     "compassScore": 36,
     "grade": "D",
     "industry": "Consumer Electronics",
@@ -37248,7 +37248,7 @@
   {
     "symbol": "LINE",
     "name": "Lineage, Inc.",
-    "price": 44,
+    "price": 44.0,
     "compassScore": 35,
     "grade": "D",
     "industry": "REIT - Industrial",
@@ -37556,7 +37556,7 @@
   {
     "symbol": "CBZ",
     "name": "CBIZ, Inc.",
-    "price": 37,
+    "price": 37.0,
     "compassScore": 35,
     "grade": "D",
     "industry": "Specialty Business Services",
@@ -37626,7 +37626,7 @@
   {
     "symbol": "MITQ",
     "name": "Moving iMage Technologies, Inc.",
-    "price": 0.6,
+    "price": 0.603,
     "compassScore": 35,
     "grade": "D",
     "industry": "Communication Equipment",
@@ -38060,7 +38060,7 @@
   {
     "symbol": "IQ",
     "name": "iQIYI, Inc.",
-    "price": 1.0,
+    "price": 0.9954,
     "compassScore": 34,
     "grade": "D",
     "industry": "Entertainment",
@@ -38088,7 +38088,7 @@
   {
     "symbol": "IPCFF",
     "name": "International Petroleum Corporation",
-    "price": 21.38,
+    "price": 21.375,
     "compassScore": 34,
     "grade": "D",
     "industry": "Oil & Gas Exploration & Production",
@@ -38186,7 +38186,7 @@
   {
     "symbol": "MAYS",
     "name": "J.W. Mays, Inc.",
-    "price": 39,
+    "price": 39.0,
     "compassScore": 34,
     "grade": "D",
     "industry": "Real Estate - Services",
@@ -38502,7 +38502,7 @@
     "marketCap": 1.0221089,
     "description": "OceanFirst Financial Corp. operates as the bank holding company for OceanFirst Bank N.A. that provides community banking services to retail and commercial customers in the United States. The company accepts deposit products, such as money market accounts, savings accounts, interest-bearing checking accounts, non-interest-bearing accounts, and time deposits, including brokered deposits. It also offers commercial real estate, multi-family, land loans, construction, and commercial and industrial loans; fixed-rate and adjustable-rate mortgage loans that are secured by one-to-four family residences; and consumer loans, such as home equity loans and lines of credit, student loans, loans on savings accounts, overdraft line of credit, and other consumer loans. In addition, the company invests in mortgage-backed securities, securities issued by the U.S. government and agencies, corporate securities, and other investments; and provides bankcard services, trust and asset management products and services, deposit account services, sales of loans and investments, bank owned life insurance and commercial loan swap income. The company was founded in 1902 and is headquartered in Toms River, New Jersey.",
     "numAnalysts": 5,
-    "consensus": "C+",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -38606,7 +38606,7 @@
   {
     "symbol": "GLNG",
     "name": "Golar LNG Limited",
-    "price": 50.49,
+    "price": 50.495,
     "compassScore": 33,
     "grade": "D",
     "industry": "Oil & Gas Midstream",
@@ -38648,7 +38648,7 @@
   {
     "symbol": "HPE",
     "name": "Hewlett Packard Enterprise Company",
-    "price": 43.45,
+    "price": 43.445,
     "compassScore": 33,
     "grade": "D",
     "industry": "Computer Hardware",
@@ -39180,7 +39180,7 @@
   {
     "symbol": "FINW",
     "name": "FinWise Bancorp",
-    "price": 14,
+    "price": 14.0,
     "compassScore": 32,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -39278,7 +39278,7 @@
   {
     "symbol": "CKX",
     "name": "CKX Lands, Inc.",
-    "price": 11,
+    "price": 11.0,
     "compassScore": 32,
     "grade": "D",
     "industry": "Oil & Gas Exploration & Production",
@@ -39320,7 +39320,7 @@
   {
     "symbol": "FORTY",
     "name": "Formula Systems (1985) Ltd.",
-    "price": 113,
+    "price": 113.0,
     "compassScore": 32,
     "grade": "D",
     "industry": "Information Technology Services",
@@ -40090,7 +40090,7 @@
   {
     "symbol": "PBHC",
     "name": "Pathfinder Bancorp, Inc.",
-    "price": 15.95,
+    "price": 15.9496,
     "compassScore": 31,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -40678,7 +40678,7 @@
   {
     "symbol": "UFI",
     "name": "Unifi, Inc.",
-    "price": 5,
+    "price": 5.0,
     "compassScore": 30,
     "grade": "D",
     "industry": "Apparel - Manufacturers",
@@ -40952,7 +40952,7 @@
     "marketCap": 2.55672,
     "description": "CVR Energy, Inc., a diversified company, operates through its subsidiaries primarily focusing on petroleum refining and the production of nitrogen fertilizers within the United States. Its business is organized into two distinct divisions: Petroleum and Nitrogen Fertilizer. The Petroleum segment is responsible for processing crude oil into marketable products such as gasoline, diesel fuel, and various other refined fuels, which it then distributes. This division manages and operates a sophisticated coking refinery in southeast Kansas, designed to handle medium-sour crude, alongside another crude oil processing facility located in Wynnewood, Oklahoma. Crucial logistical infrastructure also supports these operations. The primary clientele for this segment includes retail outlets, railway companies, agricultural cooperatives, and other refiners or marketers. The Nitrogen Fertilizer division encompasses a North American production facility that utilizes a pet coke gasification process to convert pet coke into nitrogen-based fertilizers. Furthermore, it operates a facility in East Dubuque, Illinois, which specializes in manufacturing nitrogen fertilizers in the form of both ammonia and urea ammonium nitrate (UAN). UAN products are predominantly supplied to the agricultural sector, while ammonia finds application in both farming and diverse industrial settings. Established in 1906, the firm's corporate headquarters are situated in Sugar Land, Texas. CVR Energy, Inc. ultimately functions as a subsidiary of Icahn Enterprises L.P.",
     "numAnalysts": 3,
-    "consensus": "C",
+    "consensus": "C-",
     "scoreNote": null
   },
   {
@@ -40986,7 +40986,7 @@
   {
     "symbol": "DELL",
     "name": "Dell Technologies Inc.",
-    "price": 416.98,
+    "price": 416.977,
     "compassScore": 29,
     "grade": "D",
     "industry": "Computer Hardware",
@@ -41106,13 +41106,13 @@
     "marketCap": 1.58277240576,
     "description": "The Wendy's Company, together with its subsidiaries, engages in the operation, development, and franchising of a system of quick-service restaurants in the United States and internationally. The company operates through the Wendy\u2019s U.S., Wendy\u2019s International, and Global Real Estate & Development segments. Its restaurants offer a menu that includes hamburger sandwiches and chicken sandwiches; chicken tenders and nuggets, chili, french fries, baked potatoes, salads, soft drinks, Frosty desserts, and kids\u2019 meals; breakfast menu, including the Breakfast Baconator sandwich and seasoned products; and a variety of promotional products on a limited time basis. The company also owns and leases real estate properties. As of December 28, 2025, there were 5,969 Wendy\u2019s restaurants in operation in the United States and 1,428 Wendy\u2019s restaurants in operation in 38 foreign countries and U.S. territories. The company was formerly known as Wendy's/Arby's Group, Inc. and changed its name to The Wendy\u2019s Company in July 2011. The Wendy's Company was founded in 1969 and is headquartered in Dublin, Ohio.",
     "numAnalysts": 9,
-    "consensus": "B",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
     "symbol": "CFFI",
     "name": "C&F Financial Corporation",
-    "price": 80,
+    "price": 80.0,
     "compassScore": 29,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -41364,7 +41364,7 @@
   {
     "symbol": "RDI",
     "name": "Reading International, Inc.",
-    "price": 1.29,
+    "price": 1.2899,
     "compassScore": 28,
     "grade": "D",
     "industry": "Entertainment",
@@ -41560,7 +41560,7 @@
   {
     "symbol": "FOXF",
     "name": "Fox Factory Holding Corp.",
-    "price": 17,
+    "price": 17.0,
     "compassScore": 28,
     "grade": "D",
     "industry": "Auto - Parts",
@@ -42148,7 +42148,7 @@
   {
     "symbol": "BYFC",
     "name": "Broadway Financial Corporation",
-    "price": 9.71,
+    "price": 9.7101,
     "compassScore": 27,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -42232,7 +42232,7 @@
   {
     "symbol": "HIHO",
     "name": "Highway Holdings Limited",
-    "price": 0.83,
+    "price": 0.8311,
     "compassScore": 27,
     "grade": "D",
     "industry": "Manufacturing - Metal Fabrication",
@@ -42260,7 +42260,7 @@
   {
     "symbol": "LFT",
     "name": "Lument Finance Trust, Inc.",
-    "price": 0.96,
+    "price": 0.957,
     "compassScore": 27,
     "grade": "D",
     "industry": "REIT - Mortgage",
@@ -42274,7 +42274,7 @@
   {
     "symbol": "MDRR",
     "name": "Medalist Diversified REIT, Inc.",
-    "price": 11.73,
+    "price": 11.5199,
     "compassScore": 27,
     "grade": "D",
     "industry": "REIT - Diversified",
@@ -42344,7 +42344,7 @@
   {
     "symbol": "STRR",
     "name": "Star Equity Holdings, Inc.",
-    "price": 10.97,
+    "price": 10.971,
     "compassScore": 27,
     "grade": "D",
     "industry": "Medical - Diagnostics & Research",
@@ -42414,7 +42414,7 @@
   {
     "symbol": "EQX",
     "name": "Equinox Gold Corp.",
-    "price": 9.8,
+    "price": 9.81,
     "compassScore": 26,
     "grade": "D",
     "industry": "Gold",
@@ -42554,7 +42554,7 @@
   {
     "symbol": "ALAR",
     "name": "Alarum Technologies Ltd.",
-    "price": 6.35,
+    "price": 2.67,
     "compassScore": 26,
     "grade": "D",
     "industry": "Software - Infrastructure",
@@ -42624,7 +42624,7 @@
   {
     "symbol": "ENLV",
     "name": "Enlivex Therapeutics Ltd.",
-    "price": 0.49,
+    "price": 0.494,
     "compassScore": 26,
     "grade": "D",
     "industry": "Biotechnology",
@@ -42764,7 +42764,7 @@
   {
     "symbol": "WF",
     "name": "Woori Financial Group Inc.",
-    "price": 62,
+    "price": 62.0,
     "compassScore": 26,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -42778,7 +42778,7 @@
   {
     "symbol": "BNR",
     "name": "Burning Rock Biotech Limited",
-    "price": 10.74,
+    "price": 10.745,
     "compassScore": 26,
     "grade": "D",
     "industry": "Medical - Diagnostics & Research",
@@ -42848,7 +42848,7 @@
   {
     "symbol": "GIGM",
     "name": "GigaMedia Limited",
-    "price": 1.41,
+    "price": 1.4101,
     "compassScore": 26,
     "grade": "D",
     "industry": "Electronic Gaming & Multimedia",
@@ -43408,7 +43408,7 @@
   {
     "symbol": "SNBR",
     "name": "Sleep Number Corporation",
-    "price": 0.12,
+    "price": 0.125,
     "compassScore": 25,
     "grade": "D",
     "industry": "Furnishings, Fixtures & Appliances",
@@ -43450,7 +43450,7 @@
   {
     "symbol": "NEWTI",
     "name": "NewtekOne, Inc. 8.00% Fixed Rate Senior Notes due 2028",
-    "price": 25.38,
+    "price": 25.3833,
     "compassScore": 25,
     "grade": "D",
     "industry": "Financial - Credit Services",
@@ -43548,7 +43548,7 @@
   {
     "symbol": "UMBF",
     "name": "UMB Financial Corporation",
-    "price": 146.0,
+    "price": 146.005,
     "compassScore": 25,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -43618,7 +43618,7 @@
   {
     "symbol": "OXSQ",
     "name": "Oxford Square Capital Corp.",
-    "price": 1.45,
+    "price": 1.445,
     "compassScore": 24,
     "grade": "D",
     "industry": "Asset Management",
@@ -43786,7 +43786,7 @@
   {
     "symbol": "DERM",
     "name": "Journey Medical Corporation",
-    "price": 6.75,
+    "price": 6.745,
     "compassScore": 24,
     "grade": "D",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -43968,7 +43968,7 @@
   {
     "symbol": "NET",
     "name": "Cloudflare, Inc.",
-    "price": 268.77,
+    "price": 268.7656,
     "compassScore": 24,
     "grade": "D",
     "industry": "Software - Infrastructure",
@@ -43996,7 +43996,7 @@
   {
     "symbol": "ORCL",
     "name": "Oracle Corporation",
-    "price": 141.64,
+    "price": 141.6399,
     "compassScore": 24,
     "grade": "D",
     "industry": "Software - Infrastructure",
@@ -44052,7 +44052,7 @@
   {
     "symbol": "SID",
     "name": "Companhia Sider\u00fargica Nacional",
-    "price": 0.93,
+    "price": 0.926,
     "compassScore": 24,
     "grade": "D",
     "industry": "Steel",
@@ -44584,7 +44584,7 @@
   {
     "symbol": "KBSX",
     "name": "FST Corp.",
-    "price": 0.97,
+    "price": 0.9668,
     "compassScore": 23,
     "grade": "D",
     "industry": "Steel",
@@ -44808,7 +44808,7 @@
   {
     "symbol": "FSP",
     "name": "Franklin Street Properties Corp.",
-    "price": 0.51,
+    "price": 0.5109,
     "compassScore": 22,
     "grade": "D",
     "industry": "REIT - Office",
@@ -44920,7 +44920,7 @@
   {
     "symbol": "APPS",
     "name": "Digital Turbine, Inc.",
-    "price": 10.38,
+    "price": 10.385,
     "compassScore": 22,
     "grade": "D",
     "industry": "Software - Application",
@@ -45270,7 +45270,7 @@
   {
     "symbol": "SJ",
     "name": "Scienjoy Holding Corporation",
-    "price": 0.95,
+    "price": 0.9457,
     "compassScore": 22,
     "grade": "D",
     "industry": "Broadcasting",
@@ -45340,7 +45340,7 @@
   {
     "symbol": "VRME",
     "name": "VerifyMe, Inc.",
-    "price": 0.66,
+    "price": 0.6601,
     "compassScore": 22,
     "grade": "D",
     "industry": "Security & Protection Services",
@@ -45382,7 +45382,7 @@
   {
     "symbol": "CBAT",
     "name": "CBAK Energy Technology, Inc.",
-    "price": 0.5,
+    "price": 0.5001,
     "compassScore": 21,
     "grade": "D",
     "industry": "Electrical Equipment & Parts",
@@ -45718,7 +45718,7 @@
   {
     "symbol": "IHT",
     "name": "InnSuites Hospitality Trust",
-    "price": 1.72,
+    "price": 1.68,
     "compassScore": 21,
     "grade": "D",
     "industry": "REIT - Hotel & Motel",
@@ -45760,7 +45760,7 @@
   {
     "symbol": "MSC",
     "name": "Studio City International Holdings Limited",
-    "price": 1.9,
+    "price": 1.9037,
     "compassScore": 21,
     "grade": "D",
     "industry": "Gambling, Resorts & Casinos",
@@ -45816,7 +45816,7 @@
   {
     "symbol": "SLNG",
     "name": "Stabilis Solutions, Inc.",
-    "price": 3.95,
+    "price": 3.9499,
     "compassScore": 21,
     "grade": "D",
     "industry": "Oil & Gas Integrated",
@@ -45844,7 +45844,7 @@
   {
     "symbol": "SVC",
     "name": "Service Properties Trust",
-    "price": 1.74,
+    "price": 8.71,
     "compassScore": 21,
     "grade": "D",
     "industry": "REIT - Hotel & Motel",
@@ -46110,7 +46110,7 @@
   {
     "symbol": "BOW",
     "name": "Bowhead Specialty Holdings Inc.",
-    "price": 32,
+    "price": 32.0,
     "compassScore": 20,
     "grade": "D",
     "industry": "Insurance - Property & Casualty",
@@ -46152,7 +46152,7 @@
   {
     "symbol": "CHGG",
     "name": "Chegg, Inc.",
-    "price": 0.94,
+    "price": 0.9388,
     "compassScore": 20,
     "grade": "D",
     "industry": "Education & Training Services",
@@ -46292,7 +46292,7 @@
   {
     "symbol": "NSARP",
     "name": "NSTAR Electric Company PFD 4.25%",
-    "price": 71,
+    "price": 71.0,
     "compassScore": 20,
     "grade": "D",
     "industry": "Regulated Electric",
@@ -46362,7 +46362,7 @@
   {
     "symbol": "OGI",
     "name": "Organigram Global Inc.",
-    "price": 0.97,
+    "price": 0.9677,
     "compassScore": 20,
     "grade": "D",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -46516,7 +46516,7 @@
   {
     "symbol": "GIFT",
     "name": "Giftify, Inc.",
-    "price": 0.94,
+    "price": 0.9442,
     "compassScore": 19,
     "grade": "F",
     "industry": "Software - Services",
@@ -46726,7 +46726,7 @@
   {
     "symbol": "DEFT",
     "name": "DeFi Technologies Inc.",
-    "price": 0.51,
+    "price": 0.505,
     "compassScore": 19,
     "grade": "F",
     "industry": "Financial - Capital Markets",
@@ -46754,7 +46754,7 @@
   {
     "symbol": "HRTX",
     "name": "Heron Therapeutics, Inc.",
-    "price": 0.43,
+    "price": 0.4257,
     "compassScore": 19,
     "grade": "F",
     "industry": "Biotechnology",
@@ -46894,7 +46894,7 @@
   {
     "symbol": "SACH",
     "name": "Sachem Capital Corp.",
-    "price": 0.92,
+    "price": 0.9166,
     "compassScore": 19,
     "grade": "F",
     "industry": "REIT - Mortgage",
@@ -47356,7 +47356,7 @@
   {
     "symbol": "BBGI",
     "name": "Beasley Broadcast Group, Inc.",
-    "price": 24.92,
+    "price": 24.52,
     "compassScore": 18,
     "grade": "F",
     "industry": "Broadcasting",
@@ -47426,7 +47426,7 @@
   {
     "symbol": "METCZ",
     "name": "Ramaco Resources, Inc.",
-    "price": 25.55,
+    "price": 25.5499,
     "compassScore": 18,
     "grade": "F",
     "industry": "Coal",
@@ -47496,7 +47496,7 @@
   {
     "symbol": "RVP",
     "name": "Retractable Technologies, Inc.",
-    "price": 0.71,
+    "price": 0.7113,
     "compassScore": 18,
     "grade": "F",
     "industry": "Medical - Instruments & Supplies",
@@ -47958,7 +47958,7 @@
   {
     "symbol": "GPRO",
     "name": "GoPro, Inc.",
-    "price": 0.7,
+    "price": 0.701,
     "compassScore": 17,
     "grade": "F",
     "industry": "Consumer Electronics",
@@ -47980,7 +47980,7 @@
     "marketCap": 1.24484556,
     "description": "Hudson Pacific Properties, Inc. (HPP) functions as a Real Estate Investment Trust, overseeing a significant collection of office and studio properties. Its extensive holdings encompass nearly 19 million square feet, a figure that also accounts for land designated for future development. The company strategically focuses its investments on key West Coast centers recognized for their innovation, media, and technology industries. Its impressive tenant roster comprises prominent Fortune 500 companies and swiftly expanding enterprises, including well-known names like Netflix, Google, Square, Uber, and NFL Enterprises. Hudson Pacific's stock is publicly traded on the New York Stock Exchange under the ticker HPP, and it is also recognized as a component of the S&P MidCap 400 Index.",
     "numAnalysts": 4,
-    "consensus": "C+",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
@@ -48070,7 +48070,7 @@
   {
     "symbol": "CVV",
     "name": "CVD Equipment Corporation",
-    "price": 7.71,
+    "price": 7.705,
     "compassScore": 17,
     "grade": "F",
     "industry": "Industrial - Machinery",
@@ -48112,7 +48112,7 @@
   {
     "symbol": "MDIA",
     "name": "MediaCo Holding Inc.",
-    "price": 1.04,
+    "price": 1.0415,
     "compassScore": 17,
     "grade": "F",
     "industry": "Broadcasting",
@@ -48140,7 +48140,7 @@
   {
     "symbol": "NRDY",
     "name": "Nerdy, Inc.",
-    "price": 0.91,
+    "price": 0.9097,
     "compassScore": 17,
     "grade": "F",
     "industry": "Software - Application",
@@ -48224,7 +48224,7 @@
   {
     "symbol": "VRM",
     "name": "Vroom, Inc.",
-    "price": 7.71,
+    "price": 7.705,
     "compassScore": 17,
     "grade": "F",
     "industry": "Auto - Dealerships",
@@ -48266,7 +48266,7 @@
   {
     "symbol": "MSS",
     "name": "Maison Solutions Inc. Class A Common Stock",
-    "price": 0.6,
+    "price": 0.6018,
     "compassScore": 16,
     "grade": "F",
     "industry": "Grocery Stores",
@@ -48364,7 +48364,7 @@
   {
     "symbol": "CCOI",
     "name": "Cogent Communications Holdings, Inc.",
-    "price": 11.65,
+    "price": 11.655,
     "compassScore": 16,
     "grade": "F",
     "industry": "Telecommunications Services",
@@ -48504,7 +48504,7 @@
   {
     "symbol": "IE",
     "name": "Ivanhoe Electric Inc.",
-    "price": 9.2,
+    "price": 9.14,
     "compassScore": 16,
     "grade": "F",
     "industry": "Copper",
@@ -48574,7 +48574,7 @@
   {
     "symbol": "WHLR",
     "name": "Wheeler Real Estate Investment Trust, Inc.",
-    "price": 0.56,
+    "price": 0.555,
     "compassScore": 16,
     "grade": "F",
     "industry": "REIT - Retail",
@@ -48588,7 +48588,7 @@
   {
     "symbol": "ABXL",
     "name": "Abacus Global Management, Inc. - 9.875% Fixed Rate Senior Notes due 2028",
-    "price": 25.53,
+    "price": 25.5299,
     "compassScore": 16,
     "grade": "F",
     "industry": "Investment - Banking & Investment Services",
@@ -48602,7 +48602,7 @@
   {
     "symbol": "NBY",
     "name": "NovaBay Pharmaceuticals, Inc.",
-    "price": 1.47,
+    "price": 1.4699,
     "compassScore": 16,
     "grade": "F",
     "industry": "Biotechnology",
@@ -48742,7 +48742,7 @@
   {
     "symbol": "RMCO",
     "name": "Royalty Management Holding Corporation",
-    "price": 2.39,
+    "price": 2.42,
     "compassScore": 16,
     "grade": "F",
     "industry": "Asset Management",
@@ -48924,7 +48924,7 @@
   {
     "symbol": "PHUN",
     "name": "Phunware, Inc.",
-    "price": 2,
+    "price": 2.0,
     "compassScore": 15,
     "grade": "F",
     "industry": "Software - Application",
@@ -49100,13 +49100,13 @@
     "marketCap": 0.456832,
     "description": "Evolent Health, Inc., a prominent healthcare firm, operates through its subsidiary, Evolent Health LLC, to furnish clinical and administrative solutions to both healthcare payers and providers across the United States. Its operations are divided into two principal segments: Evolent Health Services and Clinical Solutions. The Evolent Health Services division delivers an integrated platform encompassing both administrative and clinical functions, specifically designed for health plan management and the oversight of population health. This includes essential financial and administrative support, such as managing health plan operations, risk assessment, robust analytics and reporting, and strategic leadership. A cornerstone of this segment is \"Identifi,\" its proprietary technology, which intelligently aggregates and analyzes data, streamlines care workflows, and actively engages patients, all with the aim of achieving patient-centered and cost-effective population health outcomes. Conversely, the Clinical Solutions segment specializes in offering sophisticated care management services for various stakeholders involved in specialty care delivery. These services are crucial for organizations transitioning from traditional fee-for-service models to value-based care, accommodating their unique stage of development and prevailing market dynamics, particularly in the fields of oncology and cardiology. The overarching objective of this segment is a holistic improvement in the total cost of care. Founded in 2011, Evolent Health, Inc. maintains its corporate headquarters in Arlington, Virginia.",
     "numAnalysts": 6,
-    "consensus": "C+",
+    "consensus": "B-",
     "scoreNote": null
   },
   {
     "symbol": "GETY",
     "name": "Getty Images Holdings, Inc.",
-    "price": 0.85,
+    "price": 0.8461,
     "compassScore": 15,
     "grade": "F",
     "industry": "Internet Content & Information",
@@ -49246,7 +49246,7 @@
   {
     "symbol": "NEN",
     "name": "New England Realty Associates Limited Partnership",
-    "price": 57.98,
+    "price": 57.975,
     "compassScore": 15,
     "grade": "F",
     "industry": "Real Estate - Services",
@@ -49330,7 +49330,7 @@
   {
     "symbol": "SMXT",
     "name": "Solarmax Technology Inc. Common Stock",
-    "price": 0.36,
+    "price": 0.3605,
     "compassScore": 15,
     "grade": "F",
     "industry": "Solar",
@@ -49428,7 +49428,7 @@
   {
     "symbol": "ZEO",
     "name": "Zeo Energy Corp.",
-    "price": 0.62,
+    "price": 0.6224,
     "compassScore": 15,
     "grade": "F",
     "industry": "Solar",
@@ -49498,7 +49498,7 @@
   {
     "symbol": "QDEL",
     "name": "QuidelOrtho Corporation",
-    "price": 17,
+    "price": 17.0,
     "compassScore": 14,
     "grade": "F",
     "industry": "Medical - Instruments & Supplies",
@@ -49722,7 +49722,7 @@
   {
     "symbol": "PFX",
     "name": "PhenixFIN Corporation",
-    "price": 42.55,
+    "price": 42.5501,
     "compassScore": 14,
     "grade": "F",
     "industry": "Asset Management",
@@ -49820,7 +49820,7 @@
   {
     "symbol": "MBBC",
     "name": "Marathon Bancorp, Inc.",
-    "price": 15,
+    "price": 15.0,
     "compassScore": 14,
     "grade": "F",
     "industry": "Banks - Regional",
@@ -49968,7 +49968,7 @@
     "marketCap": 0.1259493801,
     "description": "TOYO Co., Ltd. participates across the full solar energy supply chain. Its operations encompass the initial upstream stages of wafer and silicon manufacturing, the midstream production of solar cells, and the final downstream assembly of photovoltaic (PV) modules. The company notably specializes in producing these solar PV modules. Founded in 2022, TOYO is headquartered in Tokyo, Japan.",
     "numAnalysts": 2,
-    "consensus": "A-",
+    "consensus": "B+",
     "scoreNote": null
   },
   {
@@ -50198,7 +50198,7 @@
   {
     "symbol": "EDAP",
     "name": "Edap Tms S.a.",
-    "price": 4.75,
+    "price": 4.755,
     "compassScore": 13,
     "grade": "F",
     "industry": "Medical - Devices",
@@ -50254,7 +50254,7 @@
   {
     "symbol": "HAIN",
     "name": "The Hain Celestial Group, Inc.",
-    "price": 0.59,
+    "price": 0.5946,
     "compassScore": 13,
     "grade": "F",
     "industry": "Packaged Foods",
@@ -50268,7 +50268,7 @@
   {
     "symbol": "ICG",
     "name": "Intchains Group Limited",
-    "price": 1.0,
+    "price": 0.999,
     "compassScore": 13,
     "grade": "F",
     "industry": "Semiconductors",
@@ -50310,7 +50310,7 @@
   {
     "symbol": "BRN",
     "name": "Barnwell Industries, Inc.",
-    "price": 1,
+    "price": 1.0,
     "compassScore": 13,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -50324,7 +50324,7 @@
   {
     "symbol": "RECAF",
     "name": "Reconnaissance Energy Africa Ltd.",
-    "price": 0.73,
+    "price": 0.7251,
     "compassScore": 13,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -50576,7 +50576,7 @@
   {
     "symbol": "XPL",
     "name": "Solitario Zinc Corp.",
-    "price": 0.75,
+    "price": 0.7502,
     "compassScore": 13,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -50828,7 +50828,7 @@
   {
     "symbol": "ICON",
     "name": "Icon Energy Corp.",
-    "price": 0.88,
+    "price": 0.8812,
     "compassScore": 12,
     "grade": "F",
     "industry": "Marine Shipping",
@@ -50898,7 +50898,7 @@
   {
     "symbol": "EONR",
     "name": "EON Resources Inc.",
-    "price": 0.52,
+    "price": 0.525,
     "compassScore": 12,
     "grade": "F",
     "industry": "Oil & Gas Energy",
@@ -51052,7 +51052,7 @@
   {
     "symbol": "SLI",
     "name": "Standard Lithium Ltd.",
-    "price": 2.47,
+    "price": 2.48,
     "compassScore": 12,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -51066,7 +51066,7 @@
   {
     "symbol": "SLSN",
     "name": "Solesence, Inc. Common Stock",
-    "price": 0.72,
+    "price": 0.718,
     "compassScore": 12,
     "grade": "F",
     "industry": "Household & Personal Products",
@@ -51094,7 +51094,7 @@
   {
     "symbol": "TEAD",
     "name": "Teads Holding Co.",
-    "price": 0.81,
+    "price": 0.8127,
     "compassScore": 12,
     "grade": "F",
     "industry": "Internet Content & Information",
@@ -51136,7 +51136,7 @@
   {
     "symbol": "TRIB",
     "name": "Trinity Biotech plc",
-    "price": 0.4,
+    "price": 0.3986,
     "compassScore": 12,
     "grade": "F",
     "industry": "Medical - Diagnostics & Research",
@@ -51192,7 +51192,7 @@
   {
     "symbol": "WWR",
     "name": "Westwater Resources, Inc.",
-    "price": 0.49,
+    "price": 0.4787,
     "compassScore": 12,
     "grade": "F",
     "industry": "Other Precious Metals",
@@ -51206,7 +51206,7 @@
   {
     "symbol": "NXGL",
     "name": "NEXGEL, Inc.",
-    "price": 0.55,
+    "price": 0.5498,
     "compassScore": 11,
     "grade": "F",
     "industry": "Medical - Instruments & Supplies",
@@ -51290,7 +51290,7 @@
   {
     "symbol": "LGO",
     "name": "Largo Inc.",
-    "price": 0.67,
+    "price": 0.6652,
     "compassScore": 11,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -51332,7 +51332,7 @@
   {
     "symbol": "NFE",
     "name": "New Fortress Energy Inc.",
-    "price": 0.37,
+    "price": 0.3661,
     "compassScore": 11,
     "grade": "F",
     "industry": "Regulated Gas",
@@ -51388,7 +51388,7 @@
   {
     "symbol": "BHST",
     "name": "BioHarvest Sciences Inc. Common Stock",
-    "price": 2.96,
+    "price": 2.9,
     "compassScore": 11,
     "grade": "F",
     "industry": "Agricultural Inputs",
@@ -51570,7 +51570,7 @@
   {
     "symbol": "AIRT",
     "name": "Air T, Inc.",
-    "price": 28,
+    "price": 28.0,
     "compassScore": 11,
     "grade": "F",
     "industry": "Integrated Freight & Logistics",
@@ -51584,7 +51584,7 @@
   {
     "symbol": "CMCT",
     "name": "Creative Media & Community Trust Corporation",
-    "price": 3.48,
+    "price": 3.485,
     "compassScore": 11,
     "grade": "F",
     "industry": "REIT - Office",
@@ -51710,7 +51710,7 @@
   {
     "symbol": "SPWR",
     "name": "SunPower Inc.",
-    "price": 0.59,
+    "price": 0.5933,
     "compassScore": 11,
     "grade": "F",
     "industry": "Solar",
@@ -51794,7 +51794,7 @@
   {
     "symbol": "OSRH",
     "name": "OSR Holdings, Inc.",
-    "price": 0.31,
+    "price": 0.314,
     "compassScore": 10,
     "grade": "F",
     "industry": "Biotechnology",
@@ -51836,7 +51836,7 @@
   {
     "symbol": "LAB",
     "name": "Standard BioTools Inc.",
-    "price": 0.9,
+    "price": 0.8989,
     "compassScore": 10,
     "grade": "F",
     "industry": "Medical - Equipment & Services",
@@ -51892,7 +51892,7 @@
   {
     "symbol": "REKR",
     "name": "Rekor Systems, Inc.",
-    "price": 0.71,
+    "price": 0.7097,
     "compassScore": 10,
     "grade": "F",
     "industry": "Software - Infrastructure",
@@ -51934,7 +51934,7 @@
   {
     "symbol": "ASMB",
     "name": "Assembly Biosciences, Inc.",
-    "price": 28.96,
+    "price": 28.965,
     "compassScore": 10,
     "grade": "F",
     "industry": "Biotechnology",
@@ -52130,7 +52130,7 @@
   {
     "symbol": "IREN",
     "name": "IREN Limited",
-    "price": 39.81,
+    "price": 39.815,
     "compassScore": 10,
     "grade": "F",
     "industry": "Financial - Capital Markets",
@@ -52256,7 +52256,7 @@
   {
     "symbol": "PMCB",
     "name": "PharmaCyte Biotech, Inc.",
-    "price": 0.71,
+    "price": 0.711,
     "compassScore": 10,
     "grade": "F",
     "industry": "Biotechnology",
@@ -52424,7 +52424,7 @@
   {
     "symbol": "BLRX",
     "name": "BioLineRx Ltd.",
-    "price": 3.16,
+    "price": 3.157,
     "compassScore": 9,
     "grade": "F",
     "industry": "Biotechnology",
@@ -52466,7 +52466,7 @@
   {
     "symbol": "MERC",
     "name": "Mercer International Inc.",
-    "price": 0.68,
+    "price": 0.6758,
     "compassScore": 9,
     "grade": "F",
     "industry": "Paper, Lumber & Forest Products",
@@ -52620,7 +52620,7 @@
   {
     "symbol": "CNVS",
     "name": "Cineverse Corp.",
-    "price": 2.88,
+    "price": 2.885,
     "compassScore": 9,
     "grade": "F",
     "industry": "Entertainment",
@@ -52718,7 +52718,7 @@
   {
     "symbol": "GOCO",
     "name": "GoHealth, Inc.",
-    "price": 0.3,
+    "price": 0.305,
     "compassScore": 9,
     "grade": "F",
     "industry": "Insurance - Brokers",
@@ -52732,7 +52732,7 @@
   {
     "symbol": "KOPN",
     "name": "Kopin Corp.",
-    "price": 3.79,
+    "price": 3.785,
     "compassScore": 9,
     "grade": "F",
     "industry": "Semiconductors",
@@ -52746,7 +52746,7 @@
   {
     "symbol": "BLAGF",
     "name": "Blue Lagoon Resources Inc.",
-    "price": 0.47,
+    "price": 0.46814,
     "compassScore": 9,
     "grade": "F",
     "industry": "Gold",
@@ -52774,7 +52774,7 @@
   {
     "symbol": "BTTC",
     "name": "Black Titan Corporation",
-    "price": 0.76,
+    "price": 0.757,
     "compassScore": 9,
     "grade": "F",
     "industry": "Asset Management",
@@ -52802,7 +52802,7 @@
   {
     "symbol": "CPHI",
     "name": "China Pharma Holdings, Inc.",
-    "price": 0.73,
+    "price": 0.7269,
     "compassScore": 9,
     "grade": "F",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -52816,7 +52816,7 @@
   {
     "symbol": "FNGR",
     "name": "FingerMotion, Inc.",
-    "price": 0.38,
+    "price": 0.375,
     "compassScore": 9,
     "grade": "F",
     "industry": "Telecommunications Services",
@@ -52830,7 +52830,7 @@
   {
     "symbol": "IAUX",
     "name": "i-80 Gold Corp.",
-    "price": 1.42,
+    "price": 1.41,
     "compassScore": 9,
     "grade": "F",
     "industry": "Gold",
@@ -52858,7 +52858,7 @@
   {
     "symbol": "NEON",
     "name": "Neonode Inc.",
-    "price": 0.93,
+    "price": 0.9282,
     "compassScore": 9,
     "grade": "F",
     "industry": "Hardware, Equipment & Parts",
@@ -52872,7 +52872,7 @@
   {
     "symbol": "PED",
     "name": "PEDEVCO Corp.",
-    "price": 11.82,
+    "price": 11.64,
     "compassScore": 9,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -52928,7 +52928,7 @@
   {
     "symbol": "SYBX",
     "name": "Synlogic, Inc.",
-    "price": 0.71,
+    "price": 0.712,
     "compassScore": 9,
     "grade": "F",
     "industry": "Biotechnology",
@@ -53180,7 +53180,7 @@
   {
     "symbol": "RR",
     "name": "Richtech Robotics Inc. Class B Common Stock",
-    "price": 1.82,
+    "price": 1.825,
     "compassScore": 8,
     "grade": "F",
     "industry": "Industrial - Machinery",
@@ -53194,7 +53194,7 @@
   {
     "symbol": "AIRJ",
     "name": "AirJoule Technologies Corporation",
-    "price": 4.53,
+    "price": 4.525,
     "compassScore": 8,
     "grade": "F",
     "industry": "Electrical Equipment & Parts",
@@ -53258,7 +53258,7 @@
     "marketCap": 2.8773952917599996,
     "description": "CleanSpark, Inc. is a global enterprise specializing in cryptocurrency mining and advanced energy technologies. The company's operations are divided into two primary divisions: Digital Currency Mining and Energy Solutions. Its Digital Currency Mining segment is dedicated to the extraction of bitcoin. The Energy Solutions division offers a comprehensive suite of services, including engineering expertise, software development, bespoke hardware, and solutions for open automated demand response, solar power, and energy storage. These offerings cater to microgrids and decentralized energy systems, serving a diverse client base across military, commercial, and residential sectors. This segment also develops sophisticated platforms that facilitate the creation, deployment, operation, and management of various energy assets. Key products within this portfolio include mPulse and mVoult, which are control systems designed to integrate and optimize diverse energy sources. It also provides Canvas, a middleware platform empowering grid operators and aggregators to oversee demand-side management programs, and Plaid, a similar middleware enabling control and Internet-of-Things companies to engage in such initiatives. Furthermore, mVSO is proprietary software for internal microgrid design and modeling. CleanSpark also possesses innovative gasification energy technologies, including those used to produce feedstock for di-methyl ether. Beyond these core activities, CleanSpark offers technology consulting, encompassing design and software development. It also extends data center facilities, providing rack space, power, and essential equipment, alongside a suite of cloud services like virtual servers, virtual storage, and data backup solutions. Originally established in 1987 as Stratean Inc., the company rebranded as CleanSpark, Inc. in November 2016. Its corporate headquarters are situated in Henderson, Nevada.",
     "numAnalysts": 8,
-    "consensus": "C-",
+    "consensus": "C",
     "scoreNote": null
   },
   {
@@ -53334,7 +53334,7 @@
   {
     "symbol": "ATXG",
     "name": "Addentax Group Corp.",
-    "price": 3.68,
+    "price": 3.6792,
     "compassScore": 8,
     "grade": "F",
     "industry": "Integrated Freight & Logistics",
@@ -53362,7 +53362,7 @@
   {
     "symbol": "SUUN",
     "name": "PowerBank Corporation",
-    "price": 0.65,
+    "price": 0.6524,
     "compassScore": 8,
     "grade": "F",
     "industry": "Independent Power Producers",
@@ -53628,7 +53628,7 @@
   {
     "symbol": "FLD",
     "name": "Fold Holdings, Inc.",
-    "price": 0.47,
+    "price": 0.4653,
     "compassScore": 7,
     "grade": "F",
     "industry": "Software - Application",
@@ -53698,7 +53698,7 @@
   {
     "symbol": "QTRX",
     "name": "Quanterix Corporation",
-    "price": 4,
+    "price": 4.0,
     "compassScore": 7,
     "grade": "F",
     "industry": "Medical - Devices",
@@ -53852,7 +53852,7 @@
   {
     "symbol": "FTHM",
     "name": "Fathom Holdings Inc.",
-    "price": 1,
+    "price": 1.0,
     "compassScore": 7,
     "grade": "F",
     "industry": "Real Estate - Services",
@@ -53866,7 +53866,7 @@
   {
     "symbol": "GLDG",
     "name": "GoldMining Inc.",
-    "price": 0.9,
+    "price": 0.8992,
     "compassScore": 7,
     "grade": "F",
     "industry": "Gold",
@@ -53950,7 +53950,7 @@
   {
     "symbol": "SES",
     "name": "SES AI Corporation",
-    "price": 0.81,
+    "price": 0.8084,
     "compassScore": 7,
     "grade": "F",
     "industry": "Auto - Parts",
@@ -53978,7 +53978,7 @@
   {
     "symbol": "AGAE",
     "name": "Allied Gaming & Entertainment Inc.",
-    "price": 0.45,
+    "price": 0.4475,
     "compassScore": 7,
     "grade": "F",
     "industry": "Entertainment",
@@ -54160,7 +54160,7 @@
   {
     "symbol": "ORBS",
     "name": "Eightco Holdings Inc.",
-    "price": 0.67,
+    "price": 0.6744,
     "compassScore": 7,
     "grade": "F",
     "industry": "Technology Distributors",
@@ -54202,7 +54202,7 @@
   {
     "symbol": "USAS",
     "name": "Americas Gold and Silver Corporation",
-    "price": 4.39,
+    "price": 4.38,
     "compassScore": 7,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -54230,7 +54230,7 @@
   {
     "symbol": "ATLN",
     "name": "Atlantic International Corp.",
-    "price": 0.9,
+    "price": 0.9001,
     "compassScore": 6,
     "grade": "F",
     "industry": "Medical - Diagnostics & Research",
@@ -54454,7 +54454,7 @@
   {
     "symbol": "BBNX",
     "name": "Beta Bionics, Inc.",
-    "price": 17,
+    "price": 17.0,
     "compassScore": 6,
     "grade": "F",
     "industry": "Medical - Equipment & Services",
@@ -54468,7 +54468,7 @@
   {
     "symbol": "BRFH",
     "name": "Barfresh Food Group Inc.",
-    "price": 1.99,
+    "price": 2.05,
     "compassScore": 6,
     "grade": "F",
     "industry": "Beverages - Non-Alcoholic",
@@ -54524,7 +54524,7 @@
   {
     "symbol": "CTOR",
     "name": "Citius Oncology, Inc.",
-    "price": 0.71,
+    "price": 0.7101,
     "compassScore": 6,
     "grade": "F",
     "industry": "Drug Manufacturers - General",
@@ -54608,7 +54608,7 @@
   {
     "symbol": "CNET",
     "name": "ZW Data Action Technologies Inc.",
-    "price": 0.99,
+    "price": 0.9861,
     "compassScore": 6,
     "grade": "F",
     "industry": "Advertising Agencies",
@@ -54692,7 +54692,7 @@
   {
     "symbol": "MBIO",
     "name": "Mustang Bio, Inc.",
-    "price": 0.71,
+    "price": 0.7098,
     "compassScore": 6,
     "grade": "F",
     "industry": "Biotechnology",
@@ -54790,7 +54790,7 @@
   {
     "symbol": "TECX",
     "name": "Tectonic Therapeutic, Inc.",
-    "price": 36.53,
+    "price": 36.535,
     "compassScore": 6,
     "grade": "F",
     "industry": "Biotechnology",
@@ -54804,7 +54804,7 @@
   {
     "symbol": "TOON",
     "name": "Kartoon Studios Inc.",
-    "price": 0.63,
+    "price": 0.6348,
     "compassScore": 6,
     "grade": "F",
     "industry": "Entertainment",
@@ -55196,7 +55196,7 @@
   {
     "symbol": "ENVX",
     "name": "Enovix Corporation",
-    "price": 4.99,
+    "price": 4.985,
     "compassScore": 5,
     "grade": "F",
     "industry": "Electrical Equipment & Parts",
@@ -55462,7 +55462,7 @@
   {
     "symbol": "CTXR",
     "name": "Citius Pharmaceuticals, Inc.",
-    "price": 0.58,
+    "price": 0.5835,
     "compassScore": 4,
     "grade": "F",
     "industry": "Biotechnology",
@@ -55490,7 +55490,7 @@
   {
     "symbol": "MBX",
     "name": "MBX Biosciences, Inc. Common Stock",
-    "price": 62,
+    "price": 62.0,
     "compassScore": 4,
     "grade": "F",
     "industry": "Biotechnology",
@@ -55518,7 +55518,7 @@
   {
     "symbol": "MYSZ",
     "name": "My Size, Inc.",
-    "price": 0.47,
+    "price": 0.475,
     "compassScore": 4,
     "grade": "F",
     "industry": "Software - Application",
@@ -55798,7 +55798,7 @@
   {
     "symbol": "FHTX",
     "name": "Foghorn Therapeutics Inc.",
-    "price": 6,
+    "price": 6.0,
     "compassScore": 4,
     "grade": "F",
     "industry": "Biotechnology",
@@ -55854,7 +55854,7 @@
   {
     "symbol": "LSH",
     "name": "Lakeside Holding Limited",
-    "price": 0.42,
+    "price": 0.4199,
     "compassScore": 4,
     "grade": "F",
     "industry": "Integrated Freight & Logistics",
@@ -55910,7 +55910,7 @@
   {
     "symbol": "KIDZ",
     "name": "Classover Holdings, Inc. Class B Common Stock",
-    "price": 0.74,
+    "price": 0.736,
     "compassScore": 4,
     "grade": "F",
     "industry": "Education & Training Services",
@@ -55938,7 +55938,7 @@
   {
     "symbol": "SEGG",
     "name": "Lottery.com Inc.",
-    "price": 0.75,
+    "price": 0.7533,
     "compassScore": 4,
     "grade": "F",
     "industry": "Internet Content & Information",
@@ -55980,7 +55980,7 @@
   {
     "symbol": "TGEN",
     "name": "Tecogen Inc.",
-    "price": 4,
+    "price": 4.0,
     "compassScore": 4,
     "grade": "F",
     "industry": "Electrical Equipment & Parts",
@@ -56008,7 +56008,7 @@
   {
     "symbol": "VEEA",
     "name": "Veea Inc.",
-    "price": 0.21,
+    "price": 0.2072,
     "compassScore": 4,
     "grade": "F",
     "industry": "Information Technology Services",
@@ -56148,7 +56148,7 @@
   {
     "symbol": "LIQT",
     "name": "LiqTech International, Inc.",
-    "price": 0.75,
+    "price": 0.7529,
     "compassScore": 3,
     "grade": "F",
     "industry": "Industrial - Pollution & Treatment Controls",
@@ -56400,7 +56400,7 @@
   {
     "symbol": "BYND",
     "name": "Beyond Meat, Inc.",
-    "price": 0.71,
+    "price": 0.7102,
     "compassScore": 3,
     "grade": "F",
     "industry": "Packaged Foods",
@@ -56526,7 +56526,7 @@
   {
     "symbol": "LPTX",
     "name": "Leap Therapeutics, Inc.",
-    "price": 0.77,
+    "price": 0.7696,
     "compassScore": 3,
     "grade": "F",
     "industry": "Biotechnology",
@@ -56638,7 +56638,7 @@
   {
     "symbol": "VIVK",
     "name": "Vivakor, Inc.",
-    "price": 0.32,
+    "price": 0.315,
     "compassScore": 3,
     "grade": "F",
     "industry": "Oil & Gas Exploration & Production",
@@ -56694,7 +56694,7 @@
   {
     "symbol": "BLNE",
     "name": "Beeline Holdings, Inc.",
-    "price": 1.07,
+    "price": 1.075,
     "compassScore": 2,
     "grade": "F",
     "industry": "Beverages - Wineries & Distilleries",
@@ -56708,7 +56708,7 @@
   {
     "symbol": "MSAI",
     "name": "MultiSensor AI Holdings, Inc.",
-    "price": 5.25,
+    "price": 5.33,
     "compassScore": 2,
     "grade": "F",
     "industry": "Software - Infrastructure",
@@ -56834,7 +56834,7 @@
   {
     "symbol": "QSI",
     "name": "Quantum-Si incorporated",
-    "price": 0.92,
+    "price": 0.9195,
     "compassScore": 2,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57016,7 +57016,7 @@
   {
     "symbol": "DRTS",
     "name": "Alpha Tau Medical Ltd",
-    "price": 12.76,
+    "price": 12.755,
     "compassScore": 2,
     "grade": "F",
     "industry": "Medical - Equipment & Services",
@@ -57282,7 +57282,7 @@
   {
     "symbol": "APRE",
     "name": "Aprea Therapeutics, Inc.",
-    "price": 0.77,
+    "price": 0.7699,
     "compassScore": 1,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57310,7 +57310,7 @@
   {
     "symbol": "KTTA",
     "name": "Pasithea Therapeutics Corp.",
-    "price": 0.52,
+    "price": 0.5198,
     "compassScore": 1,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57394,7 +57394,7 @@
   {
     "symbol": "ARBE",
     "name": "Arbe Robotics Ltd.",
-    "price": 0.71,
+    "price": 0.7061,
     "compassScore": 1,
     "grade": "F",
     "industry": "Semiconductors",
@@ -57436,7 +57436,7 @@
   {
     "symbol": "BTDR",
     "name": "Bitdeer Technologies Group",
-    "price": 12.88,
+    "price": 12.875,
     "compassScore": 1,
     "grade": "F",
     "industry": "Software - Application",
@@ -57464,7 +57464,7 @@
   {
     "symbol": "DVLT",
     "name": "Datavault AI Inc.",
-    "price": 0.35,
+    "price": 0.3518,
     "compassScore": 1,
     "grade": "F",
     "industry": "Information Technology Services",
@@ -57562,7 +57562,7 @@
   {
     "symbol": "IVVD",
     "name": "Invivyd, Inc.",
-    "price": 0.94,
+    "price": 0.9418,
     "compassScore": 1,
     "grade": "F",
     "industry": "Biotechnology",
@@ -57618,7 +57618,7 @@
   {
     "symbol": "CETY",
     "name": "Clean Energy Technologies, Inc.",
-    "price": 0.86,
+    "price": 0.8634,
     "compassScore": 1,
     "grade": "F",
     "industry": "Industrial - Machinery",
@@ -57688,7 +57688,7 @@
   {
     "symbol": "LWLG",
     "name": "Lightwave Logic, Inc.",
-    "price": 6.74,
+    "price": 6.735,
     "compassScore": 1,
     "grade": "F",
     "industry": "Chemicals - Specialty",
@@ -57744,7 +57744,7 @@
   {
     "symbol": "SKYQ",
     "name": "Sky Quarry Inc.",
-    "price": 3,
+    "price": 3.0,
     "compassScore": 1,
     "grade": "F",
     "industry": "Oil & Gas Integrated",
@@ -58024,7 +58024,7 @@
   {
     "symbol": "ATXRF",
     "name": "ATEX Resources Inc.",
-    "price": 1.62,
+    "price": 1.622,
     "compassScore": 0,
     "grade": "F",
     "industry": "Gold",
@@ -58094,7 +58094,7 @@
   {
     "symbol": "SCNI",
     "name": "Scinai Immunotherapeutics Ltd.",
-    "price": 0.26,
+    "price": 0.2579,
     "compassScore": 0,
     "grade": "F",
     "industry": "Biotechnology",
