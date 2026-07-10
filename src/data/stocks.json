@@ -15401,7 +15401,7 @@
   {
     "symbol": "VXRT",
     "name": "Vaxart, Inc.",
-    "price": 0.58,
+    "price": 0.55,
     "compassScore": 96,
     "grade": "A",
     "industry": "Biotechnology",
@@ -32223,7 +32223,7 @@
   {
     "symbol": "ORLA",
     "name": "Orla Mining Ltd.",
-    "price": 9.74,
+    "price": 9.76,
     "compassScore": 91,
     "grade": "A",
     "industry": "Gold",
@@ -36945,7 +36945,7 @@
   {
     "symbol": "RYAAY",
     "name": "Ryanair Holdings plc",
-    "price": 64.65,
+    "price": 64.63,
     "compassScore": 89,
     "grade": "A",
     "industry": "Airlines, Airports & Air Services",
@@ -55941,7 +55941,7 @@
   {
     "symbol": "TXN",
     "name": "Texas Instruments Incorporated",
-    "price": 311.51,
+    "price": 311.46,
     "compassScore": 84,
     "grade": "B",
     "industry": "Semiconductors",
@@ -63972,7 +63972,7 @@
   {
     "symbol": "RMBS",
     "name": "Rambus Inc.",
-    "price": 112.12,
+    "price": 112.1,
     "compassScore": 81,
     "grade": "B",
     "industry": "Semiconductors",
@@ -80223,7 +80223,7 @@
   {
     "symbol": "ALAB",
     "name": "Astera Labs, Inc. Common Stock",
-    "price": 412.53,
+    "price": 412.97,
     "compassScore": 76,
     "grade": "B",
     "industry": "Semiconductors",
@@ -126301,7 +126301,7 @@
   {
     "symbol": "SMTC",
     "name": "Semtech Corporation",
-    "price": 136.23,
+    "price": 136.13,
     "compassScore": 63,
     "grade": "B",
     "industry": "Semiconductors",
@@ -129980,7 +129980,7 @@
   {
     "symbol": "SWKS",
     "name": "Skyworks Solutions, Inc.",
-    "price": 60.36,
+    "price": 60.38,
     "compassScore": 62,
     "grade": "B",
     "industry": "Semiconductors",
@@ -152107,7 +152107,7 @@
   {
     "symbol": "VCTR",
     "name": "Victory Capital Holdings, Inc.",
-    "price": 92.19,
+    "price": 92.24,
     "compassScore": 55,
     "grade": "C",
     "industry": "Asset Management",
@@ -161645,7 +161645,7 @@
   {
     "symbol": "SCCD",
     "name": "Sachem Capital Corp. 6.00% Notes Due 2026",
-    "price": 24.55,
+    "price": 24.54,
     "compassScore": 52,
     "grade": "C",
     "industry": "REIT - Industrial",
@@ -167146,7 +167146,7 @@
   {
     "symbol": "BRID",
     "name": "Bridgford Foods Corporation",
-    "price": 6.69,
+    "price": 6.5,
     "compassScore": 50,
     "grade": "C",
     "industry": "Packaged Foods",
@@ -167264,7 +167264,7 @@
   {
     "symbol": "FGN",
     "name": "F&G Annuities & Life, Inc.",
-    "price": 24.86,
+    "price": 24.88,
     "compassScore": 50,
     "grade": "C",
     "industry": "Insurance - Life",
@@ -170888,7 +170888,7 @@
   {
     "symbol": "TSLA",
     "name": "Tesla, Inc.",
-    "price": 407.74,
+    "price": 407.76,
     "compassScore": 49,
     "grade": "C",
     "industry": "Auto - Manufacturers",
@@ -173307,7 +173307,7 @@
   {
     "symbol": "ASBA",
     "name": "Associated Banc-Corp",
-    "price": 24.55,
+    "price": 24.54,
     "compassScore": 48,
     "grade": "C",
     "industry": "Banks - Regional",
@@ -210695,7 +210695,7 @@
   {
     "symbol": "GTEC",
     "name": "Greenland Technologies Holding Corporation",
-    "price": 0.57,
+    "price": 0.55,
     "compassScore": 36,
     "grade": "D",
     "industry": "Industrial - Machinery",
@@ -222673,7 +222673,7 @@
   {
     "symbol": "OPHC",
     "name": "OptimumBank Holdings, Inc.",
-    "price": 5.86,
+    "price": 5.97,
     "compassScore": 33,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -225649,7 +225649,7 @@
   {
     "symbol": "HTCR",
     "name": "HeartCore Enterprises, Inc.",
-    "price": 2.99,
+    "price": 3.08,
     "compassScore": 32,
     "grade": "D",
     "industry": "Software - Application",
@@ -243595,7 +243595,7 @@
   {
     "symbol": "PENG",
     "name": "Penguin Solutions, Inc.",
-    "price": 78.34,
+    "price": 78.35,
     "compassScore": 26,
     "grade": "D",
     "industry": "Hardware, Equipment & Parts",
@@ -260200,7 +260200,7 @@
   {
     "symbol": "HELE",
     "name": "Helen of Troy Limited",
-    "price": 26.32,
+    "price": 26.34,
     "compassScore": 21,
     "grade": "D",
     "industry": "Household & Personal Products",
@@ -261203,7 +261203,7 @@
   {
     "symbol": "VRME",
     "name": "VerifyMe, Inc.",
-    "price": 0.68,
+    "price": 0.66,
     "compassScore": 21,
     "grade": "D",
     "industry": "Security & Protection Services",
@@ -264138,7 +264138,7 @@
   {
     "symbol": "SDA",
     "name": "SunCar Technology Group Inc.",
-    "price": 0.95,
+    "price": 0.92,
     "compassScore": 20,
     "grade": "D",
     "industry": "Auto - Dealerships",
@@ -264264,7 +264264,7 @@
   {
     "symbol": "SNPS",
     "name": "Synopsys, Inc.",
-    "price": 445.4,
+    "price": 445.5,
     "compassScore": 20,
     "grade": "D",
     "industry": "Software - Infrastructure",
@@ -267197,7 +267197,7 @@
   {
     "symbol": "SCKT",
     "name": "Socket Mobile, Inc.",
-    "price": 0.56,
+    "price": 0.54,
     "compassScore": 19,
     "grade": "F",
     "industry": "Computer Hardware",
@@ -268677,7 +268677,7 @@
   {
     "symbol": "RXT",
     "name": "Rackspace Technology, Inc.",
-    "price": 5.33,
+    "price": 5.34,
     "compassScore": 18,
     "grade": "F",
     "industry": "Software - Infrastructure",
@@ -275609,7 +275609,7 @@
   {
     "symbol": "IE",
     "name": "Ivanhoe Electric Inc.",
-    "price": 9.12,
+    "price": 9.13,
     "compassScore": 16,
     "grade": "F",
     "industry": "Copper",
@@ -283405,7 +283405,7 @@
   {
     "symbol": "WRN",
     "name": "Western Copper and Gold Corporation",
-    "price": 2.22,
+    "price": 2.21,
     "compassScore": 14,
     "grade": "F",
     "industry": "Industrial Materials",
@@ -286119,7 +286119,7 @@
   {
     "symbol": "SCYX",
     "name": "SCYNEXIS, Inc.",
-    "price": 4.32,
+    "price": 4.38,
     "compassScore": 13,
     "grade": "F",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -291507,7 +291507,7 @@
   {
     "symbol": "ICON",
     "name": "Icon Energy Corp.",
-    "price": 0.96,
+    "price": 0.98,
     "compassScore": 11,
     "grade": "F",
     "industry": "Marine Shipping",
@@ -292438,7 +292438,7 @@
   {
     "symbol": "TEAD",
     "name": "Teads Holding Co.",
-    "price": 0.9,
+    "price": 0.82,
     "compassScore": 11,
     "grade": "F",
     "industry": "Internet Content & Information",
@@ -297170,7 +297170,7 @@
   {
     "symbol": "IREN",
     "name": "IREN Limited",
-    "price": 41.11,
+    "price": 41.14,
     "compassScore": 9,
     "grade": "F",
     "industry": "Financial - Capital Markets",
@@ -302484,7 +302484,7 @@
   {
     "symbol": "RAPP",
     "name": "Rapport Therapeutics, Inc. Common Stock",
-    "price": 41.79,
+    "price": 41.75,
     "compassScore": 7,
     "grade": "F",
     "industry": "Biotechnology",
@@ -303919,7 +303919,7 @@
   {
     "symbol": "AUST",
     "name": "Austin Gold Corp.",
-    "price": 1.06,
+    "price": 1.08,
     "compassScore": 7,
     "grade": "F",
     "industry": "Gold",
@@ -304198,7 +304198,7 @@
   {
     "symbol": "FOXX",
     "name": "Foxx Development Holdings Inc.",
-    "price": 3.04,
+    "price": 2.99,
     "compassScore": 7,
     "grade": "F",
     "industry": "Technology Distributors",
@@ -304249,7 +304249,7 @@
   {
     "symbol": "GDC",
     "name": "GD Culture Group Limited",
-    "price": 1.57,
+    "price": 1.59,
     "compassScore": 7,
     "grade": "F",
     "industry": "Electronic Gaming & Multimedia",
@@ -304608,7 +304608,7 @@
   {
     "symbol": "ORBS",
     "name": "Eightco Holdings Inc.",
-    "price": 0.69,
+    "price": 0.68,
     "compassScore": 7,
     "grade": "F",
     "industry": "Technology Distributors",
@@ -304659,7 +304659,7 @@
   {
     "symbol": "SION",
     "name": "Sionna Therapeutics, Inc.",
-    "price": 45.22,
+    "price": 45.29,
     "compassScore": 7,
     "grade": "F",
     "industry": "Biotechnology",
@@ -307354,7 +307354,7 @@
   {
     "symbol": "LHAI",
     "name": "Linkhome Holdings Inc.",
-    "price": 1.18,
+    "price": 1.15,
     "compassScore": 6,
     "grade": "F",
     "industry": "Real Estate - Services",
@@ -308395,7 +308395,7 @@
   {
     "symbol": "PROF",
     "name": "Profound Medical Corp.",
-    "price": 7.26,
+    "price": 7.04,
     "compassScore": 5,
     "grade": "F",
     "industry": "Medical - Devices",
@@ -308469,7 +308469,7 @@
   {
     "symbol": "PROK",
     "name": "ProKidney Corp.",
-    "price": 1.78,
+    "price": 1.76,
     "compassScore": 5,
     "grade": "F",
     "industry": "Biotechnology",
@@ -310600,7 +310600,7 @@
   {
     "symbol": "UMAC",
     "name": "Unusual Machines, Inc.",
-    "price": 18.77,
+    "price": 18.81,
     "compassScore": 5,
     "grade": "F",
     "industry": "Consumer Electronics",
@@ -313906,7 +313906,7 @@
   {
     "symbol": "VEEA",
     "name": "Veea Inc.",
-    "price": 0.2,
+    "price": 0.21,
     "compassScore": 4,
     "grade": "F",
     "industry": "Information Technology Services",
@@ -314330,7 +314330,7 @@
   {
     "symbol": "HCTI",
     "name": "Healthcare Triangle, Inc.",
-    "price": 1.74,
+    "price": 1.76,
     "compassScore": 3,
     "grade": "F",
     "industry": "Medical - Healthcare Information Services",
@@ -317073,7 +317073,7 @@
   {
     "symbol": "TENX",
     "name": "Tenax Therapeutics, Inc.",
-    "price": 17.53,
+    "price": 17.55,
     "compassScore": 3,
     "grade": "F",
     "industry": "Biotechnology",
@@ -322288,7 +322288,7 @@
   {
     "symbol": "DBGI",
     "name": "Digital Brands Group, Inc.",
-    "price": 0.77,
+    "price": 0.78,
     "compassScore": 1,
     "grade": "F",
     "industry": "Apparel - Retail",
