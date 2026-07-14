@@ -2356,7 +2356,8 @@
         "dentist stocks",
         "invisalign",
         "braces",
-        "dental stocks"
+        "dental stocks",
+        "orthodontics"
       ]
     },
     {
@@ -3095,6 +3096,16 @@
           "symbol": "DV",
           "kind": "picks-shovels",
           "why": "verifies ad views and brand safety for advertisers"
+        },
+        {
+          "symbol": "HUBS",
+          "kind": "direct",
+          "why": "makes inbound marketing and CRM software"
+        },
+        {
+          "symbol": "BRZE",
+          "kind": "direct",
+          "why": "makes customer engagement and email campaign software"
         }
       ],
       "aliases": [
@@ -3103,7 +3114,8 @@
         "online advertising",
         "digital ads",
         "marketing stocks",
-        "adtech"
+        "adtech",
+        "email marketing"
       ]
     },
     {
@@ -5910,7 +5922,8 @@
         "crypto stocks",
         "buy crypto",
         "crypto trading",
-        "crypto"
+        "crypto",
+        "crypto custody"
       ]
     },
     {
@@ -6343,6 +6356,16 @@
           "symbol": "ALL",
           "kind": "direct",
           "why": "sells auto and home insurance to consumers"
+        },
+        {
+          "symbol": "EIG",
+          "kind": "direct",
+          "why": "underwrites workers compensation for small businesses"
+        },
+        {
+          "symbol": "GNW",
+          "kind": "direct",
+          "why": "sells long-term care and mortgage insurance"
         }
       ],
       "aliases": [
@@ -6351,7 +6374,9 @@
         "insurers",
         "car insurance",
         "home insurance",
-        "property casualty"
+        "property casualty",
+        "workers compensation insurance",
+        "long-term care insurance"
       ]
     },
     {
@@ -7186,6 +7211,11 @@
           "symbol": "ROK",
           "kind": "direct",
           "why": "makes electrical automation controls"
+        },
+        {
+          "symbol": "POWL",
+          "kind": "direct",
+          "why": "makes switchgear and substation equipment"
         }
       ],
       "aliases": [
@@ -7193,7 +7223,14 @@
         "electrical",
         "power equipment",
         "grid equipment",
-        "electrical stocks"
+        "electrical stocks",
+        "transformers",
+        "power transformers",
+        "switchgear",
+        "electrical substations",
+        "transmission and distribution",
+        "circuit protection",
+        "surge protection"
       ]
     },
     {
@@ -8095,7 +8132,9 @@
         "running shoes",
         "boots",
         "kicks",
-        "trainers"
+        "trainers",
+        "athletic shoes",
+        "shoe makers"
       ]
     },
     {
@@ -8252,7 +8291,9 @@
         "cats",
         "dog stuff",
         "pet stocks",
-        "vet"
+        "vet",
+        "dog toys",
+        "pet toys"
       ]
     },
     {
@@ -9317,6 +9358,11 @@
           "symbol": "TSN",
           "kind": "direct",
           "why": "raises and processes chicken, beef and pork"
+        },
+        {
+          "symbol": "ANDE",
+          "kind": "direct",
+          "why": "trades grain and makes plant nutrients"
         }
       ],
       "aliases": [
@@ -9326,7 +9372,10 @@
         "crops",
         "food production",
         "agribusiness",
-        "farmland"
+        "farmland",
+        "grain traders",
+        "grain trading",
+        "animal feed"
       ]
     },
     {
@@ -12052,7 +12101,9 @@
         "workout",
         "planet fitness",
         "gym stocks",
-        "exercise"
+        "exercise",
+        "climbing gyms",
+        "rock climbing"
       ]
     },
     {
@@ -12679,7 +12730,8 @@
         "superheroes",
         "marvel",
         "dc comics",
-        "batman"
+        "batman",
+        "comic book stores"
       ]
     },
     {
@@ -13925,7 +13977,9 @@
         "packaged food",
         "sauces",
         "pantry food",
-        "heinz"
+        "heinz",
+        "hot sauce",
+        "hot sauce brands"
       ]
     },
     {
@@ -15621,7 +15675,9 @@
         "alarm system",
         "ring doorbell",
         "nest",
-        "security cameras"
+        "security cameras",
+        "smart locks",
+        "smart door locks"
       ]
     },
     {
@@ -15666,6 +15722,11 @@
           "symbol": "GROV",
           "kind": "direct",
           "why": "sells eco-friendly cleaning and household supplies"
+        },
+        {
+          "symbol": "KMB",
+          "kind": "direct",
+          "why": "makes Kleenex, Cottonelle and Scott paper products"
         }
       ],
       "aliases": [
@@ -15674,7 +15735,12 @@
         "clorox",
         "tide",
         "household products",
-        "detergent"
+        "detergent",
+        "toilet paper",
+        "paper towels",
+        "dish soap",
+        "toothpaste",
+        "household staples"
       ]
     },
     {
@@ -24726,7 +24792,10 @@
         "ai developer tools",
         "github copilot",
         "coding ai",
-        "ai programming"
+        "ai programming",
+        "code repositories",
+        "ci/cd platforms",
+        "devops platforms"
       ]
     },
     {
@@ -27256,7 +27325,9 @@
         "airport stocks",
         "port stocks",
         "airports",
-        "infrastructure stocks"
+        "infrastructure stocks",
+        "port operators",
+        "seaports"
       ]
     },
     {
@@ -30245,6 +30316,766 @@
         "car culture",
         "racing parts",
         "car enthusiast stocks"
+      ]
+    },
+    {
+      "theme": "Billboards and outdoor advertising",
+      "items": [
+        {
+          "symbol": "LAMR",
+          "kind": "direct",
+          "why": "owns billboards and highway displays as a REIT"
+        },
+        {
+          "symbol": "OUT",
+          "kind": "direct",
+          "why": "owns billboards and transit ads in big cities"
+        },
+        {
+          "symbol": "CCO",
+          "kind": "direct",
+          "why": "operates billboards and airport advertising displays"
+        }
+      ],
+      "aliases": [
+        "billboards",
+        "billboard REITs",
+        "outdoor advertising",
+        "out-of-home advertising",
+        "highway billboards"
+      ]
+    },
+    {
+      "theme": "TV and radio broadcasters",
+      "items": [
+        {
+          "symbol": "NXST",
+          "kind": "direct",
+          "why": "owns the most local TV stations in America"
+        },
+        {
+          "symbol": "GTN",
+          "kind": "direct",
+          "why": "owns local TV stations across small markets"
+        },
+        {
+          "symbol": "SBGI",
+          "kind": "direct",
+          "why": "owns local TV stations and broadcast networks"
+        },
+        {
+          "symbol": "EVC",
+          "kind": "direct",
+          "why": "runs digital ad services and Spanish-language stations"
+        },
+        {
+          "symbol": "IHRT",
+          "kind": "direct",
+          "why": "owns iHeartRadio and hundreds of radio stations"
+        },
+        {
+          "symbol": "SIRI",
+          "kind": "direct",
+          "why": "runs SiriusXM satellite radio subscriptions"
+        },
+        {
+          "symbol": "FOX",
+          "kind": "direct",
+          "why": "owns Fox broadcast network and TV stations"
+        },
+        {
+          "symbol": "UONE",
+          "kind": "direct",
+          "why": "owns radio and cable targeting Black audiences"
+        }
+      ],
+      "aliases": [
+        "broadcasting companies",
+        "local TV stations",
+        "radio companies",
+        "TV networks",
+        "broadcasters",
+        "radio stations"
+      ]
+    },
+    {
+      "theme": "Railcars and rail equipment",
+      "items": [
+        {
+          "symbol": "WAB",
+          "kind": "direct",
+          "why": "makes locomotives and freight rail brakes"
+        },
+        {
+          "symbol": "GBX",
+          "kind": "direct",
+          "why": "builds and leases railroad freight cars"
+        },
+        {
+          "symbol": "TRN",
+          "kind": "direct",
+          "why": "builds and leases railcars including tank cars"
+        },
+        {
+          "symbol": "RAIL",
+          "kind": "direct",
+          "why": "manufactures freight cars for North American railroads"
+        }
+      ],
+      "aliases": [
+        "railcar makers",
+        "locomotives",
+        "locomotive manufacturers",
+        "freight cars",
+        "tank cars",
+        "rail equipment",
+        "train makers"
+      ]
+    },
+    {
+      "theme": "Trucks and commercial vehicles",
+      "items": [
+        {
+          "symbol": "PCAR",
+          "kind": "direct",
+          "why": "makes Peterbilt and Kenworth semi trucks"
+        },
+        {
+          "symbol": "CMI",
+          "kind": "direct",
+          "why": "makes diesel and natural gas truck engines"
+        },
+        {
+          "symbol": "ALSN",
+          "kind": "direct",
+          "why": "makes automatic transmissions for commercial trucks"
+        },
+        {
+          "symbol": "OSK",
+          "kind": "direct",
+          "why": "makes fire trucks, mixers and military vehicles"
+        },
+        {
+          "symbol": "BLBD",
+          "kind": "direct",
+          "why": "makes school buses including electric models"
+        },
+        {
+          "symbol": "WNC",
+          "kind": "direct",
+          "why": "makes semi trailers and truck bodies"
+        }
+      ],
+      "aliases": [
+        "truck makers",
+        "heavy trucks",
+        "semi trucks",
+        "school buses",
+        "school bus manufacturers",
+        "commercial vehicles",
+        "truck manufacturers",
+        "big rigs"
+      ]
+    },
+    {
+      "theme": "Barges and marine services",
+      "items": [
+        {
+          "symbol": "KEX",
+          "kind": "direct",
+          "why": "runs the largest US inland barge fleet"
+        },
+        {
+          "symbol": "TDW",
+          "kind": "direct",
+          "why": "operates support vessels for offshore energy"
+        },
+        {
+          "symbol": "MATX",
+          "kind": "direct",
+          "why": "ships containers between Hawaii, Alaska and Asia"
+        }
+      ],
+      "aliases": [
+        "barge operators",
+        "barges",
+        "tugboats",
+        "inland shipping",
+        "workboats",
+        "jones act shipping"
+      ]
+    },
+    {
+      "theme": "Connectors, wire and cable",
+      "items": [
+        {
+          "symbol": "APH",
+          "kind": "direct",
+          "why": "makes electronic connectors for everything with electricity"
+        },
+        {
+          "symbol": "TEL",
+          "kind": "direct",
+          "why": "makes connectors and sensors for cars and factories"
+        },
+        {
+          "symbol": "BDC",
+          "kind": "direct",
+          "why": "makes industrial cable and networking wire"
+        },
+        {
+          "symbol": "ATKR",
+          "kind": "direct",
+          "why": "makes electrical conduit, cable trays and framing"
+        },
+        {
+          "symbol": "WCC",
+          "kind": "picks-shovels",
+          "why": "distributes wire, cable and electrical supplies"
+        }
+      ],
+      "aliases": [
+        "electrical connectors",
+        "connectors",
+        "wire and cable",
+        "cabling",
+        "cable trays",
+        "interconnects",
+        "conduit"
+      ]
+    },
+    {
+      "theme": "Sensors and test equipment",
+      "items": [
+        {
+          "symbol": "KEYS",
+          "kind": "direct",
+          "why": "makes electronic test and measurement instruments"
+        },
+        {
+          "symbol": "TDY",
+          "kind": "direct",
+          "why": "makes sensors, cameras and instruments for industry"
+        },
+        {
+          "symbol": "FTV",
+          "kind": "direct",
+          "why": "makes Fluke test tools and facility software"
+        },
+        {
+          "symbol": "RAL",
+          "kind": "direct",
+          "why": "makes Tektronix oscilloscopes and precision instruments"
+        },
+        {
+          "symbol": "AME",
+          "kind": "direct",
+          "why": "makes electronic instruments and precision motion devices"
+        },
+        {
+          "symbol": "ST",
+          "kind": "direct",
+          "why": "makes pressure and position sensors for vehicles"
+        },
+        {
+          "symbol": "NOVT",
+          "kind": "direct",
+          "why": "makes photonics and precision motion components"
+        },
+        {
+          "symbol": "CTS",
+          "kind": "direct",
+          "why": "makes sensors and actuators for cars and medical"
+        },
+        {
+          "symbol": "MKSI",
+          "kind": "direct",
+          "why": "makes pressure and gas instruments for chipmaking"
+        },
+        {
+          "symbol": "VPG",
+          "kind": "direct",
+          "why": "makes precision strain gauges and force sensors"
+        },
+        {
+          "symbol": "OUST",
+          "kind": "direct",
+          "why": "makes lidar sensors for vehicles and robots"
+        }
+      ],
+      "aliases": [
+        "sensors",
+        "sensor makers",
+        "test and measurement",
+        "lidar",
+        "lidar sensors",
+        "instrumentation",
+        "motion sensors",
+        "pressure sensors",
+        "measurement instruments"
+      ]
+    },
+    {
+      "theme": "Insulation and building envelope",
+      "items": [
+        {
+          "symbol": "OC",
+          "kind": "direct",
+          "why": "makes fiberglass insulation and roofing shingles"
+        },
+        {
+          "symbol": "CSL",
+          "kind": "direct",
+          "why": "makes commercial roofing and waterproofing systems"
+        },
+        {
+          "symbol": "BLD",
+          "kind": "picks-shovels",
+          "why": "installs insulation in new homes nationwide"
+        },
+        {
+          "symbol": "IBP",
+          "kind": "picks-shovels",
+          "why": "installs insulation and building products"
+        },
+        {
+          "symbol": "EXP",
+          "kind": "direct",
+          "why": "makes drywall wallboard and cement"
+        },
+        {
+          "symbol": "AWI",
+          "kind": "direct",
+          "why": "makes ceilings and acoustic building panels"
+        }
+      ],
+      "aliases": [
+        "insulation",
+        "insulation makers",
+        "drywall",
+        "wallboard",
+        "sealants and caulk",
+        "waterproofing",
+        "building envelope",
+        "acoustic panels"
+      ]
+    },
+    {
+      "theme": "Windows, doors, floors and cabinets",
+      "items": [
+        {
+          "symbol": "JELD",
+          "kind": "direct",
+          "why": "makes windows and doors for homes"
+        },
+        {
+          "symbol": "MHK",
+          "kind": "direct",
+          "why": "makes carpet, tile and hardwood flooring"
+        },
+        {
+          "symbol": "AMWD",
+          "kind": "direct",
+          "why": "makes kitchen and bath cabinets"
+        },
+        {
+          "symbol": "MBC",
+          "kind": "direct",
+          "why": "makes residential cabinets under many brands"
+        },
+        {
+          "symbol": "TREX",
+          "kind": "direct",
+          "why": "makes composite decking from recycled materials"
+        },
+        {
+          "symbol": "PATK",
+          "kind": "direct",
+          "why": "supplies building products for RVs and housing"
+        },
+        {
+          "symbol": "NX",
+          "kind": "direct",
+          "why": "makes window components and cabinet parts"
+        },
+        {
+          "symbol": "MAS",
+          "kind": "direct",
+          "why": "makes Delta faucets, paints and bath fixtures"
+        },
+        {
+          "symbol": "FBIN",
+          "kind": "direct",
+          "why": "makes Moen faucets, doors and security products"
+        }
+      ],
+      "aliases": [
+        "windows and doors",
+        "flooring companies",
+        "flooring makers",
+        "cabinets",
+        "cabinet makers",
+        "decking",
+        "plumbing fixtures",
+        "faucets",
+        "carpet and tile"
+      ]
+    },
+    {
+      "theme": "Clinical research organizations",
+      "items": [
+        {
+          "symbol": "IQV",
+          "kind": "direct",
+          "why": "runs drug trials and sells pharma data"
+        },
+        {
+          "symbol": "MEDP",
+          "kind": "direct",
+          "why": "manages clinical trials for small biotechs"
+        },
+        {
+          "symbol": "CRL",
+          "kind": "direct",
+          "why": "runs preclinical lab studies for drugmakers"
+        },
+        {
+          "symbol": "ICLR",
+          "kind": "direct",
+          "why": "runs global clinical trials for pharma"
+        },
+        {
+          "symbol": "FTRE",
+          "kind": "direct",
+          "why": "provides clinical trial services spun from Labcorp"
+        }
+      ],
+      "aliases": [
+        "CROs",
+        "contract research organizations",
+        "contract research",
+        "clinical trials companies",
+        "drug trial companies",
+        "preclinical research"
+      ]
+    },
+    {
+      "theme": "Healthcare software and records",
+      "items": [
+        {
+          "symbol": "VEEV",
+          "kind": "direct",
+          "why": "makes cloud software for pharma companies"
+        },
+        {
+          "symbol": "CERT",
+          "kind": "direct",
+          "why": "makes drug development simulation software"
+        },
+        {
+          "symbol": "HQY",
+          "kind": "direct",
+          "why": "administers health savings accounts"
+        },
+        {
+          "symbol": "EVH",
+          "kind": "direct",
+          "why": "makes value-based care management software"
+        },
+        {
+          "symbol": "DOCS",
+          "kind": "direct",
+          "why": "runs Doximity, the doctors' professional network"
+        },
+        {
+          "symbol": "TBRG",
+          "kind": "direct",
+          "why": "makes EHR and billing software for community hospitals"
+        },
+        {
+          "symbol": "WAY",
+          "kind": "direct",
+          "why": "processes healthcare payments and insurance claims"
+        },
+        {
+          "symbol": "PHR",
+          "kind": "direct",
+          "why": "makes patient intake and payment software"
+        }
+      ],
+      "aliases": [
+        "electronic health records",
+        "EHR software",
+        "medical billing",
+        "clinical trial software",
+        "health tech software",
+        "healthcare IT"
+      ]
+    },
+    {
+      "theme": "Restaurant technology",
+      "items": [
+        {
+          "symbol": "TOST",
+          "kind": "direct",
+          "why": "makes restaurant point-of-sale and payments systems"
+        },
+        {
+          "symbol": "PAR",
+          "kind": "direct",
+          "why": "makes point-of-sale software for fast food"
+        },
+        {
+          "symbol": "LSPD",
+          "kind": "direct",
+          "why": "makes commerce software for restaurants and retail"
+        }
+      ],
+      "aliases": [
+        "restaurant software",
+        "point of sale",
+        "POS systems",
+        "restaurant tech",
+        "restaurant payments"
+      ]
+    },
+    {
+      "theme": "Casual dining restaurants",
+      "items": [
+        {
+          "symbol": "TXRH",
+          "kind": "direct",
+          "why": "runs Texas Roadhouse steakhouse restaurants"
+        },
+        {
+          "symbol": "DRI",
+          "kind": "direct",
+          "why": "runs Olive Garden and LongHorn Steakhouse"
+        },
+        {
+          "symbol": "EAT",
+          "kind": "direct",
+          "why": "runs Chili's and Maggiano's restaurants"
+        },
+        {
+          "symbol": "CAKE",
+          "kind": "direct",
+          "why": "runs Cheesecake Factory restaurants"
+        },
+        {
+          "symbol": "CBRL",
+          "kind": "direct",
+          "why": "runs Cracker Barrel country restaurants"
+        },
+        {
+          "symbol": "BJRI",
+          "kind": "direct",
+          "why": "runs BJ's brewhouse restaurants"
+        },
+        {
+          "symbol": "DIN",
+          "kind": "direct",
+          "why": "franchises Applebee's and IHOP"
+        },
+        {
+          "symbol": "CAVA",
+          "kind": "direct",
+          "why": "runs fast-casual Mediterranean bowl restaurants"
+        },
+        {
+          "symbol": "SG",
+          "kind": "direct",
+          "why": "runs fast-casual Sweetgreen salad restaurants"
+        }
+      ],
+      "aliases": [
+        "casual dining",
+        "fast casual restaurants",
+        "dinner chains",
+        "family restaurants"
+      ]
+    },
+    {
+      "theme": "Conglomerates and holding companies",
+      "items": [
+        {
+          "symbol": "BRK-B",
+          "kind": "direct",
+          "why": "Buffett's holding company spanning insurance to railroads"
+        },
+        {
+          "symbol": "HON",
+          "kind": "direct",
+          "why": "spans aerospace, automation and materials businesses"
+        },
+        {
+          "symbol": "MMM",
+          "kind": "direct",
+          "why": "makes thousands of industrial and consumer products"
+        },
+        {
+          "symbol": "DHR",
+          "kind": "direct",
+          "why": "acquires and compounds life science businesses"
+        },
+        {
+          "symbol": "L",
+          "kind": "direct",
+          "why": "Tisch family holding company insurance to hotels"
+        },
+        {
+          "symbol": "IEP",
+          "kind": "direct",
+          "why": "Icahn's holding company with energy and auto units"
+        },
+        {
+          "symbol": "SEB",
+          "kind": "direct",
+          "why": "family conglomerate spanning pork and shipping"
+        },
+        {
+          "symbol": "BN",
+          "kind": "direct",
+          "why": "Brookfield's parent spanning assets and insurance"
+        }
+      ],
+      "aliases": [
+        "conglomerates",
+        "holding companies",
+        "diversified companies",
+        "berkshire style companies",
+        "multi-industry companies"
+      ]
+    },
+    {
+      "theme": "Manufactured and prefab homes",
+      "items": [
+        {
+          "symbol": "CVCO",
+          "kind": "direct",
+          "why": "builds manufactured and modular homes"
+        },
+        {
+          "symbol": "SKY",
+          "kind": "direct",
+          "why": "builds factory-made homes under Champion brands"
+        },
+        {
+          "symbol": "LEGH",
+          "kind": "direct",
+          "why": "builds and finances manufactured homes in Texas"
+        },
+        {
+          "symbol": "UMH",
+          "kind": "picks-shovels",
+          "why": "owns manufactured home communities as a REIT"
+        },
+        {
+          "symbol": "ELS",
+          "kind": "picks-shovels",
+          "why": "owns manufactured home and RV communities"
+        },
+        {
+          "symbol": "SUI",
+          "kind": "picks-shovels",
+          "why": "owns manufactured housing and RV resorts"
+        }
+      ],
+      "aliases": [
+        "prefab homes",
+        "prefabricated homes",
+        "manufactured housing",
+        "mobile homes",
+        "modular homes",
+        "factory-built homes"
+      ]
+    },
+    {
+      "theme": "Organ transplant technology",
+      "items": [
+        {
+          "symbol": "TMDX",
+          "kind": "direct",
+          "why": "keeps donor organs alive during transport"
+        },
+        {
+          "symbol": "CDNA",
+          "kind": "direct",
+          "why": "makes blood tests for transplant rejection"
+        }
+      ],
+      "aliases": [
+        "transplant medicine",
+        "organ transplants",
+        "transplant diagnostics",
+        "organ donation technology"
+      ]
+    },
+    {
+      "theme": "Cranes and material handling",
+      "items": [
+        {
+          "symbol": "TEX",
+          "kind": "direct",
+          "why": "makes cranes, aerial lifts and materials processors"
+        },
+        {
+          "symbol": "MTW",
+          "kind": "direct",
+          "why": "makes Manitowoc and Grove crane brands"
+        },
+        {
+          "symbol": "CMCO",
+          "kind": "direct",
+          "why": "makes hoists, chains and lifting equipment"
+        },
+        {
+          "symbol": "HY",
+          "kind": "direct",
+          "why": "makes Hyster and Yale forklift trucks"
+        },
+        {
+          "symbol": "OTIS",
+          "kind": "direct",
+          "why": "makes and services elevators and escalators worldwide"
+        }
+      ],
+      "aliases": [
+        "cranes",
+        "crane makers",
+        "forklifts",
+        "material handling",
+        "elevators and escalators",
+        "elevator companies",
+        "lifting equipment",
+        "hoists"
+      ]
+    },
+    {
+      "theme": "Work management software",
+      "items": [
+        {
+          "symbol": "MNDY",
+          "kind": "direct",
+          "why": "makes monday.com team work management platform"
+        },
+        {
+          "symbol": "ASAN",
+          "kind": "direct",
+          "why": "makes Asana project tracking software"
+        },
+        {
+          "symbol": "PEGA",
+          "kind": "direct",
+          "why": "makes enterprise workflow automation software"
+        }
+      ],
+      "aliases": [
+        "project management software",
+        "project management",
+        "work management",
+        "task management",
+        "team productivity software"
       ]
     }
   ]
