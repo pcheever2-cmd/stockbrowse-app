@@ -1304,7 +1304,9 @@
       "aliases": [
         "space",
         "space stocks",
-        "satellites"
+        "satellites",
+        "spacex",
+        "rocket launch"
       ]
     },
     {
@@ -5036,7 +5038,8 @@
         "web hosting",
         "cloud hosting",
         "website infrastructure",
-        "edge computing"
+        "edge computing",
+        "distributed compute"
       ]
     },
     {
@@ -6598,7 +6601,9 @@
         "boeing",
         "jet engines",
         "aircraft stocks",
-        "plane makers"
+        "plane makers",
+        "rolls royce",
+        "jet engine makers"
       ]
     },
     {
@@ -8941,7 +8946,9 @@
         "rare earth metals",
         "rare earth stocks",
         "strategic metals",
-        "magnet metals"
+        "magnet metals",
+        "supply chain minerals",
+        "mineral supply security"
       ]
     },
     {
@@ -11543,7 +11550,10 @@
         "running shoes",
         "jogging",
         "nike",
-        "track"
+        "track",
+        "endurance sports",
+        "marathon brands",
+        "triathlon"
       ]
     },
     {
@@ -12320,7 +12330,9 @@
         "arcade",
         "dave and busters",
         "bowlero",
-        "arcades"
+        "arcades",
+        "family entertainment centers",
+        "family fun centers"
       ]
     },
     {
@@ -13316,7 +13328,8 @@
         "chipotle",
         "taco bell",
         "burritos",
-        "mexican restaurants"
+        "mexican restaurants",
+        "burrito chains"
       ]
     },
     {
@@ -15542,7 +15555,10 @@
         "blender",
         "ninja",
         "kitchenaid",
-        "cooking gadgets"
+        "cooking gadgets",
+        "cookware",
+        "pots and pans",
+        "small appliances"
       ]
     },
     {
@@ -16768,7 +16784,9 @@
         "trendy clothes",
         "shein",
         "zara",
-        "h&m"
+        "h&m",
+        "affordable clothing",
+        "budget clothing brands"
       ]
     },
     {
@@ -16853,7 +16871,8 @@
         "7-eleven",
         "corner store",
         "caseys",
-        "wawa"
+        "wawa",
+        "convenience brands"
       ]
     },
     {
@@ -17038,7 +17057,9 @@
         "pens and paper",
         "notebooks",
         "staples",
-        "office depot"
+        "office depot",
+        "paperclips",
+        "paperclip makers"
       ]
     },
     {
@@ -17524,7 +17545,9 @@
         "smoking",
         "marlboro",
         "tobacco stocks",
-        "big tobacco"
+        "big tobacco",
+        "cigarette makers",
+        "cigarette stocks"
       ]
     },
     {
@@ -19198,7 +19221,9 @@
         "chinese",
         "alibaba",
         "china",
-        "chinese tech"
+        "chinese tech",
+        "china adrs",
+        "chinese adrs"
       ]
     },
     {
@@ -21341,7 +21366,9 @@
         "mining stocks",
         "metals stocks",
         "copper stocks",
-        "gold stocks"
+        "gold stocks",
+        "commodity producers",
+        "raw materials producers"
       ]
     },
     {
@@ -25956,7 +25983,10 @@
         "construction equipment",
         "united rentals",
         "rental stocks",
-        "heavy equipment"
+        "heavy equipment",
+        "porta potty rental",
+        "portable toilets",
+        "site services"
       ]
     },
     {
@@ -26648,7 +26678,9 @@
         "vacation ownership",
         "vacation stocks",
         "marriott vacations",
-        "resorts"
+        "resorts",
+        "vacation clubs",
+        "vacation club operators"
       ]
     },
     {
@@ -29908,6 +29940,311 @@
         "cash flow stocks",
         "cash generators",
         "fcf"
+      ]
+    },
+    {
+      "theme": "Bearings and motion control",
+      "items": [
+        {
+          "symbol": "RBC",
+          "kind": "direct",
+          "why": "makes precision bearings for aerospace and industrial machines"
+        },
+        {
+          "symbol": "TKR",
+          "kind": "direct",
+          "why": "makes tapered roller bearings and power transmission parts"
+        },
+        {
+          "symbol": "RRX",
+          "kind": "direct",
+          "why": "makes bearings, couplings and industrial powertrain components"
+        },
+        {
+          "symbol": "GTES",
+          "kind": "direct",
+          "why": "makes power transmission belts and fluid power products"
+        },
+        {
+          "symbol": "PH",
+          "kind": "direct",
+          "why": "makes hydraulic motion and control systems"
+        },
+        {
+          "symbol": "AIT",
+          "kind": "picks-shovels",
+          "why": "distributes bearings and power transmission parts to factories"
+        },
+        {
+          "symbol": "DXPE",
+          "kind": "picks-shovels",
+          "why": "distributes rotating equipment and bearings to industry"
+        }
+      ],
+      "aliases": [
+        "bearings",
+        "ball bearings",
+        "bearing makers",
+        "rbc bearings",
+        "motion control",
+        "gears",
+        "gearboxes",
+        "power transmission",
+        "mechanical parts",
+        "mechanical components",
+        "machine components",
+        "industrial components",
+        "drivetrain parts"
+      ]
+    },
+    {
+      "theme": "Pumps, valves and flow control",
+      "items": [
+        {
+          "symbol": "FLS",
+          "kind": "direct",
+          "why": "makes industrial pumps and valves for energy and chemicals"
+        },
+        {
+          "symbol": "ITT",
+          "kind": "direct",
+          "why": "makes Goulds industrial pumps and flow-control valves"
+        },
+        {
+          "symbol": "PH",
+          "kind": "direct",
+          "why": "makes hydraulic pumps, valves and pneumatic systems"
+        },
+        {
+          "symbol": "IR",
+          "kind": "direct",
+          "why": "makes air compressors and industrial pumps"
+        },
+        {
+          "symbol": "GGG",
+          "kind": "direct",
+          "why": "makes fluid-handling pumps and spray equipment"
+        },
+        {
+          "symbol": "DOV",
+          "kind": "direct",
+          "why": "makes pumps and flow-control equipment across industries"
+        },
+        {
+          "symbol": "CR",
+          "kind": "direct",
+          "why": "makes valves and fluid-control products for industry"
+        },
+        {
+          "symbol": "XYL",
+          "kind": "direct",
+          "why": "makes water pumps and treatment equipment"
+        },
+        {
+          "symbol": "WTS",
+          "kind": "direct",
+          "why": "makes water valves and flow-control products"
+        },
+        {
+          "symbol": "MWA",
+          "kind": "direct",
+          "why": "makes fire hydrants and water valves"
+        },
+        {
+          "symbol": "FELE",
+          "kind": "direct",
+          "why": "makes groundwater pumps and pumping systems"
+        },
+        {
+          "symbol": "PNR",
+          "kind": "direct",
+          "why": "makes pool pumps and water treatment equipment"
+        },
+        {
+          "symbol": "GHM",
+          "kind": "direct",
+          "why": "makes vacuum pumps and ejectors for defense and energy"
+        },
+        {
+          "symbol": "EPAC",
+          "kind": "direct",
+          "why": "makes high-pressure hydraulic tools"
+        }
+      ],
+      "aliases": [
+        "pumps",
+        "valves",
+        "pump makers",
+        "valve makers",
+        "flow control",
+        "compressors",
+        "fluid handling",
+        "hydraulics",
+        "pneumatics",
+        "water pumps",
+        "industrial pumps"
+      ]
+    },
+    {
+      "theme": "Fasteners and industrial hardware",
+      "items": [
+        {
+          "symbol": "FAST",
+          "kind": "picks-shovels",
+          "why": "distributes fasteners and MRO supplies to factories"
+        },
+        {
+          "symbol": "HLMN",
+          "kind": "direct",
+          "why": "supplies screws, bolts and home hardware"
+        },
+        {
+          "symbol": "SSD",
+          "kind": "direct",
+          "why": "makes structural connectors and fasteners for construction"
+        },
+        {
+          "symbol": "ITW",
+          "kind": "direct",
+          "why": "makes welding gear, fasteners and engineered components"
+        },
+        {
+          "symbol": "TRS",
+          "kind": "direct",
+          "why": "makes engineered fasteners, closures and dispensers"
+        },
+        {
+          "symbol": "NPO",
+          "kind": "direct",
+          "why": "makes industrial seals and gaskets"
+        },
+        {
+          "symbol": "KMT",
+          "kind": "direct",
+          "why": "makes carbide cutting tools for metalworking"
+        },
+        {
+          "symbol": "LECO",
+          "kind": "direct",
+          "why": "makes welding equipment and consumables"
+        },
+        {
+          "symbol": "SNA",
+          "kind": "direct",
+          "why": "makes professional hand tools and shop diagnostics"
+        },
+        {
+          "symbol": "MSM",
+          "kind": "picks-shovels",
+          "why": "distributes metalworking tools and MRO supplies"
+        },
+        {
+          "symbol": "GWW",
+          "kind": "picks-shovels",
+          "why": "distributes industrial hardware and MRO supplies"
+        }
+      ],
+      "aliases": [
+        "fasteners",
+        "screws and bolts",
+        "nuts and bolts",
+        "industrial hardware",
+        "seals and gaskets",
+        "gaskets",
+        "cutting tools",
+        "welding",
+        "welding stocks",
+        "abrasives",
+        "hand tools",
+        "mro supplies",
+        "industrial distributors"
+      ]
+    },
+    {
+      "theme": "Environmental remediation and hazardous waste",
+      "items": [
+        {
+          "symbol": "CLH",
+          "kind": "direct",
+          "why": "handles hazardous waste disposal and emergency cleanups"
+        },
+        {
+          "symbol": "NVRI",
+          "kind": "direct",
+          "why": "treats industrial waste and recycles steel byproducts"
+        },
+        {
+          "symbol": "TTEK",
+          "kind": "direct",
+          "why": "consults on environmental cleanup and water projects"
+        },
+        {
+          "symbol": "CECO",
+          "kind": "direct",
+          "why": "makes industrial air-pollution control systems"
+        },
+        {
+          "symbol": "MSA",
+          "kind": "picks-shovels",
+          "why": "makes protective gear for hazardous work"
+        }
+      ],
+      "aliases": [
+        "asbestos removal",
+        "hazardous waste",
+        "environmental cleanup",
+        "environmental remediation",
+        "mold remediation",
+        "superfund cleanup",
+        "toxic waste",
+        "pollution cleanup",
+        "environmental services"
+      ]
+    },
+    {
+      "theme": "Performance car parts and enthusiast brands",
+      "items": [
+        {
+          "symbol": "HLLY",
+          "kind": "direct",
+          "why": "makes carburetors, exhausts and engine tuning parts"
+        },
+        {
+          "symbol": "FOXF",
+          "kind": "direct",
+          "why": "makes performance suspension for trucks and bikes"
+        },
+        {
+          "symbol": "PRTS",
+          "kind": "picks-shovels",
+          "why": "sells aftermarket car parts online"
+        },
+        {
+          "symbol": "AZO",
+          "kind": "picks-shovels",
+          "why": "sells parts to DIY car owners"
+        },
+        {
+          "symbol": "ORLY",
+          "kind": "picks-shovels",
+          "why": "sells aftermarket parts to DIYers and shops"
+        },
+        {
+          "symbol": "GPC",
+          "kind": "picks-shovels",
+          "why": "distributes NAPA auto parts"
+        }
+      ],
+      "aliases": [
+        "auto enthusiast brands",
+        "car mods",
+        "performance parts",
+        "aftermarket car parts",
+        "car tuning",
+        "hot rods",
+        "car culture",
+        "racing parts",
+        "car enthusiast stocks"
       ]
     }
   ]
