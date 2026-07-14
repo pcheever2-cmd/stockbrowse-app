@@ -449,7 +449,10 @@
         "defense stocks",
         "military",
         "drones",
-        "weapons"
+        "weapons",
+        "armored vehicles",
+        "combat vehicles",
+        "military equipment"
       ]
     },
     {
@@ -632,7 +635,11 @@
         "solar",
         "solar panels",
         "clean energy",
-        "renewable energy"
+        "renewable energy",
+        "solar farm developers",
+        "community solar operators",
+        "renewable asset operators",
+        "distributed solar"
       ]
     },
     {
@@ -848,7 +855,8 @@
       "aliases": [
         "streaming",
         "streaming stocks",
-        "streaming services"
+        "streaming services",
+        "connected tv platforms"
       ]
     },
     {
@@ -1306,7 +1314,8 @@
         "space stocks",
         "satellites",
         "spacex",
-        "rocket launch"
+        "rocket launch",
+        "satellite communications"
       ]
     },
     {
@@ -1653,7 +1662,9 @@
         "insulin",
         "blood sugar",
         "diabetes stocks",
-        "glucose monitor"
+        "glucose monitor",
+        "type 2 diabetes treatment",
+        "diabetes devices"
       ]
     },
     {
@@ -1710,7 +1721,11 @@
         "medtech",
         "medical equipment",
         "health devices",
-        "implants"
+        "implants",
+        "orthopedic implants",
+        "ultrasound devices",
+        "spine surgery devices",
+        "wound care products"
       ]
     },
     {
@@ -2026,7 +2041,8 @@
         "online doctor",
         "telemedicine",
         "video doctor visit",
-        "online therapy"
+        "online therapy",
+        "telehealth platforms"
       ]
     },
     {
@@ -2084,7 +2100,9 @@
         "eye health",
         "contact lenses",
         "glasses",
-        "eye doctor"
+        "eye doctor",
+        "ophthalmology devices",
+        "eye surgery devices"
       ]
     },
     {
@@ -2534,7 +2552,9 @@
         "drugstores",
         "walgreens",
         "cvs",
-        "pharmacy"
+        "pharmacy",
+        "pharmacy benefits manager",
+        "PBM stocks"
       ]
     },
     {
@@ -3549,6 +3569,11 @@
           "symbol": "CLNE",
           "kind": "picks-shovels",
           "why": "sells natural gas as fuel for vehicle fleets"
+        },
+        {
+          "symbol": "AR",
+          "kind": "direct",
+          "why": "produces Appalachian natural gas and liquids"
         }
       ],
       "aliases": [
@@ -3699,7 +3724,15 @@
         "drilling services",
         "oil services",
         "fracking",
-        "oil drilling"
+        "oil drilling",
+        "coiled tubing",
+        "downhole tools",
+        "well workover",
+        "subsea equipment",
+        "fracking equipment suppliers",
+        "well stimulation services",
+        "completion fluids",
+        "marine energy services"
       ]
     },
     {
@@ -3840,7 +3873,9 @@
         "pipeline stocks",
         "energy pipelines",
         "MLP",
-        "natural gas pipelines"
+        "natural gas pipelines",
+        "crude storage terminals",
+        "oil storage"
       ]
     },
     {
@@ -3883,7 +3918,8 @@
         "gasoline stocks",
         "refineries",
         "refiners",
-        "fuel makers"
+        "fuel makers",
+        "refined petroleum products"
       ]
     },
     {
@@ -3931,7 +3967,10 @@
         "hydrogen stocks",
         "fuel cell stocks",
         "hydrogen energy",
-        "plug power"
+        "plug power",
+        "green hydrogen",
+        "hydrogen producers",
+        "hydrogen infrastructure"
       ]
     },
     {
@@ -4011,7 +4050,8 @@
         "wind turbines",
         "wind stocks",
         "offshore wind",
-        "windmills"
+        "windmills",
+        "wind farm developers"
       ]
     },
     {
@@ -4064,7 +4104,8 @@
         "energy storage stocks",
         "megapack",
         "power storage",
-        "battery backup"
+        "battery backup",
+        "energy storage operators"
       ]
     },
     {
@@ -4127,7 +4168,10 @@
         "electric companies",
         "electricity stocks",
         "utility stocks",
-        "power grid"
+        "power grid",
+        "investor-owned utilities",
+        "baseload power",
+        "thermal power generators"
       ]
     },
     {
@@ -4359,7 +4403,9 @@
         "transmission lines",
         "grid stocks",
         "electric grid",
-        "grid upgrade"
+        "grid upgrade",
+        "demand response providers",
+        "distributed generation"
       ]
     },
     {
@@ -4544,7 +4590,10 @@
         "snapchat",
         "social apps",
         "tiktok stocks",
-        "dating apps"
+        "dating apps",
+        "social networking companies",
+        "online communities",
+        "video sharing sites"
       ]
     },
     {
@@ -4665,7 +4714,9 @@
         "gamers",
         "game makers",
         "consoles",
-        "games"
+        "games",
+        "triple-a game studios",
+        "gaming studios"
       ]
     },
     {
@@ -4992,7 +5043,9 @@
         "content creators",
         "youtube stocks",
         "tiktok stocks",
-        "streamers"
+        "streamers",
+        "user-generated content platforms",
+        "content production studios"
       ]
     },
     {
@@ -5051,7 +5104,10 @@
         "cloud hosting",
         "website infrastructure",
         "edge computing",
-        "distributed compute"
+        "distributed compute",
+        "content delivery networks",
+        "cloud storage providers",
+        "serverless platforms"
       ]
     },
     {
@@ -5349,7 +5405,8 @@
         "power semiconductors",
         "texas instruments",
         "chip stocks",
-        "semiconductors"
+        "semiconductors",
+        "power management ICs"
       ]
     },
     {
@@ -5572,7 +5629,10 @@
         "chip ip",
         "arm stock",
         "eda software",
-        "semiconductor ip"
+        "semiconductor ip",
+        "electronic design automation",
+        "semiconductor design software",
+        "chip design tools"
       ]
     },
     {
@@ -6077,7 +6137,8 @@
         "brokerage",
         "trading apps",
         "online broker",
-        "day trading"
+        "day trading",
+        "discount brokers"
       ]
     },
     {
@@ -6150,7 +6211,9 @@
         "money managers",
         "wealth management",
         "fund managers",
-        "blackrock"
+        "blackrock",
+        "investment management firms",
+        "investment advisor networks"
       ]
     },
     {
@@ -6376,7 +6439,8 @@
         "home insurance",
         "property casualty",
         "workers compensation insurance",
-        "long-term care insurance"
+        "long-term care insurance",
+        "universal life insurance"
       ]
     },
     {
@@ -6510,7 +6574,8 @@
         "market infrastructure",
         "trading platforms",
         "nasdaq",
-        "cme"
+        "cme",
+        "capital markets stocks"
       ]
     },
     {
@@ -6568,7 +6633,9 @@
         "credit cards",
         "buy now pay later",
         "lending",
-        "loans"
+        "loans",
+        "consumer finance stocks",
+        "specialty finance"
       ]
     },
     {
@@ -7161,7 +7228,9 @@
         "automation",
         "machinery stocks",
         "industrial robots",
-        "factory equipment"
+        "factory equipment",
+        "excavator makers",
+        "heavy machinery"
       ]
     },
     {
@@ -7216,6 +7285,11 @@
           "symbol": "POWL",
           "kind": "direct",
           "why": "makes switchgear and substation equipment"
+        },
+        {
+          "symbol": "ITRI",
+          "kind": "direct",
+          "why": "makes smart meters and grid analytics"
         }
       ],
       "aliases": [
@@ -7230,7 +7304,9 @@
         "electrical substations",
         "transmission and distribution",
         "circuit protection",
-        "surge protection"
+        "surge protection",
+        "industrial lighting",
+        "smart meters"
       ]
     },
     {
@@ -7998,7 +8074,8 @@
         "burgers",
         "chipotle",
         "eating out",
-        "drive thru"
+        "drive thru",
+        "restaurant franchises"
       ]
     },
     {
@@ -8293,7 +8370,8 @@
         "pet stocks",
         "vet",
         "dog toys",
-        "pet toys"
+        "pet toys",
+        "pet supply retailers"
       ]
     },
     {
@@ -8600,7 +8678,9 @@
         "places to stay",
         "marriott",
         "hilton",
-        "airbnb"
+        "airbnb",
+        "budget hotels",
+        "economy hotels"
       ]
     },
     {
@@ -9375,7 +9455,8 @@
         "farmland",
         "grain traders",
         "grain trading",
-        "animal feed"
+        "animal feed",
+        "grain processors"
       ]
     },
     {
@@ -9517,7 +9598,11 @@
         "chemical stocks",
         "chemical companies",
         "industrial chemicals",
-        "advanced materials"
+        "advanced materials",
+        "adhesives and sealants",
+        "protective coatings",
+        "adhesive manufacturers",
+        "glue makers"
       ]
     },
     {
@@ -9567,6 +9652,16 @@
           "symbol": "LYB",
           "kind": "direct",
           "why": "makes polyethylene, polypropylene and bulk olefins"
+        },
+        {
+          "symbol": "TROX",
+          "kind": "direct",
+          "why": "makes titanium dioxide white pigment"
+        },
+        {
+          "symbol": "KRO",
+          "kind": "direct",
+          "why": "makes titanium dioxide pigments"
         }
       ],
       "aliases": [
@@ -9575,7 +9670,12 @@
         "petrochemicals",
         "chemical stocks",
         "bulk chemicals",
-        "resins"
+        "resins",
+        "pigments",
+        "titanium dioxide",
+        "epoxy resins",
+        "plastic film makers",
+        "polymer producers"
       ]
     },
     {
@@ -9846,7 +9946,8 @@
         "industrial reits",
         "warehouse stocks",
         "distribution centers",
-        "warehouse landlords"
+        "warehouse landlords",
+        "industrial park developers"
       ]
     },
     {
@@ -9994,6 +10095,11 @@
           "symbol": "DHC",
           "kind": "direct",
           "why": "owns medical office, life-science and senior living"
+        },
+        {
+          "symbol": "ARE",
+          "kind": "direct",
+          "why": "owns life science lab campuses"
         }
       ],
       "aliases": [
@@ -10002,7 +10108,10 @@
         "senior housing",
         "medical buildings",
         "nursing home stocks",
-        "medical real estate"
+        "medical real estate",
+        "life science REITs",
+        "lab space REITs",
+        "medical office REITs"
       ]
     },
     {
@@ -10284,7 +10393,9 @@
         "home loans",
         "rocket mortgage",
         "mortgage lenders",
-        "fannie mae"
+        "fannie mae",
+        "commercial mortgage REITs",
+        "commercial mortgage bonds"
       ]
     },
     {
@@ -10367,7 +10478,9 @@
         "concrete",
         "construction stocks",
         "aggregates",
-        "lumber"
+        "lumber",
+        "concrete and asphalt",
+        "aggregates suppliers"
       ]
     },
     {
@@ -12383,7 +12496,8 @@
         "bowlero",
         "arcades",
         "family entertainment centers",
-        "family fun centers"
+        "family fun centers",
+        "entertainment complex operators"
       ]
     },
     {
@@ -12526,7 +12640,10 @@
         "hollywood",
         "film",
         "cinema",
-        "movie stocks"
+        "movie stocks",
+        "movie theaters",
+        "cinema chains",
+        "animated film studios"
       ]
     },
     {
@@ -13231,7 +13348,8 @@
         "pizza hut",
         "papa johns",
         "pizza stocks",
-        "pizza delivery"
+        "pizza delivery",
+        "pizza chains"
       ]
     },
     {
@@ -13520,7 +13638,8 @@
         "doritos",
         "junk food",
         "snack stocks",
-        "pretzels"
+        "pretzels",
+        "cookies and crackers"
       ]
     },
     {
@@ -13745,7 +13864,8 @@
         "starbucks",
         "coffee stocks",
         "keurig",
-        "cafe"
+        "cafe",
+        "instant coffee"
       ]
     },
     {
@@ -13793,7 +13913,8 @@
         "natural food",
         "whole foods",
         "health food stocks",
-        "organic groceries"
+        "organic groceries",
+        "gluten-free foods"
       ]
     },
     {
@@ -13881,7 +14002,9 @@
         "beverages",
         "drinks",
         "coca cola",
-        "soft drinks"
+        "soft drinks",
+        "sports drink makers",
+        "sports drinks"
       ]
     },
     {
@@ -13979,7 +14102,17 @@
         "pantry food",
         "heinz",
         "hot sauce",
-        "hot sauce brands"
+        "hot sauce brands",
+        "canned soup",
+        "canned vegetables",
+        "salad dressing",
+        "cooking oils",
+        "peanut butter",
+        "broth and stock",
+        "bouillon",
+        "dried beans and legumes",
+        "spice and seasoning brands",
+        "spices and seasonings"
       ]
     },
     {
@@ -14893,7 +15026,8 @@
         "rings",
         "diamonds",
         "necklaces",
-        "gold jewelry"
+        "gold jewelry",
+        "fine jewelry brands"
       ]
     },
     {
@@ -15014,6 +15148,11 @@
           "symbol": "PG",
           "kind": "picks-shovels",
           "why": "makes mass-market fragrances and body sprays"
+        },
+        {
+          "symbol": "SXT",
+          "kind": "direct",
+          "why": "makes flavors, fragrances and food colors"
         }
       ],
       "aliases": [
@@ -15022,7 +15161,8 @@
         "cologne",
         "scent",
         "perfume stocks",
-        "eau de parfum"
+        "eau de parfum",
+        "flavor and fragrance ingredients"
       ]
     },
     {
@@ -15740,7 +15880,11 @@
         "paper towels",
         "dish soap",
         "toothpaste",
-        "household staples"
+        "household staples",
+        "laundry detergent brands",
+        "mouthwash",
+        "oral care",
+        "fabric softener"
       ]
     },
     {
@@ -16096,7 +16240,9 @@
         "orkin",
         "bug control",
         "terminix",
-        "rodent control"
+        "rodent control",
+        "household pest control",
+        "insect repellent"
       ]
     },
     {
@@ -22342,7 +22488,9 @@
         "housing shortage",
         "home construction",
         "real estate",
-        "new homes"
+        "new homes",
+        "affordable housing developers",
+        "master planned communities"
       ]
     },
     {
@@ -22405,7 +22553,12 @@
         "heart stocks",
         "cholesterol",
         "heart drugs",
-        "heart devices"
+        "heart devices",
+        "heart failure",
+        "hypertension drugs",
+        "blood thinners",
+        "anticoagulation therapy",
+        "blood clot prevention"
       ]
     },
     {
@@ -23636,7 +23789,10 @@
         "mri",
         "ct scan",
         "x-ray",
-        "radiology"
+        "radiology",
+        "mri equipment makers",
+        "x-ray machines",
+        "ct scanners"
       ]
     },
     {
@@ -23797,7 +23953,8 @@
         "peptide drugs",
         "biologics",
         "monoclonal antibodies",
-        "adc"
+        "adc",
+        "protein therapeutics"
       ]
     },
     {
@@ -23896,7 +24053,8 @@
         "parkinson",
         "tremor",
         "movement disorder",
-        "dopamine"
+        "dopamine",
+        "neurodegenerative disease"
       ]
     },
     {
@@ -25023,7 +25181,9 @@
         "inference chips",
         "nvidia",
         "ai semiconductors",
-        "gpu stocks"
+        "gpu stocks",
+        "gpu manufacturers",
+        "graphics cards"
       ]
     },
     {
@@ -25423,7 +25583,9 @@
         "data warehouse",
         "enterprise data",
         "databases",
-        "data pipeline"
+        "data pipeline",
+        "enterprise resource planning",
+        "erp software"
       ]
     },
     {
@@ -25713,7 +25875,9 @@
         "ad agencies",
         "advertising agencies",
         "marketing agencies",
-        "ad firms"
+        "ad firms",
+        "advertising networks",
+        "display ad networks"
       ]
     },
     {
@@ -26180,7 +26344,9 @@
         "it services",
         "accenture",
         "cognizant",
-        "outsourcing"
+        "outsourcing",
+        "systems integration",
+        "digital transformation"
       ]
     },
     {
@@ -27019,7 +27185,8 @@
         "insurance stocks",
         "brokers",
         "marsh",
-        "aon"
+        "aon",
+        "insurance agency networks"
       ]
     },
     {
@@ -27705,7 +27872,9 @@
         "proppants",
         "fracking sand",
         "frac sand stocks",
-        "hydraulic fracturing"
+        "hydraulic fracturing",
+        "industrial sand",
+        "industrial sand producers"
       ]
     },
     {
@@ -29023,7 +29192,10 @@
         "office stocks",
         "office reit",
         "back to office",
-        "commercial real estate"
+        "commercial real estate",
+        "corporate office space",
+        "office parks",
+        "trophy office buildings"
       ]
     },
     {
@@ -30140,6 +30312,16 @@
           "symbol": "EPAC",
           "kind": "direct",
           "why": "makes high-pressure hydraulic tools"
+        },
+        {
+          "symbol": "DCI",
+          "kind": "direct",
+          "why": "makes filtration systems for engines and factories"
+        },
+        {
+          "symbol": "ATMU",
+          "kind": "direct",
+          "why": "makes fuel filters for trucks and equipment"
         }
       ],
       "aliases": [
@@ -30153,7 +30335,9 @@
         "hydraulics",
         "pneumatics",
         "water pumps",
-        "industrial pumps"
+        "industrial pumps",
+        "industrial filtration",
+        "filtration equipment"
       ]
     },
     {
@@ -30892,7 +31076,8 @@
         "casual dining",
         "fast casual restaurants",
         "dinner chains",
-        "family restaurants"
+        "family restaurants",
+        "steakhouse stocks"
       ]
     },
     {
@@ -31076,6 +31261,690 @@
         "work management",
         "task management",
         "team productivity software"
+      ]
+    },
+    {
+      "theme": "Telecom carriers and internet providers",
+      "items": [
+        {
+          "symbol": "T",
+          "kind": "direct",
+          "why": "runs AT&T wireless and fiber networks"
+        },
+        {
+          "symbol": "VZ",
+          "kind": "direct",
+          "why": "runs Verizon wireless and broadband networks"
+        },
+        {
+          "symbol": "TMUS",
+          "kind": "direct",
+          "why": "runs T-Mobile's nationwide 5G network"
+        },
+        {
+          "symbol": "CMCSA",
+          "kind": "direct",
+          "why": "runs Xfinity cable internet and NBCUniversal"
+        },
+        {
+          "symbol": "CHTR",
+          "kind": "direct",
+          "why": "runs Spectrum cable internet and mobile"
+        },
+        {
+          "symbol": "LUMN",
+          "kind": "direct",
+          "why": "runs enterprise fiber and wireline networks"
+        },
+        {
+          "symbol": "CCOI",
+          "kind": "direct",
+          "why": "sells internet bandwidth to businesses"
+        }
+      ],
+      "aliases": [
+        "telecom carriers",
+        "wireless carriers",
+        "internet service providers",
+        "phone companies",
+        "cell phone carriers",
+        "broadband providers",
+        "5g carriers",
+        "wireline",
+        "mobile network operators"
+      ]
+    },
+    {
+      "theme": "Credit card companies",
+      "items": [
+        {
+          "symbol": "AXP",
+          "kind": "direct",
+          "why": "issues American Express cards and runs its network"
+        },
+        {
+          "symbol": "COF",
+          "kind": "direct",
+          "why": "issues Capital One and Discover cards"
+        },
+        {
+          "symbol": "SYF",
+          "kind": "direct",
+          "why": "issues store credit cards for retailers"
+        },
+        {
+          "symbol": "BFH",
+          "kind": "direct",
+          "why": "issues private label credit cards"
+        },
+        {
+          "symbol": "V",
+          "kind": "picks-shovels",
+          "why": "runs the Visa payment network"
+        },
+        {
+          "symbol": "MA",
+          "kind": "picks-shovels",
+          "why": "runs the Mastercard payment network"
+        }
+      ],
+      "aliases": [
+        "credit card issuers",
+        "credit card stocks",
+        "card companies",
+        "store credit cards"
+      ]
+    },
+    {
+      "theme": "BDCs and private credit",
+      "items": [
+        {
+          "symbol": "ARCC",
+          "kind": "direct",
+          "why": "largest BDC lending to middle-market companies"
+        },
+        {
+          "symbol": "OBDC",
+          "kind": "direct",
+          "why": "Blue Owl's BDC making direct corporate loans"
+        },
+        {
+          "symbol": "MAIN",
+          "kind": "direct",
+          "why": "lends to and invests in small companies"
+        },
+        {
+          "symbol": "HTGC",
+          "kind": "direct",
+          "why": "lends to venture-backed tech and biotech"
+        },
+        {
+          "symbol": "GBDC",
+          "kind": "direct",
+          "why": "Golub's BDC lending to sponsor-backed companies"
+        },
+        {
+          "symbol": "BXSL",
+          "kind": "direct",
+          "why": "Blackstone's BDC making senior secured loans"
+        },
+        {
+          "symbol": "FSK",
+          "kind": "direct",
+          "why": "KKR-managed BDC lending to private companies"
+        },
+        {
+          "symbol": "TSLX",
+          "kind": "direct",
+          "why": "Sixth Street's BDC making specialty loans"
+        }
+      ],
+      "aliases": [
+        "business development companies",
+        "BDCs",
+        "private credit",
+        "direct lending",
+        "BDC stocks",
+        "middle market lenders"
+      ]
+    },
+    {
+      "theme": "Technology distributors",
+      "items": [
+        {
+          "symbol": "SNX",
+          "kind": "direct",
+          "why": "distributes IT hardware and cloud services globally"
+        },
+        {
+          "symbol": "ARW",
+          "kind": "direct",
+          "why": "distributes electronic components and enterprise computing"
+        },
+        {
+          "symbol": "AVT",
+          "kind": "direct",
+          "why": "distributes semiconductors and electronic components"
+        },
+        {
+          "symbol": "CNXN",
+          "kind": "direct",
+          "why": "sells IT products to businesses and government"
+        },
+        {
+          "symbol": "SCSC",
+          "kind": "direct",
+          "why": "distributes point-of-sale and communications tech"
+        },
+        {
+          "symbol": "INGM",
+          "kind": "direct",
+          "why": "distributes IT products and cloud marketplace services"
+        }
+      ],
+      "aliases": [
+        "it hardware distributors",
+        "electronics distributors",
+        "it distribution",
+        "component distributors"
+      ]
+    },
+    {
+      "theme": "Meat and protein producers",
+      "items": [
+        {
+          "symbol": "TSN",
+          "kind": "direct",
+          "why": "processes chicken, beef and pork at scale"
+        },
+        {
+          "symbol": "HRL",
+          "kind": "direct",
+          "why": "makes Spam, bacon and Jennie-O turkey"
+        },
+        {
+          "symbol": "PPC",
+          "kind": "direct",
+          "why": "second-largest US chicken producer"
+        },
+        {
+          "symbol": "CALM",
+          "kind": "direct",
+          "why": "largest US egg producer"
+        },
+        {
+          "symbol": "VITL",
+          "kind": "direct",
+          "why": "sells pasture-raised eggs and butter"
+        },
+        {
+          "symbol": "SEB",
+          "kind": "direct",
+          "why": "produces pork through Seaboard Foods"
+        }
+      ],
+      "aliases": [
+        "meat and poultry",
+        "meat producers",
+        "chicken producers",
+        "pork producers",
+        "egg producers",
+        "bacon makers",
+        "protein producers",
+        "deli meat and cold cuts"
+      ]
+    },
+    {
+      "theme": "Food distributors",
+      "items": [
+        {
+          "symbol": "SYY",
+          "kind": "direct",
+          "why": "largest US foodservice distributor to restaurants"
+        },
+        {
+          "symbol": "USFD",
+          "kind": "direct",
+          "why": "distributes food to restaurants and healthcare"
+        },
+        {
+          "symbol": "PFGC",
+          "kind": "direct",
+          "why": "distributes food to restaurants and convenience stores"
+        },
+        {
+          "symbol": "UNFI",
+          "kind": "direct",
+          "why": "distributes natural and organic groceries"
+        },
+        {
+          "symbol": "CHEF",
+          "kind": "direct",
+          "why": "distributes specialty food to fine dining"
+        }
+      ],
+      "aliases": [
+        "food distribution",
+        "food wholesale",
+        "foodservice distributors",
+        "restaurant suppliers",
+        "grocery distributors",
+        "restaurant food supply"
+      ]
+    },
+    {
+      "theme": "Specialty alloys and advanced materials",
+      "items": [
+        {
+          "symbol": "CRS",
+          "kind": "direct",
+          "why": "makes specialty alloys for aerospace and medical"
+        },
+        {
+          "symbol": "HXL",
+          "kind": "direct",
+          "why": "makes carbon fiber composites for aircraft"
+        },
+        {
+          "symbol": "MTRN",
+          "kind": "direct",
+          "why": "makes beryllium and engineered material composites"
+        },
+        {
+          "symbol": "ROG",
+          "kind": "direct",
+          "why": "makes engineered materials for EVs and electronics"
+        }
+      ],
+      "aliases": [
+        "titanium",
+        "specialty alloys",
+        "composite materials",
+        "carbon fiber",
+        "engineered materials",
+        "superalloys",
+        "specialty metals"
+      ]
+    },
+    {
+      "theme": "Paper and pulp makers",
+      "items": [
+        {
+          "symbol": "IP",
+          "kind": "direct",
+          "why": "largest maker of containerboard and pulp"
+        },
+        {
+          "symbol": "SW",
+          "kind": "direct",
+          "why": "makes paper packaging from renewable fiber"
+        },
+        {
+          "symbol": "SLVM",
+          "kind": "direct",
+          "why": "makes printing and office paper"
+        },
+        {
+          "symbol": "CLW",
+          "kind": "direct",
+          "why": "makes bleached paperboard for packaging and printing"
+        }
+      ],
+      "aliases": [
+        "paper companies",
+        "pulp and paper",
+        "paper mills",
+        "paperboard",
+        "paper stocks",
+        "pulp and paper mills",
+        "kraft paper"
+      ]
+    },
+    {
+      "theme": "Clothing retailers",
+      "items": [
+        {
+          "symbol": "GAP",
+          "kind": "direct",
+          "why": "runs Gap, Old Navy and Banana Republic"
+        },
+        {
+          "symbol": "ANF",
+          "kind": "direct",
+          "why": "runs Abercrombie and Hollister brands"
+        },
+        {
+          "symbol": "AEO",
+          "kind": "direct",
+          "why": "runs American Eagle and Aerie stores"
+        },
+        {
+          "symbol": "URBN",
+          "kind": "direct",
+          "why": "runs Urban Outfitters, Anthropologie and Free People"
+        },
+        {
+          "symbol": "VSCO",
+          "kind": "direct",
+          "why": "runs Victoria's Secret lingerie stores"
+        },
+        {
+          "symbol": "BKE",
+          "kind": "direct",
+          "why": "sells denim and casual wear in malls"
+        }
+      ],
+      "aliases": [
+        "apparel retailers",
+        "casual wear retailers",
+        "clothing stores",
+        "mall retailers",
+        "clothing chains"
+      ]
+    },
+    {
+      "theme": "Grid builders and utility contractors",
+      "items": [
+        {
+          "symbol": "PWR",
+          "kind": "direct",
+          "why": "builds power lines and grid infrastructure"
+        },
+        {
+          "symbol": "MTZ",
+          "kind": "direct",
+          "why": "builds energy and communications infrastructure"
+        },
+        {
+          "symbol": "MYRG",
+          "kind": "direct",
+          "why": "builds electrical transmission and substations"
+        },
+        {
+          "symbol": "DY",
+          "kind": "direct",
+          "why": "builds fiber and telecom networks"
+        },
+        {
+          "symbol": "PRIM",
+          "kind": "direct",
+          "why": "builds energy and utility infrastructure"
+        },
+        {
+          "symbol": "AMRC",
+          "kind": "direct",
+          "why": "builds energy efficiency and renewable projects"
+        },
+        {
+          "symbol": "WLDN",
+          "kind": "direct",
+          "why": "provides energy efficiency services to utilities"
+        }
+      ],
+      "aliases": [
+        "utility contractors",
+        "power line contractors",
+        "grid construction",
+        "energy efficiency services",
+        "transmission builders"
+      ]
+    },
+    {
+      "theme": "Real estate tech and brokerages",
+      "items": [
+        {
+          "symbol": "CSGP",
+          "kind": "direct",
+          "why": "runs CoStar property data and Homes.com"
+        },
+        {
+          "symbol": "Z",
+          "kind": "direct",
+          "why": "runs Zillow home search and agent leads"
+        },
+        {
+          "symbol": "EXPI",
+          "kind": "direct",
+          "why": "runs eXp virtual real estate brokerage"
+        },
+        {
+          "symbol": "COMP",
+          "kind": "direct",
+          "why": "runs Compass tech-driven real estate brokerage"
+        },
+        {
+          "symbol": "NMRK",
+          "kind": "direct",
+          "why": "provides commercial real estate services"
+        }
+      ],
+      "aliases": [
+        "proptech",
+        "real estate data",
+        "online real estate",
+        "real estate brokerages",
+        "real estate technology",
+        "home search sites",
+        "rent payment platforms",
+        "rental platforms",
+        "property assessment",
+        "instant home buying",
+        "ibuying",
+        "real estate services"
+      ]
+    },
+    {
+      "theme": "Fire and safety equipment",
+      "items": [
+        {
+          "symbol": "MSA",
+          "kind": "direct",
+          "why": "makes helmets, gas detection and breathing gear"
+        },
+        {
+          "symbol": "BRC",
+          "kind": "direct",
+          "why": "makes safety signs and identification labels"
+        },
+        {
+          "symbol": "APG",
+          "kind": "picks-shovels",
+          "why": "installs fire protection and safety systems"
+        },
+        {
+          "symbol": "JCI",
+          "kind": "direct",
+          "why": "makes fire detection and building safety systems"
+        }
+      ],
+      "aliases": [
+        "fire safety",
+        "safety equipment",
+        "fire protection",
+        "workplace safety",
+        "protective equipment"
+      ]
+    },
+    {
+      "theme": "Infectious disease treatments",
+      "items": [
+        {
+          "symbol": "GILD",
+          "kind": "direct",
+          "why": "makes HIV and hepatitis antiviral drugs"
+        },
+        {
+          "symbol": "MRK",
+          "kind": "direct",
+          "why": "makes vaccines and antiviral medicines"
+        },
+        {
+          "symbol": "VIR",
+          "kind": "direct",
+          "why": "develops antibody treatments for infectious diseases"
+        }
+      ],
+      "aliases": [
+        "antivirals",
+        "antiviral drugs",
+        "infectious disease",
+        "HIV treatment",
+        "hepatitis treatment",
+        "infection treatment drugs"
+      ]
+    },
+    {
+      "theme": "Servers and enterprise hardware",
+      "items": [
+        {
+          "symbol": "SMCI",
+          "kind": "direct",
+          "why": "builds AI servers and rack-scale systems"
+        },
+        {
+          "symbol": "DELL",
+          "kind": "direct",
+          "why": "sells servers, storage and business PCs"
+        },
+        {
+          "symbol": "HPE",
+          "kind": "direct",
+          "why": "sells servers, networking and hybrid cloud"
+        },
+        {
+          "symbol": "NTAP",
+          "kind": "direct",
+          "why": "makes enterprise data storage systems"
+        },
+        {
+          "symbol": "PSTG",
+          "kind": "direct",
+          "why": "makes all-flash data storage arrays"
+        }
+      ],
+      "aliases": [
+        "server manufacturers",
+        "server makers",
+        "enterprise hardware",
+        "data storage companies",
+        "storage arrays"
+      ]
+    },
+    {
+      "theme": "Data backup and recovery software",
+      "items": [
+        {
+          "symbol": "RBRK",
+          "kind": "direct",
+          "why": "makes cyber resilience and backup software"
+        },
+        {
+          "symbol": "CVLT",
+          "kind": "direct",
+          "why": "makes enterprise backup and recovery software"
+        }
+      ],
+      "aliases": [
+        "backup and recovery",
+        "backup software",
+        "data protection software",
+        "disaster recovery"
+      ]
+    },
+    {
+      "theme": "Shale and independent oil producers",
+      "items": [
+        {
+          "symbol": "FANG",
+          "kind": "direct",
+          "why": "pumps oil in the Permian Basin"
+        },
+        {
+          "symbol": "DVN",
+          "kind": "direct",
+          "why": "produces shale oil across US basins"
+        },
+        {
+          "symbol": "EOG",
+          "kind": "direct",
+          "why": "large independent shale oil and gas producer"
+        },
+        {
+          "symbol": "PR",
+          "kind": "direct",
+          "why": "produces oil in the Delaware Basin"
+        },
+        {
+          "symbol": "MTDR",
+          "kind": "direct",
+          "why": "drills oil in the Delaware Basin"
+        },
+        {
+          "symbol": "CTRA",
+          "kind": "direct",
+          "why": "produces oil and gas in Permian and Marcellus"
+        }
+      ],
+      "aliases": [
+        "shale oil producers",
+        "permian basin stocks",
+        "independent oil producers",
+        "shale drillers",
+        "E&P companies",
+        "unconventional oil production"
+      ]
+    },
+    {
+      "theme": "Natural gas utilities",
+      "items": [
+        {
+          "symbol": "ATO",
+          "kind": "direct",
+          "why": "distributes natural gas to eight states"
+        },
+        {
+          "symbol": "NI",
+          "kind": "direct",
+          "why": "runs regulated gas and electric utilities"
+        },
+        {
+          "symbol": "SWX",
+          "kind": "direct",
+          "why": "distributes gas in Arizona and Nevada"
+        },
+        {
+          "symbol": "UGI",
+          "kind": "direct",
+          "why": "distributes gas and propane via AmeriGas"
+        },
+        {
+          "symbol": "SR",
+          "kind": "direct",
+          "why": "runs Spire regulated gas utilities in Missouri"
+        },
+        {
+          "symbol": "NJR",
+          "kind": "direct",
+          "why": "distributes gas in New Jersey"
+        },
+        {
+          "symbol": "OGS",
+          "kind": "direct",
+          "why": "distributes gas in Oklahoma, Kansas and Texas"
+        },
+        {
+          "symbol": "CPK",
+          "kind": "direct",
+          "why": "runs gas distribution on the East Coast"
+        }
+      ],
+      "aliases": [
+        "gas utilities",
+        "gas distribution",
+        "regulated gas utilities",
+        "local gas companies",
+        "natural gas distributors",
+        "propane distributors"
       ]
     }
   ]
