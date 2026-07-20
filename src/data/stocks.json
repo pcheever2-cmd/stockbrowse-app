@@ -123443,7 +123443,7 @@
   {
     "symbol": "MGR",
     "name": "Affiliated Managers Group, Inc.",
-    "price": 20.51,
+    "price": 20.5,
     "compassScore": 64,
     "grade": "B",
     "industry": "Investment - Banking & Investment Services",
@@ -260211,7 +260211,7 @@
   {
     "symbol": "LINK",
     "name": "Interlink Electronics, Inc.",
-    "price": 4.6,
+    "price": 4.48,
     "compassScore": 21,
     "grade": "D",
     "industry": "Semiconductors",
@@ -300408,7 +300408,7 @@
   {
     "symbol": "DWTX",
     "name": "Dogwood Therapeutics, Inc.",
-    "price": 1.35,
+    "price": 1.38,
     "compassScore": 8,
     "grade": "F",
     "industry": "Biotechnology",
@@ -315363,7 +315363,7 @@
   {
     "symbol": "SERA",
     "name": "Sera Prognostics, Inc.",
-    "price": 2.03,
+    "price": 2.1,
     "compassScore": 4,
     "grade": "F",
     "industry": "Medical - Diagnostics & Research",
