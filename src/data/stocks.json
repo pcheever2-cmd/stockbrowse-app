@@ -525,7 +525,7 @@
   {
     "symbol": "NVDA",
     "name": "NVIDIA Corporation",
-    "price": 196.53,
+    "price": 196.51,
     "compassScore": 99,
     "grade": "A",
     "industry": "Semiconductors",
@@ -3584,7 +3584,7 @@
   {
     "symbol": "AREN",
     "name": "The Arena Group Holdings, Inc.",
-    "price": 0.97,
+    "price": 0.95,
     "compassScore": 98,
     "grade": "A",
     "industry": "Internet Content & Information",
@@ -59916,7 +59916,7 @@
   {
     "symbol": "SWAG",
     "name": "Stran & Company, Inc.",
-    "price": 1.98,
+    "price": 2.01,
     "compassScore": 83,
     "grade": "B",
     "industry": "Advertising Agencies",
@@ -113188,7 +113188,7 @@
   {
     "symbol": "TRTN-PE",
     "name": "Triton International Limited",
-    "price": 18.94,
+    "price": 18.95,
     "compassScore": 67,
     "grade": "B",
     "industry": "Rental & Leasing Services",
@@ -142604,7 +142604,7 @@
   {
     "symbol": "HBIO",
     "name": "Harvard Bioscience, Inc.",
-    "price": 6.19,
+    "price": 5.99,
     "compassScore": 58,
     "grade": "C",
     "industry": "Medical - Instruments & Supplies",
@@ -165511,7 +165511,7 @@
   {
     "symbol": "AERT",
     "name": "Aeries Technology, Inc",
-    "price": 6.28,
+    "price": 6.46,
     "compassScore": 51,
     "grade": "C",
     "industry": "Consulting Services",
@@ -194825,7 +194825,7 @@
   {
     "symbol": "ASPS",
     "name": "Altisource Portfolio Solutions S.A.",
-    "price": 5.65,
+    "price": 5.56,
     "compassScore": 42,
     "grade": "C",
     "industry": "Real Estate - Services",
@@ -221172,7 +221172,7 @@
   {
     "symbol": "KPLT",
     "name": "Katapult Holdings, Inc.",
-    "price": 6.96,
+    "price": 6.8,
     "compassScore": 34,
     "grade": "D",
     "industry": "Software - Infrastructure",
@@ -221679,7 +221679,7 @@
   {
     "symbol": "GROW",
     "name": "U.S. Global Investors, Inc.",
-    "price": 2.9,
+    "price": 2.97,
     "compassScore": 34,
     "grade": "D",
     "industry": "Asset Management",
@@ -225678,7 +225678,7 @@
   {
     "symbol": "BLIN",
     "name": "Bridgeline Digital, Inc.",
-    "price": 1.15,
+    "price": 1.17,
     "compassScore": 32,
     "grade": "D",
     "industry": "Software - Infrastructure",
@@ -231239,7 +231239,7 @@
   {
     "symbol": "MAYS",
     "name": "J.W. Mays, Inc.",
-    "price": 39.83,
+    "price": 39.05,
     "compassScore": 31,
     "grade": "D",
     "industry": "Real Estate - Services",
@@ -231497,7 +231497,7 @@
   {
     "symbol": "OPHC",
     "name": "OptimumBank Holdings, Inc.",
-    "price": 6.76,
+    "price": 6.67,
     "compassScore": 31,
     "grade": "D",
     "industry": "Banks - Regional",
@@ -243549,7 +243549,7 @@
   {
     "symbol": "INTG",
     "name": "The InterGroup Corporation",
-    "price": 31.62,
+    "price": 32.1,
     "compassScore": 27,
     "grade": "D",
     "industry": "Travel Lodging",
@@ -245544,7 +245544,7 @@
   {
     "symbol": "PRPL",
     "name": "Purple Innovation, Inc.",
-    "price": 8.5,
+    "price": 8.22,
     "compassScore": 26,
     "grade": "D",
     "industry": "Furnishings, Fixtures & Appliances",
@@ -258660,7 +258660,7 @@
   {
     "symbol": "NAII",
     "name": "Natural Alternatives International, Inc.",
-    "price": 2.44,
+    "price": 2.37,
     "compassScore": 22,
     "grade": "D",
     "industry": "Packaged Foods",
@@ -260116,7 +260116,7 @@
   {
     "symbol": "YHGJ",
     "name": "Yunhong Green CTI Ltd.",
-    "price": 3,
+    "price": 3.09,
     "compassScore": 22,
     "grade": "D",
     "industry": "Packaging & Containers",
@@ -282593,7 +282593,7 @@
   {
     "symbol": "BDSX",
     "name": "Biodesix, Inc.",
-    "price": 21.86,
+    "price": 22.22,
     "compassScore": 14,
     "grade": "F",
     "industry": "Medical - Diagnostics & Research",
@@ -288091,7 +288091,7 @@
   {
     "symbol": "ZEPP",
     "name": "Zepp Health Corporation",
-    "price": 4.96,
+    "price": 4.87,
     "compassScore": 13,
     "grade": "F",
     "industry": "Consumer Electronics",
@@ -290803,7 +290803,7 @@
   {
     "symbol": "THCH",
     "name": "TH International Limited",
-    "price": 1.67,
+    "price": 1.74,
     "compassScore": 12,
     "grade": "F",
     "industry": "Restaurants",
@@ -291388,7 +291388,7 @@
   {
     "symbol": "ANTA",
     "name": "Antalpha Platform Holding Company",
-    "price": 3.5,
+    "price": 3.65,
     "compassScore": 11,
     "grade": "F",
     "industry": "Financial - Credit Services",
@@ -295024,7 +295024,7 @@
   {
     "symbol": "BHST",
     "name": "BioHarvest Sciences Inc. Common Stock",
-    "price": 2.06,
+    "price": 2.03,
     "compassScore": 10,
     "grade": "F",
     "industry": "Agricultural Inputs",
@@ -299310,7 +299310,7 @@
   {
     "symbol": "CPHI",
     "name": "China Pharma Holdings, Inc.",
-    "price": 1.29,
+    "price": 1.23,
     "compassScore": 9,
     "grade": "F",
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -302834,7 +302834,7 @@
   {
     "symbol": "PRHI",
     "name": "Presurance Holdings, Inc.",
-    "price": 5.27,
+    "price": 5.42,
     "compassScore": 8,
     "grade": "F",
     "industry": "Insurance - Property & Casualty",
@@ -308826,7 +308826,7 @@
   {
     "symbol": "GRDX",
     "name": "GridAI Technologies Corp.",
-    "price": 3.07,
+    "price": 3.15,
     "compassScore": 6,
     "grade": "F",
     "industry": "Biotechnology",
@@ -311004,7 +311004,7 @@
   {
     "symbol": "CTOR",
     "name": "Citius Oncology, Inc.",
-    "price": 0.57,
+    "price": 0.56,
     "compassScore": 5,
     "grade": "F",
     "industry": "Drug Manufacturers - General",
@@ -312741,7 +312741,7 @@
   {
     "symbol": "ACON",
     "name": "Aclarion, Inc.",
-    "price": 2.17,
+    "price": 2.22,
     "compassScore": 4,
     "grade": "F",
     "industry": "Medical - Healthcare Information Services",
@@ -315722,7 +315722,7 @@
   {
     "symbol": "VGAS",
     "name": "Verde Clean Fuels, Inc.",
-    "price": 1.13,
+    "price": 1.16,
     "compassScore": 4,
     "grade": "F",
     "industry": "Renewable Utilities",
@@ -324021,7 +324021,7 @@
   {
     "symbol": "BNKK",
     "name": "Bonk, Inc.",
-    "price": 1.08,
+    "price": 1.11,
     "compassScore": 1,
     "grade": "F",
     "industry": "Beverages - Non-Alcoholic",
@@ -326613,7 +326613,7 @@
   {
     "symbol": "TWAV",
     "name": "TaoWeave, Inc.",
-    "price": 1.22,
+    "price": 1.25,
     "compassScore": 0,
     "grade": "F",
     "industry": "Asset Management",
