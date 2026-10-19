@@ -162,16 +162,27 @@ export function errorResponse(message: string, status: number): Response {
   return json({ error: message }, status);
 }
 
-// Middleware chain — handles CORS preflight for all /api/* routes
+// Middleware chain — handles CORS preflight for all /api/* routes.
+// The private assistant API (/api/private/*) is key-gated and non-browser:
+// it never gets CORS headers (and any a helper added are stripped), so the
+// routes stay invisible to cross-origin pages.
 export const onRequest: PagesFunction<Env> = async (context) => {
+  const isPrivate = new URL(context.request.url).pathname.startsWith('/api/private/');
   if (context.request.method === 'OPTIONS') {
-    return handleOptions();
+    return isPrivate ? new Response(null, { status: 204 }) : handleOptions();
   }
   // Continue to the actual handler
   const response = await context.next();
-  // Add CORS headers to all responses
   const headers = new Headers(response.headers);
-  Object.entries(corsHeaders()).forEach(([k, v]) => headers.set(k, v));
+  if (isPrivate) {
+    Object.keys(corsHeaders()).forEach(k => headers.delete(k));
+    // Every private response — errors from errorResponse() included — must be
+    // uncacheable; handlers' own headers are normalized here in one place.
+    headers.set('Cache-Control', 'private, no-store');
+  } else {
+    // Add CORS headers to all public responses
+    Object.entries(corsHeaders()).forEach(([k, v]) => headers.set(k, v));
+  }
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,

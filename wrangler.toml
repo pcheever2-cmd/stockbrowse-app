@@ -41,3 +41,5 @@ service = "stockbrowse-rate-limiter"
 #   STRIPE_SECRET_KEY
 #   STRIPE_WEBHOOK_SECRET
 #   RESEND_API_KEY (v2)
+#   ASSISTANT_API_KEY (private assistant API, /api/private/*)
+#   FMP_API_KEY (news proxy for /api/private/news/*)
