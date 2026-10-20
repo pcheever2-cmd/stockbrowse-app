@@ -9,7 +9,10 @@
  */
 import { requireAssistantKey, privateJson, type AssistantEnv } from '../../lib/assistant-auth';
 import { errorResponse } from '../../_middleware';
-import { loadIndex, buildWhy, buildFlags, type ScreenerRow } from '../../lib/screener';
+import {
+  loadIndex, buildWhy, buildFlags, rankScore, PROFILES, DEFAULT_PROFILE,
+  type ScreenerRow,
+} from '../../lib/screener';
 
 async function check(env: AssistantEnv, symbols: string[]): Promise<Response> {
   const cleaned = [...new Set(symbols.map(s => s.trim().toUpperCase()).filter(Boolean))].slice(0, 100);
@@ -24,7 +27,13 @@ async function check(env: AssistantEnv, symbols: string[]): Promise<Response> {
     if (!row) {
       return { symbol, inUniverse: false, flags: ['not in universe (no score coverage)'] };
     }
-    return { ...row, inUniverse: true, why: buildWhy(row), flags: buildFlags(row) };
+    return {
+      ...row,
+      inUniverse: true,
+      rankScore: Math.round(rankScore(row, PROFILES[DEFAULT_PROFILE]) * 10) / 10,
+      why: buildWhy(row),
+      flags: buildFlags(row),
+    };
   });
 
   return privateJson({

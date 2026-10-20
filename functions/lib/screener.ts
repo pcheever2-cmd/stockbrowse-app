@@ -15,6 +15,7 @@ export interface ScreenerRow {
   symbol: string;
   name: string | null;
   price: number | null;
+  priceAsOf: string | null;
   compass: number | null;
   grade: string | null;
   sector: string | null;
@@ -89,6 +90,7 @@ export interface ScreenParams {
   grades?: string[];
   sectors?: string[];
   excludeSectors?: string[];
+  industries?: string[];
   minCompass?: number;
   minCatalyst?: number;
   maxPePctile?: number;
@@ -97,6 +99,7 @@ export interface ScreenParams {
   maxPrice?: number;
   minMcapB?: number;
   maxMcapB?: number;
+  minAnalysts?: number;
   golden?: boolean;
   catalystTag?: boolean;
   includeNoHistory?: boolean;
@@ -129,12 +132,15 @@ function valuationGate(row: ScreenerRow, maxPe?: number, maxEv?: number, include
 export function applyScreen(rows: ScreenerRow[], p: ScreenParams): ScreenerRow[] {
   const sectors = p.sectors?.map(s => s.toLowerCase());
   const exclude = p.excludeSectors?.map(s => s.toLowerCase());
+  const industries = p.industries?.map(s => s.toLowerCase());
   const grades = p.grades?.map(g => g.toUpperCase());
   return rows.filter(row => {
     if (!hardFilter(row)) return false;
+    if (p.minAnalysts !== undefined && (row.analysts ?? 0) < p.minAnalysts) return false;
     if (grades?.length && !grades.includes(row.grade ?? '')) return false;
     if (sectors?.length && !sectors.includes((row.sector ?? '').toLowerCase())) return false;
     if (exclude?.length && exclude.includes((row.sector ?? '').toLowerCase())) return false;
+    if (industries?.length && !industries.includes((row.industry ?? '').toLowerCase())) return false;
     if (p.minCompass !== undefined && (row.compass ?? -1) < p.minCompass) return false;
     if (p.minCatalyst !== undefined && (row.catalyst ?? -1) < p.minCatalyst) return false;
     if (p.minPrice !== undefined && (row.price ?? -1) < p.minPrice) return false;
@@ -241,15 +247,52 @@ export function buildFlags(row: ScreenerRow): string[] {
 }
 
 /**
- * Parse shared query params for /ideas and /screen. A numeric param that is
- * present but unparseable is an ERROR (never a silent fallback to defaults —
- * a consuming AI must not reason from results it didn't ask for).
+ * Parse shared query params for /ideas and /screen.
+ *
+ * Strictness contract (a consuming AI must never reason from results it
+ * didn't ask for): a numeric param that is present but unparseable is an
+ * ERROR, and so is any param name we don't recognize — both produce a 400
+ * instead of silently ignored input. Common synonyms are accepted as aliases.
  */
-export function parseScreenParams(url: URL): { params: ScreenParams; errors: string[] } {
+const PARAM_ALIASES: Record<string, string> = {
+  sector: 'sectors',
+  excludeSector: 'excludeSectors',
+  industry: 'industries',
+  grade: 'grades',
+  limit: 'maxN',
+};
+
+const SCREEN_PARAM_NAMES = new Set([
+  'grades', 'sectors', 'excludeSectors', 'industries',
+  'minCompass', 'minCatalyst', 'maxPePctile', 'maxEvPctile',
+  'minPrice', 'maxPrice', 'minMcapB', 'maxMcapB', 'minAnalysts',
+  'golden', 'catalystTag', 'includeNoHistory',
+]);
+
+export function parseScreenParams(
+  url: URL,
+  extraAllowed: string[],
+): { params: ScreenParams; errors: string[] } {
   const errors: string[] = [];
+  const allowed = new Set([...SCREEN_PARAM_NAMES, ...extraAllowed]);
+
+  // Canonicalize aliases, reject unknown names outright.
+  const values = new Map<string, string>();
+  for (const [rawKey, v] of url.searchParams.entries()) {
+    const key = PARAM_ALIASES[rawKey] ?? rawKey;
+    if (!allowed.has(key)) {
+      errors.push(`unknown param '${rawKey}'`);
+      continue;
+    }
+    values.set(key, v);
+  }
+  if (errors.length) {
+    errors.push(`valid params: ${[...allowed].sort().join(', ')} (aliases: ${Object.keys(PARAM_ALIASES).join(', ')})`);
+  }
+
   const num = (k: string): number | undefined => {
-    const v = url.searchParams.get(k);
-    if (v === null || v === '') return undefined;
+    const v = values.get(k);
+    if (v === undefined || v === '') return undefined;
     const n = Number(v);
     if (!Number.isFinite(n)) {
       errors.push(`${k}='${v}' is not a number`);
@@ -258,14 +301,15 @@ export function parseScreenParams(url: URL): { params: ScreenParams; errors: str
     return n;
   };
   const list = (k: string): string[] | undefined => {
-    const v = url.searchParams.get(k);
+    const v = values.get(k);
     return v ? v.split(',').map(s => s.trim()).filter(Boolean) : undefined;
   };
-  const flag = (k: string): boolean => url.searchParams.get(k) === '1';
+  const flag = (k: string): boolean => values.get(k) === '1';
   const params: ScreenParams = {
     grades: list('grades'),
     sectors: list('sectors'),
     excludeSectors: list('excludeSectors'),
+    industries: list('industries'),
     minCompass: num('minCompass'),
     minCatalyst: num('minCatalyst'),
     maxPePctile: num('maxPePctile'),
@@ -274,9 +318,46 @@ export function parseScreenParams(url: URL): { params: ScreenParams; errors: str
     maxPrice: num('maxPrice'),
     minMcapB: num('minMcapB'),
     maxMcapB: num('maxMcapB'),
+    minAnalysts: num('minAnalysts'),
     golden: flag('golden'),
     catalystTag: flag('catalystTag'),
     includeNoHistory: flag('includeNoHistory'),
   };
   return { params, errors };
 }
+
+/** Shared paging/sort parsing for /ideas and /screen (maxN accepts alias 'limit'). */
+export function parsePaging(
+  url: URL,
+  defaults: { maxN: number; cap: number; sort: SortKey },
+): { maxN: number; offset: number; sort: SortKey; error: string | null } {
+  const rawMaxN = url.searchParams.get('maxN') ?? url.searchParams.get('limit');
+  if (rawMaxN && !Number.isFinite(Number(rawMaxN))) {
+    return { maxN: 0, offset: 0, sort: defaults.sort, error: `maxN='${rawMaxN}' is not a number` };
+  }
+  const rawOffset = url.searchParams.get('offset');
+  if (rawOffset && (!Number.isFinite(Number(rawOffset)) || Number(rawOffset) < 0)) {
+    return { maxN: 0, offset: 0, sort: defaults.sort, error: `offset='${rawOffset}' must be a non-negative number` };
+  }
+  let sort = (url.searchParams.get('sort') || defaults.sort) as SortKey;
+  if ((sort as string) === 'rankScore') sort = 'rank'; // common synonym
+  if (!['rank', 'compass', 'catalyst', 'valuation', 'fvUpside'].includes(sort)) {
+    return { maxN: 0, offset: 0, sort: defaults.sort, error: `unknown sort '${sort}' — valid: rank, compass, catalyst, valuation, fvUpside (rankScore = rank)` };
+  }
+  return {
+    maxN: Math.max(1, Math.min(Number(rawMaxN) || defaults.maxN, defaults.cap)),
+    offset: Math.floor(Number(rawOffset) || 0),
+    sort,
+    error: null,
+  };
+}
+
+/**
+ * Data-source caveats echoed on screen responses so a consuming AI never
+ * misreads the fields' provenance.
+ */
+export const DATA_NOTES =
+  "Field provenance: 'consensus' is FMP's quant letter rating, NOT Street Buy/Hold consensus. " +
+  "'analysts' counts FMP-tracked coverage (typically lower than S&P/MarketBeat counts); " +
+  "premium.coveringAnalysts is the subset with scored accuracy track records. " +
+  "'price' is the last pipeline quote (see priceAsOf — generally prior close intraday).";

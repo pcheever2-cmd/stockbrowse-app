@@ -11,7 +11,7 @@ import { requireAssistantKey, privateJson, type AssistantEnv } from '../../lib/a
 import { errorResponse } from '../../_middleware';
 import {
   loadIndex, applyScreen, sortRows, buildWhy, parseScreenParams,
-  PROFILES, DEFAULT_PROFILE, type SortKey,
+  parsePaging, PROFILES, DEFAULT_PROFILE, DATA_NOTES,
 } from '../../lib/screener';
 
 export const onRequestGet: PagesFunction<AssistantEnv> = async ({ request, env }) => {
@@ -22,32 +22,27 @@ export const onRequestGet: PagesFunction<AssistantEnv> = async ({ request, env }
   if (index instanceof Response) return index;
 
   const url = new URL(request.url);
-  const { params, errors } = parseScreenParams(url);
+  const { params, errors } = parseScreenParams(url, ['maxN', 'offset', 'sort', 'why']);
   if (errors.length) return errorResponse(`bad params: ${errors.join('; ')}`, 400);
-  const maxNRaw = url.searchParams.get('maxN');
-  if (maxNRaw && !Number.isFinite(Number(maxNRaw))) {
-    return errorResponse(`maxN='${maxNRaw}' is not a number`, 400);
-  }
-  const maxN = Math.max(1, Math.min(Number(maxNRaw) || 50, 200));
-  const sort = (url.searchParams.get('sort') || 'compass') as SortKey;
-  if (!['rank', 'compass', 'catalyst', 'valuation', 'fvUpside'].includes(sort)) {
-    return errorResponse(`unknown sort '${sort}' — valid: rank, compass, catalyst, valuation, fvUpside`, 400);
-  }
+  const paging = parsePaging(url, { maxN: 50, cap: 200, sort: 'compass' });
+  if (paging.error) return errorResponse(paging.error, 400);
   const withWhy = url.searchParams.get('why') === '1';
   const profile = PROFILES[DEFAULT_PROFILE]; // only used if sort=rank requested
 
   const matched = applyScreen(index.stocks, params);
-  const items = sortRows(matched, sort, profile).slice(0, maxN).map(row =>
-    withWhy ? { ...row, why: buildWhy(row) } : row
-  );
+  const items = sortRows(matched, paging.sort, profile)
+    .slice(paging.offset, paging.offset + paging.maxN)
+    .map(row => (withWhy ? { ...row, why: buildWhy(row) } : row));
 
   return privateJson({
     asOf: index.asOf,
     universe: index.count,
     matched: matched.length,
     returned: items.length,
+    offset: paging.offset,
     params,
-    note: 'Hard filter: analysts >= 2 (always). No profile defaults on this endpoint.',
+    note: 'Hard filter: analysts >= 2 (always). No profile defaults on this endpoint. ' +
+      'Page with offset + maxN (cap 200). ' + DATA_NOTES,
     items,
   });
 };

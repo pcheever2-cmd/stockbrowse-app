@@ -32,11 +32,17 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
   }
 
   const url = new URL(request.url);
-  const limit = Math.max(1, Math.min(Number(url.searchParams.get('limit')) || 25, 50));
+  const limit = Math.max(1, Math.min(Number(url.searchParams.get('limit')) || 25, 100));
   const fresh = url.searchParams.get('fresh') === '1';
+  // Optional lookback window start for deeper adverse-event sweeps on large
+  // caps (25 headlines can cover only days). Bypasses the cache.
+  const from = url.searchParams.get('from');
+  if (from && !/^\d{4}-\d{2}-\d{2}$/.test(from)) {
+    return errorResponse(`from='${from}' must be YYYY-MM-DD`, 400);
+  }
   const cacheKey = `newscache:${symbol}`;
 
-  if (!fresh) {
+  if (!fresh && !from) {
     const cached = await env.STOCKS_PREMIUM_KV.get<Article[]>(cacheKey, 'json');
     if (cached) {
       return privateJson({ symbol, cached: true, articles: cached.slice(0, limit) });
@@ -45,10 +51,10 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
 
   let raw: unknown;
   try {
-    const resp = await fetch(
-      `https://financialmodelingprep.com/stable/news/stock?symbols=${encodeURIComponent(symbol)}&limit=50&apikey=${env.FMP_API_KEY}`,
-      { headers: { Accept: 'application/json' } }
-    );
+    const fmpUrl =
+      `https://financialmodelingprep.com/stable/news/stock?symbols=${encodeURIComponent(symbol)}` +
+      `&limit=100${from ? `&from=${from}` : ''}&apikey=${env.FMP_API_KEY}`;
+    const resp = await fetch(fmpUrl, { headers: { Accept: 'application/json' } });
     if (!resp.ok) return errorResponse('news provider unavailable', 502);
     raw = await resp.json();
   } catch {
@@ -65,12 +71,14 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
     snippet: typeof a.text === 'string' ? a.text.slice(0, 300) : null,
   })).filter(a => a.title);
 
-  try {
-    await env.STOCKS_PREMIUM_KV.put(cacheKey, JSON.stringify(articles), {
-      expirationTtl: CACHE_TTL_SECONDS,
-    });
-  } catch {
-    // Cache is best-effort — never fail a response we already have in hand.
+  if (!from) {
+    try {
+      await env.STOCKS_PREMIUM_KV.put(cacheKey, JSON.stringify(articles), {
+        expirationTtl: CACHE_TTL_SECONDS,
+      });
+    } catch {
+      // Cache is best-effort — never fail a response we already have in hand.
+    }
   }
 
   return privateJson({

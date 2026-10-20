@@ -9,7 +9,9 @@
  */
 import { requireAssistantKey, privateJson, type AssistantEnv } from '../../../lib/assistant-auth';
 import { errorResponse } from '../../../_middleware';
-import { loadIndex, buildWhy, buildFlags } from '../../../lib/screener';
+import {
+  loadIndex, buildWhy, buildFlags, rankScore, PROFILES, DEFAULT_PROFILE,
+} from '../../../lib/screener';
 
 interface SeriesPoint { time: string; value: number }
 interface Overlays { pe: SeriesPoint[]; evEbitda: SeriesPoint[]; fwdPe: number | null }
@@ -88,7 +90,14 @@ export const onRequestGet: PagesFunction<AssistantEnv> = async ({ request, env, 
   return privateJson({
     symbol,
     asOf: index instanceof Response ? null : index.asOf,
-    screener: row ? { ...row, why: buildWhy(row), flags: buildFlags(row) } : null,
+    screener: row
+      ? {
+          ...row,
+          rankScore: Math.round(rankScore(row, PROFILES[DEFAULT_PROFILE]) * 10) / 10,
+          why: buildWhy(row),
+          flags: buildFlags(row),
+        }
+      : null,
     premium: premium ?? null,
     valuationHistory: {
       pe: seriesStats(overlays?.pe),
